@@ -1,1498 +1,876 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Medical Equipment | SA Azadipour</title>
-
-  <meta
-    name="description"
-    content="SA Azadipour — Medical equipment and healthcare supplies for international markets, with a strategic focus on Oman, Saudi Arabia, Bahrain and Qatar."
-  >
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap"
-    rel="stylesheet"
-  >
-
-  <style>
-
-    :root {
-      --black: #050505;
-      --soft-black: #090a0b;
-      --white: #f5f3ef;
-      --muted: #8c8b88;
-      --line: rgba(255,255,255,0.15);
-      --gold: #d8c29b;
-      --max: 1440px;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background: var(--black);
-      color: var(--white);
-      font-family: "Inter", sans-serif;
-      font-weight: 300;
-      overflow-x: hidden;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    /* =========================
-       NAVIGATION
-    ========================= */
-
-    .navbar {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 20;
-
-      height: 105px;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      padding: 0 5vw;
-
-      border-bottom: 1px solid rgba(255,255,255,0.12);
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-    }
-
-    .brand img {
-      width: 135px;
-      height: auto;
-      display: block;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 38px;
-
-      font-size: 13px;
-      letter-spacing: 0.04em;
-    }
-
-    .nav-links a {
-      transition: opacity 0.3s ease;
-    }
+:root {
+  --black: #050505;
+  --deep: #08090a;
+  --cream: #f4f0e8;
+  --muted: #92908b;
+  --gold: #cdb98f;
+  --line: rgba(255,255,255,.13);
+  --max: 1480px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--black);
+  color: var(--cream);
+  font-family: "Inter", sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.export-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 50;
+
+  width: 100%;
+  height: 105px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 5vw;
+
+  border-bottom: 1px solid rgba(255,255,255,.13);
+}
+
+.export-logo {
+  width: 135px;
+}
+
+.export-logo img {
+  width: 100%;
+  display: block;
+}
+
+.export-menu {
+  display: flex;
+  gap: 38px;
+
+  font-size: 12px;
+  letter-spacing: .04em;
+}
+
+.export-menu a {
+  transition: opacity .3s ease;
+}
+
+.export-menu a:hover {
+  opacity: .5;
+}
+
+.export-menu .active {
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 7px;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.export-hero {
+  min-height: 100vh;
 
-    .nav-links a:hover {
-      opacity: 0.55;
-    }
+  position: relative;
 
-    .nav-links .active {
-      border-bottom: 1px solid var(--gold);
-      padding-bottom: 6px;
-    }
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    /* =========================
-       HERO
-    ========================= */
+  padding: 140px 6vw 80px;
 
-    .hero {
-      min-height: 100vh;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(3,5,7,.96),
+      rgba(3,5,7,.67),
+      rgba(3,5,7,.27)
+    ),
+    url("https://images.unsplash.com/photo-1584982751601-97dcc096659c?auto=format&fit=crop&w=2200&q=90")
+    center / cover no-repeat;
+}
 
-      position: relative;
+.export-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+  background:
+    radial-gradient(
+      circle at 70% 50%,
+      rgba(85,120,150,.17),
+      transparent 36%
+    );
+}
 
-      overflow: hidden;
+.hero-content {
+  position: relative;
+  z-index: 2;
 
-      background:
-        linear-gradient(
-          90deg,
-          rgba(2,5,8,0.96) 0%,
-          rgba(2,5,8,0.70) 45%,
-          rgba(2,5,8,0.40) 100%
-        ),
-        url("assets/export-hero.jpg")
-        center center / cover no-repeat;
+  width: 100%;
+  max-width: 1150px;
 
-      padding: 140px 6vw 80px;
-    }
+  text-align: center;
+}
 
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
+.hero-sa {
+  width: 230px;
+  margin: 0 auto 25px;
 
-      background:
-        radial-gradient(
-          circle at 70% 45%,
-          rgba(130,160,190,0.12),
-          transparent 35%
-        );
+  opacity: .96;
+}
 
-      pointer-events: none;
-    }
+.hero-sa img {
+  width: 100%;
+  display: block;
+}
 
-    .hero-inner {
-      position: relative;
-      z-index: 2;
+.hero-label {
+  color: var(--gold);
 
-      width: 100%;
-      max-width: 1200px;
+  font-size: 10px;
+  letter-spacing: .5em;
+  text-transform: uppercase;
 
-      text-align: center;
-    }
+  margin-bottom: 25px;
+}
 
-    /* Large calligraphic SA */
+.hero-title {
+  font-family: "Cormorant Garamond", serif;
 
-    .hero-sa {
-      width: 220px;
-      margin: 0 auto 30px;
+  font-size: clamp(65px, 9vw, 125px);
+  line-height: .82;
 
-      filter:
-        drop-shadow(0 0 18px rgba(255,255,255,0.08));
+  font-weight: 400;
 
-      opacity: 0.98;
-    }
+  letter-spacing: -.045em;
+}
 
-    .hero-sa img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
+.hero-title em {
+  display: block;
 
-    .hero-eyebrow {
-      font-size: 12px;
-      letter-spacing: 0.42em;
-      text-transform: uppercase;
+  color: #d7d2c9;
 
-      color: var(--gold);
+  font-style: italic;
+}
 
-      margin-bottom: 25px;
-    }
+.hero-description {
+  max-width: 690px;
 
-    .hero h1 {
-      font-family: "Cormorant Garamond", serif;
+  margin: 32px auto 28px;
 
-      font-size: clamp(58px, 8vw, 110px);
-      line-height: 0.88;
-      font-weight: 400;
+  color: #d0cec8;
 
-      letter-spacing: -0.035em;
+  font-size: 14px;
+  line-height: 1.9;
+}
 
-      margin-bottom: 18px;
-    }
+.hero-markets {
+  color: #c4beb4;
 
-    .hero h1 em {
-      display: block;
+  font-size: 10px;
 
-      font-style: italic;
+  letter-spacing: .38em;
 
-      color: #ddd8cf;
-    }
+  text-transform: uppercase;
+}
 
-    .hero-subtitle {
-      max-width: 680px;
-      margin: 0 auto 32px;
+.hero-button {
+  display: inline-flex;
 
-      font-size: 14px;
-      line-height: 1.8;
+  margin-top: 42px;
 
-      color: #d1d0cc;
-    }
+  flex-direction: column;
+  align-items: center;
 
-    .markets-line {
-      font-size: 10px;
-      letter-spacing: 0.38em;
-      text-transform: uppercase;
+  gap: 13px;
 
-      color: #c8c4bb;
-    }
+  color: #cfc8bb;
 
-    .hero-scroll {
-      display: inline-flex;
-      flex-direction: column;
-      align-items: center;
+  font-size: 9px;
 
-      gap: 12px;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+}
 
-      margin-top: 45px;
+.hero-button span {
+  height: 48px;
+  width: 1px;
 
-      font-size: 9px;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
+  background: var(--gold);
+}
 
-      color: #bdb8ad;
-    }
+/* =========================
+   GENERAL
+========================= */
 
-    .hero-scroll span {
-      width: 1px;
-      height: 45px;
-      background: var(--gold);
-    }
+.export-section {
+  max-width: var(--max);
+  margin: auto;
 
-    /* =========================
-       GENERAL SECTIONS
-    ========================= */
+  padding: 150px 5vw;
+}
 
-    .section {
-      max-width: var(--max);
-      margin: auto;
+.label {
+  color: #817f7a;
 
-      padding: 150px 5vw;
-    }
+  font-size: 10px;
 
-    .section-dark {
-      background: var(--soft-black);
-    }
+  letter-spacing: .43em;
+  text-transform: uppercase;
 
-    .eyebrow {
-      font-size: 10px;
-      letter-spacing: 0.42em;
-      text-transform: uppercase;
+  margin-bottom: 28px;
+}
 
-      color: #85837f;
+.big-title {
+  font-family: "Cormorant Garamond", serif;
 
-      margin-bottom: 28px;
-    }
+  font-weight: 400;
 
-    .section-title {
-      font-family: "Cormorant Garamond", serif;
+  font-size: clamp(58px, 7vw, 100px);
 
-      font-size: clamp(55px, 7vw, 95px);
+  line-height: .87;
 
-      line-height: 0.9;
+  letter-spacing: -.04em;
+}
 
-      font-weight: 400;
+.big-title em {
+  font-style: italic;
+}
 
-      letter-spacing: -0.035em;
-    }
+/* =========================
+   INTRO
+========================= */
 
-    .section-title em {
-      font-style: italic;
-      color: #d7d2ca;
-    }
+.focus-grid {
+  display: grid;
 
-    .intro-grid {
-      display: grid;
+  grid-template-columns: 1fr 1fr;
 
-      grid-template-columns: 1fr 1fr;
+  gap: 90px;
 
-      gap: 90px;
+  align-items: end;
+}
 
-      align-items: end;
-    }
+.focus-text {
+  max-width: 560px;
 
-    .intro-text {
-      max-width: 570px;
+  color: #aaa8a2;
 
-      font-size: 15px;
-      line-height: 1.9;
+  font-size: 14px;
 
-      color: #b2b0ac;
-    }
+  line-height: 1.95;
+}
 
-    .intro-arrow {
-      justify-self: end;
+.focus-arrow {
+  margin-top: 30px;
 
-      font-size: 50px;
-      color: var(--gold);
+  color: var(--gold);
 
-      font-family: "Cormorant Garamond", serif;
-    }
+  font-family: "Cormorant Garamond", serif;
 
-    /* =========================
-       COUNTRY CARDS
-    ========================= */
+  font-size: 48px;
+}
 
-    .markets {
-      margin-top: 90px;
+/* =========================
+   MARKET CARDS
+========================= */
 
-      display: grid;
+.market-grid {
+  margin-top: 90px;
 
-      grid-template-columns:
-        repeat(4, minmax(0, 1fr));
+  display: grid;
 
-      gap: 14px;
-    }
+  grid-template-columns:
+    repeat(4, 1fr);
 
-    .market-card {
-      position: relative;
+  gap: 13px;
+}
 
-      min-height: 530px;
+.market-card {
+  min-height: 540px;
 
-      overflow: hidden;
+  position: relative;
 
-      border: 1px solid rgba(255,255,255,0.13);
+  overflow: hidden;
 
-      background: #101112;
+  border: 1px solid var(--line);
 
-      transition:
-        transform 0.5s ease,
-        border-color 0.5s ease;
-    }
+  transition:
+    transform .5s ease,
+    border-color .5s ease;
+}
 
-    .market-card:hover {
-      transform: translateY(-8px);
+.market-card:hover {
+  transform: translateY(-8px);
 
-      border-color: rgba(216,194,155,0.6);
-    }
+  border-color: rgba(205,185,143,.7);
+}
 
-    .market-image {
-      position: absolute;
-      inset: 0;
+.market-bg {
+  position: absolute;
+  inset: 0;
 
-      background-size: cover;
-      background-position: center;
+  background-size: cover;
+  background-position: center;
 
-      transition: transform 0.8s ease;
-    }
+  transition: transform .8s ease;
+}
 
-    .market-card:hover .market-image {
-      transform: scale(1.06);
-    }
+.market-card:hover .market-bg {
+  transform: scale(1.07);
+}
 
-    .market-card::after {
-      content: "";
+.market-card::after {
+  content: "";
 
-      position: absolute;
-      inset: 0;
+  position: absolute;
+  inset: 0;
 
-      background:
-        linear-gradient(
-          to bottom,
-          rgba(0,0,0,0.05) 0%,
-          rgba(0,0,0,0.12) 30%,
-          rgba(0,0,0,0.90) 100%
-        );
-    }
+  background:
+    linear-gradient(
+      to bottom,
+      transparent 20%,
+      rgba(0,0,0,.87) 100%
+    );
+}
 
-    .market-content {
-      position: absolute;
+.market-info {
+  position: absolute;
 
-      left: 28px;
-      right: 28px;
-      bottom: 30px;
+  z-index: 2;
 
-      z-index: 2;
-    }
+  left: 28px;
+  right: 28px;
+  bottom: 30px;
+}
 
-    .market-number {
-      font-family: "Cormorant Garamond", serif;
+.market-number {
+  font-family: "Cormorant Garamond", serif;
 
-      font-size: 20px;
+  font-size: 22px;
 
-      color: #ddd7cc;
+  color: #d4cec4;
 
-      margin-bottom: 115px;
-    }
+  margin-bottom: 105px;
+}
 
-    .market-content h3 {
-      font-family: "Cormorant Garamond", serif;
+.market-info h3 {
+  font-family: "Cormorant Garamond", serif;
 
-      font-size: 43px;
-      line-height: 0.95;
+  font-size: 45px;
 
-      font-weight: 400;
+  line-height: .92;
 
-      margin-bottom: 18px;
-    }
+  font-weight: 400;
 
-    .market-content p {
-      font-size: 12px;
-      line-height: 1.7;
+  margin-bottom: 17px;
+}
 
-      color: #d1cfca;
+.market-info p {
+  font-size: 11px;
 
-      margin-bottom: 22px;
-    }
+  line-height: 1.7;
 
-    .market-link {
-      font-size: 9px;
+  color: #d1cec7;
 
-      letter-spacing: 0.2em;
+  margin-bottom: 21px;
+}
 
-      text-transform: uppercase;
+.market-link {
+  color: var(--gold);
 
-      color: var(--gold);
-    }
+  font-size: 9px;
 
-    /* =========================
-       COUNTRY IMAGES
-    ========================= */
+  letter-spacing: .22em;
 
-    .oman {
-      background-image:
-        url("https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?auto=format&fit=crop&w=1200&q=90");
-    }
+  text-transform: uppercase;
+}
 
-    .saudi {
-      background-image:
-        url("https://images.unsplash.com/photo-1578895101408-1a36b834405b?auto=format&fit=crop&w=1200&q=90");
-    }
+/* =========================
+   MARKET IMAGES
+========================= */
 
-    .bahrain {
-      background-image:
-        url("https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=1200&q=90");
-    }
+.oman-bg {
+  background-image:
+    url("https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?auto=format&fit=crop&w=1400&q=90");
+}
 
-    .qatar {
-      background-image:
-        url("https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=90");
-    }
+.saudi-bg {
+  background-image:
+    url("https://images.unsplash.com/photo-1578895101408-1a36b834405b?auto=format&fit=crop&w=1400&q=90");
+}
 
-    /* =========================
-       COUNTRY DETAIL
-    ========================= */
+.bahrain-bg {
+  background-image:
+    url("https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=1400&q=90");
+}
 
-    .country-detail {
-      border-top: 1px solid var(--line);
+.qatar-bg {
+  background-image:
+    url("https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1400&q=90");
+}
 
-      display: grid;
+/* =========================
+   PRODUCT SECTION
+========================= */
 
-      grid-template-columns: 1fr 1fr;
+.product-section {
+  display: grid;
 
-      min-height: 500px;
-    }
+  grid-template-columns: .9fr 1.1fr;
 
-    .country-detail-image {
-      min-height: 500px;
+  min-height: 680px;
+}
 
-      background-size: cover;
-      background-position: center;
-    }
+.product-image {
+  min-height: 680px;
 
-    .country-detail-content {
-      padding: 80px 7vw;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0,0,0,.05),
+      rgba(0,0,0,.42)
+    ),
+    url("https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1800&q=90")
+    center / cover;
+}
 
-      display: flex;
-      flex-direction: column;
+.product-content {
+  padding: 100px 8vw;
 
-      justify-content: center;
-    }
+  background: #090a0b;
 
-    .country-detail-content h2 {
-      font-family: "Cormorant Garamond", serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
-      font-size: clamp(55px, 6vw, 85px);
+.product-content h2 {
+  font-family: "Cormorant Garamond", serif;
 
-      font-weight: 400;
+  font-size: clamp(55px, 6vw, 82px);
 
-      line-height: 0.9;
+  line-height: .88;
 
-      margin-bottom: 30px;
-    }
+  font-weight: 400;
 
-    .country-detail-content p {
-      max-width: 500px;
+  margin-bottom: 30px;
+}
 
-      color: #aaa8a4;
+.product-content p {
+  max-width: 530px;
 
-      line-height: 1.9;
+  color: #96948f;
 
-      font-size: 14px;
-    }
+  font-size: 14px;
 
-    .oman-detail {
-      background-image:
-        url("https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?auto=format&fit=crop&w=1600&q=90");
-    }
+  line-height: 1.9;
 
-    .saudi-detail {
-      background-image:
-        url("https://images.unsplash.com/photo-1578895101408-1a36b834405b?auto=format&fit=crop&w=1600&q=90");
-    }
+  margin-bottom: 42px;
+}
 
-    .bahrain-detail {
-      background-image:
-        url("https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=1600&q=90");
-    }
+.product-list {
+  border-top: 1px solid var(--line);
+}
 
-    .qatar-detail {
-      background-image:
-        url("https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1600&q=90");
-    }
+.product-item {
+  display: flex;
 
-    /* =========================
-       PRODUCTS
-    ========================= */
+  justify-content: space-between;
+  align-items: center;
 
-    .products-section {
-      display: grid;
+  padding: 18px 0;
 
-      grid-template-columns: 0.9fr 1.1fr;
+  border-bottom: 1px solid var(--line);
 
-      min-height: 650px;
-    }
+  font-size: 10px;
 
-    .products-image {
-      min-height: 650px;
+  letter-spacing: .16em;
 
-      background:
-        linear-gradient(
-          90deg,
-          rgba(0,0,0,0.05),
-          rgba(0,0,0,0.4)
-        ),
-        url("https://images.unsplash.com/photo-1584982751601-97dcc096659c?auto=format&fit=crop&w=1600&q=90")
-        center / cover;
-    }
+  text-transform: uppercase;
+}
 
-    .products-content {
-      padding: 100px 8vw;
+.product-item span:last-child {
+  color: var(--gold);
 
-      background: #090a0b;
+  font-size: 17px;
+}
 
-      display: flex;
-      flex-direction: column;
+/* =========================
+   CONTACT
+========================= */
 
-      justify-content: center;
-    }
+.export-contact {
+  text-align: center;
 
-    .products-content h2 {
-      font-family: "Cormorant Garamond", serif;
+  padding: 190px 5vw;
+}
 
-      font-size: clamp(50px, 5vw, 75px);
+.export-contact h2 {
+  font-family: "Cormorant Garamond", serif;
 
-      line-height: 0.9;
+  font-size: clamp(65px, 8vw, 115px);
 
-      font-weight: 400;
+  line-height: .84;
 
-      margin-bottom: 30px;
-    }
+  font-weight: 400;
 
-    .products-content p {
-      max-width: 520px;
+  margin-bottom: 35px;
+}
 
-      color: #999792;
+.export-contact h2 em {
+  font-style: italic;
+}
 
-      line-height: 1.8;
+.export-contact p {
+  max-width: 650px;
 
-      font-size: 14px;
+  margin: auto;
 
-      margin-bottom: 40px;
-    }
+  color: #999792;
 
-    .product-list {
-      border-top: 1px solid var(--line);
-    }
+  font-size: 14px;
 
-    .product {
-      display: flex;
+  line-height: 1.9;
+}
 
-      align-items: center;
-      justify-content: space-between;
+.export-email {
+  display: inline-block;
 
-      padding: 17px 0;
+  margin-top: 35px;
 
-      border-bottom: 1px solid var(--line);
+  color: var(--gold);
 
-      font-size: 11px;
+  font-size: 14px;
 
-      letter-spacing: 0.13em;
+  border-bottom: 1px solid var(--gold);
 
-      text-transform: uppercase;
-    }
+  padding-bottom: 7px;
+}
 
-    .product-arrow {
-      color: var(--gold);
+/* =========================
+   FOOTER
+========================= */
 
-      font-size: 18px;
-    }
+.export-footer {
+  border-top: 1px solid var(--line);
 
-    /* =========================
-       CONTACT
-    ========================= */
+  padding: 32px 5vw;
 
-    .contact {
-      text-align: center;
+  display: flex;
 
-      padding: 180px 5vw;
-    }
+  justify-content: space-between;
 
-    .contact h2 {
-      font-family: "Cormorant Garamond", serif;
+  color: #72706b;
 
-      font-size: clamp(65px, 8vw, 110px);
+  font-size: 9px;
 
-      line-height: 0.88;
+  letter-spacing: .15em;
 
-      font-weight: 400;
+  text-transform: uppercase;
+}
 
-      margin-bottom: 35px;
-    }
+/* =========================
+   COUNTRY PAGE
+========================= */
 
-    .contact p {
-      max-width: 650px;
+.country-hero {
+  min-height: 92vh;
 
-      margin: auto;
+  position: relative;
 
-      color: #999792;
+  display: flex;
+  align-items: flex-end;
 
-      line-height: 1.8;
+  padding: 100px 7vw;
 
-      font-size: 14px;
-    }
+  background-size: cover;
+  background-position: center;
+}
 
-    .contact-email {
-      display: inline-block;
+.country-hero::after {
+  content: "";
 
-      margin-top: 35px;
+  position: absolute;
+  inset: 0;
 
-      color: var(--gold);
+  background:
+    linear-gradient(
+      to top,
+      rgba(0,0,0,.9),
+      rgba(0,0,0,.15)
+    );
+}
 
-      font-size: 14px;
+.country-hero-content {
+  position: relative;
+  z-index: 2;
 
-      border-bottom: 1px solid var(--gold);
+  max-width: 950px;
+}
 
-      padding-bottom: 7px;
-    }
+.country-hero-number {
+  color: var(--gold);
 
-    /* =========================
-       FOOTER
-    ========================= */
+  font-size: 10px;
 
-    footer {
-      border-top: 1px solid var(--line);
+  letter-spacing: .45em;
 
-      padding: 35px 5vw;
+  margin-bottom: 22px;
+}
 
-      display: flex;
+.country-hero h1 {
+  font-family: "Cormorant Garamond", serif;
 
-      justify-content: space-between;
+  font-size: clamp(80px, 12vw, 170px);
 
-      align-items: center;
+  font-weight: 400;
 
-      gap: 20px;
+  line-height: .78;
 
-      color: #777570;
+  letter-spacing: -.045em;
+}
 
-      font-size: 10px;
+.country-hero p {
+  max-width: 650px;
 
-      letter-spacing: 0.12em;
+  margin-top: 32px;
 
-      text-transform: uppercase;
-    }
+  color: #d0cec8;
 
-    .footer-brand {
-      color: #ddd8cf;
-    }
+  font-size: 15px;
 
-    /* =========================
-       MOBILE
-    ========================= */
+  line-height: 1.9;
+}
 
-    @media (max-width: 900px) {
+.country-content {
+  max-width: 1480px;
 
-      .navbar {
-        height: 82px;
+  margin: auto;
 
-        padding: 0 25px;
-      }
+  padding: 150px 7vw;
+}
 
-      .brand img {
-        width: 105px;
-      }
+.country-two-column {
+  display: grid;
 
-      .nav-links {
-        gap: 13px;
+  grid-template-columns: 1fr 1fr;
 
-        font-size: 10px;
-      }
+  gap: 100px;
+}
 
-      .hero {
-        min-height: 850px;
+.country-copy {
+  color: #aaa8a2;
 
-        padding: 120px 25px 70px;
+  font-size: 15px;
 
-        background-position: 62% center;
-      }
+  line-height: 2;
+}
 
-      .hero-sa {
-        width: 170px;
+.country-copy p + p {
+  margin-top: 25px;
+}
 
-        margin-bottom: 25px;
-      }
+.country-list {
+  border-top: 1px solid var(--line);
+}
 
-      .hero h1 {
-        font-size: 65px;
-      }
+.country-list-item {
+  padding: 22px 0;
 
-      .markets-line {
-        line-height: 2;
-        letter-spacing: 0.2em;
-      }
+  border-bottom: 1px solid var(--line);
 
-      .section {
-        padding: 100px 25px;
-      }
+  display: flex;
 
-      .intro-grid {
-        grid-template-columns: 1fr;
+  justify-content: space-between;
 
-        gap: 45px;
-      }
+  font-size: 11px;
 
-      .intro-arrow {
-        justify-self: start;
-      }
+  letter-spacing: .12em;
 
-      .markets {
-        grid-template-columns: 1fr 1fr;
+  text-transform: uppercase;
+}
 
-        gap: 10px;
+.country-list-item span:last-child {
+  color: var(--gold);
+}
 
-        margin-top: 60px;
-      }
+.country-image-block {
+  min-height: 600px;
 
-      .market-card {
-        min-height: 430px;
-      }
+  background-size: cover;
+  background-position: center;
+}
 
-      .market-content {
-        left: 20px;
-        right: 20px;
-        bottom: 22px;
-      }
+.country-closing {
+  text-align: center;
 
-      .market-number {
-        margin-bottom: 85px;
-      }
+  padding: 170px 7vw;
 
-      .market-content h3 {
-        font-size: 34px;
-      }
+  background: #08090a;
+}
 
-      .market-content p {
-        font-size: 11px;
-      }
+.country-closing h2 {
+  font-family: "Cormorant Garamond", serif;
 
-      .country-detail {
-        grid-template-columns: 1fr;
-      }
+  font-size: clamp(65px, 8vw, 110px);
 
-      .country-detail-image {
-        min-height: 390px;
-      }
+  line-height: .85;
 
-      .country-detail-content {
-        padding: 75px 25px;
-      }
+  font-weight: 400;
+}
 
-      .products-section {
-        grid-template-columns: 1fr;
-      }
+.country-closing p {
+  max-width: 650px;
 
-      .products-image {
-        min-height: 400px;
-      }
+  margin: 35px auto 0;
 
-      .products-content {
-        padding: 80px 25px;
-      }
+  color: #92908b;
 
-      .contact {
-        padding: 120px 25px;
-      }
+  line-height: 1.9;
 
-      footer {
-        flex-direction: column;
+  font-size: 14px;
+}
 
-        align-items: flex-start;
+/* =========================
+   RESPONSIVE
+========================= */
 
-        padding: 30px 25px;
-      }
-    }
+@media (max-width: 950px) {
 
-    @media (max-width: 550px) {
+  .export-menu {
+    gap: 16px;
+    font-size: 9px;
+  }
 
-      .nav-links {
-        gap: 9px;
+  .focus-grid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
 
-        font-size: 8px;
-      }
+  .market-grid {
+    grid-template-columns: 1fr 1fr;
+  }
 
-      .hero {
-        min-height: 820px;
-      }
+  .product-section {
+    grid-template-columns: 1fr;
+  }
 
-      .hero h1 {
-        font-size: 56px;
-      }
+  .product-image {
+    min-height: 450px;
+  }
 
-      .hero-subtitle {
-        font-size: 13px;
-      }
+  .country-two-column {
+    grid-template-columns: 1fr;
+    gap: 55px;
+  }
 
-      .markets {
-        grid-template-columns: 1fr;
-      }
+}
 
-      .market-card {
-        min-height: 470px;
-      }
+@media (max-width: 600px) {
 
-      .section-title {
-        font-size: 58px;
-      }
+  .export-nav {
+    height: 82px;
+    padding: 0 22px;
+  }
 
-      .country-detail-content h2 {
-        font-size: 60px;
-      }
+  .export-logo {
+    width: 100px;
+  }
 
-    }
+  .export-menu {
+    gap: 8px;
+    font-size: 8px;
+  }
 
-  </style>
-</head>
+  .export-hero {
+    min-height: 850px;
+    padding: 120px 25px 70px;
+  }
 
+  .hero-sa {
+    width: 165px;
+  }
 
-<body>
+  .hero-title {
+    font-size: 57px;
+  }
 
+  .hero-description {
+    font-size: 13px;
+  }
 
-  <!-- =========================
-       NAVIGATION
-  ========================= -->
+  .hero-markets {
+    line-height: 2;
+    letter-spacing: .2em;
+  }
 
-  <header class="navbar">
+  .export-section {
+    padding: 100px 25px;
+  }
 
-    <a href="index.html" class="brand">
+  .big-title {
+    font-size: 58px;
+  }
 
-      <img
-        src="assets/logo-transparent.png"
-        alt="SA Azadipour"
-      >
+  .market-grid {
+    grid-template-columns: 1fr;
+    margin-top: 55px;
+  }
 
-    </a>
+  .market-card {
+    min-height: 480px;
+  }
 
-    <nav class="nav-links">
+  .product-content {
+    padding: 80px 25px;
+  }
 
-      <a href="index.html">Home</a>
+  .export-contact {
+    padding: 120px 25px;
+  }
 
-      <a href="index.html#about">About</a>
+  .export-footer {
+    flex-direction: column;
+    gap: 14px;
+    padding: 28px 25px;
+  }
 
-      <a href="investment.html">Business</a>
+  .country-hero {
+    min-height: 80vh;
+    padding: 100px 25px 70px;
+  }
 
-      <a href="index.html#network">Network</a>
+  .country-hero h1 {
+    font-size: 75px;
+  }
 
-      <a href="#contact">Contact</a>
+  .country-content {
+    padding: 100px 25px;
+  }
 
-    </nav>
+  .country-image-block {
+    min-height: 400px;
+  }
 
-  </header>
-
-
-  <!-- =========================
-       HERO
-  ========================= -->
-
-  <section class="hero">
-
-    <div class="hero-inner">
-
-      <div class="hero-sa">
-
-        <img
-          src="assets/logo-transparent.png"
-          alt="SA Azadipour"
-        >
-
-      </div>
-
-
-      <div class="hero-eyebrow">
-        EXPORT
-      </div>
-
-
-      <h1>
-        Medical Equipment
-        <em>for International Markets.</em>
-      </h1>
-
-
-      <p class="hero-subtitle">
-
-        Connecting selected medical equipment and healthcare
-        supplies with international markets through structured
-        sourcing, procurement and long-term business development.
-
-      </p>
-
-
-      <div class="markets-line">
-
-        OMAN &nbsp; / &nbsp;
-        SAUDI ARABIA &nbsp; / &nbsp;
-        BAHRAIN &nbsp; / &nbsp;
-        QATAR
-
-      </div>
-
-
-      <a href="#markets" class="hero-scroll">
-
-        Explore Markets
-
-        <span></span>
-
-        ↓
-
-      </a>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
-       INTRO
-  ========================= -->
-
-  <section class="section">
-
-    <div class="intro-grid">
-
-      <div>
-
-        <p class="eyebrow">
-          OUR FOCUS
-        </p>
-
-        <h2 class="section-title">
-
-          Four markets.
-          <br>
-
-          <em>One vision.</em>
-
-        </h2>
-
-      </div>
-
-
-      <div>
-
-        <p class="intro-text">
-
-          SA Azadipour is developing export opportunities
-          for medical equipment and healthcare supplies in
-          selected Gulf markets.
-
-          <br><br>
-
-          Our focus is on connecting qualified suppliers with
-          healthcare organizations, distributors and commercial
-          partners while building reliable international
-          supply relationships.
-
-        </p>
-
-
-        <div class="intro-arrow">
-          →
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <!-- =========================
-         MARKET CARDS
-    ========================= -->
-
-    <div class="markets" id="markets">
-
-
-      <!-- OMAN -->
-
-      <a href="#oman" class="market-card">
-
-        <div class="market-image oman"></div>
-
-        <div class="market-content">
-
-          <div class="market-number">
-            01
-          </div>
-
-          <h3>
-            Oman
-          </h3>
-
-          <p>
-
-            A strategic market for medical equipment
-            and healthcare solutions, with opportunities
-            across hospitals, clinics and distribution networks.
-
-          </p>
-
-          <span class="market-link">
-            Learn More &nbsp; →
-          </span>
-
-        </div>
-
-      </a>
-
-
-      <!-- SAUDI -->
-
-      <a href="#saudi-arabia" class="market-card">
-
-        <div class="market-image saudi"></div>
-
-        <div class="market-content">
-
-          <div class="market-number">
-            02
-          </div>
-
-          <h3>
-            Saudi Arabia
-          </h3>
-
-          <p>
-
-            A major regional healthcare market with
-            opportunities for advanced medical technology,
-            equipment and healthcare infrastructure.
-
-          </p>
-
-          <span class="market-link">
-            Learn More &nbsp; →
-          </span>
-
-        </div>
-
-      </a>
-
-
-      <!-- BAHRAIN -->
-
-      <a href="#bahrain" class="market-card">
-
-        <div class="market-image bahrain"></div>
-
-        <div class="market-content">
-
-          <div class="market-number">
-            03
-          </div>
-
-          <h3>
-            Bahrain
-          </h3>
-
-          <p>
-
-            Opportunities for medical products and
-            healthcare supply within Bahrain's healthcare
-            sector and distribution channels.
-
-          </p>
-
-          <span class="market-link">
-            Learn More &nbsp; →
-          </span>
-
-        </div>
-
-      </a>
-
-
-      <!-- QATAR -->
-
-      <a href="#qatar" class="market-card">
-
-        <div class="market-image qatar"></div>
-
-        <div class="market-content">
-
-          <div class="market-number">
-            04
-          </div>
-
-          <h3>
-            Qatar
-          </h3>
-
-          <p>
-
-            Developing opportunities for medical equipment
-            and healthcare supplies in Qatar's growing
-            healthcare market.
-
-          </p>
-
-          <span class="market-link">
-            Learn More &nbsp; →
-          </span>
-
-        </div>
-
-      </a>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
-       OMAN
-  ========================= -->
-
-  <section class="country-detail" id="oman">
-
-    <div class="country-detail-image oman-detail"></div>
-
-    <div class="country-detail-content">
-
-      <p class="eyebrow">
-        01 • OMAN
-      </p>
-
-      <h2>
-        Oman.
-      </h2>
-
-      <p>
-
-        Oman is a strategic market of interest for
-        SA Azadipour's medical equipment export activities.
-
-        <br><br>
-
-        Our focus includes exploring opportunities with
-        hospitals, clinics, healthcare organizations,
-        distributors and qualified commercial partners,
-        particularly within Muscat and other key markets.
-
-        <br><br>
-
-        Product selection and market entry remain subject
-        to applicable import, registration, certification
-        and regulatory requirements.
-
-      </p>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
-       SAUDI ARABIA
-  ========================= -->
-
-  <section class="country-detail" id="saudi-arabia">
-
-    <div class="country-detail-content">
-
-      <p class="eyebrow">
-        02 • SAUDI ARABIA
-      </p>
-
-      <h2>
-        Saudi Arabia.
-      </h2>
-
-      <p>
-
-        Saudi Arabia represents a significant healthcare
-        market with opportunities across medical facilities,
-        healthcare supply chains and advanced medical technology.
-
-        <br><br>
-
-        We focus on identifying suitable products,
-        qualified suppliers and potential commercial
-        relationships for international market development.
-
-      </p>
-
-    </div>
-
-    <div class="country-detail-image saudi-detail"></div>
-
-  </section>
-
-
-  <!-- =========================
-       BAHRAIN
-  ========================= -->
-
-  <section class="country-detail" id="bahrain">
-
-    <div class="country-detail-image bahrain-detail"></div>
-
-    <div class="country-detail-content">
-
-      <p class="eyebrow">
-        03 • BAHRAIN
-      </p>
-
-      <h2>
-        Bahrain.
-      </h2>
-
-      <p>
-
-        Bahrain offers potential opportunities for selected
-        medical equipment and healthcare supplies.
-
-        <br><br>
-
-        Our objective is to explore commercially viable
-        products and develop relationships with qualified
-        healthcare and distribution partners.
-
-      </p>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
-       QATAR
-  ========================= -->
-
-  <section class="country-detail" id="qatar">
-
-    <div class="country-detail-content">
-
-      <p class="eyebrow">
-        04 • QATAR
-      </p>
-
-      <h2>
-        Qatar.
-      </h2>
-
-      <p>
-
-        Qatar is a developing market of interest for
-        medical equipment and healthcare supplies.
-
-        <br><br>
-
-        We are interested in identifying suitable products,
-        international supply opportunities and qualified
-        commercial relationships within the healthcare sector.
-
-      </p>
-
-    </div>
-
-    <div class="country-detail-image qatar-detail"></div>
-
-  </section>
-
-
-  <!-- =========================
-       PRODUCTS
-  ========================= -->
-
-  <section class="products-section">
-
-    <div class="products-image"></div>
-
-
-    <div class="products-content">
-
-      <p class="eyebrow">
-        PRODUCT CATEGORIES
-      </p>
-
-      <h2>
-        Selected medical
-        <br>
-        products.
-      </h2>
-
-      <p>
-
-        Our export focus includes selected medical equipment,
-        healthcare supplies and medical technologies according
-        to market needs, supplier capabilities and applicable
-        regulatory requirements.
-
-      </p>
-
-
-      <div class="product-list">
-
-
-        <div class="product">
-
-          <span>
-            Hospital Equipment
-          </span>
-
-          <span class="product-arrow">
-            →
-          </span>
-
-        </div>
-
-
-        <div class="product">
-
-          <span>
-            Medical Devices
-          </span>
-
-          <span class="product-arrow">
-            →
-          </span>
-
-        </div>
-
-
-        <div class="product">
-
-          <span>
-            Healthcare Supplies
-          </span>
-
-          <span class="product-arrow">
-            →
-          </span>
-
-        </div>
-
-
-        <div class="product">
-
-          <span>
-            Clinical Equipment
-          </span>
-
-          <span class="product-arrow">
-            →
-          </span>
-
-        </div>
-
-
-        <div class="product">
-
-          <span>
-            Diagnostic Equipment
-          </span>
-
-          <span class="product-arrow">
-            →
-          </span>
-
-        </div>
-
-
-        <div class="product">
-
-          <span>
-            Medical Technologies
-          </span>
-
-          <span class="product-arrow">
-            →
-          </span>
-
-        </div>
-
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
-       CONTACT
-  ========================= -->
-
-  <section class="contact" id="contact">
-
-    <p class="eyebrow">
-      INTERNATIONAL BUSINESS
-    </p>
-
-    <h2>
-      Let's build a
-      <br>
-      <em>partnership.</em>
-    </h2>
-
-    <p>
-
-      We welcome inquiries regarding medical equipment,
-      healthcare supplies, sourcing, distribution and
-      international market opportunities.
-
-    </p>
-
-
-    <a
-      class="contact-email"
-      href="mailto:herzchirurgsinaazadipour@gmail.com"
-    >
-      herzchirurgsinaazadipour@gmail.com
-    </a>
-
-  </section>
-
-
-  <!-- =========================
-       FOOTER
-  ========================= -->
-
-  <footer>
-
-    <div class="footer-brand">
-      SA AZADIPOUR
-    </div>
-
-    <div>
-      Investment • Import • Export
-    </div>
-
-    <div>
-      © <span id="year"></span> SA Azadipour
-    </div>
-
-  </footer>
-
-
-  <script>
-
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
-
-  </script>
-
-
-</body>
-</html>
+}
