@@ -1,876 +1,525 @@
-:root {
-  --black: #050505;
-  --deep: #08090a;
-  --cream: #f4f0e8;
-  --muted: #92908b;
-  --gold: #cdb98f;
-  --line: rgba(255,255,255,.13);
-  --max: 1480px;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  background: var(--black);
-  color: var(--cream);
-  font-family: "Inter", sans-serif;
-  font-weight: 300;
-  overflow-x: hidden;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-/* =========================
-   NAVIGATION
-========================= */
-
-.export-nav {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 50;
-
-  width: 100%;
-  height: 105px;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  padding: 0 5vw;
-
-  border-bottom: 1px solid rgba(255,255,255,.13);
-}
-
-.export-logo {
-  width: 135px;
-}
-
-.export-logo img {
-  width: 100%;
-  display: block;
-}
-
-.export-menu {
-  display: flex;
-  gap: 38px;
-
-  font-size: 12px;
-  letter-spacing: .04em;
-}
-
-.export-menu a {
-  transition: opacity .3s ease;
-}
-
-.export-menu a:hover {
-  opacity: .5;
-}
-
-.export-menu .active {
-  border-bottom: 1px solid var(--gold);
-  padding-bottom: 7px;
-}
-
-/* =========================
-   HERO
-========================= */
-
-.export-hero {
-  min-height: 100vh;
+<!DOCTYPE html>
+<html lang="en">
 
-  position: relative;
+<head>
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  <meta charset="UTF-8">
 
-  padding: 140px 6vw 80px;
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-  background:
-    linear-gradient(
-      90deg,
-      rgba(3,5,7,.96),
-      rgba(3,5,7,.67),
-      rgba(3,5,7,.27)
-    ),
-    url("https://images.unsplash.com/photo-1584982751601-97dcc096659c?auto=format&fit=crop&w=2200&q=90")
-    center / cover no-repeat;
-}
+  <title>Medical Equipment Export | SA Azadipour</title>
 
-.export-hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
+  <meta
+    name="description"
+    content="SA Azadipour — Medical equipment and healthcare supplies for selected international markets."
+  >
 
-  background:
-    radial-gradient(
-      circle at 70% 50%,
-      rgba(85,120,150,.17),
-      transparent 36%
-    );
-}
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
 
-.hero-content {
-  position: relative;
-  z-index: 2;
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
 
-  width: 100%;
-  max-width: 1150px;
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  >
 
-  text-align: center;
-}
+  <link rel="stylesheet" href="export.css">
 
-.hero-sa {
-  width: 230px;
-  margin: 0 auto 25px;
+</head>
 
-  opacity: .96;
-}
 
-.hero-sa img {
-  width: 100%;
-  display: block;
-}
+<body>
 
-.hero-label {
-  color: var(--gold);
 
-  font-size: 10px;
-  letter-spacing: .5em;
-  text-transform: uppercase;
+<header class="export-nav">
 
-  margin-bottom: 25px;
-}
+  <a href="index.html" class="export-logo">
 
-.hero-title {
-  font-family: "Cormorant Garamond", serif;
+    <img
+      src="assets/logo-transparent.png"
+      alt="SA Azadipour"
+    >
 
-  font-size: clamp(65px, 9vw, 125px);
-  line-height: .82;
+  </a>
 
-  font-weight: 400;
 
-  letter-spacing: -.045em;
-}
+  <nav class="export-menu">
 
-.hero-title em {
-  display: block;
+    <a href="index.html">
+      Home
+    </a>
 
-  color: #d7d2c9;
+    <a href="index.html#about">
+      About
+    </a>
 
-  font-style: italic;
-}
+    <a href="investment.html">
+      Investment
+    </a>
 
-.hero-description {
-  max-width: 690px;
+    <a href="import.html">
+      Import
+    </a>
 
-  margin: 32px auto 28px;
+    <a href="export.html" class="active">
+      Export
+    </a>
 
-  color: #d0cec8;
+    <a href="#contact">
+      Contact
+    </a>
 
-  font-size: 14px;
-  line-height: 1.9;
-}
+  </nav>
 
-.hero-markets {
-  color: #c4beb4;
+</header>
 
-  font-size: 10px;
 
-  letter-spacing: .38em;
+<!-- HERO -->
 
-  text-transform: uppercase;
-}
+<section class="export-hero">
 
-.hero-button {
-  display: inline-flex;
+  <div class="hero-content">
 
-  margin-top: 42px;
 
-  flex-direction: column;
-  align-items: center;
+    <div class="hero-sa">
 
-  gap: 13px;
+      <img
+        src="assets/logo-transparent.png"
+        alt="SA Azadipour"
+      >
 
-  color: #cfc8bb;
+    </div>
 
-  font-size: 9px;
 
-  letter-spacing: .25em;
-  text-transform: uppercase;
-}
+    <div class="hero-label">
+      EXPORT
+    </div>
 
-.hero-button span {
-  height: 48px;
-  width: 1px;
 
-  background: var(--gold);
-}
+    <h1 class="hero-title">
 
-/* =========================
-   GENERAL
-========================= */
+      Medical Equipment
 
-.export-section {
-  max-width: var(--max);
-  margin: auto;
+      <em>
+        for International Markets.
+      </em>
 
-  padding: 150px 5vw;
-}
+    </h1>
 
-.label {
-  color: #817f7a;
 
-  font-size: 10px;
+    <p class="hero-description">
 
-  letter-spacing: .43em;
-  text-transform: uppercase;
+      Connecting selected medical equipment and healthcare
+      supplies with international markets through structured
+      sourcing, procurement and long-term business development.
 
-  margin-bottom: 28px;
-}
+    </p>
 
-.big-title {
-  font-family: "Cormorant Garamond", serif;
 
-  font-weight: 400;
+    <div class="hero-markets">
 
-  font-size: clamp(58px, 7vw, 100px);
+      OMAN / SAUDI ARABIA / BAHRAIN / QATAR
 
-  line-height: .87;
+    </div>
 
-  letter-spacing: -.04em;
-}
 
-.big-title em {
-  font-style: italic;
-}
+    <a href="#markets" class="hero-button">
 
-/* =========================
-   INTRO
-========================= */
+      Explore Markets
 
-.focus-grid {
-  display: grid;
+      <span></span>
 
-  grid-template-columns: 1fr 1fr;
+      ↓
 
-  gap: 90px;
+    </a>
 
-  align-items: end;
-}
+  </div>
 
-.focus-text {
-  max-width: 560px;
+</section>
 
-  color: #aaa8a2;
 
-  font-size: 14px;
+<!-- INTRO -->
 
-  line-height: 1.95;
-}
+<section class="export-section">
 
-.focus-arrow {
-  margin-top: 30px;
+  <div class="focus-grid">
 
-  color: var(--gold);
 
-  font-family: "Cormorant Garamond", serif;
+    <div>
 
-  font-size: 48px;
-}
+      <div class="label">
+        OUR FOCUS
+      </div>
 
-/* =========================
-   MARKET CARDS
-========================= */
+      <h2 class="big-title">
 
-.market-grid {
-  margin-top: 90px;
+        Four markets.
 
-  display: grid;
+        <br>
 
-  grid-template-columns:
-    repeat(4, 1fr);
+        <em>
+          One vision.
+        </em>
 
-  gap: 13px;
-}
+      </h2>
 
-.market-card {
-  min-height: 540px;
+    </div>
 
-  position: relative;
 
-  overflow: hidden;
+    <div>
 
-  border: 1px solid var(--line);
+      <p class="focus-text">
 
-  transition:
-    transform .5s ease,
-    border-color .5s ease;
-}
+        SA Azadipour is developing international
+        export opportunities in medical equipment
+        and healthcare supplies.
 
-.market-card:hover {
-  transform: translateY(-8px);
+        <br><br>
 
-  border-color: rgba(205,185,143,.7);
-}
+        Our current market focus is the Gulf region,
+        with particular attention to Oman, Saudi Arabia,
+        Bahrain and Qatar.
 
-.market-bg {
-  position: absolute;
-  inset: 0;
+        <br><br>
 
-  background-size: cover;
-  background-position: center;
+        We aim to connect qualified suppliers with
+        healthcare organizations, distributors and
+        international business partners.
 
-  transition: transform .8s ease;
-}
+      </p>
 
-.market-card:hover .market-bg {
-  transform: scale(1.07);
-}
 
-.market-card::after {
-  content: "";
+      <div class="focus-arrow">
+        →
+      </div>
 
-  position: absolute;
-  inset: 0;
+    </div>
 
-  background:
-    linear-gradient(
-      to bottom,
-      transparent 20%,
-      rgba(0,0,0,.87) 100%
-    );
-}
+  </div>
 
-.market-info {
-  position: absolute;
 
-  z-index: 2;
+  <!-- MARKETS -->
 
-  left: 28px;
-  right: 28px;
-  bottom: 30px;
-}
+  <div class="market-grid" id="markets">
 
-.market-number {
-  font-family: "Cormorant Garamond", serif;
 
-  font-size: 22px;
+    <a href="oman.html" class="market-card">
 
-  color: #d4cec4;
+      <div class="market-bg oman-bg"></div>
 
-  margin-bottom: 105px;
-}
+      <div class="market-info">
 
-.market-info h3 {
-  font-family: "Cormorant Garamond", serif;
+        <div class="market-number">
+          01
+        </div>
 
-  font-size: 45px;
+        <h3>
+          Oman
+        </h3>
 
-  line-height: .92;
+        <p>
 
-  font-weight: 400;
+          A strategic market of interest for
+          medical equipment and healthcare
+          supply opportunities.
 
-  margin-bottom: 17px;
-}
+        </p>
 
-.market-info p {
-  font-size: 11px;
+        <span class="market-link">
+          Explore Oman →
+        </span>
 
-  line-height: 1.7;
+      </div>
 
-  color: #d1cec7;
+    </a>
 
-  margin-bottom: 21px;
-}
 
-.market-link {
-  color: var(--gold);
+    <a href="saudi-arabia.html" class="market-card">
 
-  font-size: 9px;
+      <div class="market-bg saudi-bg"></div>
 
-  letter-spacing: .22em;
+      <div class="market-info">
 
-  text-transform: uppercase;
-}
+        <div class="market-number">
+          02
+        </div>
 
-/* =========================
-   MARKET IMAGES
-========================= */
+        <h3>
+          Saudi Arabia
+        </h3>
 
-.oman-bg {
-  background-image:
-    url("https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?auto=format&fit=crop&w=1400&q=90");
-}
+        <p>
 
-.saudi-bg {
-  background-image:
-    url("https://images.unsplash.com/photo-1578895101408-1a36b834405b?auto=format&fit=crop&w=1400&q=90");
-}
+          A major regional healthcare market
+          with significant potential for selected
+          medical technologies and supplies.
 
-.bahrain-bg {
-  background-image:
-    url("https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=1400&q=90");
-}
+        </p>
 
-.qatar-bg {
-  background-image:
-    url("https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1400&q=90");
-}
+        <span class="market-link">
+          Explore Saudi Arabia →
+        </span>
 
-/* =========================
-   PRODUCT SECTION
-========================= */
+      </div>
 
-.product-section {
-  display: grid;
+    </a>
 
-  grid-template-columns: .9fr 1.1fr;
 
-  min-height: 680px;
-}
+    <a href="bahrain.html" class="market-card">
 
-.product-image {
-  min-height: 680px;
+      <div class="market-bg bahrain-bg"></div>
 
-  background:
-    linear-gradient(
-      90deg,
-      rgba(0,0,0,.05),
-      rgba(0,0,0,.42)
-    ),
-    url("https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1800&q=90")
-    center / cover;
-}
+      <div class="market-info">
 
-.product-content {
-  padding: 100px 8vw;
+        <div class="market-number">
+          03
+        </div>
 
-  background: #090a0b;
+        <h3>
+          Bahrain
+        </h3>
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
+        <p>
 
-.product-content h2 {
-  font-family: "Cormorant Garamond", serif;
+          Exploring opportunities in medical
+          products, healthcare supplies and
+          distribution channels.
 
-  font-size: clamp(55px, 6vw, 82px);
+        </p>
 
-  line-height: .88;
+        <span class="market-link">
+          Explore Bahrain →
+        </span>
 
-  font-weight: 400;
+      </div>
 
-  margin-bottom: 30px;
-}
+    </a>
 
-.product-content p {
-  max-width: 530px;
 
-  color: #96948f;
+    <a href="qatar.html" class="market-card">
 
-  font-size: 14px;
+      <div class="market-bg qatar-bg"></div>
 
-  line-height: 1.9;
+      <div class="market-info">
 
-  margin-bottom: 42px;
-}
+        <div class="market-number">
+          04
+        </div>
 
-.product-list {
-  border-top: 1px solid var(--line);
-}
+        <h3>
+          Qatar
+        </h3>
 
-.product-item {
-  display: flex;
+        <p>
 
-  justify-content: space-between;
-  align-items: center;
+          Developing opportunities for medical
+          equipment and healthcare supplies
+          in the Qatari market.
 
-  padding: 18px 0;
+        </p>
 
-  border-bottom: 1px solid var(--line);
+        <span class="market-link">
+          Explore Qatar →
+        </span>
 
-  font-size: 10px;
+      </div>
 
-  letter-spacing: .16em;
+    </a>
 
-  text-transform: uppercase;
-}
+  </div>
 
-.product-item span:last-child {
-  color: var(--gold);
+</section>
 
-  font-size: 17px;
-}
 
-/* =========================
-   CONTACT
-========================= */
+<!-- PRODUCTS -->
 
-.export-contact {
-  text-align: center;
+<section class="product-section">
 
-  padding: 190px 5vw;
-}
 
-.export-contact h2 {
-  font-family: "Cormorant Garamond", serif;
+  <div class="product-image"></div>
 
-  font-size: clamp(65px, 8vw, 115px);
 
-  line-height: .84;
+  <div class="product-content">
 
-  font-weight: 400;
+    <div class="label">
+      PRODUCT CATEGORIES
+    </div>
 
-  margin-bottom: 35px;
-}
 
-.export-contact h2 em {
-  font-style: italic;
-}
+    <h2>
 
-.export-contact p {
-  max-width: 650px;
+      Selected medical
 
-  margin: auto;
+      <br>
 
-  color: #999792;
+      products.
 
-  font-size: 14px;
+    </h2>
 
-  line-height: 1.9;
-}
 
-.export-email {
-  display: inline-block;
+    <p>
 
-  margin-top: 35px;
+      Product selection is based on market needs,
+      supplier capabilities, commercial suitability
+      and applicable regulatory requirements.
 
-  color: var(--gold);
+    </p>
 
-  font-size: 14px;
 
-  border-bottom: 1px solid var(--gold);
+    <div class="product-list">
 
-  padding-bottom: 7px;
-}
 
-/* =========================
-   FOOTER
-========================= */
+      <div class="product-item">
 
-.export-footer {
-  border-top: 1px solid var(--line);
+        <span>
+          Hospital Equipment
+        </span>
 
-  padding: 32px 5vw;
+        <span>→</span>
 
-  display: flex;
+      </div>
 
-  justify-content: space-between;
 
-  color: #72706b;
+      <div class="product-item">
 
-  font-size: 9px;
+        <span>
+          Medical Devices
+        </span>
 
-  letter-spacing: .15em;
+        <span>→</span>
 
-  text-transform: uppercase;
-}
+      </div>
 
-/* =========================
-   COUNTRY PAGE
-========================= */
 
-.country-hero {
-  min-height: 92vh;
+      <div class="product-item">
 
-  position: relative;
+        <span>
+          Healthcare Supplies
+        </span>
 
-  display: flex;
-  align-items: flex-end;
+        <span>→</span>
 
-  padding: 100px 7vw;
+      </div>
 
-  background-size: cover;
-  background-position: center;
-}
 
-.country-hero::after {
-  content: "";
+      <div class="product-item">
 
-  position: absolute;
-  inset: 0;
+        <span>
+          Clinical Equipment
+        </span>
 
-  background:
-    linear-gradient(
-      to top,
-      rgba(0,0,0,.9),
-      rgba(0,0,0,.15)
-    );
-}
+        <span>→</span>
 
-.country-hero-content {
-  position: relative;
-  z-index: 2;
+      </div>
 
-  max-width: 950px;
-}
 
-.country-hero-number {
-  color: var(--gold);
+      <div class="product-item">
 
-  font-size: 10px;
+        <span>
+          Diagnostic Equipment
+        </span>
 
-  letter-spacing: .45em;
+        <span>→</span>
 
-  margin-bottom: 22px;
-}
+      </div>
 
-.country-hero h1 {
-  font-family: "Cormorant Garamond", serif;
 
-  font-size: clamp(80px, 12vw, 170px);
+      <div class="product-item">
 
-  font-weight: 400;
+        <span>
+          Medical Technologies
+        </span>
 
-  line-height: .78;
+        <span>→</span>
 
-  letter-spacing: -.045em;
-}
+      </div>
 
-.country-hero p {
-  max-width: 650px;
 
-  margin-top: 32px;
+    </div>
 
-  color: #d0cec8;
+  </div>
 
-  font-size: 15px;
+</section>
 
-  line-height: 1.9;
-}
 
-.country-content {
-  max-width: 1480px;
+<!-- CONTACT -->
 
-  margin: auto;
+<section class="export-contact" id="contact">
 
-  padding: 150px 7vw;
-}
+  <div class="label">
+    INTERNATIONAL BUSINESS
+  </div>
 
-.country-two-column {
-  display: grid;
 
-  grid-template-columns: 1fr 1fr;
+  <h2>
 
-  gap: 100px;
-}
+    Let's build a
 
-.country-copy {
-  color: #aaa8a2;
+    <br>
 
-  font-size: 15px;
+    <em>
+      partnership.
+    </em>
 
-  line-height: 2;
-}
+  </h2>
 
-.country-copy p + p {
-  margin-top: 25px;
-}
 
-.country-list {
-  border-top: 1px solid var(--line);
-}
+  <p>
 
-.country-list-item {
-  padding: 22px 0;
+    We welcome inquiries regarding medical equipment,
+    healthcare supplies, sourcing, distribution and
+    international market opportunities.
 
-  border-bottom: 1px solid var(--line);
+  </p>
 
-  display: flex;
 
-  justify-content: space-between;
+  <a
+    href="mailto:herzchirurgsinaazadipour@gmail.com"
+    class="export-email"
+  >
 
-  font-size: 11px;
+    herzchirurgsinaazadipour@gmail.com
 
-  letter-spacing: .12em;
+  </a>
 
-  text-transform: uppercase;
-}
+</section>
 
-.country-list-item span:last-child {
-  color: var(--gold);
-}
 
-.country-image-block {
-  min-height: 600px;
+<footer class="export-footer">
 
-  background-size: cover;
-  background-position: center;
-}
+  <span>
+    SA AZADIPOUR
+  </span>
 
-.country-closing {
-  text-align: center;
+  <span>
+    Investment • Import • Export
+  </span>
 
-  padding: 170px 7vw;
+  <span>
+    © <span id="year"></span>
+    SA Azadipour
+  </span>
 
-  background: #08090a;
-}
+</footer>
 
-.country-closing h2 {
-  font-family: "Cormorant Garamond", serif;
 
-  font-size: clamp(65px, 8vw, 110px);
+<script>
 
-  line-height: .85;
+document.getElementById("year").textContent =
+new Date().getFullYear();
 
-  font-weight: 400;
-}
+</script>
 
-.country-closing p {
-  max-width: 650px;
 
-  margin: 35px auto 0;
-
-  color: #92908b;
-
-  line-height: 1.9;
-
-  font-size: 14px;
-}
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media (max-width: 950px) {
-
-  .export-menu {
-    gap: 16px;
-    font-size: 9px;
-  }
-
-  .focus-grid {
-    grid-template-columns: 1fr;
-    gap: 50px;
-  }
-
-  .market-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .product-section {
-    grid-template-columns: 1fr;
-  }
-
-  .product-image {
-    min-height: 450px;
-  }
-
-  .country-two-column {
-    grid-template-columns: 1fr;
-    gap: 55px;
-  }
-
-}
-
-@media (max-width: 600px) {
-
-  .export-nav {
-    height: 82px;
-    padding: 0 22px;
-  }
-
-  .export-logo {
-    width: 100px;
-  }
-
-  .export-menu {
-    gap: 8px;
-    font-size: 8px;
-  }
-
-  .export-hero {
-    min-height: 850px;
-    padding: 120px 25px 70px;
-  }
-
-  .hero-sa {
-    width: 165px;
-  }
-
-  .hero-title {
-    font-size: 57px;
-  }
-
-  .hero-description {
-    font-size: 13px;
-  }
-
-  .hero-markets {
-    line-height: 2;
-    letter-spacing: .2em;
-  }
-
-  .export-section {
-    padding: 100px 25px;
-  }
-
-  .big-title {
-    font-size: 58px;
-  }
-
-  .market-grid {
-    grid-template-columns: 1fr;
-    margin-top: 55px;
-  }
-
-  .market-card {
-    min-height: 480px;
-  }
-
-  .product-content {
-    padding: 80px 25px;
-  }
-
-  .export-contact {
-    padding: 120px 25px;
-  }
-
-  .export-footer {
-    flex-direction: column;
-    gap: 14px;
-    padding: 28px 25px;
-  }
-
-  .country-hero {
-    min-height: 80vh;
-    padding: 100px 25px 70px;
-  }
-
-  .country-hero h1 {
-    font-size: 75px;
-  }
-
-  .country-content {
-    padding: 100px 25px;
-  }
-
-  .country-image-block {
-    min-height: 400px;
-  }
-
-}
+</body>
+</html>
