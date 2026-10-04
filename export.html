@@ -1,450 +1,1498 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">  <title>Medical Equipment Export | SA Azadipour</title><meta
-name="description"
-content="SA Azadipour — Medical equipment and healthcare supplies for selected international markets, with a strategic focus on Oman, Saudi Arabia, Bahrain and Qatar."
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-«»
+  <title>Medical Equipment | SA Azadipour</title>
+
+  <meta
+    name="description"
+    content="SA Azadipour — Medical equipment and healthcare supplies for international markets, with a strategic focus on Oman, Saudi Arabia, Bahrain and Qatar."
+  >
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap"
     rel="stylesheet"
-  >  <link rel="stylesheet" href="style.css">
-</head><body>  <!-- INTRO -->  <div class="intro">
-    <div class="intro-inner">
-      <span>SA</span>
-      <span>AZADIPOUR</span>
-    </div>
-  </div>  <!-- NAVIGATION -->  <header class="navbar">
-    <a href="index.html" class="brand">SA AZADIPOUR</a><button class="menu-toggle" aria-label="Open menu">
-  <span></span>
-  <span></span>
-</button>
-
-<nav class="nav-links">
-  <a href="index.html">Home</a>
-  <a href="investment.html">Investment</a>
-  <a href="import.html">Import</a>
-  <a href="export.html" class="active">Export</a>
-  <a href="index.html#contact">Contact</a>
-</nav>
-
-  </header>  <!-- HERO -->  <section
-    class="field-hero"
-    style="--field-image:url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=2200&q=85');"
   >
-    <div class="field-hero-overlay"></div><div class="field-hero-content">
-  <p class="eyebrow">MEDICAL EQUIPMENT • INTERNATIONAL TRADE</p>
 
-  <h1>Medical<br>Equipment.</h1>
+  <style>
 
-  <p>
-    Healthcare supplies and medical equipment for selected
-    international markets, with a strategic focus on the Gulf region.
-  </p>
-</div>
+    :root {
+      --black: #050505;
+      --soft-black: #090a0b;
+      --white: #f5f3ef;
+      --muted: #8c8b88;
+      --line: rgba(255,255,255,0.15);
+      --gold: #d8c29b;
+      --max: 1440px;
+    }
 
-  </section>  <!-- INTRODUCTION -->  <section class="section"><div class="section-heading">
-  <p class="eyebrow">EXPORT</p>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  <h2>
-    Connecting medical supply<br>
-    with international markets.
-  </h2>
-</div>
+    html {
+      scroll-behavior: smooth;
+    }
 
-<div class="section-content">
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: "Inter", sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
 
-  <p>
-    SA Azadipour is developing international export opportunities
-    in medical equipment and healthcare supplies, with a particular
-    focus on markets across the Gulf region.
-  </p>
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-  <p>
-    Our approach is based on identifying suitable products,
-    qualified suppliers, structured procurement and reliable
-    international supply channels.
-  </p>
+    /* =========================
+       NAVIGATION
+    ========================= */
 
-  <p>
-    Market entry, product selection, import requirements,
-    registration and distribution are considered according
-    to the specific requirements of each market.
-  </p>
+    .navbar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 20;
 
-</div>
+      height: 105px;
 
-  </section>  <!-- BUSINESS AREAS -->  <section class="section"><div class="section-heading">
-  <p class="eyebrow">BUSINESS AREAS</p>
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
 
-  <h2>
-    Healthcare supply<br>
-    opportunities.
-  </h2>
-</div>
+      padding: 0 5vw;
+
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .brand img {
+      width: 135px;
+      height: auto;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 38px;
+
+      font-size: 13px;
+      letter-spacing: 0.04em;
+    }
+
+    .nav-links a {
+      transition: opacity 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      opacity: 0.55;
+    }
+
+    .nav-links .active {
+      border-bottom: 1px solid var(--gold);
+      padding-bottom: 6px;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 100vh;
+
+      position: relative;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(2,5,8,0.96) 0%,
+          rgba(2,5,8,0.70) 45%,
+          rgba(2,5,8,0.40) 100%
+        ),
+        url("assets/export-hero.jpg")
+        center center / cover no-repeat;
+
+      padding: 140px 6vw 80px;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+
+      background:
+        radial-gradient(
+          circle at 70% 45%,
+          rgba(130,160,190,0.12),
+          transparent 35%
+        );
+
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1200px;
+
+      text-align: center;
+    }
+
+    /* Large calligraphic SA */
+
+    .hero-sa {
+      width: 220px;
+      margin: 0 auto 30px;
+
+      filter:
+        drop-shadow(0 0 18px rgba(255,255,255,0.08));
+
+      opacity: 0.98;
+    }
+
+    .hero-sa img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .hero-eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.42em;
+      text-transform: uppercase;
+
+      color: var(--gold);
+
+      margin-bottom: 25px;
+    }
+
+    .hero h1 {
+      font-family: "Cormorant Garamond", serif;
+
+      font-size: clamp(58px, 8vw, 110px);
+      line-height: 0.88;
+      font-weight: 400;
+
+      letter-spacing: -0.035em;
+
+      margin-bottom: 18px;
+    }
+
+    .hero h1 em {
+      display: block;
+
+      font-style: italic;
+
+      color: #ddd8cf;
+    }
+
+    .hero-subtitle {
+      max-width: 680px;
+      margin: 0 auto 32px;
+
+      font-size: 14px;
+      line-height: 1.8;
+
+      color: #d1d0cc;
+    }
+
+    .markets-line {
+      font-size: 10px;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+
+      color: #c8c4bb;
+    }
+
+    .hero-scroll {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+
+      gap: 12px;
+
+      margin-top: 45px;
+
+      font-size: 9px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+
+      color: #bdb8ad;
+    }
+
+    .hero-scroll span {
+      width: 1px;
+      height: 45px;
+      background: var(--gold);
+    }
+
+    /* =========================
+       GENERAL SECTIONS
+    ========================= */
+
+    .section {
+      max-width: var(--max);
+      margin: auto;
+
+      padding: 150px 5vw;
+    }
+
+    .section-dark {
+      background: var(--soft-black);
+    }
+
+    .eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.42em;
+      text-transform: uppercase;
+
+      color: #85837f;
+
+      margin-bottom: 28px;
+    }
+
+    .section-title {
+      font-family: "Cormorant Garamond", serif;
+
+      font-size: clamp(55px, 7vw, 95px);
+
+      line-height: 0.9;
+
+      font-weight: 400;
+
+      letter-spacing: -0.035em;
+    }
+
+    .section-title em {
+      font-style: italic;
+      color: #d7d2ca;
+    }
+
+    .intro-grid {
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 90px;
+
+      align-items: end;
+    }
+
+    .intro-text {
+      max-width: 570px;
+
+      font-size: 15px;
+      line-height: 1.9;
+
+      color: #b2b0ac;
+    }
+
+    .intro-arrow {
+      justify-self: end;
+
+      font-size: 50px;
+      color: var(--gold);
+
+      font-family: "Cormorant Garamond", serif;
+    }
+
+    /* =========================
+       COUNTRY CARDS
+    ========================= */
+
+    .markets {
+      margin-top: 90px;
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+      gap: 14px;
+    }
+
+    .market-card {
+      position: relative;
+
+      min-height: 530px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(255,255,255,0.13);
+
+      background: #101112;
+
+      transition:
+        transform 0.5s ease,
+        border-color 0.5s ease;
+    }
+
+    .market-card:hover {
+      transform: translateY(-8px);
+
+      border-color: rgba(216,194,155,0.6);
+    }
+
+    .market-image {
+      position: absolute;
+      inset: 0;
+
+      background-size: cover;
+      background-position: center;
+
+      transition: transform 0.8s ease;
+    }
+
+    .market-card:hover .market-image {
+      transform: scale(1.06);
+    }
+
+    .market-card::after {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(0,0,0,0.05) 0%,
+          rgba(0,0,0,0.12) 30%,
+          rgba(0,0,0,0.90) 100%
+        );
+    }
+
+    .market-content {
+      position: absolute;
+
+      left: 28px;
+      right: 28px;
+      bottom: 30px;
+
+      z-index: 2;
+    }
+
+    .market-number {
+      font-family: "Cormorant Garamond", serif;
+
+      font-size: 20px;
+
+      color: #ddd7cc;
+
+      margin-bottom: 115px;
+    }
+
+    .market-content h3 {
+      font-family: "Cormorant Garamond", serif;
+
+      font-size: 43px;
+      line-height: 0.95;
+
+      font-weight: 400;
+
+      margin-bottom: 18px;
+    }
+
+    .market-content p {
+      font-size: 12px;
+      line-height: 1.7;
+
+      color: #d1cfca;
+
+      margin-bottom: 22px;
+    }
+
+    .market-link {
+      font-size: 9px;
+
+      letter-spacing: 0.2em;
+
+      text-transform: uppercase;
+
+      color: var(--gold);
+    }
+
+    /* =========================
+       COUNTRY IMAGES
+    ========================= */
+
+    .oman {
+      background-image:
+        url("https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?auto=format&fit=crop&w=1200&q=90");
+    }
+
+    .saudi {
+      background-image:
+        url("https://images.unsplash.com/photo-1578895101408-1a36b834405b?auto=format&fit=crop&w=1200&q=90");
+    }
+
+    .bahrain {
+      background-image:
+        url("https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=1200&q=90");
+    }
+
+    .qatar {
+      background-image:
+        url("https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=90");
+    }
+
+    /* =========================
+       COUNTRY DETAIL
+    ========================= */
+
+    .country-detail {
+      border-top: 1px solid var(--line);
+
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      min-height: 500px;
+    }
+
+    .country-detail-image {
+      min-height: 500px;
+
+      background-size: cover;
+      background-position: center;
+    }
+
+    .country-detail-content {
+      padding: 80px 7vw;
+
+      display: flex;
+      flex-direction: column;
+
+      justify-content: center;
+    }
+
+    .country-detail-content h2 {
+      font-family: "Cormorant Garamond", serif;
+
+      font-size: clamp(55px, 6vw, 85px);
+
+      font-weight: 400;
+
+      line-height: 0.9;
+
+      margin-bottom: 30px;
+    }
+
+    .country-detail-content p {
+      max-width: 500px;
+
+      color: #aaa8a4;
+
+      line-height: 1.9;
+
+      font-size: 14px;
+    }
+
+    .oman-detail {
+      background-image:
+        url("https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?auto=format&fit=crop&w=1600&q=90");
+    }
+
+    .saudi-detail {
+      background-image:
+        url("https://images.unsplash.com/photo-1578895101408-1a36b834405b?auto=format&fit=crop&w=1600&q=90");
+    }
+
+    .bahrain-detail {
+      background-image:
+        url("https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=1600&q=90");
+    }
+
+    .qatar-detail {
+      background-image:
+        url("https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1600&q=90");
+    }
+
+    /* =========================
+       PRODUCTS
+    ========================= */
+
+    .products-section {
+      display: grid;
+
+      grid-template-columns: 0.9fr 1.1fr;
+
+      min-height: 650px;
+    }
+
+    .products-image {
+      min-height: 650px;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(0,0,0,0.05),
+          rgba(0,0,0,0.4)
+        ),
+        url("https://images.unsplash.com/photo-1584982751601-97dcc096659c?auto=format&fit=crop&w=1600&q=90")
+        center / cover;
+    }
+
+    .products-content {
+      padding: 100px 8vw;
+
+      background: #090a0b;
+
+      display: flex;
+      flex-direction: column;
+
+      justify-content: center;
+    }
+
+    .products-content h2 {
+      font-family: "Cormorant Garamond", serif;
+
+      font-size: clamp(50px, 5vw, 75px);
+
+      line-height: 0.9;
+
+      font-weight: 400;
+
+      margin-bottom: 30px;
+    }
+
+    .products-content p {
+      max-width: 520px;
+
+      color: #999792;
+
+      line-height: 1.8;
+
+      font-size: 14px;
+
+      margin-bottom: 40px;
+    }
+
+    .product-list {
+      border-top: 1px solid var(--line);
+    }
+
+    .product {
+      display: flex;
+
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 17px 0;
+
+      border-bottom: 1px solid var(--line);
+
+      font-size: 11px;
+
+      letter-spacing: 0.13em;
+
+      text-transform: uppercase;
+    }
+
+    .product-arrow {
+      color: var(--gold);
+
+      font-size: 18px;
+    }
+
+    /* =========================
+       CONTACT
+    ========================= */
+
+    .contact {
+      text-align: center;
+
+      padding: 180px 5vw;
+    }
+
+    .contact h2 {
+      font-family: "Cormorant Garamond", serif;
+
+      font-size: clamp(65px, 8vw, 110px);
+
+      line-height: 0.88;
+
+      font-weight: 400;
+
+      margin-bottom: 35px;
+    }
+
+    .contact p {
+      max-width: 650px;
+
+      margin: auto;
+
+      color: #999792;
+
+      line-height: 1.8;
+
+      font-size: 14px;
+    }
+
+    .contact-email {
+      display: inline-block;
+
+      margin-top: 35px;
+
+      color: var(--gold);
+
+      font-size: 14px;
+
+      border-bottom: 1px solid var(--gold);
+
+      padding-bottom: 7px;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      border-top: 1px solid var(--line);
+
+      padding: 35px 5vw;
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      gap: 20px;
+
+      color: #777570;
+
+      font-size: 10px;
+
+      letter-spacing: 0.12em;
+
+      text-transform: uppercase;
+    }
+
+    .footer-brand {
+      color: #ddd8cf;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 900px) {
+
+      .navbar {
+        height: 82px;
+
+        padding: 0 25px;
+      }
+
+      .brand img {
+        width: 105px;
+      }
+
+      .nav-links {
+        gap: 13px;
+
+        font-size: 10px;
+      }
+
+      .hero {
+        min-height: 850px;
+
+        padding: 120px 25px 70px;
+
+        background-position: 62% center;
+      }
+
+      .hero-sa {
+        width: 170px;
+
+        margin-bottom: 25px;
+      }
+
+      .hero h1 {
+        font-size: 65px;
+      }
+
+      .markets-line {
+        line-height: 2;
+        letter-spacing: 0.2em;
+      }
+
+      .section {
+        padding: 100px 25px;
+      }
+
+      .intro-grid {
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+      }
+
+      .intro-arrow {
+        justify-self: start;
+      }
+
+      .markets {
+        grid-template-columns: 1fr 1fr;
+
+        gap: 10px;
+
+        margin-top: 60px;
+      }
+
+      .market-card {
+        min-height: 430px;
+      }
+
+      .market-content {
+        left: 20px;
+        right: 20px;
+        bottom: 22px;
+      }
+
+      .market-number {
+        margin-bottom: 85px;
+      }
+
+      .market-content h3 {
+        font-size: 34px;
+      }
+
+      .market-content p {
+        font-size: 11px;
+      }
+
+      .country-detail {
+        grid-template-columns: 1fr;
+      }
+
+      .country-detail-image {
+        min-height: 390px;
+      }
+
+      .country-detail-content {
+        padding: 75px 25px;
+      }
+
+      .products-section {
+        grid-template-columns: 1fr;
+      }
+
+      .products-image {
+        min-height: 400px;
+      }
+
+      .products-content {
+        padding: 80px 25px;
+      }
+
+      .contact {
+        padding: 120px 25px;
+      }
+
+      footer {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        padding: 30px 25px;
+      }
+    }
+
+    @media (max-width: 550px) {
+
+      .nav-links {
+        gap: 9px;
+
+        font-size: 8px;
+      }
+
+      .hero {
+        min-height: 820px;
+      }
+
+      .hero h1 {
+        font-size: 56px;
+      }
+
+      .hero-subtitle {
+        font-size: 13px;
+      }
+
+      .markets {
+        grid-template-columns: 1fr;
+      }
+
+      .market-card {
+        min-height: 470px;
+      }
+
+      .section-title {
+        font-size: 58px;
+      }
+
+      .country-detail-content h2 {
+        font-size: 60px;
+      }
+
+    }
+
+  </style>
+</head>
 
 
-<div class="business-grid">
+<body>
 
-  <article class="business-card">
 
-    <div
-      class="business-image export-image"
-      style="background-image:url('https://images.unsplash.com/photo-1584982751601-97dcc096659c?auto=format&fit=crop&w=1200&q=85');"
-    ></div>
+  <!-- =========================
+       NAVIGATION
+  ========================= -->
 
-    <div class="business-card-content">
-      <span>01</span>
+  <header class="navbar">
 
-      <h3>Medical Equipment</h3>
+    <a href="index.html" class="brand">
 
-      <p>
-        Selected medical equipment and healthcare products
-        for hospitals, clinics and healthcare organizations.
+      <img
+        src="assets/logo-transparent.png"
+        alt="SA Azadipour"
+      >
+
+    </a>
+
+    <nav class="nav-links">
+
+      <a href="index.html">Home</a>
+
+      <a href="index.html#about">About</a>
+
+      <a href="investment.html">Business</a>
+
+      <a href="index.html#network">Network</a>
+
+      <a href="#contact">Contact</a>
+
+    </nav>
+
+  </header>
+
+
+  <!-- =========================
+       HERO
+  ========================= -->
+
+  <section class="hero">
+
+    <div class="hero-inner">
+
+      <div class="hero-sa">
+
+        <img
+          src="assets/logo-transparent.png"
+          alt="SA Azadipour"
+        >
+
+      </div>
+
+
+      <div class="hero-eyebrow">
+        EXPORT
+      </div>
+
+
+      <h1>
+        Medical Equipment
+        <em>for International Markets.</em>
+      </h1>
+
+
+      <p class="hero-subtitle">
+
+        Connecting selected medical equipment and healthcare
+        supplies with international markets through structured
+        sourcing, procurement and long-term business development.
+
       </p>
+
+
+      <div class="markets-line">
+
+        OMAN &nbsp; / &nbsp;
+        SAUDI ARABIA &nbsp; / &nbsp;
+        BAHRAIN &nbsp; / &nbsp;
+        QATAR
+
+      </div>
+
+
+      <a href="#markets" class="hero-scroll">
+
+        Explore Markets
+
+        <span></span>
+
+        ↓
+
+      </a>
+
     </div>
 
-  </article>
+  </section>
 
 
-  <article class="business-card">
+  <!-- =========================
+       INTRO
+  ========================= -->
 
-    <div
-      class="business-image export-image"
-      style="background-image:url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1200&q=85');"
-    ></div>
+  <section class="section">
 
-    <div class="business-card-content">
-      <span>02</span>
+    <div class="intro-grid">
 
-      <h3>Healthcare Supplies</h3>
+      <div>
 
-      <p>
-        Healthcare-related supplies selected according to
-        market demand, product suitability and applicable requirements.
-      </p>
-    </div>
+        <p class="eyebrow">
+          OUR FOCUS
+        </p>
 
-  </article>
+        <h2 class="section-title">
 
+          Four markets.
+          <br>
 
-  <article class="business-card">
+          <em>One vision.</em>
 
-    <div
-      class="business-image export-image"
-      style="background-image:url('https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1200&q=85');"
-    ></div>
+        </h2>
 
-    <div class="business-card-content">
-      <span>03</span>
-
-      <h3>International Supply</h3>
-
-      <p>
-        Structured sourcing, procurement and international
-        supply for selected healthcare markets.
-      </p>
-    </div>
-
-  </article>
-
-</div>
-
-  </section>  <!-- TARGET MARKETS -->  <section class="section"><div class="section-heading">
-  <p class="eyebrow">TARGET MARKETS</p>
-
-  <h2>
-    Gulf markets<br>
-    with strategic potential.
-  </h2>
-</div>
+      </div>
 
 
-<div class="business-grid">
+      <div>
+
+        <p class="intro-text">
+
+          SA Azadipour is developing export opportunities
+          for medical equipment and healthcare supplies in
+          selected Gulf markets.
+
+          <br><br>
+
+          Our focus is on connecting qualified suppliers with
+          healthcare organizations, distributors and commercial
+          partners while building reliable international
+          supply relationships.
+
+        </p>
 
 
-  <!-- OMAN -->
-  <article class="business-card">
+        <div class="intro-arrow">
+          →
+        </div>
 
-    <div
-      class="business-image export-image"
-      style="background-image:url('https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?auto=format&fit=crop&w=1400&q=85');"
-    ></div>
-
-    <div class="business-card-content">
-
-      <span>01 • OMAN</span>
-
-      <h3>Oman</h3>
-
-      <p>
-        A strategic market of interest for healthcare products,
-        medical equipment and international business development.
-      </p>
-
-      <p>
-        Particular attention is given to Muscat and opportunities
-        involving hospitals, clinics, distributors and healthcare
-        organizations.
-      </p>
+      </div>
 
     </div>
 
-  </article>
+
+    <!-- =========================
+         MARKET CARDS
+    ========================= -->
+
+    <div class="markets" id="markets">
 
 
-  <!-- SAUDI ARABIA -->
-  <article class="business-card">
+      <!-- OMAN -->
 
-    <div
-      class="business-image export-image"
-      style="background-image:url('https://images.unsplash.com/photo-1578895101408-1a36b834405b?auto=format&fit=crop&w=1400&q=85');"
-    ></div>
+      <a href="#oman" class="market-card">
 
-    <div class="business-card-content">
+        <div class="market-image oman"></div>
 
-      <span>02 • SAUDI ARABIA</span>
+        <div class="market-content">
 
-      <h3>Saudi Arabia</h3>
+          <div class="market-number">
+            01
+          </div>
 
-      <p>
-        A major regional healthcare market with opportunities
-        across hospitals, medical facilities and healthcare supply chains.
+          <h3>
+            Oman
+          </h3>
+
+          <p>
+
+            A strategic market for medical equipment
+            and healthcare solutions, with opportunities
+            across hospitals, clinics and distribution networks.
+
+          </p>
+
+          <span class="market-link">
+            Learn More &nbsp; →
+          </span>
+
+        </div>
+
+      </a>
+
+
+      <!-- SAUDI -->
+
+      <a href="#saudi-arabia" class="market-card">
+
+        <div class="market-image saudi"></div>
+
+        <div class="market-content">
+
+          <div class="market-number">
+            02
+          </div>
+
+          <h3>
+            Saudi Arabia
+          </h3>
+
+          <p>
+
+            A major regional healthcare market with
+            opportunities for advanced medical technology,
+            equipment and healthcare infrastructure.
+
+          </p>
+
+          <span class="market-link">
+            Learn More &nbsp; →
+          </span>
+
+        </div>
+
+      </a>
+
+
+      <!-- BAHRAIN -->
+
+      <a href="#bahrain" class="market-card">
+
+        <div class="market-image bahrain"></div>
+
+        <div class="market-content">
+
+          <div class="market-number">
+            03
+          </div>
+
+          <h3>
+            Bahrain
+          </h3>
+
+          <p>
+
+            Opportunities for medical products and
+            healthcare supply within Bahrain's healthcare
+            sector and distribution channels.
+
+          </p>
+
+          <span class="market-link">
+            Learn More &nbsp; →
+          </span>
+
+        </div>
+
+      </a>
+
+
+      <!-- QATAR -->
+
+      <a href="#qatar" class="market-card">
+
+        <div class="market-image qatar"></div>
+
+        <div class="market-content">
+
+          <div class="market-number">
+            04
+          </div>
+
+          <h3>
+            Qatar
+          </h3>
+
+          <p>
+
+            Developing opportunities for medical equipment
+            and healthcare supplies in Qatar's growing
+            healthcare market.
+
+          </p>
+
+          <span class="market-link">
+            Learn More &nbsp; →
+          </span>
+
+        </div>
+
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       OMAN
+  ========================= -->
+
+  <section class="country-detail" id="oman">
+
+    <div class="country-detail-image oman-detail"></div>
+
+    <div class="country-detail-content">
+
+      <p class="eyebrow">
+        01 • OMAN
       </p>
 
+      <h2>
+        Oman.
+      </h2>
+
       <p>
-        The focus is on identifying suitable products,
-        qualified partners and sustainable market-entry opportunities.
+
+        Oman is a strategic market of interest for
+        SA Azadipour's medical equipment export activities.
+
+        <br><br>
+
+        Our focus includes exploring opportunities with
+        hospitals, clinics, healthcare organizations,
+        distributors and qualified commercial partners,
+        particularly within Muscat and other key markets.
+
+        <br><br>
+
+        Product selection and market entry remain subject
+        to applicable import, registration, certification
+        and regulatory requirements.
+
       </p>
 
     </div>
 
-  </article>
+  </section>
 
 
-  <!-- BAHRAIN -->
-  <article class="business-card">
+  <!-- =========================
+       SAUDI ARABIA
+  ========================= -->
 
-    <div
-      class="business-image export-image"
-      style="background-image:url('https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=1400&q=85');"
-    ></div>
+  <section class="country-detail" id="saudi-arabia">
 
-    <div class="business-card-content">
+    <div class="country-detail-content">
 
-      <span>03 • BAHRAIN</span>
-
-      <h3>Bahrain</h3>
-
-      <p>
-        Exploring opportunities for medical equipment and healthcare
-        supplies within Bahrain's healthcare and distribution market.
+      <p class="eyebrow">
+        02 • SAUDI ARABIA
       </p>
 
-      <p>
-        Potential cooperation may include qualified distributors,
-        healthcare organizations and commercial partners.
-      </p>
-
-    </div>
-
-  </article>
-
-
-  <!-- QATAR -->
-  <article class="business-card">
-
-    <div
-      class="business-image export-image"
-      style="background-image:url('https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1400&q=85');"
-    ></div>
-
-    <div class="business-card-content">
-
-      <span>04 • QATAR</span>
-
-      <h3>Qatar</h3>
+      <h2>
+        Saudi Arabia.
+      </h2>
 
       <p>
-        Developing interest in Qatar's healthcare market,
-        including medical equipment and selected healthcare supplies.
-      </p>
 
-      <p>
-        The objective is to identify commercially viable products
-        and establish reliable international supply relationships.
+        Saudi Arabia represents a significant healthcare
+        market with opportunities across medical facilities,
+        healthcare supply chains and advanced medical technology.
+
+        <br><br>
+
+        We focus on identifying suitable products,
+        qualified suppliers and potential commercial
+        relationships for international market development.
+
       </p>
 
     </div>
 
-  </article>
+    <div class="country-detail-image saudi-detail"></div>
+
+  </section>
 
 
-</div>
+  <!-- =========================
+       BAHRAIN
+  ========================= -->
 
-  </section>  <!-- OMAN FEATURE -->  <section class="section network"><div class="section-heading">
+  <section class="country-detail" id="bahrain">
 
-  <p class="eyebrow">OMAN • STRATEGIC MARKET</p>
+    <div class="country-detail-image bahrain-detail"></div>
 
-  <h2>
-    Oman as a gateway<br>
-    to the Gulf.
-  </h2>
+    <div class="country-detail-content">
 
-</div>
+      <p class="eyebrow">
+        03 • BAHRAIN
+      </p>
 
+      <h2>
+        Bahrain.
+      </h2>
 
-<div class="section-content">
+      <p>
 
-  <p>
-    Oman represents a strategic market of interest for
-    SA Azadipour's medical equipment export activities.
-  </p>
+        Bahrain offers potential opportunities for selected
+        medical equipment and healthcare supplies.
 
-  <p>
-    Its geographic position, international connectivity and
-    developing healthcare sector create opportunities for
-    structured commercial relationships and medical supply.
-  </p>
+        <br><br>
 
-  <p>
-    Our focus includes exploring opportunities with distributors,
-    hospitals, clinics, healthcare organizations and other qualified
-    business partners.
-  </p>
+        Our objective is to explore commercially viable
+        products and develop relationships with qualified
+        healthcare and distribution partners.
 
-  <div class="oman-location">
-    <strong>Muscat</strong>
-    <span>•</span>
-    <span>Oman</span>
-  </div>
+      </p>
 
-</div>
+    </div>
 
-  </section>  <!-- PRODUCT CATEGORIES -->  <section class="section"><div class="section-heading">
-
-  <p class="eyebrow">PRODUCT CATEGORIES</p>
-
-  <h2>
-    Selected healthcare<br>
-    products.
-  </h2>
-
-</div>
+  </section>
 
 
-<div class="section-content">
+  <!-- =========================
+       QATAR
+  ========================= -->
 
-  <p>
-    Product selection is based on market demand, supplier
-    reliability, quality requirements and applicable regulatory
-    conditions.
-  </p>
+  <section class="country-detail" id="qatar">
 
-  <div class="product-list">
+    <div class="country-detail-content">
+
+      <p class="eyebrow">
+        04 • QATAR
+      </p>
+
+      <h2>
+        Qatar.
+      </h2>
+
+      <p>
+
+        Qatar is a developing market of interest for
+        medical equipment and healthcare supplies.
+
+        <br><br>
+
+        We are interested in identifying suitable products,
+        international supply opportunities and qualified
+        commercial relationships within the healthcare sector.
+
+      </p>
+
+    </div>
+
+    <div class="country-detail-image qatar-detail"></div>
+
+  </section>
+
+
+  <!-- =========================
+       PRODUCTS
+  ========================= -->
+
+  <section class="products-section">
+
+    <div class="products-image"></div>
+
+
+    <div class="products-content">
+
+      <p class="eyebrow">
+        PRODUCT CATEGORIES
+      </p>
+
+      <h2>
+        Selected medical
+        <br>
+        products.
+      </h2>
+
+      <p>
+
+        Our export focus includes selected medical equipment,
+        healthcare supplies and medical technologies according
+        to market needs, supplier capabilities and applicable
+        regulatory requirements.
+
+      </p>
+
+
+      <div class="product-list">
+
+
+        <div class="product">
+
+          <span>
+            Hospital Equipment
+          </span>
+
+          <span class="product-arrow">
+            →
+          </span>
+
+        </div>
+
+
+        <div class="product">
+
+          <span>
+            Medical Devices
+          </span>
+
+          <span class="product-arrow">
+            →
+          </span>
+
+        </div>
+
+
+        <div class="product">
+
+          <span>
+            Healthcare Supplies
+          </span>
+
+          <span class="product-arrow">
+            →
+          </span>
+
+        </div>
+
+
+        <div class="product">
+
+          <span>
+            Clinical Equipment
+          </span>
+
+          <span class="product-arrow">
+            →
+          </span>
+
+        </div>
+
+
+        <div class="product">
+
+          <span>
+            Diagnostic Equipment
+          </span>
+
+          <span class="product-arrow">
+            →
+          </span>
+
+        </div>
+
+
+        <div class="product">
+
+          <span>
+            Medical Technologies
+          </span>
+
+          <span class="product-arrow">
+            →
+          </span>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       CONTACT
+  ========================= -->
+
+  <section class="contact" id="contact">
+
+    <p class="eyebrow">
+      INTERNATIONAL BUSINESS
+    </p>
+
+    <h2>
+      Let's build a
+      <br>
+      <em>partnership.</em>
+    </h2>
+
+    <p>
+
+      We welcome inquiries regarding medical equipment,
+      healthcare supplies, sourcing, distribution and
+      international market opportunities.
+
+    </p>
+
+
+    <a
+      class="contact-email"
+      href="mailto:herzchirurgsinaazadipour@gmail.com"
+    >
+      herzchirurgsinaazadipour@gmail.com
+    </a>
+
+  </section>
+
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
+  <footer>
+
+    <div class="footer-brand">
+      SA AZADIPOUR
+    </div>
 
     <div>
-      <span>01</span>
-      <h3>Hospital Equipment</h3>
+      Investment • Import • Export
     </div>
 
     <div>
-      <span>02</span>
-      <h3>Medical Devices</h3>
+      © <span id="year"></span> SA Azadipour
     </div>
 
-    <div>
-      <span>03</span>
-      <h3>Healthcare Supplies</h3>
-    </div>
-
-    <div>
-      <span>04</span>
-      <h3>Clinical Equipment</h3>
-    </div>
-
-    <div>
-      <span>05</span>
-      <h3>Diagnostic Equipment</h3>
-    </div>
-
-    <div>
-      <span>06</span>
-      <h3>Selected Medical Technologies</h3>
-    </div>
-
-  </div>
-
-</div>
-
-  </section>  <!-- BUSINESS DEVELOPMENT -->  <section class="section"><div class="section-heading">
-
-  <p class="eyebrow">BUSINESS DEVELOPMENT</p>
-
-  <h2>
-    From sourcing<br>
-    to market access.
-  </h2>
-
-</div>
+  </footer>
 
 
-<div class="section-content">
+  <script>
 
-  <p>
-    Our international export approach can include supplier
-    identification, product sourcing, procurement coordination,
-    logistics planning and market development.
-  </p>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
 
-  <p>
-    For each opportunity, commercial, regulatory and logistical
-    requirements are evaluated before a supply relationship is developed.
-  </p>
+  </script>
 
-  <p>
-    We are interested in building long-term relationships with
-    qualified manufacturers, distributors, healthcare organizations
-    and international business partners.
-  </p>
 
-</div>
-
-  </section>  <!-- CONTACT -->  <section class="section contact" id="contact"><div class="contact-inner">
-
-  <p class="eyebrow">EXPORT • MEDICAL EQUIPMENT</p>
-
-  <h2>
-    Discuss an<br>
-    international opportunity.
-  </h2>
-
-  <p>
-    We welcome inquiries regarding medical equipment,
-    healthcare supplies, sourcing and distribution opportunities
-    in Oman, Saudi Arabia, Bahrain and Qatar.
-  </p>
-
-  <a href="mailto:info@azadipour.com" class="contact-link">
-    info@azadipour.com
-  </a>
-
-</div>
-
-  </section>  <!-- FOOTER -->  <footer><div class="footer-brand">
-  SA AZADIPOUR
-</div>
-
-<div class="footer-text">
-  Investment • Import • Export
-</div>
-
-<div class="footer-copy">
-  © <span data-year></span> SA Azadipour. All rights reserved.
-</div>
-
-  </footer>  <script src="script.js"></script></body>
+</body>
 </html>
