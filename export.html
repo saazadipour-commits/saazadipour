@@ -1,525 +1,617 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Medical Equipment Export | SA Azadipour</title>
+  <title>Export | SA Azadipour</title>
 
   <meta
     name="description"
-    content="SA Azadipour — Medical equipment and healthcare supplies for selected international markets."
+    content="SA Azadipour — Medical Equipment & Healthcare Supplies for international markets, with a focus on Oman, Saudi Arabia, Bahrain and Qatar."
   >
 
-  <link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
-  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
-  >
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap"
     rel="stylesheet"
   >
 
+  <!-- Main website stylesheet -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Export-specific stylesheet -->
   <link rel="stylesheet" href="export.css">
-
 </head>
-
 
 <body>
 
+  <!-- =========================================================
+       NAVIGATION
+  ========================================================== -->
 
-<header class="export-nav">
+  <header class="export-nav">
 
-  <a href="index.html" class="export-logo">
-
-    <img
-      src="assets/logo-transparent.png"
-      alt="SA Azadipour"
-    >
-
-  </a>
-
-
-  <nav class="export-menu">
-
-    <a href="index.html">
-      Home
-    </a>
-
-    <a href="index.html#about">
-      About
-    </a>
-
-    <a href="investment.html">
-      Investment
-    </a>
-
-    <a href="import.html">
-      Import
-    </a>
-
-    <a href="export.html" class="active">
-      Export
-    </a>
-
-    <a href="#contact">
-      Contact
-    </a>
-
-  </nav>
-
-</header>
-
-
-<!-- HERO -->
-
-<section class="export-hero">
-
-  <div class="hero-content">
-
-
-    <div class="hero-sa">
-
+    <a href="index.html" class="export-logo" aria-label="SA Azadipour Home">
       <img
         src="assets/logo-transparent.png"
         alt="SA Azadipour"
       >
+    </a>
 
-    </div>
+    <nav class="export-menu" aria-label="Main navigation">
 
+      <a href="index.html">About</a>
 
-    <div class="hero-label">
-      EXPORT
-    </div>
+      <a href="index.html#business">
+        Business
+      </a>
 
+      <a href="export.html" class="active">
+        Export
+      </a>
 
-    <h1 class="hero-title">
+      <a href="index.html#contact">
+        Contact
+      </a>
 
-      Medical Equipment
+    </nav>
 
-      <em>
-        for International Markets.
-      </em>
-
-    </h1>
-
-
-    <p class="hero-description">
-
-      Connecting selected medical equipment and healthcare
-      supplies with international markets through structured
-      sourcing, procurement and long-term business development.
-
-    </p>
-
-
-    <div class="hero-markets">
-
-      OMAN / SAUDI ARABIA / BAHRAIN / QATAR
-
-    </div>
-
-
-    <a href="#markets" class="hero-button">
-
-      Explore Markets
-
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+    >
       <span></span>
+      <span></span>
+    </button>
 
-      ↓
-
-    </a>
-
-  </div>
-
-</section>
+  </header>
 
 
-<!-- INTRO -->
+  <!-- =========================================================
+       HERO
+  ========================================================== -->
 
-<section class="export-section">
+  <main>
 
-  <div class="focus-grid">
+    <section class="export-hero">
 
+      <div class="hero-sa">
+
+        <span class="hero-kicker">
+          MEDICAL EQUIPMENT · INTERNATIONAL MARKETS
+        </span>
+
+        <h1 class="hero-title">
+          Export
+        </h1>
+
+        <p class="hero-description">
+          Medical equipment and healthcare supplies for international
+          markets, with a focus on Oman, Saudi Arabia, Bahrain and Qatar.
+        </p>
+
+        <a href="#markets" class="hero-button">
+          Explore Markets
+          <span>↘</span>
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- =======================================================
+         INTRODUCTION
+    ======================================================== -->
+
+    <section class="export-intro">
+
+      <div class="section-label">
+        01 / EXPORT
+      </div>
+
+      <div class="export-intro-content">
+
+        <h2>
+          Medical Equipment
+          <br>
+          & Healthcare Supplies
+        </h2>
+
+        <p>
+          We focus on international sourcing and supply opportunities
+          in medical equipment and healthcare-related products,
+          connecting selected products with markets across the Gulf region.
+        </p>
+
+        <p>
+          Our approach is built around product selection, reliable sourcing,
+          international logistics and market-specific requirements.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         MARKETS
+    ========================================================== -->
+
+    <section class="market-section" id="markets">
+
+      <div class="section-label">
+        02 / MARKETS
+      </div>
+
+      <div class="market-heading">
+
+        <h2>
+          Four Markets.
+          <br>
+          One International Focus.
+        </h2>
+
+        <p>
+          Explore our target markets and discover the opportunities,
+          product focus and supply approach for each country.
+        </p>
+
+      </div>
+
+
+      <div class="market-grid">
+
+        <!-- OMAN -->
+
+        <a
+          href="oman.html"
+          class="market-card"
+          aria-label="Explore Oman market"
+        >
+
+          <div class="market-image oman-bg">
+
+            <span class="market-number">
+              01
+            </span>
+
+            <div class="market-overlay"></div>
+
+            <div class="market-info">
+
+              <span class="market-country">
+                OMAN
+              </span>
+
+              <h3>
+                Oman
+              </h3>
+
+              <span class="market-link">
+                Explore Market →
+              </span>
+
+            </div>
+
+          </div>
+
+        </a>
+
+
+        <!-- SAUDI ARABIA -->
+
+        <a
+          href="saudi-arabia.html"
+          class="market-card"
+          aria-label="Explore Saudi Arabia market"
+        >
+
+          <div class="market-image saudi-bg">
+
+            <span class="market-number">
+              02
+            </span>
+
+            <div class="market-overlay"></div>
+
+            <div class="market-info">
+
+              <span class="market-country">
+                SAUDI ARABIA
+              </span>
+
+              <h3>
+                Saudi Arabia
+              </h3>
+
+              <span class="market-link">
+                Explore Market →
+              </span>
+
+            </div>
+
+          </div>
+
+        </a>
+
+
+        <!-- BAHRAIN -->
+
+        <a
+          href="bahrain.html"
+          class="market-card"
+          aria-label="Explore Bahrain market"
+        >
+
+          <div class="market-image bahrain-bg">
+
+            <span class="market-number">
+              03
+            </span>
+
+            <div class="market-overlay"></div>
+
+            <div class="market-info">
+
+              <span class="market-country">
+                BAHRAIN
+              </span>
+
+              <h3>
+                Bahrain
+              </h3>
+
+              <span class="market-link">
+                Explore Market →
+              </span>
+
+            </div>
+
+          </div>
+
+        </a>
+
+
+        <!-- QATAR -->
+
+        <a
+          href="qatar.html"
+          class="market-card"
+          aria-label="Explore Qatar market"
+        >
+
+          <div class="market-image qatar-bg">
+
+            <span class="market-number">
+              04
+            </span>
+
+            <div class="market-overlay"></div>
+
+            <div class="market-info">
+
+              <span class="market-country">
+                QATAR
+              </span>
+
+              <h3>
+                Qatar
+              </h3>
+
+              <span class="market-link">
+                Explore Market →
+              </span>
+
+            </div>
+
+          </div>
+
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         PRODUCT FOCUS
+    ========================================================== -->
+
+    <section class="product-section">
+
+      <div class="section-label">
+        03 / PRODUCT FOCUS
+      </div>
+
+      <div class="product-layout">
+
+        <div class="product-image">
+
+          <div class="product-image-overlay"></div>
+
+        </div>
+
+        <div class="product-content">
+
+          <span class="product-kicker">
+            SELECTED CATEGORIES
+          </span>
+
+          <h2>
+            Healthcare
+            <br>
+            Supply
+          </h2>
+
+          <p>
+            Our export focus includes selected medical equipment,
+            healthcare supplies and related products suitable for
+            international sourcing and distribution.
+          </p>
+
+          <ul class="product-list">
+
+            <li>
+              <span>01</span>
+              Medical Equipment
+            </li>
+
+            <li>
+              <span>02</span>
+              Healthcare Supplies
+            </li>
+
+            <li>
+              <span>03</span>
+              Hospital & Clinical Products
+            </li>
+
+            <li>
+              <span>04</span>
+              Selected Medical Technologies
+            </li>
+
+          </ul>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         HOW WE WORK
+    ========================================================== -->
+
+    <section class="export-process">
+
+      <div class="section-label">
+        04 / APPROACH
+      </div>
+
+      <div class="process-heading">
+
+        <h2>
+          From Source
+          <br>
+          to Market.
+        </h2>
+
+        <p>
+          A structured approach to international medical supply,
+          from product selection and sourcing to market-specific
+          delivery requirements.
+        </p>
+
+      </div>
+
+
+      <div class="process-grid">
+
+        <div class="process-item">
+
+          <span>01</span>
+
+          <h3>
+            Product Selection
+          </h3>
+
+          <p>
+            Identifying suitable products and manufacturers
+            according to market requirements.
+          </p>
+
+        </div>
+
+
+        <div class="process-item">
+
+          <span>02</span>
+
+          <h3>
+            Sourcing
+          </h3>
+
+          <p>
+            Exploring reliable international suppliers and
+            appropriate product specifications.
+          </p>
+
+        </div>
+
+
+        <div class="process-item">
+
+          <span>03</span>
+
+          <h3>
+            Logistics
+          </h3>
+
+          <p>
+            Coordinating international supply and logistics
+            according to the specific transaction.
+          </p>
+
+        </div>
+
+
+        <div class="process-item">
+
+          <span>04</span>
+
+          <h3>
+            Market Delivery
+          </h3>
+
+          <p>
+            Supporting market-specific requirements, subject to
+            applicable import and regulatory conditions.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         INTERNATIONAL SUPPLY
+    ========================================================== -->
+
+    <section class="international-section">
+
+      <div class="international-image"></div>
+
+      <div class="international-content">
+
+        <span class="section-label">
+          05 / INTERNATIONAL SUPPLY
+        </span>
+
+        <h2>
+          Built for
+          <br>
+          International Markets.
+        </h2>
+
+        <p>
+          Medical supply requirements vary from one market to another.
+          We therefore approach each opportunity individually, taking
+          into consideration product specifications, documentation,
+          logistics and applicable market requirements.
+        </p>
+
+        <a
+          href="mailto:herzchirurgsinaazadipour@gmail.com"
+          class="international-button"
+        >
+          Discuss an Opportunity
+          <span>↗</span>
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         CONTACT
+    ========================================================== -->
+
+    <section class="export-contact" id="contact">
+
+      <div class="section-label">
+        06 / CONTACT
+      </div>
+
+      <div class="export-contact-content">
+
+        <h2>
+          Let's Build
+          <br>
+          an International
+          <br>
+          Supply Network.
+        </h2>
+
+        <p>
+          For medical equipment sourcing, export opportunities,
+          supplier discussions or market development, get in touch.
+        </p>
+
+        <a
+          href="mailto:herzchirurgsinaazadipour@gmail.com"
+          class="export-email"
+        >
+          herzchirurgsinaazadipour@gmail.com
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================================================
+       FOOTER
+  ========================================================== -->
+
+  <footer class="export-footer">
 
     <div>
-
-      <div class="label">
-        OUR FOCUS
-      </div>
-
-      <h2 class="big-title">
-
-        Four markets.
-
-        <br>
-
-        <em>
-          One vision.
-        </em>
-
-      </h2>
-
+      © <span data-year></span> SA Azadipour
     </div>
-
 
     <div>
-
-      <p class="focus-text">
-
-        SA Azadipour is developing international
-        export opportunities in medical equipment
-        and healthcare supplies.
-
-        <br><br>
-
-        Our current market focus is the Gulf region,
-        with particular attention to Oman, Saudi Arabia,
-        Bahrain and Qatar.
-
-        <br><br>
-
-        We aim to connect qualified suppliers with
-        healthcare organizations, distributors and
-        international business partners.
-
-      </p>
-
-
-      <div class="focus-arrow">
-        →
-      </div>
-
+      Medical Equipment · International Markets
     </div>
 
-  </div>
-
-
-  <!-- MARKETS -->
-
-  <div class="market-grid" id="markets">
-
-
-    <a href="oman.html" class="market-card">
-
-      <div class="market-bg oman-bg"></div>
-
-      <div class="market-info">
-
-        <div class="market-number">
-          01
-        </div>
-
-        <h3>
-          Oman
-        </h3>
-
-        <p>
-
-          A strategic market of interest for
-          medical equipment and healthcare
-          supply opportunities.
-
-        </p>
-
-        <span class="market-link">
-          Explore Oman →
-        </span>
-
-      </div>
-
+    <a href="index.html">
+      Back to Main Site ↑
     </a>
 
+  </footer>
 
-    <a href="saudi-arabia.html" class="market-card">
 
-      <div class="market-bg saudi-bg"></div>
+  <!-- =========================================================
+       JAVASCRIPT
+  ========================================================== -->
 
-      <div class="market-info">
+  <script src="script.js"></script>
 
-        <div class="market-number">
-          02
-        </div>
+  <script>
+    const menuToggle = document.querySelector(".menu-toggle");
+    const menu = document.querySelector(".export-menu");
 
-        <h3>
-          Saudi Arabia
-        </h3>
+    if (menuToggle && menu) {
 
-        <p>
+      menuToggle.addEventListener("click", () => {
 
-          A major regional healthcare market
-          with significant potential for selected
-          medical technologies and supplies.
+        const isOpen =
+          menuToggle.getAttribute("aria-expanded") === "true";
 
-        </p>
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(!isOpen)
+        );
 
-        <span class="market-link">
-          Explore Saudi Arabia →
-        </span>
+        menu.classList.toggle("open");
 
-      </div>
+      });
 
-    </a>
-
-
-    <a href="bahrain.html" class="market-card">
-
-      <div class="market-bg bahrain-bg"></div>
-
-      <div class="market-info">
-
-        <div class="market-number">
-          03
-        </div>
-
-        <h3>
-          Bahrain
-        </h3>
-
-        <p>
-
-          Exploring opportunities in medical
-          products, healthcare supplies and
-          distribution channels.
-
-        </p>
-
-        <span class="market-link">
-          Explore Bahrain →
-        </span>
-
-      </div>
-
-    </a>
-
-
-    <a href="qatar.html" class="market-card">
-
-      <div class="market-bg qatar-bg"></div>
-
-      <div class="market-info">
-
-        <div class="market-number">
-          04
-        </div>
-
-        <h3>
-          Qatar
-        </h3>
-
-        <p>
-
-          Developing opportunities for medical
-          equipment and healthcare supplies
-          in the Qatari market.
-
-        </p>
-
-        <span class="market-link">
-          Explore Qatar →
-        </span>
-
-      </div>
-
-    </a>
-
-  </div>
-
-</section>
-
-
-<!-- PRODUCTS -->
-
-<section class="product-section">
-
-
-  <div class="product-image"></div>
-
-
-  <div class="product-content">
-
-    <div class="label">
-      PRODUCT CATEGORIES
-    </div>
-
-
-    <h2>
-
-      Selected medical
-
-      <br>
-
-      products.
-
-    </h2>
-
-
-    <p>
-
-      Product selection is based on market needs,
-      supplier capabilities, commercial suitability
-      and applicable regulatory requirements.
-
-    </p>
-
-
-    <div class="product-list">
-
-
-      <div class="product-item">
-
-        <span>
-          Hospital Equipment
-        </span>
-
-        <span>→</span>
-
-      </div>
-
-
-      <div class="product-item">
-
-        <span>
-          Medical Devices
-        </span>
-
-        <span>→</span>
-
-      </div>
-
-
-      <div class="product-item">
-
-        <span>
-          Healthcare Supplies
-        </span>
-
-        <span>→</span>
-
-      </div>
-
-
-      <div class="product-item">
-
-        <span>
-          Clinical Equipment
-        </span>
-
-        <span>→</span>
-
-      </div>
-
-
-      <div class="product-item">
-
-        <span>
-          Diagnostic Equipment
-        </span>
-
-        <span>→</span>
-
-      </div>
-
-
-      <div class="product-item">
-
-        <span>
-          Medical Technologies
-        </span>
-
-        <span>→</span>
-
-      </div>
-
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- CONTACT -->
-
-<section class="export-contact" id="contact">
-
-  <div class="label">
-    INTERNATIONAL BUSINESS
-  </div>
-
-
-  <h2>
-
-    Let's build a
-
-    <br>
-
-    <em>
-      partnership.
-    </em>
-
-  </h2>
-
-
-  <p>
-
-    We welcome inquiries regarding medical equipment,
-    healthcare supplies, sourcing, distribution and
-    international market opportunities.
-
-  </p>
-
-
-  <a
-    href="mailto:herzchirurgsinaazadipour@gmail.com"
-    class="export-email"
-  >
-
-    herzchirurgsinaazadipour@gmail.com
-
-  </a>
-
-</section>
-
-
-<footer class="export-footer">
-
-  <span>
-    SA AZADIPOUR
-  </span>
-
-  <span>
-    Investment • Import • Export
-  </span>
-
-  <span>
-    © <span id="year"></span>
-    SA Azadipour
-  </span>
-
-</footer>
-
-
-<script>
-
-document.getElementById("year").textContent =
-new Date().getFullYear();
-
-</script>
-
+    }
+  </script>
 
 </body>
 </html>
