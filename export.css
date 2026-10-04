@@ -1,0 +1,876 @@
+:root {
+  --black: #050505;
+  --deep: #08090a;
+  --cream: #f4f0e8;
+  --muted: #92908b;
+  --gold: #cdb98f;
+  --line: rgba(255,255,255,.13);
+  --max: 1480px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--black);
+  color: var(--cream);
+  font-family: "Inter", sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.export-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 50;
+
+  width: 100%;
+  height: 105px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 5vw;
+
+  border-bottom: 1px solid rgba(255,255,255,.13);
+}
+
+.export-logo {
+  width: 135px;
+}
+
+.export-logo img {
+  width: 100%;
+  display: block;
+}
+
+.export-menu {
+  display: flex;
+  gap: 38px;
+
+  font-size: 12px;
+  letter-spacing: .04em;
+}
+
+.export-menu a {
+  transition: opacity .3s ease;
+}
+
+.export-menu a:hover {
+  opacity: .5;
+}
+
+.export-menu .active {
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 7px;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.export-hero {
+  min-height: 100vh;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 140px 6vw 80px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(3,5,7,.96),
+      rgba(3,5,7,.67),
+      rgba(3,5,7,.27)
+    ),
+    url("https://images.unsplash.com/photo-1584982751601-97dcc096659c?auto=format&fit=crop&w=2200&q=90")
+    center / cover no-repeat;
+}
+
+.export-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at 70% 50%,
+      rgba(85,120,150,.17),
+      transparent 36%
+    );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 1150px;
+
+  text-align: center;
+}
+
+.hero-sa {
+  width: 230px;
+  margin: 0 auto 25px;
+
+  opacity: .96;
+}
+
+.hero-sa img {
+  width: 100%;
+  display: block;
+}
+
+.hero-label {
+  color: var(--gold);
+
+  font-size: 10px;
+  letter-spacing: .5em;
+  text-transform: uppercase;
+
+  margin-bottom: 25px;
+}
+
+.hero-title {
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: clamp(65px, 9vw, 125px);
+  line-height: .82;
+
+  font-weight: 400;
+
+  letter-spacing: -.045em;
+}
+
+.hero-title em {
+  display: block;
+
+  color: #d7d2c9;
+
+  font-style: italic;
+}
+
+.hero-description {
+  max-width: 690px;
+
+  margin: 32px auto 28px;
+
+  color: #d0cec8;
+
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.hero-markets {
+  color: #c4beb4;
+
+  font-size: 10px;
+
+  letter-spacing: .38em;
+
+  text-transform: uppercase;
+}
+
+.hero-button {
+  display: inline-flex;
+
+  margin-top: 42px;
+
+  flex-direction: column;
+  align-items: center;
+
+  gap: 13px;
+
+  color: #cfc8bb;
+
+  font-size: 9px;
+
+  letter-spacing: .25em;
+  text-transform: uppercase;
+}
+
+.hero-button span {
+  height: 48px;
+  width: 1px;
+
+  background: var(--gold);
+}
+
+/* =========================
+   GENERAL
+========================= */
+
+.export-section {
+  max-width: var(--max);
+  margin: auto;
+
+  padding: 150px 5vw;
+}
+
+.label {
+  color: #817f7a;
+
+  font-size: 10px;
+
+  letter-spacing: .43em;
+  text-transform: uppercase;
+
+  margin-bottom: 28px;
+}
+
+.big-title {
+  font-family: "Cormorant Garamond", serif;
+
+  font-weight: 400;
+
+  font-size: clamp(58px, 7vw, 100px);
+
+  line-height: .87;
+
+  letter-spacing: -.04em;
+}
+
+.big-title em {
+  font-style: italic;
+}
+
+/* =========================
+   INTRO
+========================= */
+
+.focus-grid {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 90px;
+
+  align-items: end;
+}
+
+.focus-text {
+  max-width: 560px;
+
+  color: #aaa8a2;
+
+  font-size: 14px;
+
+  line-height: 1.95;
+}
+
+.focus-arrow {
+  margin-top: 30px;
+
+  color: var(--gold);
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 48px;
+}
+
+/* =========================
+   MARKET CARDS
+========================= */
+
+.market-grid {
+  margin-top: 90px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 13px;
+}
+
+.market-card {
+  min-height: 540px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  border: 1px solid var(--line);
+
+  transition:
+    transform .5s ease,
+    border-color .5s ease;
+}
+
+.market-card:hover {
+  transform: translateY(-8px);
+
+  border-color: rgba(205,185,143,.7);
+}
+
+.market-bg {
+  position: absolute;
+  inset: 0;
+
+  background-size: cover;
+  background-position: center;
+
+  transition: transform .8s ease;
+}
+
+.market-card:hover .market-bg {
+  transform: scale(1.07);
+}
+
+.market-card::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      to bottom,
+      transparent 20%,
+      rgba(0,0,0,.87) 100%
+    );
+}
+
+.market-info {
+  position: absolute;
+
+  z-index: 2;
+
+  left: 28px;
+  right: 28px;
+  bottom: 30px;
+}
+
+.market-number {
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 22px;
+
+  color: #d4cec4;
+
+  margin-bottom: 105px;
+}
+
+.market-info h3 {
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 45px;
+
+  line-height: .92;
+
+  font-weight: 400;
+
+  margin-bottom: 17px;
+}
+
+.market-info p {
+  font-size: 11px;
+
+  line-height: 1.7;
+
+  color: #d1cec7;
+
+  margin-bottom: 21px;
+}
+
+.market-link {
+  color: var(--gold);
+
+  font-size: 9px;
+
+  letter-spacing: .22em;
+
+  text-transform: uppercase;
+}
+
+/* =========================
+   MARKET IMAGES
+========================= */
+
+.oman-bg {
+  background-image:
+    url("https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?auto=format&fit=crop&w=1400&q=90");
+}
+
+.saudi-bg {
+  background-image:
+    url("https://images.unsplash.com/photo-1578895101408-1a36b834405b?auto=format&fit=crop&w=1400&q=90");
+}
+
+.bahrain-bg {
+  background-image:
+    url("https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=1400&q=90");
+}
+
+.qatar-bg {
+  background-image:
+    url("https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1400&q=90");
+}
+
+/* =========================
+   PRODUCT SECTION
+========================= */
+
+.product-section {
+  display: grid;
+
+  grid-template-columns: .9fr 1.1fr;
+
+  min-height: 680px;
+}
+
+.product-image {
+  min-height: 680px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0,0,0,.05),
+      rgba(0,0,0,.42)
+    ),
+    url("https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1800&q=90")
+    center / cover;
+}
+
+.product-content {
+  padding: 100px 8vw;
+
+  background: #090a0b;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.product-content h2 {
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: clamp(55px, 6vw, 82px);
+
+  line-height: .88;
+
+  font-weight: 400;
+
+  margin-bottom: 30px;
+}
+
+.product-content p {
+  max-width: 530px;
+
+  color: #96948f;
+
+  font-size: 14px;
+
+  line-height: 1.9;
+
+  margin-bottom: 42px;
+}
+
+.product-list {
+  border-top: 1px solid var(--line);
+}
+
+.product-item {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 18px 0;
+
+  border-bottom: 1px solid var(--line);
+
+  font-size: 10px;
+
+  letter-spacing: .16em;
+
+  text-transform: uppercase;
+}
+
+.product-item span:last-child {
+  color: var(--gold);
+
+  font-size: 17px;
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.export-contact {
+  text-align: center;
+
+  padding: 190px 5vw;
+}
+
+.export-contact h2 {
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: clamp(65px, 8vw, 115px);
+
+  line-height: .84;
+
+  font-weight: 400;
+
+  margin-bottom: 35px;
+}
+
+.export-contact h2 em {
+  font-style: italic;
+}
+
+.export-contact p {
+  max-width: 650px;
+
+  margin: auto;
+
+  color: #999792;
+
+  font-size: 14px;
+
+  line-height: 1.9;
+}
+
+.export-email {
+  display: inline-block;
+
+  margin-top: 35px;
+
+  color: var(--gold);
+
+  font-size: 14px;
+
+  border-bottom: 1px solid var(--gold);
+
+  padding-bottom: 7px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.export-footer {
+  border-top: 1px solid var(--line);
+
+  padding: 32px 5vw;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  color: #72706b;
+
+  font-size: 9px;
+
+  letter-spacing: .15em;
+
+  text-transform: uppercase;
+}
+
+/* =========================
+   COUNTRY PAGE
+========================= */
+
+.country-hero {
+  min-height: 92vh;
+
+  position: relative;
+
+  display: flex;
+  align-items: flex-end;
+
+  padding: 100px 7vw;
+
+  background-size: cover;
+  background-position: center;
+}
+
+.country-hero::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(0,0,0,.9),
+      rgba(0,0,0,.15)
+    );
+}
+
+.country-hero-content {
+  position: relative;
+  z-index: 2;
+
+  max-width: 950px;
+}
+
+.country-hero-number {
+  color: var(--gold);
+
+  font-size: 10px;
+
+  letter-spacing: .45em;
+
+  margin-bottom: 22px;
+}
+
+.country-hero h1 {
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: clamp(80px, 12vw, 170px);
+
+  font-weight: 400;
+
+  line-height: .78;
+
+  letter-spacing: -.045em;
+}
+
+.country-hero p {
+  max-width: 650px;
+
+  margin-top: 32px;
+
+  color: #d0cec8;
+
+  font-size: 15px;
+
+  line-height: 1.9;
+}
+
+.country-content {
+  max-width: 1480px;
+
+  margin: auto;
+
+  padding: 150px 7vw;
+}
+
+.country-two-column {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 100px;
+}
+
+.country-copy {
+  color: #aaa8a2;
+
+  font-size: 15px;
+
+  line-height: 2;
+}
+
+.country-copy p + p {
+  margin-top: 25px;
+}
+
+.country-list {
+  border-top: 1px solid var(--line);
+}
+
+.country-list-item {
+  padding: 22px 0;
+
+  border-bottom: 1px solid var(--line);
+
+  display: flex;
+
+  justify-content: space-between;
+
+  font-size: 11px;
+
+  letter-spacing: .12em;
+
+  text-transform: uppercase;
+}
+
+.country-list-item span:last-child {
+  color: var(--gold);
+}
+
+.country-image-block {
+  min-height: 600px;
+
+  background-size: cover;
+  background-position: center;
+}
+
+.country-closing {
+  text-align: center;
+
+  padding: 170px 7vw;
+
+  background: #08090a;
+}
+
+.country-closing h2 {
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: clamp(65px, 8vw, 110px);
+
+  line-height: .85;
+
+  font-weight: 400;
+}
+
+.country-closing p {
+  max-width: 650px;
+
+  margin: 35px auto 0;
+
+  color: #92908b;
+
+  line-height: 1.9;
+
+  font-size: 14px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 950px) {
+
+  .export-menu {
+    gap: 16px;
+    font-size: 9px;
+  }
+
+  .focus-grid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .market-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .product-section {
+    grid-template-columns: 1fr;
+  }
+
+  .product-image {
+    min-height: 450px;
+  }
+
+  .country-two-column {
+    grid-template-columns: 1fr;
+    gap: 55px;
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .export-nav {
+    height: 82px;
+    padding: 0 22px;
+  }
+
+  .export-logo {
+    width: 100px;
+  }
+
+  .export-menu {
+    gap: 8px;
+    font-size: 8px;
+  }
+
+  .export-hero {
+    min-height: 850px;
+    padding: 120px 25px 70px;
+  }
+
+  .hero-sa {
+    width: 165px;
+  }
+
+  .hero-title {
+    font-size: 57px;
+  }
+
+  .hero-description {
+    font-size: 13px;
+  }
+
+  .hero-markets {
+    line-height: 2;
+    letter-spacing: .2em;
+  }
+
+  .export-section {
+    padding: 100px 25px;
+  }
+
+  .big-title {
+    font-size: 58px;
+  }
+
+  .market-grid {
+    grid-template-columns: 1fr;
+    margin-top: 55px;
+  }
+
+  .market-card {
+    min-height: 480px;
+  }
+
+  .product-content {
+    padding: 80px 25px;
+  }
+
+  .export-contact {
+    padding: 120px 25px;
+  }
+
+  .export-footer {
+    flex-direction: column;
+    gap: 14px;
+    padding: 28px 25px;
+  }
+
+  .country-hero {
+    min-height: 80vh;
+    padding: 100px 25px 70px;
+  }
+
+  .country-hero h1 {
+    font-size: 75px;
+  }
+
+  .country-content {
+    padding: 100px 25px;
+  }
+
+  .country-image-block {
+    min-height: 400px;
+  }
+
+}
