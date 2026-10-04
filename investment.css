@@ -1,0 +1,1128 @@
+/* =========================================
+   INVESTMENT PAGE
+   SA AZADIPOUR
+========================================= */
+
+:root {
+
+    --investment-black: #111111;
+    --investment-dark: #181818;
+    --investment-cream: #f4f1eb;
+    --investment-white: #ffffff;
+    --investment-grey: #777777;
+    --investment-line: rgba(17, 17, 17, 0.15);
+
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.investment-header {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 82px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 5vw;
+
+    background: rgba(244, 241, 235, 0.94);
+
+    backdrop-filter: blur(12px);
+
+    border-bottom: 1px solid var(--investment-line);
+
+    z-index: 1000;
+
+}
+
+
+.investment-logo a {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 36px;
+
+    font-weight: 600;
+
+    letter-spacing: -2px;
+
+    color: var(--investment-black);
+
+    text-decoration: none;
+
+}
+
+
+.investment-nav {
+
+    display: flex;
+
+    gap: 32px;
+
+}
+
+
+.investment-nav a {
+
+    position: relative;
+
+    font-family: "Inter", sans-serif;
+
+    font-size: 12px;
+
+    font-weight: 500;
+
+    letter-spacing: 1.5px;
+
+    text-transform: uppercase;
+
+    color: var(--investment-black);
+
+    text-decoration: none;
+
+}
+
+
+.investment-nav a::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: -7px;
+
+    width: 0;
+
+    height: 1px;
+
+    background: var(--investment-black);
+
+    transition: width 0.3s ease;
+
+}
+
+
+.investment-nav a:hover::after,
+.investment-nav a.active::after {
+
+    width: 100%;
+
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.investment-hero {
+
+    min-height: 88vh;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 150px 8vw 100px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            rgba(10,10,10,0.91),
+            rgba(10,10,10,0.48)
+        ),
+
+        url("https://images.unsplash.com/photo-1559757175-0eb30cd8c063?auto=format&fit=crop&w=2200&q=85")
+        center / cover no-repeat;
+
+    color: white;
+
+}
+
+
+.investment-hero-content {
+
+    max-width: 900px;
+
+}
+
+
+.eyebrow {
+
+    font-family: "Inter", sans-serif;
+
+    font-size: 11px;
+
+    font-weight: 500;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 30px;
+
+}
+
+
+.investment-hero h1 {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(80px, 13vw, 185px);
+
+    font-weight: 400;
+
+    line-height: 0.8;
+
+    letter-spacing: -6px;
+
+    margin: 0 0 45px;
+
+}
+
+
+.hero-description {
+
+    max-width: 620px;
+
+    font-family: "Inter", sans-serif;
+
+    font-size: 17px;
+
+    font-weight: 300;
+
+    line-height: 1.8;
+
+}
+
+
+.hero-number {
+
+    position: absolute;
+
+    right: 7vw;
+
+    bottom: 60px;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 100px;
+
+    opacity: 0.4;
+
+}
+
+
+/* =========================================
+   INTRO
+========================================= */
+
+.investment-intro {
+
+    display: grid;
+
+    grid-template-columns: 25% 75%;
+
+    padding: 140px 8vw;
+
+    background: var(--investment-cream);
+
+}
+
+
+.section-label {
+
+    font-family: "Inter", sans-serif;
+
+    font-size: 10px;
+
+    font-weight: 500;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    color: var(--investment-grey);
+
+}
+
+
+.investment-intro-text {
+
+    max-width: 850px;
+
+}
+
+
+.investment-intro h2 {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(48px, 6vw, 86px);
+
+    font-weight: 400;
+
+    line-height: 0.95;
+
+    letter-spacing: -2px;
+
+    margin: 0 0 45px;
+
+}
+
+
+.investment-intro h2 span {
+
+    display: block;
+
+    color: var(--investment-grey);
+
+}
+
+
+.investment-intro p {
+
+    max-width: 720px;
+
+    font-family: "Inter", sans-serif;
+
+    font-size: 15px;
+
+    font-weight: 300;
+
+    line-height: 1.9;
+
+    color: #555;
+
+    margin-bottom: 22px;
+
+}
+
+
+/* =========================================
+   FOCUS
+========================================= */
+
+.investment-focus {
+
+    padding: 130px 8vw;
+
+    background: #ffffff;
+
+}
+
+
+.focus-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 25px;
+
+    margin-top: 65px;
+
+}
+
+
+.focus-card {
+
+    position: relative;
+
+    min-height: 440px;
+
+    overflow: hidden;
+
+    border: 1px solid var(--investment-line);
+
+    text-decoration: none;
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+
+}
+
+
+.focus-card:hover {
+
+    transform: translateY(-6px);
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,0.09);
+
+}
+
+
+/* =========================================
+   MAIN ROBOTICS CARD
+========================================= */
+
+.focus-main {
+
+    grid-column: span 2;
+
+    min-height: 600px;
+
+    display: flex;
+
+    background: var(--investment-dark);
+
+    color: white;
+
+}
+
+
+.focus-image {
+
+    width: 55%;
+
+    overflow: hidden;
+
+}
+
+
+.focus-image img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform 0.8s ease;
+
+}
+
+
+.focus-main:hover .focus-image img {
+
+    transform: scale(1.05);
+
+}
+
+
+.focus-main .focus-content {
+
+    width: 45%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    padding: 60px;
+
+}
+
+
+.focus-number {
+
+    font-family: "Inter", sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    opacity: 0.6;
+
+    margin-bottom: 30px;
+
+}
+
+
+.focus-content h3 {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(48px, 6vw, 80px);
+
+    font-weight: 400;
+
+    line-height: 0.85;
+
+    letter-spacing: -3px;
+
+    margin: 0 0 30px;
+
+}
+
+
+.focus-content p {
+
+    max-width: 440px;
+
+    font-family: "Inter", sans-serif;
+
+    font-size: 14px;
+
+    font-weight: 300;
+
+    line-height: 1.8;
+
+    opacity: 0.75;
+
+}
+
+
+.focus-link {
+
+    margin-top: 35px;
+
+    font-family: "Inter", sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    color: white;
+
+}
+
+
+/* =========================================
+   FUTURE FOCUS
+========================================= */
+
+.focus-placeholder {
+
+    min-height: 400px;
+
+    padding: 55px;
+
+    background: var(--investment-cream);
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+}
+
+
+.placeholder-number {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 80px;
+
+    line-height: 1;
+
+    color: #c6c1b8;
+
+}
+
+
+.focus-placeholder .focus-content h3 {
+
+    font-size: 50px;
+
+    color: var(--investment-black);
+
+}
+
+
+.focus-placeholder .focus-content p {
+
+    color: #666;
+
+}
+
+
+.placeholder-label {
+
+    font-family: "Inter", sans-serif !important;
+
+    font-size: 10px !important;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    color: #999 !important;
+
+    margin-bottom: 20px !important;
+
+}
+
+
+.coming-soon {
+
+    display: inline-block;
+
+    margin-top: 20px;
+
+    font-family: "Inter", sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    color: #999;
+
+}
+
+
+/* =========================================
+   MARKETS
+========================================= */
+
+.investment-markets {
+
+    padding: 140px 8vw;
+
+    background: var(--investment-cream);
+
+    display: grid;
+
+    grid-template-columns: 25% 75%;
+
+}
+
+
+.markets-content h2 {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(55px, 7vw, 100px);
+
+    font-weight: 400;
+
+    line-height: 0.9;
+
+    letter-spacing: -3px;
+
+    margin: 0 0 80px;
+
+}
+
+
+.markets-content h2 span {
+
+    display: block;
+
+    color: var(--investment-grey);
+
+}
+
+
+.markets-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    border-top: 1px solid var(--investment-line);
+
+}
+
+
+.market-item {
+
+    padding: 35px 30px 20px 0;
+
+    border-right: 1px solid var(--investment-line);
+
+    margin-right: 30px;
+
+}
+
+
+.market-item:last-child {
+
+    border-right: none;
+
+}
+
+
+.market-item span {
+
+    font-family: "Inter", sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    color: #999;
+
+}
+
+
+.market-item h3 {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 36px;
+
+    font-weight: 500;
+
+    margin: 35px 0 18px;
+
+}
+
+
+.market-item p {
+
+    font-family: "Inter", sans-serif;
+
+    font-size: 13px;
+
+    font-weight: 300;
+
+    line-height: 1.8;
+
+    color: #666;
+
+}
+
+
+/* =========================================
+   APPROACH
+========================================= */
+
+.investment-approach {
+
+    padding: 140px 8vw;
+
+    background: #ffffff;
+
+    display: grid;
+
+    grid-template-columns: 25% 75%;
+
+}
+
+
+.approach-content h2 {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(55px, 7vw, 100px);
+
+    font-weight: 400;
+
+    line-height: 0.9;
+
+    letter-spacing: -3px;
+
+    margin: 0 0 80px;
+
+}
+
+
+.approach-content h2 span {
+
+    color: var(--investment-grey);
+
+}
+
+
+.approach-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    border-top: 1px solid var(--investment-line);
+
+}
+
+
+.approach-item {
+
+    padding: 35px 30px 20px 0;
+
+    border-right: 1px solid var(--investment-line);
+
+    margin-right: 30px;
+
+}
+
+
+.approach-item:last-child {
+
+    border-right: none;
+
+}
+
+
+.approach-item span {
+
+    font-family: "Inter", sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    color: #999;
+
+}
+
+
+.approach-item h3 {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 32px;
+
+    font-weight: 500;
+
+    margin: 35px 0 18px;
+
+}
+
+
+.approach-item p {
+
+    font-family: "Inter", sans-serif;
+
+    font-size: 13px;
+
+    font-weight: 300;
+
+    line-height: 1.8;
+
+    color: #666;
+
+}
+
+
+/* =========================================
+   CONTACT
+========================================= */
+
+.investment-contact {
+
+    padding: 150px 8vw;
+
+    background: var(--investment-black);
+
+    color: white;
+
+    text-align: center;
+
+}
+
+
+.contact-inner {
+
+    max-width: 850px;
+
+    margin: auto;
+
+}
+
+
+.investment-contact h2 {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(55px, 8vw, 110px);
+
+    font-weight: 400;
+
+    line-height: 0.9;
+
+    letter-spacing: -3px;
+
+    margin: 25px 0 55px;
+
+}
+
+
+.investment-contact h2 span {
+
+    display: block;
+
+    color: #999;
+
+}
+
+
+.contact-button {
+
+    display: inline-block;
+
+    padding: 18px 35px;
+
+    border: 1px solid rgba(255,255,255,0.5);
+
+    color: white;
+
+    text-decoration: none;
+
+    font-family: "Inter", sans-serif;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    transition: all 0.3s ease;
+
+}
+
+
+.contact-button:hover {
+
+    background: white;
+
+    color: black;
+
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.investment-footer {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 28px 8vw;
+
+    background: #111;
+
+    color: #777;
+
+    border-top: 1px solid rgba(255,255,255,0.1);
+
+    font-family: "Inter", sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 1px;
+
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 900px) {
+
+    .investment-nav {
+
+        gap: 15px;
+
+    }
+
+
+    .investment-nav a {
+
+        font-size: 9px;
+
+    }
+
+
+    .investment-intro,
+    .investment-markets,
+    .investment-approach {
+
+        grid-template-columns: 1fr;
+
+        gap: 50px;
+
+    }
+
+
+    .focus-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .focus-main {
+
+        grid-column: span 1;
+
+        flex-direction: column;
+
+    }
+
+
+    .focus-image {
+
+        width: 100%;
+
+        height: 330px;
+
+    }
+
+
+    .focus-main .focus-content {
+
+        width: 100%;
+
+        padding: 45px;
+
+    }
+
+
+    .markets-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .market-item {
+
+        border-right: none;
+
+        border-bottom: 1px solid var(--investment-line);
+
+        padding-bottom: 35px;
+
+        margin-right: 0;
+
+        margin-bottom: 20px;
+
+    }
+
+
+    .approach-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .approach-item {
+
+        border-right: none;
+
+        border-bottom: 1px solid var(--investment-line);
+
+        padding-bottom: 35px;
+
+        margin-right: 0;
+
+        margin-bottom: 20px;
+
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .investment-header {
+
+        height: 70px;
+
+        padding: 0 6vw;
+
+    }
+
+
+    .investment-nav {
+
+        gap: 10px;
+
+    }
+
+
+    .investment-nav a {
+
+        font-size: 8px;
+
+        letter-spacing: 0.8px;
+
+    }
+
+
+    .investment-hero {
+
+        min-height: 75vh;
+
+        padding: 130px 7vw 80px;
+
+    }
+
+
+    .investment-hero h1 {
+
+        font-size: 78px;
+
+        letter-spacing: -3px;
+
+    }
+
+
+    .hero-number {
+
+        font-size: 60px;
+
+        right: 7vw;
+
+        bottom: 30px;
+
+    }
+
+
+    .investment-intro,
+    .investment-focus,
+    .investment-markets,
+    .investment-approach,
+    .investment-contact {
+
+        padding: 90px 7vw;
+
+    }
+
+
+    .focus-placeholder {
+
+        padding: 40px;
+
+        min-height: 350px;
+
+    }
+
+
+    .focus-placeholder .focus-content h3 {
+
+        font-size: 42px;
+
+    }
+
+
+    .investment-footer {
+
+        flex-direction: column;
+
+        gap: 10px;
+
+        padding: 25px 7vw;
+
+    }
+
+}
