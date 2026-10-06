@@ -10,11 +10,11 @@ name="viewport"
 content="width=device-width, initial-scale=1.0"
 >
 
-<title>Qatar | Medical Equipment | SA Azadipour</title>
+<title>Qatar | Medical Equipment & Healthcare Supply | SA Azadipour</title>
 
 <meta
 name="description"
-content="SA Azadipour — Medical equipment and healthcare supply opportunities in Qatar."
+content="SA Azadipour — Medical equipment, healthcare supplies, laboratory products and medical technology opportunities in Qatar."
 >
 
 <link
@@ -24,11 +24,291 @@ rel="stylesheet"
 
 <link rel="stylesheet" href="export.css">
 
+<style>
+
+/* ================================
+   QATAR MEDICAL MARKET
+================================ */
+
+.qatar-intro {
+    max-width: 850px;
+    margin-top: 35px;
+}
+
+.qatar-intro p {
+    font-size: 17px;
+    line-height: 1.9;
+}
+
+
+/* ================================
+   PRODUCT GRID
+================================ */
+
+.qatar-products-section {
+    margin-top: 100px;
+}
+
+.qatar-products-header {
+    margin-bottom: 55px;
+}
+
+.qatar-products-header .label {
+    margin-bottom: 18px;
+}
+
+.qatar-products-header h2 {
+    max-width: 900px;
+}
+
+
+.qatar-product-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: rgba(0,0,0,0.14);
+    border-top: 1px solid rgba(0,0,0,0.14);
+    border-left: 1px solid rgba(0,0,0,0.14);
+}
+
+
+.qatar-product-card {
+    background: #f7f6f2;
+    padding: 42px;
+    min-height: 260px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: 0.35s ease;
+}
+
+
+.qatar-product-card:hover {
+    background: #efeee9;
+    transform: translateY(-3px);
+}
+
+
+.qatar-product-number {
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    opacity: 0.55;
+}
+
+
+.qatar-product-card h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 34px;
+    font-weight: 500;
+    margin: 28px 0 14px;
+}
+
+
+.qatar-product-card p {
+    font-size: 14px;
+    line-height: 1.8;
+    max-width: 470px;
+    opacity: 0.75;
+}
+
+
+.qatar-product-list {
+    margin-top: 20px;
+    font-size: 13px;
+    line-height: 2;
+    letter-spacing: 0.03em;
+}
+
+
+/* ================================
+   MARKET SIGNALS
+================================ */
+
+.qatar-market-section {
+    margin-top: 120px;
+}
+
+
+.qatar-market-box {
+    border-top: 1px solid rgba(0,0,0,0.18);
+    border-bottom: 1px solid rgba(0,0,0,0.18);
+    padding: 55px 0;
+}
+
+
+.qatar-market-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+}
+
+
+.qatar-market-item {
+    display: flex;
+    gap: 25px;
+    padding: 24px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.12);
+}
+
+
+.qatar-market-item:last-child {
+    border-bottom: none;
+}
+
+
+.qatar-market-number {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 30px;
+    opacity: 0.45;
+}
+
+
+.qatar-market-item h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 27px;
+    font-weight: 500;
+    margin: 0 0 8px;
+}
+
+
+.qatar-market-item p {
+    font-size: 13px;
+    line-height: 1.8;
+    opacity: 0.72;
+    margin: 0;
+}
+
+
+/* ================================
+   BUSINESS MODEL
+================================ */
+
+.qatar-business {
+    margin-top: 120px;
+}
+
+
+.qatar-business-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(0,0,0,0.14);
+    border-top: 1px solid rgba(0,0,0,0.14);
+    border-left: 1px solid rgba(0,0,0,0.14);
+}
+
+
+.qatar-business-card {
+    background: #f7f6f2;
+    padding: 40px 32px;
+}
+
+
+.qatar-business-card span {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    opacity: 0.5;
+}
+
+
+.qatar-business-card h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 30px;
+    font-weight: 500;
+    margin: 20px 0 12px;
+}
+
+
+.qatar-business-card p {
+    font-size: 13px;
+    line-height: 1.8;
+    opacity: 0.7;
+}
+
+
+/* ================================
+   PRIORITY
+================================ */
+
+.qatar-priority {
+    margin-top: 120px;
+    padding: 70px 0;
+    border-top: 1px solid rgba(0,0,0,0.18);
+    border-bottom: 1px solid rgba(0,0,0,0.18);
+}
+
+
+.qatar-priority-content {
+    max-width: 950px;
+}
+
+
+.qatar-priority h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 48px;
+    font-weight: 500;
+    line-height: 1.1;
+    margin: 20px 0 30px;
+}
+
+
+.qatar-priority p {
+    font-size: 15px;
+    line-height: 1.9;
+    max-width: 800px;
+    opacity: 0.75;
+}
+
+
+.qatar-priority-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 35px;
+}
+
+
+.qatar-priority-list span {
+    border: 1px solid rgba(0,0,0,0.22);
+    padding: 11px 18px;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+}
+
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 850px) {
+
+    .qatar-product-grid,
+    .qatar-market-grid,
+    .qatar-business-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .qatar-product-card {
+        min-height: auto;
+    }
+
+    .qatar-priority h2 {
+        font-size: 38px;
+    }
+
+}
+
+</style>
+
 </head>
 
 
 <body>
 
+
+<!-- =========================================
+     NAVIGATION
+========================================= -->
 
 <header class="export-nav">
 
@@ -59,11 +339,16 @@ alt="SA Azadipour"
 </header>
 
 
+
+<!-- =========================================
+     HERO
+========================================= -->
+
 <section
 class="country-hero"
 style="
 background-image:
-url('https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=2200&q=90');
+url('https://images.unsplash.com/photo-1578895101408-1a36b834405b?auto=format&fit=crop&w=2200&q=90');
 "
 >
 
@@ -79,9 +364,10 @@ Qatar.
 
 <p>
 
-Developing opportunities for medical equipment,
-healthcare supplies and international business
-relationships in Qatar.
+Medical equipment.
+Healthcare supplies.
+Technology.
+International cooperation.
 
 </p>
 
@@ -89,6 +375,11 @@ relationships in Qatar.
 
 </section>
 
+
+
+<!-- =========================================
+     MARKET INTRODUCTION
+========================================= -->
 
 <section class="country-content">
 
@@ -117,132 +408,791 @@ Healthcare. Technology. Growth.
 </div>
 
 
-<div class="country-copy">
+<div class="country-copy qatar-intro">
 
 <p>
 
-Qatar is a market of interest for selected medical
-equipment, healthcare supplies and advanced
+Qatar represents a strategically important healthcare
+market in the Gulf, with strong investment in hospitals,
+healthcare infrastructure, medical technology and
+specialized clinical services.
+
+</p>
+
+
+<p>
+
+The market relies significantly on international
+medical technology, equipment and healthcare supplies,
+creating opportunities for qualified international
+suppliers and specialized distributors.
+
+</p>
+
+
+<p>
+
+SA Azadipour is exploring selected opportunities in
+medical equipment sourcing, healthcare supplies,
+laboratory products and advanced medical technologies.
+
+</p>
+
+</div>
+
+</div>
+
+
+
+<!-- =========================================
+     PRODUCTS
+========================================= -->
+
+<div class="qatar-products-section">
+
+
+<div class="qatar-products-header">
+
+<div class="label">
+SELECTED PRODUCT AREAS
+</div>
+
+<h2 class="big-title">
+
+Medical products
+<br>
+
+<em>for the Qatar market.</em>
+
+</h2>
+
+</div>
+
+
+
+<div class="qatar-product-grid">
+
+
+<!-- PRODUCT 01 -->
+
+<div class="qatar-product-card">
+
+<div>
+
+<div class="qatar-product-number">
+01 / MEDICAL CONSUMABLES
+</div>
+
+<h3>
+Medical Consumables
+</h3>
+
+<p>
+High-volume healthcare products used across
+hospitals, clinics and medical facilities.
+</p>
+
+</div>
+
+
+<div class="qatar-product-list">
+
+Syringes • Needles • IV Sets • Cannulas
+<br>
+Dressings • Disposable Medical Supplies
+
+</div>
+
+</div>
+
+
+
+<!-- PRODUCT 02 -->
+
+<div class="qatar-product-card">
+
+<div>
+
+<div class="qatar-product-number">
+02 / LABORATORY
+</div>
+
+<h3>
+Laboratory Supplies
+</h3>
+
+<p>
+Laboratory consumables and supporting products
+for clinical diagnostic environments.
+</p>
+
+</div>
+
+
+<div class="qatar-product-list">
+
+Reagents • Controls • Calibrators
+<br>
+Tubes • Laboratory Consumables • Accessories
+
+</div>
+
+</div>
+
+
+
+<!-- PRODUCT 03 -->
+
+<div class="qatar-product-card">
+
+<div>
+
+<div class="qatar-product-number">
+03 / DIABETES CARE
+</div>
+
+<h3>
+Diabetes Care
+</h3>
+
+<p>
+Selected products supporting diabetes management
+and routine clinical care.
+</p>
+
+</div>
+
+
+<div class="qatar-product-list">
+
+Insulin Pen Needles
+<br>
+Diabetes Care Supplies • Accessories
+
+</div>
+
+</div>
+
+
+
+<!-- PRODUCT 04 -->
+
+<div class="qatar-product-card">
+
+<div>
+
+<div class="qatar-product-number">
+04 / SURGICAL
+</div>
+
+<h3>
+Surgical Supplies
+</h3>
+
+<p>
+Products for surgical departments, operating rooms
+and hospital clinical environments.
+</p>
+
+</div>
+
+
+<div class="qatar-product-list">
+
+Surgical Consumables
+<br>
+Sterile Packs • Surgical Instruments
+
+</div>
+
+</div>
+
+
+
+<!-- PRODUCT 05 -->
+
+<div class="qatar-product-card">
+
+<div>
+
+<div class="qatar-product-number">
+05 / NURSING
+</div>
+
+<h3>
+Nursing & Patient Care
+</h3>
+
+<p>
+Essential products supporting nurses, patients
+and daily hospital operations.
+</p>
+
+</div>
+
+
+<div class="qatar-product-list">
+
+Nursing Supplies • Examination Products
+<br>
+Patient Care Equipment • Phlebotomy Equipment
+
+</div>
+
+</div>
+
+
+
+<!-- PRODUCT 06 -->
+
+<div class="qatar-product-card">
+
+<div>
+
+<div class="qatar-product-number">
+06 / DIAGNOSTIC
+</div>
+
+<h3>
+Diagnostic Equipment
+</h3>
+
+<p>
+Selected diagnostic and monitoring technologies
+for hospitals and healthcare facilities.
+</p>
+
+</div>
+
+
+<div class="qatar-product-list">
+
+Patient Monitoring • ECG
+<br>
+Ultrasound • Diagnostic Systems
+
+</div>
+
+</div>
+
+
+
+<!-- PRODUCT 07 -->
+
+<div class="qatar-product-card">
+
+<div>
+
+<div class="qatar-product-number">
+07 / RESPIRATORY
+</div>
+
+<h3>
+Respiratory & Life Support
+</h3>
+
+<p>
+Equipment and accessories supporting respiratory
+care and critical clinical environments.
+</p>
+
+</div>
+
+
+<div class="qatar-product-list">
+
+Respiratory Care
+<br>
+Oxygen Equipment • Clinical Accessories
+
+</div>
+
+</div>
+
+
+
+<!-- PRODUCT 08 -->
+
+<div class="qatar-product-card">
+
+<div>
+
+<div class="qatar-product-number">
+08 / CSSD
+</div>
+
+<h3>
+Sterilization & CSSD
+</h3>
+
+<p>
+Products supporting sterilization, infection control
+and central sterile services departments.
+</p>
+
+</div>
+
+
+<div class="qatar-product-list">
+
+Sterilization Equipment
+<br>
+Surgical Instruments • Sterile Supplies
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<!-- =========================================
+     MARKET SIGNALS
+========================================= -->
+
+<div class="qatar-market-section">
+
+
+<div class="label">
+MARKET SIGNALS
+</div>
+
+
+<h2 class="big-title">
+
+Where demand
+<br>
+
+<em>is visible.</em>
+
+</h2>
+
+
+<div class="qatar-market-box">
+
+
+<div class="qatar-market-grid">
+
+
+<div>
+
+
+<div class="qatar-market-item">
+
+<div class="qatar-market-number">
+01
+</div>
+
+<div>
+
+<h3>
+Medical Consumables
+</h3>
+
+<p>
+Recurring procurement of medical consumables
+creates opportunities for reliable suppliers
+with competitive pricing and consistent quality.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="qatar-market-item">
+
+<div class="qatar-market-number">
+02
+</div>
+
+<div>
+
+<h3>
+Laboratory Products
+</h3>
+
+<p>
+Clinical laboratories require recurring supplies
+including reagents, controls, calibrators,
+consumables and accessories.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="qatar-market-item">
+
+<div class="qatar-market-number">
+03
+</div>
+
+<div>
+
+<h3>
+Surgical Products
+</h3>
+
+<p>
+Hospitals continue to procure surgical items,
+sterile products and specialized clinical supplies.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<div>
+
+
+<div class="qatar-market-item">
+
+<div class="qatar-market-number">
+04
+</div>
+
+<div>
+
+<h3>
+Medical Equipment
+</h3>
+
+<p>
+Opportunities include selected hospital,
+diagnostic, monitoring and specialized equipment.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="qatar-market-item">
+
+<div class="qatar-market-number">
+05
+</div>
+
+<div>
+
+<h3>
+Nursing Supplies
+</h3>
+
+<p>
+Routine nursing and patient-care products represent
+an important recurring procurement category.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="qatar-market-item">
+
+<div class="qatar-market-number">
+06
+</div>
+
+<div>
+
+<h3>
+Physiotherapy & Rehabilitation
+</h3>
+
+<p>
+Specialized healthcare facilities create demand
+for rehabilitation and physiotherapy equipment.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- =========================================
+     BUSINESS MODEL
+========================================= -->
+
+<div class="qatar-business">
+
+
+<div class="label">
+OUR APPROACH
+</div>
+
+
+<h2 class="big-title">
+
+From supplier
+<br>
+
+<em>to healthcare market.</em>
+
+</h2>
+
+
+<div class="qatar-business-grid">
+
+
+<div class="qatar-business-card">
+
+<span>
+01 / SOURCING
+</span>
+
+<h3>
+International Suppliers
+</h3>
+
+<p>
+
+Identification of qualified manufacturers and
+suppliers for selected medical products and
 healthcare technologies.
 
 </p>
 
+</div>
+
+
+
+<div class="qatar-business-card">
+
+<span>
+02 / MARKET ACCESS
+</span>
+
+<h3>
+Qatar Partners
+</h3>
+
 <p>
 
-SA Azadipour is exploring opportunities with
-qualified suppliers, healthcare organizations,
-distributors and commercial partners.
+Exploring cooperation with qualified distributors,
+healthcare organizations, procurement partners
+and commercial representatives.
 
 </p>
 
+</div>
+
+
+
+<div class="qatar-business-card">
+
+<span>
+03 / SUPPLY
+</span>
+
+<h3>
+Long-Term Cooperation
+</h3>
+
 <p>
 
-Product supply and market development are considered
-according to applicable Qatari regulatory, import
-and registration requirements.
+The objective is not simply a single shipment,
+but the development of reliable and repeatable
+medical supply relationships.
 
 </p>
+
+</div>
+
 
 </div>
 
 </div>
 
 
-<br><br><br><br>
+
+<!-- =========================================
+     PRIORITY PRODUCTS
+========================================= -->
+
+<div class="qatar-priority">
 
 
-<div class="country-two-column">
+<div class="qatar-priority-content">
+
+<div class="label">
+INITIAL PRIORITY
+</div>
+
+
+<h2>
+
+Products with
+<br>
+
+<em>repeat-demand potential.</em>
+
+</h2>
+
+
+<p>
+
+For initial market development, priority can be
+given to products with recurring consumption,
+established clinical use and practical distribution
+requirements rather than highly complex equipment
+requiring significant installation and after-sales
+infrastructure.
+
+</p>
+
+
+<div class="qatar-priority-list">
+
+<span>Medical Consumables</span>
+
+<span>Laboratory Consumables</span>
+
+<span>Reagents</span>
+
+<span>Calibrators</span>
+
+<span>Controls</span>
+
+<span>Surgical Supplies</span>
+
+<span>Nursing Supplies</span>
+
+<span>Diabetes Care</span>
+
+<span>Phlebotomy Equipment</span>
+
+<span>Selected Medical Equipment</span>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- =========================================
+     REGULATORY NOTE
+========================================= -->
+
+<div
+class="country-two-column"
+style="margin-top:120px;"
+>
+
+
+<div>
+
+<div class="label">
+REGULATORY & COMPLIANCE
+</div>
+
+<h2 class="big-title">
+
+Quality.
+<br>
+
+<em>Compliance first.</em>
+
+</h2>
+
+</div>
 
 
 <div class="country-copy">
 
-<div class="label">
-AREAS OF INTEREST
-</div>
+<p>
 
-<div class="country-list">
+Medical products supplied to Qatar must be assessed
+according to the applicable Qatari regulatory,
+registration, import and procurement requirements.
 
-
-<div class="country-list-item">
-<span>Hospital Equipment</span>
-<span>→</span>
-</div>
+</p>
 
 
-<div class="country-list-item">
-<span>Medical Devices</span>
-<span>→</span>
-</div>
+<p>
+
+Supplier qualification, product documentation,
+certifications, technical specifications and,
+where applicable, local representation are important
+parts of the market-entry process.
+
+</p>
 
 
-<div class="country-list-item">
-<span>Healthcare Supplies</span>
-<span>→</span>
-</div>
+<p>
 
+SA Azadipour focuses on identifying commercially
+viable opportunities while maintaining appropriate
+regulatory and quality considerations.
 
-<div class="country-list-item">
-<span>Clinical Equipment</span>
-<span>→</span>
-</div>
-
-
-<div class="country-list-item">
-<span>Diagnostic Equipment</span>
-<span>→</span>
-</div>
-
-
-<div class="country-list-item">
-<span>Medical Technologies</span>
-<span>→</span>
-</div>
-
+</p>
 
 </div>
 
 </div>
 
 
-<div
-class="country-image-block"
-style="
-background-image:
-url('https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1800&q=90');
-"
-></div>
-
-
-</div>
 
 </section>
 
 
+
+<!-- =========================================
+     CLOSING
+========================================= -->
+
 <section class="country-closing" id="contact">
 
+
 <div class="label">
-QATAR • INTERNATIONAL BUSINESS
+QATAR • MEDICAL BUSINESS
 </div>
+
 
 <h2>
 
-Explore the
+Build the
 
 <br>
 
 <em>
-possibility.
+connection.
 </em>
 
 </h2>
 
+
 <p>
 
-For medical equipment sourcing, export opportunities
-or potential international cooperation in Qatar,
-contact us directly.
+For medical equipment sourcing, healthcare supply,
+distribution opportunities or international
+cooperation in Qatar, contact us directly.
 
 </p>
+
 
 <a
 href="mailto:herzchirurgsinaazadipour@gmail.com"
@@ -253,22 +1203,33 @@ herzchirurgsinaazadipour@gmail.com
 
 </a>
 
+
 </section>
 
 
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
 <footer class="export-footer">
 
-<span>SA AZADIPOUR</span>
+<span>
+SA AZADIPOUR
+</span>
+
 
 <span>
-Qatar • Medical Equipment
+Qatar • Medical Equipment & Healthcare
 </span>
+
 
 <span>
 © <span id="year"></span>
 </span>
 
 </footer>
+
 
 
 <script>
@@ -280,4 +1241,5 @@ new Date().getFullYear();
 
 
 </body>
+
 </html>
