@@ -9,48 +9,587 @@
   <title>Azadipour | Healthcare Technology & GCC Strategy</title>
 
   <link rel="stylesheet" href="style.css">
+
+  <!-- =========================================================
+       AZADIPOUR INTRO
+       ========================================================= -->
+
+  <style>
+
+    /* =========================================================
+       INTRO SCREEN
+       ========================================================= */
+
+    #azadipour-intro {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+
+      background: #000;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      overflow: hidden;
+
+      opacity: 1;
+      visibility: visible;
+
+      transition:
+        opacity 1.2s cubic-bezier(.77,0,.18,1),
+        visibility 1.2s;
+    }
+
+
+    #azadipour-intro.intro-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+
+    /* subtle cinematic light */
+
+    .intro-atmosphere {
+      position: absolute;
+      width: 70vw;
+      height: 70vw;
+
+      max-width: 900px;
+      max-height: 900px;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(255,255,255,.045) 0%,
+          rgba(255,255,255,.018) 28%,
+          rgba(0,0,0,0) 70%
+        );
+
+      filter: blur(20px);
+
+      opacity: 0;
+
+      animation:
+        introAtmosphere 2.8s ease forwards;
+    }
+
+
+    @keyframes introAtmosphere {
+
+      0% {
+        opacity: 0;
+        transform: scale(.72);
+      }
+
+      35% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: .75;
+        transform: scale(1);
+      }
+
+    }
+
+
+    /* =========================================================
+       LOGO AREA
+       ========================================================= */
+
+    .intro-logo-wrap {
+      position: relative;
+
+      width: min(76vw, 560px);
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      transform: translateY(10px);
+
+      opacity: 0;
+
+      animation:
+        introLogoContainer 1s
+        cubic-bezier(.22,1,.36,1)
+        .15s forwards;
+    }
+
+
+    @keyframes introLogoContainer {
+
+      from {
+        opacity: 0;
+        transform: translateY(25px) scale(.97);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+
+    }
+
+
+    /* =========================================================
+       LOGO IMAGE
+       ========================================================= */
+
+    .intro-logo-reveal {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      /*
+        The image itself is revealed vertically.
+        The moving light creates the feeling of the logo
+        being drawn/revealed by a continuous stroke.
+      */
+    }
+
+
+    .intro-logo-reveal img {
+      display: block;
+
+      width: 100%;
+      height: auto;
+
+      opacity: 0;
+
+      transform: scale(.985);
+
+      filter:
+        brightness(1.04)
+        contrast(1.04);
+
+      animation:
+        logoAppear 2.35s
+        cubic-bezier(.65,0,.35,1)
+        .45s forwards;
+    }
+
+
+    @keyframes logoAppear {
+
+      0% {
+        opacity: 0;
+
+        clip-path: inset(
+          0 100% 0 0
+        );
+
+        transform: scale(.985);
+      }
+
+      12% {
+        opacity: 1;
+      }
+
+      55% {
+        clip-path: inset(
+          0 43% 0 0
+        );
+      }
+
+      82% {
+        clip-path: inset(
+          0 10% 0 0
+        );
+      }
+
+      100% {
+        opacity: 1;
+
+        clip-path: inset(
+          0 0 0 0
+        );
+
+        transform: scale(1);
+      }
+
+    }
+
+
+    /* =========================================================
+       MOVING LIGHT / PEN EFFECT
+       ========================================================= */
+
+    .intro-pen {
+      position: absolute;
+
+      top: -15%;
+
+      left: -12%;
+
+      width: 3px;
+      height: 130%;
+
+      background:
+        linear-gradient(
+          to bottom,
+          transparent 0%,
+          rgba(255,255,255,0) 20%,
+          rgba(255,255,255,.95) 48%,
+          rgba(255,255,255,.35) 52%,
+          rgba(255,255,255,0) 80%,
+          transparent 100%
+        );
+
+      box-shadow:
+        0 0 16px rgba(255,255,255,.65),
+        0 0 40px rgba(255,255,255,.12);
+
+      opacity: 0;
+
+      transform: rotate(14deg);
+
+      animation:
+        penReveal 2.25s
+        cubic-bezier(.65,0,.35,1)
+        .55s forwards;
+
+      pointer-events: none;
+    }
+
+
+    @keyframes penReveal {
+
+      0% {
+        left: -12%;
+        opacity: 0;
+      }
+
+      8% {
+        opacity: .95;
+      }
+
+      75% {
+        opacity: .8;
+      }
+
+      100% {
+        left: 112%;
+        opacity: 0;
+      }
+
+    }
+
+
+    /* =========================================================
+       WORDMARK
+       ========================================================= */
+
+    .intro-wordmark {
+
+      margin-top: -2px;
+
+      color: #f4f4f2;
+
+      font-family:
+        "Times New Roman",
+        Times,
+        serif;
+
+      font-size: clamp(
+        20px,
+        3.2vw,
+        34px
+      );
+
+      font-weight: 400;
+
+      letter-spacing:
+        clamp(
+          7px,
+          1.25vw,
+          13px
+        );
+
+      padding-left:
+        clamp(
+          7px,
+          1.25vw,
+          13px
+        );
+
+      white-space: nowrap;
+
+      opacity: 0;
+
+      transform:
+        translateY(18px)
+        scale(.98);
+
+      filter: blur(5px);
+
+      animation:
+        wordmarkReveal 1.4s
+        cubic-bezier(.22,1,.36,1)
+        2.25s forwards;
+    }
+
+
+    @keyframes wordmarkReveal {
+
+      0% {
+        opacity: 0;
+
+        transform:
+          translateY(18px)
+          scale(.98);
+
+        filter: blur(5px);
+
+        letter-spacing:
+          clamp(
+            11px,
+            1.8vw,
+            19px
+          );
+      }
+
+      55% {
+        opacity: .9;
+      }
+
+      100% {
+        opacity: 1;
+
+        transform:
+          translateY(0)
+          scale(1);
+
+        filter: blur(0);
+
+        letter-spacing:
+          clamp(
+            7px,
+            1.25vw,
+            13px
+          );
+      }
+
+    }
+
+
+    /* =========================================================
+       SMALL LINE UNDER LOGO
+       ========================================================= */
+
+    .intro-line {
+      width: 0;
+      height: 1px;
+
+      margin-top: 25px;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(255,255,255,.7),
+          transparent
+        );
+
+      animation:
+        introLine 1.2s
+        cubic-bezier(.77,0,.18,1)
+        3s forwards;
+    }
+
+
+    @keyframes introLine {
+
+      from {
+        width: 0;
+        opacity: 0;
+      }
+
+      to {
+        width: 120px;
+        opacity: .55;
+      }
+
+    }
+
+
+    /* =========================================================
+       INTRO EXIT
+       ========================================================= */
+
+    #azadipour-intro.exit {
+
+      opacity: 0;
+
+      visibility: hidden;
+
+      transition:
+        opacity 1.15s
+        cubic-bezier(.77,0,.18,1);
+    }
+
+
+    /* =========================================================
+       MOBILE
+       ========================================================= */
+
+    @media (max-width: 600px) {
+
+      .intro-logo-wrap {
+        width: 84vw;
+      }
+
+      .intro-wordmark {
+        font-size: 19px;
+        letter-spacing: 6px;
+        padding-left: 6px;
+      }
+
+      .intro-line {
+        margin-top: 20px;
+      }
+
+    }
+
+
+    /* =========================================================
+       REDUCED MOTION
+       ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      #azadipour-intro {
+        display: none;
+      }
+
+    }
+
+  </style>
+
 </head>
 
+
 <body>
+
+
+<!-- =========================================================
+     AZADIPOUR CINEMATIC INTRO
+     ========================================================= -->
+
+<div id="azadipour-intro"
+     aria-hidden="true">
+
+  <div class="intro-atmosphere"></div>
+
+  <div class="intro-logo-wrap">
+
+    <div class="intro-logo-reveal">
+
+      <img
+        src="assets/logo-transparent.png"
+        alt="Azadipour">
+
+      <span class="intro-pen"></span>
+
+    </div>
+
+
+    <div class="intro-wordmark">
+      AZADIPOUR
+    </div>
+
+
+    <div class="intro-line"></div>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+     NAVIGATION
+     ========================================================= -->
 
 <header class="navbar">
 
   <a class="brand" href="index.html">
-    <img src="assets/logo-transparent.png" alt="Azadipour">
-    <span class="brand-word">AZADIPOUR</span>
+
+    <img
+      src="assets/logo-transparent.png"
+      alt="Azadipour">
+
+    <span class="brand-word">
+      AZADIPOUR
+    </span>
+
   </a>
 
-  <button class="menu-toggle"
-          aria-label="Open navigation"
-          aria-expanded="false">
+
+  <button
+    class="menu-toggle"
+    aria-label="Open navigation"
+    aria-expanded="false">
+
     <span></span>
     <span></span>
     <span></span>
+
   </button>
 
+
   <nav class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="investment.html">Investment</a>
-    <a href="import.html">Import</a>
-    <a href="export.html">GCC Markets</a>
-    <a href="index.html#contact">Contact</a>
+
+    <a href="index.html">
+      Home
+    </a>
+
+    <a href="investment.html">
+      Investment
+    </a>
+
+    <a href="import.html">
+      Import
+    </a>
+
+    <a href="export.html">
+      GCC Markets
+    </a>
+
+    <a href="index.html#contact">
+      Contact
+    </a>
+
   </nav>
 
-  <a class="nav-cta"
-     href="mailto:herzchirurgsinaazadipour@gmail.com">
+
+  <a
+    class="nav-cta"
+    href="mailto:herzchirurgsinaazadipour@gmail.com">
+
     Strategic Partnership
+
   </a>
 
 </header>
 
 
-<!-- HERO -->
+<!-- =========================================================
+     HERO
+     ========================================================= -->
 
 <section class="hero">
 
-  <div class="hero-bg"
-       style="background-image:url('assets/investment-hero.jpg')">
+  <div
+    class="hero-bg"
+    style="background-image:url('assets/investment-hero.jpg')">
   </div>
+
 
   <div class="hero-content reveal">
 
@@ -58,10 +597,12 @@
       OMAN-REGISTERED · GCC HEALTHCARE PLATFORM
     </div>
 
+
     <h1>
       Healthcare<br>
       <em>with direction.</em>
     </h1>
+
 
     <p>
       Azadipour connects international medical technology,
@@ -69,28 +610,46 @@
       opportunities across Saudi Arabia, Oman, Qatar and Bahrain.
     </p>
 
+
     <div class="hero-actions">
 
-      <a class="btn" href="investment.html">
+      <a
+        class="btn"
+        href="investment.html">
+
         Explore Investment
         <span>→</span>
+
       </a>
 
-      <a class="btn secondary"
-         href="investment-robotics.html">
+
+      <a
+        class="btn secondary"
+        href="investment-robotics.html">
+
         Robotic Surgery
+
       </a>
 
     </div>
 
+
     <div class="market-line">
+
       <span>SAUDI ARABIA</span>
+
       <i></i>
+
       <span>OMAN</span>
+
       <i></i>
+
       <span>QATAR</span>
+
       <i></i>
+
       <span>BAHRAIN</span>
+
     </div>
 
   </div>
@@ -98,7 +657,9 @@
 </section>
 
 
-<!-- POSITION -->
+<!-- =========================================================
+     POSITION
+     ========================================================= -->
 
 <section class="section">
 
@@ -108,19 +669,25 @@
       01 / POSITION
     </div>
 
+
     <div>
 
       <h2 class="section-title">
+
         A regional platform for
         <em>healthcare innovation.</em>
+
       </h2>
 
+
       <p class="lead">
+
         We work at the intersection of medical technology,
         healthcare development and commercial strategy —
         helping international companies evaluate the GCC,
         identify relevant opportunities and build credible
         pathways into the region.
+
       </p>
 
     </div>
@@ -130,11 +697,14 @@
 </section>
 
 
-<!-- BUSINESS -->
+<!-- =========================================================
+     BUSINESS
+     ========================================================= -->
 
 <section class="section dark-band">
 
   <div class="container">
+
 
     <div class="section-head reveal">
 
@@ -142,25 +712,37 @@
         02 / BUSINESS
       </div>
 
+
       <div>
+
         <h2 class="section-title">
+
           Four strategic
           <em>pillars.</em>
+
         </h2>
+
       </div>
 
     </div>
 
 
-    <div class="grid grid-4"
-         style="margin-top:55px">
+    <div
+      class="grid grid-4"
+      style="margin-top:55px">
 
-      <a class="card reveal"
-         href="investment-robotics.html">
 
-        <span class="num">01</span>
+      <a
+        class="card reveal"
+        href="investment-robotics.html">
 
-        <h3>Robotic Surgery</h3>
+        <span class="num">
+          01
+        </span>
+
+        <h3>
+          Robotic Surgery
+        </h3>
 
         <p>
           Advanced surgical robotics, telesurgery
@@ -170,12 +752,17 @@
       </a>
 
 
-      <a class="card reveal"
-         href="investment.html#smart-or">
+      <a
+        class="card reveal"
+        href="investment.html#smart-or">
 
-        <span class="num">02</span>
+        <span class="num">
+          02
+        </span>
 
-        <h3>Smart OR</h3>
+        <h3>
+          Smart OR
+        </h3>
 
         <p>
           Surgical intelligence, connected operating
@@ -185,12 +772,17 @@
       </a>
 
 
-      <a class="card reveal"
-         href="investment.html#projects">
+      <a
+        class="card reveal"
+        href="investment.html#projects">
 
-        <span class="num">03</span>
+        <span class="num">
+          03
+        </span>
 
-        <h3>Healthcare Projects</h3>
+        <h3>
+          Healthcare Projects
+        </h3>
 
         <p>
           Project development, medical equipment
@@ -200,12 +792,17 @@
       </a>
 
 
-      <a class="card reveal"
-         href="investment.html#partnerships">
+      <a
+        class="card reveal"
+        href="investment.html#partnerships">
 
-        <span class="num">04</span>
+        <span class="num">
+          04
+        </span>
 
-        <h3>Partnerships</h3>
+        <h3>
+          Partnerships
+        </h3>
 
         <p>
           Structured market development with
@@ -221,31 +818,42 @@
 </section>
 
 
-<!-- GLOBAL MEDTECH -->
+<!-- =========================================================
+     GLOBAL MEDTECH
+     ========================================================= -->
 
 <section class="split">
 
-  <div class="split-media"
-       style="background-image:url('assets/surgical-robotics.jpg')">
+
+  <div
+    class="split-media"
+    style="background-image:url('assets/surgical-robotics.jpg')">
   </div>
 
 
   <div class="split-copy reveal">
 
+
     <div class="eyebrow">
       FOR GLOBAL MEDTECH COMPANIES
     </div>
 
+
     <h2>
+
       From technology<br>
       <em>to market.</em>
+
     </h2>
 
+
     <p>
+
       Azadipour is designed to be more than a trading
       intermediary. We focus on opportunity discovery,
       stakeholder engagement and project development —
       with a long-term regional perspective.
+
     </p>
 
 
@@ -274,9 +882,12 @@
     </ul>
 
 
-    <a class="btn"
-       href="index.html#contact">
+    <a
+      class="btn"
+      href="index.html#contact">
+
       Start a Conversation →
+
     </a>
 
   </div>
@@ -284,30 +895,44 @@
 </section>
 
 
-<!-- REGION -->
+<!-- =========================================================
+     REGION
+     ========================================================= -->
 
-<section class="section" id="network">
+<section
+  class="section"
+  id="network">
+
 
   <div class="container">
 
+
     <div class="section-head reveal">
+
 
       <div class="section-index">
         03 / REGION
       </div>
 
+
       <div>
 
+
         <h2 class="section-title">
+
           Four markets.<br>
           <em>One regional strategy.</em>
+
         </h2>
 
+
         <p class="lead">
+
           Our primary GCC focus is Saudi Arabia, Oman,
           Qatar and Bahrain — with each market evaluated
           according to healthcare priorities, project
           opportunities, procurement pathways and technology fit.
+
         </p>
 
       </div>
@@ -315,16 +940,22 @@
     </div>
 
 
-    <div class="grid grid-4"
-         style="margin-top:55px">
+    <div
+      class="grid grid-4"
+      style="margin-top:55px">
 
 
-      <a class="card reveal"
-         href="saudi-arabia.html">
+      <a
+        class="card reveal"
+        href="saudi-arabia.html">
 
-        <span class="num">01</span>
+        <span class="num">
+          01
+        </span>
 
-        <h3>Saudi Arabia</h3>
+        <h3>
+          Saudi Arabia
+        </h3>
 
         <p>
           Healthcare transformation, advanced surgery
@@ -334,12 +965,17 @@
       </a>
 
 
-      <a class="card reveal"
-         href="oman.html">
+      <a
+        class="card reveal"
+        href="oman.html">
 
-        <span class="num">02</span>
+        <span class="num">
+          02
+        </span>
 
-        <h3>Oman</h3>
+        <h3>
+          Oman
+        </h3>
 
         <p>
           Regional base, healthcare projects
@@ -349,12 +985,17 @@
       </a>
 
 
-      <a class="card reveal"
-         href="qatar.html">
+      <a
+        class="card reveal"
+        href="qatar.html">
 
-        <span class="num">03</span>
+        <span class="num">
+          03
+        </span>
 
-        <h3>Qatar</h3>
+        <h3>
+          Qatar
+        </h3>
 
         <p>
           High-value healthcare institutions
@@ -364,12 +1005,17 @@
       </a>
 
 
-      <a class="card reveal"
-         href="bahrain.html">
+      <a
+        class="card reveal"
+        href="bahrain.html">
 
-        <span class="num">04</span>
+        <span class="num">
+          04
+        </span>
 
-        <h3>Bahrain</h3>
+        <h3>
+          Bahrain
+        </h3>
 
         <p>
           Compact, connected market with
@@ -385,30 +1031,46 @@
 </section>
 
 
-<!-- CONTACT -->
+<!-- =========================================================
+     CONTACT
+     ========================================================= -->
 
-<section class="cta" id="contact">
+<section
+  class="cta"
+  id="contact">
+
 
   <div class="container reveal">
+
 
     <div class="eyebrow">
       PRIVATE & STRATEGIC INQUIRIES
     </div>
 
+
     <h2>
+
       Let’s discuss the
       <em>right opportunity.</em>
+
     </h2>
 
+
     <p>
+
       For technology partnerships, healthcare projects,
       investment opportunities, medical equipment supply
       or GCC market development.
+
     </p>
 
-    <a class="btn"
-       href="mailto:herzchirurgsinaazadipour@gmail.com?subject=Strategic%20Partnership%20Inquiry%20%E2%80%94%20Azadipour">
+
+    <a
+      class="btn"
+      href="mailto:herzchirurgsinaazadipour@gmail.com?subject=Strategic%20Partnership%20Inquiry%20%E2%80%94%20Azadipour">
+
       Contact Azadipour →
+
     </a>
 
   </div>
@@ -416,17 +1078,25 @@
 </section>
 
 
-<!-- FOOTER -->
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
 
 <footer class="footer">
 
+
   <div class="container">
+
 
     <div class="footer-top">
 
+
       <div>
 
-        <h4>Azadipour</h4>
+        <h4>
+          Azadipour
+        </h4>
+
 
         <p>
           Oman-registered healthcare &
@@ -438,21 +1108,26 @@
 
       <div class="footer-links">
 
+
         <a href="investment.html">
           Investment
         </a>
+
 
         <a href="investment-robotics.html">
           Robotic Surgery
         </a>
 
+
         <a href="import.html">
           Import
         </a>
 
+
         <a href="export.html">
           GCC Markets
         </a>
+
 
         <a href="index.html#contact">
           Contact
@@ -465,13 +1140,19 @@
 
     <div class="footer-bottom">
 
-      <span>
-        © <span data-year></span>
-        Azadipour. All rights reserved.
-      </span>
 
       <span>
+
+        © <span data-year></span>
+        Azadipour. All rights reserved.
+
+      </span>
+
+
+      <span>
+
         Oman · Saudi Arabia · Qatar · Bahrain
+
       </span>
 
     </div>
@@ -481,7 +1162,82 @@
 </footer>
 
 
+<!-- =========================================================
+     ORIGINAL SITE SCRIPT
+     ========================================================= -->
+
 <script src="script.js"></script>
+
+
+<!-- =========================================================
+     AZADIPOUR INTRO SCRIPT
+     ========================================================= -->
+
+<script>
+
+(function () {
+
+  const intro =
+    document.getElementById("azadipour-intro");
+
+  if (!intro) return;
+
+
+  /*
+   * INTRO TIMELINE
+   *
+   * Logo reveal:
+   * approximately 2.8 seconds
+   *
+   * Wordmark:
+   * approximately 2.25–3.6 seconds
+   *
+   * Exit:
+   * approximately 4.4 seconds
+   */
+
+
+  window.addEventListener("load", function () {
+
+    setTimeout(function () {
+
+      intro.classList.add("exit");
+
+    }, 4400);
+
+
+    setTimeout(function () {
+
+      intro.style.display = "none";
+
+    }, 5700);
+
+  });
+
+
+  /*
+   * If the visitor returns using browser back/forward,
+   * don't trap them behind the intro.
+   */
+
+  window.addEventListener(
+    "pageshow",
+    function (event) {
+
+      if (event.persisted) {
+
+        intro.style.display = "none";
+
+      }
+
+    }
+  );
+
+
+})();
+
+</script>
+
 
 </body>
 </html>
