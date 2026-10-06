@@ -1,128 +1,124 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener('DOMContentLoaded', () => {
 
-    // Navbar shadow / background on scroll
-    const navbar = document.querySelector(".navbar");
+  /* MOBILE NAVIGATION */
 
-    function handleScroll() {
-        if (!navbar) return;
+  const toggle = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('.nav-links');
 
-        if (window.scrollY > 40) {
-            navbar.classList.add("scrolled");
-        } else {
-            navbar.classList.remove("scrolled");
-        }
-    }
+  if (toggle && nav) {
 
-    window.addEventListener("scroll", handleScroll);
-    handleScroll();
+    toggle.addEventListener('click', () => {
 
+      nav.classList.toggle('open');
 
-    // Mobile menu
-    const menuToggle = document.querySelector(".menu-toggle");
-    const navLinks = document.querySelector(".nav-links");
+      toggle.setAttribute(
+        'aria-expanded',
+        nav.classList.contains('open')
+      );
 
-    if (menuToggle && navLinks) {
-        menuToggle.addEventListener("click", function () {
-            navLinks.classList.toggle("open");
-            menuToggle.classList.toggle("active");
-        });
-
-        navLinks.querySelectorAll("a").forEach(function (link) {
-            link.addEventListener("click", function () {
-                navLinks.classList.remove("open");
-                menuToggle.classList.remove("active");
-            });
-        });
-    }
-
-
-    // Smooth scrolling for internal links
-    document.querySelectorAll('a[href^="#"]').forEach(function (link) {
-        link.addEventListener("click", function (event) {
-
-            const targetId = this.getAttribute("href");
-
-            if (!targetId || targetId === "#") return;
-
-            const target = document.querySelector(targetId);
-
-            if (target) {
-                event.preventDefault();
-
-                target.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start"
-                });
-            }
-        });
     });
 
 
-    // Reveal animation
-    const revealElements = document.querySelectorAll(
-        ".reveal, .business-card, .section-title, .about-content, .contact-box"
-    );
+    nav.querySelectorAll('a').forEach(link => {
 
-    if ("IntersectionObserver" in window) {
+      link.addEventListener('click', () => {
+        nav.classList.remove('open');
 
-        const observer = new IntersectionObserver(
-            function (entries, observer) {
-
-                entries.forEach(function (entry) {
-
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("visible");
-                        observer.unobserve(entry.target);
-
-                    }
-
-                });
-
-            },
-            {
-                threshold: 0.12
-            }
+        toggle.setAttribute(
+          'aria-expanded',
+          'false'
         );
+      });
 
-        revealElements.forEach(function (element) {
-            observer.observe(element);
-        });
-
-    } else {
-
-        revealElements.forEach(function (element) {
-            element.classList.add("visible");
-        });
-
-    }
-
-
-    // Current year in footer
-    const yearElements = document.querySelectorAll("[data-year]");
-
-    yearElements.forEach(function (element) {
-        element.textContent = new Date().getFullYear();
     });
 
+  }
 
-    // Active navigation link
-    const currentPage = window.location.pathname.split("/").pop() || "index.html";
 
-    document.querySelectorAll(".nav-links a").forEach(function (link) {
+  /* SCROLL REVEAL */
 
-        const href = link.getAttribute("href");
+  const observer = new IntersectionObserver(
+    entries => {
 
-        if (!href) return;
+      entries.forEach(entry => {
 
-        const linkPage = href.split("/").pop().split("#")[0];
-
-        if (
-            linkPage === currentPage ||
-            (currentPage === "" && linkPage === "index.html")
-        ) {
-            link.classList.add("active");
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
         }
 
+      });
+
+    },
+    {
+      threshold:0.08
+    }
+  );
+
+
+  document
+    .querySelectorAll('.reveal')
+    .forEach(element => {
+      observer.observe(element);
     });
+
+
+  /* CURRENT YEAR */
+
+  document
+    .querySelectorAll('[data-year]')
+    .forEach(element => {
+      element.textContent = new Date().getFullYear();
+    });
+
+
+  /* PRODUCT / ORDER FORM */
+
+  const form = document.querySelector('[data-order-form]');
+
+  if (form) {
+
+    form.addEventListener('submit', event => {
+
+      const action =
+        form.getAttribute('action') || '';
+
+
+      /*
+       * Until a real Formspree ID is inserted,
+       * the form automatically opens the user's
+       * email client with the submitted information.
+       */
+
+      if (action.includes('YOUR_FORM_ID')) {
+
+        event.preventDefault();
+
+        const formData =
+          new FormData(form);
+
+        const subject =
+          encodeURIComponent(
+            'Azadipour — New Product / Order Request'
+          );
+
+        let body = '';
+
+        for (const [key, value]
+          of formData.entries()) {
+
+          body += `${key}: ${value}\n`;
+
+        }
+
+        window.location.href =
+          `mailto:herzchirurgsinaazadipour@gmail.com` +
+          `?subject=${subject}` +
+          `&body=${encodeURIComponent(body)}`;
+
+      }
+
+    });
+
+  }
 
 });
