@@ -1,0 +1,1145 @@
+/* =========================================================
+   SAUDI ARABIA PAGE
+   SA AZADIPOUR
+========================================================= */
+
+
+.saudi-hero {
+
+  position: relative;
+
+  min-height: 100vh;
+
+  display: flex;
+
+  align-items: center;
+
+  padding: 150px 8vw 100px;
+
+  overflow: hidden;
+
+  background: #050505;
+
+}
+
+
+.saudi-hero-image {
+
+  position: absolute;
+
+  inset: 0;
+
+  background-image:
+    url("assets/saudi-arabia.jpg");
+
+  background-size: cover;
+
+  background-position: center;
+
+  transform: scale(1.03);
+
+}
+
+
+.saudi-hero-overlay {
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0,0,0,.94),
+      rgba(0,0,0,.70) 45%,
+      rgba(0,0,0,.25)
+    );
+
+}
+
+
+.saudi-hero-watermark {
+
+  position: absolute;
+
+  width: min(900px,95vw);
+
+  right: -170px;
+
+  top: 50%;
+
+  transform:
+    translateY(-50%);
+
+  opacity: .055;
+
+}
+
+
+.saudi-hero-watermark img {
+  width: 100%;
+}
+
+
+.saudi-hero-content {
+
+  position: relative;
+
+  z-index: 3;
+
+  max-width: 900px;
+
+}
+
+
+.saudi-eyebrow {
+
+  margin-bottom: 25px;
+
+  color: #aaa;
+
+  font-size: 9px;
+
+  letter-spacing: 4px;
+
+  text-transform: uppercase;
+
+}
+
+
+.saudi-hero h1 {
+
+  font-family: var(--serif);
+
+  font-size:
+    clamp(75px,11vw,155px);
+
+  line-height: .78;
+
+  font-weight: 300;
+
+  letter-spacing: -5px;
+
+}
+
+
+.saudi-hero h1 em {
+
+  display: block;
+
+  font-style: italic;
+
+  font-weight: 300;
+
+}
+
+
+.saudi-hero-copy {
+
+  max-width: 550px;
+
+  margin-top: 45px;
+
+  color: #ccc;
+
+  font-size: 14px;
+
+  line-height: 1.9;
+
+}
+
+
+.saudi-location {
+
+  position: absolute;
+
+  right: 8vw;
+
+  bottom: 45px;
+
+  z-index: 3;
+
+  color: #777;
+
+  font-size: 8px;
+
+  letter-spacing: 3px;
+
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.saudi-intro {
+
+  background: #050505;
+
+}
+
+
+.saudi-intro-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap: 120px;
+
+}
+
+
+.saudi-intro h2 {
+
+  max-width: 700px;
+
+  font-family: var(--serif);
+
+  font-size:
+    clamp(60px,8vw,110px);
+
+  line-height: .85;
+
+  font-weight: 300;
+
+  letter-spacing: -3px;
+
+}
+
+
+.saudi-intro h2 em {
+  font-style: italic;
+}
+
+
+.saudi-intro-text {
+
+  padding-top: 65px;
+
+}
+
+
+.saudi-lead {
+
+  max-width: 650px;
+
+  color: #ddd;
+
+  font-family: var(--serif);
+
+  font-size:
+    clamp(26px,3vw,42px);
+
+  line-height: 1.25;
+
+}
+
+
+.saudi-intro-text > p:not(.saudi-lead) {
+
+  max-width: 530px;
+
+  margin-top: 35px;
+
+  color: #888;
+
+  font-size: 12px;
+
+  line-height: 1.9;
+
+}
+
+
+/* =========================================================
+   PRODUCTS
+========================================================= */
+
+.saudi-products {
+
+  background: #080808;
+
+}
+
+
+.saudi-products .section-label,
+.saudi-opportunity .section-label,
+.saudi-approach .section-label,
+.saudi-compliance .section-label {
+
+  display: block;
+
+  margin-bottom: 25px;
+
+  color: #777;
+
+  font-size: 8px;
+
+  letter-spacing: 4px;
+
+}
+
+
+.saudi-product-list {
+
+  border-top:
+    1px solid var(--line);
+
+}
+
+
+.saudi-product {
+
+  display: grid;
+
+  grid-template-columns:
+    100px 1fr 180px;
+
+  gap: 40px;
+
+  align-items: center;
+
+  min-height: 190px;
+
+  padding: 35px 0;
+
+  border-bottom:
+    1px solid var(--line);
+
+  transition:
+    padding .4s ease,
+    background .4s ease;
+
+}
+
+
+.saudi-product:hover {
+
+  padding-left: 25px;
+
+  padding-right: 25px;
+
+  background:
+    rgba(255,255,255,.025);
+
+}
+
+
+.saudi-product-number {
+
+  color: #666;
+
+  font-family: var(--serif);
+
+  font-size: 28px;
+
+}
+
+
+.saudi-product-main h3 {
+
+  color: white;
+
+  font-family: var(--serif);
+
+  font-size:
+    clamp(35px,4vw,58px);
+
+  line-height: .9;
+
+  font-weight: 300;
+
+}
+
+
+.saudi-product-main p {
+
+  max-width: 650px;
+
+  margin-top: 18px;
+
+  color: #888;
+
+  font-size: 11px;
+
+  line-height: 1.8;
+
+}
+
+
+.saudi-product-side {
+
+  color: #666;
+
+  font-size: 8px;
+
+  letter-spacing: 2px;
+
+  text-align: right;
+
+}
+
+
+/* =========================================================
+   VISUAL
+========================================================= */
+
+.saudi-visual {
+
+  position: relative;
+
+  min-height: 78vh;
+
+  display: flex;
+
+  align-items: center;
+
+  padding: 120px 8vw;
+
+  overflow: hidden;
+
+}
+
+
+.saudi-visual-image {
+
+  position: absolute;
+
+  inset: 0;
+
+  background-image:
+    url("assets/saudi-arabia.jpg");
+
+  background-size: cover;
+
+  background-position: center;
+
+}
+
+
+.saudi-visual-overlay {
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0,0,0,.94),
+      rgba(0,0,0,.58),
+      rgba(0,0,0,.24)
+    );
+
+}
+
+
+.saudi-visual-content {
+
+  position: relative;
+
+  z-index: 2;
+
+  max-width: 800px;
+
+}
+
+
+.saudi-visual-content h2 {
+
+  font-family: var(--serif);
+
+  font-size:
+    clamp(65px,9vw,135px);
+
+  line-height: .8;
+
+  font-weight: 300;
+
+  letter-spacing: -3px;
+
+}
+
+
+.saudi-visual-content h2 em {
+  font-style: italic;
+}
+
+
+.saudi-visual-content > p:last-child {
+
+  max-width: 500px;
+
+  margin-top: 40px;
+
+  color: #bbb;
+
+  font-size: 13px;
+
+  line-height: 1.8;
+
+}
+
+
+/* =========================================================
+   OPPORTUNITY
+========================================================= */
+
+.saudi-opportunity {
+
+  background: #050505;
+
+}
+
+
+.saudi-opportunity-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap: 1px;
+
+  background: var(--line);
+
+  border-top:
+    1px solid var(--line);
+
+  border-bottom:
+    1px solid var(--line);
+
+}
+
+
+.saudi-opportunity-card {
+
+  min-height: 370px;
+
+  padding: 35px;
+
+  background: #050505;
+
+  transition:
+    background .4s ease;
+
+}
+
+
+.saudi-opportunity-card:hover {
+  background: #0d0d0d;
+}
+
+
+.saudi-opportunity-card span {
+
+  color: #666;
+
+  font-family: var(--serif);
+
+  font-size: 25px;
+
+}
+
+
+.saudi-opportunity-card h3 {
+
+  margin-top: 65px;
+
+  color: white;
+
+  font-family: var(--serif);
+
+  font-size: 40px;
+
+  line-height: .95;
+
+  font-weight: 300;
+
+}
+
+
+.saudi-opportunity-card p {
+
+  max-width: 310px;
+
+  margin-top: 25px;
+
+  color: #777;
+
+  font-size: 11px;
+
+  line-height: 1.8;
+
+}
+
+
+/* =========================================================
+   APPROACH
+========================================================= */
+
+.saudi-approach {
+
+  background: #080808;
+
+}
+
+
+.saudi-process-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  border-top:
+    1px solid var(--line);
+
+}
+
+
+.saudi-process {
+
+  min-height: 350px;
+
+  padding: 35px;
+
+  border-right:
+    1px solid var(--line);
+
+}
+
+
+.saudi-process:last-child {
+  border-right: 0;
+}
+
+
+.saudi-process > span {
+
+  color: #666;
+
+  font-family: var(--serif);
+
+  font-size: 28px;
+
+}
+
+
+.saudi-process h3 {
+
+  margin-top: 70px;
+
+  color: white;
+
+  font-family: var(--serif);
+
+  font-size: 48px;
+
+  font-weight: 300;
+
+}
+
+
+.saudi-process p {
+
+  max-width: 320px;
+
+  margin-top: 20px;
+
+  color: #777;
+
+  font-size: 11px;
+
+  line-height: 1.8;
+
+}
+
+
+/* =========================================================
+   COMPLIANCE
+========================================================= */
+
+.saudi-compliance {
+
+  background: #050505;
+
+}
+
+
+.saudi-compliance-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap: 120px;
+
+}
+
+
+.saudi-compliance h2 {
+
+  font-family: var(--serif);
+
+  font-size:
+    clamp(60px,8vw,110px);
+
+  line-height: .85;
+
+  font-weight: 300;
+
+}
+
+
+.saudi-compliance h2 em {
+  font-style: italic;
+}
+
+
+.saudi-compliance-text {
+
+  padding-top: 60px;
+
+}
+
+
+.saudi-lead-small {
+
+  max-width: 550px;
+
+  color: #ddd;
+
+  font-family: var(--serif);
+
+  font-size: 30px;
+
+  line-height: 1.25;
+
+}
+
+
+.saudi-compliance-text
+p:not(.saudi-lead-small) {
+
+  max-width: 530px;
+
+  margin-top: 30px;
+
+  color: #777;
+
+  font-size: 12px;
+
+  line-height: 1.9;
+
+}
+
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.saudi-contact {
+
+  position: relative;
+
+  min-height: 82vh;
+
+  display: flex;
+
+  align-items: center;
+
+  padding: 120px 8vw;
+
+  overflow: hidden;
+
+  background: #050505;
+
+}
+
+
+.saudi-contact-watermark {
+
+  position: absolute;
+
+  width:
+    min(900px,100vw);
+
+  left: 50%;
+
+  top: 50%;
+
+  transform:
+    translate(-50%,-50%);
+
+  opacity: .035;
+
+  pointer-events: none;
+
+}
+
+
+.saudi-contact-watermark img {
+  width: 100%;
+}
+
+
+.saudi-contact-inner {
+
+  position: relative;
+
+  z-index: 2;
+
+}
+
+
+.saudi-contact h2 {
+
+  max-width: 1100px;
+
+  font-family: var(--serif);
+
+  font-size:
+    clamp(70px,10vw,150px);
+
+  line-height: .78;
+
+  font-weight: 300;
+
+  letter-spacing: -4px;
+
+}
+
+
+.saudi-contact h2 em {
+
+  display: block;
+
+  font-style: italic;
+
+}
+
+
+.saudi-contact-inner
+> p:not(.saudi-eyebrow) {
+
+  max-width: 540px;
+
+  margin-top: 45px;
+
+  color: #999;
+
+  font-size: 13px;
+
+  line-height: 1.8;
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .saudi-intro-grid {
+
+    grid-template-columns: 1fr;
+
+    gap: 40px;
+
+  }
+
+
+  .saudi-intro-text {
+    padding-top: 0;
+  }
+
+
+  .saudi-product {
+
+    grid-template-columns:
+      70px 1fr;
+
+  }
+
+
+  .saudi-product-side {
+    display: none;
+  }
+
+
+  .saudi-opportunity-grid {
+
+    grid-template-columns: 1fr;
+
+  }
+
+
+  .saudi-process-grid {
+
+    grid-template-columns: 1fr;
+
+  }
+
+
+  .saudi-process {
+
+    border-right: 0;
+
+    border-bottom:
+      1px solid var(--line);
+
+  }
+
+
+  .saudi-process:last-child {
+    border-bottom: 0;
+  }
+
+
+  .saudi-compliance-grid {
+
+    grid-template-columns: 1fr;
+
+    gap: 50px;
+
+  }
+
+
+  .saudi-compliance-text {
+    padding-top: 0;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 800px) {
+
+  .saudi-hero {
+
+    min-height: 100svh;
+
+    padding:
+      130px 25px 80px;
+
+  }
+
+
+  .saudi-hero-overlay {
+
+    background:
+      linear-gradient(
+        90deg,
+        rgba(0,0,0,.95),
+        rgba(0,0,0,.65)
+      );
+
+  }
+
+
+  .saudi-hero-watermark {
+
+    width: 135vw;
+
+    right: -45vw;
+
+    opacity: .04;
+
+  }
+
+
+  .saudi-hero h1 {
+
+    font-size:
+      clamp(65px,18vw,105px);
+
+    letter-spacing: -3px;
+
+  }
+
+
+  .saudi-hero-copy {
+
+    max-width: 360px;
+
+    font-size: 13px;
+
+  }
+
+
+  .saudi-location {
+
+    left: 25px;
+
+    right: auto;
+
+    bottom: 30px;
+
+  }
+
+
+  .saudi-intro h2 {
+
+    font-size:
+      clamp(55px,16vw,85px);
+
+  }
+
+
+  .saudi-lead {
+    font-size: 28px;
+  }
+
+
+  .saudi-product {
+
+    grid-template-columns:
+      50px 1fr;
+
+    gap: 20px;
+
+    min-height: auto;
+
+    padding: 35px 0;
+
+  }
+
+
+  .saudi-product:hover {
+
+    padding-left: 10px;
+
+    padding-right: 10px;
+
+  }
+
+
+  .saudi-product-number {
+    font-size: 22px;
+  }
+
+
+  .saudi-product-main h3 {
+    font-size: 38px;
+  }
+
+
+  .saudi-visual {
+
+    min-height: 70vh;
+
+    padding:
+      100px 25px;
+
+  }
+
+
+  .saudi-visual-content h2 {
+
+    font-size:
+      clamp(60px,17vw,100px);
+
+  }
+
+
+  .saudi-opportunity-card {
+
+    min-height: 310px;
+
+    padding:
+      30px 25px;
+
+  }
+
+
+  .saudi-opportunity-card h3 {
+
+    margin-top: 55px;
+
+    font-size: 38px;
+
+  }
+
+
+  .saudi-process {
+
+    min-height: 300px;
+
+    padding:
+      30px 25px;
+
+  }
+
+
+  .saudi-process h3 {
+
+    margin-top: 55px;
+
+    font-size: 42px;
+
+  }
+
+
+  .saudi-compliance h2 {
+
+    font-size:
+      clamp(60px,17vw,95px);
+
+  }
+
+
+  .saudi-lead-small {
+    font-size: 27px;
+  }
+
+
+  .saudi-contact {
+
+    min-height: 75vh;
+
+    padding:
+      100px 25px;
+
+  }
+
+
+  .saudi-contact h2 {
+
+    font-size:
+      clamp(65px,18vw,108px);
+
+    letter-spacing: -2px;
+
+  }
+
+}
+
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width: 420px) {
+
+  .saudi-hero h1 {
+    font-size: 60px;
+  }
+
+
+  .saudi-product-main h3 {
+    font-size: 34px;
+  }
+
+
+  .saudi-contact h2 {
+    font-size: 60px;
+  }
+
+}
