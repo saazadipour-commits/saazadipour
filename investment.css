@@ -1,25 +1,76 @@
-/* =========================================
-   INVESTMENT PAGE
-   SA AZADIPOUR
-========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap');
+
+
+/* =========================================================
+   ROOT
+========================================================= */
 
 :root {
 
-    --investment-black: #111111;
-    --investment-dark: #181818;
-    --investment-cream: #f4f1eb;
-    --investment-white: #ffffff;
-    --investment-grey: #777777;
-    --investment-line: rgba(17, 17, 17, 0.15);
+    --black: #050505;
+    --black-soft: #0a0a0a;
+    --black-light: #111111;
+
+    --white: #ffffff;
+    --white-soft: #eeeeee;
+
+    --gray: #9a9a9a;
+    --gray-dark: #656565;
+
+    --line: rgba(255,255,255,.14);
+    --soft-line: rgba(255,255,255,.07);
+
+    --serif: "Cormorant Garamond", serif;
+    --sans: "Inter", sans-serif;
 
 }
 
 
-/* =========================================
-   HEADER
-========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-.investment-header {
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    background: var(--black);
+    color: var(--white);
+
+    font-family: var(--sans);
+
+    font-weight: 300;
+
+    line-height: 1.7;
+
+    overflow-x: hidden;
+
+}
+
+
+img {
+    display: block;
+    width: 100%;
+}
+
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.investment-nav {
 
     position: fixed;
 
@@ -27,74 +78,75 @@
     left: 0;
 
     width: 100%;
-    height: 82px;
+
+    height: 94px;
+
+    padding: 0 6vw;
 
     display: flex;
 
     align-items: center;
+
     justify-content: space-between;
-
-    padding: 0 5vw;
-
-    background: rgba(244, 241, 235, 0.94);
-
-    backdrop-filter: blur(12px);
-
-    border-bottom: 1px solid var(--investment-line);
 
     z-index: 1000;
 
-}
-
-
-.investment-logo a {
-
-    font-family: "Cormorant Garamond", serif;
-
-    font-size: 36px;
-
-    font-weight: 600;
-
-    letter-spacing: -2px;
-
-    color: var(--investment-black);
-
-    text-decoration: none;
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,.92),
+            rgba(0,0,0,0)
+        );
 
 }
 
 
-.investment-nav {
+.investment-logo img {
+
+    width: 110px;
+
+    height: auto;
+
+}
+
+
+.investment-menu {
 
     display: flex;
 
-    gap: 32px;
+    align-items: center;
+
+    gap: 38px;
 
 }
 
 
-.investment-nav a {
+.investment-menu a {
 
     position: relative;
 
-    font-family: "Inter", sans-serif;
-
-    font-size: 12px;
-
-    font-weight: 500;
-
-    letter-spacing: 1.5px;
+    font-size: 11px;
 
     text-transform: uppercase;
 
-    color: var(--investment-black);
+    letter-spacing: 2px;
 
-    text-decoration: none;
+    color: rgba(255,255,255,.72);
+
+    transition: .3s ease;
 
 }
 
 
-.investment-nav a::after {
+.investment-menu a:hover,
+.investment-menu a.active {
+
+    color: white;
+
+}
+
+
+.investment-menu a::after {
 
     content: "";
 
@@ -102,36 +154,36 @@
 
     left: 0;
 
-    bottom: -7px;
+    bottom: -8px;
 
     width: 0;
 
     height: 1px;
 
-    background: var(--investment-black);
+    background: white;
 
-    transition: width 0.3s ease;
+    transition: .3s ease;
 
 }
 
 
-.investment-nav a:hover::after,
-.investment-nav a.active::after {
+.investment-menu a:hover::after,
+.investment-menu a.active::after {
 
     width: 100%;
 
 }
 
 
-/* =========================================
+/* =========================================================
    HERO
-========================================= */
+========================================================= */
 
 .investment-hero {
 
-    min-height: 88vh;
-
     position: relative;
+
+    min-height: 100vh;
 
     display: flex;
 
@@ -141,751 +193,194 @@
 
     background:
 
-        linear-gradient(
-            90deg,
-            rgba(10,10,10,0.91),
-            rgba(10,10,10,0.48)
+        radial-gradient(
+            circle at 70% 40%,
+            rgba(255,255,255,.08),
+            transparent 30%
         ),
 
-        url("https://images.unsplash.com/photo-1559757175-0eb30cd8c063?auto=format&fit=crop&w=2200&q=85")
-        center / cover no-repeat;
+        linear-gradient(
+            110deg,
+            #050505 0%,
+            #080808 55%,
+            #101010 100%
+        );
 
-    color: white;
-
-}
-
-
-.investment-hero-content {
-
-    max-width: 900px;
+    overflow: hidden;
 
 }
 
 
-.eyebrow {
+.investment-hero::before {
 
-    font-family: "Inter", sans-serif;
+    content: "";
 
-    font-size: 11px;
+    position: absolute;
+
+    width: 700px;
+    height: 700px;
+
+    right: -300px;
+    top: -180px;
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    border-radius: 50%;
+
+}
+
+
+.investment-hero::after {
+
+    content: "ROBOTICS";
+
+    position: absolute;
+
+    right: 5vw;
+
+    bottom: 5vh;
+
+    font-family: var(--serif);
+
+    font-size: clamp(100px, 18vw, 300px);
 
     font-weight: 500;
 
-    letter-spacing: 3px;
+    color: rgba(255,255,255,.025);
 
-    text-transform: uppercase;
+    letter-spacing: -8px;
 
-    margin-bottom: 30px;
-
-}
-
-
-.investment-hero h1 {
-
-    font-family: "Cormorant Garamond", serif;
-
-    font-size: clamp(80px, 13vw, 185px);
-
-    font-weight: 400;
-
-    line-height: 0.8;
-
-    letter-spacing: -6px;
-
-    margin: 0 0 45px;
+    pointer-events: none;
 
 }
 
 
-.hero-description {
+.hero-overlay {
 
-    max-width: 620px;
+    position: absolute;
 
-    font-family: "Inter", sans-serif;
+    inset: 0;
 
-    font-size: 17px;
+    background:
 
-    font-weight: 300;
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,.9),
+            rgba(0,0,0,.45),
+            rgba(0,0,0,.85)
+        );
 
-    line-height: 1.8;
+}
+
+
+.hero-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 1050px;
 
 }
 
 
 .hero-number {
 
-    position: absolute;
+    margin-bottom: 22px;
 
-    right: 7vw;
-
-    bottom: 60px;
-
-    font-family: "Cormorant Garamond", serif;
-
-    font-size: 100px;
-
-    opacity: 0.4;
-
-}
-
-
-/* =========================================
-   INTRO
-========================================= */
-
-.investment-intro {
-
-    display: grid;
-
-    grid-template-columns: 25% 75%;
-
-    padding: 140px 8vw;
-
-    background: var(--investment-cream);
-
-}
-
-
-.section-label {
-
-    font-family: "Inter", sans-serif;
+    color: rgba(255,255,255,.45);
 
     font-size: 10px;
 
-    font-weight: 500;
+    letter-spacing: 4px;
 
-    letter-spacing: 2px;
+}
+
+
+.hero-label {
+
+    margin-bottom: 28px;
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
 
     text-transform: uppercase;
 
-    color: var(--investment-grey);
+    color: rgba(255,255,255,.55);
 
 }
 
 
-.investment-intro-text {
+.hero-content h1 {
 
-    max-width: 850px;
+    max-width: 900px;
 
-}
+    font-family: var(--serif);
 
-
-.investment-intro h2 {
-
-    font-family: "Cormorant Garamond", serif;
-
-    font-size: clamp(48px, 6vw, 86px);
+    font-size: clamp(64px, 9vw, 145px);
 
     font-weight: 400;
 
-    line-height: 0.95;
+    line-height: .86;
 
-    letter-spacing: -2px;
-
-    margin: 0 0 45px;
+    letter-spacing: -4px;
 
 }
 
 
-.investment-intro h2 span {
+.hero-content h1 em {
 
     display: block;
 
-    color: var(--investment-grey);
+    color: #aaa;
+
+    font-weight: 400;
 
 }
 
 
-.investment-intro p {
+.hero-content p {
 
-    max-width: 720px;
+    max-width: 620px;
 
-    font-family: "Inter", sans-serif;
+    margin-top: 45px;
+
+    color: #aaa;
 
     font-size: 15px;
 
-    font-weight: 300;
-
     line-height: 1.9;
 
-    color: #555;
-
-    margin-bottom: 22px;
-
 }
 
 
-/* =========================================
-   FOCUS
-========================================= */
+.hero-button {
 
-.investment-focus {
+    display: inline-flex;
 
-    padding: 130px 8vw;
-
-    background: #ffffff;
-
-}
-
-
-.focus-grid {
-
-    display: grid;
-
-    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
 
     gap: 25px;
 
-    margin-top: 65px;
+    margin-top: 42px;
 
-}
+    padding: 17px 25px;
 
-
-.focus-card {
-
-    position: relative;
-
-    min-height: 440px;
-
-    overflow: hidden;
-
-    border: 1px solid var(--investment-line);
-
-    text-decoration: none;
-
-    transition:
-        transform 0.4s ease,
-        box-shadow 0.4s ease;
-
-}
-
-
-.focus-card:hover {
-
-    transform: translateY(-6px);
-
-    box-shadow:
-        0 25px 60px rgba(0,0,0,0.09);
-
-}
-
-
-/* =========================================
-   MAIN ROBOTICS CARD
-========================================= */
-
-.focus-main {
-
-    grid-column: span 2;
-
-    min-height: 600px;
-
-    display: flex;
-
-    background: var(--investment-dark);
-
-    color: white;
-
-}
-
-
-.focus-image {
-
-    width: 55%;
-
-    overflow: hidden;
-
-}
-
-
-.focus-image img {
-
-    width: 100%;
-
-    height: 100%;
-
-    object-fit: cover;
-
-    transition: transform 0.8s ease;
-
-}
-
-
-.focus-main:hover .focus-image img {
-
-    transform: scale(1.05);
-
-}
-
-
-.focus-main .focus-content {
-
-    width: 45%;
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: center;
-
-    padding: 60px;
-
-}
-
-
-.focus-number {
-
-    font-family: "Inter", sans-serif;
-
-    font-size: 10px;
-
-    letter-spacing: 2px;
-
-    opacity: 0.6;
-
-    margin-bottom: 30px;
-
-}
-
-
-.focus-content h3 {
-
-    font-family: "Cormorant Garamond", serif;
-
-    font-size: clamp(48px, 6vw, 80px);
-
-    font-weight: 400;
-
-    line-height: 0.85;
-
-    letter-spacing: -3px;
-
-    margin: 0 0 30px;
-
-}
-
-
-.focus-content p {
-
-    max-width: 440px;
-
-    font-family: "Inter", sans-serif;
-
-    font-size: 14px;
-
-    font-weight: 300;
-
-    line-height: 1.8;
-
-    opacity: 0.75;
-
-}
-
-
-.focus-link {
-
-    margin-top: 35px;
-
-    font-family: "Inter", sans-serif;
-
-    font-size: 10px;
-
-    letter-spacing: 2px;
+    border: 1px solid rgba(255,255,255,.28);
 
     text-transform: uppercase;
 
-    color: white;
-
-}
-
-
-/* =========================================
-   FUTURE FOCUS
-========================================= */
-
-.focus-placeholder {
-
-    min-height: 400px;
-
-    padding: 55px;
-
-    background: var(--investment-cream);
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: space-between;
-
-}
-
-
-.placeholder-number {
-
-    font-family: "Cormorant Garamond", serif;
-
-    font-size: 80px;
-
-    line-height: 1;
-
-    color: #c6c1b8;
-
-}
-
-
-.focus-placeholder .focus-content h3 {
-
-    font-size: 50px;
-
-    color: var(--investment-black);
-
-}
-
-
-.focus-placeholder .focus-content p {
-
-    color: #666;
-
-}
-
-
-.placeholder-label {
-
-    font-family: "Inter", sans-serif !important;
-
-    font-size: 10px !important;
-
     letter-spacing: 2px;
-
-    text-transform: uppercase;
-
-    color: #999 !important;
-
-    margin-bottom: 20px !important;
-
-}
-
-
-.coming-soon {
-
-    display: inline-block;
-
-    margin-top: 20px;
-
-    font-family: "Inter", sans-serif;
 
     font-size: 10px;
 
-    letter-spacing: 2px;
-
-    text-transform: uppercase;
-
-    color: #999;
+    transition: .35s ease;
 
 }
 
 
-/* =========================================
-   MARKETS
-========================================= */
-
-.investment-markets {
-
-    padding: 140px 8vw;
-
-    background: var(--investment-cream);
-
-    display: grid;
-
-    grid-template-columns: 25% 75%;
-
-}
-
-
-.markets-content h2 {
-
-    font-family: "Cormorant Garamond", serif;
-
-    font-size: clamp(55px, 7vw, 100px);
-
-    font-weight: 400;
-
-    line-height: 0.9;
-
-    letter-spacing: -3px;
-
-    margin: 0 0 80px;
-
-}
-
-
-.markets-content h2 span {
-
-    display: block;
-
-    color: var(--investment-grey);
-
-}
-
-
-.markets-grid {
-
-    display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-
-    border-top: 1px solid var(--investment-line);
-
-}
-
-
-.market-item {
-
-    padding: 35px 30px 20px 0;
-
-    border-right: 1px solid var(--investment-line);
-
-    margin-right: 30px;
-
-}
-
-
-.market-item:last-child {
-
-    border-right: none;
-
-}
-
-
-.market-item span {
-
-    font-family: "Inter", sans-serif;
-
-    font-size: 10px;
-
-    letter-spacing: 2px;
-
-    color: #999;
-
-}
-
-
-.market-item h3 {
-
-    font-family: "Cormorant Garamond", serif;
-
-    font-size: 36px;
-
-    font-weight: 500;
-
-    margin: 35px 0 18px;
-
-}
-
-
-.market-item p {
-
-    font-family: "Inter", sans-serif;
-
-    font-size: 13px;
-
-    font-weight: 300;
-
-    line-height: 1.8;
-
-    color: #666;
-
-}
-
-
-/* =========================================
-   APPROACH
-========================================= */
-
-.investment-approach {
-
-    padding: 140px 8vw;
-
-    background: #ffffff;
-
-    display: grid;
-
-    grid-template-columns: 25% 75%;
-
-}
-
-
-.approach-content h2 {
-
-    font-family: "Cormorant Garamond", serif;
-
-    font-size: clamp(55px, 7vw, 100px);
-
-    font-weight: 400;
-
-    line-height: 0.9;
-
-    letter-spacing: -3px;
-
-    margin: 0 0 80px;
-
-}
-
-
-.approach-content h2 span {
-
-    color: var(--investment-grey);
-
-}
-
-
-.approach-grid {
-
-    display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-
-    border-top: 1px solid var(--investment-line);
-
-}
-
-
-.approach-item {
-
-    padding: 35px 30px 20px 0;
-
-    border-right: 1px solid var(--investment-line);
-
-    margin-right: 30px;
-
-}
-
-
-.approach-item:last-child {
-
-    border-right: none;
-
-}
-
-
-.approach-item span {
-
-    font-family: "Inter", sans-serif;
-
-    font-size: 10px;
-
-    letter-spacing: 2px;
-
-    color: #999;
-
-}
-
-
-.approach-item h3 {
-
-    font-family: "Cormorant Garamond", serif;
-
-    font-size: 32px;
-
-    font-weight: 500;
-
-    margin: 35px 0 18px;
-
-}
-
-
-.approach-item p {
-
-    font-family: "Inter", sans-serif;
-
-    font-size: 13px;
-
-    font-weight: 300;
-
-    line-height: 1.8;
-
-    color: #666;
-
-}
-
-
-/* =========================================
-   CONTACT
-========================================= */
-
-.investment-contact {
-
-    padding: 150px 8vw;
-
-    background: var(--investment-black);
-
-    color: white;
-
-    text-align: center;
-
-}
-
-
-.contact-inner {
-
-    max-width: 850px;
-
-    margin: auto;
-
-}
-
-
-.investment-contact h2 {
-
-    font-family: "Cormorant Garamond", serif;
-
-    font-size: clamp(55px, 8vw, 110px);
-
-    font-weight: 400;
-
-    line-height: 0.9;
-
-    letter-spacing: -3px;
-
-    margin: 25px 0 55px;
-
-}
-
-
-.investment-contact h2 span {
-
-    display: block;
-
-    color: #999;
-
-}
-
-
-.contact-button {
-
-    display: inline-block;
-
-    padding: 18px 35px;
-
-    border: 1px solid rgba(255,255,255,0.5);
-
-    color: white;
-
-    text-decoration: none;
-
-    font-family: "Inter", sans-serif;
-
-    font-size: 11px;
-
-    letter-spacing: 2px;
-
-    text-transform: uppercase;
-
-    transition: all 0.3s ease;
-
-}
-
-
-.contact-button:hover {
+.hero-button:hover {
 
     background: white;
 
@@ -894,9 +389,913 @@
 }
 
 
-/* =========================================
+.hero-button span {
+
+    font-size: 17px;
+
+}
+
+
+.hero-scroll {
+
+    position: absolute;
+
+    bottom: 38px;
+
+    left: 8vw;
+
+    color: #555;
+
+    font-size: 8px;
+
+    letter-spacing: 3px;
+
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.investment-intro {
+
+    padding: 160px 8vw;
+
+    background: #050505;
+
+}
+
+
+.intro-label,
+.section-label {
+
+    color: #666;
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+}
+
+
+.intro-grid {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 10vw;
+
+    margin-top: 65px;
+
+}
+
+
+.intro-title h2 {
+
+    font-family: var(--serif);
+
+    font-size: clamp(48px, 6vw, 88px);
+
+    font-weight: 400;
+
+    line-height: .95;
+
+    letter-spacing: -2px;
+
+}
+
+
+.intro-title h2 em {
+
+    color: #999;
+
+}
+
+
+.intro-text {
+
+    padding-top: 10px;
+
+}
+
+
+.intro-text p {
+
+    margin-bottom: 25px;
+
+    color: #929292;
+
+    font-size: 15px;
+
+    line-height: 1.95;
+
+}
+
+
+/* =========================================================
+   COUNTRIES
+========================================================= */
+
+.countries-section {
+
+    padding: 150px 6vw;
+
+    background: #080808;
+
+}
+
+
+.section-heading {
+
+    max-width: 760px;
+
+    margin-bottom: 75px;
+
+}
+
+
+.section-heading h2,
+.strategy-left h2,
+.thesis-header h2,
+.comparison-section h2,
+.approach-content h2,
+.investment-contact h2 {
+
+    margin-top: 20px;
+
+    font-family: var(--serif);
+
+    font-size: clamp(50px, 6vw, 90px);
+
+    font-weight: 400;
+
+    line-height: .95;
+
+    letter-spacing: -2px;
+
+}
+
+
+.section-heading h2 em,
+.strategy-left h2 em,
+.thesis-header h2 em,
+.comparison-section h2 em,
+.approach-content h2 em,
+.investment-contact h2 em {
+
+    color: #888;
+
+}
+
+
+.section-heading p {
+
+    max-width: 600px;
+
+    margin-top: 30px;
+
+    color: #777;
+
+    font-size: 14px;
+
+}
+
+
+.country-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 35px;
+
+}
+
+
+.country-card {
+
+    background: #0d0d0d;
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    transition: .5s ease;
+
+}
+
+
+.country-card:hover {
+
+    transform: translateY(-8px);
+
+    border-color: rgba(255,255,255,.22);
+
+}
+
+
+.country-image {
+
+    position: relative;
+
+    height: 510px;
+
+    overflow: hidden;
+
+    background: #111;
+
+}
+
+
+.country-image img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform 1s cubic-bezier(.2,.8,.2,1);
+
+}
+
+
+.country-card:hover .country-image img {
+
+    transform: scale(1.05);
+
+}
+
+
+.country-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,.15),
+            transparent 35%,
+            rgba(0,0,0,.85)
+        );
+
+}
+
+
+.country-number {
+
+    position: absolute;
+
+    top: 30px;
+
+    left: 30px;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+}
+
+
+.country-name {
+
+    position: absolute;
+
+    left: 30px;
+
+    bottom: 30px;
+
+    font-family: var(--serif);
+
+    font-size: 48px;
+
+    letter-spacing: -1px;
+
+}
+
+
+.country-info {
+
+    padding: 38px;
+
+}
+
+
+.country-tag {
+
+    margin-bottom: 15px;
+
+    color: #666;
+
+    font-size: 8px;
+
+    letter-spacing: 3px;
+
+}
+
+
+.country-info h3 {
+
+    font-family: var(--serif);
+
+    font-size: 42px;
+
+    font-weight: 400;
+
+    line-height: 1;
+
+}
+
+
+.country-info h3 em {
+
+    color: #888;
+
+}
+
+
+.country-info p {
+
+    margin-top: 15px;
+
+    color: #777;
+
+    font-size: 13px;
+
+}
+
+
+.country-line {
+
+    width: 100%;
+
+    height: 1px;
+
+    margin: 30px 0 20px;
+
+    background: rgba(255,255,255,.1);
+
+}
+
+
+.product-link {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    color: #aaa;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    transition: .3s ease;
+
+}
+
+
+.product-link:hover {
+
+    color: white;
+
+}
+
+
+.product-link span {
+
+    font-size: 16px;
+
+}
+
+
+/* =========================================================
+   STRATEGY
+========================================================= */
+
+.strategy-section {
+
+    display: grid;
+
+    grid-template-columns: .8fr 1.2fr;
+
+    gap: 10vw;
+
+    padding: 170px 8vw;
+
+    background: #050505;
+
+}
+
+
+.strategy-left {
+
+    position: sticky;
+
+    top: 130px;
+
+    height: fit-content;
+
+}
+
+
+.strategy-right {
+
+    border-top: 1px solid var(--line);
+
+}
+
+
+.strategy-item {
+
+    display: grid;
+
+    grid-template-columns: 70px 1fr;
+
+    gap: 20px;
+
+    padding: 38px 0;
+
+    border-bottom: 1px solid var(--line);
+
+}
+
+
+.strategy-item > span {
+
+    color: #555;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+}
+
+
+.strategy-item h3 {
+
+    margin-bottom: 10px;
+
+    font-family: var(--serif);
+
+    font-size: 32px;
+
+    font-weight: 400;
+
+}
+
+
+.strategy-item p {
+
+    max-width: 550px;
+
+    color: #777;
+
+    font-size: 13px;
+
+    line-height: 1.8;
+
+}
+
+
+/* =========================================================
+   THESIS
+========================================================= */
+
+.thesis-section {
+
+    padding: 160px 8vw;
+
+    background: #0a0a0a;
+
+}
+
+
+.thesis-header {
+
+    max-width: 800px;
+
+    margin-bottom: 80px;
+
+}
+
+
+.thesis-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    border-top: 1px solid var(--line);
+
+    border-bottom: 1px solid var(--line);
+
+}
+
+
+.thesis-card {
+
+    min-height: 340px;
+
+    padding: 35px;
+
+    border-right: 1px solid var(--line);
+
+}
+
+
+.thesis-card:last-child {
+
+    border-right: none;
+
+}
+
+
+.thesis-number {
+
+    display: block;
+
+    margin-bottom: 70px;
+
+    color: #555;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+}
+
+
+.thesis-card h3 {
+
+    margin-bottom: 18px;
+
+    font-family: var(--serif);
+
+    font-size: 35px;
+
+    font-weight: 400;
+
+}
+
+
+.thesis-card p {
+
+    color: #777;
+
+    font-size: 12px;
+
+    line-height: 1.9;
+
+}
+
+
+/* =========================================================
+   COMPARISON
+========================================================= */
+
+.comparison-section {
+
+    padding: 160px 8vw;
+
+}
+
+
+.comparison-table {
+
+    margin-top: 75px;
+
+    border-top: 1px solid var(--line);
+
+}
+
+
+.comparison-row {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr 1.5fr;
+
+    min-height: 90px;
+
+    align-items: center;
+
+    border-bottom: 1px solid var(--line);
+
+    color: #aaa;
+
+    font-size: 12px;
+
+}
+
+
+.comparison-head {
+
+    min-height: 55px;
+
+    color: #555;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+}
+
+
+.market-name {
+
+    color: white;
+
+    font-family: var(--serif);
+
+    font-size: 26px;
+
+}
+
+
+.flag {
+
+    margin-right: 12px;
+
+    font-family: var(--sans);
+
+    font-size: 18px;
+
+}
+
+
+/* =========================================================
+   APPROACH
+========================================================= */
+
+.approach-section {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    min-height: 720px;
+
+    background: #080808;
+
+}
+
+
+.approach-image {
+
+    position: relative;
+
+    min-height: 650px;
+
+    background:
+
+        radial-gradient(
+            circle at 40% 40%,
+            rgba(255,255,255,.14),
+            transparent 25%
+        ),
+
+        linear-gradient(
+            135deg,
+            #151515,
+            #050505
+        );
+
+}
+
+
+.approach-image::before {
+
+    content: "ROBOTIC";
+
+    position: absolute;
+
+    left: 8%;
+
+    top: 20%;
+
+    font-family: var(--serif);
+
+    font-size: clamp(80px, 11vw, 180px);
+
+    color: rgba(255,255,255,.035);
+
+    transform: rotate(-90deg);
+
+    transform-origin: left top;
+
+}
+
+
+.approach-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            transparent 30%,
+            rgba(255,255,255,.04)
+        );
+
+}
+
+
+.approach-caption {
+
+    position: absolute;
+
+    left: 8%;
+
+    bottom: 8%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+}
+
+
+.approach-caption span {
+
+    color: #666;
+
+    font-size: 8px;
+
+    letter-spacing: 3px;
+
+}
+
+
+.approach-caption strong {
+
+    font-family: var(--serif);
+
+    font-size: 55px;
+
+    font-weight: 400;
+
+}
+
+
+.approach-content {
+
+    padding: 110px 8vw;
+
+}
+
+
+.approach-content > p {
+
+    max-width: 450px;
+
+    margin: 35px 0;
+
+    color: #777;
+
+    font-size: 14px;
+
+}
+
+
+.approach-list {
+
+    margin-top: 50px;
+
+}
+
+
+.approach-list div {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+
+    padding: 20px 0;
+
+    border-bottom: 1px solid var(--line);
+
+}
+
+
+.approach-list span {
+
+    color: #555;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+}
+
+
+.approach-list strong {
+
+    font-family: var(--serif);
+
+    font-size: 23px;
+
+    font-weight: 400;
+
+}
+
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.investment-contact {
+
+    padding: 190px 8vw;
+
+    text-align: center;
+
+    background: #050505;
+
+}
+
+
+.contact-small {
+
+    color: #555;
+
+    font-size: 8px;
+
+    letter-spacing: 4px;
+
+}
+
+
+.investment-contact h2 {
+
+    max-width: 900px;
+
+    margin: 30px auto;
+
+    font-size: clamp(60px, 8vw, 120px);
+
+}
+
+
+.investment-contact p {
+
+    max-width: 580px;
+
+    margin: 35px auto;
+
+    color: #777;
+
+    font-size: 14px;
+
+}
+
+
+.contact-email {
+
+    display: inline-block;
+
+    margin-top: 20px;
+
+    padding-bottom: 8px;
+
+    border-bottom: 1px solid #777;
+
+    font-family: var(--serif);
+
+    font-size: 25px;
+
+    transition: .3s ease;
+
+}
+
+
+.contact-email:hover {
+
+    color: #aaa;
+
+    border-color: white;
+
+}
+
+
+/* =========================================================
    FOOTER
-========================================= */
+========================================================= */
 
 .investment-footer {
 
@@ -904,213 +1303,245 @@
 
     justify-content: space-between;
 
-    padding: 28px 8vw;
+    align-items: center;
 
-    background: #111;
+    padding: 35px 6vw;
 
-    color: #777;
+    border-top: 1px solid rgba(255,255,255,.08);
 
-    border-top: 1px solid rgba(255,255,255,0.1);
+    color: #555;
 
-    font-family: "Inter", sans-serif;
+    font-size: 8px;
 
-    font-size: 10px;
+    letter-spacing: 2px;
 
-    letter-spacing: 1px;
+    text-transform: uppercase;
 
 }
 
 
-/* =========================================
+/* =========================================================
    RESPONSIVE
-========================================= */
+========================================================= */
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
 
-    .investment-nav {
+    .investment-menu {
 
-        gap: 15px;
-
-    }
-
-
-    .investment-nav a {
-
-        font-size: 9px;
+        gap: 20px;
 
     }
 
 
-    .investment-intro,
-    .investment-markets,
-    .investment-approach {
-
-        grid-template-columns: 1fr;
-
-        gap: 50px;
-
-    }
-
-
-    .focus-grid {
+    .intro-grid,
+    .strategy-section,
+    .approach-section {
 
         grid-template-columns: 1fr;
 
     }
 
 
-    .focus-main {
+    .strategy-left {
 
-        grid-column: span 1;
-
-        flex-direction: column;
+        position: static;
 
     }
 
 
-    .focus-image {
+    .thesis-grid {
 
-        width: 100%;
-
-        height: 330px;
+        grid-template-columns: repeat(2, 1fr);
 
     }
 
 
-    .focus-main .focus-content {
-
-        width: 100%;
-
-        padding: 45px;
-
-    }
-
-
-    .markets-grid {
-
-        grid-template-columns: 1fr;
-
-    }
-
-
-    .market-item {
+    .thesis-card:nth-child(2) {
 
         border-right: none;
 
-        border-bottom: 1px solid var(--investment-line);
-
-        padding-bottom: 35px;
-
-        margin-right: 0;
-
-        margin-bottom: 20px;
-
     }
 
 
-    .approach-grid {
+    .thesis-card:nth-child(1),
+    .thesis-card:nth-child(2) {
 
-        grid-template-columns: 1fr;
-
-    }
-
-
-    .approach-item {
-
-        border-right: none;
-
-        border-bottom: 1px solid var(--investment-line);
-
-        padding-bottom: 35px;
-
-        margin-right: 0;
-
-        margin-bottom: 20px;
+        border-bottom: 1px solid var(--line);
 
     }
 
 }
 
 
-@media (max-width: 600px) {
-
-    .investment-header {
-
-        height: 70px;
-
-        padding: 0 6vw;
-
-    }
-
+@media (max-width: 720px) {
 
     .investment-nav {
 
-        gap: 10px;
+        height: auto;
+
+        min-height: 80px;
+
+        padding: 18px 22px;
+
+        align-items: flex-start;
 
     }
 
 
-    .investment-nav a {
+    .investment-logo img {
 
-        font-size: 8px;
+        width: 85px;
 
-        letter-spacing: 0.8px;
+    }
+
+
+    .investment-menu {
+
+        gap: 12px;
+
+        flex-wrap: wrap;
+
+        justify-content: flex-end;
+
+        max-width: 230px;
+
+    }
+
+
+    .investment-menu a {
+
+        font-size: 7px;
+
+        letter-spacing: 1px;
 
     }
 
 
     .investment-hero {
 
-        min-height: 75vh;
-
-        padding: 130px 7vw 80px;
+        padding: 150px 25px 90px;
 
     }
 
 
-    .investment-hero h1 {
+    .hero-content h1 {
 
-        font-size: 78px;
+        font-size: clamp(55px, 18vw, 90px);
 
-        letter-spacing: -3px;
+        letter-spacing: -2px;
 
     }
 
 
-    .hero-number {
+    .hero-content p {
 
-        font-size: 60px;
-
-        right: 7vw;
-
-        bottom: 30px;
+        font-size: 13px;
 
     }
 
 
     .investment-intro,
-    .investment-focus,
-    .investment-markets,
-    .investment-approach,
+    .countries-section,
+    .strategy-section,
+    .thesis-section,
+    .comparison-section {
+
+        padding: 100px 25px;
+
+    }
+
+
+    .country-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .country-image {
+
+        height: 390px;
+
+    }
+
+
+    .country-name {
+
+        font-size: 38px;
+
+    }
+
+
+    .strategy-item {
+
+        grid-template-columns: 40px 1fr;
+
+    }
+
+
+    .thesis-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .thesis-card {
+
+        min-height: auto;
+
+        border-right: none;
+
+        border-bottom: 1px solid var(--line);
+
+    }
+
+
+    .thesis-card:last-child {
+
+        border-bottom: none;
+
+    }
+
+
+    .comparison-table {
+
+        overflow-x: auto;
+
+    }
+
+
+    .comparison-row {
+
+        min-width: 720px;
+
+    }
+
+
+    .approach-content {
+
+        padding: 90px 25px;
+
+    }
+
+
+    .approach-image {
+
+        min-height: 430px;
+
+    }
+
+
     .investment-contact {
 
-        padding: 90px 7vw;
+        padding: 120px 25px;
 
     }
 
 
-    .focus-placeholder {
+    .contact-email {
 
-        padding: 40px;
-
-        min-height: 350px;
-
-    }
-
-
-    .focus-placeholder .focus-content h3 {
-
-        font-size: 42px;
+        font-size: 17px;
 
     }
 
@@ -1119,9 +1550,9 @@
 
         flex-direction: column;
 
-        gap: 10px;
+        gap: 15px;
 
-        padding: 25px 7vw;
+        text-align: center;
 
     }
 
