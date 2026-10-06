@@ -1,124 +1,223 @@
-document.addEventListener('DOMContentLoaded', () => {
+/* =========================================================
+   AZADIPOUR — MAIN JAVASCRIPT
+   ========================================================= */
 
-  /* MOBILE NAVIGATION */
+document.addEventListener("DOMContentLoaded", function () {
 
-  const toggle = document.querySelector('.menu-toggle');
-  const nav = document.querySelector('.nav-links');
+    /* =====================================================
+       MOBILE NAVIGATION
+       ===================================================== */
 
-  if (toggle && nav) {
+    const menuToggle =
+        document.querySelector(".menu-toggle") ||
+        document.querySelector(".nav-toggle");
 
-    toggle.addEventListener('click', () => {
+    const navLinks =
+        document.querySelector(".nav-links") ||
+        document.querySelector(".main-nav");
 
-      nav.classList.toggle('open');
+    if (menuToggle && navLinks) {
 
-      toggle.setAttribute(
-        'aria-expanded',
-        nav.classList.contains('open')
-      );
+        menuToggle.addEventListener("click", function () {
 
-    });
+            const isOpen =
+                navLinks.classList.toggle("active");
 
+            menuToggle.setAttribute(
+                "aria-expanded",
+                isOpen ? "true" : "false"
+            );
 
-    nav.querySelectorAll('a').forEach(link => {
+            menuToggle.setAttribute(
+                "aria-label",
+                isOpen
+                    ? "Close navigation"
+                    : "Open navigation"
+            );
 
-      link.addEventListener('click', () => {
-        nav.classList.remove('open');
-
-        toggle.setAttribute(
-          'aria-expanded',
-          'false'
-        );
-      });
-
-    });
-
-  }
+        });
 
 
-  /* SCROLL REVEAL */
+        /* Close menu after clicking a link */
 
-  const observer = new IntersectionObserver(
-    entries => {
+        navLinks.querySelectorAll("a").forEach(function (link) {
 
-      entries.forEach(entry => {
+            link.addEventListener("click", function () {
 
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
+                navLinks.classList.remove("active");
 
-      });
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
 
-    },
-    {
-      threshold:0.08
+                menuToggle.setAttribute(
+                    "aria-label",
+                    "Open navigation"
+                );
+
+            });
+
+        });
+
+
+        /* Close menu when clicking outside */
+
+        document.addEventListener("click", function (event) {
+
+            const clickedInsideMenu =
+                navLinks.contains(event.target);
+
+            const clickedToggle =
+                menuToggle.contains(event.target);
+
+            if (
+                !clickedInsideMenu &&
+                !clickedToggle &&
+                navLinks.classList.contains("active")
+            ) {
+
+                navLinks.classList.remove("active");
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+                menuToggle.setAttribute(
+                    "aria-label",
+                    "Open navigation"
+                );
+            }
+
+        });
+
     }
-  );
 
 
-  document
-    .querySelectorAll('.reveal')
-    .forEach(element => {
-      observer.observe(element);
-    });
+    /* =====================================================
+       REVEAL ANIMATION
+       ===================================================== */
+
+    const revealElements =
+        document.querySelectorAll(".reveal");
+
+    if ("IntersectionObserver" in window) {
+
+        const observer =
+            new IntersectionObserver(
+                function (entries, observer) {
+
+                    entries.forEach(function (entry) {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.classList.add(
+                                "visible"
+                            );
+
+                            observer.unobserve(
+                                entry.target
+                            );
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: 0.12
+                }
+            );
+
+        revealElements.forEach(function (element) {
+            observer.observe(element);
+        });
+
+    } else {
+
+        revealElements.forEach(function (element) {
+            element.classList.add("visible");
+        });
+
+    }
 
 
-  /* CURRENT YEAR */
+    /* =====================================================
+       CURRENT YEAR
+       ===================================================== */
 
-  document
-    .querySelectorAll('[data-year]')
-    .forEach(element => {
-      element.textContent = new Date().getFullYear();
-    });
+    document
+        .querySelectorAll("[data-year]")
+        .forEach(function (element) {
 
+            element.textContent =
+                new Date().getFullYear();
 
-  /* PRODUCT / ORDER FORM */
-
-  const form = document.querySelector('[data-order-form]');
-
-  if (form) {
-
-    form.addEventListener('submit', event => {
-
-      const action =
-        form.getAttribute('action') || '';
+        });
 
 
-      /*
-       * Until a real Formspree ID is inserted,
-       * the form automatically opens the user's
-       * email client with the submitted information.
-       */
+    /* =====================================================
+       FORM FALLBACK
+       ===================================================== */
 
-      if (action.includes('YOUR_FORM_ID')) {
+    const forms =
+        document.querySelectorAll("form");
 
-        event.preventDefault();
+    forms.forEach(function (form) {
 
-        const formData =
-          new FormData(form);
+        const action =
+            form.getAttribute("action") || "";
 
-        const subject =
-          encodeURIComponent(
-            'Azadipour — New Product / Order Request'
-          );
+        if (
+            action.includes("YOUR_FORM_ID") ||
+            action.trim() === ""
+        ) {
 
-        let body = '';
+            form.addEventListener(
+                "submit",
+                function (event) {
 
-        for (const [key, value]
-          of formData.entries()) {
+                    event.preventDefault();
 
-          body += `${key}: ${value}\n`;
+                    const formData =
+                        new FormData(form);
 
+                    let body = "";
+
+                    formData.forEach(
+                        function (value, key) {
+
+                            body +=
+                                key +
+                                ": " +
+                                value +
+                                "\n";
+
+                        }
+                    );
+
+                    const subject =
+                        encodeURIComponent(
+                            "Azadipour Website Inquiry"
+                        );
+
+                    const email =
+                        "herzchirurgsinaazadipour@gmail.com";
+
+                    const mailto =
+                        "mailto:" +
+                        email +
+                        "?subject=" +
+                        subject +
+                        "&body=" +
+                        encodeURIComponent(body);
+
+                    window.location.href =
+                        mailto;
+                }
+            );
         }
 
-        window.location.href =
-          `mailto:herzchirurgsinaazadipour@gmail.com` +
-          `?subject=${subject}` +
-          `&body=${encodeURIComponent(body)}`;
-
-      }
-
     });
-
-  }
 
 });
