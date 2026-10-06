@@ -1,0 +1,1240 @@
+/* =========================================================
+   QATAR
+   SA AZADIPOUR
+   Luxury Medical Market Page
+   ========================================================= */
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.qatar-hero {
+    position: relative;
+    min-height: 92vh;
+    overflow: hidden;
+    background: #101010;
+    color: #fff;
+}
+
+
+.qatar-hero-image {
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        url("https://images.unsplash.com/photo-1578895101408-1a36b834405b?auto=format&fit=crop&w=2400&q=90");
+
+    background-size: cover;
+    background-position: center;
+    transform: scale(1.03);
+}
+
+
+.qatar-hero-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,.78),
+            rgba(0,0,0,.34) 60%,
+            rgba(0,0,0,.18)
+        ),
+
+        linear-gradient(
+            to top,
+            rgba(0,0,0,.88),
+            transparent 55%
+        );
+}
+
+
+.qatar-hero-content {
+    position: relative;
+    z-index: 2;
+
+    width: min(1200px,88%);
+    min-height: 92vh;
+
+    margin: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding-top: 150px;
+    padding-bottom: 75px;
+}
+
+
+.qatar-eyebrow {
+    font-size: 10px;
+    letter-spacing: .30em;
+    color: rgba(255,255,255,.65);
+}
+
+
+.qatar-hero h1 {
+    margin: auto 0 40px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(100px,17vw,230px);
+
+    line-height: .72;
+
+    font-weight: 400;
+
+    letter-spacing: -.055em;
+}
+
+
+.qatar-hero h1 span {
+    color: rgba(255,255,255,.45);
+}
+
+
+.qatar-hero-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+
+.qatar-hero-bottom p {
+    margin: 0;
+
+    font-size: 15px;
+    line-height: 1.8;
+    font-weight: 300;
+
+    color: rgba(255,255,255,.78);
+}
+
+
+.qatar-scroll {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    font-size: 9px;
+    letter-spacing: .28em;
+
+    color: rgba(255,255,255,.55);
+}
+
+
+.qatar-scroll span {
+    display: block;
+
+    width: 55px;
+    height: 1px;
+
+    background: rgba(255,255,255,.45);
+}
+
+
+
+/* =========================================================
+   GENERAL
+========================================================= */
+
+.qatar-section {
+    width: min(1200px,88%);
+    margin: auto;
+
+    padding-top: 135px;
+    padding-bottom: 135px;
+}
+
+
+.qatar-section-label {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    margin-bottom: 65px;
+
+    color: #777;
+
+    font-size: 10px;
+    letter-spacing: .24em;
+
+    text-transform: uppercase;
+}
+
+
+.qatar-section-label::after {
+    content: "";
+
+    width: 45px;
+    height: 1px;
+
+    background: #d1d1d1;
+}
+
+
+.qatar-section-label.light {
+    color: rgba(255,255,255,.55);
+}
+
+
+.qatar-section-label.light::after {
+    background: rgba(255,255,255,.35);
+}
+
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.qatar-intro-section {
+    border-bottom: 1px solid #dedede;
+}
+
+
+.qatar-intro-grid {
+    display: grid;
+
+    grid-template-columns:
+        .9fr 1.2fr;
+
+    gap: 120px;
+}
+
+
+.qatar-intro-title h2 {
+    margin: 0;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(58px,7vw,100px);
+
+    line-height: .88;
+
+    font-weight: 400;
+
+    letter-spacing: -.035em;
+}
+
+
+.qatar-intro-title em {
+    font-style: italic;
+}
+
+
+.qatar-intro-text {
+    padding-top: 8px;
+}
+
+
+.qatar-intro-text p {
+    max-width: 650px;
+
+    margin: 0 0 25px;
+
+    color: #555;
+
+    font-size: 15px;
+    line-height: 1.9;
+
+    font-weight: 300;
+}
+
+
+.qatar-intro-text .qatar-lead {
+    color: #222;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 29px;
+    line-height: 1.3;
+}
+
+
+.qatar-stat-line {
+    display: flex;
+
+    margin-top: 55px;
+
+    border-top: 1px solid #dedede;
+}
+
+
+.qatar-stat-line div {
+    flex: 1;
+
+    padding: 25px 20px 0 0;
+
+    border-right: 1px solid #dedede;
+}
+
+
+.qatar-stat-line div:not(:first-child) {
+    padding-left: 20px;
+}
+
+
+.qatar-stat-line div:last-child {
+    border-right: none;
+}
+
+
+.qatar-stat-line strong {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 31px;
+
+    font-weight: 400;
+}
+
+
+.qatar-stat-line span {
+    color: #777;
+
+    font-size: 9px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+}
+
+
+
+/* =========================================================
+   PRODUCTS HEADER
+========================================================= */
+
+.qatar-products-section {
+    padding-bottom: 80px;
+}
+
+
+.qatar-products-heading {
+    display: grid;
+
+    grid-template-columns:
+        1.1fr .9fr;
+
+    gap: 100px;
+
+    margin-bottom: 80px;
+}
+
+
+.qatar-products-heading h2 {
+    margin: 0;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(58px,7vw,98px);
+
+    line-height: .88;
+
+    font-weight: 400;
+
+    letter-spacing: -.035em;
+}
+
+
+.qatar-products-heading h2 em {
+    font-style: italic;
+}
+
+
+.qatar-products-heading p {
+    align-self: end;
+
+    max-width: 500px;
+
+    margin: 0;
+
+    color: #666;
+
+    font-size: 15px;
+    line-height: 1.9;
+
+    font-weight: 300;
+}
+
+
+
+/* =========================================================
+   PRODUCT ROW
+========================================================= */
+
+.qatar-product {
+    display: grid;
+
+    grid-template-columns: 100px 1fr 70px;
+
+    gap: 35px;
+
+    padding: 45px 0;
+
+    border-top: 1px solid #dcdcdc;
+
+    transition:
+        padding .4s ease,
+        background .4s ease;
+}
+
+
+.qatar-product:last-child {
+    border-bottom: 1px solid #dcdcdc;
+}
+
+
+.qatar-product:hover {
+    padding-left: 25px;
+    padding-right: 25px;
+
+    background: #f4f2ed;
+}
+
+
+.qatar-product-number {
+    color: #999;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 28px;
+
+    font-weight: 400;
+}
+
+
+.qatar-product-category {
+    margin-bottom: 12px;
+
+    color: #888;
+
+    font-size: 9px;
+    letter-spacing: .22em;
+
+    text-transform: uppercase;
+}
+
+
+.qatar-product-main h3 {
+    margin: 0 0 14px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 42px;
+
+    line-height: 1;
+
+    font-weight: 500;
+}
+
+
+.qatar-product-main p {
+    max-width: 650px;
+
+    margin: 0 0 22px;
+
+    color: #666;
+
+    font-size: 14px;
+    line-height: 1.8;
+
+    font-weight: 300;
+}
+
+
+.qatar-product-tags {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
+}
+
+
+.qatar-product-tags span {
+    padding: 8px 11px;
+
+    border: 1px solid #d7d5d0;
+
+    color: #666;
+
+    font-size: 9px;
+
+    letter-spacing: .04em;
+}
+
+
+.qatar-product-arrow {
+    align-self: center;
+
+    font-size: 24px;
+
+    color: #999;
+
+    transition:
+        transform .35s ease,
+        color .35s ease;
+}
+
+
+.qatar-product:hover .qatar-product-arrow {
+    transform: translate(7px,-7px);
+
+    color: #111;
+}
+
+
+
+/* =========================================================
+   MARKET IMAGE
+========================================================= */
+
+.qatar-market-section {
+    width: 100%;
+
+    margin: 0;
+
+    padding: 0;
+}
+
+
+.qatar-market-image {
+    position: relative;
+
+    min-height: 720px;
+
+    display: flex;
+    align-items: center;
+
+    overflow: hidden;
+
+    background-image:
+        url("https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=2400&q=90");
+
+    background-size: cover;
+    background-position: center;
+}
+
+
+.qatar-market-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,.84),
+            rgba(0,0,0,.42),
+            rgba(0,0,0,.20)
+        );
+}
+
+
+.qatar-market-content {
+    position: relative;
+    z-index: 2;
+
+    width: min(1200px,88%);
+
+    margin: auto;
+
+    color: #fff;
+}
+
+
+.qatar-market-content h2 {
+    max-width: 800px;
+
+    margin: 0 0 35px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(65px,9vw,125px);
+
+    line-height: .82;
+
+    font-weight: 400;
+
+    letter-spacing: -.04em;
+}
+
+
+.qatar-market-content h2 em {
+    font-style: italic;
+}
+
+
+.qatar-market-content p {
+    max-width: 550px;
+
+    margin: 0;
+
+    color: rgba(255,255,255,.72);
+
+    font-size: 15px;
+    line-height: 1.9;
+
+    font-weight: 300;
+}
+
+
+
+/* =========================================================
+   OPPORTUNITY
+========================================================= */
+
+.qatar-opportunity {
+    border-bottom: 1px solid #dedede;
+}
+
+
+.qatar-opportunity-grid {
+    display: grid;
+
+    grid-template-columns: .9fr 1.1fr;
+
+    gap: 120px;
+}
+
+
+.qatar-opportunity-grid > div:first-child h2 {
+    margin: 0;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(58px,7vw,98px);
+
+    line-height: .86;
+
+    font-weight: 400;
+
+    letter-spacing: -.035em;
+}
+
+
+.qatar-opportunity-grid strong {
+    font-weight: 600;
+}
+
+
+.qatar-opportunity-list {
+    border-top: 1px solid #dedede;
+}
+
+
+.qatar-opportunity-item {
+    display: grid;
+
+    grid-template-columns: 60px 1fr;
+
+    gap: 20px;
+
+    padding: 30px 0;
+
+    border-bottom: 1px solid #dedede;
+}
+
+
+.qatar-opportunity-item > span {
+    color: #999;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 24px;
+}
+
+
+.qatar-opportunity-item h3 {
+    margin: 0 0 8px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 30px;
+
+    font-weight: 500;
+}
+
+
+.qatar-opportunity-item p {
+    max-width: 500px;
+
+    margin: 0;
+
+    color: #666;
+
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+
+
+/* =========================================================
+   BUSINESS
+========================================================= */
+
+.qatar-business-section {
+    background: #eeece7;
+}
+
+
+.qatar-business-heading h2 {
+    margin: 0 0 75px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(60px,7vw,100px);
+
+    line-height: .86;
+
+    font-weight: 400;
+
+    letter-spacing: -.035em;
+}
+
+
+.qatar-business-heading em {
+    font-style: italic;
+}
+
+
+.qatar-business-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    border-top: 1px solid #d2d0ca;
+    border-left: 1px solid #d2d0ca;
+}
+
+
+.qatar-business-card {
+    min-height: 350px;
+
+    padding: 40px;
+
+    border-right: 1px solid #d2d0ca;
+    border-bottom: 1px solid #d2d0ca;
+}
+
+
+.qatar-business-card span {
+    display: block;
+
+    margin-bottom: 85px;
+
+    color: #888;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 28px;
+}
+
+
+.qatar-business-card h3 {
+    margin: 0 0 18px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 40px;
+
+    font-weight: 500;
+}
+
+
+.qatar-business-card p {
+    max-width: 330px;
+
+    margin: 0;
+
+    color: #666;
+
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+
+
+/* =========================================================
+   COMPLIANCE
+========================================================= */
+
+.qatar-compliance {
+    padding-top: 150px;
+    padding-bottom: 150px;
+}
+
+
+.qatar-compliance-grid {
+    display: grid;
+
+    grid-template-columns:
+        .9fr 1.1fr;
+
+    gap: 120px;
+}
+
+
+.qatar-compliance-grid h2 {
+    margin: 0;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(62px,7vw,100px);
+
+    line-height: .85;
+
+    font-weight: 400;
+
+    letter-spacing: -.035em;
+}
+
+
+.qatar-compliance-grid h2 em {
+    font-style: italic;
+}
+
+
+.qatar-compliance-grid p {
+    max-width: 650px;
+
+    margin: 0 0 25px;
+
+    color: #666;
+
+    font-size: 14px;
+    line-height: 1.9;
+
+    font-weight: 300;
+}
+
+
+.qatar-compliance-note {
+    padding-top: 25px;
+
+    border-top: 1px solid #dedede;
+
+    color: #222 !important;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 21px !important;
+
+    line-height: 1.45 !important;
+}
+
+
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.qatar-contact {
+    width: 100%;
+
+    background: #101010;
+
+    color: #fff;
+}
+
+
+.qatar-contact-inner {
+    width: min(1000px,88%);
+
+    margin: auto;
+
+    padding:
+        145px 0
+        150px;
+}
+
+
+.qatar-contact-label {
+    margin-bottom: 35px;
+
+    color: #888;
+
+    font-size: 10px;
+    letter-spacing: .25em;
+
+    text-transform: uppercase;
+}
+
+
+.qatar-contact h2 {
+    max-width: 850px;
+
+    margin: 0 0 35px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(70px,9vw,125px);
+
+    line-height: .82;
+
+    font-weight: 400;
+
+    letter-spacing: -.045em;
+}
+
+
+.qatar-contact h2 em {
+    font-style: italic;
+
+    color: #aaa;
+}
+
+
+.qatar-contact-inner > p {
+    max-width: 560px;
+
+    margin: 0 0 35px;
+
+    color: #999;
+
+    font-size: 14px;
+    line-height: 1.9;
+
+    font-weight: 300;
+}
+
+
+.qatar-contact-button {
+    display: inline-flex;
+
+    align-items: center;
+    gap: 35px;
+
+    padding: 17px 23px;
+
+    border: 1px solid #555;
+
+    color: #fff;
+
+    text-decoration: none;
+
+    font-size: 10px;
+
+    letter-spacing: .16em;
+
+    text-transform: uppercase;
+
+    transition:
+        background .35s ease,
+        color .35s ease,
+        border-color .35s ease;
+}
+
+
+.qatar-contact-button span {
+    font-size: 18px;
+}
+
+
+.qatar-contact-button:hover {
+    background: #fff;
+
+    border-color: #fff;
+
+    color: #111;
+}
+
+
+.qatar-contact-email {
+    margin-top: 55px;
+
+    color: #555;
+
+    font-size: 11px;
+
+    letter-spacing: .04em;
+}
+
+
+
+/* =========================================================
+   RESPONSIVE — TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+
+    .qatar-hero-content {
+        padding-top: 120px;
+    }
+
+
+    .qatar-intro-grid,
+    .qatar-products-heading,
+    .qatar-opportunity-grid,
+    .qatar-compliance-grid {
+        grid-template-columns: 1fr;
+
+        gap: 55px;
+    }
+
+
+    .qatar-product {
+        grid-template-columns: 70px 1fr 40px;
+    }
+
+
+    .qatar-business-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .qatar-business-card {
+        min-height: auto;
+    }
+
+
+    .qatar-business-card span {
+        margin-bottom: 55px;
+    }
+
+
+    .qatar-market-image {
+        min-height: 600px;
+    }
+
+}
+
+
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+
+    .qatar-hero {
+        min-height: 82vh;
+    }
+
+
+    .qatar-hero-content {
+        width: 90%;
+
+        min-height: 82vh;
+
+        padding-top: 105px;
+        padding-bottom: 45px;
+    }
+
+
+    .qatar-hero h1 {
+        font-size: 88px;
+
+        margin-bottom: 30px;
+    }
+
+
+    .qatar-hero-bottom {
+        align-items: flex-start;
+        gap: 30px;
+    }
+
+
+    .qatar-scroll {
+        display: none;
+    }
+
+
+    .qatar-section {
+        width: 90%;
+
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+
+
+    .qatar-section-label {
+        margin-bottom: 45px;
+    }
+
+
+    .qatar-intro-title h2,
+    .qatar-products-heading h2,
+    .qatar-opportunity-grid > div:first-child h2,
+    .qatar-compliance-grid h2 {
+        font-size: 57px;
+    }
+
+
+    .qatar-intro-text .qatar-lead {
+        font-size: 25px;
+    }
+
+
+    .qatar-stat-line {
+        margin-top: 40px;
+    }
+
+
+    .qatar-stat-line div {
+        padding-right: 10px;
+    }
+
+
+    .qatar-stat-line div:not(:first-child) {
+        padding-left: 10px;
+    }
+
+
+    .qatar-stat-line strong {
+        font-size: 25px;
+    }
+
+
+    .qatar-products-heading {
+        margin-bottom: 45px;
+    }
+
+
+    .qatar-product {
+        grid-template-columns: 40px 1fr;
+
+        gap: 15px;
+
+        padding: 32px 0;
+    }
+
+
+    .qatar-product:hover {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+
+    .qatar-product-arrow {
+        display: none;
+    }
+
+
+    .qatar-product-main h3 {
+        font-size: 34px;
+    }
+
+
+    .qatar-product-main p {
+        font-size: 13px;
+    }
+
+
+    .qatar-product-tags span {
+        font-size: 8px;
+
+        padding: 7px 9px;
+    }
+
+
+    .qatar-market-image {
+        min-height: 620px;
+
+        background-position: 58% center;
+    }
+
+
+    .qatar-market-content {
+        width: 90%;
+    }
+
+
+    .qatar-market-content h2 {
+        font-size: 65px;
+    }
+
+
+    .qatar-business-heading h2 {
+        font-size: 62px;
+
+        margin-bottom: 50px;
+    }
+
+
+    .qatar-business-card {
+        padding: 32px;
+    }
+
+
+    .qatar-business-card h3 {
+        font-size: 36px;
+    }
+
+
+    .qatar-compliance-note {
+        font-size: 20px !important;
+    }
+
+
+    .qatar-contact-inner {
+        width: 90%;
+
+        padding:
+            90px 0
+            95px;
+    }
+
+
+    .qatar-contact h2 {
+        font-size: 70px;
+    }
+
+
+    .qatar-contact-email {
+        word-break: break-word;
+
+        line-height: 1.7;
+    }
+
+}
