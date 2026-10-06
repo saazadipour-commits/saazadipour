@@ -1,308 +1,375 @@
 <!doctype html>
 <html lang="en">
+
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta charset="utf-8">
-
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1">
-
-  <meta name="description"
-        content="Azadipour Luxury Fabrics — premium textiles for fashion, interiors and commercial applications, available for GCC sourcing and international inquiries.">
+  <meta
+    name="description"
+    content="Azadipour Luxury Fabrics — curated premium textiles, international sourcing and custom fabric orders for GCC markets."
+  >
 
   <title>Luxury Fabrics | Azadipour</title>
 
-  <link rel="preconnect"
-        href="https://fonts.googleapis.com">
+  <!-- MAIN WEBSITE CSS -->
+  <link rel="stylesheet" href="style.css">
 
-  <link rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin>
-
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap"
-        rel="stylesheet">
-
-  <link rel="stylesheet"
-        href="import-fabrics.css">
+  <!-- PAGE-SPECIFIC CSS -->
+  <link rel="stylesheet" href="import-fabrics.css">
 
 </head>
 
+<body class="fabrics-page">
 
-<body>
-
-
-<!-- =====================================================
-     NAVIGATION
-===================================================== -->
+<!-- =========================================================
+     HEADER
+     Uses the same main website structure
+     ========================================================= -->
 
 <header class="navbar">
 
-  <div class="nav-container">
+  <a class="brand" href="index.html">
+    <img src="assets/logo-transparent.png" alt="Azadipour">
+    <span class="brand-word">AZADIPOUR</span>
+  </a>
 
-    <a class="brand"
-       href="index.html">
+  <button
+    class="menu-toggle"
+    aria-label="Open navigation"
+    aria-expanded="false"
+    type="button"
+  >
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 
-      <img src="assets/logo-transparent.png"
-           alt="Azadipour">
+  <nav class="nav-links">
 
-      <span>AZADIPOUR</span>
+    <a href="index.html">Home</a>
 
-    </a>
+    <a href="investment.html">Investment</a>
 
+    <a href="import.html">Import</a>
 
-    <button class="menu-toggle"
-            aria-label="Open navigation"
-            aria-expanded="false">
+    <a href="export.html">GCC Markets</a>
 
-      <span></span>
-      <span></span>
-      <span></span>
+    <a href="index.html#contact">Contact</a>
 
-    </button>
+  </nav>
 
-
-    <nav class="nav-links">
-
-      <a href="index.html">
-        Home
-      </a>
-
-      <a href="investment.html">
-        Investment
-      </a>
-
-      <a href="import.html">
-        Import
-      </a>
-
-      <a href="export.html">
-        GCC Markets
-      </a>
-
-      <a href="index.html#contact">
-        Contact
-      </a>
-
-    </nav>
-
-
-    <a class="nav-cta"
-       href="mailto:herzchirurgsinaazadipour@gmail.com?subject=Luxury%20Fabrics%20Inquiry">
-
-      Strategic Partnership
-
-    </a>
-
-  </div>
+  <a
+    class="nav-cta"
+    href="mailto:herzchirurgsinaazadipour@gmail.com?subject=Luxury%20Fabrics%20Strategic%20Inquiry"
+  >
+    Strategic Partnership
+  </a>
 
 </header>
 
 
-
-<!-- =====================================================
+<!-- =========================================================
      HERO
-===================================================== -->
+     ========================================================= -->
 
-<section class="fabric-hero">
+<section class="fabrics-hero">
 
-  <div class="fabric-hero-image"></div>
+  <div class="fabrics-hero-copy">
 
-  <div class="fabric-hero-overlay"></div>
+    <div class="fabrics-eyebrow">
+      AZADIPOUR · INTERNATIONAL TEXTILE SOURCING
+    </div>
 
+    <h1 class="fabrics-hero-title">
+      Luxury<br>
+      <em>Fabrics.</em>
+    </h1>
 
-  <div class="fabric-hero-content">
+    <p class="fabrics-hero-description">
+      A curated selection of premium textiles sourced for discerning
+      buyers, fashion houses, interior projects and GCC markets.
+      From refined natural textures to custom-sourced materials,
+      Azadipour connects quality fabrics with reliable international
+      supply.
+    </p>
 
-    <div class="eyebrow">
-      IMPORT · LUXURY FABRICS
+    <div class="hero-actions">
+
+      <a
+        class="btn"
+        href="#catalogue"
+      >
+        Explore Collection <span>→</span>
+      </a>
+
+      <a
+        class="btn secondary"
+        href="#fabric-inquiry"
+      >
+        Request a Fabric
+      </a>
+
     </div>
 
 
-    <h1>
-      Luxury Fabrics
-      <br>
-      <em>Curated for you.</em>
-    </h1>
+    <!-- FEATURES -->
 
+    <div class="fabrics-features">
 
-    <p>
+      <div class="fabric-feature">
 
-      Premium textiles for fashion, interiors and
-      commercial applications. Selected from trusted
-      international suppliers, with a focus on quality,
-      craftsmanship and distinctive design.
+        <div class="fabric-feature-icon">
+          ◇
+        </div>
 
-    </p>
+        <span class="fabric-feature-title">
+          Premium Quality
+        </span>
 
-
-    <div class="hero-line"></div>
-
-
-    <div class="hero-features">
-
-      <div>
-        <span class="feature-icon">◇</span>
-        <span>PREMIUM QUALITY</span>
       </div>
 
-      <div>
-        <span class="feature-icon">◈</span>
-        <span>GLOBAL SOURCING</span>
+
+      <div class="fabric-feature">
+
+        <div class="fabric-feature-icon">
+          ◌
+        </div>
+
+        <span class="fabric-feature-title">
+          Global Sourcing
+        </span>
+
       </div>
 
-      <div>
-        <span class="feature-icon">□</span>
-        <span>CUSTOM ORDERS</span>
+
+      <div class="fabric-feature">
+
+        <div class="fabric-feature-icon">
+          □
+        </div>
+
+        <span class="fabric-feature-title">
+          Custom Orders
+        </span>
+
       </div>
 
-      <div>
-        <span class="feature-icon">△</span>
-        <span>GCC SUPPLY</span>
+
+      <div class="fabric-feature">
+
+        <div class="fabric-feature-icon">
+          +
+        </div>
+
+        <span class="fabric-feature-title">
+          GCC Supply
+        </span>
+
       </div>
 
     </div>
 
   </div>
+
+
+  <div
+    class="fabrics-hero-image"
+    style="background-image:url('assets/fabrics/fabric-01.jpg')"
+  ></div>
 
 </section>
 
 
 
-<!-- =====================================================
+<!-- =========================================================
      CATALOGUE
-===================================================== -->
+     ========================================================= -->
 
-<section class="catalogue">
+<section
+  class="fabrics-catalogue"
+  id="catalogue"
+>
 
-  <div class="catalogue-container">
+  <div class="container">
+
+    <div class="fabrics-section-header">
+
+      <div>
+
+        <div class="fabrics-section-label">
+          01 / COLLECTION
+        </div>
+
+        <h2 class="fabrics-section-title">
+          Curated for<br>
+          <em>you.</em>
+        </h2>
+
+      </div>
+
+      <p class="fabrics-section-intro">
+        Explore selected textile references available for
+        international sourcing. Final composition, colour,
+        availability, MOQ and pricing are confirmed according
+        to the requested specification.
+      </p>
+
+    </div>
 
 
     <!-- FILTER BAR -->
 
-    <div class="catalogue-top">
+    <div class="fabrics-filter-bar">
 
-      <div class="filters">
+      <div class="fabrics-filters">
 
-        <button class="filter active"
-                data-filter="all">
-          ALL
+        <button
+          class="fabric-filter active"
+          type="button"
+          data-filter="all"
+        >
+          All
         </button>
 
-        <button class="filter"
-                data-filter="wool">
-          WOOL & CASHMERE
+        <button
+          class="fabric-filter"
+          type="button"
+          data-filter="wool"
+        >
+          Wool & Cashmere
         </button>
 
-        <button class="filter"
-                data-filter="linen">
-          LINEN
+        <button
+          class="fabric-filter"
+          type="button"
+          data-filter="linen"
+        >
+          Linen
         </button>
 
-        <button class="filter"
-                data-filter="cotton">
-          COTTON
+        <button
+          class="fabric-filter"
+          type="button"
+          data-filter="cotton"
+        >
+          Cotton
         </button>
 
-        <button class="filter"
-                data-filter="silk">
-          SILK
+        <button
+          class="fabric-filter"
+          type="button"
+          data-filter="silk"
+        >
+          Silk
         </button>
 
-        <button class="filter"
-                data-filter="blends">
-          BLENDS
+        <button
+          class="fabric-filter"
+          type="button"
+          data-filter="blends"
+        >
+          Blends
         </button>
 
       </div>
 
 
-      <div class="search-box">
+      <div class="fabric-search">
 
-        <input type="search"
-               id="fabricSearch"
-               placeholder="Search fabrics...">
-
-        <span>⌕</span>
+        <input
+          type="search"
+          id="fabricSearch"
+          placeholder="Search collection..."
+          aria-label="Search fabrics"
+        >
 
       </div>
 
     </div>
 
 
+    <!-- PRODUCT GRID -->
 
-    <!-- PRODUCTS -->
-
-    <div class="fabric-grid"
-         id="fabricGrid">
+    <div class="fabrics-product-grid" id="fabricGrid">
 
 
       <!-- PRODUCT 01 -->
 
-      <article class="fabric-card"
-               data-category="wool"
-               data-name="Signature Fabric">
+      <article
+        class="fabric-product-card"
+        data-category="wool"
+        data-name="Signature Wool"
+        data-code="AZ-F001"
+      >
 
-        <div class="fabric-image">
+        <div class="fabric-product-image">
 
-          <img src="assets/fabrics/fabric-01.jpg"
-               alt="Signature luxury fabric">
+          <img
+            src="assets/fabrics/fabric-01.jpg"
+            alt="Azadipour premium textile collection"
+            loading="lazy"
+          >
 
         </div>
 
+        <div class="fabric-product-body">
 
-        <div class="fabric-content">
-
-          <span class="fabric-code">
+          <span class="fabric-product-code">
             AZ-F001
           </span>
 
-          <h3>
-            Signature Fabric
+          <h3 class="fabric-product-name">
+            Signature Wool
           </h3>
 
-          <div class="fabric-details">
+          <ul class="fabric-product-specs">
 
-            <div>
-              <span>Composition</span>
-              <strong>100% Wool</strong>
-            </div>
+            <li>
+              <span>Type</span>
+              <span>Premium Textile</span>
+            </li>
 
-            <div>
+            <li>
               <span>Width</span>
-              <strong>150 cm</strong>
-            </div>
+              <span>Upon Request</span>
+            </li>
 
-            <div>
-              <span>Color</span>
-              <strong>Multi</strong>
-            </div>
+            <li>
+              <span>Colour</span>
+              <span>Custom</span>
+            </li>
 
-            <div>
+            <li>
               <span>MOQ</span>
-              <strong>300 m</strong>
-            </div>
+              <span>Upon Request</span>
+            </li>
 
+          </ul>
+
+          <div class="fabric-product-price">
+            Price: Upon Request
           </div>
 
+          <div class="fabric-product-actions">
 
-          <div class="price">
-            Price: <strong>Upon Request</strong>
+            <button
+              class="fabric-request-btn"
+              type="button"
+              data-request="AZ-F001"
+            >
+              Request This Fabric
+            </button>
+
+            <button
+              class="fabric-detail-btn"
+              type="button"
+              data-detail="AZ-F001"
+            >
+              View Details
+            </button>
+
           </div>
-
-
-          <button class="product-button"
-                  data-product="AZ-F001 — Signature Fabric">
-
-            REQUEST THIS FABRIC
-
-          </button>
-
-
-          <button class="details-button"
-                  data-product="AZ-F001">
-
-            VIEW DETAILS
-
-          </button>
 
         </div>
 
@@ -312,72 +379,80 @@
 
       <!-- PRODUCT 02 -->
 
-      <article class="fabric-card"
-               data-category="blends"
-               data-name="Executive Textile">
+      <article
+        class="fabric-product-card"
+        data-category="blends"
+        data-name="Royal Texture"
+        data-code="AZ-F002"
+      >
 
-        <div class="fabric-image">
+        <div class="fabric-product-image">
 
-          <img src="assets/fabrics/fabric-02.jpg"
-               alt="Executive luxury textile">
+          <img
+            src="assets/fabrics/fabric-02.jpg"
+            alt="Royal Texture premium fabric"
+            loading="lazy"
+          >
 
         </div>
 
+        <div class="fabric-product-body">
 
-        <div class="fabric-content">
-
-          <span class="fabric-code">
+          <span class="fabric-product-code">
             AZ-F002
           </span>
 
-          <h3>
-            Executive Textile
+          <h3 class="fabric-product-name">
+            Royal Texture
           </h3>
 
-          <div class="fabric-details">
+          <ul class="fabric-product-specs">
 
-            <div>
-              <span>Composition</span>
-              <strong>60% Wool / 40% Linen</strong>
-            </div>
+            <li>
+              <span>Type</span>
+              <span>Premium Textile</span>
+            </li>
 
-            <div>
+            <li>
               <span>Width</span>
-              <strong>150 cm</strong>
-            </div>
+              <span>Upon Request</span>
+            </li>
 
-            <div>
-              <span>Color</span>
-              <strong>Grey / Beige</strong>
-            </div>
+            <li>
+              <span>Colour</span>
+              <span>Custom</span>
+            </li>
 
-            <div>
+            <li>
               <span>MOQ</span>
-              <strong>300 m</strong>
-            </div>
+              <span>Upon Request</span>
+            </li>
 
+          </ul>
+
+          <div class="fabric-product-price">
+            Price: Upon Request
           </div>
 
+          <div class="fabric-product-actions">
 
-          <div class="price">
-            Price: <strong>Upon Request</strong>
+            <button
+              class="fabric-request-btn"
+              type="button"
+              data-request="AZ-F002"
+            >
+              Request This Fabric
+            </button>
+
+            <button
+              class="fabric-detail-btn"
+              type="button"
+              data-detail="AZ-F002"
+            >
+              View Details
+            </button>
+
           </div>
-
-
-          <button class="product-button"
-                  data-product="AZ-F002 — Executive Textile">
-
-            REQUEST THIS FABRIC
-
-          </button>
-
-
-          <button class="details-button"
-                  data-product="AZ-F002">
-
-            VIEW DETAILS
-
-          </button>
 
         </div>
 
@@ -387,72 +462,80 @@
 
       <!-- PRODUCT 03 -->
 
-      <article class="fabric-card"
-               data-category="cotton"
-               data-name="Modern Jacquard">
+      <article
+        class="fabric-product-card"
+        data-category="cotton"
+        data-name="Snow D5"
+        data-code="AZ-F003"
+      >
 
-        <div class="fabric-image">
+        <div class="fabric-product-image">
 
-          <img src="assets/fabrics/fabric-03.jpg"
-               alt="Modern Jacquard fabric">
+          <img
+            src="assets/fabrics/fabric-03.jpg"
+            alt="Snow D5 textile"
+            loading="lazy"
+          >
 
         </div>
 
+        <div class="fabric-product-body">
 
-        <div class="fabric-content">
-
-          <span class="fabric-code">
+          <span class="fabric-product-code">
             AZ-F003
           </span>
 
-          <h3>
-            Modern Jacquard
+          <h3 class="fabric-product-name">
+            Snow D5
           </h3>
 
-          <div class="fabric-details">
+          <ul class="fabric-product-specs">
 
-            <div>
-              <span>Composition</span>
-              <strong>65% Cotton / 35% Polyester</strong>
-            </div>
+            <li>
+              <span>Type</span>
+              <span>Textured Fabric</span>
+            </li>
 
-            <div>
+            <li>
               <span>Width</span>
-              <strong>140 cm</strong>
-            </div>
+              <span>Upon Request</span>
+            </li>
 
-            <div>
-              <span>Color</span>
-              <strong>Beige / White</strong>
-            </div>
+            <li>
+              <span>Colour</span>
+              <span>Natural</span>
+            </li>
 
-            <div>
+            <li>
               <span>MOQ</span>
-              <strong>300 m</strong>
-            </div>
+              <span>Upon Request</span>
+            </li>
 
+          </ul>
+
+          <div class="fabric-product-price">
+            Price: Upon Request
           </div>
 
+          <div class="fabric-product-actions">
 
-          <div class="price">
-            Price: <strong>Upon Request</strong>
+            <button
+              class="fabric-request-btn"
+              type="button"
+              data-request="AZ-F003"
+            >
+              Request This Fabric
+            </button>
+
+            <button
+              class="fabric-detail-btn"
+              type="button"
+              data-detail="AZ-F003"
+            >
+              View Details
+            </button>
+
           </div>
-
-
-          <button class="product-button"
-                  data-product="AZ-F003 — Modern Jacquard">
-
-            REQUEST THIS FABRIC
-
-          </button>
-
-
-          <button class="details-button"
-                  data-product="AZ-F003">
-
-            VIEW DETAILS
-
-          </button>
 
         </div>
 
@@ -462,72 +545,80 @@
 
       <!-- PRODUCT 04 -->
 
-      <article class="fabric-card"
-               data-category="wool"
-               data-name="Heritage Collection">
+      <article
+        class="fabric-product-card"
+        data-category="linen"
+        data-name="Snow M1"
+        data-code="AZ-F004"
+      >
 
-        <div class="fabric-image">
+        <div class="fabric-product-image">
 
-          <img src="assets/fabrics/fabric-04.jpg"
-               alt="Heritage luxury fabric collection">
+          <img
+            src="assets/fabrics/fabric-04.jpg"
+            alt="Snow M1 premium textile"
+            loading="lazy"
+          >
 
         </div>
 
+        <div class="fabric-product-body">
 
-        <div class="fabric-content">
-
-          <span class="fabric-code">
+          <span class="fabric-product-code">
             AZ-F004
           </span>
 
-          <h3>
-            Heritage Collection
+          <h3 class="fabric-product-name">
+            Snow M1
           </h3>
 
-          <div class="fabric-details">
+          <ul class="fabric-product-specs">
 
-            <div>
-              <span>Composition</span>
-              <strong>50% Wool / 50% Linen</strong>
-            </div>
+            <li>
+              <span>Type</span>
+              <span>Premium Textile</span>
+            </li>
 
-            <div>
+            <li>
               <span>Width</span>
-              <strong>150 cm</strong>
-            </div>
+              <span>Upon Request</span>
+            </li>
 
-            <div>
-              <span>Color</span>
-              <strong>Earth Tones</strong>
-            </div>
+            <li>
+              <span>Colour</span>
+              <span>Natural</span>
+            </li>
 
-            <div>
+            <li>
               <span>MOQ</span>
-              <strong>300 m</strong>
-            </div>
+              <span>Upon Request</span>
+            </li>
 
+          </ul>
+
+          <div class="fabric-product-price">
+            Price: Upon Request
           </div>
 
+          <div class="fabric-product-actions">
 
-          <div class="price">
-            Price: <strong>Upon Request</strong>
+            <button
+              class="fabric-request-btn"
+              type="button"
+              data-request="AZ-F004"
+            >
+              Request This Fabric
+            </button>
+
+            <button
+              class="fabric-detail-btn"
+              type="button"
+              data-detail="AZ-F004"
+            >
+              View Details
+            </button>
+
           </div>
-
-
-          <button class="product-button"
-                  data-product="AZ-F004 — Heritage Collection">
-
-            REQUEST THIS FABRIC
-
-          </button>
-
-
-          <button class="details-button"
-                  data-product="AZ-F004">
-
-            VIEW DETAILS
-
-          </button>
 
         </div>
 
@@ -537,72 +628,80 @@
 
       <!-- PRODUCT 05 -->
 
-      <article class="fabric-card"
-               data-category="blends"
-               data-name="Contemporary Texture">
+      <article
+        class="fabric-product-card"
+        data-category="blends"
+        data-name="Monochrome Pattern"
+        data-code="AZ-F005"
+      >
 
-        <div class="fabric-image">
+        <div class="fabric-product-image">
 
-          <img src="assets/fabrics/fabric-05.jpg"
-               alt="Contemporary textured fabric">
+          <img
+            src="assets/fabrics/fabric-05.jpg"
+            alt="Monochrome patterned fabric"
+            loading="lazy"
+          >
 
         </div>
 
+        <div class="fabric-product-body">
 
-        <div class="fabric-content">
-
-          <span class="fabric-code">
+          <span class="fabric-product-code">
             AZ-F005
           </span>
 
-          <h3>
-            Contemporary Texture
+          <h3 class="fabric-product-name">
+            Monochrome Pattern
           </h3>
 
-          <div class="fabric-details">
+          <ul class="fabric-product-specs">
 
-            <div>
-              <span>Composition</span>
-              <strong>Wool Blend</strong>
-            </div>
+            <li>
+              <span>Type</span>
+              <span>Patterned Textile</span>
+            </li>
 
-            <div>
+            <li>
               <span>Width</span>
-              <strong>150 cm</strong>
-            </div>
+              <span>Upon Request</span>
+            </li>
 
-            <div>
-              <span>Color</span>
-              <strong>Natural</strong>
-            </div>
+            <li>
+              <span>Colour</span>
+              <span>Black / White</span>
+            </li>
 
-            <div>
+            <li>
               <span>MOQ</span>
-              <strong>300 m</strong>
-            </div>
+              <span>Upon Request</span>
+            </li>
 
+          </ul>
+
+          <div class="fabric-product-price">
+            Price: Upon Request
           </div>
 
+          <div class="fabric-product-actions">
 
-          <div class="price">
-            Price: <strong>Upon Request</strong>
+            <button
+              class="fabric-request-btn"
+              type="button"
+              data-request="AZ-F005"
+            >
+              Request This Fabric
+            </button>
+
+            <button
+              class="fabric-detail-btn"
+              type="button"
+              data-detail="AZ-F005"
+            >
+              View Details
+            </button>
+
           </div>
-
-
-          <button class="product-button"
-                  data-product="AZ-F005 — Contemporary Texture">
-
-            REQUEST THIS FABRIC
-
-          </button>
-
-
-          <button class="details-button"
-                  data-product="AZ-F005">
-
-            VIEW DETAILS
-
-          </button>
 
         </div>
 
@@ -612,72 +711,80 @@
 
       <!-- PRODUCT 06 -->
 
-      <article class="fabric-card"
-               data-category="cotton"
-               data-name="Architectural Pattern">
+      <article
+        class="fabric-product-card"
+        data-category="cotton"
+        data-name="Grey Structure"
+        data-code="AZ-F006"
+      >
 
-        <div class="fabric-image">
+        <div class="fabric-product-image">
 
-          <img src="assets/fabrics/fabric-06.jpg"
-               alt="Architectural patterned textile">
+          <img
+            src="assets/fabrics/fabric-06.jpg"
+            alt="Grey structured premium textile"
+            loading="lazy"
+          >
 
         </div>
 
+        <div class="fabric-product-body">
 
-        <div class="fabric-content">
-
-          <span class="fabric-code">
+          <span class="fabric-product-code">
             AZ-F006
           </span>
 
-          <h3>
-            Architectural Pattern
+          <h3 class="fabric-product-name">
+            Grey Structure
           </h3>
 
-          <div class="fabric-details">
+          <ul class="fabric-product-specs">
 
-            <div>
-              <span>Composition</span>
-              <strong>Cotton Blend</strong>
-            </div>
+            <li>
+              <span>Type</span>
+              <span>Textured Textile</span>
+            </li>
 
-            <div>
+            <li>
               <span>Width</span>
-              <strong>140 cm</strong>
-            </div>
+              <span>Upon Request</span>
+            </li>
 
-            <div>
-              <span>Color</span>
-              <strong>Ivory / Taupe</strong>
-            </div>
+            <li>
+              <span>Colour</span>
+              <span>Grey / White</span>
+            </li>
 
-            <div>
+            <li>
               <span>MOQ</span>
-              <strong>300 m</strong>
-            </div>
+              <span>Upon Request</span>
+            </li>
 
+          </ul>
+
+          <div class="fabric-product-price">
+            Price: Upon Request
           </div>
 
+          <div class="fabric-product-actions">
 
-          <div class="price">
-            Price: <strong>Upon Request</strong>
+            <button
+              class="fabric-request-btn"
+              type="button"
+              data-request="AZ-F006"
+            >
+              Request This Fabric
+            </button>
+
+            <button
+              class="fabric-detail-btn"
+              type="button"
+              data-detail="AZ-F006"
+            >
+              View Details
+            </button>
+
           </div>
-
-
-          <button class="product-button"
-                  data-product="AZ-F006 — Architectural Pattern">
-
-            REQUEST THIS FABRIC
-
-          </button>
-
-
-          <button class="details-button"
-                  data-product="AZ-F006">
-
-            VIEW DETAILS
-
-          </button>
 
         </div>
 
@@ -687,72 +794,80 @@
 
       <!-- PRODUCT 07 -->
 
-      <article class="fabric-card"
-               data-category="linen"
-               data-name="Natural Linen Texture">
+      <article
+        class="fabric-product-card"
+        data-category="silk"
+        data-name="Heritage Blend"
+        data-code="AZ-F007"
+      >
 
-        <div class="fabric-image">
+        <div class="fabric-product-image">
 
-          <img src="assets/fabrics/fabric-07.jpg"
-               alt="Natural linen texture">
+          <img
+            src="assets/fabrics/fabric-07.jpg"
+            alt="Heritage Blend premium fabric"
+            loading="lazy"
+          >
 
         </div>
 
+        <div class="fabric-product-body">
 
-        <div class="fabric-content">
-
-          <span class="fabric-code">
+          <span class="fabric-product-code">
             AZ-F007
           </span>
 
-          <h3>
-            Natural Linen Texture
+          <h3 class="fabric-product-name">
+            Heritage Blend
           </h3>
 
-          <div class="fabric-details">
+          <ul class="fabric-product-specs">
 
-            <div>
-              <span>Composition</span>
-              <strong>Linen Blend</strong>
-            </div>
+            <li>
+              <span>Type</span>
+              <span>Premium Textile</span>
+            </li>
 
-            <div>
+            <li>
               <span>Width</span>
-              <strong>150 cm</strong>
-            </div>
+              <span>Upon Request</span>
+            </li>
 
-            <div>
-              <span>Color</span>
-              <strong>Natural / Grey</strong>
-            </div>
+            <li>
+              <span>Colour</span>
+              <span>Custom</span>
+            </li>
 
-            <div>
+            <li>
               <span>MOQ</span>
-              <strong>300 m</strong>
-            </div>
+              <span>Upon Request</span>
+            </li>
 
+          </ul>
+
+          <div class="fabric-product-price">
+            Price: Upon Request
           </div>
 
+          <div class="fabric-product-actions">
 
-          <div class="price">
-            Price: <strong>Upon Request</strong>
+            <button
+              class="fabric-request-btn"
+              type="button"
+              data-request="AZ-F007"
+            >
+              Request This Fabric
+            </button>
+
+            <button
+              class="fabric-detail-btn"
+              type="button"
+              data-detail="AZ-F007"
+            >
+              View Details
+            </button>
+
           </div>
-
-
-          <button class="product-button"
-                  data-product="AZ-F007 — Natural Linen Texture">
-
-            REQUEST THIS FABRIC
-
-          </button>
-
-
-          <button class="details-button"
-                  data-product="AZ-F007">
-
-            VIEW DETAILS
-
-          </button>
 
         </div>
 
@@ -762,77 +877,93 @@
 
       <!-- PRODUCT 08 -->
 
-      <article class="fabric-card"
-               data-category="wool"
-               data-name="Monochrome Collection">
+      <article
+        class="fabric-product-card"
+        data-category="wool"
+        data-name="Continental Texture"
+        data-code="AZ-F008"
+      >
 
-        <div class="fabric-image">
+        <div class="fabric-product-image">
 
-          <img src="assets/fabrics/fabric-08.jpg"
-               alt="Monochrome luxury textile collection">
+          <img
+            src="assets/fabrics/fabric-08.jpg"
+            alt="Continental Texture premium fabric"
+            loading="lazy"
+          >
 
         </div>
 
+        <div class="fabric-product-body">
 
-        <div class="fabric-content">
-
-          <span class="fabric-code">
+          <span class="fabric-product-code">
             AZ-F008
           </span>
 
-          <h3>
-            Monochrome Collection
+          <h3 class="fabric-product-name">
+            Continental Texture
           </h3>
 
-          <div class="fabric-details">
+          <ul class="fabric-product-specs">
 
-            <div>
-              <span>Composition</span>
-              <strong>Wool Blend</strong>
-            </div>
+            <li>
+              <span>Type</span>
+              <span>Luxury Textile</span>
+            </li>
 
-            <div>
+            <li>
               <span>Width</span>
-              <strong>150 cm</strong>
-            </div>
+              <span>Upon Request</span>
+            </li>
 
-            <div>
-              <span>Color</span>
-              <strong>Black / Grey</strong>
-            </div>
+            <li>
+              <span>Colour</span>
+              <span>Multi-Tone</span>
+            </li>
 
-            <div>
+            <li>
               <span>MOQ</span>
-              <strong>300 m</strong>
-            </div>
+              <span>Upon Request</span>
+            </li>
 
+          </ul>
+
+          <div class="fabric-product-price">
+            Price: Upon Request
           </div>
 
+          <div class="fabric-product-actions">
 
-          <div class="price">
-            Price: <strong>Upon Request</strong>
+            <button
+              class="fabric-request-btn"
+              type="button"
+              data-request="AZ-F008"
+            >
+              Request This Fabric
+            </button>
+
+            <button
+              class="fabric-detail-btn"
+              type="button"
+              data-detail="AZ-F008"
+            >
+              View Details
+            </button>
+
           </div>
-
-
-          <button class="product-button"
-                  data-product="AZ-F008 — Monochrome Collection">
-
-            REQUEST THIS FABRIC
-
-          </button>
-
-
-          <button class="details-button"
-                  data-product="AZ-F008">
-
-            VIEW DETAILS
-
-          </button>
 
         </div>
 
       </article>
 
+
+      <div
+        class="fabric-empty"
+        id="fabricEmpty"
+        style="display:none"
+      >
+        No fabrics found.
+      </div>
 
     </div>
 
@@ -842,72 +973,199 @@
 
 
 
-<!-- =====================================================
-     FEATURED FABRIC / INQUIRY
-===================================================== -->
+<!-- =========================================================
+     PRODUCT DETAIL
+     ========================================================= -->
 
-<section class="featured-section"
-         id="inquiry">
+<section
+  class="fabric-detail-section"
+  id="fabric-detail"
+>
 
-  <div class="featured-container">
+  <div class="container">
+
+    <div class="fabric-detail-grid">
 
 
-    <div class="featured-gallery">
+      <!-- GALLERY -->
 
-      <div class="featured-main">
+      <div class="fabric-gallery">
 
-        <img id="featuredImage"
-             src="assets/fabrics/fabric-01.jpg"
-             alt="Selected luxury fabric">
+        <div class="fabric-thumbnails">
+
+          <button
+            class="fabric-thumbnail active"
+            type="button"
+            data-image="assets/fabrics/fabric-01.jpg"
+          >
+            <img
+              src="assets/fabrics/fabric-01.jpg"
+              alt="Fabric 01"
+            >
+          </button>
+
+          <button
+            class="fabric-thumbnail"
+            type="button"
+            data-image="assets/fabrics/fabric-02.jpg"
+          >
+            <img
+              src="assets/fabrics/fabric-02.jpg"
+              alt="Fabric 02"
+            >
+          </button>
+
+          <button
+            class="fabric-thumbnail"
+            type="button"
+            data-image="assets/fabrics/fabric-03.jpg"
+          >
+            <img
+              src="assets/fabrics/fabric-03.jpg"
+              alt="Fabric 03"
+            >
+          </button>
+
+          <button
+            class="fabric-thumbnail"
+            type="button"
+            data-image="assets/fabrics/fabric-04.jpg"
+          >
+            <img
+              src="assets/fabrics/fabric-04.jpg"
+              alt="Fabric 04"
+            >
+          </button>
+
+          <button
+            class="fabric-thumbnail"
+            type="button"
+            data-image="assets/fabrics/fabric-05.jpg"
+          >
+            <img
+              src="assets/fabrics/fabric-05.jpg"
+              alt="Fabric 05"
+            >
+          </button>
+
+        </div>
+
+
+        <div class="fabric-main-image">
+
+          <img
+            id="fabricMainImage"
+            src="assets/fabrics/fabric-01.jpg"
+            alt="Selected Azadipour fabric"
+          >
+
+        </div>
 
       </div>
 
 
-      <div class="featured-thumbs">
 
-        <button class="thumb active"
-                data-image="assets/fabrics/fabric-01.jpg">
+      <!-- PRODUCT INFORMATION -->
 
-          <img src="assets/fabrics/fabric-01.jpg"
-               alt="Fabric thumbnail">
+      <div class="fabric-detail-copy">
 
-        </button>
+        <span
+          class="fabric-detail-code"
+          id="detailCode"
+        >
+          AZ-F001
+        </span>
 
+        <h2
+          class="fabric-detail-title"
+          id="detailTitle"
+        >
+          Signature Wool
+        </h2>
 
-        <button class="thumb"
-                data-image="assets/fabrics/fabric-02.jpg">
-
-          <img src="assets/fabrics/fabric-02.jpg"
-               alt="Fabric thumbnail">
-
-        </button>
-
-
-        <button class="thumb"
-                data-image="assets/fabrics/fabric-03.jpg">
-
-          <img src="assets/fabrics/fabric-03.jpg"
-               alt="Fabric thumbnail">
-
-        </button>
-
-
-        <button class="thumb"
-                data-image="assets/fabrics/fabric-04.jpg">
-
-          <img src="assets/fabrics/fabric-04.jpg"
-               alt="Fabric thumbnail">
-
-        </button>
+        <p
+          class="fabric-detail-description"
+          id="detailDescription"
+        >
+          A refined textile reference selected for premium
+          applications. Suitable for clients seeking distinctive
+          texture, quality and international sourcing support.
+          Final specifications are confirmed according to the
+          requested fabric and production requirements.
+        </p>
 
 
-        <button class="thumb"
-                data-image="assets/fabrics/fabric-05.jpg">
+        <div class="fabric-detail-specs">
 
-          <img src="assets/fabrics/fabric-05.jpg"
-               alt="Fabric thumbnail">
+          <div class="fabric-detail-spec-row">
+            <span>Category</span>
+            <span id="detailCategory">
+              Premium Textile
+            </span>
+          </div>
 
-        </button>
+          <div class="fabric-detail-spec-row">
+            <span>Composition</span>
+            <span>
+              To be confirmed
+            </span>
+          </div>
+
+          <div class="fabric-detail-spec-row">
+            <span>Width</span>
+            <span>
+              Upon Request
+            </span>
+          </div>
+
+          <div class="fabric-detail-spec-row">
+            <span>Colour</span>
+            <span id="detailColour">
+              Custom
+            </span>
+          </div>
+
+          <div class="fabric-detail-spec-row">
+            <span>MOQ</span>
+            <span>
+              Upon Request
+            </span>
+          </div>
+
+          <div class="fabric-detail-spec-row">
+            <span>Availability</span>
+            <span>
+              Subject to Confirmation
+            </span>
+          </div>
+
+        </div>
+
+
+        <div class="fabric-detail-price">
+          Price: Upon Request
+        </div>
+
+
+        <div class="fabric-detail-actions">
+
+          <button
+            class="btn"
+            type="button"
+            id="requestDetailButton"
+          >
+            Request This Fabric →
+          </button>
+
+          <button
+            class="btn secondary"
+            type="button"
+            id="sampleDetailButton"
+          >
+            + Request Sample
+          </button>
+
+        </div>
 
       </div>
 
@@ -915,206 +1173,316 @@
 
 
 
-    <div class="featured-info">
+    <!-- =====================================================
+         INQUIRY FORM
+         ===================================================== -->
 
-      <div class="eyebrow">
-        AZ-F001
-      </div>
+    <div
+      class="fabric-inquiry"
+      id="fabric-inquiry"
+    >
 
+      <div class="fabric-inquiry-header">
 
-      <h2 id="selectedProduct">
-        Signature Fabric
-      </h2>
-
-
-      <p class="featured-description">
-
-        Premium textile selected for refined interiors,
-        fashion and commercial applications.
-
-      </p>
-
-
-      <div class="featured-specs">
-
-        <div>
-          <span>Composition</span>
-          <strong id="specComposition">
-            100% Wool
-          </strong>
+        <div class="fabrics-section-label">
+          02 / PRIVATE INQUIRY
         </div>
 
-        <div>
-          <span>Width</span>
-          <strong>
-            150 cm
-          </strong>
-        </div>
+        <h2 class="fabric-inquiry-title">
+          Request a<br>
+          <em>fabric.</em>
+        </h2>
 
-        <div>
-          <span>Color</span>
-          <strong>
-            Multi
-          </strong>
-        </div>
-
-        <div>
-          <span>MOQ</span>
-          <strong>
-            300 m
-          </strong>
-        </div>
+        <p class="fabric-inquiry-description">
+          Tell us what you are looking for. Our team can review
+          the requested specification, quantity, destination
+          market and sample requirements.
+        </p>
 
       </div>
 
 
-      <div class="featured-price">
+      <!-- FORMSPREE FORM -->
 
-        <span>Price</span>
+      <form
+        class="fabric-form"
+        action="https://formspree.io/f/mkjoonby"
+        method="POST"
+      >
 
-        <strong>
-          Upon Request
-        </strong>
+        <input
+          type="hidden"
+          name="_subject"
+          value="New Luxury Fabric Inquiry — Azadipour"
+        >
 
-      </div>
+        <input
+          type="hidden"
+          name="_template"
+          value="table"
+        >
 
+        <input
+          type="hidden"
+          name="fabric_code"
+          id="formFabricCode"
+          value="AZ-F001"
+        >
 
-      <div class="sample-link">
-        + REQUEST SAMPLE
-      </div>
-
-
-      <!-- FORM -->
-
-      <div class="inquiry-heading">
-
-        <span>
-          ENQUIRE ABOUT THIS FABRIC
-        </span>
-
-      </div>
-
-
-      <form action="https://formspree.io/f/mkjoonby"
-            method="POST"
-            class="fabric-form">
-
-
-        <input type="hidden"
-               name="source"
-               value="Azadipour Luxury Fabrics">
+        <input
+          type="hidden"
+          name="fabric_name"
+          id="formFabricName"
+          value="Signature Wool"
+        >
 
 
-        <input type="hidden"
-               name="product"
-               id="formProduct"
-               value="AZ-F001 — Signature Fabric">
+        <!-- FULL NAME -->
 
+        <div class="fabric-form-group">
 
-        <div class="form-row">
+          <label
+            class="fabric-form-label"
+            for="fullName"
+          >
+            Full Name
+          </label>
 
-          <input type="text"
-                 name="name"
-                 placeholder="Full Name *"
-                 required>
-
-
-          <input type="text"
-                 name="company"
-                 placeholder="Company">
-
-        </div>
-
-
-        <div class="form-row">
-
-          <input type="email"
-                 name="email"
-                 placeholder="Email *"
-                 required>
-
-
-          <input type="text"
-                 name="phone"
-                 placeholder="WhatsApp / Phone">
+          <input
+            id="fullName"
+            name="full_name"
+            type="text"
+            placeholder="Your full name"
+            required
+          >
 
         </div>
 
 
-        <div class="form-row">
+        <!-- COMPANY -->
 
-          <select name="country">
+        <div class="fabric-form-group">
+
+          <label
+            class="fabric-form-label"
+            for="company"
+          >
+            Company
+          </label>
+
+          <input
+            id="company"
+            name="company"
+            type="text"
+            placeholder="Company name"
+          >
+
+        </div>
+
+
+        <!-- EMAIL -->
+
+        <div class="fabric-form-group">
+
+          <label
+            class="fabric-form-label"
+            for="email"
+          >
+            Email
+          </label>
+
+          <input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="name@company.com"
+            required
+          >
+
+        </div>
+
+
+        <!-- WHATSAPP -->
+
+        <div class="fabric-form-group">
+
+          <label
+            class="fabric-form-label"
+            for="phone"
+          >
+            WhatsApp / Phone
+          </label>
+
+          <input
+            id="phone"
+            name="phone"
+            type="tel"
+            placeholder="+968 ..."
+          >
+
+        </div>
+
+
+        <!-- COUNTRY -->
+
+        <div class="fabric-form-group">
+
+          <label
+            class="fabric-form-label"
+            for="country"
+          >
+            Country
+          </label>
+
+          <input
+            id="country"
+            name="country"
+            type="text"
+            placeholder="Country"
+            required
+          >
+
+        </div>
+
+
+        <!-- UNIT -->
+
+        <div class="fabric-form-group">
+
+          <label
+            class="fabric-form-label"
+            for="unit"
+          >
+            Unit
+          </label>
+
+          <select
+            id="unit"
+            name="unit"
+          >
 
             <option value="">
-              Country
+              Select
             </option>
 
-            <option>Saudi Arabia</option>
-            <option>Oman</option>
-            <option>Qatar</option>
-            <option>Bahrain</option>
-            <option>United Arab Emirates</option>
-            <option>Kuwait</option>
-            <option>Other</option>
+            <option value="Meter">
+              Meter
+            </option>
+
+            <option value="Roll">
+              Roll
+            </option>
+
+            <option value="Sample">
+              Sample
+            </option>
+
+            <option value="Custom">
+              Custom Requirement
+            </option>
 
           </select>
 
+        </div>
 
-          <select name="unit">
 
-            <option value="">
-              Unit
-            </option>
+        <!-- QUANTITY -->
 
-            <option>Meter</option>
-            <option>Roll</option>
-            <option>Sample</option>
-            <option>Bulk Order</option>
+        <div class="fabric-form-group">
 
-          </select>
+          <label
+            class="fabric-form-label"
+            for="quantity"
+          >
+            Quantity
+          </label>
+
+          <input
+            id="quantity"
+            name="quantity"
+            type="text"
+            placeholder="e.g. 300 meters"
+          >
 
         </div>
 
 
-        <div class="form-row">
+        <!-- COLOUR -->
 
-          <input type="number"
-                 name="quantity"
-                 min="1"
-                 placeholder="Quantity">
+        <div class="fabric-form-group">
 
-          <input type="text"
-                 name="color"
-                 placeholder="Color / Specification">
+          <label
+            class="fabric-form-label"
+            for="colour"
+          >
+            Colour / Specification
+          </label>
+
+          <input
+            id="colour"
+            name="colour_specification"
+            type="text"
+            placeholder="Colour, finish, specification..."
+          >
 
         </div>
 
 
-        <textarea name="message"
-                  placeholder="Your Message / Requirements"></textarea>
+        <!-- MESSAGE -->
+
+        <div class="fabric-form-group full">
+
+          <label
+            class="fabric-form-label"
+            for="message"
+          >
+            Message / Requirements
+          </label>
+
+          <textarea
+            id="message"
+            name="message"
+            placeholder="Please describe your requirements..."
+            required
+          ></textarea>
+
+        </div>
 
 
-        <label class="sample-checkbox">
+        <!-- SAMPLE -->
 
-          <input type="checkbox"
-                 name="sample_request"
-                 value="Yes">
+        <div class="fabric-form-group full">
 
-          <span>
-            Request Sample
-          </span>
+          <label class="fabric-checkbox">
 
-        </label>
+            <input
+              type="checkbox"
+              name="request_sample"
+              value="Yes"
+              id="requestSample"
+            >
+
+            <span>
+              I would like to request a fabric sample.
+            </span>
+
+          </label>
+
+        </div>
 
 
-        <button type="submit"
-                class="submit-button">
+        <!-- SUBMIT -->
 
-          SEND INQUIRY
-          <span>→</span>
+        <div class="fabric-form-group full fabric-form-submit">
 
-        </button>
+          <button
+            class="btn"
+            type="submit"
+          >
+            Send Inquiry →
+          </button>
 
+        </div>
 
       </form>
 
@@ -1126,44 +1494,43 @@
 
 
 
-<!-- =====================================================
-     INTERNATIONAL SOURCING
-===================================================== -->
+<!-- =========================================================
+     SOURCING CTA
+     ========================================================= -->
 
-<section class="sourcing-section">
+<section
+  class="fabric-sourcing-cta"
+  style="background-image:url('assets/fabrics/fabric-08.jpg')"
+>
 
-  <div class="sourcing-image"></div>
+  <div class="container">
 
+    <div class="fabric-sourcing-content">
 
-  <div class="sourcing-content">
+      <div class="fabrics-section-label">
+        INTERNATIONAL SOURCING
+      </div>
 
-    <div class="eyebrow">
-      INTERNATIONAL SOURCING
+      <h2>
+        Tell us<br>
+        what you <em>need.</em>
+      </h2>
+
+      <p>
+        If you are looking for a specific fabric, colour,
+        composition, quantity or production requirement,
+        contact Azadipour directly. We can evaluate the
+        sourcing requirement and identify suitable options.
+      </p>
+
+      <a
+        class="btn"
+        href="#fabric-inquiry"
+      >
+        Start a Fabric Inquiry →
+      </a>
+
     </div>
-
-
-    <h2>
-      Tell us what
-      <em>you need.</em>
-    </h2>
-
-
-    <p>
-
-      Looking for a specific composition, colour,
-      weight, finish or quantity? Share your requirements
-      and we will evaluate the sourcing opportunity.
-
-    </p>
-
-
-    <a class="outline-button"
-       href="mailto:herzchirurgsinaazadipour@gmail.com?subject=Custom%20Fabric%20Sourcing%20Request">
-
-      CONTACT US
-      <span>→</span>
-
-    </a>
 
   </div>
 
@@ -1171,111 +1538,67 @@
 
 
 
-<!-- =====================================================
+<!-- =========================================================
      FOOTER
-===================================================== -->
+     ========================================================= -->
 
 <footer class="footer">
 
-  <div class="footer-container">
+  <div class="container">
+
+    <div class="footer-top">
+
+      <div>
+
+        <h4>
+          Azadipour
+        </h4>
+
+        <p>
+          Oman-registered healthcare, medical technology
+          and international sourcing platform.
+        </p>
+
+      </div>
 
 
-    <div class="footer-brand">
+      <div class="footer-links">
 
-      <a class="brand"
-         href="index.html">
+        <a href="investment.html">
+          Investment
+        </a>
 
-        <img src="assets/logo-transparent.png"
-             alt="Azadipour">
+        <a href="investment-robotics.html">
+          Robotic Surgery
+        </a>
 
-        <span>AZADIPOUR</span>
+        <a href="import.html">
+          Import
+        </a>
 
-      </a>
+        <a href="export.html">
+          GCC Markets
+        </a>
 
+        <a href="index.html#contact">
+          Contact
+        </a>
 
-      <p>
-        Healthcare Technology · Strategic Development · GCC
-      </p>
-
-    </div>
-
-
-    <div class="footer-column">
-
-      <h4>
-        MARKETS
-      </h4>
-
-      <a href="saudi-arabia.html">
-        Saudi Arabia
-      </a>
-
-      <a href="oman.html">
-        Oman
-      </a>
-
-      <a href="qatar.html">
-        Qatar
-      </a>
-
-      <a href="bahrain.html">
-        Bahrain
-      </a>
+      </div>
 
     </div>
 
 
-    <div class="footer-column">
-
-      <h4>
-        EXPLORE
-      </h4>
-
-      <a href="investment.html">
-        Investment
-      </a>
-
-      <a href="investment-robotics.html">
-        Robotic Surgery
-      </a>
-
-      <a href="import.html">
-        Import
-      </a>
-
-      <a href="export.html">
-        GCC Markets
-      </a>
-
-    </div>
-
-
-    <div class="footer-column">
-
-      <h4>
-        CONTACT
-      </h4>
-
-      <a href="mailto:herzchirurgsinaazadipour@gmail.com">
-        ✉ Email Azadipour
-      </a>
-
-    </div>
-
-
-    <div class="footer-copy">
+    <div class="footer-bottom">
 
       <span>
-        © <span data-year></span> Azadipour
-      </span>
-
-      <span>
+        © <span data-year></span> Azadipour.
         All rights reserved.
       </span>
 
-      <small>
+      <span>
         Oman · Saudi Arabia · Qatar · Bahrain
-      </small>
+      </span>
 
     </div>
 
@@ -1285,35 +1608,43 @@
 
 
 
+<!-- =========================================================
+     MAIN WEBSITE SCRIPT
+     ========================================================= -->
+
+<script src="script.js"></script>
+
+
+<!-- =========================================================
+     FABRICS PAGE JAVASCRIPT
+     No separate JS file required
+     ========================================================= -->
+
 <script>
 
 document.addEventListener("DOMContentLoaded", function () {
 
 
-  /* ==========================================
-     MOBILE MENU
-  ========================================== */
+  /* ========================================================
+     MOBILE NAVIGATION
+     ======================================================== */
 
-  const menuToggle =
-    document.querySelector(".menu-toggle");
-
-  const navLinks =
-    document.querySelector(".nav-links");
-
+  const menuToggle = document.querySelector(".menu-toggle");
+  const navLinks = document.querySelector(".nav-links");
 
   if (menuToggle && navLinks) {
 
     menuToggle.addEventListener("click", function () {
 
-      navLinks.classList.toggle("active");
-
       const isOpen =
-        navLinks.classList.contains("active");
+        menuToggle.getAttribute("aria-expanded") === "true";
 
       menuToggle.setAttribute(
         "aria-expanded",
-        isOpen
+        String(!isOpen)
       );
+
+      navLinks.classList.toggle("open");
 
     });
 
@@ -1321,130 +1652,204 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-  /* ==========================================
-     FILTERS
-  ========================================== */
+  /* ========================================================
+     YEAR
+     ======================================================== */
 
-  const filters =
-    document.querySelectorAll(".filter");
+  document.querySelectorAll("[data-year]").forEach(function (el) {
 
-  const cards =
-    document.querySelectorAll(".fabric-card");
-
-
-  filters.forEach(function (filter) {
-
-    filter.addEventListener("click", function () {
-
-      filters.forEach(function (item) {
-        item.classList.remove("active");
-      });
-
-      filter.classList.add("active");
-
-
-      const category =
-        filter.dataset.filter;
-
-
-      cards.forEach(function (card) {
-
-        if (
-          category === "all" ||
-          card.dataset.category === category
-        ) {
-
-          card.style.display = "";
-
-        } else {
-
-          card.style.display = "none";
-
-        }
-
-      });
-
-    });
+    el.textContent = new Date().getFullYear();
 
   });
 
 
 
-  /* ==========================================
-     SEARCH
-  ========================================== */
+  /* ========================================================
+     PRODUCT DATA
+     ======================================================== */
 
-  const search =
-    document.getElementById("fabricSearch");
+  const products = {
+
+    "AZ-F001": {
+      name: "Signature Wool",
+      image: "assets/fabrics/fabric-01.jpg",
+      category: "Premium Textile",
+      colour: "Custom"
+    },
+
+    "AZ-F002": {
+      name: "Royal Texture",
+      image: "assets/fabrics/fabric-02.jpg",
+      category: "Premium Textile",
+      colour: "Custom"
+    },
+
+    "AZ-F003": {
+      name: "Snow D5",
+      image: "assets/fabrics/fabric-03.jpg",
+      category: "Textured Fabric",
+      colour: "Natural"
+    },
+
+    "AZ-F004": {
+      name: "Snow M1",
+      image: "assets/fabrics/fabric-04.jpg",
+      category: "Premium Textile",
+      colour: "Natural"
+    },
+
+    "AZ-F005": {
+      name: "Monochrome Pattern",
+      image: "assets/fabrics/fabric-05.jpg",
+      category: "Patterned Textile",
+      colour: "Black / White"
+    },
+
+    "AZ-F006": {
+      name: "Grey Structure",
+      image: "assets/fabrics/fabric-06.jpg",
+      category: "Textured Textile",
+      colour: "Grey / White"
+    },
+
+    "AZ-F007": {
+      name: "Heritage Blend",
+      image: "assets/fabrics/fabric-07.jpg",
+      category: "Premium Textile",
+      colour: "Custom"
+    },
+
+    "AZ-F008": {
+      name: "Continental Texture",
+      image: "assets/fabrics/fabric-08.jpg",
+      category: "Luxury Textile",
+      colour: "Multi-Tone"
+    }
+
+  };
 
 
-  if (search) {
 
-    search.addEventListener("input", function () {
+  /* ========================================================
+     DETAIL ELEMENTS
+     ======================================================== */
 
-      const query =
-        search.value.toLowerCase().trim();
+  const mainImage =
+    document.getElementById("fabricMainImage");
+
+  const detailCode =
+    document.getElementById("detailCode");
+
+  const detailTitle =
+    document.getElementById("detailTitle");
+
+  const detailCategory =
+    document.getElementById("detailCategory");
+
+  const detailColour =
+    document.getElementById("detailColour");
+
+  const formFabricCode =
+    document.getElementById("formFabricCode");
+
+  const formFabricName =
+    document.getElementById("formFabricName");
+
+  const detailSection =
+    document.getElementById("fabric-detail");
+
+  const inquirySection =
+    document.getElementById("fabric-inquiry");
 
 
-      cards.forEach(function (card) {
 
-        const name =
-          card.dataset.name.toLowerCase();
+  /* ========================================================
+     SELECT PRODUCT
+     ======================================================== */
+
+  function selectProduct(code, scrollToDetail = true) {
+
+    const product = products[code];
+
+    if (!product) {
+      return;
+    }
+
+    if (mainImage) {
+      mainImage.src = product.image;
+    }
+
+    if (detailCode) {
+      detailCode.textContent = code;
+    }
+
+    if (detailTitle) {
+      detailTitle.textContent = product.name;
+    }
+
+    if (detailCategory) {
+      detailCategory.textContent = product.category;
+    }
+
+    if (detailColour) {
+      detailColour.textContent = product.colour;
+    }
+
+    if (formFabricCode) {
+      formFabricCode.value = code;
+    }
+
+    if (formFabricName) {
+      formFabricName.value = product.name;
+    }
 
 
-        if (name.includes(query)) {
+    /* Highlight matching thumbnail */
 
-          card.style.display = "";
+    document.querySelectorAll(".fabric-thumbnail").forEach(
+      function (thumbnail) {
 
+        const image =
+          thumbnail.getAttribute("data-image");
+
+        if (image === product.image) {
+          thumbnail.classList.add("active");
         } else {
-
-          card.style.display = "none";
-
+          thumbnail.classList.remove("active");
         }
 
+      }
+    );
+
+
+    if (scrollToDetail && detailSection) {
+
+      detailSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
       });
 
-    });
+    }
 
   }
 
 
 
-  /* ==========================================
-     PRODUCT REQUEST BUTTON
-  ========================================== */
+  /* ========================================================
+     REQUEST BUTTONS
+     ======================================================== */
 
-  const requestButtons =
-    document.querySelectorAll(".product-button");
-
-
-  const formProduct =
-    document.getElementById("formProduct");
-
-
-  const inquiry =
-    document.getElementById("inquiry");
-
-
-  requestButtons.forEach(function (button) {
+  document.querySelectorAll(
+    ".fabric-request-btn, .fabric-detail-btn"
+  ).forEach(function (button) {
 
     button.addEventListener("click", function () {
 
-      if (formProduct) {
+      const code =
+        button.getAttribute("data-request") ||
+        button.getAttribute("data-detail");
 
-        formProduct.value =
-          button.dataset.product;
-
-      }
-
-
-      if (inquiry) {
-
-        inquiry.scrollIntoView({
-          behavior: "smooth"
-        });
-
-      }
+      selectProduct(code, true);
 
     });
 
@@ -1452,61 +1857,246 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-  /* ==========================================
-     THUMBNAIL GALLERY
-  ========================================== */
+  /* ========================================================
+     MAIN DETAIL REQUEST
+     ======================================================== */
 
-  const thumbs =
-    document.querySelectorAll(".thumb");
+  const requestDetailButton =
+    document.getElementById("requestDetailButton");
 
-  const featuredImage =
-    document.getElementById("featuredImage");
+  if (requestDetailButton) {
+
+    requestDetailButton.addEventListener(
+      "click",
+      function () {
+
+        if (inquirySection) {
+
+          inquirySection.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+
+        }
+
+      }
+    );
+
+  }
 
 
-  thumbs.forEach(function (thumb) {
 
-    thumb.addEventListener("click", function () {
+  /* ========================================================
+     SAMPLE BUTTON
+     ======================================================== */
 
-      thumbs.forEach(function (item) {
+  const sampleDetailButton =
+    document.getElementById("sampleDetailButton");
+
+  const requestSample =
+    document.getElementById("requestSample");
+
+  if (sampleDetailButton) {
+
+    sampleDetailButton.addEventListener(
+      "click",
+      function () {
+
+        if (requestSample) {
+          requestSample.checked = true;
+        }
+
+        if (inquirySection) {
+
+          inquirySection.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+
+        }
+
+      }
+    );
+
+  }
+
+
+
+  /* ========================================================
+     THUMBNAILS
+     ======================================================== */
+
+  document.querySelectorAll(".fabric-thumbnail").forEach(
+    function (thumbnail) {
+
+      thumbnail.addEventListener("click", function () {
+
+        const image =
+          thumbnail.getAttribute("data-image");
+
+        if (mainImage && image) {
+          mainImage.src = image;
+        }
+
+        document.querySelectorAll(
+          ".fabric-thumbnail"
+        ).forEach(function (item) {
+
+          item.classList.remove("active");
+
+        });
+
+        thumbnail.classList.add("active");
+
+      });
+
+    }
+  );
+
+
+
+  /* ========================================================
+     FILTERS + SEARCH
+     ======================================================== */
+
+  const filterButtons =
+    document.querySelectorAll(".fabric-filter");
+
+  const searchInput =
+    document.getElementById("fabricSearch");
+
+  const productCards =
+    document.querySelectorAll(".fabric-product-card");
+
+  const emptyState =
+    document.getElementById("fabricEmpty");
+
+  let currentFilter = "all";
+
+
+  function filterProducts() {
+
+    const search =
+      searchInput
+        ? searchInput.value.trim().toLowerCase()
+        : "";
+
+    let visibleCount = 0;
+
+
+    productCards.forEach(function (card) {
+
+      const category =
+        card.getAttribute("data-category");
+
+      const name =
+        card.getAttribute("data-name")
+          .toLowerCase();
+
+      const code =
+        card.getAttribute("data-code")
+          .toLowerCase();
+
+
+      const matchesFilter =
+        currentFilter === "all" ||
+        category === currentFilter;
+
+
+      const matchesSearch =
+        !search ||
+        name.includes(search) ||
+        code.includes(search);
+
+
+      if (matchesFilter && matchesSearch) {
+
+        card.classList.remove("hidden");
+
+        visibleCount++;
+
+      } else {
+
+        card.classList.add("hidden");
+
+      }
+
+    });
+
+
+    if (emptyState) {
+
+      emptyState.style.display =
+        visibleCount === 0
+          ? "block"
+          : "none";
+
+    }
+
+  }
+
+
+  filterButtons.forEach(function (button) {
+
+    button.addEventListener("click", function () {
+
+      filterButtons.forEach(function (item) {
 
         item.classList.remove("active");
 
       });
 
+      button.classList.add("active");
 
-      thumb.classList.add("active");
+      currentFilter =
+        button.getAttribute("data-filter");
 
-
-      if (featuredImage) {
-
-        featuredImage.src =
-          thumb.dataset.image;
-
-      }
+      filterProducts();
 
     });
 
   });
 
 
+  if (searchInput) {
 
-  /* ==========================================
-     YEAR
-  ========================================== */
+    searchInput.addEventListener(
+      "input",
+      filterProducts
+    );
 
-  document.querySelectorAll("[data-year]")
-    .forEach(function (element) {
+  }
 
-      element.textContent =
-        new Date().getFullYear();
 
-    });
+
+  /* ========================================================
+     FORM PRODUCT SYNC
+     ======================================================== */
+
+  const inquiryForm =
+    document.querySelector(".fabric-form");
+
+  if (inquiryForm) {
+
+    inquiryForm.addEventListener(
+      "submit",
+      function () {
+
+        /*
+          Formspree handles the actual submission.
+          Hidden fields already contain the selected
+          fabric code and name.
+        */
+
+      }
+    );
+
+  }
 
 
 });
 
 </script>
-
 
 </body>
 </html>
