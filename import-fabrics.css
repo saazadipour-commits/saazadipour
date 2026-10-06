@@ -1,0 +1,1009 @@
+/* =========================================================
+   SA AZADIPOUR
+   LUXURY FABRICS
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #080808;
+    color: #f5f1e9;
+
+    font-family: "Inter", sans-serif;
+    font-weight: 300;
+
+    line-height: 1.7;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* HEADER */
+
+.site-header {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 82px;
+
+    padding: 0 6vw;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: rgba(8,8,8,0.86);
+
+    backdrop-filter: blur(18px);
+
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+
+    z-index: 1000;
+}
+
+.logo img {
+    width: 82px;
+}
+
+.navigation {
+    display: flex;
+    gap: 34px;
+}
+
+.navigation a {
+
+    font-size: 11px;
+
+    letter-spacing: 0.18em;
+
+    text-transform: uppercase;
+
+    color: rgba(255,255,255,0.6);
+
+    transition: 0.3s;
+}
+
+.navigation a:hover {
+    color: #ffffff;
+}
+
+
+/* HERO */
+
+.fabric-hero {
+
+    min-height: 92vh;
+
+    display: flex;
+    align-items: center;
+
+    padding: 150px 9vw 100px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+
+        radial-gradient(
+            circle at 72% 30%,
+            rgba(170,150,120,0.18),
+            transparent 28%
+        ),
+
+        radial-gradient(
+            circle at 25% 75%,
+            rgba(255,255,255,0.05),
+            transparent 30%
+        ),
+
+        linear-gradient(
+            135deg,
+            #171411,
+            #050505
+        );
+}
+
+.fabric-hero::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 800px;
+    height: 800px;
+
+    right: -350px;
+    top: -250px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+.fabric-hero::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 520px;
+    height: 520px;
+
+    right: -120px;
+    top: 80px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.hero-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 900px;
+}
+
+.eyebrow {
+
+    font-size: 10px;
+
+    letter-spacing: 0.28em;
+
+    text-transform: uppercase;
+
+    color: rgba(255,255,255,0.48);
+
+    margin-bottom: 25px;
+}
+
+.fabric-hero h1 {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(65px, 9vw, 125px);
+
+    line-height: 0.82;
+
+    font-weight: 400;
+
+    letter-spacing: -0.04em;
+}
+
+.fabric-hero h1 em {
+
+    color: rgba(255,255,255,0.42);
+}
+
+.fabric-hero p:not(.eyebrow) {
+
+    max-width: 600px;
+
+    margin-top: 45px;
+
+    margin-bottom: 38px;
+
+    color: rgba(255,255,255,0.62);
+
+    font-size: 17px;
+}
+
+
+/* BUTTON */
+
+.luxury-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 28px;
+
+    padding: 15px 22px;
+
+    border: 1px solid rgba(255,255,255,0.25);
+
+    font-size: 10px;
+
+    letter-spacing: 0.16em;
+
+    text-transform: uppercase;
+
+    transition: 0.35s;
+}
+
+.luxury-button span {
+
+    font-size: 18px;
+
+    transition: 0.35s;
+}
+
+.luxury-button:hover {
+
+    background: #ffffff;
+
+    color: #050505;
+}
+
+.luxury-button:hover span {
+
+    transform: translateY(4px);
+}
+
+
+/* INTRO */
+
+.fabric-intro {
+
+    display: grid;
+
+    grid-template-columns: 20% 80%;
+
+    padding: 150px 9vw;
+
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.section-number {
+
+    font-size: 10px;
+
+    letter-spacing: 0.2em;
+
+    color: rgba(255,255,255,0.35);
+}
+
+.fabric-intro h2 {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(50px, 6vw, 85px);
+
+    line-height: 0.9;
+
+    font-weight: 400;
+
+    margin-bottom: 45px;
+}
+
+.fabric-intro h2 em {
+
+    color: rgba(255,255,255,0.42);
+}
+
+.fabric-intro p:not(.section-number) {
+
+    max-width: 680px;
+
+    color: rgba(255,255,255,0.58);
+
+    margin-bottom: 20px;
+
+    font-size: 16px;
+}
+
+
+/* CATEGORIES */
+
+.categories {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    padding: 30px 9vw;
+
+    border-top: 1px solid rgba(255,255,255,0.08);
+
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+
+    position: sticky;
+
+    top: 82px;
+
+    background: rgba(8,8,8,0.93);
+
+    backdrop-filter: blur(15px);
+
+    z-index: 50;
+}
+
+.categories a {
+
+    padding: 10px 16px;
+
+    border: 1px solid rgba(255,255,255,0.12);
+
+    font-size: 9px;
+
+    letter-spacing: 0.12em;
+
+    color: rgba(255,255,255,0.55);
+
+    transition: 0.3s;
+}
+
+.categories a:hover {
+
+    color: #ffffff;
+
+    border-color: rgba(255,255,255,0.4);
+}
+
+
+/* COLLECTION */
+
+.collection {
+    width: 100%;
+}
+
+
+/* PRODUCT */
+
+.fabric-product {
+
+    display: grid;
+
+    grid-template-columns: 50% 50%;
+
+    min-height: 760px;
+
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.fabric-product.reverse .fabric-image {
+    order: 2;
+}
+
+.fabric-product.reverse .product-information {
+    order: 1;
+}
+
+
+/* IMAGE AREA */
+
+.fabric-image {
+
+    position: relative;
+
+    min-height: 650px;
+
+    overflow: hidden;
+}
+
+.fabric-image::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    transition: transform 1s ease;
+}
+
+.fabric-product:hover .fabric-image::before {
+
+    transform: scale(1.05);
+}
+
+
+/* PRODUCT IMAGE PLACEHOLDERS */
+
+.fabric-image-01::before {
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #4b453c,
+            #191816
+        );
+}
+
+.fabric-image-02::before {
+
+    background:
+
+        radial-gradient(
+            ellipse at center,
+            #8c8174,
+            #302c28 45%,
+            #0b0b0b 80%
+        );
+}
+
+.fabric-image-03::before {
+
+    background:
+
+        linear-gradient(
+            145deg,
+            #292725,
+            #6a6258,
+            #111111
+        );
+}
+
+.fabric-image-04::before {
+
+    background:
+
+        repeating-linear-gradient(
+            120deg,
+            #151515 0px,
+            #151515 12px,
+            #292929 13px,
+            #292929 25px
+        );
+}
+
+
+/* PRODUCT NUMBER */
+
+.product-index {
+
+    position: absolute;
+
+    left: 50px;
+    top: 45px;
+
+    z-index: 2;
+
+    font-size: 11px;
+
+    letter-spacing: 0.2em;
+
+    color: rgba(255,255,255,0.5);
+}
+
+
+/* PRODUCT INFORMATION */
+
+.product-information {
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    padding: 80px;
+
+    background: #0c0c0c;
+}
+
+.product-category {
+
+    font-size: 9px;
+
+    letter-spacing: 0.22em;
+
+    color: rgba(255,255,255,0.4);
+
+    margin-bottom: 20px;
+}
+
+.product-information h3 {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(45px, 5vw, 72px);
+
+    font-weight: 400;
+
+    line-height: 0.95;
+
+    margin-bottom: 30px;
+}
+
+.product-description {
+
+    max-width: 520px;
+
+    color: rgba(255,255,255,0.55);
+
+    margin-bottom: 40px;
+}
+
+
+/* SPECIFICATIONS */
+
+.specifications {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    border-top: 1px solid rgba(255,255,255,0.1);
+
+    margin-bottom: 30px;
+}
+
+.specifications div {
+
+    padding: 14px 12px;
+
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.specifications span {
+
+    display: block;
+
+    font-size: 8px;
+
+    letter-spacing: 0.15em;
+
+    color: rgba(255,255,255,0.35);
+
+    margin-bottom: 5px;
+}
+
+.specifications strong {
+
+    font-size: 11px;
+
+    font-weight: 400;
+
+    color: rgba(255,255,255,0.75);
+}
+
+
+/* PRICE */
+
+.product-price {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-end;
+
+    padding: 20px 0;
+
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+
+    margin-bottom: 25px;
+}
+
+.product-price span {
+
+    font-size: 8px;
+
+    letter-spacing: 0.18em;
+
+    color: rgba(255,255,255,0.35);
+}
+
+.product-price strong {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 40px;
+
+    font-weight: 400;
+}
+
+.product-price small {
+
+    font-family: "Inter", sans-serif;
+
+    font-size: 10px;
+
+    color: rgba(255,255,255,0.4);
+}
+
+
+/* ORDER BUTTON */
+
+.order-button {
+
+    width: fit-content;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 25px;
+
+    padding: 15px 20px;
+
+    background: transparent;
+
+    color: #ffffff;
+
+    border: 1px solid rgba(255,255,255,0.22);
+
+    font-family: "Inter", sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 0.15em;
+
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.order-button span {
+
+    font-size: 17px;
+
+    transition: 0.3s;
+}
+
+.order-button:hover {
+
+    background: #ffffff;
+
+    color: #080808;
+}
+
+.order-button:hover span {
+
+    transform: translateX(6px);
+}
+
+
+/* ORDER SECTION */
+
+.order-section {
+
+    display: grid;
+
+    grid-template-columns: 35% 65%;
+
+    gap: 80px;
+
+    padding: 160px 9vw;
+
+    background:
+        radial-gradient(
+            circle at 15% 50%,
+            rgba(255,255,255,0.05),
+            transparent 35%
+        );
+
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.order-heading h2 {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(55px, 6vw, 90px);
+
+    line-height: 0.85;
+
+    font-weight: 400;
+
+    margin-bottom: 40px;
+}
+
+.order-heading h2 em {
+
+    color: rgba(255,255,255,0.4);
+}
+
+.order-heading > p:last-child {
+
+    max-width: 400px;
+
+    color: rgba(255,255,255,0.5);
+}
+
+
+/* FORM */
+
+.order-form-wrapper {
+
+    width: 100%;
+}
+
+.order-form {
+
+    width: 100%;
+}
+
+.form-row {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 25px;
+}
+
+.form-field {
+
+    margin-bottom: 28px;
+}
+
+.form-field label {
+
+    display: block;
+
+    margin-bottom: 10px;
+
+    font-size: 9px;
+
+    letter-spacing: 0.18em;
+
+    text-transform: uppercase;
+
+    color: rgba(255,255,255,0.45);
+}
+
+.form-field input,
+.form-field textarea {
+
+    width: 100%;
+
+    padding: 16px 0;
+
+    background: transparent;
+
+    border: none;
+
+    border-bottom: 1px solid rgba(255,255,255,0.18);
+
+    color: #ffffff;
+
+    outline: none;
+
+    font-family: "Inter", sans-serif;
+
+    font-size: 14px;
+
+    transition: 0.3s;
+}
+
+.form-field textarea {
+
+    resize: vertical;
+
+    min-height: 140px;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+
+    border-bottom-color: #ffffff;
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+
+    color: rgba(255,255,255,0.22);
+}
+
+
+/* SUBMIT */
+
+.submit-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 30px;
+
+    padding: 17px 25px;
+
+    background: #ffffff;
+
+    color: #080808;
+
+    border: none;
+
+    font-family: "Inter", sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 0.15em;
+
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.submit-button span {
+
+    font-size: 18px;
+}
+
+.submit-button:hover {
+
+    background: #dcd8d0;
+}
+
+
+/* NOTE */
+
+.form-note {
+
+    margin-top: 25px;
+
+    max-width: 650px;
+
+    font-size: 10px;
+
+    line-height: 1.6;
+
+    color: rgba(255,255,255,0.3);
+}
+
+
+/* FOOTER */
+
+.footer {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+    padding: 40px 9vw;
+
+    font-size: 10px;
+
+    color: rgba(255,255,255,0.3);
+
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.footer div:first-child {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.footer strong {
+
+    color: rgba(255,255,255,0.75);
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 1000px) {
+
+    .fabric-product {
+
+        grid-template-columns: 1fr;
+    }
+
+    .fabric-product.reverse .fabric-image {
+        order: 1;
+    }
+
+    .fabric-product.reverse .product-information {
+        order: 2;
+    }
+
+    .fabric-image {
+        min-height: 550px;
+    }
+
+    .product-information {
+        padding: 65px 8vw;
+    }
+
+    .order-section {
+
+        grid-template-columns: 1fr;
+
+        gap: 70px;
+    }
+}
+
+
+@media (max-width: 750px) {
+
+    .site-header {
+
+        padding: 0 25px;
+    }
+
+    .logo img {
+
+        width: 65px;
+    }
+
+    .navigation {
+
+        gap: 10px;
+    }
+
+    .navigation a {
+
+        font-size: 8px;
+
+        letter-spacing: 0.08em;
+    }
+
+    .fabric-hero {
+
+        padding: 130px 25px 90px;
+    }
+
+    .fabric-intro {
+
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+
+        padding: 100px 25px;
+    }
+
+    .categories {
+
+        top: 82px;
+
+        padding: 20px 25px;
+    }
+
+    .fabric-image {
+
+        min-height: 450px;
+    }
+
+    .product-information {
+
+        padding: 60px 25px;
+    }
+
+    .specifications {
+
+        grid-template-columns: 1fr;
+    }
+
+    .order-section {
+
+        padding: 110px 25px;
+    }
+
+    .form-row {
+
+        grid-template-columns: 1fr;
+
+        gap: 0;
+    }
+
+    .footer {
+
+        flex-direction: column;
+
+        padding: 35px 25px;
+    }
+}
