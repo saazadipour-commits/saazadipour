@@ -1,0 +1,993 @@
+/* =========================================================
+   SA AZADIPOUR — GERMANY
+   Luxury Medical Technology Portfolio
+========================================================= */
+
+:root {
+    --black: #080808;
+    --deep-black: #050505;
+    --white: #f5f4f0;
+    --soft-white: #deddd8;
+    --grey: #999891;
+    --line: rgba(255,255,255,0.13);
+    --gold: #c8b27a;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--black);
+    color: var(--white);
+    font-family: "Inter", sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.section {
+    padding: 130px 7vw;
+}
+
+.section-label {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-bottom: 35px;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 20;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 28px 5vw;
+
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.brand {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 26px;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.brand span {
+    font-family: "Inter", sans-serif;
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 3px;
+    margin-left: 7px;
+    color: var(--grey);
+}
+
+.navbar nav {
+    display: flex;
+    gap: 34px;
+}
+
+.navbar nav a {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #aaa;
+    transition: 0.3s ease;
+}
+
+.navbar nav a:hover,
+.navbar nav a.active {
+    color: white;
+}
+
+.nav-contact {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+
+    padding: 11px 18px;
+
+    border: 1px solid rgba(255,255,255,0.35);
+
+    transition: 0.3s ease;
+}
+
+.nav-contact:hover {
+    background: white;
+    color: black;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    min-height: 100vh;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 72% 42%,
+            rgba(150,150,150,0.18),
+            transparent 35%
+        ),
+        linear-gradient(
+            120deg,
+            #050505 0%,
+            #0e0e0e 45%,
+            #191919 100%
+        );
+}
+
+.hero::after {
+    content: "DE";
+
+    position: absolute;
+    right: -40px;
+    bottom: -90px;
+
+    font-family: "Cormorant Garamond", serif;
+    font-size: 380px;
+
+    color: rgba(255,255,255,0.025);
+
+    pointer-events: none;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,0.96),
+            rgba(0,0,0,0.58),
+            rgba(0,0,0,0.15)
+        );
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+
+    width: min(900px, 90%);
+
+    margin-left: 10vw;
+}
+
+.eyebrow {
+    font-size: 10px;
+    letter-spacing: 5px;
+    color: var(--gold);
+
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(70px, 9vw, 145px);
+
+    font-weight: 400;
+    line-height: 0.82;
+
+    letter-spacing: -5px;
+}
+
+.hero h1 em {
+    color: #aaa;
+    font-style: italic;
+}
+
+.hero p {
+    max-width: 580px;
+
+    margin-top: 45px;
+
+    color: #b9b9b9;
+
+    font-size: 15px;
+    line-height: 1.9;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+
+    margin-top: 40px;
+}
+
+.btn {
+    padding: 15px 25px;
+
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    transition: 0.3s ease;
+}
+
+.btn-primary {
+    background: white;
+    color: black;
+}
+
+.btn-primary:hover {
+    background: #d8d8d8;
+}
+
+.btn-outline {
+    border: 1px solid rgba(255,255,255,0.35);
+}
+
+.btn-outline:hover {
+    background: white;
+    color: black;
+}
+
+.hero-location {
+    position: absolute;
+
+    bottom: 35px;
+    right: 5vw;
+
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: #777;
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.intro {
+    background: var(--white);
+    color: var(--black);
+}
+
+.intro .section-label {
+    color: #777;
+}
+
+.intro-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 100px;
+}
+
+.intro h2 {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(55px, 6vw, 90px);
+
+    font-weight: 400;
+    line-height: 0.9;
+    letter-spacing: -2px;
+}
+
+.intro h2 em {
+    font-style: italic;
+    color: #777;
+}
+
+.intro-text {
+    padding-top: 10px;
+}
+
+.intro-text p {
+    max-width: 550px;
+
+    margin-bottom: 25px;
+
+    color: #555;
+
+    font-size: 15px;
+    line-height: 1.9;
+}
+
+
+/* =========================================================
+   COMPANIES
+========================================================= */
+
+.companies {
+    background: #0a0a0a;
+}
+
+.section-heading {
+    max-width: 850px;
+    margin-bottom: 80px;
+}
+
+.section-heading h2 {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(55px, 7vw, 100px);
+
+    font-weight: 400;
+    line-height: 0.9;
+
+    letter-spacing: -3px;
+}
+
+.section-heading h2 em {
+    font-style: italic;
+    color: #777;
+}
+
+.section-heading > p {
+    max-width: 570px;
+
+    margin-top: 35px;
+
+    color: #888;
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   COMPANY GRID
+========================================================= */
+
+.company-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 1px;
+
+    background: var(--line);
+}
+
+.company-card {
+    background: #0d0d0d;
+
+    min-height: 700px;
+
+    transition: 0.5s ease;
+
+    overflow: hidden;
+}
+
+.company-card:hover {
+    background: #121212;
+}
+
+
+/* =========================================================
+   COMPANY VISUALS
+========================================================= */
+
+.company-image {
+    height: 360px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    padding: 30px;
+}
+
+.company-image::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.09),
+            transparent 45%,
+            rgba(0,0,0,0.78)
+        );
+}
+
+.company-image::after {
+    position: absolute;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 125px;
+
+    font-style: italic;
+
+    color: rgba(255,255,255,0.055);
+
+    right: -15px;
+    bottom: -35px;
+}
+
+
+/* Brainlab */
+
+.brainlab {
+    background:
+        radial-gradient(
+            circle at 70% 35%,
+            #858585 0,
+            #343434 28%,
+            #090909 70%
+        );
+}
+
+.brainlab::after {
+    content: "BRAIN";
+}
+
+
+/* KARL STORZ */
+
+.karlstorz {
+    background:
+        radial-gradient(
+            circle at 30% 35%,
+            #8b8b8b 0,
+            #303030 30%,
+            #090909 70%
+        );
+}
+
+.karlstorz::after {
+    content: "SCOPE";
+}
+
+
+/* Richard Wolf */
+
+.wolf {
+    background:
+        radial-gradient(
+            circle at 65% 30%,
+            #777 0,
+            #292929 30%,
+            #080808 70%
+        );
+}
+
+.wolf::after {
+    content: "SURGERY";
+}
+
+
+/* Siemens */
+
+.siemens {
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #888 0,
+            #303030 28%,
+            #090909 70%
+        );
+}
+
+.siemens::after {
+    content: "IMAGE";
+}
+
+.image-number,
+.image-category {
+    position: relative;
+    z-index: 2;
+}
+
+.image-number {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 30px;
+}
+
+.image-category {
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: #aaa;
+}
+
+
+/* =========================================================
+   COMPANY CONTENT
+========================================================= */
+
+.company-content {
+    padding: 45px;
+}
+
+.company-country {
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: #777;
+
+    margin-bottom: 20px;
+}
+
+.company-content h3 {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 55px;
+    line-height: 0.85;
+
+    font-weight: 400;
+
+    letter-spacing: -1px;
+}
+
+.company-content h3 em {
+    font-style: italic;
+    color: #888;
+}
+
+.product {
+    margin-top: 20px;
+
+    color: #bbb;
+
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.company-content > p:not(.product) {
+    max-width: 570px;
+
+    margin-top: 20px;
+
+    color: #858585;
+
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    margin-top: 28px;
+}
+
+.tags span {
+    border: 1px solid rgba(255,255,255,0.13);
+
+    padding: 7px 10px;
+
+    font-size: 8px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+
+    color: #aaa;
+}
+
+.company-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 18px;
+
+    margin-top: 35px;
+
+    padding-bottom: 8px;
+
+    border-bottom: 1px solid rgba(255,255,255,0.4);
+
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+
+    transition: 0.3s ease;
+}
+
+.company-link span {
+    font-size: 15px;
+}
+
+.company-link:hover {
+    border-color: white;
+    color: white;
+}
+
+
+/* =========================================================
+   OPPORTUNITY
+========================================================= */
+
+.opportunity {
+    background: #f1f0eb;
+    color: #080808;
+}
+
+.opportunity .section-label {
+    color: #777;
+}
+
+.opportunity-inner {
+    max-width: 1300px;
+    margin: auto;
+}
+
+.opportunity h2 {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(60px, 8vw, 115px);
+
+    font-weight: 400;
+    line-height: 0.85;
+
+    letter-spacing: -4px;
+}
+
+.opportunity h2 em {
+    font-style: italic;
+    color: #777;
+}
+
+.opportunity-inner > p {
+    max-width: 680px;
+
+    margin-top: 45px;
+
+    color: #555;
+
+    font-size: 15px;
+}
+
+.opportunity-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 30px;
+
+    margin-top: 90px;
+}
+
+.opportunity-item {
+    border-top: 1px solid #bbb;
+
+    padding-top: 20px;
+}
+
+.opportunity-item span {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 28px;
+
+    color: #888;
+}
+
+.opportunity-item h3 {
+    margin-top: 30px;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 34px;
+
+    font-weight: 500;
+}
+
+.opportunity-item p {
+    margin-top: 15px;
+
+    color: #666;
+
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   STRATEGY
+========================================================= */
+
+.strategy {
+    background: #080808;
+}
+
+.strategy-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 120px;
+}
+
+.strategy-title h2 {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(55px, 6vw, 90px);
+
+    font-weight: 400;
+
+    line-height: 0.9;
+
+    letter-spacing: -3px;
+}
+
+.strategy-title h2 em {
+    font-style: italic;
+    color: #777;
+}
+
+.strategy-content {
+    border-top: 1px solid var(--line);
+}
+
+.strategy-row {
+    display: grid;
+
+    grid-template-columns: 60px 1fr;
+
+    gap: 20px;
+
+    padding: 30px 0;
+
+    border-bottom: 1px solid var(--line);
+}
+
+.strategy-row > span {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 26px;
+
+    color: #666;
+}
+
+.strategy-row h3 {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 32px;
+
+    font-weight: 400;
+}
+
+.strategy-row p {
+    max-width: 500px;
+
+    margin-top: 8px;
+
+    color: #777;
+
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.cta {
+    background: #e9e8e3;
+
+    color: #080808;
+
+    text-align: center;
+
+    padding: 150px 7vw;
+}
+
+.cta .section-label {
+    color: #777;
+}
+
+.cta h2 {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(65px, 9vw, 135px);
+
+    font-weight: 400;
+
+    line-height: 0.82;
+
+    letter-spacing: -4px;
+}
+
+.cta h2 em {
+    font-style: italic;
+    color: #777;
+}
+
+.cta p {
+    max-width: 550px;
+
+    margin: 45px auto 35px;
+
+    color: #555;
+
+    font-size: 14px;
+}
+
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 30px;
+
+    padding: 17px 25px;
+
+    background: #080808;
+
+    color: white;
+
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+
+    transition: 0.3s ease;
+}
+
+.cta-button:hover {
+    background: #292929;
+}
+
+.cta-button span {
+    font-size: 18px;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    padding: 35px 5vw;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: #050505;
+
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.footer-brand {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 22px;
+
+    letter-spacing: 2px;
+}
+
+.footer-text {
+    color: #666;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+}
+
+.footer-copy {
+    color: #555;
+
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .navbar nav {
+        display: none;
+    }
+
+    .hero-content {
+        margin-left: 7vw;
+    }
+
+    .intro-grid,
+    .strategy-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+
+    .company-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .opportunity-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 650px) {
+
+    .section {
+        padding: 90px 6vw;
+    }
+
+    .navbar {
+        padding: 22px 6vw;
+    }
+
+    .nav-contact {
+        display: none;
+    }
+
+    .hero-content {
+        margin-left: 6vw;
+    }
+
+    .hero h1 {
+        font-size: 70px;
+        letter-spacing: -2px;
+    }
+
+    .hero p {
+        font-size: 13px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        width: 210px;
+    }
+
+    .company-card {
+        min-height: auto;
+    }
+
+    .company-image {
+        height: 270px;
+    }
+
+    .company-content {
+        padding: 32px;
+    }
+
+    .company-content h3 {
+        font-size: 45px;
+    }
+
+    .opportunity-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .strategy-grid {
+        gap: 50px;
+    }
+
+    footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+}
