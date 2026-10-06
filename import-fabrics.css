@@ -1,1009 +1,1211 @@
 /* =========================================================
-   SA AZADIPOUR
-   LUXURY FABRICS
+   AZADIPOUR — LUXURY FABRICS
+   Page-specific CSS
+
+   IMPORTANT:
+   Global website design comes from style.css.
+   This file only controls the Luxury Fabrics page.
    ========================================================= */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
-html {
-    scroll-behavior: smooth;
-}
+/* =========================================================
+   PAGE
+   ========================================================= */
 
-body {
-    background: #080808;
-    color: #f5f1e9;
-
-    font-family: "Inter", sans-serif;
-    font-weight: 300;
-
-    line-height: 1.7;
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
+.fabrics-page {
+  background: var(--black, #050505);
+  color: #fff;
+  overflow-x: hidden;
 }
 
 
-/* HEADER */
+/* =========================================================
+   HERO
+   ========================================================= */
 
-.site-header {
+.fabrics-hero {
+  min-height: 720px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid rgba(255,255,255,.10);
+}
 
-    position: fixed;
+.fabrics-hero-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
-    top: 0;
-    left: 0;
+  padding: 120px clamp(30px, 7vw, 110px);
 
+  background: #070707;
+}
+
+.fabrics-eyebrow {
+  font-family: Inter, sans-serif;
+
+  font-size: 10px;
+
+  letter-spacing: .28em;
+
+  text-transform: uppercase;
+
+  color: rgba(255,255,255,.55);
+
+  margin-bottom: 28px;
+}
+
+.fabrics-hero-title {
+  margin: 0;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: clamp(60px, 7vw, 108px);
+
+  font-weight: 400;
+
+  line-height: .88;
+
+  letter-spacing: -.035em;
+}
+
+.fabrics-hero-title em {
+  display: block;
+
+  font-style: italic;
+
+  color: rgba(255,255,255,.58);
+}
+
+.fabrics-hero-description {
+  max-width: 510px;
+
+  margin: 36px 0 0;
+
+  font-family: Inter, sans-serif;
+
+  font-size: 14px;
+
+  line-height: 1.9;
+
+  color: rgba(255,255,255,.64);
+}
+
+
+/* =========================================================
+   HERO IMAGE
+   ========================================================= */
+
+.fabrics-hero-image {
+  min-height: 720px;
+
+  background-position: center;
+
+  background-size: cover;
+
+  background-repeat: no-repeat;
+
+  position: relative;
+}
+
+.fabrics-hero-image::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(5,5,5,.18),
+      transparent 35%,
+      rgba(0,0,0,.10)
+    );
+}
+
+
+/* =========================================================
+   HERO FEATURES
+   ========================================================= */
+
+.fabrics-features {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  border-top: 1px solid rgba(255,255,255,.10);
+
+  margin-top: 55px;
+
+  max-width: 680px;
+}
+
+.fabric-feature {
+  padding: 20px 18px 0 0;
+
+  margin-right: 18px;
+
+  border-right: 1px solid rgba(255,255,255,.12);
+}
+
+.fabric-feature:last-child {
+  border-right: none;
+
+  margin-right: 0;
+}
+
+.fabric-feature-icon {
+  width: 22px;
+  height: 22px;
+
+  margin-bottom: 13px;
+
+  opacity: .72;
+
+  font-size: 18px;
+}
+
+.fabric-feature-title {
+  display: block;
+
+  font-family: Inter, sans-serif;
+
+  font-size: 9px;
+
+  letter-spacing: .17em;
+
+  text-transform: uppercase;
+
+  line-height: 1.5;
+
+  color: rgba(255,255,255,.72);
+}
+
+
+/* =========================================================
+   CATALOGUE
+   ========================================================= */
+
+.fabrics-catalogue {
+  padding: 110px 0 130px;
+}
+
+.fabrics-section-header {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: flex-end;
+
+  gap: 40px;
+
+  margin-bottom: 50px;
+}
+
+.fabrics-section-label {
+  font-family: Inter, sans-serif;
+
+  font-size: 10px;
+
+  letter-spacing: .25em;
+
+  text-transform: uppercase;
+
+  color: rgba(255,255,255,.43);
+
+  margin-bottom: 14px;
+}
+
+.fabrics-section-title {
+  margin: 0;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-weight: 400;
+
+  font-size: clamp(42px, 5vw, 70px);
+
+  line-height: .95;
+}
+
+.fabrics-section-title em {
+  font-style: italic;
+
+  color: rgba(255,255,255,.55);
+}
+
+.fabrics-section-intro {
+  max-width: 440px;
+
+  margin: 0;
+
+  color: rgba(255,255,255,.55);
+
+  font-family: Inter, sans-serif;
+
+  font-size: 13px;
+
+  line-height: 1.8;
+}
+
+
+/* =========================================================
+   FILTERS
+   ========================================================= */
+
+.fabrics-filter-bar {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 25px;
+
+  padding: 18px 0;
+
+  margin-bottom: 45px;
+
+  border-top: 1px solid rgba(255,255,255,.11);
+
+  border-bottom: 1px solid rgba(255,255,255,.11);
+}
+
+.fabrics-filters {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  flex-wrap: wrap;
+}
+
+.fabric-filter {
+  appearance: none;
+
+  border: 1px solid transparent;
+
+  background: transparent;
+
+  color: rgba(255,255,255,.48);
+
+  padding: 9px 14px;
+
+  font-family: Inter, sans-serif;
+
+  font-size: 9px;
+
+  letter-spacing: .12em;
+
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  transition:
+    color .25s ease,
+    border-color .25s ease,
+    background .25s ease;
+}
+
+.fabric-filter:hover,
+.fabric-filter.active {
+  color: #fff;
+
+  border-color: rgba(255,255,255,.20);
+
+  background: rgba(255,255,255,.04);
+}
+
+
+/* =========================================================
+   SEARCH
+   ========================================================= */
+
+.fabric-search {
+  position: relative;
+
+  width: 220px;
+
+  flex: 0 0 auto;
+}
+
+.fabric-search input {
+  width: 100%;
+
+  height: 40px;
+
+  padding: 0 14px 0 36px;
+
+  box-sizing: border-box;
+
+  border: 1px solid rgba(255,255,255,.14);
+
+  background: rgba(255,255,255,.025);
+
+  color: #fff;
+
+  outline: none;
+
+  font-family: Inter, sans-serif;
+
+  font-size: 11px;
+}
+
+.fabric-search input::placeholder {
+  color: rgba(255,255,255,.32);
+}
+
+.fabric-search input:focus {
+  border-color: rgba(255,255,255,.35);
+}
+
+.fabric-search::before {
+  content: "⌕";
+
+  position: absolute;
+
+  left: 13px;
+
+  top: 50%;
+
+  transform: translateY(-52%);
+
+  color: rgba(255,255,255,.45);
+
+  font-size: 16px;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   PRODUCT GRID
+   ========================================================= */
+
+.fabrics-product-grid {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 20px;
+}
+
+.fabric-product-card {
+  min-width: 0;
+
+  background: #090909;
+
+  border: 1px solid rgba(255,255,255,.09);
+
+  transition:
+    transform .35s ease,
+    border-color .35s ease,
+    background .35s ease;
+}
+
+.fabric-product-card:hover {
+  transform: translateY(-5px);
+
+  border-color: rgba(255,255,255,.20);
+
+  background: #0c0c0c;
+}
+
+.fabric-product-card.hidden {
+  display: none;
+}
+
+
+/* =========================================================
+   PRODUCT IMAGE
+   ========================================================= */
+
+.fabric-product-image {
+  aspect-ratio: 1 / 1.08;
+
+  overflow: hidden;
+
+  background: #111;
+}
+
+.fabric-product-image img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition:
+    transform .7s cubic-bezier(.2,.7,.2,1);
+}
+
+.fabric-product-card:hover
+.fabric-product-image img {
+  transform: scale(1.045);
+}
+
+
+/* =========================================================
+   PRODUCT BODY
+   ========================================================= */
+
+.fabric-product-body {
+  padding: 24px 23px 25px;
+}
+
+.fabric-product-code {
+  display: block;
+
+  margin-bottom: 10px;
+
+  font-family: Inter, sans-serif;
+
+  font-size: 8px;
+
+  letter-spacing: .22em;
+
+  color: rgba(255,255,255,.38);
+}
+
+.fabric-product-name {
+  margin: 0 0 17px;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 27px;
+
+  line-height: 1;
+
+  font-weight: 400;
+}
+
+.fabric-product-specs {
+  list-style: none;
+
+  padding: 0;
+
+  margin: 0 0 20px;
+}
+
+.fabric-product-specs li {
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 15px;
+
+  padding: 7px 0;
+
+  border-bottom: 1px solid rgba(255,255,255,.07);
+
+  font-family: Inter, sans-serif;
+
+  font-size: 9px;
+}
+
+.fabric-product-specs li span:first-child {
+  color: rgba(255,255,255,.38);
+
+  text-transform: uppercase;
+
+  letter-spacing: .08em;
+}
+
+.fabric-product-specs li span:last-child {
+  color: rgba(255,255,255,.72);
+
+  text-align: right;
+}
+
+.fabric-product-price {
+  margin-bottom: 18px;
+
+  font-family: Inter, sans-serif;
+
+  font-size: 10px;
+
+  letter-spacing: .13em;
+
+  text-transform: uppercase;
+
+  color: rgba(255,255,255,.62);
+}
+
+.fabric-product-actions {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+}
+
+.fabric-request-btn,
+.fabric-detail-btn {
+  border: none;
+
+  background: transparent;
+
+  padding: 0;
+
+  font-family: Inter, sans-serif;
+
+  font-size: 8px;
+
+  letter-spacing: .16em;
+
+  text-transform: uppercase;
+
+  cursor: pointer;
+}
+
+.fabric-request-btn {
+  color: #fff;
+}
+
+.fabric-detail-btn {
+  color: rgba(255,255,255,.38);
+}
+
+.fabric-request-btn:hover,
+.fabric-detail-btn:hover {
+  color: #fff;
+}
+
+
+/* =========================================================
+   PRODUCT DETAIL
+   ========================================================= */
+
+.fabric-detail-section {
+  padding: 120px 0;
+
+  background: #080808;
+
+  border-top: 1px solid rgba(255,255,255,.08);
+
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.fabric-detail-grid {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.05fr)
+    minmax(360px, .95fr);
+
+  gap: clamp(45px, 7vw, 100px);
+
+  align-items: start;
+}
+
+
+/* =========================================================
+   GALLERY
+   ========================================================= */
+
+.fabric-gallery {
+  display: grid;
+
+  grid-template-columns: 78px minmax(0, 1fr);
+
+  gap: 15px;
+}
+
+.fabric-thumbnails {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+.fabric-thumbnail {
+  width: 78px;
+  height: 78px;
+
+  padding: 0;
+
+  border: 1px solid rgba(255,255,255,.12);
+
+  background: #111;
+
+  overflow: hidden;
+
+  cursor: pointer;
+
+  opacity: .52;
+
+  transition:
+    opacity .25s ease,
+    border-color .25s ease;
+}
+
+.fabric-thumbnail:hover,
+.fabric-thumbnail.active {
+  opacity: 1;
+
+  border-color: rgba(255,255,255,.60);
+}
+
+.fabric-thumbnail img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+}
+
+.fabric-main-image {
+  aspect-ratio: 1 / 1.04;
+
+  overflow: hidden;
+
+  background: #111;
+}
+
+.fabric-main-image img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+}
+
+
+/* =========================================================
+   DETAIL COPY
+   ========================================================= */
+
+.fabric-detail-copy {
+  padding-top: 5px;
+}
+
+.fabric-detail-code {
+  display: block;
+
+  margin-bottom: 17px;
+
+  font-family: Inter, sans-serif;
+
+  font-size: 9px;
+
+  letter-spacing: .23em;
+
+  color: rgba(255,255,255,.38);
+}
+
+.fabric-detail-title {
+  margin: 0;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: clamp(45px, 5vw, 72px);
+
+  font-weight: 400;
+
+  line-height: .88;
+}
+
+.fabric-detail-description {
+  max-width: 560px;
+
+  margin: 28px 0 35px;
+
+  font-family: Inter, sans-serif;
+
+  font-size: 13px;
+
+  line-height: 1.9;
+
+  color: rgba(255,255,255,.56);
+}
+
+.fabric-detail-specs {
+  border-top: 1px solid rgba(255,255,255,.12);
+
+  border-bottom: 1px solid rgba(255,255,255,.12);
+
+  margin-bottom: 30px;
+}
+
+.fabric-detail-spec-row {
+  display: grid;
+
+  grid-template-columns: 145px 1fr;
+
+  gap: 20px;
+
+  padding: 13px 0;
+
+  border-bottom: 1px solid rgba(255,255,255,.07);
+
+  font-family: Inter, sans-serif;
+
+  font-size: 10px;
+}
+
+.fabric-detail-spec-row:last-child {
+  border-bottom: none;
+}
+
+.fabric-detail-spec-row span:first-child {
+  color: rgba(255,255,255,.34);
+
+  text-transform: uppercase;
+
+  letter-spacing: .10em;
+}
+
+.fabric-detail-spec-row span:last-child {
+  color: rgba(255,255,255,.72);
+}
+
+.fabric-detail-price {
+  margin-bottom: 24px;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 30px;
+}
+
+.fabric-detail-actions {
+  display: flex;
+
+  gap: 12px;
+
+  flex-wrap: wrap;
+}
+
+.fabric-detail-actions .btn {
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   INQUIRY
+   ========================================================= */
+
+.fabric-inquiry {
+  margin-top: 100px;
+
+  padding-top: 80px;
+
+  border-top: 1px solid rgba(255,255,255,.10);
+}
+
+.fabric-inquiry-header {
+  max-width: 650px;
+
+  margin-bottom: 45px;
+}
+
+.fabric-inquiry-title {
+  margin: 0 0 15px;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: clamp(40px, 5vw, 65px);
+
+  font-weight: 400;
+
+  line-height: .95;
+}
+
+.fabric-inquiry-title em {
+  font-style: italic;
+
+  color: rgba(255,255,255,.56);
+}
+
+.fabric-inquiry-description {
+  margin: 0;
+
+  font-family: Inter, sans-serif;
+
+  font-size: 12px;
+
+  line-height: 1.8;
+
+  color: rgba(255,255,255,.50);
+}
+
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.fabric-form {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 18px 20px;
+}
+
+.fabric-form-group {
+  min-width: 0;
+}
+
+.fabric-form-group.full {
+  grid-column: 1 / -1;
+}
+
+.fabric-form-label {
+  display: block;
+
+  margin-bottom: 9px;
+
+  font-family: Inter, sans-serif;
+
+  font-size: 8px;
+
+  letter-spacing: .17em;
+
+  text-transform: uppercase;
+
+  color: rgba(255,255,255,.43);
+}
+
+.fabric-form input,
+.fabric-form select,
+.fabric-form textarea {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  border: 1px solid rgba(255,255,255,.12);
+
+  background: rgba(255,255,255,.025);
+
+  color: #fff;
+
+  border-radius: 0;
+
+  outline: none;
+
+  padding: 14px 15px;
+
+  font-family: Inter, sans-serif;
+
+  font-size: 11px;
+
+  transition:
+    border-color .25s ease;
+}
+
+.fabric-form input,
+.fabric-form select {
+  height: 48px;
+}
+
+.fabric-form textarea {
+  min-height: 145px;
+
+  resize: vertical;
+
+  line-height: 1.7;
+}
+
+.fabric-form input::placeholder,
+.fabric-form textarea::placeholder {
+  color: rgba(255,255,255,.27);
+}
+
+.fabric-form input:focus,
+.fabric-form select:focus,
+.fabric-form textarea:focus {
+  border-color: rgba(255,255,255,.42);
+}
+
+.fabric-form select option {
+  background: #090909;
+
+  color: #fff;
+}
+
+.fabric-checkbox {
+  display: flex;
+
+  align-items: center;
+
+  gap: 11px;
+
+  margin-top: 2px;
+
+  font-family: Inter, sans-serif;
+
+  font-size: 10px;
+
+  color: rgba(255,255,255,.58);
+
+  cursor: pointer;
+}
+
+.fabric-checkbox input {
+  width: 15px;
+  height: 15px;
+
+  accent-color: #fff;
+}
+
+.fabric-form-submit {
+  margin-top: 12px;
+}
+
+
+/* =========================================================
+   SOURCING CTA
+   ========================================================= */
+
+.fabric-sourcing-cta {
+  position: relative;
+
+  min-height: 570px;
+
+  display: flex;
+
+  align-items: center;
+
+  overflow: hidden;
+
+  background-size: cover;
+
+  background-position: center;
+}
+
+.fabric-sourcing-cta::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0,0,0,.84) 0%,
+      rgba(0,0,0,.58) 45%,
+      rgba(0,0,0,.25) 100%
+    );
+}
+
+.fabric-sourcing-content {
+  position: relative;
+
+  z-index: 1;
+
+  max-width: 650px;
+
+  padding: 110px 0;
+}
+
+.fabric-sourcing-content h2 {
+  margin: 0;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: clamp(52px, 7vw, 95px);
+
+  line-height: .86;
+
+  font-weight: 400;
+}
+
+.fabric-sourcing-content h2 em {
+  color: rgba(255,255,255,.56);
+
+  font-style: italic;
+}
+
+.fabric-sourcing-content p {
+  max-width: 490px;
+
+  margin: 28px 0 35px;
+
+  font-family: Inter, sans-serif;
+
+  font-size: 13px;
+
+  line-height: 1.9;
+
+  color: rgba(255,255,255,.62);
+}
+
+
+/* =========================================================
+   EMPTY SEARCH STATE
+   ========================================================= */
+
+.fabric-empty {
+  grid-column: 1 / -1;
+
+  padding: 70px 20px;
+
+  text-align: center;
+
+  border: 1px solid rgba(255,255,255,.08);
+
+  color: rgba(255,255,255,.42);
+
+  font-family: Inter, sans-serif;
+
+  font-size: 11px;
+
+  letter-spacing: .08em;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+  .fabrics-product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .fabrics-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .fabrics-hero-copy {
+    min-height: 610px;
+  }
+
+  .fabrics-hero-image {
+    min-height: 520px;
+  }
+
+  .fabric-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .fabric-detail-copy {
+    max-width: 760px;
+  }
+
+}
+
+
+@media (max-width: 800px) {
+
+  .fabrics-catalogue,
+  .fabric-detail-section {
+    padding-top: 80px;
+
+    padding-bottom: 90px;
+  }
+
+  .fabrics-section-header {
+    display: block;
+  }
+
+  .fabrics-section-intro {
+    margin-top: 25px;
+  }
+
+  .fabrics-filter-bar {
+    display: block;
+  }
+
+  .fabric-search {
     width: 100%;
-    height: 82px;
 
-    padding: 0 6vw;
+    margin-top: 18px;
+  }
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    background: rgba(8,8,8,0.86);
-
-    backdrop-filter: blur(18px);
-
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-
-    z-index: 1000;
-}
-
-.logo img {
-    width: 82px;
-}
-
-.navigation {
-    display: flex;
-    gap: 34px;
-}
-
-.navigation a {
-
-    font-size: 11px;
-
-    letter-spacing: 0.18em;
-
-    text-transform: uppercase;
-
-    color: rgba(255,255,255,0.6);
-
-    transition: 0.3s;
-}
-
-.navigation a:hover {
-    color: #ffffff;
-}
-
-
-/* HERO */
-
-.fabric-hero {
-
-    min-height: 92vh;
-
-    display: flex;
-    align-items: center;
-
-    padding: 150px 9vw 100px;
-
-    position: relative;
-
-    overflow: hidden;
-
-    background:
-
-        radial-gradient(
-            circle at 72% 30%,
-            rgba(170,150,120,0.18),
-            transparent 28%
-        ),
-
-        radial-gradient(
-            circle at 25% 75%,
-            rgba(255,255,255,0.05),
-            transparent 30%
-        ),
-
-        linear-gradient(
-            135deg,
-            #171411,
-            #050505
-        );
-}
-
-.fabric-hero::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 800px;
-    height: 800px;
-
-    right: -350px;
-    top: -250px;
-
-    border-radius: 50%;
-
-    border: 1px solid rgba(255,255,255,0.08);
-}
-
-.fabric-hero::after {
-
-    content: "";
-
-    position: absolute;
-
-    width: 520px;
-    height: 520px;
-
-    right: -120px;
-    top: 80px;
-
-    border-radius: 50%;
-
-    border: 1px solid rgba(255,255,255,0.05);
-}
-
-.hero-content {
-
-    position: relative;
-
-    z-index: 2;
-
-    max-width: 900px;
-}
-
-.eyebrow {
-
-    font-size: 10px;
-
-    letter-spacing: 0.28em;
-
-    text-transform: uppercase;
-
-    color: rgba(255,255,255,0.48);
-
-    margin-bottom: 25px;
-}
-
-.fabric-hero h1 {
-
-    font-family: "Cormorant Garamond", serif;
-
-    font-size: clamp(65px, 9vw, 125px);
-
-    line-height: 0.82;
-
-    font-weight: 400;
-
-    letter-spacing: -0.04em;
-}
-
-.fabric-hero h1 em {
-
-    color: rgba(255,255,255,0.42);
-}
-
-.fabric-hero p:not(.eyebrow) {
-
-    max-width: 600px;
-
-    margin-top: 45px;
-
-    margin-bottom: 38px;
-
-    color: rgba(255,255,255,0.62);
-
-    font-size: 17px;
-}
-
-
-/* BUTTON */
-
-.luxury-button {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 28px;
-
-    padding: 15px 22px;
-
-    border: 1px solid rgba(255,255,255,0.25);
-
-    font-size: 10px;
-
-    letter-spacing: 0.16em;
-
-    text-transform: uppercase;
-
-    transition: 0.35s;
-}
-
-.luxury-button span {
-
-    font-size: 18px;
-
-    transition: 0.35s;
-}
-
-.luxury-button:hover {
-
-    background: #ffffff;
-
-    color: #050505;
-}
-
-.luxury-button:hover span {
-
-    transform: translateY(4px);
-}
-
-
-/* INTRO */
-
-.fabric-intro {
-
-    display: grid;
-
-    grid-template-columns: 20% 80%;
-
-    padding: 150px 9vw;
-
-    border-top: 1px solid rgba(255,255,255,0.08);
-}
-
-.section-number {
-
-    font-size: 10px;
-
-    letter-spacing: 0.2em;
-
-    color: rgba(255,255,255,0.35);
-}
-
-.fabric-intro h2 {
-
-    font-family: "Cormorant Garamond", serif;
-
-    font-size: clamp(50px, 6vw, 85px);
-
-    line-height: 0.9;
-
-    font-weight: 400;
-
-    margin-bottom: 45px;
-}
-
-.fabric-intro h2 em {
-
-    color: rgba(255,255,255,0.42);
-}
-
-.fabric-intro p:not(.section-number) {
-
-    max-width: 680px;
-
-    color: rgba(255,255,255,0.58);
-
-    margin-bottom: 20px;
-
-    font-size: 16px;
-}
-
-
-/* CATEGORIES */
-
-.categories {
-
-    display: flex;
-
-    flex-wrap: wrap;
-
-    gap: 10px;
-
-    padding: 30px 9vw;
-
-    border-top: 1px solid rgba(255,255,255,0.08);
-
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-
-    position: sticky;
-
-    top: 82px;
-
-    background: rgba(8,8,8,0.93);
-
-    backdrop-filter: blur(15px);
-
-    z-index: 50;
-}
-
-.categories a {
-
-    padding: 10px 16px;
-
-    border: 1px solid rgba(255,255,255,0.12);
-
-    font-size: 9px;
-
-    letter-spacing: 0.12em;
-
-    color: rgba(255,255,255,0.55);
-
-    transition: 0.3s;
-}
-
-.categories a:hover {
-
-    color: #ffffff;
-
-    border-color: rgba(255,255,255,0.4);
-}
-
-
-/* COLLECTION */
-
-.collection {
-    width: 100%;
-}
-
-
-/* PRODUCT */
-
-.fabric-product {
-
-    display: grid;
-
-    grid-template-columns: 50% 50%;
-
-    min-height: 760px;
-
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-}
-
-.fabric-product.reverse .fabric-image {
-    order: 2;
-}
-
-.fabric-product.reverse .product-information {
-    order: 1;
-}
-
-
-/* IMAGE AREA */
-
-.fabric-image {
-
-    position: relative;
-
-    min-height: 650px;
-
-    overflow: hidden;
-}
-
-.fabric-image::before {
-
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    transition: transform 1s ease;
-}
-
-.fabric-product:hover .fabric-image::before {
-
-    transform: scale(1.05);
-}
-
-
-/* PRODUCT IMAGE PLACEHOLDERS */
-
-.fabric-image-01::before {
-
-    background:
-
-        linear-gradient(
-            135deg,
-            #4b453c,
-            #191816
-        );
-}
-
-.fabric-image-02::before {
-
-    background:
-
-        radial-gradient(
-            ellipse at center,
-            #8c8174,
-            #302c28 45%,
-            #0b0b0b 80%
-        );
-}
-
-.fabric-image-03::before {
-
-    background:
-
-        linear-gradient(
-            145deg,
-            #292725,
-            #6a6258,
-            #111111
-        );
-}
-
-.fabric-image-04::before {
-
-    background:
-
-        repeating-linear-gradient(
-            120deg,
-            #151515 0px,
-            #151515 12px,
-            #292929 13px,
-            #292929 25px
-        );
-}
-
-
-/* PRODUCT NUMBER */
-
-.product-index {
-
-    position: absolute;
-
-    left: 50px;
-    top: 45px;
-
-    z-index: 2;
-
-    font-size: 11px;
-
-    letter-spacing: 0.2em;
-
-    color: rgba(255,255,255,0.5);
-}
-
-
-/* PRODUCT INFORMATION */
-
-.product-information {
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: center;
-
-    padding: 80px;
-
-    background: #0c0c0c;
-}
-
-.product-category {
-
-    font-size: 9px;
-
-    letter-spacing: 0.22em;
-
-    color: rgba(255,255,255,0.4);
-
-    margin-bottom: 20px;
-}
-
-.product-information h3 {
-
-    font-family: "Cormorant Garamond", serif;
-
-    font-size: clamp(45px, 5vw, 72px);
-
-    font-weight: 400;
-
-    line-height: 0.95;
-
-    margin-bottom: 30px;
-}
-
-.product-description {
-
-    max-width: 520px;
-
-    color: rgba(255,255,255,0.55);
-
-    margin-bottom: 40px;
-}
-
-
-/* SPECIFICATIONS */
-
-.specifications {
-
-    display: grid;
-
+  .fabrics-features {
     grid-template-columns: repeat(2, 1fr);
 
-    border-top: 1px solid rgba(255,255,255,0.1);
+    row-gap: 20px;
+  }
 
-    margin-bottom: 30px;
-}
+  .fabric-feature:nth-child(2) {
+    border-right: none;
+  }
 
-.specifications div {
+  .fabric-form {
+    grid-template-columns: 1fr;
+  }
 
-    padding: 14px 12px;
+  .fabric-form-group.full {
+    grid-column: auto;
+  }
 
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-}
-
-.specifications span {
-
-    display: block;
-
-    font-size: 8px;
-
-    letter-spacing: 0.15em;
-
-    color: rgba(255,255,255,0.35);
-
-    margin-bottom: 5px;
-}
-
-.specifications strong {
-
-    font-size: 11px;
-
-    font-weight: 400;
-
-    color: rgba(255,255,255,0.75);
 }
 
 
-/* PRICE */
+@media (max-width: 600px) {
 
-.product-price {
+  .fabrics-hero-copy {
+    padding: 90px 24px;
 
-    display: flex;
+    min-height: 570px;
+  }
 
-    justify-content: space-between;
+  .fabrics-hero-image {
+    min-height: 430px;
+  }
 
-    align-items: flex-end;
+  .fabrics-hero-title {
+    font-size: clamp(55px, 17vw, 82px);
+  }
 
-    padding: 20px 0;
+  .fabrics-hero-description {
+    font-size: 12px;
+  }
 
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+  .fabrics-product-grid {
+    grid-template-columns: 1fr;
+  }
 
-    margin-bottom: 25px;
-}
+  .fabric-gallery {
+    grid-template-columns: 1fr;
+  }
 
-.product-price span {
-
-    font-size: 8px;
-
-    letter-spacing: 0.18em;
-
-    color: rgba(255,255,255,0.35);
-}
-
-.product-price strong {
-
-    font-family: "Cormorant Garamond", serif;
-
-    font-size: 40px;
-
-    font-weight: 400;
-}
-
-.product-price small {
-
-    font-family: "Inter", sans-serif;
-
-    font-size: 10px;
-
-    color: rgba(255,255,255,0.4);
-}
-
-
-/* ORDER BUTTON */
-
-.order-button {
-
-    width: fit-content;
-
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 25px;
-
-    padding: 15px 20px;
-
-    background: transparent;
-
-    color: #ffffff;
-
-    border: 1px solid rgba(255,255,255,0.22);
-
-    font-family: "Inter", sans-serif;
-
-    font-size: 9px;
-
-    letter-spacing: 0.15em;
-
-    text-transform: uppercase;
-
-    cursor: pointer;
-
-    transition: 0.3s;
-}
-
-.order-button span {
-
-    font-size: 17px;
-
-    transition: 0.3s;
-}
-
-.order-button:hover {
-
-    background: #ffffff;
-
-    color: #080808;
-}
-
-.order-button:hover span {
-
-    transform: translateX(6px);
-}
-
-
-/* ORDER SECTION */
-
-.order-section {
+  .fabric-thumbnails {
+    order: 2;
 
     display: grid;
 
-    grid-template-columns: 35% 65%;
+    grid-template-columns: repeat(5, 1fr);
+  }
 
-    gap: 80px;
-
-    padding: 160px 9vw;
-
-    background:
-        radial-gradient(
-            circle at 15% 50%,
-            rgba(255,255,255,0.05),
-            transparent 35%
-        );
-
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-}
-
-.order-heading h2 {
-
-    font-family: "Cormorant Garamond", serif;
-
-    font-size: clamp(55px, 6vw, 90px);
-
-    line-height: 0.85;
-
-    font-weight: 400;
-
-    margin-bottom: 40px;
-}
-
-.order-heading h2 em {
-
-    color: rgba(255,255,255,0.4);
-}
-
-.order-heading > p:last-child {
-
-    max-width: 400px;
-
-    color: rgba(255,255,255,0.5);
-}
-
-
-/* FORM */
-
-.order-form-wrapper {
-
-    width: 100%;
-}
-
-.order-form {
-
-    width: 100%;
-}
-
-.form-row {
-
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 25px;
-}
-
-.form-field {
-
-    margin-bottom: 28px;
-}
-
-.form-field label {
-
-    display: block;
-
-    margin-bottom: 10px;
-
-    font-size: 9px;
-
-    letter-spacing: 0.18em;
-
-    text-transform: uppercase;
-
-    color: rgba(255,255,255,0.45);
-}
-
-.form-field input,
-.form-field textarea {
-
+  .fabric-thumbnail {
     width: 100%;
 
-    padding: 16px 0;
+    height: auto;
 
-    background: transparent;
+    aspect-ratio: 1;
+  }
 
-    border: none;
+  .fabric-detail-title {
+    font-size: 55px;
+  }
 
-    border-bottom: 1px solid rgba(255,255,255,0.18);
+  .fabric-detail-spec-row {
+    grid-template-columns: 115px 1fr;
+  }
 
-    color: #ffffff;
+  .fabric-inquiry {
+    margin-top: 70px;
 
-    outline: none;
+    padding-top: 60px;
+  }
 
-    font-family: "Inter", sans-serif;
+  .fabric-sourcing-cta {
+    min-height: 500px;
+  }
 
-    font-size: 14px;
+  .fabric-sourcing-content {
+    padding: 80px 0;
+  }
 
-    transition: 0.3s;
-}
-
-.form-field textarea {
-
-    resize: vertical;
-
-    min-height: 140px;
-}
-
-.form-field input:focus,
-.form-field textarea:focus {
-
-    border-bottom-color: #ffffff;
-}
-
-.form-field input::placeholder,
-.form-field textarea::placeholder {
-
-    color: rgba(255,255,255,0.22);
-}
-
-
-/* SUBMIT */
-
-.submit-button {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 30px;
-
-    padding: 17px 25px;
-
-    background: #ffffff;
-
-    color: #080808;
-
-    border: none;
-
-    font-family: "Inter", sans-serif;
-
-    font-size: 9px;
-
-    letter-spacing: 0.15em;
-
-    text-transform: uppercase;
-
-    cursor: pointer;
-
-    transition: 0.3s;
-}
-
-.submit-button span {
-
-    font-size: 18px;
-}
-
-.submit-button:hover {
-
-    background: #dcd8d0;
-}
-
-
-/* NOTE */
-
-.form-note {
-
-    margin-top: 25px;
-
-    max-width: 650px;
-
-    font-size: 10px;
-
-    line-height: 1.6;
-
-    color: rgba(255,255,255,0.3);
-}
-
-
-/* FOOTER */
-
-.footer {
-
-    display: flex;
-
-    justify-content: space-between;
-
-    gap: 30px;
-
-    padding: 40px 9vw;
-
-    font-size: 10px;
-
-    color: rgba(255,255,255,0.3);
-
-    border-top: 1px solid rgba(255,255,255,0.08);
-}
-
-.footer div:first-child {
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 5px;
-}
-
-.footer strong {
-
-    color: rgba(255,255,255,0.75);
-}
-
-
-/* RESPONSIVE */
-
-@media (max-width: 1000px) {
-
-    .fabric-product {
-
-        grid-template-columns: 1fr;
-    }
-
-    .fabric-product.reverse .fabric-image {
-        order: 1;
-    }
-
-    .fabric-product.reverse .product-information {
-        order: 2;
-    }
-
-    .fabric-image {
-        min-height: 550px;
-    }
-
-    .product-information {
-        padding: 65px 8vw;
-    }
-
-    .order-section {
-
-        grid-template-columns: 1fr;
-
-        gap: 70px;
-    }
-}
-
-
-@media (max-width: 750px) {
-
-    .site-header {
-
-        padding: 0 25px;
-    }
-
-    .logo img {
-
-        width: 65px;
-    }
-
-    .navigation {
-
-        gap: 10px;
-    }
-
-    .navigation a {
-
-        font-size: 8px;
-
-        letter-spacing: 0.08em;
-    }
-
-    .fabric-hero {
-
-        padding: 130px 25px 90px;
-    }
-
-    .fabric-intro {
-
-        grid-template-columns: 1fr;
-
-        gap: 40px;
-
-        padding: 100px 25px;
-    }
-
-    .categories {
-
-        top: 82px;
-
-        padding: 20px 25px;
-    }
-
-    .fabric-image {
-
-        min-height: 450px;
-    }
-
-    .product-information {
-
-        padding: 60px 25px;
-    }
-
-    .specifications {
-
-        grid-template-columns: 1fr;
-    }
-
-    .order-section {
-
-        padding: 110px 25px;
-    }
-
-    .form-row {
-
-        grid-template-columns: 1fr;
-
-        gap: 0;
-    }
-
-    .footer {
-
-        flex-direction: column;
-
-        padding: 35px 25px;
-    }
 }
