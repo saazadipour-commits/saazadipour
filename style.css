@@ -1,11 +1,37 @@
+/* =========================================================
+   AZADIPOUR
+   Global Medical Technology & Hospital Solutions
+   Main Website Stylesheet
+   ========================================================= */
+
+
+/* =========================================================
+   ROOT
+   ========================================================= */
+
 :root {
   --black: #050505;
   --black-soft: #0b0b0b;
+  --black-light: #111111;
+
   --white: #f5f3ee;
+  --white-soft: #dedbd4;
+
   --gray: #a5a5a5;
-  --line: rgba(255,255,255,0.12);
+  --gray-dark: #666666;
+
   --gold: #c8b28a;
+
+  --line: rgba(255,255,255,0.12);
+  --line-soft: rgba(255,255,255,0.07);
+
+  --max-width: 1500px;
 }
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
 
 * {
   margin: 0;
@@ -20,9 +46,18 @@ html {
 body {
   background: var(--black);
   color: var(--white);
+
   font-family: "Inter", sans-serif;
   font-weight: 300;
+
   line-height: 1.7;
+
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
 }
 
 a {
@@ -30,18 +65,90 @@ a {
   text-decoration: none;
 }
 
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   SELECTION
+   ========================================================= */
+
+::selection {
+  background: var(--gold);
+  color: var(--black);
+}
+
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #272727;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold);
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
 .site-header {
   position: absolute;
+
   top: 0;
   left: 0;
+
   width: 100%;
-  z-index: 20;
+
+  z-index: 100;
 
   display: flex;
+
   align-items: center;
   justify-content: space-between;
 
   padding: 28px 6%;
+
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+.brand {
+  display: flex;
+
+  align-items: center;
+
+  width: 70px;
+
+  transition: opacity .3s ease;
+}
+
+.brand:hover {
+  opacity: .75;
 }
 
 .brand img {
@@ -49,395 +156,1310 @@ a {
   height: auto;
 }
 
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
 .main-nav {
   display: flex;
-  gap: 28px;
+
   align-items: center;
+
+  gap: 28px;
 }
 
 .main-nav a {
-  font-size: 11px;
-  letter-spacing: 1.6px;
+  position: relative;
+
+  font-size: 10px;
+
+  letter-spacing: 1.7px;
+
   text-transform: uppercase;
-  color: rgba(255,255,255,.8);
-  transition: .3s;
+
+  color: rgba(255,255,255,.78);
+
+  transition:
+    color .3s ease,
+    opacity .3s ease;
+}
+
+.main-nav a::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: -8px;
+
+  width: 0;
+  height: 1px;
+
+  background: var(--gold);
+
+  transition: width .3s ease;
 }
 
 .main-nav a:hover {
   color: var(--gold);
 }
 
+.main-nav a:hover::after {
+  width: 100%;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
 .hero {
   min-height: 100vh;
 
+  position: relative;
+
   display: flex;
+
   align-items: center;
 
-  position: relative;
+  overflow: hidden;
 
   background:
     linear-gradient(
       90deg,
-      rgba(0,0,0,.95) 0%,
-      rgba(0,0,0,.75) 45%,
-      rgba(0,0,0,.35) 100%
+      rgba(0,0,0,.96) 0%,
+      rgba(0,0,0,.82) 38%,
+      rgba(0,0,0,.52) 70%,
+      rgba(0,0,0,.28) 100%
     ),
-    url("assets/medical-hero.jpg") center/cover no-repeat;
+    url("assets/medical-hero.jpg")
+    center center /
+    cover
+    no-repeat;
 }
 
-.hero-overlay {
+
+/* =========================================================
+   HERO OVERLAY
+   ========================================================= */
+
+.hero::after {
+  content: "";
+
   position: absolute;
+
   inset: 0;
+
+  pointer-events: none;
+
   background:
     radial-gradient(
-      circle at 75% 50%,
-      rgba(200,178,138,.08),
-      transparent 35%
+      circle at 78% 48%,
+      rgba(200,178,138,.09),
+      transparent 34%
     );
 }
 
+
+/* =========================================================
+   HERO CONTENT
+   ========================================================= */
+
 .hero-content {
   position: relative;
-  z-index: 2;
 
-  max-width: 850px;
+  z-index: 5;
 
-  padding: 140px 8% 100px;
+  width: 100%;
+
+  max-width: 900px;
+
+  padding:
+
+    150px
+
+    8%
+
+    100px;
 }
+
+
+/* =========================================================
+   EYEBROW
+   ========================================================= */
 
 .eyebrow {
-  font-size: 10px;
-  letter-spacing: 3px;
-  color: var(--gold);
-  text-transform: uppercase;
   margin-bottom: 22px;
+
+  color: var(--gold);
+
+  font-size: 10px;
+
+  font-weight: 400;
+
+  letter-spacing: 3px;
+
+  line-height: 1.5;
+
+  text-transform: uppercase;
 }
 
-.hero h1 {
-  font-family: "Cormorant Garamond", serif;
 
-  font-size: clamp(58px, 7vw, 105px);
-  line-height: .92;
+/* =========================================================
+   HERO TITLE
+   ========================================================= */
+
+.hero h1 {
+  max-width: 1000px;
+
+  font-family:
+    "Cormorant Garamond",
+    serif;
+
+  font-size:
+    clamp(
+      58px,
+      7vw,
+      105px
+    );
+
   font-weight: 500;
 
-  letter-spacing: -2px;
+  line-height: .91;
+
+  letter-spacing: -2.5px;
+
+  color: var(--white);
 }
 
 .hero h1 span {
   display: block;
+
+  margin-top: 5px;
+
   color: var(--gold);
 }
 
+
+/* =========================================================
+   HERO TEXT
+   ========================================================= */
+
 .hero-text {
-  max-width: 620px;
+  max-width: 640px;
 
-  margin-top: 35px;
+  margin-top: 38px;
 
-  color: #c5c5c5;
+  color: #c3c3c3;
 
   font-size: 15px;
+
   line-height: 1.9;
 }
 
+
+/* =========================================================
+   HERO ACTIONS
+   ========================================================= */
+
 .hero-actions {
   display: flex;
+
+  flex-wrap: wrap;
+
   gap: 15px;
-  margin-top: 40px;
+
+  margin-top: 42px;
 }
 
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
 .btn {
+  min-height: 52px;
+
   display: inline-flex;
 
-  min-height: 52px;
-  padding: 0 28px;
-
   align-items: center;
+
   justify-content: center;
 
+  padding: 0 30px;
+
+  border: 1px solid transparent;
+
   font-size: 10px;
+
+  font-weight: 400;
+
   letter-spacing: 2px;
 
-  transition: .3s;
+  text-transform: uppercase;
+
+  transition:
+    background .3s ease,
+    color .3s ease,
+    border-color .3s ease,
+    transform .3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
 }
 
 .btn-primary {
   background: var(--white);
+
   color: var(--black);
 }
 
 .btn-primary:hover {
   background: var(--gold);
+
+  color: var(--black);
 }
 
 .btn-outline {
-  border: 1px solid var(--line);
+  background: transparent;
+
+  border-color:
+    rgba(255,255,255,.25);
+
   color: var(--white);
 }
 
 .btn-outline:hover {
   border-color: var(--gold);
+
   color: var(--gold);
 }
+
+
+/* =========================================================
+   SECTIONS
+   ========================================================= */
 
 .section {
-  padding: 130px 8%;
+  width: 100%;
+
+  padding:
+    130px
+    8%;
 }
 
-.section-label {
-  font-size: 10px;
-  letter-spacing: 3px;
-  color: var(--gold);
-  margin-bottom: 60px;
+.section-heading {
+  max-width: 850px;
+
+  margin-bottom: 65px;
 }
+
+.section-heading h2 {
+  font-family:
+    "Cormorant Garamond",
+    serif;
+
+  font-size:
+    clamp(
+      48px,
+      5vw,
+      78px
+    );
+
+  font-weight: 500;
+
+  line-height: 1;
+
+  letter-spacing: -1px;
+}
+
+.section-heading h2 span {
+  display: block;
+
+  color: var(--gold);
+}
+
+
+/* =========================================================
+   INTRO SECTION
+   ========================================================= */
 
 .intro {
-  background: var(--black-soft);
+  background:
+    linear-gradient(
+      180deg,
+      var(--black-soft),
+      #080808
+    );
 }
 
 .intro-grid {
   display: grid;
-  grid-template-columns: 1.2fr .8fr;
+
+  grid-template-columns:
+    1.15fr
+    .85fr;
+
   gap: 100px;
+
+  align-items: start;
 }
 
-.intro h2,
-.section-heading h2,
-.project-content h2 {
-  font-family: "Cormorant Garamond", serif;
+.intro h2 {
+  font-family:
+    "Cormorant Garamond",
+    serif;
 
-  font-size: clamp(48px, 5vw, 78px);
-  line-height: 1;
+  font-size:
+    clamp(
+      48px,
+      5vw,
+      78px
+    );
 
   font-weight: 500;
+
+  line-height: 1;
+
+  letter-spacing: -1px;
 }
 
-.intro h2 span,
-.project-content h2 span {
+.intro h2 span {
   display: block;
+
   color: var(--gold);
 }
 
 .intro p {
-  color: var(--gray);
   margin-bottom: 25px;
+
+  color: var(--gray);
+
+  font-size: 14px;
+
+  line-height: 1.9;
 }
+
+
+/* =========================================================
+   SECTION LABEL
+   ========================================================= */
+
+.section-label {
+  margin-bottom: 55px;
+
+  color: var(--gold);
+
+  font-size: 10px;
+
+  letter-spacing: 3px;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   TEXT LINK
+   ========================================================= */
 
 .text-link {
   display: inline-block;
 
-  margin-top: 20px;
-
-  font-size: 10px;
-  letter-spacing: 2px;
+  margin-top: 18px;
 
   color: var(--gold);
+
+  font-size: 10px;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+
+  transition:
+    color .3s ease,
+    transform .3s ease;
 }
 
-.section-heading {
-  margin-bottom: 60px;
+.text-link:hover {
+  color: var(--white);
+
+  transform: translateX(5px);
 }
+
+
+/* =========================================================
+   SOLUTIONS GRID
+   ========================================================= */
 
 .solution-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid var(--line);
-  border-left: 1px solid var(--line);
+
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(0,1fr)
+    );
+
+  border-top:
+    1px solid var(--line);
+
+  border-left:
+    1px solid var(--line);
 }
 
+
+/* =========================================================
+   SOLUTION CARD
+   ========================================================= */
+
 .solution-card {
+  position: relative;
+
   min-height: 430px;
 
   padding: 45px;
 
-  position: relative;
+  display: flex;
 
-  border-right: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  flex-direction: column;
 
-  transition: .4s;
+  border-right:
+    1px solid var(--line);
+
+  border-bottom:
+    1px solid var(--line);
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.015),
+      rgba(255,255,255,0)
+    );
+
+  transition:
+    background .4s ease,
+    transform .4s ease,
+    border-color .4s ease;
 }
 
 .solution-card:hover {
   background: #101010;
-  transform: translateY(-5px);
+
+  border-color:
+    rgba(200,178,138,.25);
+
+  transform:
+    translateY(-5px);
 }
+
+
+/* =========================================================
+   CARD NUMBER
+   ========================================================= */
 
 .number {
-  font-size: 10px;
-  letter-spacing: 2px;
   color: var(--gold);
+
+  font-size: 10px;
+
+  font-weight: 400;
+
+  letter-spacing: 2px;
 }
+
+
+/* =========================================================
+   CARD ICON
+   ========================================================= */
 
 .icon {
-  margin-top: 70px;
+  margin-top: 68px;
 
-  font-size: 36px;
   color: var(--gold);
+
+  font-family:
+    "Cormorant Garamond",
+    serif;
+
+  font-size: 38px;
+
+  line-height: 1;
 }
+
+
+/* =========================================================
+   CARD TITLE
+   ========================================================= */
 
 .solution-card h3 {
-  margin-top: 20px;
+  margin-top: 22px;
 
-  font-family: "Cormorant Garamond", serif;
-  font-size: 32px;
+  font-family:
+    "Cormorant Garamond",
+    serif;
+
+  font-size: 33px;
+
   font-weight: 500;
+
+  line-height: 1.1;
 }
+
+
+/* =========================================================
+   CARD TEXT
+   ========================================================= */
 
 .solution-card p {
-  margin-top: 15px;
+  max-width: 430px;
+
+  margin-top: 17px;
 
   color: var(--gray);
+
   font-size: 13px;
+
+  line-height: 1.8;
 }
+
+
+/* =========================================================
+   CARD LINK
+   ========================================================= */
 
 .card-link {
   position: absolute;
-  bottom: 35px;
 
-  font-size: 9px;
-  letter-spacing: 2px;
+  left: 45px;
+
+  bottom: 34px;
 
   color: var(--gold);
+
+  font-size: 9px;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
 }
 
+
+/* =========================================================
+   PROJECT BANNER
+   ========================================================= */
+
 .project-banner {
-  padding: 150px 8%;
+  position: relative;
+
+  padding:
+    155px
+    8%;
+
+  overflow: hidden;
 
   background:
     linear-gradient(
-      rgba(5,5,5,.88),
-      rgba(5,5,5,.94)
+      rgba(5,5,5,.91),
+      rgba(5,5,5,.95)
     ),
-    url("assets/hospital-project.jpg") center/cover;
+    url("assets/hospital-project.jpg")
+    center center /
+    cover
+    no-repeat;
+}
+
+.project-banner::after {
+  content: "";
+
+  position: absolute;
+
+  width: 450px;
+  height: 450px;
+
+  right: -150px;
+  top: 50%;
+
+  transform:
+    translateY(-50%);
+
+  border-radius: 50%;
+
+  border:
+    1px solid
+    rgba(200,178,138,.12);
 }
 
 .project-content {
-  max-width: 850px;
+  position: relative;
+
+  z-index: 2;
+
+  max-width: 900px;
+}
+
+.project-content h2 {
+  font-family:
+    "Cormorant Garamond",
+    serif;
+
+  font-size:
+    clamp(
+      48px,
+      5vw,
+      78px
+    );
+
+  font-weight: 500;
+
+  line-height: 1;
+
+  letter-spacing: -1px;
+}
+
+.project-content h2 span {
+  display: block;
+
+  color: var(--gold);
 }
 
 .project-content p:not(.eyebrow) {
   max-width: 650px;
 
-  margin: 30px 0;
+  margin:
+    30px 0 38px;
 
   color: var(--gray);
+
+  font-size: 14px;
+
+  line-height: 1.9;
 }
 
+
+/* =========================================================
+   GLOBAL MARKETS
+   ========================================================= */
+
 .global {
-  background: var(--black-soft);
+  background:
+    var(--black-soft);
 }
 
 .countries {
   display: flex;
+
   flex-wrap: wrap;
 
-  gap: 15px;
+  gap: 12px;
 }
 
 .countries span {
-  padding: 15px 24px;
+  padding:
+    14px
+    22px;
 
-  border: 1px solid var(--line);
-
-  font-size: 10px;
-  letter-spacing: 2px;
+  border:
+    1px solid var(--line);
 
   color: #bdbdbd;
+
+  font-size: 9px;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+
+  transition:
+    border-color .3s ease,
+    color .3s ease,
+    background .3s ease;
 }
+
+.countries span:hover {
+  border-color:
+    rgba(200,178,138,.45);
+
+  color: var(--gold);
+
+  background:
+    rgba(200,178,138,.03);
+}
+
+
+/* =========================================================
+   INNER HERO
+   ========================================================= */
+
+.inner-hero {
+  min-height: 75vh;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0,0,0,.96),
+      rgba(0,0,0,.72),
+      rgba(0,0,0,.45)
+    ),
+    url("assets/medical-hero.jpg")
+    center center /
+    cover
+    no-repeat;
+}
+
+
+/* =========================================================
+   CARDIAC HERO
+   ========================================================= */
+
+.cardiac-hero {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0,0,0,.96),
+      rgba(0,0,0,.72),
+      rgba(0,0,0,.42)
+    ),
+    url("assets/cardiac-hero.jpg")
+    center center /
+    cover
+    no-repeat;
+}
+
+
+/* =========================================================
+   ROBOTIC HERO
+   ========================================================= */
+
+.robotic-hero {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0,0,0,.96),
+      rgba(0,0,0,.72),
+      rgba(0,0,0,.42)
+    ),
+    url("assets/robotic-hero.jpg")
+    center center /
+    cover
+    no-repeat;
+}
+
+
+/* =========================================================
+   PROJECT HERO
+   ========================================================= */
+
+.project-hero {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0,0,0,.96),
+      rgba(0,0,0,.72),
+      rgba(0,0,0,.42)
+    ),
+    url("assets/hospital-project.jpg")
+    center center /
+    cover
+    no-repeat;
+}
+
+
+/* =========================================================
+   PROJECT FORM
+   ========================================================= */
+
+.project-form {
+  width: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 22px;
+}
+
+.project-form label {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 9px;
+
+  color: #aaa;
+
+  font-size: 9px;
+
+  font-weight: 400;
+
+  letter-spacing: 1.7px;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   FORM INPUTS
+   ========================================================= */
+
+.project-form input,
+.project-form textarea,
+.project-form select {
+  width: 100%;
+
+  padding:
+    16px
+    17px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.12);
+
+  border-radius: 0;
+
+  outline: none;
+
+  background:
+    #0b0b0b;
+
+  color: var(--white);
+
+  font-family:
+    "Inter",
+    sans-serif;
+
+  font-size: 13px;
+
+  font-weight: 300;
+
+  transition:
+    border-color .3s ease,
+    background .3s ease;
+}
+
+.project-form input::placeholder,
+.project-form textarea::placeholder {
+  color: #555;
+}
+
+.project-form input:focus,
+.project-form textarea:focus,
+.project-form select:focus {
+  border-color: var(--gold);
+
+  background:
+    #0f0f0f;
+}
+
+.project-form textarea {
+  min-height: 140px;
+
+  resize: vertical;
+}
+
+.project-form select {
+  appearance: none;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   FORM BUTTON
+   ========================================================= */
+
+.project-form button {
+  width: fit-content;
+
+  margin-top: 10px;
+
+  border: none;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
 
 .footer {
-  padding: 70px 8% 30px;
+  padding:
+    75px
+    8%
+    30px;
 
-  border-top: 1px solid var(--line);
+  background:
+    #030303;
 
-  background: #030303;
+  border-top:
+    1px solid var(--line);
 }
 
+
+/* =========================================================
+   FOOTER BRAND
+   ========================================================= */
+
 .footer-brand img {
-  width: 55px;
+  width: 58px;
+
+  height: auto;
 }
 
 .footer-brand p {
-  margin-top: 15px;
+  max-width: 350px;
+
+  margin-top: 16px;
+
+  color: var(--gray);
 
   font-size: 11px;
-  color: var(--gray);
+
+  line-height: 1.7;
 }
+
+
+/* =========================================================
+   FOOTER LINKS
+   ========================================================= */
 
 .footer-links {
   display: flex;
+
   flex-wrap: wrap;
 
-  gap: 25px;
+  gap: 26px;
 
-  margin: 45px 0;
+  margin:
+    48px 0;
 }
 
 .footer-links a {
-  font-size: 10px;
-  letter-spacing: 1.5px;
-  color: #aaa;
+  color: #999;
+
+  font-size: 9px;
+
+  letter-spacing: 1.6px;
+
+  text-transform: uppercase;
+
+  transition:
+    color .3s ease;
 }
 
 .footer-links a:hover {
   color: var(--gold);
 }
 
+
+/* =========================================================
+   FOOTER BOTTOM
+   ========================================================= */
+
 .footer-bottom {
   padding-top: 25px;
 
-  border-top: 1px solid var(--line);
+  border-top:
+    1px solid var(--line);
 
   color: #555;
 
-  font-size: 10px;
+  font-size: 9px;
+
+  letter-spacing: .5px;
 }
 
 
-@media (max-width: 1000px) {
+/* =========================================================
+   RESPONSIVE — TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+  .site-header {
+    padding:
+      25px
+      5%;
+  }
+
+  .main-nav {
+    gap: 18px;
+  }
+
+  .main-nav a {
+    font-size: 9px;
+  }
+
+  .hero-content {
+    padding-left: 7%;
+    padding-right: 7%;
+  }
+
+  .section {
+    padding:
+      110px
+      7%;
+  }
+
+  .intro-grid {
+    gap: 60px;
+  }
+
+  .solution-card {
+    padding: 38px;
+  }
+
+  .card-link {
+    left: 38px;
+  }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE — SMALL TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
 
   .main-nav {
     display: none;
   }
 
+  .brand img {
+    width: 58px;
+  }
+
+  .hero {
+    min-height: 90vh;
+  }
+
+  .hero-content {
+    padding:
+      150px
+      7%
+      90px;
+  }
+
   .intro-grid {
     grid-template-columns: 1fr;
+
     gap: 50px;
+  }
+
+  .solution-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .solution-card {
+    min-height: 390px;
+  }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  body {
+    font-size: 14px;
+  }
+
+  .site-header {
+    padding:
+      20px
+      6%;
+  }
+
+  .brand {
+    width: 55px;
+  }
+
+  .brand img {
+    width: 52px;
+  }
+
+  .hero {
+    min-height: 100svh;
+
+    background-position:
+      62% center;
+  }
+
+  .inner-hero {
+    min-height: 75svh;
+  }
+
+  .hero-content {
+    padding:
+      140px
+      7%
+      75px;
+  }
+
+  .eyebrow {
+    font-size: 8px;
+
+    letter-spacing: 2.4px;
+
+    margin-bottom: 18px;
+  }
+
+  .hero h1 {
+    font-size:
+      clamp(
+        52px,
+        15vw,
+        72px
+      );
+
+    letter-spacing:
+      -1.5px;
+  }
+
+  .hero-text {
+    margin-top: 28px;
+
+    font-size: 13px;
+
+    line-height: 1.8;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+
+    align-items: stretch;
+
+    margin-top: 32px;
+  }
+
+  .btn {
+    width: 100%;
+
+    min-height: 54px;
+  }
+
+  .section {
+    padding:
+      85px
+      7%;
+  }
+
+  .section-heading {
+    margin-bottom: 45px;
+  }
+
+  .section-heading h2,
+  .intro h2,
+  .project-content h2 {
+    font-size:
+      clamp(
+        45px,
+        13vw,
+        62px
+      );
+  }
+
+  .intro-grid {
+    gap: 40px;
   }
 
   .solution-grid {
     grid-template-columns: 1fr;
   }
 
+  .solution-card {
+    min-height: 370px;
+
+    padding: 34px;
+  }
+
+  .icon {
+    margin-top: 55px;
+  }
+
+  .solution-card h3 {
+    font-size: 30px;
+  }
+
+  .card-link {
+    left: 34px;
+
+    bottom: 28px;
+  }
+
+  .project-banner {
+    padding:
+      100px
+      7%;
+  }
+
+  .project-banner::after {
+    width: 300px;
+
+    height: 300px;
+
+    right: -180px;
+  }
+
+  .countries {
+    gap: 8px;
+  }
+
+  .countries span {
+    padding:
+      11px
+      15px;
+
+    font-size: 8px;
+  }
+
+  .footer {
+    padding:
+      60px
+      7%
+      25px;
+  }
+
+  .footer-links {
+    flex-direction: column;
+
+    gap: 15px;
+
+    margin:
+      38px 0;
+  }
+
 }
 
 
-@media (max-width: 600px) {
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
 
-  .site-header {
-    padding: 20px 6%;
-  }
-
-  .hero-content {
-    padding: 140px 7% 80px;
-  }
+@media (max-width: 380px) {
 
   .hero h1 {
-    font-size: 58px;
-  }
-
-  .hero-actions {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .section {
-    padding: 90px 7%;
+    font-size: 48px;
   }
 
   .solution-card {
-    min-height: 380px;
-    padding: 35px;
+    padding: 28px;
+  }
+
+  .card-link {
+    left: 28px;
+  }
+
+  .project-banner {
+    padding:
+      85px
+      6%;
   }
 
 }
