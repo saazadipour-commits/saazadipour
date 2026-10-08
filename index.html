@@ -4,30 +4,26 @@
 
   <meta charset="utf-8">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <meta
     name="description"
-    content="Azadipour — an Oman-registered healthcare and medical technology platform connecting international innovation with strategic opportunities across the GCC.">
+    content="Azadipour — an Oman-registered healthcare and medical technology platform connecting international innovation with strategic opportunities across the GCC."
+  >
 
-  <title>
-    Azadipour | Healthcare Technology & GCC Strategy
-  </title>
+  <title>Azadipour | Healthcare Technology & GCC Strategy</title>
 
-  <!-- Main Website CSS -->
   <link rel="stylesheet" href="style.css">
 
 
   <!-- =========================================================
-       AZADIPOUR BOOT INTRO
+       AZADIPOUR PREMIUM BOOT INTRO
        ========================================================= -->
 
   <style>
 
     /* =========================================================
-       FULL BLACK INTRO SCREEN
+       INTRO
        ========================================================= */
 
     #azadipour-intro {
@@ -53,15 +49,11 @@
       visibility: visible;
 
       transition:
-        opacity 1.15s cubic-bezier(.77,0,.18,1),
-        visibility 1.15s;
+        opacity 1.2s cubic-bezier(.77,0,.18,1),
+        visibility 1.2s;
 
     }
 
-
-    /* =========================================================
-       INTRO EXIT
-       ========================================================= */
 
     #azadipour-intro.hide {
 
@@ -75,49 +67,50 @@
 
 
     /* =========================================================
-       LOGO + WORDMARK CONTAINER
+       LOGO CONTAINER
        ========================================================= */
 
-    .az-intro-content {
+    .az-boot-logo {
 
-      display: flex;
+      position: relative;
 
-      flex-direction: column;
+      width: min(76vw, 560px);
 
-      align-items: center;
+      aspect-ratio: 1 / 1;
 
-      justify-content: center;
-
-      width: min(70vw, 480px);
+      overflow: hidden;
 
       transform: scale(.96);
 
       opacity: 0;
 
       animation:
-        azIntroStart
-        1.2s
+        bootContainer
+        1.1s
         cubic-bezier(.22,1,.36,1)
+        .05s
         forwards;
 
     }
 
 
-    @keyframes azIntroStart {
+    @keyframes bootContainer {
 
-      0% {
+      from {
 
         opacity: 0;
 
-        transform: scale(.94);
+        transform:
+          scale(.94);
 
       }
 
-      100% {
+      to {
 
         opacity: 1;
 
-        transform: scale(1);
+        transform:
+          scale(1);
 
       }
 
@@ -125,24 +118,51 @@
 
 
     /* =========================================================
-       SA LOGO
+       BOTH LOGO LAYERS
        ========================================================= */
 
-    .az-intro-logo {
+    .az-boot-layer {
+
+      position: absolute;
+
+      inset: 0;
 
       width: 100%;
 
-      height: auto;
+      height: 100%;
+
+      object-fit: contain;
+
+      object-position: center;
 
       display: block;
 
+    }
+
+
+    /* =========================================================
+       SA
+       TOP PART OF ORIGINAL LOGO
+       ========================================================= */
+
+    .az-boot-sa {
+
+      clip-path:
+        inset(
+          0
+          0
+          32%
+          0
+        );
+
       opacity: 0;
 
-      transform: scale(.92);
+      transform:
+        scale(.97);
 
       animation:
-        azLogoAppear
-        1.5s
+        bootSA
+        1.65s
         cubic-bezier(.22,1,.36,1)
         .25s
         forwards;
@@ -150,19 +170,28 @@
     }
 
 
-    @keyframes azLogoAppear {
+    @keyframes bootSA {
 
       0% {
 
         opacity: 0;
 
-        transform: scale(.92);
+        clip-path:
+          inset(
+            0
+            100%
+            32%
+            0
+          );
+
+        transform:
+          scale(.97);
 
       }
 
       45% {
 
-        opacity: .35;
+        opacity: 1;
 
       }
 
@@ -170,7 +199,16 @@
 
         opacity: 1;
 
-        transform: scale(1);
+        clip-path:
+          inset(
+            0
+            0
+            32%
+            0
+          );
+
+        transform:
+          scale(1);
 
       }
 
@@ -178,67 +216,57 @@
 
 
     /* =========================================================
-       AZADIPOUR WORDMARK
+       AZADIPOUR
+       BOTTOM PART OF ORIGINAL LOGO
        ========================================================= */
 
-    .az-intro-name {
+    .az-boot-word {
 
-      margin-top: -2px;
-
-      color: #f2f2ef;
-
-      font-family:
-        "Times New Roman",
-        Times,
-        serif;
-
-      font-size: clamp(
-        22px,
-        4vw,
-        38px
-      );
-
-      font-weight: 400;
-
-      letter-spacing:
-        clamp(
-          7px,
-          1.35vw,
-          14px
+      clip-path:
+        inset(
+          68%
+          0
+          0
+          0
         );
-
-      padding-left:
-        clamp(
-          7px,
-          1.35vw,
-          14px
-        );
-
-      white-space: nowrap;
 
       opacity: 0;
 
       transform:
-        translateY(10px);
+        translateY(8px);
 
       animation:
-        azNameAppear
-        1.1s
+        bootWord
+        1.15s
         cubic-bezier(.22,1,.36,1)
-        1.65s
+        1.75s
         forwards;
 
     }
 
 
-    @keyframes azNameAppear {
+    @keyframes bootWord {
 
       0% {
 
         opacity: 0;
 
+        clip-path:
+          inset(
+            68%
+            100%
+            0
+            0
+          );
+
         transform:
-          translateY(10px);
+          translateY(8px);
+
+      }
+
+      35% {
+
+        opacity: 1;
 
       }
 
@@ -246,8 +274,85 @@
 
         opacity: 1;
 
+        clip-path:
+          inset(
+            68%
+            0
+            0
+            0
+          );
+
         transform:
           translateY(0);
+
+      }
+
+    }
+
+
+    /* =========================================================
+       VERY SUBTLE CENTER FOCUS
+       ========================================================= */
+
+    .az-boot-glow {
+
+      position: absolute;
+
+      width: 45vw;
+
+      height: 45vw;
+
+      max-width: 600px;
+
+      max-height: 600px;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(255,255,255,.035) 0%,
+          rgba(255,255,255,.012) 32%,
+          transparent 72%
+        );
+
+      pointer-events: none;
+
+      opacity: 0;
+
+      animation:
+        bootGlow
+        2.8s
+        ease
+        .1s
+        forwards;
+
+    }
+
+
+    @keyframes bootGlow {
+
+      0% {
+
+        opacity: 0;
+
+        transform:
+          scale(.7);
+
+      }
+
+      40% {
+
+        opacity: 1;
+
+      }
+
+      100% {
+
+        opacity: .75;
+
+        transform:
+          scale(1);
 
       }
 
@@ -260,20 +365,9 @@
 
     @media (max-width: 600px) {
 
-      .az-intro-content {
+      .az-boot-logo {
 
-        width: 82vw;
-
-      }
-
-
-      .az-intro-name {
-
-        font-size: 20px;
-
-        letter-spacing: 6px;
-
-        padding-left: 6px;
+        width: 86vw;
 
       }
 
@@ -281,7 +375,7 @@
 
 
     /* =========================================================
-       ACCESSIBILITY
+       REDUCED MOTION
        ========================================================= */
 
     @media (prefers-reduced-motion: reduce) {
@@ -303,30 +397,35 @@
 
 
 <!-- =========================================================
-     AZADIPOUR BOOT INTRO
+     PREMIUM AZADIPOUR INTRO
      ========================================================= -->
 
 <div
   id="azadipour-intro"
-  aria-hidden="true">
+  aria-hidden="true"
+>
 
-  <div class="az-intro-content">
+  <div class="az-boot-glow"></div>
 
-    <!-- YOUR ACTUAL SA LOGO -->
+
+  <div class="az-boot-logo">
+
+    <!-- SA FROM YOUR ORIGINAL LOGO -->
 
     <img
-      class="az-intro-logo"
+      class="az-boot-layer az-boot-sa"
       src="assets/logo-transparent.png"
-      alt="SA Azadipour">
+      alt=""
+    >
 
 
-    <!-- COMPANY NAME -->
+    <!-- AZADIPOUR FROM YOUR ORIGINAL LOGO -->
 
-    <div class="az-intro-name">
-
-      AZADIPOUR
-
-    </div>
+    <img
+      class="az-boot-layer az-boot-word"
+      src="assets/logo-transparent.png"
+      alt=""
+    >
 
   </div>
 
@@ -334,28 +433,24 @@
 
 
 <!-- =========================================================
-     NAVIGATION
+     NAVBAR
      ========================================================= -->
 
 <header class="navbar">
 
-
   <a
     class="brand"
-    href="index.html">
-
+    href="index.html"
+  >
 
     <img
       src="assets/logo-transparent.png"
-      alt="Azadipour">
-
+      alt="Azadipour"
+    >
 
     <span class="brand-word">
-
       AZADIPOUR
-
     </span>
-
 
   </a>
 
@@ -363,12 +458,11 @@
   <button
     class="menu-toggle"
     aria-label="Open navigation"
-    aria-expanded="false">
+    aria-expanded="false"
+  >
 
     <span></span>
-
     <span></span>
-
     <span></span>
 
   </button>
@@ -376,53 +470,35 @@
 
   <nav class="nav-links">
 
-
     <a href="index.html">
-
       Home
-
     </a>
-
 
     <a href="investment.html">
-
       Investment
-
     </a>
-
 
     <a href="import.html">
-
       Import
-
     </a>
-
 
     <a href="export.html">
-
       GCC Markets
-
     </a>
-
 
     <a href="index.html#contact">
-
       Contact
-
     </a>
-
 
   </nav>
 
 
   <a
     class="nav-cta"
-    href="mailto:herzchirurgsinaazadipour@gmail.com">
-
+    href="mailto:herzchirurgsinaazadipour@gmail.com"
+  >
     Strategic Partnership
-
   </a>
-
 
 </header>
 
@@ -433,20 +509,16 @@
 
 <section class="hero">
 
-
   <div
     class="hero-bg"
-    style="background-image:url('assets/investment-hero.jpg')">
-  </div>
+    style="background-image:url('assets/investment-hero.jpg')"
+  ></div>
 
 
   <div class="hero-content reveal">
 
-
     <div class="eyebrow">
-
       OMAN-REGISTERED · GCC HEALTHCARE PLATFORM
-
     </div>
 
 
@@ -472,10 +544,10 @@
 
     <div class="hero-actions">
 
-
       <a
         class="btn"
-        href="investment.html">
+        href="investment.html"
+      >
 
         Explore Investment
 
@@ -488,53 +560,43 @@
 
       <a
         class="btn secondary"
-        href="investment-robotics.html">
+        href="investment-robotics.html"
+      >
 
         Robotic Surgery
 
       </a>
-
 
     </div>
 
 
     <div class="market-line">
 
-
       <span>
         SAUDI ARABIA
       </span>
 
-
       <i></i>
-
 
       <span>
         OMAN
       </span>
 
-
       <i></i>
-
 
       <span>
         QATAR
       </span>
 
-
       <i></i>
-
 
       <span>
         BAHRAIN
       </span>
 
-
     </div>
 
-
   </div>
-
 
 </section>
 
@@ -545,24 +607,18 @@
 
 <section class="section">
 
-
   <div class="container section-head reveal">
 
-
     <div class="section-index">
-
       01 / POSITION
-
     </div>
 
 
     <div>
 
-
       <h2 class="section-title">
 
         A regional platform for
-
         <em>
           healthcare innovation.
         </em>
@@ -580,12 +636,9 @@
 
       </p>
 
-
     </div>
 
-
   </div>
-
 
 </section>
 
@@ -596,170 +649,124 @@
 
 <section class="section dark-band">
 
-
   <div class="container">
 
 
     <div class="section-head reveal">
 
-
       <div class="section-index">
-
         02 / BUSINESS
-
       </div>
 
 
       <div>
 
-
         <h2 class="section-title">
 
           Four strategic
-
           <em>
             pillars.
           </em>
 
         </h2>
 
-
       </div>
-
 
     </div>
 
 
     <div
       class="grid grid-4"
-      style="margin-top:55px">
+      style="margin-top:55px"
+    >
 
 
       <a
         class="card reveal"
-        href="investment-robotics.html">
-
+        href="investment-robotics.html"
+      >
 
         <span class="num">
-
           01
-
         </span>
 
-
         <h3>
-
           Robotic Surgery
-
         </h3>
 
-
         <p>
-
           Advanced surgical robotics, telesurgery
           and next-generation clinical platforms.
-
         </p>
-
 
       </a>
 
 
       <a
         class="card reveal"
-        href="investment.html#smart-or">
-
+        href="investment.html#smart-or"
+      >
 
         <span class="num">
-
           02
-
         </span>
 
-
         <h3>
-
           Smart OR
-
         </h3>
 
-
         <p>
-
           Surgical intelligence, connected operating
           rooms, AI and digital workflow.
-
         </p>
-
 
       </a>
 
 
       <a
         class="card reveal"
-        href="investment.html#projects">
-
+        href="investment.html#projects"
+      >
 
         <span class="num">
-
           03
-
         </span>
 
-
         <h3>
-
           Healthcare Projects
-
         </h3>
 
-
         <p>
-
           Project development, medical equipment
           planning and technology sourcing.
-
         </p>
-
 
       </a>
 
 
       <a
         class="card reveal"
-        href="investment.html#partnerships">
-
+        href="investment.html#partnerships"
+      >
 
         <span class="num">
-
           04
-
         </span>
 
-
         <h3>
-
           Partnerships
-
         </h3>
 
-
         <p>
-
           Structured market development with
           international healthcare technology companies.
-
         </p>
 
-
       </a>
-
 
     </div>
 
-
   </div>
-
 
 </section>
 
@@ -773,17 +780,15 @@
 
   <div
     class="split-media"
-    style="background-image:url('assets/surgical-robotics.jpg')">
-  </div>
+    style="background-image:url('assets/surgical-robotics.jpg')"
+  ></div>
 
 
   <div class="split-copy reveal">
 
 
     <div class="eyebrow">
-
       FOR GLOBAL MEDTECH COMPANIES
-
     </div>
 
 
@@ -810,56 +815,39 @@
 
     <ul class="list">
 
-
       <li>
-
         GCC market intelligence & opportunity mapping
-
       </li>
 
-
       <li>
-
         Hospital and healthcare-group engagement
-
       </li>
 
-
       <li>
-
         Project development & procurement support
-
       </li>
 
-
       <li>
-
         Clinical presentations, demos & stakeholder coordination
-
       </li>
-
 
       <li>
-
         Implementation, training & service pathways
-
       </li>
-
 
     </ul>
 
 
     <a
       class="btn"
-      href="index.html#contact">
+      href="index.html#contact"
+    >
 
       Start a Conversation →
 
     </a>
 
-
   </div>
-
 
 </section>
 
@@ -870,8 +858,8 @@
 
 <section
   class="section"
-  id="network">
-
+  id="network"
+>
 
   <div class="container">
 
@@ -880,9 +868,7 @@
 
 
       <div class="section-index">
-
         03 / REGION
-
       </div>
 
 
@@ -909,143 +895,103 @@
 
         </p>
 
-
       </div>
-
 
     </div>
 
 
     <div
       class="grid grid-4"
-      style="margin-top:55px">
+      style="margin-top:55px"
+    >
 
 
       <a
         class="card reveal"
-        href="saudi-arabia.html">
-
+        href="saudi-arabia.html"
+      >
 
         <span class="num">
-
           01
-
         </span>
 
-
         <h3>
-
           Saudi Arabia
-
         </h3>
 
-
         <p>
-
           Healthcare transformation, advanced surgery
           and major institutional opportunities.
-
         </p>
-
 
       </a>
 
 
       <a
         class="card reveal"
-        href="oman.html">
-
+        href="oman.html"
+      >
 
         <span class="num">
-
           02
-
         </span>
 
-
         <h3>
-
           Oman
-
         </h3>
 
-
         <p>
-
           Regional base, healthcare projects
           and strategic supply opportunities.
-
         </p>
-
 
       </a>
 
 
       <a
         class="card reveal"
-        href="qatar.html">
-
+        href="qatar.html"
+      >
 
         <span class="num">
-
           03
-
         </span>
 
-
         <h3>
-
           Qatar
-
         </h3>
 
-
         <p>
-
           High-value healthcare institutions
           and technology-led clinical environments.
-
         </p>
-
 
       </a>
 
 
       <a
         class="card reveal"
-        href="bahrain.html">
-
+        href="bahrain.html"
+      >
 
         <span class="num">
-
           04
-
         </span>
 
-
         <h3>
-
           Bahrain
-
         </h3>
 
-
         <p>
-
           Compact, connected market with
           healthcare technology potential.
-
         </p>
 
-
       </a>
-
 
     </div>
 
-
   </div>
-
 
 </section>
 
@@ -1056,23 +1002,20 @@
 
 <section
   class="cta"
-  id="contact">
-
+  id="contact"
+>
 
   <div class="container reveal">
 
 
     <div class="eyebrow">
-
       PRIVATE & STRATEGIC INQUIRIES
-
     </div>
 
 
     <h2>
 
       Let’s discuss the
-
       <em>
         right opportunity.
       </em>
@@ -1091,15 +1034,14 @@
 
     <a
       class="btn"
-      href="mailto:herzchirurgsinaazadipour@gmail.com?subject=Strategic%20Partnership%20Inquiry%20%E2%80%94%20Azadipour">
+      href="mailto:herzchirurgsinaazadipour@gmail.com?subject=Strategic%20Partnership%20Inquiry%20%E2%80%94%20Azadipour"
+    >
 
       Contact Azadipour →
 
     </a>
 
-
   </div>
-
 
 </section>
 
@@ -1110,7 +1052,6 @@
 
 <footer class="footer">
 
-
   <div class="container">
 
 
@@ -1119,21 +1060,15 @@
 
       <div>
 
-
         <h4>
-
           Azadipour
-
         </h4>
 
 
         <p>
-
           Oman-registered healthcare &
           medical technology platform.
-
         </p>
-
 
       </div>
 
@@ -1142,42 +1077,30 @@
 
 
         <a href="investment.html">
-
           Investment
-
         </a>
 
 
         <a href="investment-robotics.html">
-
           Robotic Surgery
-
         </a>
 
 
         <a href="import.html">
-
           Import
-
         </a>
 
 
         <a href="export.html">
-
           GCC Markets
-
         </a>
 
 
         <a href="index.html#contact">
-
           Contact
-
         </a>
 
-
       </div>
-
 
     </div>
 
@@ -1199,60 +1122,56 @@
 
       </span>
 
-
     </div>
 
-
   </div>
-
 
 </footer>
 
 
 <!-- =========================================================
-     ORIGINAL WEBSITE JAVASCRIPT
+     ORIGINAL SITE SCRIPT
      ========================================================= -->
 
 <script src="script.js"></script>
 
 
 <!-- =========================================================
-     AZADIPOUR BOOT INTRO JAVASCRIPT
+     BOOT INTRO CONTROL
      ========================================================= -->
 
 <script>
 
 (function () {
 
-
   const intro =
     document.getElementById(
       "azadipour-intro"
     );
 
-
   if (!intro) return;
 
 
   /*
-   * =========================================================
    * INTRO TIMELINE
-   * =========================================================
    *
-   * 0.00 sec
+   * 0.00s
    * Black screen
    *
-   * 0.25 sec
-   * SA logo begins appearing
+   * 0.25s
+   * SA begins to appear
    *
-   * 1.65 sec
-   * AZADIPOUR begins appearing
+   * 1.75s
+   * AZADIPOUR begins to appear
    *
-   * 4.00 sec
-   * Intro starts fading away
+   * 3.70s
+   * Complete logo holds
    *
-   * 5.20 sec
-   * Intro is completely removed
+   * 4.35s
+   * Logo fades away
+   *
+   * 5.55s
+   * Website is completely visible
    */
 
 
@@ -1269,7 +1188,7 @@
           );
 
         },
-        4000
+        4350
       );
 
 
@@ -1279,7 +1198,7 @@
           intro.remove();
 
         },
-        5200
+        5600
       );
 
 
@@ -1288,22 +1207,18 @@
 
 
   /*
-   * =========================================================
-   * BROWSER BACK / FORWARD CACHE
-   * =========================================================
+   * Browser back/forward cache
    */
 
   window.addEventListener(
     "pageshow",
     function (event) {
 
-
       if (event.persisted) {
 
         intro.remove();
 
       }
-
 
     }
   );
