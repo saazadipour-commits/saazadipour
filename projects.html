@@ -1,187 +1,405 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="description"
-        content="Submit your hospital or medical equipment project to Azadipour.">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
-  <title>Hospital Projects | Azadipour</title>
+    <meta name="description"
+        content="Submit a hospital, medical equipment or healthcare technology project to Azadipour.">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin">
+    <meta name="theme-color" content="#050505">
 
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>Hospital Projects | Azadipour</title>
 
-  <link rel="stylesheet" href="style.css">
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="style.css">
+
 </head>
 
 <body>
 
 <header class="site-header">
 
-  <a href="index.html" class="brand">
-    <img src="assets/logo-transparent.png" alt="Azadipour">
-  </a>
+    <div class="nav-container">
 
-  <nav class="main-nav">
-    <a href="index.html">Home</a>
-    <a href="medical.html">Medical Solutions</a>
-    <a href="cardiac.html">Cardiac Surgery</a>
-    <a href="robotic.html">Robotic Surgery</a>
-    <a href="projects.html">Hospital Projects</a>
-    <a href="partners.html">Global Partners</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+        <a href="index.html" class="brand">
+            <img src="assets/logo-transparent.png"
+                alt="Azadipour SA">
+        </a>
+
+        <input type="checkbox"
+            id="menu-toggle"
+            class="menu-toggle">
+
+        <label for="menu-toggle"
+            class="menu-button">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </label>
+
+        <nav class="main-nav">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="medical.html">
+                Medical Solutions
+            </a>
+
+            <a href="cardiac.html">
+                Cardiac Surgery
+            </a>
+
+            <a href="robotic.html">
+                Robotic Surgery
+            </a>
+
+            <a href="projects.html"
+                class="active">
+                Hospital Projects
+            </a>
+
+            <a href="partners.html">
+                Global Partners
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+        </nav>
+
+    </div>
 
 </header>
 
 
 <main>
 
-<section class="hero inner-hero project-hero">
+    <section class="robotic-page-hero">
 
-  <div class="hero-content">
+        <div class="robotic-page-image"
+            style="background-image:url('assets/hospital-project.jpg');">
+        </div>
 
-    <p class="eyebrow">HOSPITAL PROJECTS</p>
+        <div class="robotic-page-overlay"></div>
 
-    <h1>
-      One Project.
-      <span>Complete Medical Sourcing.</span>
-    </h1>
+        <div class="robotic-page-content">
 
-    <p class="hero-text">
-      Tell us what your healthcare project requires.
-      Our international sourcing network can help identify
-      suitable medical technologies and equipment.
-    </p>
+            <div class="eyebrow">
+                AZADIPOUR · HOSPITAL PROJECTS
+            </div>
 
-  </div>
+            <h1>
+                One Project.
+                <br>
+                <em>Complete Sourcing.</em>
+            </h1>
 
-</section>
+            <p>
+                Tell us about your hospital, healthcare
+                development or medical equipment requirement.
+            </p>
 
+        </div>
 
-<section class="section">
-
-  <div class="intro-grid">
-
-    <div>
-
-      <p class="eyebrow">
-        PROJECT INQUIRY
-      </p>
-
-      <h2>
-        Tell Us About
-        <span>Your Project.</span>
-      </h2>
-
-    </div>
+    </section>
 
 
-    <div>
+    <section class="section">
 
-      <form
-        class="project-form"
-        action="mailto:info@saazadipour.com"
-        method="post"
-        enctype="text/plain"
-      >
+        <div class="section-container">
 
-        <label>
-          Hospital / Organization
-          <input type="text" name="Hospital">
-        </label>
+            <div class="section-heading">
 
-        <label>
-          Country
-          <input type="text" name="Country">
-        </label>
+                <div class="intro-label">
+                    01 / PROJECT INQUIRY
+                </div>
 
-        <label>
-          Project Type
-          <select name="Project_Type">
+                <div>
 
-            <option>Hospital Development</option>
-            <option>Cardiac Center</option>
-            <option>Cardiac Surgery Department</option>
-            <option>Robotic Surgery Center</option>
-            <option>Operating Room</option>
-            <option>ICU / CCU</option>
-            <option>Medical Equipment Procurement</option>
-            <option>Other</option>
+                    <h2>
+                        Tell us what
+                        <br>
+                        you <em>need.</em>
+                    </h2>
 
-          </select>
-        </label>
+                    <p>
+                        Provide the basic details of your
+                        project. Our team can then review the
+                        requirement and determine the appropriate
+                        sourcing and technology pathway.
+                    </p>
 
-        <label>
-          Required Equipment
-          <textarea
-            name="Required_Equipment"
-            rows="6"
-            placeholder="Please describe the equipment or technologies required."
-          ></textarea>
-        </label>
+                </div>
 
-        <label>
-          Contact Person
-          <input type="text" name="Contact_Person">
-        </label>
+            </div>
 
-        <label>
-          Email
-          <input type="email" name="Email">
-        </label>
 
-        <label>
-          Phone
-          <input type="tel" name="Phone">
-        </label>
+            <form
+                class="project-form"
+                action="mailto:info@saazadipour.com"
+                method="post"
+                enctype="text/plain">
 
-        <label>
-          Additional Information
-          <textarea
-            name="Message"
-            rows="6"
-            placeholder="Tell us more about your project."
-          ></textarea>
-        </label>
 
-        <button type="submit" class="btn btn-primary">
-          SUBMIT PROJECT REQUEST
-        </button>
+                <div class="form-grid">
 
-      </form>
+                    <div class="form-field">
 
-    </div>
+                        <label>
+                            HOSPITAL / ORGANIZATION
+                        </label>
 
-  </div>
+                        <input
+                            type="text"
+                            name="Hospital / Organization"
+                            required>
 
-</section>
+                    </div>
+
+
+                    <div class="form-field">
+
+                        <label>
+                            COUNTRY
+                        </label>
+
+                        <input
+                            type="text"
+                            name="Country"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-field">
+
+                        <label>
+                            PROJECT TYPE
+                        </label>
+
+                        <select
+                            name="Project Type">
+
+                            <option>
+                                Hospital Development
+                            </option>
+
+                            <option>
+                                Cardiac Center
+                            </option>
+
+                            <option>
+                                Cardiac Surgery Department
+                            </option>
+
+                            <option>
+                                Robotic Surgery Center
+                            </option>
+
+                            <option>
+                                Operating Room
+                            </option>
+
+                            <option>
+                                ICU / CCU
+                            </option>
+
+                            <option>
+                                Medical Equipment Procurement
+                            </option>
+
+                            <option>
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-field">
+
+                        <label>
+                            CONTACT PERSON
+                        </label>
+
+                        <input
+                            type="text"
+                            name="Contact Person"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-field">
+
+                        <label>
+                            EMAIL
+                        </label>
+
+                        <input
+                            type="email"
+                            name="Email"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-field">
+
+                        <label>
+                            PHONE
+                        </label>
+
+                        <input
+                            type="tel"
+                            name="Phone">
+
+                    </div>
+
+
+                    <div class="form-field full">
+
+                        <label>
+                            REQUIRED EQUIPMENT / TECHNOLOGY
+                        </label>
+
+                        <textarea
+                            name="Required Equipment"
+                            rows="5"
+                            placeholder="Describe the equipment, technology or medical systems required."></textarea>
+
+                    </div>
+
+
+                    <div class="form-field full">
+
+                        <label>
+                            ADDITIONAL INFORMATION
+                        </label>
+
+                        <textarea
+                            name="Additional Information"
+                            rows="6"
+                            placeholder="Project size, hospital type, timeline, specifications or any other relevant information."></textarea>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="luxury-button">
+
+                    SUBMIT PROJECT INQUIRY →
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <section class="final-cta">
+
+        <div class="section-container">
+
+            <div class="intro-label">
+                AZADIPOUR · MEDICAL PROCUREMENT
+            </div>
+
+            <h2>
+                One contact.
+                <br>
+                <em>Multiple technologies.</em>
+            </h2>
+
+            <p>
+                Medical equipment, cardiac technology,
+                robotic surgery and hospital solutions.
+            </p>
+
+        </div>
+
+    </section>
 
 </main>
 
 
-<footer class="footer">
+<footer class="site-footer">
 
-  <div class="footer-brand">
-    <img src="assets/logo-transparent.png" alt="Azadipour">
-    <p>Global Medical Technology & Hospital Solutions</p>
-  </div>
+    <div class="footer-container">
 
-  <div class="footer-links">
-    <a href="medical.html">Medical Solutions</a>
-    <a href="cardiac.html">Cardiac Surgery</a>
-    <a href="robotic.html">Robotic Surgery</a>
-    <a href="projects.html">Hospital Projects</a>
-    <a href="partners.html">Global Partners</a>
-    <a href="contact.html">Contact</a>
-  </div>
+        <div class="footer-brand">
 
-  <div class="footer-bottom">
-    © 2026 Azadipour. All rights reserved.
-  </div>
+            <img
+                src="assets/logo-transparent.png"
+                alt="Azadipour">
+
+            <p>
+                Medical Technology &
+                Hospital Solutions.
+            </p>
+
+        </div>
+
+        <div class="footer-column">
+
+            <h4>NAVIGATION</h4>
+
+            <a href="index.html">Home</a>
+            <a href="medical.html">Medical Solutions</a>
+            <a href="cardiac.html">Cardiac Surgery</a>
+            <a href="robotic.html">Robotic Surgery</a>
+
+        </div>
+
+        <div class="footer-column">
+
+            <h4>PROJECTS</h4>
+
+            <a href="projects.html">Hospital Projects</a>
+            <a href="partners.html">Global Partners</a>
+            <a href="contact.html">Contact</a>
+
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+        <span>
+            © 2026 Azadipour. All rights reserved.
+        </span>
+
+        <span>
+            Oman · Saudi Arabia · Qatar · Bahrain · GCC
+        </span>
+
+    </div>
 
 </footer>
 
