@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description"
-        content="Azadipour — Medical Technology, Advanced Surgery and Hospital Solutions across the GCC and international markets.">
+    <meta name="description" content="Azadipour connects healthcare organizations and international partners with medical technology, advanced surgical equipment and hospital solutions.">
 
     <meta name="theme-color" content="#050505">
 
@@ -15,31 +13,229 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* LUXURY LOGO INTRO */
+
+        .brand-intro {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background:
+                radial-gradient(ellipse at center, #17130c 0%, #080807 48%, #030303 100%);
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 1s ease, visibility 1s ease;
+        }
+
+        .brand-intro::before {
+            content: "";
+            position: absolute;
+            left: -20%;
+            right: -20%;
+            top: 50%;
+            height: 1px;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(191, 151, 83, 0.08),
+                rgba(238, 205, 151, 0.95),
+                rgba(191, 151, 83, 0.08),
+                transparent
+            );
+            box-shadow: 0 0 22px rgba(218, 178, 113, 0.5);
+            animation: intro-light 3s ease-in-out infinite;
+        }
+
+        .brand-intro::after {
+            content: "";
+            position: absolute;
+            width: min(75vw, 600px);
+            height: 220px;
+            border-radius: 50%;
+            background: radial-gradient(
+                ellipse,
+                rgba(177, 130, 64, 0.12),
+                transparent 70%
+            );
+            filter: blur(20px);
+            animation: intro-glow 4s ease-in-out infinite alternate;
+        }
+
+        .brand-intro-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 24px;
+            animation: logo-reveal 2s cubic-bezier(.2, .8, .2, 1) both;
+        }
+
+        .brand-intro-logo {
+            display: block;
+            width: clamp(115px, 19vw, 205px);
+            max-height: 220px;
+            object-fit: contain;
+            filter:
+                drop-shadow(0 0 14px rgba(207, 170, 111, 0.18));
+            animation: logo-breathe 4s ease-in-out 2s infinite;
+        }
+
+        .brand-intro-name {
+            margin: 24px 0 0;
+            color: #ead5ae;
+            font-family: "Cormorant Garamond", serif;
+            font-size: clamp(26px, 5vw, 46px);
+            font-weight: 500;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+        }
+
+        .brand-intro-tagline {
+            margin-top: 12px;
+            color: #b9a88b;
+            font-family: "Inter", sans-serif;
+            font-size: clamp(8px, 1.4vw, 11px);
+            letter-spacing: 0.28em;
+            line-height: 2;
+            text-transform: uppercase;
+        }
+
+        .brand-intro-line {
+            width: 120px;
+            height: 1px;
+            margin-top: 32px;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                #d9b77d,
+                transparent
+            );
+            transform-origin: center;
+            animation: line-reveal 2s ease 0.5s both;
+        }
+
+        .brand-intro-caption {
+            margin-top: 15px;
+            color: #bca47c;
+            font-family: "Inter", sans-serif;
+            font-size: 9px;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+        }
+
+        .brand-intro.is-hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        @keyframes logo-reveal {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+                filter: blur(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+                filter: blur(0);
+            }
+        }
+
+        @keyframes logo-breathe {
+            0%, 100% {
+                filter: drop-shadow(0 0 12px rgba(207, 170, 111, 0.15));
+            }
+            50% {
+                filter: drop-shadow(0 0 28px rgba(207, 170, 111, 0.4));
+            }
+        }
+
+        @keyframes intro-light {
+            0%, 100% { opacity: 0.35; transform: scaleX(0.75); }
+            50% { opacity: 1; transform: scaleX(1); }
+        }
+
+        @keyframes intro-glow {
+            from { opacity: 0.45; transform: scale(0.85); }
+            to { opacity: 1; transform: scale(1.15); }
+        }
+
+        @keyframes line-reveal {
+            from { opacity: 0; transform: scaleX(0); }
+            to { opacity: 1; transform: scaleX(1); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .brand-intro *,
+            .brand-intro::before,
+            .brand-intro::after {
+                animation: none !important;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .brand-intro-name {
+                letter-spacing: 0.2em;
+            }
+
+            .brand-intro-tagline {
+                letter-spacing: 0.16em;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <!-- =========================================
-         HEADER
-    ========================================== -->
+    <!-- LUXURY BRAND INTRO: 10 SECONDS -->
+
+    <div class="brand-intro" id="brandIntro" aria-label="Azadipour Medical Technology">
+        <div class="brand-intro-content">
+
+            <img
+                src="assets/logo-transparent.png"
+                alt="SA Azadipour"
+                class="brand-intro-logo"
+            >
+
+            <h1 class="brand-intro-name">Azadipour</h1>
+
+            <p class="brand-intro-tagline">
+                Medical Technology &amp; Hospital Solutions
+            </p>
+
+            <div class="brand-intro-line"></div>
+
+            <span class="brand-intro-caption">A Global Perspective</span>
+
+        </div>
+    </div>
+
+
+    <!-- HEADER -->
 
     <header class="site-header">
 
         <div class="nav-container">
 
-            <a href="index.html" class="brand">
+            <a href="index.html" class="brand" aria-label="Azadipour Home">
                 <img src="assets/logo-transparent.png" alt="Azadipour SA">
             </a>
 
-            <!-- Mobile menu checkbox -->
             <input type="checkbox" id="menu-toggle" class="menu-toggle">
 
-            <label for="menu-toggle" class="menu-button">
+            <label for="menu-toggle" class="menu-button" aria-label="Toggle navigation">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -47,33 +243,13 @@
 
             <nav class="main-nav">
 
-                <a href="index.html" class="active">
-                    Home
-                </a>
-
-                <a href="medical.html">
-                    Medical Solutions
-                </a>
-
-                <a href="cardiac.html">
-                    Cardiac Surgery
-                </a>
-
-                <a href="robotic.html">
-                    Robotic Surgery
-                </a>
-
-                <a href="projects.html">
-                    Hospital Projects
-                </a>
-
-                <a href="partners.html">
-                    Global Partners
-                </a>
-
-                <a href="contact.html">
-                    Contact
-                </a>
+                <a href="index.html" class="active">Home</a>
+                <a href="medical.html">Medical Solutions</a>
+                <a href="cardiac.html">Cardiac Surgery</a>
+                <a href="robotic.html">Robotic Surgery</a>
+                <a href="projects.html">Hospital Projects</a>
+                <a href="partners.html">Global Partners</a>
+                <a href="contact.html">Contact</a>
 
             </nav>
 
@@ -82,16 +258,13 @@
     </header>
 
 
-    <!-- =========================================
-         HERO
-    ========================================== -->
-
     <main>
+
+        <!-- HERO -->
 
         <section class="home-hero">
 
             <div class="hero-image"></div>
-
             <div class="hero-gradient"></div>
 
             <div class="hero-content">
@@ -107,11 +280,9 @@
                 </h1>
 
                 <p class="hero-description">
-
                     Connecting hospitals and healthcare projects
                     with advanced medical technologies, specialized
                     equipment and international healthcare solutions.
-
                 </p>
 
                 <div class="hero-actions">
@@ -129,35 +300,21 @@
             </div>
 
             <div class="hero-bottom">
-
-                <span>
-                    MEDICAL TECHNOLOGY
-                </span>
-
-                <span>
-                    HOSPITAL SOLUTIONS
-                </span>
-
-                <span>
-                    GCC · EUROPE · INTERNATIONAL
-                </span>
-
+                <span>MEDICAL TECHNOLOGY</span>
+                <span>HOSPITAL SOLUTIONS</span>
+                <span>GCC · EUROPE · INTERNATIONAL</span>
             </div>
 
         </section>
 
 
-        <!-- =========================================
-             INTRODUCTION
-        ========================================== -->
+        <!-- INTRODUCTION -->
 
         <section class="section intro-section">
 
             <div class="section-container">
 
-                <div class="intro-label">
-                    01 / AZADIPOUR
-                </div>
+                <div class="intro-label">01 / AZADIPOUR</div>
 
                 <div class="intro-content">
 
@@ -168,20 +325,16 @@
                     </h2>
 
                     <p class="large-text">
-
                         Azadipour connects healthcare organizations,
                         hospital projects and international medical
                         technology opportunities.
-
                     </p>
 
                     <p>
-
                         Our focus is on identifying, sourcing and
                         coordinating advanced medical technologies
                         according to clinical, technical and project
                         requirements.
-
                     </p>
 
                 </div>
@@ -191,9 +344,7 @@
         </section>
 
 
-        <!-- =========================================
-             CORE SOLUTIONS
-        ========================================== -->
+        <!-- CORE SOLUTIONS -->
 
         <section class="section solutions-section">
 
@@ -201,12 +352,9 @@
 
                 <div class="section-heading">
 
-                    <div class="intro-label">
-                        02 / CORE SOLUTIONS
-                    </div>
+                    <div class="intro-label">02 / CORE SOLUTIONS</div>
 
                     <div>
-
                         <h2>
                             Medical technology
                             <br>
@@ -217,31 +365,22 @@
                             Selected technology areas supporting
                             modern hospitals and advanced surgical care.
                         </p>
-
                     </div>
 
                 </div>
 
-
                 <div class="solution-grid">
-
-
-                    <!-- CARDIAC -->
 
                     <a href="cardiac.html" class="solution-card cardiac-card">
 
                         <div class="card-image"></div>
-
                         <div class="card-overlay"></div>
 
                         <div class="card-content">
-
-                            <span class="card-number">
-                                01
-                            </span>
+                            <span class="card-number">01</span>
 
                             <h3>
-                                Cardiac &
+                                Cardiac &amp;
                                 <br>
                                 Cardiovascular
                             </h3>
@@ -251,28 +390,19 @@
                                 perfusion, cath lab and critical care.
                             </p>
 
-                            <span class="card-link">
-                                EXPLORE →
-                            </span>
-
+                            <span class="card-link">EXPLORE →</span>
                         </div>
 
                     </a>
 
 
-                    <!-- ROBOTIC -->
-
                     <a href="robotic.html" class="solution-card robotic-card">
 
                         <div class="card-image"></div>
-
                         <div class="card-overlay"></div>
 
                         <div class="card-content">
-
-                            <span class="card-number">
-                                02
-                            </span>
+                            <span class="card-number">02</span>
 
                             <h3>
                                 Robotic
@@ -285,28 +415,19 @@
                                 navigation and digital surgery.
                             </p>
 
-                            <span class="card-link">
-                                EXPLORE →
-                            </span>
-
+                            <span class="card-link">EXPLORE →</span>
                         </div>
 
                     </a>
 
 
-                    <!-- HOSPITAL -->
-
                     <a href="projects.html" class="solution-card hospital-card">
 
                         <div class="card-image"></div>
-
                         <div class="card-overlay"></div>
 
                         <div class="card-content">
-
-                            <span class="card-number">
-                                03
-                            </span>
+                            <span class="card-number">03</span>
 
                             <h3>
                                 Hospital
@@ -319,10 +440,7 @@
                                 ICU, diagnostics and hospital systems.
                             </p>
 
-                            <span class="card-link">
-                                EXPLORE →
-                            </span>
-
+                            <span class="card-link">EXPLORE →</span>
                         </div>
 
                     </a>
@@ -334,21 +452,16 @@
         </section>
 
 
-        <!-- =========================================
-             HOSPITAL PROJECTS
-        ========================================== -->
+        <!-- HOSPITAL PROJECTS -->
 
         <section class="project-feature">
 
             <div class="project-image"></div>
-
             <div class="project-overlay"></div>
 
             <div class="section-container project-content">
 
-                <div class="intro-label">
-                    03 / HOSPITAL PROJECTS
-                </div>
+                <div class="intro-label">03 / HOSPITAL PROJECTS</div>
 
                 <h2>
                     One project.
@@ -357,11 +470,9 @@
                 </h2>
 
                 <p>
-
-                    From individual equipment requirements to
-                    larger hospital development projects, we work
-                    across multiple medical technology categories.
-
+                    From individual equipment requirements to larger
+                    hospital development projects, we coordinate across
+                    multiple medical technology categories.
                 </p>
 
                 <a href="projects.html" class="luxury-button">
@@ -373,9 +484,7 @@
         </section>
 
 
-        <!-- =========================================
-             GLOBAL MARKETS
-        ========================================== -->
+        <!-- GLOBAL MARKETS -->
 
         <section class="section markets-section">
 
@@ -383,12 +492,9 @@
 
                 <div class="section-heading">
 
-                    <div class="intro-label">
-                        04 / GLOBAL REACH
-                    </div>
+                    <div class="intro-label">04 / GLOBAL REACH</div>
 
                     <div>
-
                         <h2>
                             International technology.
                             <br>
@@ -396,15 +502,13 @@
                         </h2>
 
                         <p>
-                            Connecting international medical technology
-                            with healthcare opportunities across the GCC
-                            and selected global markets.
+                            Exploring international medical technology
+                            opportunities across the GCC and selected
+                            global markets.
                         </p>
-
                     </div>
 
                 </div>
-
 
                 <div class="market-list">
 
@@ -429,21 +533,18 @@
                     <div class="market-item">
                         <span>04</span>
                         <strong>North Africa</strong>
-                        <small>Emerging Healthcare Markets</small>
+                        <small>Healthcare Market Opportunities</small>
                     </div>
 
                 </div>
 
-
                 <div class="gcc-line">
-
                     <span>OMAN</span>
                     <span>SAUDI ARABIA</span>
                     <span>QATAR</span>
                     <span>BAHRAIN</span>
                     <span>UAE</span>
                     <span>KUWAIT</span>
-
                 </div>
 
             </div>
@@ -451,9 +552,7 @@
         </section>
 
 
-        <!-- =========================================
-             FINAL CTA
-        ========================================== -->
+        <!-- FINAL CTA -->
 
         <section class="final-cta">
 
@@ -471,7 +570,8 @@
 
                 <p>
                     Discuss medical technology, hospital projects,
-                    advanced surgery or international partnerships.
+                    advanced surgery or potential international
+                    partnerships.
                 </p>
 
                 <a href="contact.html" class="luxury-button">
@@ -485,9 +585,7 @@
     </main>
 
 
-    <!-- =========================================
-         FOOTER
-    ========================================== -->
+    <!-- FOOTER -->
 
     <footer class="site-footer">
 
@@ -495,10 +593,18 @@
 
             <div class="footer-brand">
 
-                <img src="assets/logo-transparent.png" alt="Azadipour">
+                <a href="index.html" aria-label="Azadipour Home">
+                    <img src="assets/logo-transparent.png" alt="Azadipour">
+                </a>
 
                 <p>
-                    Medical Technology & Hospital Solutions.
+                    Medical Technology &amp; Hospital Solutions.
+                </p>
+
+                <p>
+                    <a href="mailto:herzchirurgsinaazadipour@gmail.com">
+                        herzchirurgsinaazadipour@gmail.com
+                    </a>
                 </p>
 
             </div>
@@ -506,9 +612,7 @@
 
             <div class="footer-column">
 
-                <h4>
-                    NAVIGATION
-                </h4>
+                <h4>NAVIGATION</h4>
 
                 <a href="index.html">Home</a>
                 <a href="medical.html">Medical Solutions</a>
@@ -520,9 +624,7 @@
 
             <div class="footer-column">
 
-                <h4>
-                    PROJECTS
-                </h4>
+                <h4>PROJECTS</h4>
 
                 <a href="projects.html">Hospital Projects</a>
                 <a href="partners.html">Global Partners</a>
@@ -535,18 +637,35 @@
 
         <div class="footer-bottom">
 
-            <span>
-                © 2026 Azadipour. All rights reserved.
-            </span>
+            <span>© 2026 Azadipour. All rights reserved.</span>
 
-            <span>
-                Oman · Saudi Arabia · Qatar · Bahrain · GCC
-            </span>
+            <span>Oman · Saudi Arabia · Qatar · Bahrain · GCC</span>
 
         </div>
 
     </footer>
 
-</body>
 
+    <!-- LOGO INTRO TIMER -->
+
+    <script>
+        (function () {
+            const intro = document.getElementById("brandIntro");
+
+            if (!intro) return;
+
+            // Keep the logo intro visible for approximately 10 seconds.
+            window.setTimeout(function () {
+                intro.classList.add("is-hidden");
+
+                // Remove it from the page after the fade-out.
+                window.setTimeout(function () {
+                    intro.remove();
+                }, 1100);
+
+            }, 10000);
+        })();
+    </script>
+
+</body>
 </html>
