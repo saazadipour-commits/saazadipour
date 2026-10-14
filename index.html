@@ -85,8 +85,7 @@
             width: clamp(115px, 19vw, 205px);
             max-height: 220px;
             object-fit: contain;
-            filter:
-                drop-shadow(0 0 14px rgba(207, 170, 111, 0.18));
+            filter: drop-shadow(0 0 14px rgba(207, 170, 111, 0.18));
             animation: logo-breathe 4s ease-in-out 2s infinite;
         }
 
@@ -114,12 +113,7 @@
             width: 120px;
             height: 1px;
             margin-top: 32px;
-            background: linear-gradient(
-                90deg,
-                transparent,
-                #d9b77d,
-                transparent
-            );
+            background: linear-gradient(90deg, transparent, #d9b77d, transparent);
             transform-origin: center;
             animation: line-reveal 2s ease 0.5s both;
         }
@@ -193,12 +187,180 @@
                 letter-spacing: 0.16em;
             }
         }
+
+        /* OMAN COMMERCIAL REGISTRATION CARD */
+
+        .oman-registration {
+            position: relative;
+            margin-top: 54px;
+            padding: 38px;
+            overflow: hidden;
+            background:
+                radial-gradient(ellipse at top right, rgba(199, 178, 138, 0.09), transparent 55%),
+                #090909;
+            border: 1px solid rgba(199, 178, 138, 0.32);
+        }
+
+        .oman-registration::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(
+                180deg,
+                #ead5ae,
+                #8c7146,
+                transparent
+            );
+        }
+
+        .oman-registration-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 24px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid rgba(199, 178, 138, 0.22);
+        }
+
+        .oman-registration-eyebrow {
+            margin: 0 0 10px;
+            color: #c7b28a;
+            font-family: "Inter", sans-serif;
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 0.22em;
+            line-height: 1.8;
+            text-transform: uppercase;
+        }
+
+        .oman-registration-title {
+            margin: 0;
+            color: #f0e7d7;
+            font-family: "Cormorant Garamond", serif;
+            font-size: clamp(27px, 3vw, 38px);
+            font-weight: 500;
+            line-height: 1.15;
+        }
+
+        .oman-registration-title em {
+            color: #c7b28a;
+            font-weight: 400;
+        }
+
+        .oman-registration-badge {
+            flex-shrink: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 10px 13px;
+            border: 1px solid rgba(199, 178, 138, 0.3);
+            color: #d7c8ac;
+            font-family: "Inter", sans-serif;
+            font-size: 9px;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+        }
+
+        .oman-registration-badge::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #c7b28a;
+            box-shadow: 0 0 10px rgba(199, 178, 138, 0.6);
+        }
+
+        .oman-registration-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0 35px;
+            margin-top: 8px;
+        }
+
+        .oman-registration-field {
+            min-width: 0;
+            padding: 23px 0;
+            border-bottom: 1px solid rgba(199, 178, 138, 0.15);
+        }
+
+        .oman-registration-field:nth-last-child(-n+2) {
+            border-bottom: none;
+        }
+
+        .oman-registration-label {
+            display: block;
+            margin-bottom: 9px;
+            color: #a99b82;
+            font-family: "Inter", sans-serif;
+            font-size: 10px;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            line-height: 1.7;
+            text-transform: uppercase;
+        }
+
+        .oman-registration-value {
+            display: block;
+            color: #f4eee3;
+            font-family: "Inter", sans-serif;
+            font-size: 15px;
+            font-weight: 400;
+            line-height: 1.7;
+            overflow-wrap: anywhere;
+        }
+
+        .oman-registration-value.registration-number {
+            color: #dfc69b;
+            font-size: 20px;
+            font-weight: 500;
+            letter-spacing: 0.07em;
+        }
+
+        @media (max-width: 700px) {
+            .oman-registration {
+                margin-top: 35px;
+                padding: 25px 21px;
+            }
+
+            .oman-registration-header {
+                flex-direction: column;
+                gap: 18px;
+            }
+
+            .oman-registration-badge {
+                align-self: flex-start;
+            }
+
+            .oman-registration-grid {
+                grid-template-columns: minmax(0, 1fr);
+                gap: 0;
+            }
+
+            .oman-registration-field:nth-last-child(-n+2) {
+                border-bottom: 1px solid rgba(199, 178, 138, 0.15);
+            }
+
+            .oman-registration-field:last-child {
+                border-bottom: none;
+            }
+
+            .oman-registration-value {
+                font-size: 14px;
+            }
+
+            .oman-registration-value.registration-number {
+                font-size: 19px;
+            }
+        }
     </style>
 </head>
 
 <body>
 
-    <!-- LUXURY BRAND INTRO: 10 SECONDS -->
+    <!-- LUXURY BRAND INTRO -->
 
     <div class="brand-intro" id="brandIntro" aria-label="Azadipour Medical Technology">
         <div class="brand-intro-content">
@@ -226,7 +388,6 @@
     <!-- HEADER -->
 
     <header class="site-header">
-
         <div class="nav-container">
 
             <a href="index.html" class="brand" aria-label="Azadipour Home">
@@ -242,7 +403,6 @@
             </label>
 
             <nav class="main-nav">
-
                 <a href="index.html" class="active">Home</a>
                 <a href="medical.html">Medical Solutions</a>
                 <a href="cardiac.html">Cardiac Surgery</a>
@@ -250,11 +410,9 @@
                 <a href="projects.html">Hospital Projects</a>
                 <a href="partners.html">Global Partners</a>
                 <a href="contact.html">Contact</a>
-
             </nav>
 
         </div>
-
     </header>
 
 
@@ -484,7 +642,7 @@
         </section>
 
 
-        <!-- GLOBAL MARKETS -->
+        <!-- GLOBAL MARKETS & GCC -->
 
         <section class="section markets-section">
 
@@ -546,6 +704,78 @@
                     <span>UAE</span>
                     <span>KUWAIT</span>
                 </div>
+
+
+                <!-- OFFICIAL COMPANY REGISTRATION -->
+
+                <section class="oman-registration" aria-labelledby="omanRegistrationTitle">
+
+                    <div class="oman-registration-header">
+
+                        <div>
+                            <p class="oman-registration-eyebrow">
+                                GCC · COMPANY INFORMATION
+                            </p>
+
+                            <h3 class="oman-registration-title" id="omanRegistrationTitle">
+                                Oman Commercial
+                                <br>
+                                <em>Registration</em>
+                            </h3>
+                        </div>
+
+                        <div class="oman-registration-badge">
+                            Oman Registered
+                        </div>
+
+                    </div>
+
+                    <div class="oman-registration-grid">
+
+                        <div class="oman-registration-field">
+                            <span class="oman-registration-label">
+                                Company Name
+                            </span>
+
+                            <span class="oman-registration-value">
+                                Azadipour
+                            </span>
+                        </div>
+
+                        <div class="oman-registration-field">
+                            <span class="oman-registration-label">
+                                Country of Registration
+                            </span>
+
+                            <span class="oman-registration-value">
+                                Sultanate of Oman
+                            </span>
+                        </div>
+
+                        <div class="oman-registration-field">
+                            <span class="oman-registration-label">
+                                Commercial Registration Number
+                            </span>
+
+                            <span class="oman-registration-value registration-number">
+                                1678104
+                            </span>
+                        </div>
+
+                        <div class="oman-registration-field">
+                            <span class="oman-registration-label">
+                                Commercial License Number
+                            </span>
+
+                            <span class="oman-registration-value registration-number">
+                                L3914442
+                            </span>
+                        </div>
+
+                    </div>
+
+                </section>
+                <!-- END OFFICIAL COMPANY REGISTRATION -->
 
             </div>
 
@@ -654,11 +884,9 @@
 
             if (!intro) return;
 
-            // Keep the logo intro visible for approximately 10 seconds.
             window.setTimeout(function () {
                 intro.classList.add("is-hidden");
 
-                // Remove it from the page after the fade-out.
                 window.setTimeout(function () {
                     intro.remove();
                 }, 1100);
