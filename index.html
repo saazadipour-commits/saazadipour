@@ -5,20 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta name="description" content="Azadipour connects healthcare organizations and international partners with medical technology, advanced surgical equipment and hospital solutions.">
-
     <meta name="theme-color" content="#050505">
 
-    <title>Azadipour | Medical Technology & Hospital Solutions</title>
+    <title>Azadipour | Medical Technology &amp; Hospital Solutions</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
 
     <style>
-        /* LUXURY LOGO INTRO */
+        /* =========================================
+           AZADIPOUR — SIGNATURE SA MONOGRAM
+           Silver / Black / Luxury Motion
+           ========================================= */
+
+        .sa-logo {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            color: #d9dde2;
+        }
+
+        .sa-logo svg {
+            display: block;
+            width: 100%;
+            height: auto;
+            overflow: visible;
+        }
+
+        .sa-logo .sa-stroke {
+            fill: none;
+            stroke: url(#silverGradient);
+            stroke-width: 3.1;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .sa-logo .sa-highlight {
+            fill: none;
+            stroke: rgba(255, 255, 255, 0.52);
+            stroke-width: 0.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* INTRO SCREEN */
 
         .brand-intro {
             position: fixed;
@@ -29,7 +63,7 @@
             justify-content: center;
             overflow: hidden;
             background:
-                radial-gradient(ellipse at center, #17130c 0%, #080807 48%, #030303 100%);
+                radial-gradient(ellipse at center, #141518 0%, #080808 48%, #030303 100%);
             opacity: 1;
             visibility: visible;
             transition: opacity 1s ease, visibility 1s ease;
@@ -45,28 +79,28 @@
             background: linear-gradient(
                 90deg,
                 transparent,
-                rgba(191, 151, 83, 0.08),
-                rgba(238, 205, 151, 0.95),
-                rgba(191, 151, 83, 0.08),
+                rgba(190, 196, 204, 0.08),
+                rgba(244, 247, 250, 0.85),
+                rgba(190, 196, 204, 0.08),
                 transparent
             );
-            box-shadow: 0 0 22px rgba(218, 178, 113, 0.5);
-            animation: intro-light 3s ease-in-out infinite;
+            box-shadow: 0 0 22px rgba(205, 214, 225, 0.28);
+            animation: intro-light 3.5s ease-in-out infinite;
         }
 
         .brand-intro::after {
             content: "";
             position: absolute;
             width: min(75vw, 600px);
-            height: 220px;
+            height: 260px;
             border-radius: 50%;
             background: radial-gradient(
                 ellipse,
-                rgba(177, 130, 64, 0.12),
+                rgba(190, 198, 210, 0.10),
                 transparent 70%
             );
-            filter: blur(20px);
-            animation: intro-glow 4s ease-in-out infinite alternate;
+            filter: blur(22px);
+            animation: intro-glow 4.5s ease-in-out infinite alternate;
         }
 
         .brand-intro-content {
@@ -77,54 +111,69 @@
             align-items: center;
             text-align: center;
             padding: 24px;
-            animation: logo-reveal 2s cubic-bezier(.2, .8, .2, 1) both;
+            animation: intro-content-reveal 1.6s cubic-bezier(.2, .8, .2, 1) both;
         }
 
         .brand-intro-logo {
-            display: block;
-            width: clamp(115px, 19vw, 205px);
-            max-height: 220px;
-            object-fit: contain;
-            filter: drop-shadow(0 0 14px rgba(207, 170, 111, 0.18));
-            animation: logo-breathe 4s ease-in-out 2s infinite;
+            width: clamp(145px, 23vw, 245px);
+            margin-bottom: 5px;
+            filter: drop-shadow(0 0 16px rgba(205, 214, 225, 0.12));
+        }
+
+        .brand-intro-logo .sa-stroke {
+            stroke-dasharray: 850;
+            stroke-dashoffset: 850;
+            animation: sa-draw 3.2s cubic-bezier(.55, .05, .25, 1) 0.35s forwards;
+        }
+
+        .brand-intro-logo .sa-highlight {
+            opacity: 0;
+            animation: sa-highlight-reveal 1.4s ease 2.5s forwards;
         }
 
         .brand-intro-name {
-            margin: 24px 0 0;
-            color: #ead5ae;
-            font-family: "Cormorant Garamond", serif;
-            font-size: clamp(26px, 5vw, 46px);
+            margin: 22px 0 0;
+            color: #e2e5e9;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: clamp(27px, 5vw, 46px);
             font-weight: 500;
             letter-spacing: 0.28em;
             text-transform: uppercase;
+            opacity: 0;
+            animation: intro-text-reveal 1.5s ease 2.15s forwards;
         }
 
         .brand-intro-tagline {
+            max-width: 90vw;
             margin-top: 12px;
-            color: #b9a88b;
-            font-family: "Inter", sans-serif;
-            font-size: clamp(8px, 1.4vw, 11px);
-            letter-spacing: 0.28em;
+            color: #aeb4bd;
+            font-family: "Inter", Arial, sans-serif;
+            font-size: clamp(8px, 1.4vw, 10px);
+            letter-spacing: 0.2em;
             line-height: 2;
             text-transform: uppercase;
+            opacity: 0;
+            animation: intro-text-reveal 1.5s ease 2.65s forwards;
         }
 
         .brand-intro-line {
             width: 120px;
             height: 1px;
-            margin-top: 32px;
-            background: linear-gradient(90deg, transparent, #d9b77d, transparent);
-            transform-origin: center;
-            animation: line-reveal 2s ease 0.5s both;
+            margin-top: 29px;
+            background: linear-gradient(90deg, transparent, #d7dce3, transparent);
+            transform: scaleX(0);
+            animation: line-reveal 1.5s ease 2.7s forwards;
         }
 
         .brand-intro-caption {
             margin-top: 15px;
-            color: #bca47c;
-            font-family: "Inter", sans-serif;
+            color: #858c96;
+            font-family: "Inter", Arial, sans-serif;
             font-size: 9px;
-            letter-spacing: 0.35em;
+            letter-spacing: 0.3em;
             text-transform: uppercase;
+            opacity: 0;
+            animation: intro-text-reveal 1.5s ease 3s forwards;
         }
 
         .brand-intro.is-hidden {
@@ -133,11 +182,19 @@
             pointer-events: none;
         }
 
-        @keyframes logo-reveal {
+        @keyframes sa-draw {
+            to { stroke-dashoffset: 0; }
+        }
+
+        @keyframes sa-highlight-reveal {
+            to { opacity: 1; }
+        }
+
+        @keyframes intro-content-reveal {
             from {
                 opacity: 0;
-                transform: translateY(18px);
-                filter: blur(8px);
+                transform: translateY(15px);
+                filter: blur(7px);
             }
             to {
                 opacity: 1;
@@ -146,46 +203,65 @@
             }
         }
 
-        @keyframes logo-breathe {
-            0%, 100% {
-                filter: drop-shadow(0 0 12px rgba(207, 170, 111, 0.15));
+        @keyframes intro-text-reveal {
+            from {
+                opacity: 0;
+                transform: translateY(9px);
+                filter: blur(4px);
             }
-            50% {
-                filter: drop-shadow(0 0 28px rgba(207, 170, 111, 0.4));
+            to {
+                opacity: 1;
+                transform: translateY(0);
+                filter: blur(0);
             }
         }
 
         @keyframes intro-light {
-            0%, 100% { opacity: 0.35; transform: scaleX(0.75); }
+            0%, 100% { opacity: 0.3; transform: scaleX(0.75); }
             50% { opacity: 1; transform: scaleX(1); }
         }
 
         @keyframes intro-glow {
-            from { opacity: 0.45; transform: scale(0.85); }
-            to { opacity: 1; transform: scale(1.15); }
+            from { opacity: 0.4; transform: scale(0.85); }
+            to { opacity: 1; transform: scale(1.12); }
         }
 
         @keyframes line-reveal {
-            from { opacity: 0; transform: scaleX(0); }
-            to { opacity: 1; transform: scaleX(1); }
+            to { transform: scaleX(1); }
         }
 
-        @media (prefers-reduced-motion: reduce) {
-            .brand-intro *,
-            .brand-intro::before,
-            .brand-intro::after {
-                animation: none !important;
-            }
+        /* HEADER AND FOOTER LOGO SIZING */
+
+        .brand {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: clamp(58px, 5vw, 76px);
+            flex: 0 0 auto;
         }
 
-        @media (max-width: 600px) {
-            .brand-intro-name {
-                letter-spacing: 0.2em;
-            }
+        .brand .sa-logo {
+            width: 100%;
+            transition: filter 0.3s ease, opacity 0.3s ease;
+        }
 
-            .brand-intro-tagline {
-                letter-spacing: 0.16em;
-            }
+        .brand:hover .sa-logo {
+            filter: drop-shadow(0 0 8px rgba(220, 226, 234, 0.24));
+        }
+
+        .footer-brand .footer-sa-logo {
+            display: inline-flex;
+            width: 76px;
+            margin-bottom: 23px;
+            transition: filter 0.3s ease;
+        }
+
+        .footer-brand .footer-sa-logo:hover {
+            filter: drop-shadow(0 0 8px rgba(220, 226, 234, 0.22));
+        }
+
+        .footer-brand > a {
+            display: inline-flex;
         }
 
         /* OMAN COMMERCIAL REGISTRATION CARD */
@@ -208,12 +284,7 @@
             left: 0;
             width: 3px;
             height: 100%;
-            background: linear-gradient(
-                180deg,
-                #ead5ae,
-                #8c7146,
-                transparent
-            );
+            background: linear-gradient(180deg, #ead5ae, #8c7146, transparent);
         }
 
         .oman-registration-header {
@@ -286,10 +357,6 @@
             border-bottom: 1px solid rgba(199, 178, 138, 0.15);
         }
 
-        .oman-registration-field:nth-last-child(-n+2) {
-            border-bottom: none;
-        }
-
         .oman-registration-label {
             display: block;
             margin-bottom: 9px;
@@ -319,6 +386,12 @@
             letter-spacing: 0.07em;
         }
 
+        @media (max-width: 900px) {
+            .brand {
+                width: 58px;
+            }
+        }
+
         @media (max-width: 700px) {
             .oman-registration {
                 margin-top: 35px;
@@ -339,7 +412,7 @@
                 gap: 0;
             }
 
-            .oman-registration-field:nth-last-child(-n+2) {
+            .oman-registration-field {
                 border-bottom: 1px solid rgba(199, 178, 138, 0.15);
             }
 
@@ -355,21 +428,112 @@
                 font-size: 19px;
             }
         }
+
+        @media (max-width: 600px) {
+            .brand {
+                width: 52px;
+            }
+
+            .brand-intro-name {
+                letter-spacing: 0.2em;
+            }
+
+            .brand-intro-tagline {
+                letter-spacing: 0.12em;
+            }
+
+            .brand-intro-caption {
+                letter-spacing: 0.2em;
+            }
+
+            .brand-intro-logo {
+                width: clamp(135px, 40vw, 190px);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .brand-intro *,
+            .brand-intro::before,
+            .brand-intro::after {
+                animation: none !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .brand-intro-logo .sa-stroke {
+                stroke-dashoffset: 0;
+            }
+
+            .brand-intro-name,
+            .brand-intro-tagline,
+            .brand-intro-caption {
+                opacity: 1;
+            }
+
+            .brand-intro-line {
+                transform: scaleX(1);
+            }
+        }
     </style>
 </head>
 
 <body>
+
+    <!-- REUSABLE SA LOGO:
+         The SVG is embedded directly wherever the logo is needed. -->
 
     <!-- LUXURY BRAND INTRO -->
 
     <div class="brand-intro" id="brandIntro" aria-label="Azadipour Medical Technology">
         <div class="brand-intro-content">
 
-            <img
-                src="assets/logo-transparent.png"
-                alt="SA Azadipour"
-                class="brand-intro-logo"
-            >
+            <div class="sa-logo brand-intro-logo" aria-label="SA monogram">
+                <svg viewBox="0 0 220 190" role="img" aria-labelledby="introLogoTitle">
+                    <title id="introLogoTitle">Azadipour SA Monogram</title>
+                    <defs>
+                        <linearGradient id="silverGradientIntro" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0%" stop-color="#ffffff"/>
+                            <stop offset="25%" stop-color="#aeb4bd"/>
+                            <stop offset="48%" stop-color="#f5f7fa"/>
+                            <stop offset="72%" stop-color="#9ca3ad"/>
+                            <stop offset="100%" stop-color="#e5e8ed"/>
+                        </linearGradient>
+                    </defs>
+
+                    <path
+                        class="sa-stroke"
+                        stroke="url(#silverGradientIntro)"
+                        d="M143 35
+                           C126 18 91 18 72 32
+                           C48 49 57 70 86 81
+                           L126 96
+                           C157 108 167 126 151 145
+                           C133 166 96 166 72 148
+                           C62 140 57 130 59 119
+                           M79 154
+                           L116 49
+                           C119 40 125 35 131 35
+                           C137 35 141 41 144 49
+                           L184 154
+                           M98 111
+                           L168 111"
+                    />
+
+                    <path
+                        class="sa-highlight"
+                        d="M143 35
+                           C126 18 91 18 72 32
+                           C48 49 57 70 86 81
+                           L126 96
+                           C157 108 167 126 151 145
+                           C133 166 96 166 72 148
+                           M79 154
+                           L116 49
+                           C119 40 125 35 131 35
+                           C137 35 141 41 144 49
+                           L184 154"
+                    />
+                </svg>
+            </div>
 
             <h1 class="brand-intro-name">Azadipour</h1>
 
@@ -391,7 +555,28 @@
         <div class="nav-container">
 
             <a href="index.html" class="brand" aria-label="Azadipour Home">
-                <img src="assets/logo-transparent.png" alt="Azadipour SA">
+                <span class="sa-logo" aria-hidden="true">
+                    <svg viewBox="0 0 220 190">
+                        <defs>
+                            <linearGradient id="silverGradientHeader" x1="0" y1="0" x2="1" y2="1">
+                                <stop offset="0%" stop-color="#ffffff"/>
+                                <stop offset="25%" stop-color="#aeb4bd"/>
+                                <stop offset="48%" stop-color="#f5f7fa"/>
+                                <stop offset="72%" stop-color="#9ca3ad"/>
+                                <stop offset="100%" stop-color="#e5e8ed"/>
+                            </linearGradient>
+                        </defs>
+                        <path
+                            class="sa-stroke"
+                            stroke="url(#silverGradientHeader)"
+                            d="M143 35 C126 18 91 18 72 32 C48 49 57 70 86 81 L126 96 C157 108 167 126 151 145 C133 166 96 166 72 148 C62 140 57 130 59 119 M79 154 L116 49 C119 40 125 35 131 35 C137 35 141 41 144 49 L184 154 M98 111 L168 111"
+                        />
+                        <path
+                            class="sa-highlight"
+                            d="M143 35 C126 18 91 18 72 32 C48 49 57 70 86 81 L126 96 C157 108 167 126 151 145 C133 166 96 166 72 148 M79 154 L116 49 C119 40 125 35 131 35 C137 35 141 41 144 49 L184 154"
+                        />
+                    </svg>
+                </span>
             </a>
 
             <input type="checkbox" id="menu-toggle" class="menu-toggle">
@@ -421,15 +606,12 @@
         <!-- HERO -->
 
         <section class="home-hero">
-
             <div class="hero-image"></div>
             <div class="hero-gradient"></div>
 
             <div class="hero-content">
 
-                <div class="eyebrow">
-                    AZADIPOUR · MEDICAL TECHNOLOGY
-                </div>
+                <div class="eyebrow">AZADIPOUR · MEDICAL TECHNOLOGY</div>
 
                 <h1>
                     Global Medical
@@ -444,15 +626,8 @@
                 </p>
 
                 <div class="hero-actions">
-
-                    <a href="medical.html" class="luxury-button">
-                        EXPLORE SOLUTIONS
-                    </a>
-
-                    <a href="projects.html" class="luxury-button outline">
-                        REQUEST A PROJECT
-                    </a>
-
+                    <a href="medical.html" class="luxury-button">EXPLORE SOLUTIONS</a>
+                    <a href="projects.html" class="luxury-button outline">REQUEST A PROJECT</a>
                 </div>
 
             </div>
@@ -462,14 +637,12 @@
                 <span>HOSPITAL SOLUTIONS</span>
                 <span>GCC · EUROPE · INTERNATIONAL</span>
             </div>
-
         </section>
 
 
         <!-- INTRODUCTION -->
 
         <section class="section intro-section">
-
             <div class="section-container">
 
                 <div class="intro-label">01 / AZADIPOUR</div>
@@ -496,20 +669,16 @@
                     </p>
 
                 </div>
-
             </div>
-
         </section>
 
 
         <!-- CORE SOLUTIONS -->
 
         <section class="section solutions-section">
-
             <div class="section-container">
 
                 <div class="section-heading">
-
                     <div class="intro-label">02 / CORE SOLUTIONS</div>
 
                     <div>
@@ -524,24 +693,17 @@
                             modern hospitals and advanced surgical care.
                         </p>
                     </div>
-
                 </div>
 
                 <div class="solution-grid">
 
                     <a href="cardiac.html" class="solution-card cardiac-card">
-
                         <div class="card-image"></div>
                         <div class="card-overlay"></div>
 
                         <div class="card-content">
                             <span class="card-number">01</span>
-
-                            <h3>
-                                Cardiac &amp;
-                                <br>
-                                Cardiovascular
-                            </h3>
+                            <h3>Cardiac &amp;<br>Cardiovascular</h3>
 
                             <p>
                                 Cardiac surgery, cardiovascular technology,
@@ -550,23 +712,15 @@
 
                             <span class="card-link">EXPLORE →</span>
                         </div>
-
                     </a>
 
-
                     <a href="robotic.html" class="solution-card robotic-card">
-
                         <div class="card-image"></div>
                         <div class="card-overlay"></div>
 
                         <div class="card-content">
                             <span class="card-number">02</span>
-
-                            <h3>
-                                Robotic
-                                <br>
-                                Surgery
-                            </h3>
+                            <h3>Robotic<br>Surgery</h3>
 
                             <p>
                                 Surgical robotics, Smart OR, surgical AI,
@@ -575,23 +729,15 @@
 
                             <span class="card-link">EXPLORE →</span>
                         </div>
-
                     </a>
 
-
                     <a href="projects.html" class="solution-card hospital-card">
-
                         <div class="card-image"></div>
                         <div class="card-overlay"></div>
 
                         <div class="card-content">
                             <span class="card-number">03</span>
-
-                            <h3>
-                                Hospital
-                                <br>
-                                Technology
-                            </h3>
+                            <h3>Hospital<br>Technology</h3>
 
                             <p>
                                 Medical equipment, operating rooms,
@@ -600,20 +746,16 @@
 
                             <span class="card-link">EXPLORE →</span>
                         </div>
-
                     </a>
 
                 </div>
-
             </div>
-
         </section>
 
 
         <!-- HOSPITAL PROJECTS -->
 
         <section class="project-feature">
-
             <div class="project-image"></div>
             <div class="project-overlay"></div>
 
@@ -633,23 +775,18 @@
                     multiple medical technology categories.
                 </p>
 
-                <a href="projects.html" class="luxury-button">
-                    DISCUSS YOUR PROJECT
-                </a>
+                <a href="projects.html" class="luxury-button">DISCUSS YOUR PROJECT</a>
 
             </div>
-
         </section>
 
 
         <!-- GLOBAL MARKETS & GCC -->
 
         <section class="section markets-section">
-
             <div class="section-container">
 
                 <div class="section-heading">
-
                     <div class="intro-label">04 / GLOBAL REACH</div>
 
                     <div>
@@ -665,7 +802,6 @@
                             global markets.
                         </p>
                     </div>
-
                 </div>
 
                 <div class="market-list">
@@ -733,64 +869,41 @@
                     <div class="oman-registration-grid">
 
                         <div class="oman-registration-field">
-                            <span class="oman-registration-label">
-                                Company Name
-                            </span>
-
-                            <span class="oman-registration-value">
-                                Azadipour
-                            </span>
+                            <span class="oman-registration-label">Company Name</span>
+                            <span class="oman-registration-value">Azadipour</span>
                         </div>
 
                         <div class="oman-registration-field">
-                            <span class="oman-registration-label">
-                                Country of Registration
-                            </span>
-
-                            <span class="oman-registration-value">
-                                Sultanate of Oman
-                            </span>
+                            <span class="oman-registration-label">Country of Registration</span>
+                            <span class="oman-registration-value">Sultanate of Oman</span>
                         </div>
 
                         <div class="oman-registration-field">
-                            <span class="oman-registration-label">
-                                Commercial Registration Number
-                            </span>
-
-                            <span class="oman-registration-value registration-number">
-                                1678104
-                            </span>
+                            <span class="oman-registration-label">Commercial Registration Number</span>
+                            <span class="oman-registration-value registration-number">1678104</span>
                         </div>
 
                         <div class="oman-registration-field">
-                            <span class="oman-registration-label">
-                                Commercial License Number
-                            </span>
-
-                            <span class="oman-registration-value registration-number">
-                                L3914442
-                            </span>
+                            <span class="oman-registration-label">Commercial License Number</span>
+                            <span class="oman-registration-value registration-number">L3914442</span>
                         </div>
 
                     </div>
 
                 </section>
+
                 <!-- END OFFICIAL COMPANY REGISTRATION -->
 
             </div>
-
         </section>
 
 
         <!-- FINAL CTA -->
 
         <section class="final-cta">
-
             <div class="section-container">
 
-                <div class="intro-label">
-                    AZADIPOUR · MEDICAL TECHNOLOGY
-                </div>
+                <div class="intro-label">AZADIPOUR · MEDICAL TECHNOLOGY</div>
 
                 <h2>
                     Let's build the future
@@ -804,12 +917,9 @@
                     partnerships.
                 </p>
 
-                <a href="contact.html" class="luxury-button">
-                    START A CONVERSATION →
-                </a>
+                <a href="contact.html" class="luxury-button">START A CONVERSATION →</a>
 
             </div>
-
         </section>
 
     </main>
@@ -818,18 +928,38 @@
     <!-- FOOTER -->
 
     <footer class="site-footer">
-
         <div class="footer-container">
 
             <div class="footer-brand">
 
                 <a href="index.html" aria-label="Azadipour Home">
-                    <img src="assets/logo-transparent.png" alt="Azadipour">
+                    <span class="sa-logo footer-sa-logo" aria-hidden="true">
+                        <svg viewBox="0 0 220 190">
+                            <defs>
+                                <linearGradient id="silverGradientFooter" x1="0" y1="0" x2="1" y2="1">
+                                    <stop offset="0%" stop-color="#ffffff"/>
+                                    <stop offset="25%" stop-color="#aeb4bd"/>
+                                    <stop offset="48%" stop-color="#f5f7fa"/>
+                                    <stop offset="72%" stop-color="#9ca3ad"/>
+                                    <stop offset="100%" stop-color="#e5e8ed"/>
+                                </linearGradient>
+                            </defs>
+
+                            <path
+                                class="sa-stroke"
+                                stroke="url(#silverGradientFooter)"
+                                d="M143 35 C126 18 91 18 72 32 C48 49 57 70 86 81 L126 96 C157 108 167 126 151 145 C133 166 96 166 72 148 C62 140 57 130 59 119 M79 154 L116 49 C119 40 125 35 131 35 C137 35 141 41 144 49 L184 154 M98 111 L168 111"
+                            />
+
+                            <path
+                                class="sa-highlight"
+                                d="M143 35 C126 18 91 18 72 32 C48 49 57 70 86 81 L126 96 C157 108 167 126 151 145 C133 166 96 166 72 148 M79 154 L116 49 C119 40 125 35 131 35 C137 35 141 41 144 49 L184 154"
+                            />
+                        </svg>
+                    </span>
                 </a>
 
-                <p>
-                    Medical Technology &amp; Hospital Solutions.
-                </p>
+                <p>Medical Technology &amp; Hospital Solutions.</p>
 
                 <p>
                     <a href="mailto:herzchirurgsinaazadipour@gmail.com">
@@ -839,50 +969,43 @@
 
             </div>
 
-
             <div class="footer-column">
-
                 <h4>NAVIGATION</h4>
-
                 <a href="index.html">Home</a>
                 <a href="medical.html">Medical Solutions</a>
                 <a href="cardiac.html">Cardiac Surgery</a>
                 <a href="robotic.html">Robotic Surgery</a>
-
             </div>
 
-
             <div class="footer-column">
-
                 <h4>PROJECTS</h4>
-
                 <a href="projects.html">Hospital Projects</a>
                 <a href="partners.html">Global Partners</a>
                 <a href="contact.html">Contact</a>
-
             </div>
 
         </div>
 
-
         <div class="footer-bottom">
-
             <span>© 2026 Azadipour. All rights reserved.</span>
-
             <span>Oman · Saudi Arabia · Qatar · Bahrain · GCC</span>
-
         </div>
-
     </footer>
 
 
-    <!-- LOGO INTRO TIMER -->
+    <!-- INTRO TIMER -->
 
     <script>
         (function () {
             const intro = document.getElementById("brandIntro");
 
             if (!intro) return;
+
+            const reduceMotion = window.matchMedia &&
+                window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+            /* Keep the cinematic intro, but respect reduced-motion settings. */
+            const introDuration = reduceMotion ? 1200 : 10000;
 
             window.setTimeout(function () {
                 intro.classList.add("is-hidden");
@@ -891,7 +1014,7 @@
                     intro.remove();
                 }, 1100);
 
-            }, 10000);
+            }, introDuration);
         })();
     </script>
 
