@@ -121,15 +121,13 @@
             filter: drop-shadow(0 0 16px rgba(205, 214, 225, 0.12));
         }
 
-        .brand-intro-logo .sa-stroke {
-            stroke-dasharray: 850;
-            stroke-dashoffset: 850;
-            animation: sa-draw 3.2s cubic-bezier(.55, .05, .25, 1) 0.35s forwards;
-        }
+        /* ORIGINAL LOGO IMAGE — INTRO ONLY */
 
-        .brand-intro-logo .sa-highlight {
-            opacity: 0;
-            animation: sa-highlight-reveal 1.4s ease 2.5s forwards;
+        .brand-intro-logo img {
+            display: block;
+            width: 100%;
+            height: auto;
+            object-fit: contain;
         }
 
         /* AZADIPOUR — LETTER-BY-LETTER ANIMATION */
@@ -497,8 +495,8 @@
                 transition-duration: 0.01ms !important;
             }
 
-            .brand-intro-logo .sa-stroke {
-                stroke-dashoffset: 0;
+            .brand-intro-logo img {
+                opacity: 1;
             }
 
             .brand-intro-name span {
@@ -521,64 +519,21 @@
 
 <body>
 
-    <!-- REUSABLE SA LOGO:
-         The SVG is embedded directly wherever the logo is needed. -->
-
     <!-- LUXURY BRAND INTRO -->
 
     <div class="brand-intro" id="brandIntro" aria-label="Azadipour Medical Technology">
         <div class="brand-intro-content">
 
+            <!-- ORIGINAL AZADIPOUR LOGO -->
             <div class="sa-logo brand-intro-logo" aria-label="SA monogram">
-                <svg viewBox="0 0 220 190" role="img" aria-labelledby="introLogoTitle">
-                    <title id="introLogoTitle">Azadipour SA Monogram</title>
-                    <defs>
-                        <linearGradient id="silverGradientIntro" x1="0" y1="0" x2="1" y2="1">
-                            <stop offset="0%" stop-color="#ffffff"/>
-                            <stop offset="25%" stop-color="#aeb4bd"/>
-                            <stop offset="48%" stop-color="#f5f7fa"/>
-                            <stop offset="72%" stop-color="#9ca3ad"/>
-                            <stop offset="100%" stop-color="#e5e8ed"/>
-                        </linearGradient>
-                    </defs>
-
-                    <path
-                        class="sa-stroke"
-                        stroke="url(#silverGradientIntro)"
-                        d="M143 35
-                           C126 18 91 18 72 32
-                           C48 49 57 70 86 81
-                           L126 96
-                           C157 108 167 126 151 145
-                           C133 166 96 166 72 148
-                           C62 140 57 130 59 119
-                           M79 154
-                           L116 49
-                           C119 40 125 35 131 35
-                           C137 35 141 41 144 49
-                           L184 154
-                           M98 111
-                           L168 111"
-                    />
-
-                    <path
-                        class="sa-highlight"
-                        d="M143 35
-                           C126 18 91 18 72 32
-                           C48 49 57 70 86 81
-                           L126 96
-                           C157 108 167 126 151 145
-                           C133 166 96 166 72 148
-                           M79 154
-                           L116 49
-                           C119 40 125 35 131 35
-                           C137 35 141 41 144 49
-                           L184 154"
-                    />
-                </svg>
+                <img
+                    src="assets/logo-transparent.png"
+                    alt="Azadipour SA Monogram"
+                    width="500"
+                    height="500"
+                    fetchpriority="high"
+                >
             </div>
-
-            <!-- ONLY THE NAME ANIMATION HAS CHANGED -->
 
             <h1 class="brand-intro-name" aria-label="Azadipour"><span aria-hidden="true">A</span><span aria-hidden="true">z</span><span aria-hidden="true">a</span><span aria-hidden="true">d</span><span aria-hidden="true">i</span><span aria-hidden="true">p</span><span aria-hidden="true">o</span><span aria-hidden="true">u</span><span aria-hidden="true">r</span></h1>
 
@@ -1038,7 +993,7 @@
     </footer>
 
 
-    <!-- INTRO TIMER -->
+    <!-- INTRO TIMER: 10 SECONDS -->
 
     <script>
         (function () {
@@ -1049,7 +1004,7 @@
             const reduceMotion = window.matchMedia &&
                 window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-            /* Keep the cinematic intro, but respect reduced-motion settings. */
+            /* Preserve the original 10-second intro duration. */
             const introDuration = reduceMotion ? 1200 : 10000;
 
             window.setTimeout(function () {
