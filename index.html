@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,39 +17,16 @@
 
     <style>
         /* =========================================
-           AZADIPOUR — SIGNATURE SA MONOGRAM
+           AZADIPOUR — CUSTOM LOGO STYLES
            Silver / Black / Luxury Motion
            ========================================= */
 
-        .sa-logo {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            color: #d9dde2;
-        }
-
-        .sa-logo svg {
+        /* General Logo Image Styles */
+        .custom-logo-img {
             display: block;
             width: 100%;
             height: auto;
-            overflow: visible;
-        }
-
-        .sa-logo .sa-stroke {
-            fill: none;
-            stroke: url(#silverGradient);
-            stroke-width: 3.1;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-
-        .sa-logo .sa-highlight {
-            fill: none;
-            stroke: rgba(255, 255, 255, 0.52);
-            stroke-width: 0.8;
-            stroke-linecap: round;
-            stroke-linejoin: round;
+            object-fit: contain;
         }
 
         /* INTRO SCREEN */
@@ -119,15 +95,6 @@
             width: clamp(145px, 23vw, 245px);
             margin-bottom: 5px;
             filter: drop-shadow(0 0 16px rgba(205, 214, 225, 0.12));
-        }
-
-        /* ORIGINAL LOGO IMAGE — INTRO ONLY */
-
-        .brand-intro-logo img {
-            display: block;
-            width: 100%;
-            height: auto;
-            object-fit: contain;
         }
 
         /* AZADIPOUR — LETTER-BY-LETTER ANIMATION */
@@ -218,14 +185,6 @@
             pointer-events: none;
         }
 
-        @keyframes sa-draw {
-            to { stroke-dashoffset: 0; }
-        }
-
-        @keyframes sa-highlight-reveal {
-            to { opacity: 1; }
-        }
-
         @keyframes intro-content-reveal {
             from {
                 opacity: 0;
@@ -276,23 +235,22 @@
             flex: 0 0 auto;
         }
 
-        .brand .sa-logo {
-            width: 100%;
+        .brand .custom-logo-img {
             transition: filter 0.3s ease, opacity 0.3s ease;
         }
 
-        .brand:hover .sa-logo {
+        .brand:hover .custom-logo-img {
             filter: drop-shadow(0 0 8px rgba(220, 226, 234, 0.24));
         }
 
-        .footer-brand .footer-sa-logo {
+        .footer-brand .footer-custom-logo {
             display: inline-flex;
             width: 76px;
             margin-bottom: 23px;
             transition: filter 0.3s ease;
         }
 
-        .footer-brand .footer-sa-logo:hover {
+        .footer-brand .footer-custom-logo:hover {
             filter: drop-shadow(0 0 8px rgba(220, 226, 234, 0.22));
         }
 
@@ -524,11 +482,12 @@
     <div class="brand-intro" id="brandIntro" aria-label="Azadipour Medical Technology">
         <div class="brand-intro-content">
 
-            <!-- ORIGINAL AZADIPOUR LOGO -->
-            <div class="sa-logo brand-intro-logo" aria-label="SA monogram">
+            <!-- CUSTOM AZADIPOUR LOGO -->
+            <div class="brand-intro-logo" aria-label="Azadipour Logo">
                 <img
                     src="assets/logo-transparent.png"
-                    alt="Azadipour SA Monogram"
+                    alt="Azadipour Logo"
+                    class="custom-logo-img"
                     width="500"
                     height="500"
                     fetchpriority="high"
@@ -555,28 +514,11 @@
         <div class="nav-container">
 
             <a href="index.html" class="brand" aria-label="Azadipour Home">
-                <span class="sa-logo" aria-hidden="true">
-                    <svg viewBox="0 0 220 190">
-                        <defs>
-                            <linearGradient id="silverGradientHeader" x1="0" y1="0" x2="1" y2="1">
-                                <stop offset="0%" stop-color="#ffffff"/>
-                                <stop offset="25%" stop-color="#aeb4bd"/>
-                                <stop offset="48%" stop-color="#f5f7fa"/>
-                                <stop offset="72%" stop-color="#9ca3ad"/>
-                                <stop offset="100%" stop-color="#e5e8ed"/>
-                            </linearGradient>
-                        </defs>
-                        <path
-                            class="sa-stroke"
-                            stroke="url(#silverGradientHeader)"
-                            d="M143 35 C126 18 91 18 72 32 C48 49 57 70 86 81 L126 96 C157 108 167 126 151 145 C133 166 96 166 72 148 C62 140 57 130 59 119 M79 154 L116 49 C119 40 125 35 131 35 C137 35 141 41 144 49 L184 154 M98 111 L168 111"
-                        />
-                        <path
-                            class="sa-highlight"
-                            d="M143 35 C126 18 91 18 72 32 C48 49 57 70 86 81 L126 96 C157 108 167 126 151 145 C133 166 96 166 72 148 M79 154 L116 49 C119 40 125 35 131 35 C137 35 141 41 144 49 L184 154"
-                        />
-                    </svg>
-                </span>
+                <img
+                    src="assets/logo-transparent.png"
+                    alt="Azadipour Logo"
+                    class="custom-logo-img"
+                >
             </a>
 
             <input type="checkbox" id="menu-toggle" class="menu-toggle">
@@ -933,30 +875,11 @@
             <div class="footer-brand">
 
                 <a href="index.html" aria-label="Azadipour Home">
-                    <span class="sa-logo footer-sa-logo" aria-hidden="true">
-                        <svg viewBox="0 0 220 190">
-                            <defs>
-                                <linearGradient id="silverGradientFooter" x1="0" y1="0" x2="1" y2="1">
-                                    <stop offset="0%" stop-color="#ffffff"/>
-                                    <stop offset="25%" stop-color="#aeb4bd"/>
-                                    <stop offset="48%" stop-color="#f5f7fa"/>
-                                    <stop offset="72%" stop-color="#9ca3ad"/>
-                                    <stop offset="100%" stop-color="#e5e8ed"/>
-                                </linearGradient>
-                            </defs>
-
-                            <path
-                                class="sa-stroke"
-                                stroke="url(#silverGradientFooter)"
-                                d="M143 35 C126 18 91 18 72 32 C48 49 57 70 86 81 L126 96 C157 108 167 126 151 145 C133 166 96 166 72 148 C62 140 57 130 59 119 M79 154 L116 49 C119 40 125 35 131 35 C137 35 141 41 144 49 L184 154 M98 111 L168 111"
-                            />
-
-                            <path
-                                class="sa-highlight"
-                                d="M143 35 C126 18 91 18 72 32 C48 49 57 70 86 81 L126 96 C157 108 167 126 151 145 C133 166 96 166 72 148 M79 154 L116 49 C119 40 125 35 131 35 C137 35 141 41 144 49 L184 154"
-                            />
-                        </svg>
-                    </span>
+                    <img
+                        src="assets/logo-transparent.png"
+                        alt="Azadipour Logo"
+                        class="custom-logo-img footer-custom-logo"
+                    >
                 </a>
 
                 <p>Medical Technology &amp; Hospital Solutions.</p>
