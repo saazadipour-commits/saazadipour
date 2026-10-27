@@ -4,7 +4,30 @@
 
   <url>
     <loc>https://azadipourmedical.com/</loc>
-    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://azadipourmedical.com/medical.html</loc>
+  </url>
+
+  <url>
+    <loc>https://azadipourmedical.com/cardiac.html</loc>
+  </url>
+
+  <url>
+    <loc>https://azadipourmedical.com/robotic.html</loc>
+  </url>
+
+  <url>
+    <loc>https://azadipourmedical.com/projects.html</loc>
+  </url>
+
+  <url>
+    <loc>https://azadipourmedical.com/partners.html</loc>
+  </url>
+
+  <url>
+    <loc>https://azadipourmedical.com/contact.html</loc>
   </url>
 
 </urlset>
