@@ -1,333 +1,458 @@
-/* =========================================
-   AZADIPOUR GLOBAL NETWORK MAP
-   Self-contained static canvas visualization
-========================================= */
+/* ==========================================
+   AZADIPOUR — GLOBAL NETWORK ENGINE
+   Real Geographic World Map
+   ========================================== */
 
 (() => {
   "use strict";
 
   const canvas = document.getElementById("globalNetworkMap");
+  const loading = document.getElementById("mapLoading");
+
   if (!canvas) return;
 
-  const ctx = canvas.getContext("2d");
-  if (!ctx) return;
+  const context = canvas.getContext("2d");
 
-  let width = 0;
-  let height = 0;
-  let dpr = 1;
+  const DATA_URL =
+    "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json";
 
-  /*
-    Simplified continent outlines.
-    Coordinates use longitude and latitude.
-    These are illustrative shapes, not navigational boundaries.
-  */
-
-  const continents = [
-    // North America
-    [
-      [-168, 70], [-150, 72], [-137, 68], [-130, 60],
-      [-125, 52], [-124, 43], [-117, 33], [-108, 29],
-      [-103, 22], [-96, 19], [-90, 20], [-84, 25],
-      [-80, 31], [-75, 36], [-68, 44], [-60, 51],
-      [-57, 58], [-66, 63], [-78, 69], [-95, 73],
-      [-115, 75], [-140, 72], [-155, 74]
-    ],
-
-    // Greenland
-    [
-      [-53, 83], [-38, 80], [-30, 73], [-42, 60],
-      [-53, 59], [-62, 68], [-60, 77]
-    ],
-
-    // South America
-    [
-      [-81, 12], [-73, 10], [-65, 5], [-58, -3],
-      [-50, -8], [-47, -18], [-53, -29], [-58, -39],
-      [-66, -55], [-72, -49], [-75, -36], [-78, -20],
-      [-81, -5]
-    ],
-
-    // Europe and Asia
-    [
-      [-10, 36], [-10, 44], [-5, 50], [2, 55],
-      [10, 58], [18, 55], [27, 60], [36, 65],
-      [48, 69], [62, 72], [80, 74], [100, 72],
-      [120, 67], [140, 60], [155, 55], [165, 49],
-      [155, 43], [145, 40], [135, 35], [130, 30],
-      [122, 24], [115, 20], [108, 15], [103, 8],
-      [98, 12], [92, 20], [85, 22], [78, 8],
-      [73, 8], [69, 20], [61, 25], [56, 27],
-      [50, 30], [45, 37], [38, 40], [30, 39],
-      [25, 35], [20, 40], [15, 43], [10, 43],
-      [5, 42], [0, 40], [-5, 36]
-    ],
-
-    // Africa
-    [
-      [-17, 36], [-5, 37], [10, 36], [24, 32],
-      [34, 30], [43, 12], [50, 10], [48, -2],
-      [42, -12], [39, -20], [32, -29], [25, -34],
-      [18, -35], [12, -25], [8, -15], [2, -5],
-      [-5, 5], [-12, 17], [-17, 25]
-    ],
-
-    // India
-    [
-      [68, 24], [77, 30], [87, 26], [90, 21],
-      [84, 8], [78, 6], [73, 14]
-    ],
-
-    // Japan and nearby islands
-    [
-      [130, 32], [135, 35], [140, 39], [143, 44],
-      [146, 42], [142, 35], [137, 31]
-    ],
-
-    // Australia
-    [
-      [113, -12], [124, -14], [135, -12], [145, -16],
-      [153, -25], [150, -38], [141, -40], [130, -35],
-      [116, -33], [113, -23]
-    ],
-
-    // Madagascar
-    [
-      [48, -13], [50, -17], [49, -25], [46, -23]
-    ],
-
-    // United Kingdom
-    [
-      [-8, 58], [-4, 59], [0, 55], [-3, 50], [-6, 52]
-    ]
+  const SCRIPT_URLS = [
+    "https://cdn.jsdelivr.net/npm/d3-geo@3/dist/d3-geo.min.js",
+    "https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"
   ];
 
-  const oman = {
-    name: "OMAN",
-    lon: 58.4,
-    lat: 23.6
+  const COLORS = {
+    ocean: "#090d12",
+    land: "#222a33",
+    landHighlight: "#303b47",
+    borders: "rgba(190,205,220,0.22)",
+    borderHighlight: "rgba(225,235,245,0.34)",
+    route: "rgba(182,207,229,0.55)",
+    routeGlow: "rgba(160,195,225,0.15)",
+    oman: "#f0f5fa",
+    market: "#b8cbdc",
+    opportunity: "rgba(204,220,235,0.8)",
+    text: "#e3eaf1",
+    muted: "#a0acb8"
   };
 
-  const markets = [
-    { name: "SAUDI ARABIA", lon: 46.7, lat: 24.7 },
-    { name: "UAE", lon: 54.4, lat: 24.5 },
-    { name: "QATAR", lon: 51.5, lat: 25.3 },
-    { name: "BAHRAIN", lon: 50.6, lat: 26.2 },
-    { name: "KUWAIT", lon: 47.9, lat: 29.3 },
-    { name: "GERMANY", lon: 10.4, lat: 51.1 }
-  ];
+  const locations = {
+    oman: {
+      name: "OMAN",
+      coordinates: [58.4, 23.6],
+      type: "registered"
+    },
 
-  /*
-    Anonymous illustrative opportunity markers.
-    They do not represent confirmed hospitals or clients.
-  */
+    connections: [
+      { name: "EUROPE", coordinates: [10, 50] },
+      { name: "NORTH AMERICA", coordinates: [-100, 39] },
+      { name: "SOUTH AMERICA", coordinates: [-58, -15] },
+      { name: "EAST ASIA", coordinates: [115, 34] },
+      { name: "SOUTH ASIA", coordinates: [78, 21] },
+      { name: "AFRICA", coordinates: [20, 0] },
+      { name: "OCEANIA", coordinates: [135, -25] }
+    ]
+  };
 
-  const opportunities = [
-    { lon: 44.4, lat: 33.3 },
-    { lon: 46.7, lat: 24.7 },
-    { lon: 55.3, lat: 25.2 },
-    { lon: 51.5, lat: 25.3 },
-    { lon: 10.4, lat: 51.1 },
-    { lon: 53.0, lat: 28.0 }
-  ];
+  let worldFeatures = null;
+  let borderFeatures = null;
+  let projection = null;
+  let pathGenerator = null;
+  let width = 0;
+  let height = 0;
+  let animationFrame = null;
+  let resizeObserver = null;
+  let animationStart = 0;
 
-  function project(lon, lat) {
-    const top = 45;
-    const bottom = height - 40;
-
-    return {
-      x: ((lon + 180) / 360) * width,
-      y: top + ((85 - lat) / 145) * (bottom - top)
-    };
-  }
-
-  function drawBackground() {
-    const glow = ctx.createRadialGradient(
-      width * .5, height * .5, 10,
-      width * .5, height * .5, width * .58
-    );
-
-    glow.addColorStop(0, "rgba(115,135,160,.10)");
-    glow.addColorStop(1, "rgba(5,8,12,0)");
-
-    ctx.fillStyle = glow;
-    ctx.fillRect(0, 0, width, height);
-  }
-
-  function drawGrid() {
-    ctx.save();
-
-    ctx.strokeStyle = "rgba(180,195,215,.075)";
-    ctx.lineWidth = .6;
-
-    for (let lon = -150; lon <= 180; lon += 30) {
-      const a = project(lon, 85);
-      const b = project(lon, -60);
-
-      ctx.beginPath();
-      ctx.moveTo(a.x, a.y);
-      ctx.lineTo(b.x, b.y);
-      ctx.stroke();
+  function hideLoading() {
+    if (loading) {
+      loading.classList.add("is-hidden");
     }
-
-    for (let lat = -45; lat <= 75; lat += 30) {
-      const a = project(-180, lat);
-      const b = project(180, lat);
-
-      ctx.beginPath();
-      ctx.moveTo(a.x, a.y);
-      ctx.lineTo(b.x, b.y);
-      ctx.stroke();
-    }
-
-    ctx.restore();
   }
 
-  function drawContinents() {
-    continents.forEach(points => {
-      ctx.beginPath();
+  function showError(message) {
+    if (!loading) return;
 
-      points.forEach((point, index) => {
-        const p = project(point[0], point[1]);
+    loading.classList.remove("is-hidden");
+    loading.innerHTML = `
+      <span class="loading-indicator"></span>
+      <span>${message}</span>
+    `;
+  }
 
-        if (index === 0) {
-          ctx.moveTo(p.x, p.y);
-        } else {
-          ctx.lineTo(p.x, p.y);
+  function loadScript(url) {
+    return new Promise((resolve, reject) => {
+      const existing = Array.from(document.scripts)
+        .find(script => script.src === url);
+
+      if (existing) {
+        if (existing.dataset.loaded === "true") {
+          resolve();
+          return;
         }
-      });
 
-      ctx.closePath();
+        existing.addEventListener("load", resolve, { once: true });
+        existing.addEventListener("error", reject, { once: true });
+        return;
+      }
 
-      const fill = ctx.createLinearGradient(0, 0, 0, height);
-      fill.addColorStop(0, "rgba(200,210,223,.26)");
-      fill.addColorStop(1, "rgba(100,115,135,.12)");
+      const script = document.createElement("script");
+      script.src = url;
+      script.async = true;
 
-      ctx.fillStyle = fill;
-      ctx.strokeStyle = "rgba(218,226,238,.44)";
-      ctx.lineWidth = .9;
+      script.onload = () => {
+        script.dataset.loaded = "true";
+        resolve();
+      };
 
-      ctx.fill();
-      ctx.stroke();
+      script.onerror = reject;
+
+      document.head.appendChild(script);
     });
   }
 
-  function drawConnection(destination) {
-    const start = project(oman.lon, oman.lat);
-    const end = project(destination.lon, destination.lat);
+  async function loadDependencies() {
+    for (const url of SCRIPT_URLS) {
+      await loadScript(url);
+    }
 
-    const middleX = (start.x + end.x) / 2;
-    const middleY = Math.min(start.y, end.y) - Math.min(100, height * .18);
-
-    ctx.save();
-
-    ctx.beginPath();
-    ctx.moveTo(start.x, start.y);
-    ctx.quadraticCurveTo(middleX, middleY, end.x, end.y);
-
-    ctx.strokeStyle = "rgba(215,225,238,.65)";
-    ctx.lineWidth = 1.2;
-    ctx.shadowColor = "rgba(220,230,245,.8)";
-    ctx.shadowBlur = 9;
-    ctx.stroke();
-
-    ctx.restore();
+    if (!window.d3 || !window.topojson) {
+      throw new Error("Geographic libraries could not be initialized.");
+    }
   }
 
-  function drawPoint(location, main = false) {
-    const p = project(location.lon, location.lat);
+  async function loadWorldData() {
+    const response = await fetch(DATA_URL, {
+      cache: "force-cache"
+    });
 
-    ctx.save();
+    if (!response.ok) {
+      throw new Error("World geographic data unavailable.");
+    }
 
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, main ? 12 : 7, 0, Math.PI * 2);
-    ctx.fillStyle = main
-      ? "rgba(255,255,255,.11)"
-      : "rgba(185,200,220,.09)";
-    ctx.fill();
-
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, main ? 4.5 : 3, 0, Math.PI * 2);
-    ctx.fillStyle = main ? "#ffffff" : "#bdc8d7";
-    ctx.shadowColor = "#ffffff";
-    ctx.shadowBlur = main ? 20 : 10;
-    ctx.fill();
-
-    ctx.restore();
+    return response.json();
   }
 
-  function drawOpportunity(location) {
-    const p = project(location.lon, location.lat);
+  function setupProjection() {
+    const padding = width < 600 ? 14 : 35;
 
-    ctx.save();
+    projection = d3.geoNaturalEarth1()
+      .fitExtent(
+        [
+          [padding, padding],
+          [width - padding, height - padding]
+        ],
+        {
+          type: "FeatureCollection",
+          features: worldFeatures
+        }
+      );
 
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, 3.2, 0, Math.PI * 2);
-    ctx.fillStyle = "rgba(115,130,150,.85)";
-    ctx.strokeStyle = "rgba(225,232,242,.85)";
-    ctx.lineWidth = 1;
-    ctx.fill();
-    ctx.stroke();
-
-    ctx.restore();
+    pathGenerator = d3.geoPath()
+      .projection(projection)
+      .context(context);
   }
 
-  function drawLabels() {
-    const p = project(oman.lon, oman.lat);
-
-    ctx.save();
-    ctx.font = "600 10px Inter, sans-serif";
-    ctx.fillStyle = "#ffffff";
-    ctx.shadowColor = "#ffffff";
-    ctx.shadowBlur = 10;
-    ctx.fillText("OMAN", p.x + 15, p.y - 12);
-
-    ctx.font = "8px Inter, sans-serif";
-    ctx.fillStyle = "rgba(220,230,242,.8)";
-    ctx.shadowBlur = 0;
-    ctx.fillText("REGISTERED BASE", p.x + 15, p.y + 2);
-
-    const germany = project(10.4, 51.1);
-    ctx.fillText("GERMANY", germany.x + 10, germany.y - 10);
-
-    ctx.restore();
-  }
-
-  function render() {
+  function resizeCanvas() {
     const rect = canvas.getBoundingClientRect();
 
     if (!rect.width || !rect.height) return;
 
+    const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+
     width = rect.width;
     height = rect.height;
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
 
-    canvas.width = Math.round(width * dpr);
-    canvas.height = Math.round(height * dpr);
+    canvas.width = Math.round(width * pixelRatio);
+    canvas.height = Math.round(height * pixelRatio);
 
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    ctx.clearRect(0, 0, width, height);
+    context.setTransform(
+      pixelRatio,
+      0,
+      0,
+      pixelRatio,
+      0,
+      0
+    );
 
-    drawBackground();
-    drawGrid();
-    drawContinents();
-
-    markets.forEach(drawConnection);
-
-    opportunities.forEach(drawOpportunity);
-
-    drawPoint(oman, true);
-    markets.forEach(market => drawPoint(market));
-
-    drawLabels();
+    if (worldFeatures) {
+      setupProjection();
+      drawScene(1);
+    }
   }
 
-  render();
+  function drawOcean() {
+    context.fillStyle = COLORS.ocean;
+    context.fillRect(0, 0, width, height);
 
-  if ("ResizeObserver" in window) {
-    const observer = new ResizeObserver(render);
-    observer.observe(canvas);
-  } else {
-    window.addEventListener("resize", render);
+    const glow = context.createRadialGradient(
+      width * 0.52,
+      height * 0.48,
+      10,
+      width * 0.52,
+      height * 0.48,
+      width * 0.7
+    );
+
+    glow.addColorStop(0, "rgba(78,105,132,0.10)");
+    glow.addColorStop(1, "rgba(8,12,17,0)");
+
+    context.fillStyle = glow;
+    context.fillRect(0, 0, width, height);
   }
+
+  function drawGraticule() {
+    const graticule = d3.geoGraticule()
+      .step([30, 20])();
+
+    context.save();
+    context.beginPath();
+    pathGenerator(graticule);
+
+    context.strokeStyle = "rgba(174,195,216,0.075)";
+    context.lineWidth = 0.55;
+    context.stroke();
+    context.restore();
+  }
+
+  function drawCountries() {
+    context.save();
+
+    context.beginPath();
+
+    worldFeatures.forEach(feature => {
+      pathGenerator(feature);
+    });
+
+    context.fillStyle = COLORS.land;
+    context.fill();
+
+    context.strokeStyle = COLORS.borders;
+    context.lineWidth = 0.45;
+    context.stroke();
+
+    context.restore();
+  }
+
+  function drawBorders() {
+    if (!borderFeatures) return;
+
+    context.save();
+    context.beginPath();
+
+    pathGenerator(borderFeatures);
+
+    context.strokeStyle = COLORS.borderHighlight;
+    context.lineWidth = 0.45;
+    context.stroke();
+
+    context.restore();
+  }
+
+  function drawRoute(start, end, progress = 1) {
+    const interpolate = d3.geoInterpolate(start, end);
+    const samples = 100;
+
+    context.save();
+
+    context.beginPath();
+
+    for (let i = 0; i <= samples * progress; i++) {
+      const point = projection(interpolate(i / samples));
+
+      if (!point) continue;
+
+      if (i === 0) {
+        context.moveTo(point[0], point[1]);
+      } else {
+        context.lineTo(point[0], point[1]);
+      }
+    }
+
+    context.strokeStyle = COLORS.routeGlow;
+    context.lineWidth = 5;
+    context.shadowColor = "rgba(165,205,235,0.4)";
+    context.shadowBlur = 12;
+    context.stroke();
+
+    context.shadowBlur = 0;
+    context.strokeStyle = COLORS.route;
+    context.lineWidth = 1.15;
+    context.stroke();
+
+    context.restore();
+  }
+
+  function drawPoint(coordinates, type, label) {
+    const point = projection(coordinates);
+
+    if (!point) return;
+
+    const [x, y] = point;
+
+    context.save();
+
+    if (type === "registered") {
+      context.beginPath();
+      context.arc(x, y, 11, 0, Math.PI * 2);
+      context.fillStyle = "rgba(220,235,250,0.10)";
+      context.fill();
+
+      context.beginPath();
+      context.arc(x, y, 4.1, 0, Math.PI * 2);
+      context.fillStyle = COLORS.oman;
+      context.shadowColor = COLORS.oman;
+      context.shadowBlur = 14;
+      context.fill();
+
+      context.shadowBlur = 0;
+
+      context.fillStyle = COLORS.text;
+      context.font = "600 10px Inter, sans-serif";
+      context.textAlign = "left";
+      context.fillText(label, x + 12, y - 10);
+
+    } else {
+      context.beginPath();
+      context.arc(x, y, 3, 0, Math.PI * 2);
+      context.fillStyle = COLORS.market;
+      context.shadowColor = COLORS.market;
+      context.shadowBlur = 8;
+      context.fill();
+
+      context.shadowBlur = 0;
+    }
+
+    context.restore();
+  }
+
+  function drawConnectionLabels() {
+    const labelLocations = [
+      { name: "NORTH AMERICA", coordinates: [-100, 47] },
+      { name: "SOUTH AMERICA", coordinates: [-60, -25] },
+      { name: "EUROPE", coordinates: [15, 57] },
+      { name: "AFRICA", coordinates: [22, -13] },
+      { name: "ASIA", coordinates: [105, 45] },
+      { name: "OCEANIA", coordinates: [140, -35] }
+    ];
+
+    context.save();
+
+    context.font = "600 8px Inter, sans-serif";
+    context.fillStyle = "rgba(211,224,237,0.56)";
+    context.textAlign = "center";
+    context.letterSpacing = "1.4px";
+
+    labelLocations.forEach(item => {
+      const point = projection(item.coordinates);
+
+      if (point) {
+        context.fillText(item.name, point[0], point[1]);
+      }
+    });
+
+    context.restore();
+  }
+
+  function drawScene(routeProgress = 1) {
+    if (!projection || !worldFeatures) return;
+
+    context.clearRect(0, 0, width, height);
+
+    drawOcean();
+    drawGraticule();
+    drawCountries();
+    drawBorders();
+
+    locations.connections.forEach(location => {
+      drawRoute(
+        locations.oman.coordinates,
+        location.coordinates,
+        routeProgress
+      );
+    });
+
+    locations.connections.forEach(location => {
+      drawPoint(location.coordinates, "market", location.name);
+    });
+
+    drawPoint(
+      locations.oman.coordinates,
+      "registered",
+      "OMAN"
+    );
+
+    drawConnectionLabels();
+  }
+
+  function animate(timestamp) {
+    if (!animationStart) animationStart = timestamp;
+
+    const elapsed = timestamp - animationStart;
+    const duration = 1800;
+
+    const progress = Math.min(elapsed / duration, 1);
+
+    drawScene(progress);
+
+    if (progress < 1) {
+      animationFrame = requestAnimationFrame(animate);
+    } else {
+      animationFrame = null;
+    }
+  }
+
+  function startAnimation() {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      drawScene(1);
+      return;
+    }
+
+    if (animationFrame) {
+      cancelAnimationFrame(animationFrame);
+    }
+
+    animationStart = 0;
+    animationFrame = requestAnimationFrame(animate);
+  }
+
+  async function initialize() {
+    try {
+      await loadDependencies();
+
+      const world = await loadWorldData();
+
+      worldFeatures = topojson.feature(
+        world,
+        world.objects.countries
+      ).features;
+
+      borderFeatures = topojson.mesh(
+        world,
+        world.objects.countries,
+        (a, b) => a !== b
+      );
+
+      resizeCanvas();
+      startAnimation();
+      hideLoading();
+
+      if ("ResizeObserver" in window) {
+        resizeObserver = new ResizeObserver(() => {
+          resizeCanvas();
+        });
+
+        resizeObserver.observe(canvas.parentElement);
+      } else {
+        window.addEventListener("resize", resizeCanvas);
+      }
+
+    } catch (error) {
+      console.error("Azadipour global map:", error);
+      showError("GLOBAL MAP TEMPORARILY UNAVAILABLE");
+    }
+  }
+
+  initialize();
 
 })();
