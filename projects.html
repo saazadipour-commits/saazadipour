@@ -1,622 +1,565 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="canonical" href="https://azadipourmedical.com/projects.html" />
+  <title>Projects & Opportunities | Azadipour</title>
+  <meta name="description" content="Explore Azadipour's approach to hospital projects, medical equipment procurement opportunities and international healthcare technology development.">
+  <link rel="canonical" href="https://azadipourmedical.com/projects.html">
+  <meta name="theme-color" content="#08090b">
 
-    <meta name="description"
-        content="Discuss hospital development, medical equipment sourcing, robotic surgery systems and healthcare technology projects with Azadipour.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <meta name="theme-color" content="#050505">
-
-    <meta property="og:title" content="Hospital Projects | Azadipour">
-    <meta property="og:description"
-        content="Explore medical technology sourcing and equipment opportunities for hospitals and healthcare projects.">
-    <meta property="og:type" content="website">
-
-    <title>Hospital Projects | Azadipour</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
-        rel="stylesheet">
-
-    <link rel="stylesheet" href="style.css">
-
-    <style>
-        /* Project form styles — scoped to this page */
-
-        .project-form {
-            max-width: 1050px;
-            margin: 0 auto;
-            padding: 45px;
-            background: #0b0b0b;
-            border: 1px solid rgba(255, 255, 255, 0.10);
-        }
-
-        .form-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 28px;
-            margin-bottom: 35px;
-        }
-
-        .form-field {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            min-width: 0;
-        }
-
-        .form-field.full {
-            grid-column: 1 / -1;
-        }
-
-        .form-field label {
-            color: var(--gold);
-            font-size: 9px;
-            font-weight: 500;
-            letter-spacing: 2px;
-            line-height: 1.6;
-        }
-
-        .form-field input,
-        .form-field select,
-        .form-field textarea {
-            width: 100%;
-            min-height: 52px;
-            padding: 15px 16px;
-            color: var(--white);
-            background: #080808;
-            border: 1px solid rgba(255, 255, 255, 0.16);
-            border-radius: 0;
-            font-size: 13px;
-            font-weight: 300;
-            outline: none;
-            transition: border-color 0.25s ease;
-        }
-
-        .form-field textarea {
-            min-height: 130px;
-            resize: vertical;
-            line-height: 1.7;
-        }
-
-        .form-field input:focus,
-        .form-field select:focus,
-        .form-field textarea:focus {
-            border-color: var(--gold);
-        }
-
-        .form-field input::placeholder,
-        .form-field textarea::placeholder {
-            color: #77736c;
-        }
-
-        .form-field select option {
-            color: var(--white);
-            background: #080808;
-        }
-
-        .project-form .luxury-button {
-            cursor: pointer;
-            background: transparent;
-        }
-
-        .project-form .luxury-button:hover {
-            background: var(--white);
-        }
-
-        .form-note {
-            margin-top: 22px;
-            color: var(--gray);
-            font-size: 11px;
-            line-height: 1.8;
-        }
-
-        .project-intro-note {
-            max-width: 760px;
-            margin-top: 30px;
-            padding-left: 20px;
-            border-left: 1px solid var(--gold);
-            color: var(--gray);
-            font-size: 13px;
-            line-height: 1.9;
-        }
-
-        @media (max-width: 700px) {
-            .project-form {
-                padding: 25px 20px;
-            }
-
-            .form-grid {
-                grid-template-columns: 1fr;
-                gap: 23px;
-            }
-
-            .form-field.full {
-                grid-column: auto;
-            }
-
-            .project-form .luxury-button {
-                width: 100%;
-                padding: 12px 15px;
-                letter-spacing: 1.5px;
-                text-align: center;
-            }
-        }
-    </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- HEADER -->
+  <header class="site-header">
+    <a href="index.html" class="brand" aria-label="Azadipour Home">
+      <span class="brand-name">AZADIPOUR</span>
+      <span class="brand-caption">MEDICAL TECHNOLOGY & HOSPITAL SOLUTIONS</span>
+    </a>
 
-    <header class="site-header">
-        <div class="nav-container">
+    <button class="menu-toggle" id="menuToggle"
+            aria-label="Open navigation" aria-expanded="false">
+      <span></span>
+      <span></span>
+    </button>
 
-            <a href="index.html" class="brand" aria-label="Azadipour Home">
-                <img src="assets/logo-transparent.png" alt="Azadipour SA">
-            </a>
+    <nav class="main-nav" id="mainNav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="global-presence.html">Global Presence</a>
+      <a href="medical.html">Medical Technology</a>
+      <a href="partners.html">Partnerships</a>
+      <a href="projects.html" class="active">Projects</a>
+      <a href="contact.html" class="nav-contact">Contact</a>
+    </nav>
+  </header>
 
-            <input type="checkbox" id="menu-toggle" class="menu-toggle">
+  <main>
 
-            <label for="menu-toggle" class="menu-button" aria-label="Toggle navigation menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </label>
+    <!-- HERO -->
+    <section class="inner-hero projects-hero">
+      <div class="inner-hero-content">
+        <span class="eyebrow">PROJECTS & BUSINESS DEVELOPMENT</span>
 
-            <nav class="main-nav" aria-label="Main navigation">
-                <a href="index.html">Home</a>
-                <a href="medical.html">Medical Solutions</a>
-                <a href="cardiac.html">Cardiac Surgery</a>
-                <a href="robotic.html">Robotic Surgery</a>
-                <a href="projects.html" class="active" aria-current="page">Hospital Projects</a>
-                <a href="partners.html">Global Partners</a>
-                <a href="contact.html">Contact</a>
-            </nav>
+        <h1>Projects & <span>Opportunities</span></h1>
 
+        <p>
+          Identifying healthcare requirements, evaluating suitable
+          technologies and supporting the development of medical
+          equipment and hospital solution opportunities.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#project-areas" class="btn btn-primary">
+            Explore Our Focus
+          </a>
+
+          <a href="contact.html" class="btn btn-outline">
+            Submit an Enquiry
+          </a>
         </div>
-    </header>
+      </div>
 
+      <div class="inner-hero-decoration"></div>
+    </section>
 
-    <main>
 
-        <!-- HERO -->
+    <!-- INTRODUCTION -->
+    <section class="section">
+      <div class="section-label">01 / PROJECT DEVELOPMENT APPROACH</div>
 
-        <section class="robotic-page-hero">
+      <div class="global-intro-grid">
 
-            <div
-                class="robotic-page-image"
-                style="background-image: url('assets/hospital-project.jpg');"
-                aria-hidden="true">
-            </div>
-
-            <div class="robotic-page-overlay" aria-hidden="true"></div>
-
-            <div class="robotic-page-content">
-
-                <div class="eyebrow">
-                    AZADIPOUR · HOSPITAL PROJECTS
-                </div>
-
-                <h1>
-                    Every Project.
-                    <br>
-                    <em>A Clearer Path.</em>
-                </h1>
-
-                <p>
-                    From hospital development and surgical departments
-                    to advanced medical equipment, share your project
-                    requirements to explore potential sourcing and
-                    technology solutions.
-                </p>
-
-                <div class="hero-actions">
-                    <a href="#project-inquiry" class="luxury-button">
-                        SUBMIT AN INQUIRY
-                    </a>
-
-                    <a href="medical.html" class="luxury-button outline">
-                        EXPLORE MEDICAL SOLUTIONS
-                    </a>
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- PROJECT INQUIRY -->
-
-        <section class="section" id="project-inquiry">
-
-            <div class="section-container">
-
-                <div class="section-heading">
-
-                    <div class="intro-label">
-                        01 / PROJECT INQUIRY
-                    </div>
-
-                    <div>
-                        <h2>
-                            Tell us about
-                            <br>
-                            your <em>project.</em>
-                        </h2>
-
-                        <p>
-                            Provide the available details below.
-                            This information helps establish the
-                            project scope and identify the next
-                            appropriate discussion.
-                        </p>
-                    </div>
-
-                </div>
-
-                <form class="project-form" id="project-form">
-
-                    <div class="form-grid">
-
-                        <div class="form-field">
-                            <label for="organization">HOSPITAL / ORGANIZATION *</label>
-                            <input
-                                type="text"
-                                id="organization"
-                                name="Organization"
-                                autocomplete="organization"
-                                required
-                                placeholder="Organization name">
-                        </div>
-
-                        <div class="form-field">
-                            <label for="country">PROJECT COUNTRY *</label>
-                            <input
-                                type="text"
-                                id="country"
-                                name="Country"
-                                autocomplete="country-name"
-                                required
-                                placeholder="e.g. Oman, Saudi Arabia">
-                        </div>
-
-                        <div class="form-field">
-                            <label for="project-type">PROJECT TYPE *</label>
-                            <select id="project-type" name="Project type" required>
-                                <option value="">Select project type</option>
-                                <option>Hospital Development</option>
-                                <option>Cardiac Center</option>
-                                <option>Cardiac Surgery Department</option>
-                                <option>Robotic Surgery Center</option>
-                                <option>Operating Room</option>
-                                <option>ICU / CCU</option>
-                                <option>Medical Equipment Procurement</option>
-                                <option>Diagnostic Imaging</option>
-                                <option>Hospital Expansion or Modernization</option>
-                                <option>Other</option>
-                            </select>
-                        </div>
-
-                        <div class="form-field">
-                            <label for="contact-person">CONTACT PERSON *</label>
-                            <input
-                                type="text"
-                                id="contact-person"
-                                name="Contact person"
-                                autocomplete="name"
-                                required
-                                placeholder="Full name">
-                        </div>
-
-                        <div class="form-field">
-                            <label for="email">BUSINESS EMAIL *</label>
-                            <input
-                                type="email"
-                                id="email"
-                                name="Reply email"
-                                autocomplete="email"
-                                required
-                                placeholder="name@organization.com">
-                        </div>
-
-                        <div class="form-field">
-                            <label for="phone">PHONE / WHATSAPP</label>
-                            <input
-                                type="tel"
-                                id="phone"
-                                name="Phone"
-                                autocomplete="tel"
-                                placeholder="Include country code">
-                        </div>
-
-                        <div class="form-field">
-                            <label for="timeline">EXPECTED PROJECT TIMELINE</label>
-                            <select id="timeline" name="Expected timeline">
-                                <option value="">Select if known</option>
-                                <option>Immediate requirement</option>
-                                <option>Within 3 months</option>
-                                <option>Within 6 months</option>
-                                <option>Within 12 months</option>
-                                <option>Long-term planning</option>
-                                <option>Not yet determined</option>
-                            </select>
-                        </div>
-
-                        <div class="form-field">
-                            <label for="budget">ESTIMATED BUDGET (OPTIONAL)</label>
-                            <select id="budget" name="Estimated budget">
-                                <option value="">Prefer not to specify</option>
-                                <option>Under USD 100,000</option>
-                                <option>USD 100,000–500,000</option>
-                                <option>USD 500,000–1 million</option>
-                                <option>USD 1–5 million</option>
-                                <option>Over USD 5 million</option>
-                                <option>To be determined</option>
-                            </select>
-                        </div>
-
-                        <div class="form-field full">
-                            <label for="equipment">REQUIRED EQUIPMENT / TECHNOLOGY *</label>
-                            <textarea
-                                id="equipment"
-                                name="Required equipment"
-                                rows="5"
-                                required
-                                placeholder="Describe the equipment, technologies, quantities or specifications required."></textarea>
-                        </div>
-
-                        <div class="form-field full">
-                            <label for="details">PROJECT DETAILS</label>
-                            <textarea
-                                id="details"
-                                name="Additional project details"
-                                rows="5"
-                                placeholder="Share project scope, facility type, procurement stage, technical specifications or other relevant information."></textarea>
-                        </div>
-
-                    </div>
-
-                    <button type="submit" class="luxury-button">
-                        PREPARE PROJECT EMAIL →
-                    </button>
-
-                    <p class="form-note">
-                        Selecting this button opens your default email application
-                        with the project details prepared for review. Your email
-                        application must support composing a message. The inquiry
-                        is not sent automatically.
-                    </p>
-
-                </form>
-
-                <p class="project-intro-note">
-                    All project discussions are subject to verification of
-                    requirements, supplier capabilities, product availability,
-                    applicable regulatory approvals and mutually agreed terms.
-                    Submission of an inquiry does not establish a supply,
-                    distribution or representation agreement.
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <!-- PROJECT AREAS -->
-
-        <section class="robotic-solutions">
-
-            <div class="section-container">
-
-                <div class="section-heading">
-
-                    <div class="intro-label">
-                        02 / AREAS OF INTEREST
-                    </div>
-
-                    <div>
-                        <h2>
-                            Medical technology
-                            <br>
-                            for <em>complex needs.</em>
-                        </h2>
-
-                        <p>
-                            Explore potential sourcing opportunities
-                            across medical equipment and healthcare
-                            technology categories.
-                        </p>
-                    </div>
-
-                </div>
-
-                <div class="robotic-solution-grid">
-
-                    <article class="robotic-solution-card">
-                        <span>01 / SURGICAL TECHNOLOGY</span>
-                        <h3>Robotic<br>Surgery</h3>
-                        <p>
-                            Surgical robotic systems, instruments,
-                            visualization and complementary technologies.
-                        </p>
-                    </article>
-
-                    <article class="robotic-solution-card">
-                        <span>02 / CARDIAC CARE</span>
-                        <h3>Cardiac<br>Technology</h3>
-                        <p>
-                            Equipment and technologies relevant to
-                            cardiac surgery departments and specialized
-                            cardiac centers.
-                        </p>
-                    </article>
-
-                    <article class="robotic-solution-card">
-                        <span>03 / HOSPITAL INFRASTRUCTURE</span>
-                        <h3>Operating<br>Rooms</h3>
-                        <p>
-                            Operating room equipment, surgical lighting,
-                            integration systems and related technology.
-                        </p>
-                    </article>
-
-                    <article class="robotic-solution-card">
-                        <span>04 / CRITICAL CARE</span>
-                        <h3>ICU / CCU</h3>
-                        <p>
-                            Critical care equipment requirements for
-                            intensive care and coronary care facilities.
-                        </p>
-                    </article>
-
-                    <article class="robotic-solution-card">
-                        <span>05 / DIAGNOSTICS</span>
-                        <h3>Diagnostic<br>Systems</h3>
-                        <p>
-                            Medical imaging and diagnostic technology
-                            opportunities according to facility needs.
-                        </p>
-                    </article>
-
-                    <article class="robotic-solution-card">
-                        <span>06 / HEALTHCARE DEVELOPMENT</span>
-                        <h3>Hospital<br>Projects</h3>
-                        <p>
-                            Medical equipment planning and sourcing
-                            discussions for new facilities, expansions
-                            and modernization projects.
-                        </p>
-                    </article>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- FINAL CTA -->
-
-        <section class="final-cta">
-
-            <div class="section-container">
-
-                <div class="intro-label">
-                    AZADIPOUR · MEDICAL TECHNOLOGY & SOURCING
-                </div>
-
-                <h2>
-                    Start with a
-                    <br>
-                    <em>conversation.</em>
-                </h2>
-
-                <p>
-                    Have a defined equipment requirement or an early-stage
-                    hospital project? Contact Azadipour to discuss the
-                    opportunity and possible next steps.
-                </p>
-
-                <a href="contact.html" class="luxury-button">
-                    CONTACT AZADIPOUR →
-                </a>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <!-- FOOTER -->
-
-    <footer class="site-footer">
-
-        <div class="footer-container">
-
-            <div class="footer-brand">
-                <a href="index.html" aria-label="Azadipour Home">
-                    <img src="assets/logo-transparent.png" alt="Azadipour SA">
-                </a>
-
-                <p>
-                    Medical Technology &amp;<br>
-                    Hospital Solutions.
-                </p>
-
-                <p style="margin-top:15px;">
-                    <a href="mailto:info@azadipourmedical.com">
-                        info@azadipourmedical.com
-                    </a>
-                </p>
-            </div>
-
-            <div class="footer-column">
-                <h4>NAVIGATION</h4>
-                <a href="index.html">Home</a>
-                <a href="medical.html">Medical Solutions</a>
-                <a href="cardiac.html">Cardiac Surgery</a>
-                <a href="robotic.html">Robotic Surgery</a>
-            </div>
-
-            <div class="footer-column">
-                <h4>PROJECTS &amp; CONTACT</h4>
-                <a href="projects.html">Hospital Projects</a>
-                <a href="partners.html">Global Partners</a>
-                <a href="contact.html">Contact</a>
-            </div>
-
+        <div>
+          <h2 class="section-heading">
+            Understanding Needs.<br>
+            <span>Developing Opportunities.</span>
+          </h2>
         </div>
 
-        <div class="footer-bottom">
-            <span>&copy; 2026 Azadipour. All rights reserved.</span>
-            <span>Oman · Saudi Arabia · Qatar · Bahrain · GCC</span>
+        <div class="global-intro-copy">
+          <p>
+            Azadipour focuses on identifying and evaluating business
+            opportunities in the healthcare and medical technology sectors.
+          </p>
+
+          <p>
+            Our approach begins with understanding the requirements of
+            healthcare organizations and identifying manufacturers or
+            suppliers whose technologies may be suitable for those needs.
+          </p>
+
+          <p>
+            We aim to facilitate communication and support commercial
+            coordination between relevant parties, subject to project
+            conditions and agreed responsibilities.
+          </p>
         </div>
 
-    </footer>
+      </div>
+    </section>
 
 
-    <!-- EMAIL COMPOSITION -->
-    <script>
-        (function () {
-            const form = document.getElementById("project-form");
+    <!-- PROJECT AREAS -->
+    <section class="section projects-focus-section" id="project-areas">
+      <div class="section-label">02 / PROJECT FOCUS AREAS</div>
 
-            if (!form) return;
+      <h2 class="section-heading">
+        Selected Healthcare <span>Opportunities</span>
+      </h2>
 
-            form.addEventListener("submit", function (event) {
-                event.preventDefault();
+      <p class="section-subtitle">
+        Areas where we evaluate potential hospital requirements,
+        procurement needs and technology opportunities.
+      </p>
 
-                if (!form.reportValidity()) return;
+      <div class="medical-area-grid">
 
-                const data = new FormData(form);
-                const lines = [];
+        <article class="medical-area-card">
+          <div class="medical-area-top">
+            <span class="medical-area-number">01</span>
+            <span class="medical-area-symbol">✳</span>
+          </div>
 
-                for (const [key, value] of data.entries()) {
-                    const cleanedValue = String(value).trim();
-                    lines.push(key + ": " + (cleanedValue || "Not specified"));
-                }
+          <span class="medical-area-label">ADVANCED SURGERY</span>
 
-                const subject = "Hospital Project Inquiry - Azadipour";
-                const body = lines.join("\n\n");
+          <h3>Robotic Surgery Projects</h3>
 
-                const recipient = "info@azadipourmedical.com";
-                const mailto = "mailto:" + recipient
-                    + "?subject=" + encodeURIComponent(subject)
-                    + "&body=" + encodeURIComponent(body);
+          <p>
+            Evaluating opportunities involving robotic-assisted surgical
+            systems and advanced surgical technologies for healthcare providers.
+          </p>
 
-                window.location.href = mailto;
-            });
-        })();
-    </script>
+          <ul>
+            <li>Robotic surgery platforms</li>
+            <li>Clinical technology evaluation</li>
+            <li>Hospital technology requirements</li>
+          </ul>
+
+          <a href="robotic.html" class="text-link">
+            Explore Robotic Surgery <span>↗</span>
+          </a>
+        </article>
+
+
+        <article class="medical-area-card">
+          <div class="medical-area-top">
+            <span class="medical-area-number">02</span>
+            <span class="medical-area-symbol">◎</span>
+          </div>
+
+          <span class="medical-area-label">CARDIOVASCULAR TECHNOLOGY</span>
+
+          <h3>Cardiac & Perfusion</h3>
+
+          <p>
+            Exploring medical equipment and technologies for cardiac surgery,
+            cardiovascular care and specialized clinical departments.
+          </p>
+
+          <ul>
+            <li>Perfusion systems</li>
+            <li>Cardiac surgery equipment</li>
+            <li>Cardiovascular technologies</li>
+          </ul>
+
+          <a href="cardiac.html" class="text-link">
+            Explore Cardiac Solutions <span>↗</span>
+          </a>
+        </article>
+
+
+        <article class="medical-area-card">
+          <div class="medical-area-top">
+            <span class="medical-area-number">03</span>
+            <span class="medical-area-symbol">⌬</span>
+          </div>
+
+          <span class="medical-area-label">OPERATING ROOM SOLUTIONS</span>
+
+          <h3>Smart Operating Rooms</h3>
+
+          <p>
+            Evaluating integrated operating room technologies and
+            digital solutions for modern surgical environments.
+          </p>
+
+          <ul>
+            <li>Operating room integration</li>
+            <li>Surgical visualization</li>
+            <li>Digital workflow systems</li>
+          </ul>
+
+          <a href="medical.html" class="text-link">
+            Explore Medical Technology <span>↗</span>
+          </a>
+        </article>
+
+
+        <article class="medical-area-card">
+          <div class="medical-area-top">
+            <span class="medical-area-number">04</span>
+            <span class="medical-area-symbol">▦</span>
+          </div>
+
+          <span class="medical-area-label">HOSPITAL EQUIPMENT</span>
+
+          <h3>Hospital Infrastructure</h3>
+
+          <p>
+            Supporting the evaluation of equipment and technology
+            requirements across hospital departments and facilities.
+          </p>
+
+          <ul>
+            <li>ICU and critical care</li>
+            <li>Medical equipment</li>
+            <li>Hospital systems</li>
+          </ul>
+
+          <a href="medical.html" class="text-link">
+            View Technology Areas <span>↗</span>
+          </a>
+        </article>
+
+
+        <article class="medical-area-card">
+          <div class="medical-area-top">
+            <span class="medical-area-number">05</span>
+            <span class="medical-area-symbol">◇</span>
+          </div>
+
+          <span class="medical-area-label">DIAGNOSTIC TECHNOLOGY</span>
+
+          <h3>Diagnostics & Monitoring</h3>
+
+          <p>
+            Evaluating diagnostic equipment and monitoring technologies
+            according to clinical and operational requirements.
+          </p>
+
+          <ul>
+            <li>Diagnostic equipment</li>
+            <li>Patient monitoring</li>
+            <li>Clinical technology systems</li>
+          </ul>
+
+          <a href="contact.html" class="text-link">
+            Discuss Requirements <span>↗</span>
+          </a>
+        </article>
+
+
+        <article class="medical-area-card">
+          <div class="medical-area-top">
+            <span class="medical-area-number">06</span>
+            <span class="medical-area-symbol">⌖</span>
+          </div>
+
+          <span class="medical-area-label">PROCUREMENT OPPORTUNITIES</span>
+
+          <h3>Medical Supply Projects</h3>
+
+          <p>
+            Exploring opportunities to match identified healthcare
+            requirements with suitable medical equipment suppliers.
+          </p>
+
+          <ul>
+            <li>Product sourcing</li>
+            <li>Supplier identification</li>
+            <li>Commercial coordination</li>
+          </ul>
+
+          <a href="contact.html" class="text-link">
+            Submit an Enquiry <span>↗</span>
+          </a>
+        </article>
+
+      </div>
+    </section>
+
+
+    <!-- PROCESS -->
+    <section class="medical-process-section">
+      <div class="section-label">03 / PROJECT DEVELOPMENT FRAMEWORK</div>
+
+      <h2 class="section-heading">
+        From Requirement to <span>Opportunity</span>
+      </h2>
+
+      <p class="section-subtitle">
+        A structured framework for evaluating potential healthcare projects.
+      </p>
+
+      <div class="medical-process-grid">
+
+        <div class="medical-process-item">
+          <span>01</span>
+          <h3>Requirement</h3>
+          <p>
+            Understand the healthcare organization's needs,
+            technical specifications and intended application.
+          </p>
+        </div>
+
+        <div class="medical-process-item">
+          <span>02</span>
+          <h3>Assessment</h3>
+          <p>
+            Evaluate project scope, product suitability,
+            procurement conditions and relevant requirements.
+          </p>
+        </div>
+
+        <div class="medical-process-item">
+          <span>03</span>
+          <h3>Supplier Matching</h3>
+          <p>
+            Identify potential manufacturers and suppliers
+            whose offerings may meet the requirements.
+          </p>
+        </div>
+
+        <div class="medical-process-item">
+          <span>04</span>
+          <h3>Coordination</h3>
+          <p>
+            Facilitate communication and support agreed
+            commercial activities between relevant parties.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- PROJECT CRITERIA -->
+    <section class="section">
+      <div class="section-label">04 / PROJECT EVALUATION</div>
+
+      <div class="medical-principles-grid">
+
+        <div>
+          <h2 class="section-heading">
+            Evaluating the Right <span>Opportunity.</span>
+          </h2>
+        </div>
+
+        <div class="medical-principles-copy">
+
+          <p>
+            Each opportunity is considered individually. We recognize
+            that healthcare procurement requires careful attention to
+            clinical, technical, commercial and regulatory factors.
+          </p>
+
+          <div class="principle-list">
+
+            <div>
+              <span>01</span>
+              Clinical relevance and intended application
+            </div>
+
+            <div>
+              <span>02</span>
+              Technical specifications and product suitability
+            </div>
+
+            <div>
+              <span>03</span>
+              Regulatory and registration considerations
+            </div>
+
+            <div>
+              <span>04</span>
+              Supplier capabilities and product availability
+            </div>
+
+            <div>
+              <span>05</span>
+              Commercial terms and procurement requirements
+            </div>
+
+            <div>
+              <span>06</span>
+              Installation, training and after-sales considerations
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- MARKETS -->
+    <section class="section projects-markets-section">
+      <div class="section-label">05 / MARKET DEVELOPMENT</div>
+
+      <h2 class="section-heading">
+        Regional Focus. <span>International Opportunities.</span>
+      </h2>
+
+      <p class="section-subtitle">
+        Our business development approach is centered on Oman,
+        selected GCC markets and opportunities in Europe and beyond.
+      </p>
+
+      <div class="presence-grid">
+
+        <article class="presence-card presence-card-featured">
+          <span class="presence-number">01</span>
+
+          <div class="presence-icon">⌖</div>
+
+          <span class="presence-tag">REGISTERED BUSINESS BASE</span>
+
+          <h3>Oman</h3>
+
+          <p>
+            Our registered business base and foundation for regional
+            business development and international cooperation.
+          </p>
+
+          <strong>Oman</strong>
+        </article>
+
+
+        <article class="presence-card">
+          <span class="presence-number">02</span>
+
+          <div class="presence-icon">◎</div>
+
+          <span class="presence-tag">REGIONAL DEVELOPMENT</span>
+
+          <h3>GCC Markets</h3>
+
+          <p>
+            Exploring healthcare requirements and business opportunities
+            across Saudi Arabia, UAE, Qatar, Bahrain and Kuwait.
+          </p>
+
+          <strong>GCC</strong>
+        </article>
+
+
+        <article class="presence-card">
+          <span class="presence-number">03</span>
+
+          <div class="presence-icon">◇</div>
+
+          <span class="presence-tag">INTERNATIONAL DEVELOPMENT</span>
+
+          <h3>Europe & Beyond</h3>
+
+          <p>
+            Evaluating selected European and international markets
+            for future business and technology cooperation.
+          </p>
+
+          <strong>International</strong>
+        </article>
+
+      </div>
+
+      <a href="global-presence.html" class="text-link">
+        Explore Global Presence <span>↗</span>
+      </a>
+    </section>
+
+
+    <!-- CTA -->
+    <section class="global-cta">
+
+      <div>
+        <span class="eyebrow">HAVE A PROJECT IN MIND?</span>
+
+        <h2>
+          Let's Discuss Your <span>Requirements.</span>
+        </h2>
+
+        <p>
+          We welcome enquiries from hospitals, healthcare organizations,
+          manufacturers and medical technology suppliers.
+        </p>
+      </div>
+
+      <a href="contact.html" class="btn btn-primary">
+        Contact Azadipour
+      </a>
+
+    </section>
+
+  </main>
+
+
+  <footer class="site-footer">
+
+    <div class="footer-main">
+
+      <div class="footer-brand">
+        <a href="index.html" class="brand">
+          <span class="brand-name">AZADIPOUR</span>
+          <span class="brand-caption">MEDICAL TECHNOLOGY & HOSPITAL SOLUTIONS</span>
+        </a>
+
+        <p>
+          Connecting healthcare organizations and international partners
+          with medical technology and hospital solutions.
+        </p>
+      </div>
+
+      <div class="footer-column">
+        <h4>COMPANY</h4>
+        <a href="about.html">About Us</a>
+        <a href="global-presence.html">Global Presence</a>
+        <a href="partners.html">Partnerships</a>
+        <a href="projects.html">Projects</a>
+      </div>
+
+      <div class="footer-column">
+        <h4>EXPERTISE</h4>
+        <a href="medical.html">Medical Technology</a>
+        <a href="robotic.html">Robotic Surgery</a>
+        <a href="cardiac.html">Cardiac Solutions</a>
+        <a href="contact.html">Contact</a>
+      </div>
+
+      <div class="footer-column">
+        <h4>CONTACT</h4>
+        <a href="mailto:info@azadipourmedical.com">
+          info@azadipourmedical.com
+        </a>
+        <a href="tel:+96891646294">+968 9164 6294</a>
+        <a href="https://azadipourmedical.com">
+          azadipourmedical.com
+        </a>
+        <span>Oman</span>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+      <span>
+        © <span id="currentYear"></span> Azadipour. All rights reserved.
+      </span>
+
+      <span>GCC · EUROPE · INTERNATIONAL</span>
+
+    </div>
+
+  </footer>
+
+  <script src="script.js"></script>
 
 </body>
 </html>
