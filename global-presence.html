@@ -2,301 +2,178 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Global Presence | Azadipour</title>
-    <meta name="description" content="Explore Azadipour's international presence, registered entity and target markets through an interactive world map.">
-    <link rel="canonical" href="https://azadipourmedical.com/global-presence.html">
-    <meta name="theme-color" content="#08090b">
+  <title>Global Presence | Azadipour</title>
+  <meta name="description" content="Explore Azadipour's international market presence and global healthcare technology network.">
+  <link rel="canonical" href="https://azadipourmedical.com/global-presence.html">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-    <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="global-presence.css">
 </head>
+<body class="global-page">
 
-<body>
-
-<header class="site-header">
-    <a href="index.html" class="brand" aria-label="Azadipour home">
-        <img src="assets/logo-transparent.png" alt="Azadipour Logo">
-        <span>AZADIPOUR</span>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Azadipour Home">
+      <span class="brand-name">AZADIPOUR</span>
+      <span class="brand-subtitle">MEDICAL TECHNOLOGY & HOSPITAL SOLUTIONS</span>
     </a>
 
-    <button class="menu-toggle" id="menuToggle"
-        aria-label="Open navigation menu"
-        aria-expanded="false"
-        aria-controls="mainNav">
-        <span></span>
-        <span></span>
-        <span></span>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
     </button>
 
     <nav class="main-nav" id="mainNav">
-        <a href="index.html">Home</a>
-        <a href="about.html">About Us</a>
-        <a href="global-presence.html" class="active">Global Presence</a>
-        <a href="medical.html">Medical Technology</a>
-        <a href="partners.html">Partnerships</a>
-        <a href="projects.html">Projects</a>
-        <a href="contact.html" class="nav-contact">Contact</a>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="medical.html">Medical</a>
+      <a href="global-presence.html" class="active">Global Presence</a>
+      <a href="partners.html">Partners</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html">Contact</a>
     </nav>
-</header>
+  </header>
 
-<main>
-
-    <section class="inner-hero global-hero">
-        <div class="inner-hero-content">
-            <span class="eyebrow">OUR INTERNATIONAL FOOTPRINT</span>
-            <h1>Global <span>Presence</span></h1>
-            <p>
-                An international perspective connecting healthcare
-                organizations, medical technology providers and
-                business opportunities across selected markets.
-            </p>
-        </div>
-        <div class="inner-hero-decoration"></div>
-    </section>
-
-    <section class="section global-intro-section">
-        <div class="global-intro-grid">
-            <div>
-                <span class="section-label">A GLOBAL PERSPECTIVE</span>
-                <h2 class="section-heading">
-                    Connecting Markets.<br>
-                    <span>Building Relationships.</span>
-                </h2>
-            </div>
-
-            <div class="global-intro-copy">
-                <p>
-                    Azadipour is an Oman-registered healthcare and
-                    medical technology company developing business
-                    relationships across the GCC and selected
-                    international markets.
-                </p>
-                <p>
-                    Our international development approach focuses on
-                    identifying market opportunities, understanding
-                    local healthcare requirements and establishing
-                    professional relationships with manufacturers,
-                    healthcare providers and institutional stakeholders.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <section class="interactive-map-section">
-        <div class="map-heading">
-            <span class="section-label">EXPLORE OUR INTERNATIONAL REACH</span>
-            <h2>Interactive <span>World Map</span></h2>
-            <p>
-                Select a continent, then select a country to explore
-                its relationship with Azadipour.
-            </p>
-        </div>
-
-        <div class="continent-selector" id="continentSelector">
-            <button class="continent-button active" data-continent="world">World</button>
-            <button class="continent-button" data-continent="africa">Africa</button>
-            <button class="continent-button" data-continent="asia">Asia</button>
-            <button class="continent-button" data-continent="europe">Europe</button>
-            <button class="continent-button" data-continent="north-america">North America</button>
-            <button class="continent-button" data-continent="south-america">South America</button>
-            <button class="continent-button" data-continent="oceania">Oceania</button>
-        </div>
-
-        <div class="interactive-map-layout">
-
-            <div class="map-frame">
-                <div id="worldMap" role="application"
-                    aria-label="Interactive world map. Select a country to view its status.">
-                    <div class="map-loading" id="mapLoading">
-                        Loading interactive world map...
-                    </div>
-                </div>
-
-                <div class="map-controls-note">
-                    <span>Drag to move</span>
-                    <span>Scroll or pinch to zoom</span>
-                    <span>Click a country to explore</span>
-                </div>
-            </div>
-
-            <aside class="country-information" id="countryInformation"
-                aria-live="polite">
-
-                <div class="country-info-default" id="countryInfoDefault">
-                    <span class="section-label">COUNTRY INFORMATION</span>
-                    <div class="country-info-symbol">◎</div>
-                    <h3>Select a Country</h3>
-                    <p>
-                        Choose a country on the map to view its
-                        current relationship with Azadipour.
-                    </p>
-                </div>
-
-                <div class="country-info-result" id="countryInfoResult" hidden>
-                    <span class="section-label">SELECTED COUNTRY</span>
-                    <h3 id="selectedCountryName">Country</h3>
-                    <span class="country-status" id="selectedCountryStatus">
-                        Status
-                    </span>
-                    <p id="selectedCountryDescription"></p>
-
-                    <div class="country-info-divider"></div>
-
-                    <div class="country-info-meta">
-                        <span>CONTINENT</span>
-                        <strong id="selectedCountryContinent">—</strong>
-                    </div>
-
-                    <div class="country-info-meta">
-                        <span>RELATIONSHIP</span>
-                        <strong id="selectedCountryRelationship">—</strong>
-                    </div>
-                </div>
-
-                <div class="map-legend-panel">
-                    <span class="section-label">MAP LEGEND</span>
-
-                    <div class="legend-item">
-                        <span class="legend-marker registered"></span>
-                        Registered Entity
-                    </div>
-
-                    <div class="legend-item">
-                        <span class="legend-marker office"></span>
-                        Corporate Office
-                    </div>
-
-                    <div class="legend-item">
-                        <span class="legend-marker partner"></span>
-                        Strategic Partner
-                    </div>
-
-                    <div class="legend-item">
-                        <span class="legend-marker target"></span>
-                        Target Market
-                    </div>
-
-                    <div class="legend-item">
-                        <span class="legend-marker neutral"></span>
-                        No Designated Status
-                    </div>
-                </div>
-
-            </aside>
-        </div>
-
-        <p class="map-disclaimer">
-            Map classifications indicate the current corporate status
-            or market-development focus of Azadipour. A target market
-            does not imply an established office, local subsidiary
-            or registered entity.
+  <main>
+    <section class="global-hero">
+      <div class="global-intro">
+        <span class="eyebrow">OUR INTERNATIONAL OUTLOOK</span>
+        <h1>Global <em>Presence</em></h1>
+        <p>
+          Connecting healthcare opportunities, medical technology
+          and international markets.
         </p>
+      </div>
+
+      <div class="globe-layout">
+        <div class="globe-stage">
+          <div class="globe-topline">
+            <span class="live-indicator"></span>
+            <span>AZADIPOUR GLOBAL NETWORK</span>
+            <span class="globe-coordinate">GLOBAL VIEW</span>
+          </div>
+
+          <div id="globeViz" aria-label="Interactive three-dimensional globe"></div>
+
+          <div class="globe-bottomline">
+            <span>ROTATE · EXPLORE · CONNECT</span>
+            <span>INTERACTIVE GLOBAL VIEW</span>
+          </div>
+        </div>
+
+        <aside class="global-panel">
+          <span class="panel-kicker">GLOBAL NETWORK</span>
+          <h2>Explore our<br><em>markets</em></h2>
+          <p class="panel-description">
+            Select a region or a highlighted country to explore
+            Azadipour's current business status.
+          </p>
+
+          <div class="region-selector">
+            <span class="selector-label">EXPLORE BY REGION</span>
+            <div class="region-buttons">
+              <button class="region-button active" data-region="all">World</button>
+              <button class="region-button" data-region="asia">Asia</button>
+              <button class="region-button" data-region="europe">Europe</button>
+              <button class="region-button" data-region="africa">Africa</button>
+              <button class="region-button" data-region="north-america">N. America</button>
+              <button class="region-button" data-region="south-america">S. America</button>
+              <button class="region-button" data-region="oceania">Oceania</button>
+            </div>
+          </div>
+
+          <div class="country-detail" aria-live="polite">
+            <span class="detail-label">COUNTRY INFORMATION</span>
+            <h3 id="countryName">Oman</h3>
+            <span class="status-tag registered" id="countryStatus">Registered Company</span>
+            <p id="countryDescription">
+              Azadipour is registered in the Sultanate of Oman.
+            </p>
+          </div>
+
+          <div class="network-legend">
+            <span class="selector-label">PRESENCE STATUS</span>
+            <div><i class="legend-dot registered-dot"></i> Registered company</div>
+            <div><i class="legend-dot target-dot"></i> Target market</div>
+          </div>
+        </aside>
+      </div>
+
+      <div class="global-statement">
+        <span class="statement-line"></span>
+        <p>
+          A regional foundation in Oman. An international perspective
+          across the GCC, Europe and selected global markets.
+        </p>
+        <span class="statement-line"></span>
+      </div>
     </section>
 
-    <section class="section presence-overview-section">
-        <span class="section-label">OUR CORPORATE FOOTPRINT</span>
-        <h2 class="section-heading">Presence & <span>Market Development</span></h2>
+    <section class="market-overview">
+      <div class="section-heading">
+        <span class="eyebrow">OUR STRATEGIC DIRECTION</span>
+        <h2>Markets & <em>Opportunities</em></h2>
+        <p>
+          Building connections across key healthcare markets
+          and evaluating opportunities for international growth.
+        </p>
+      </div>
 
-        <div class="presence-grid">
-            <article class="presence-card presence-card-featured">
-                <span class="presence-number">01</span>
-                <h3>Oman</h3>
-                <p>
-                    Azadipour's registered corporate base and
-                    starting point for regional business development.
-                </p>
-                <span class="presence-tag">Registered Entity</span>
-            </article>
+      <div class="market-cards">
+        <article class="market-card">
+          <span class="market-number">01</span>
+          <span class="market-category">REGISTERED BASE</span>
+          <h3>Oman</h3>
+          <p>Company registration and regional business foundation.</p>
+        </article>
 
-            <article class="presence-card">
-                <span class="presence-number">02</span>
-                <h3>GCC Markets</h3>
-                <p>
-                    Market development opportunities across Saudi Arabia,
-                    the UAE, Qatar, Bahrain and Kuwait.
-                </p>
-                <span class="presence-tag">Target Markets</span>
-            </article>
+        <article class="market-card">
+          <span class="market-number">02</span>
+          <span class="market-category">GCC MARKETS</span>
+          <h3>Gulf Cooperation Council</h3>
+          <p>Developing healthcare business opportunities across the GCC.</p>
+        </article>
 
-            <article class="presence-card">
-                <span class="presence-number">03</span>
-                <h3>Europe</h3>
-                <p>
-                    Exploring selected European opportunities,
-                    including Germany, for future business development.
-                </p>
-                <span class="presence-tag">Target Market</span>
-            </article>
-
-            <article class="presence-card">
-                <span class="presence-number">04</span>
-                <h3>International Markets</h3>
-                <p>
-                    Evaluating additional international markets
-                    according to technology, partnership and
-                    healthcare-sector opportunities.
-                </p>
-                <span class="presence-tag">Under Evaluation</span>
-            </article>
-        </div>
+        <article class="market-card">
+          <span class="market-number">03</span>
+          <span class="market-category">EUROPE</span>
+          <h3>Germany</h3>
+          <p>Evaluating selected European opportunities and partnerships.</p>
+        </article>
+      </div>
     </section>
 
     <section class="global-cta">
-        <span class="section-label">INTERNATIONAL COOPERATION</span>
-        <h2>Let's Explore New Opportunities</h2>
-        <p>
-            We welcome enquiries from healthcare organizations,
-            medical technology manufacturers and potential
-            business partners.
-        </p>
-        <a href="contact.html" class="btn btn-primary">Contact Azadipour</a>
+      <span class="eyebrow">LET'S CONNECT</span>
+      <h2>Building connections.<br><em>Expanding possibilities.</em></h2>
+      <a href="contact.html" class="global-cta-link">CONTACT AZADIPOUR <span>↗</span></a>
     </section>
+  </main>
 
-</main>
-
-<footer class="site-footer">
-    <div class="footer-main">
-        <div class="footer-brand">
-            <img src="assets/logo-transparent.png" alt="Azadipour">
-            <p>Medical Technology &amp; Hospital Solutions</p>
-            <p>
-                Connecting healthcare organizations with
-                international medical technology and hospital solutions.
-            </p>
-        </div>
-
-        <div class="footer-column">
-            <h4>Company</h4>
-            <a href="about.html">About Us</a>
-            <a href="global-presence.html">Global Presence</a>
-            <a href="partners.html">Partnerships</a>
-            <a href="projects.html">Projects</a>
-        </div>
-
-        <div class="footer-column">
-            <h4>Explore</h4>
-            <a href="medical.html">Medical Technology</a>
-            <a href="robotic.html">Robotic Surgery</a>
-            <a href="cardiac.html">Cardiac Technology</a>
-            <a href="contact.html">Contact</a>
-        </div>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <span class="footer-brand-name">AZADIPOUR</span>
+        <p>Medical Technology & Hospital Solutions</p>
+      </div>
+      <div class="footer-contact">
+        <a href="mailto:info@azadipourmedical.com">info@azadipourmedical.com</a>
+        <a href="https://azadipourmedical.com/">azadipourmedical.com</a>
+        <span>+968 9164 6294</span>
+      </div>
     </div>
-
     <div class="footer-bottom">
-        <span>© <span id="currentYear"></span> Azadipour. All rights reserved.</span>
-        <span>Oman · GCC · Europe · International</span>
+      <span>© <span id="currentYear"></span> Azadipour. All rights reserved.</span>
+      <span>GCC · EUROPE · INTERNATIONAL</span>
     </div>
-</footer>
+  </footer>
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="script.js"></script>
-
+  <script src="https://unpkg.com/globe.gl"></script>
+  <script src="global-presence.js"></script>
 </body>
 </html>
