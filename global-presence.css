@@ -1,0 +1,564 @@
+
+.global-page {
+  background: #080a0d;
+  color: #e9e8e4;
+  font-family: "Inter", sans-serif;
+}
+
+.global-page .site-header {
+  position: relative;
+  z-index: 20;
+}
+
+.global-page .brand {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+}
+
+.global-page .brand-name,
+.footer-brand-name {
+  color: #f0eee8;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 29px;
+  letter-spacing: 5px;
+}
+
+.global-page .brand-subtitle {
+  color: #9b927f;
+  font-size: 8px;
+  letter-spacing: 1.7px;
+  margin-top: 3px;
+}
+
+.global-page .main-nav a.active {
+  color: #d4b77b;
+}
+
+.global-hero {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 105px 5.5% 75px;
+}
+
+.global-intro {
+  max-width: 720px;
+  margin: 0 auto 65px;
+  text-align: center;
+}
+
+.eyebrow,
+.panel-kicker,
+.selector-label,
+.detail-label,
+.market-category {
+  color: #b49a68;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+}
+
+.global-intro h1 {
+  margin: 20px 0 12px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(55px, 8vw, 100px);
+  font-weight: 400;
+  letter-spacing: -2px;
+  line-height: .95;
+}
+
+.global-intro h1 em,
+.global-panel h2 em,
+.section-heading h2 em,
+.global-cta h2 em {
+  color: #c7ad78;
+  font-weight: 400;
+}
+
+.global-intro p {
+  max-width: 520px;
+  margin: 22px auto 0;
+  color: #999a9b;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.globe-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(285px, .72fr);
+  gap: 35px;
+  align-items: center;
+}
+
+.globe-stage {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  min-height: 620px;
+  border: 1px solid rgba(193, 166, 111, .18);
+  border-radius: 3px;
+  background:
+    radial-gradient(ellipse at 50% 48%, rgba(25, 39, 51, .55), transparent 60%),
+    linear-gradient(145deg, #0b1118, #080a0d 65%);
+}
+
+.globe-stage::before {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, black, transparent 90%);
+}
+
+.globe-topline,
+.globe-bottomline {
+  position: absolute;
+  z-index: 3;
+  left: 25px;
+  right: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #777d83;
+  font-size: 9px;
+  letter-spacing: 1.8px;
+}
+
+.globe-topline {
+  top: 25px;
+}
+
+.globe-bottomline {
+  bottom: 22px;
+}
+
+.live-indicator {
+  width: 7px;
+  height: 7px;
+  margin-right: 9px;
+  border-radius: 50%;
+  background: #c8aa70;
+  box-shadow: 0 0 12px #c8aa70;
+}
+
+.globe-topline .live-indicator {
+  flex: 0 0 7px;
+}
+
+.globe-topline span:nth-child(2) {
+  margin-right: auto;
+}
+
+.globe-coordinate {
+  color: #b8a47e;
+}
+
+#globeViz {
+  position: absolute;
+  inset: 45px 0 40px;
+  z-index: 1;
+}
+
+#globeViz canvas {
+  display: block;
+  outline: none;
+}
+
+.global-panel {
+  padding: 32px 27px;
+  border: 1px solid rgba(193, 166, 111, .18);
+  background: linear-gradient(145deg, #10151b, #0a0d11);
+}
+
+.global-panel h2 {
+  margin: 16px 0;
+  color: #eeeae2;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 46px;
+  font-weight: 400;
+  line-height: .98;
+}
+
+.panel-description {
+  color: #92969b;
+  font-size: 12px;
+  line-height: 1.9;
+}
+
+.region-selector {
+  margin-top: 34px;
+}
+
+.region-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.region-button {
+  padding: 9px 12px;
+  border: 1px solid #30363d;
+  border-radius: 2px;
+  background: transparent;
+  color: #aeb1b3;
+  font: inherit;
+  font-size: 10px;
+  cursor: pointer;
+  transition: .25s ease;
+}
+
+.region-button:hover,
+.region-button.active {
+  border-color: #b99c67;
+  background: rgba(185, 156, 103, .12);
+  color: #e3c58e;
+}
+
+.country-detail {
+  min-height: 175px;
+  margin-top: 30px;
+  padding: 20px 0;
+  border-top: 1px solid rgba(255,255,255,.1);
+  border-bottom: 1px solid rgba(255,255,255,.1);
+}
+
+.country-detail h3 {
+  margin: 12px 0 10px;
+  color: #f0eee8;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 31px;
+  font-weight: 400;
+}
+
+.status-tag {
+  display: inline-block;
+  padding: 6px 9px;
+  border: 1px solid rgba(190, 160, 104, .4);
+  color: #d6bb83;
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.status-tag.target {
+  border-color: rgba(120, 171, 193, .4);
+  color: #9bc6d7;
+}
+
+.status-tag.neutral {
+  border-color: #42484e;
+  color: #92999f;
+}
+
+.country-detail p {
+  margin: 13px 0 0;
+  color: #9a9da1;
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+.network-legend {
+  display: grid;
+  gap: 12px;
+  margin-top: 25px;
+  color: #a9adb1;
+  font-size: 10px;
+}
+
+.network-legend .selector-label {
+  margin-bottom: 3px;
+}
+
+.legend-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 9px;
+  border-radius: 50%;
+}
+
+.registered-dot {
+  background: #d8b878;
+  box-shadow: 0 0 8px #d8b878;
+}
+
+.target-dot {
+  background: #80b7ca;
+  box-shadow: 0 0 8px #80b7ca;
+}
+
+.global-statement {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  max-width: 900px;
+  margin: 65px auto 0;
+  text-align: center;
+}
+
+.global-statement p {
+  max-width: 650px;
+  color: #a7a8a7;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 23px;
+  line-height: 1.5;
+}
+
+.statement-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #927c55);
+}
+
+.statement-line:last-child {
+  transform: rotate(180deg);
+}
+
+.market-overview {
+  padding: 95px 6%;
+  border-top: 1px solid rgba(255,255,255,.07);
+  background: #0c1015;
+}
+
+.section-heading {
+  max-width: 680px;
+  margin: 0 auto 45px;
+  text-align: center;
+}
+
+.section-heading h2 {
+  margin: 17px 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(39px, 5vw, 58px);
+  font-weight: 400;
+}
+
+.section-heading p {
+  color: #92969b;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.market-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  max-width: 1150px;
+  margin: 0 auto;
+}
+
+.market-card {
+  position: relative;
+  min-height: 220px;
+  padding: 28px;
+  border: 1px solid rgba(193,166,111,.16);
+  background: linear-gradient(145deg, #11171e, #0b0e12);
+}
+
+.market-number {
+  position: absolute;
+  top: 24px;
+  right: 25px;
+  color: #51565b;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 25px;
+}
+
+.market-card h3 {
+  margin: 25px 0 12px;
+  color: #e7e4dc;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 30px;
+  font-weight: 400;
+}
+
+.market-card p {
+  color: #989da1;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.global-cta {
+  padding: 100px 20px;
+  text-align: center;
+  background: radial-gradient(ellipse at center, #17202a 0%, #080a0d 68%);
+}
+
+.global-cta h2 {
+  margin: 20px 0 30px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(39px, 6vw, 68px);
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.global-cta-link {
+  display: inline-block;
+  padding: 14px 22px;
+  border: 1px solid #9c8357;
+  color: #d9c18f;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-decoration: none;
+  transition: .25s ease;
+}
+
+.global-cta-link:hover {
+  background: #b49a68;
+  color: #090b0e;
+}
+
+.global-cta-link span {
+  margin-left: 12px;
+}
+
+.global-page .site-footer {
+  border-top: 1px solid rgba(255,255,255,.08);
+  background: #07090c;
+}
+
+.global-page .footer-inner,
+.global-page .footer-bottom {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 30px 5%;
+}
+
+.global-page .footer-inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.global-page .footer-inner p,
+.global-page .footer-contact,
+.global-page .footer-bottom {
+  color: #858b90;
+  font-size: 10px;
+  line-height: 2;
+}
+
+.global-page .footer-contact {
+  display: grid;
+  text-align: right;
+}
+
+.global-page .footer-contact a {
+  color: #b5b2aa;
+  text-decoration: none;
+}
+
+.global-page .footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255,255,255,.07);
+}
+
+@media (max-width: 1000px) {
+  .globe-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .global-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px 25px;
+  }
+
+  .global-panel > .panel-kicker,
+  .global-panel > h2,
+  .global-panel > .panel-description {
+    grid-column: 1 / -1;
+  }
+
+  .region-selector,
+  .country-detail {
+    margin-top: 10px;
+  }
+
+  .network-legend {
+    align-self: end;
+  }
+}
+
+@media (max-width: 650px) {
+  .global-hero {
+    padding: 75px 5% 55px;
+  }
+
+  .global-intro {
+    margin-bottom: 38px;
+  }
+
+  .globe-stage {
+    min-height: 440px;
+  }
+
+  #globeViz {
+    inset: 45px 0 40px;
+  }
+
+  .globe-topline,
+  .globe-bottomline {
+    left: 13px;
+    right: 13px;
+    font-size: 7px;
+    letter-spacing: 1px;
+  }
+
+  .global-panel {
+    display: block;
+    padding: 25px 20px;
+  }
+
+  .global-panel h2 {
+    font-size: 40px;
+  }
+
+  .region-selector,
+  .country-detail {
+    margin-top: 25px;
+  }
+
+  .global-statement {
+    gap: 10px;
+    margin-top: 45px;
+  }
+
+  .global-statement p {
+    font-size: 18px;
+  }
+
+  .statement-line {
+    min-width: 15px;
+  }
+
+  .market-overview {
+    padding: 70px 5%;
+  }
+
+  .market-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .global-cta {
+    padding: 75px 20px;
+  }
+
+  .global-page .footer-inner,
+  .global-page .footer-bottom {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .global-page .footer-contact {
+    text-align: left;
+  }
+}
