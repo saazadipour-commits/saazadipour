@@ -1,911 +1,474 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="canonical" href="https://azadipourmedical.com/" />
+  <title>Azadipour | Global Medical Technology & Healthcare Solutions</title>
 
-    <meta name="description" content="Azadipour connects healthcare organizations and international partners with medical technology, advanced surgical equipment and hospital solutions.">
-    <meta name="theme-color" content="#050505">
+  <meta name="description" content="Azadipour connects healthcare organizations and international partners with advanced medical technology, surgical equipment and hospital solutions.">
 
-    <title>Azadipour | Medical Technology &amp; Hospital Solutions</title>
+  <meta name="theme-color" content="#08090b">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="canonical" href="https://azadipourmedical.com/">
 
-    <link rel="stylesheet" href="style.css">
+  <meta property="og:title" content="Azadipour | Medical Technology & Hospital Solutions">
+  <meta property="og:description" content="Connecting global healthcare with advanced medical technology and international partnerships.">
+  <meta property="og:url" content="https://azadipourmedical.com/">
+  <meta property="og:type" content="website">
 
-    <style>
-        /* =========================================
-           AZADIPOUR — CUSTOM LOGO STYLES
-           Silver / Black / Luxury Motion
-           ========================================= */
+  <link rel="icon" href="assets/logo-transparent.png">
 
-        /* General Logo Image Styles */
-        .custom-logo-img {
-            display: block;
-            width: 100%;
-            height: auto;
-            object-fit: contain;
-        }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-        /* INTRO SCREEN */
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-        .brand-intro {
-            position: fixed;
-            inset: 0;
-            z-index: 99999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            background:
-                radial-gradient(ellipse at center, #141518 0%, #080808 48%, #030303 100%);
-            opacity: 1;
-            visibility: visible;
-            transition: opacity 1s ease, visibility 1s ease;
-        }
-
-        .brand-intro::before {
-            content: "";
-            position: absolute;
-            left: -20%;
-            right: -20%;
-            top: 50%;
-            height: 1px;
-            background: linear-gradient(
-                90deg,
-                transparent,
-                rgba(190, 196, 204, 0.08),
-                rgba(244, 247, 250, 0.85),
-                rgba(190, 196, 204, 0.08),
-                transparent
-            );
-            box-shadow: 0 0 22px rgba(205, 214, 225, 0.28);
-            animation: intro-light 3.5s ease-in-out infinite;
-        }
-
-        .brand-intro::after {
-            content: "";
-            position: absolute;
-            width: min(75vw, 600px);
-            height: 260px;
-            border-radius: 50%;
-            background: radial-gradient(
-                ellipse,
-                rgba(190, 198, 210, 0.10),
-                transparent 70%
-            );
-            filter: blur(22px);
-            animation: intro-glow 4.5s ease-in-out infinite alternate;
-        }
-
-        .brand-intro-content {
-            position: relative;
-            z-index: 2;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            padding: 24px;
-            animation: intro-content-reveal 1.6s cubic-bezier(.2, .8, .2, 1) both;
-        }
-
-        .brand-intro-logo {
-            width: clamp(145px, 23vw, 245px);
-            margin-bottom: 5px;
-            filter: drop-shadow(0 0 16px rgba(205, 214, 225, 0.12));
-        }
-
-        /* AZADIPOUR — LETTER-BY-LETTER ANIMATION */
-
-        .brand-intro-name {
-            display: flex;
-            justify-content: center;
-            align-items: baseline;
-            flex-wrap: nowrap;
-            margin: 22px 0 0;
-            color: #e2e5e9;
-            font-family: "Cormorant Garamond", Georgia, serif;
-            font-size: clamp(27px, 5vw, 46px);
-            font-weight: 500;
-            letter-spacing: 0.28em;
-            text-transform: uppercase;
-            white-space: nowrap;
-            opacity: 1;
-        }
-
-        .brand-intro-name span {
-            display: inline-block;
-            opacity: 0;
-            filter: blur(5px);
-            transform: translateY(10px);
-            animation: azadipour-letter-reveal 0.65s cubic-bezier(.2, .7, .2, 1) forwards;
-        }
-
-        .brand-intro-name span:nth-child(1) { animation-delay: 2.15s; }
-        .brand-intro-name span:nth-child(2) { animation-delay: 2.28s; }
-        .brand-intro-name span:nth-child(3) { animation-delay: 2.41s; }
-        .brand-intro-name span:nth-child(4) { animation-delay: 2.54s; }
-        .brand-intro-name span:nth-child(5) { animation-delay: 2.67s; }
-        .brand-intro-name span:nth-child(6) { animation-delay: 2.80s; }
-        .brand-intro-name span:nth-child(7) { animation-delay: 2.93s; }
-        .brand-intro-name span:nth-child(8) { animation-delay: 3.06s; }
-        .brand-intro-name span:nth-child(9) { animation-delay: 3.19s; }
-
-        @keyframes azadipour-letter-reveal {
-            from {
-                opacity: 0;
-                filter: blur(5px);
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                filter: blur(0);
-                transform: translateY(0);
-            }
-        }
-
-        .brand-intro-tagline {
-            max-width: 90vw;
-            margin-top: 12px;
-            color: #aeb4bd;
-            font-family: "Inter", Arial, sans-serif;
-            font-size: clamp(8px, 1.4vw, 10px);
-            letter-spacing: 0.2em;
-            line-height: 2;
-            text-transform: uppercase;
-            opacity: 0;
-            animation: intro-text-reveal 1.5s ease 3.75s forwards;
-        }
-
-        .brand-intro-line {
-            width: 120px;
-            height: 1px;
-            margin-top: 29px;
-            background: linear-gradient(90deg, transparent, #d7dce3, transparent);
-            transform: scaleX(0);
-            animation: line-reveal 1.5s ease 3.8s forwards;
-        }
-
-        .brand-intro-caption {
-            margin-top: 15px;
-            color: #858c96;
-            font-family: "Inter", Arial, sans-serif;
-            font-size: 9px;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            opacity: 0;
-            animation: intro-text-reveal 1.5s ease 4.05s forwards;
-        }
-
-        .brand-intro.is-hidden {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-        }
-
-        @keyframes intro-content-reveal {
-            from {
-                opacity: 0;
-                transform: translateY(15px);
-                filter: blur(7px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-                filter: blur(0);
-            }
-        }
-
-        @keyframes intro-text-reveal {
-            from {
-                opacity: 0;
-                transform: translateY(9px);
-                filter: blur(4px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-                filter: blur(0);
-            }
-        }
-
-        @keyframes intro-light {
-            0%, 100% { opacity: 0.3; transform: scaleX(0.75); }
-            50% { opacity: 1; transform: scaleX(1); }
-        }
-
-        @keyframes intro-glow {
-            from { opacity: 0.4; transform: scale(0.85); }
-            to { opacity: 1; transform: scale(1.12); }
-        }
-
-        @keyframes line-reveal {
-            to { transform: scaleX(1); }
-        }
-
-        /* HEADER AND FOOTER LOGO SIZING */
-
-        .brand {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: clamp(58px, 5vw, 76px);
-            flex: 0 0 auto;
-        }
-
-        .brand .custom-logo-img {
-            transition: filter 0.3s ease, opacity 0.3s ease;
-        }
-
-        .brand:hover .custom-logo-img {
-            filter: drop-shadow(0 0 8px rgba(220, 226, 234, 0.24));
-        }
-
-        .footer-brand .footer-custom-logo {
-            display: inline-flex;
-            width: 76px;
-            margin-bottom: 23px;
-            transition: filter 0.3s ease;
-        }
-
-        .footer-brand .footer-custom-logo:hover {
-            filter: drop-shadow(0 0 8px rgba(220, 226, 234, 0.22));
-        }
-
-        .footer-brand > a {
-            display: inline-flex;
-        }
-
-        /* OMAN COMMERCIAL REGISTRATION CARD */
-
-        .oman-registration {
-            position: relative;
-            margin-top: 54px;
-            padding: 38px;
-            overflow: hidden;
-            background:
-                radial-gradient(ellipse at top right, rgba(199, 178, 138, 0.09), transparent 55%),
-                #090909;
-            border: 1px solid rgba(199, 178, 138, 0.32);
-        }
-
-        .oman-registration::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 3px;
-            height: 100%;
-            background: linear-gradient(180deg, #ead5ae, #8c7146, transparent);
-        }
-
-        .oman-registration-header {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: 24px;
-            padding-bottom: 25px;
-            border-bottom: 1px solid rgba(199, 178, 138, 0.22);
-        }
-
-        .oman-registration-eyebrow {
-            margin: 0 0 10px;
-            color: #c7b28a;
-            font-family: "Inter", sans-serif;
-            font-size: 10px;
-            font-weight: 500;
-            letter-spacing: 0.22em;
-            line-height: 1.8;
-            text-transform: uppercase;
-        }
-
-        .oman-registration-title {
-            margin: 0;
-            color: #f0e7d7;
-            font-family: "Cormorant Garamond", serif;
-            font-size: clamp(27px, 3vw, 38px);
-            font-weight: 500;
-            line-height: 1.15;
-        }
-
-        .oman-registration-title em {
-            color: #c7b28a;
-            font-weight: 400;
-        }
-
-        .oman-registration-badge {
-            flex-shrink: 0;
-            display: inline-flex;
-            align-items: center;
-            gap: 9px;
-            padding: 10px 13px;
-            border: 1px solid rgba(199, 178, 138, 0.3);
-            color: #d7c8ac;
-            font-family: "Inter", sans-serif;
-            font-size: 9px;
-            letter-spacing: 0.13em;
-            text-transform: uppercase;
-        }
-
-        .oman-registration-badge::before {
-            content: "";
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: #c7b28a;
-            box-shadow: 0 0 10px rgba(199, 178, 138, 0.6);
-        }
-
-        .oman-registration-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 0 35px;
-            margin-top: 8px;
-        }
-
-        .oman-registration-field {
-            min-width: 0;
-            padding: 23px 0;
-            border-bottom: 1px solid rgba(199, 178, 138, 0.15);
-        }
-
-        .oman-registration-label {
-            display: block;
-            margin-bottom: 9px;
-            color: #a99b82;
-            font-family: "Inter", sans-serif;
-            font-size: 10px;
-            font-weight: 400;
-            letter-spacing: 0.1em;
-            line-height: 1.7;
-            text-transform: uppercase;
-        }
-
-        .oman-registration-value {
-            display: block;
-            color: #f4eee3;
-            font-family: "Inter", sans-serif;
-            font-size: 15px;
-            font-weight: 400;
-            line-height: 1.7;
-            overflow-wrap: anywhere;
-        }
-
-        .oman-registration-value.registration-number {
-            color: #dfc69b;
-            font-size: 20px;
-            font-weight: 500;
-            letter-spacing: 0.07em;
-        }
-
-        @media (max-width: 900px) {
-            .brand {
-                width: 58px;
-            }
-        }
-
-        @media (max-width: 700px) {
-            .oman-registration {
-                margin-top: 35px;
-                padding: 25px 21px;
-            }
-
-            .oman-registration-header {
-                flex-direction: column;
-                gap: 18px;
-            }
-
-            .oman-registration-badge {
-                align-self: flex-start;
-            }
-
-            .oman-registration-grid {
-                grid-template-columns: minmax(0, 1fr);
-                gap: 0;
-            }
-
-            .oman-registration-field {
-                border-bottom: 1px solid rgba(199, 178, 138, 0.15);
-            }
-
-            .oman-registration-field:last-child {
-                border-bottom: none;
-            }
-
-            .oman-registration-value {
-                font-size: 14px;
-            }
-
-            .oman-registration-value.registration-number {
-                font-size: 19px;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .brand {
-                width: 52px;
-            }
-
-            .brand-intro-name {
-                letter-spacing: 0.2em;
-            }
-
-            .brand-intro-tagline {
-                letter-spacing: 0.12em;
-            }
-
-            .brand-intro-caption {
-                letter-spacing: 0.2em;
-            }
-
-            .brand-intro-logo {
-                width: clamp(135px, 40vw, 190px);
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .brand-intro *,
-            .brand-intro::before,
-            .brand-intro::after {
-                animation: none !important;
-                transition-duration: 0.01ms !important;
-            }
-
-            .brand-intro-logo img {
-                opacity: 1;
-            }
-
-            .brand-intro-name span {
-                opacity: 1;
-                filter: none;
-                transform: none;
-            }
-
-            .brand-intro-tagline,
-            .brand-intro-caption {
-                opacity: 1;
-            }
-
-            .brand-intro-line {
-                transform: scaleX(1);
-            }
-        }
-    </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <div class="brand-intro" id="brandIntro" aria-label="Azadipour Medical Technology">
-        <div class="brand-intro-content">
+  <!-- INTRO -->
+  <div class="intro-screen" id="intro">
+    <div class="intro-content">
+      <img src="assets/logo-transparent.png" alt="Azadipour Logo">
+      <div class="intro-name">AZADIPOUR</div>
+      <p>MEDICAL TECHNOLOGY & HOSPITAL SOLUTIONS</p>
+    </div>
+  </div>
 
-            <div class="brand-intro-logo" aria-label="Azadipour Logo">
-                <img
-                    src="assets/logo-transparent.png"
-                    alt="Azadipour Logo"
-                    class="custom-logo-img"
-                    width="500"
-                    height="500"
-                    fetchpriority="high"
-                >
+  <!-- HEADER -->
+  <header class="site-header">
+    <a href="index.html" class="brand">
+      <img src="assets/logo-transparent.png" alt="Azadipour">
+      <span>AZADIPOUR</span>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="main-nav" id="mainNav">
+      <a href="index.html" class="active">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="global-presence.html">Global Presence</a>
+      <a href="medical.html">Medical Technology</a>
+      <a href="partners.html">Global Partnerships</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html" class="nav-contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero-section">
+
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <span class="eyebrow">GLOBAL MEDICAL TECHNOLOGY NETWORK</span>
+
+        <h1>
+          Advancing Global Healthcare
+          <span>Through Medical Technology.</span>
+        </h1>
+
+        <p>
+          Connecting healthcare organizations and international
+          partners with advanced medical technologies, surgical
+          solutions and hospital systems.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="global-presence.html" class="btn btn-primary">
+            Explore Our Global Network
+          </a>
+
+          <a href="medical.html" class="btn btn-outline">
+            Discover Medical Technology
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-footer">
+        <span>GCC</span>
+        <span>EUROPE</span>
+        <span>INTERNATIONAL</span>
+      </div>
+
+      <div class="hero-scroll">SCROLL TO EXPLORE ↓</div>
+
+    </section>
+
+    <!-- INTRODUCTION -->
+    <section class="section introduction-section">
+
+      <div class="section-label">01 — WHO WE ARE</div>
+
+      <div class="intro-grid">
+
+        <div>
+          <h2>
+            Connecting Healthcare
+            <span>With Global Innovation.</span>
+          </h2>
+        </div>
+
+        <div class="intro-description">
+          <p>
+            Azadipour is an Oman-registered healthcare and medical
+            technology company focused on connecting healthcare
+            organizations with international manufacturers,
+            technology providers and medical solution partners.
+          </p>
+
+          <p>
+            Through international business development and
+            strategic cooperation, we work to identify clinical
+            requirements and support access to advanced healthcare
+            technologies.
+          </p>
+
+          <a href="about.html" class="text-link">Discover Azadipour →</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- GLOBAL PRESENCE -->
+    <section class="section global-section">
+
+      <div class="section-label">02 — GLOBAL PRESENCE</div>
+
+      <div class="section-heading">
+        <h2>One Network.<span>Global Opportunities.</span></h2>
+
+        <p>
+          Building connections across international healthcare
+          markets through business development, technology
+          cooperation and strategic relationships.
+        </p>
+      </div>
+
+      <div class="global-visual">
+
+        <div class="globe-decoration">
+          <div class="globe-ring ring-one"></div>
+          <div class="globe-ring ring-two"></div>
+          <div class="globe-core">
+            <span>AZADIPOUR</span>
+            <small>GLOBAL NETWORK</small>
+          </div>
+        </div>
+
+        <div class="global-countries">
+
+          <div class="country-item">
+            <span class="country-dot registered"></span>
+            <div>
+              <strong>Oman</strong>
+              <small>Registered Entity</small>
             </div>
+          </div>
 
-            <h1 class="brand-intro-name" aria-label="Azadipour"><span aria-hidden="true">A</span><span aria-hidden="true">z</span><span aria-hidden="true">a</span><span aria-hidden="true">d</span><span aria-hidden="true">i</span><span aria-hidden="true">p</span><span aria-hidden="true">o</span><span aria-hidden="true">u</span><span aria-hidden="true">r</span></h1>
+          <div class="country-item">
+            <span class="country-dot target"></span>
+            <div>
+              <strong>Germany</strong>
+              <small>Target Market</small>
+            </div>
+          </div>
 
-            <p class="brand-intro-tagline">
-                Medical Technology &amp; Hospital Solutions
-            </p>
+          <div class="country-item">
+            <span class="country-dot target"></span>
+            <div>
+              <strong>Saudi Arabia</strong>
+              <small>Target Market</small>
+            </div>
+          </div>
 
-            <div class="brand-intro-line"></div>
+          <div class="country-item">
+            <span class="country-dot target"></span>
+            <div>
+              <strong>United Arab Emirates</strong>
+              <small>Target Market</small>
+            </div>
+          </div>
 
-            <span class="brand-intro-caption">A Global Perspective</span>
+          <div class="country-item">
+            <span class="country-dot target"></span>
+            <div>
+              <strong>Qatar & Bahrain</strong>
+              <small>Target Markets</small>
+            </div>
+          </div>
 
         </div>
+
+      </div>
+
+      <div class="global-legend">
+        <span><i class="registered"></i> Registered Entity</span>
+        <span><i class="target"></i> Target Market</span>
+      </div>
+
+      <a href="global-presence.html" class="text-link">
+        Explore Global Presence →
+      </a>
+
+    </section>
+
+    <!-- MEDICAL TECHNOLOGY -->
+    <section class="section technology-section">
+
+      <div class="section-label">03 — MEDICAL TECHNOLOGY</div>
+
+      <div class="section-heading">
+        <h2>Advanced Technologies.<span>Better Healthcare Solutions.</span></h2>
+
+        <p>
+          Exploring medical technologies and hospital solutions
+          that support the evolving needs of healthcare providers.
+        </p>
+      </div>
+
+      <div class="technology-grid">
+
+        <a href="robotic.html" class="technology-card robotic-card">
+          <div class="card-number">01</div>
+          <div class="card-content">
+            <span>ADVANCED SURGERY</span>
+            <h3>Robotic & Digital Surgery</h3>
+            <p>
+              Robotic-assisted surgery, digital operating rooms
+              and advanced surgical technologies.
+            </p>
+            <b>Explore Technology →</b>
+          </div>
+        </a>
+
+        <a href="cardiac.html" class="technology-card cardiac-card">
+          <div class="card-number">02</div>
+          <div class="card-content">
+            <span>CARDIOVASCULAR</span>
+            <h3>Cardiac & Cardiovascular</h3>
+            <p>
+              Technologies supporting cardiac surgery,
+              perfusion and cardiovascular care.
+            </p>
+            <b>Explore Technology →</b>
+          </div>
+        </a>
+
+        <a href="medical.html" class="technology-card navigation-card">
+          <div class="card-number">03</div>
+          <div class="card-content">
+            <span>IMAGE-GUIDED TECHNOLOGY</span>
+            <h3>Surgical Navigation</h3>
+            <p>
+              Image-guided technologies, surgical navigation
+              and precision-focused solutions.
+            </p>
+            <b>Explore Technology →</b>
+          </div>
+        </a>
+
+        <a href="medical.html" class="technology-card hospital-card">
+          <div class="card-number">04</div>
+          <div class="card-content">
+            <span>HOSPITAL SYSTEMS</span>
+            <h3>Advanced Hospital Solutions</h3>
+            <p>
+              Medical equipment, operating room systems,
+              critical care and hospital technologies.
+            </p>
+            <b>Explore Technology →</b>
+          </div>
+        </a>
+
+      </div>
+
+    </section>
+
+    <!-- PARTNERSHIPS -->
+    <section class="section partnership-section">
+
+      <div class="partnership-content">
+        <div class="section-label">04 — GLOBAL PARTNERSHIPS</div>
+
+        <h2>
+          Building Strategic
+          <span>International Connections.</span>
+        </h2>
+
+        <p>
+          We aim to establish productive relationships between
+          medical technology manufacturers, healthcare
+          organizations and international business partners.
+        </p>
+
+        <a href="partners.html" class="btn btn-primary">
+          Explore Partnership Opportunities
+        </a>
+      </div>
+
+      <div class="partnership-symbol">
+        <div class="symbol-circle">
+          <span>AZ</span>
+        </div>
+        <div class="symbol-caption">GLOBAL COLLABORATION</div>
+      </div>
+
+    </section>
+
+    <!-- HEALTHCARE SOLUTIONS -->
+    <section class="section solutions-section">
+
+      <div class="section-label">05 — HEALTHCARE SOLUTIONS</div>
+
+      <div class="section-heading">
+        <h2>From Clinical Requirements<span>To Global Medical Supply.</span></h2>
+
+        <p>
+          Understanding healthcare needs and exploring suitable
+          technology and supply opportunities with international
+          partners.
+        </p>
+      </div>
+
+      <div class="solutions-grid">
+
+        <div class="solution-item">
+          <span>01</span>
+          <h3>Medical Equipment</h3>
+          <p>Advanced medical devices and hospital equipment.</p>
+        </div>
+
+        <div class="solution-item">
+          <span>02</span>
+          <h3>Technology Integration</h3>
+          <p>Modern hospital technologies and clinical systems.</p>
+        </div>
+
+        <div class="solution-item">
+          <span>03</span>
+          <h3>International Sourcing</h3>
+          <p>Connecting healthcare needs with global suppliers.</p>
+        </div>
+
+        <div class="solution-item">
+          <span>04</span>
+          <h3>Business Development</h3>
+          <p>Developing commercial opportunities and partnerships.</p>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section projects-section">
+
+      <div class="projects-inner">
+
+        <div>
+          <div class="section-label">06 — PROJECTS & OPPORTUNITIES</div>
+
+          <h2>
+            Transforming Healthcare
+            <span>Needs Into Opportunities.</span>
+          </h2>
+
+          <p>
+            We explore healthcare projects, procurement
+            requirements and potential technology opportunities
+            through international cooperation.
+          </p>
+
+          <a href="projects.html" class="text-link">
+            Discover Our Approach →
+          </a>
+        </div>
+
+        <div class="projects-mark">
+          <span>AZADIPOUR</span>
+          <small>PROJECT DEVELOPMENT</small>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact-section">
+
+      <div class="section-label">07 — CONNECT WITH US</div>
+
+      <h2>
+        Let's Build the Future
+        <span>of Global Healthcare.</span>
+      </h2>
+
+      <p>
+        For medical technology cooperation, business development
+        and international partnership enquiries.
+      </p>
+
+      <a href="contact.html" class="btn btn-primary">
+        Contact Azadipour
+      </a>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+
+    <div class="footer-main">
+
+      <div class="footer-brand">
+        <img src="assets/logo-transparent.png" alt="Azadipour Logo">
+        <h3>AZADIPOUR</h3>
+        <p>Medical Technology & Hospital Solutions</p>
+      </div>
+
+      <div class="footer-column">
+        <h4>Company</h4>
+        <a href="about.html">About Us</a>
+        <a href="global-presence.html">Global Presence</a>
+        <a href="projects.html">Projects</a>
+      </div>
+
+      <div class="footer-column">
+        <h4>Our Focus</h4>
+        <a href="robotic.html">Robotic Surgery</a>
+        <a href="cardiac.html">Cardiac Technology</a>
+        <a href="medical.html">Medical Technology</a>
+      </div>
+
+      <div class="footer-column">
+        <h4>Connect</h4>
+        <a href="partners.html">Global Partnerships</a>
+        <a href="contact.html">Contact</a>
+        <a href="mailto:info@azadipourmedical.com">Email Us</a>
+      </div>
+
     </div>
 
-    <header class="site-header">
-        <div class="nav-container">
+    <div class="footer-bottom">
+      <span>© <span id="currentYear">2026</span> Azadipour. All Rights Reserved.</span>
+      <span>GCC · EUROPE · INTERNATIONAL</span>
+    </div>
 
-            <a href="index.html" class="brand" aria-label="Azadipour Home">
-                <img
-                    src="assets/logo-transparent.png"
-                    alt="Azadipour Logo"
-                    class="custom-logo-img"
-                >
-            </a>
+  </footer>
 
-            <input type="checkbox" id="menu-toggle" class="menu-toggle">
-
-            <label for="menu-toggle" class="menu-button" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </label>
-
-            <nav class="main-nav">
-                <a href="index.html" class="active">Home</a>
-                <a href="medical.html">Medical Solutions</a>
-                <a href="cardiac.html">Cardiac Surgery</a>
-                <a href="robotic.html">Robotic Surgery</a>
-                <a href="projects.html">Hospital Projects</a>
-                <a href="partners.html">Global Partners</a>
-                <a href="contact.html">Contact</a>
-            </nav>
-
-        </div>
-    </header>
-
-    <main>
-
-        <section class="home-hero">
-            <div class="hero-image"></div>
-            <div class="hero-gradient"></div>
-
-            <div class="hero-content">
-
-                <div class="eyebrow">AZADIPOUR · MEDICAL TECHNOLOGY</div>
-
-                <h1>
-                    Global Medical
-                    <br>
-                    <em>Technology.</em>
-                </h1>
-
-                <p class="hero-description">
-                    Connecting hospitals and healthcare projects
-                    with advanced medical technologies, specialized
-                    equipment and international healthcare solutions.
-                </p>
-
-                <div class="hero-actions">
-                    <a href="medical.html" class="luxury-button">EXPLORE SOLUTIONS</a>
-                    <a href="projects.html" class="luxury-button outline">REQUEST A PROJECT</a>
-                </div>
-
-            </div>
-
-            <div class="hero-bottom">
-                <span>MEDICAL TECHNOLOGY</span>
-                <span>HOSPITAL SOLUTIONS</span>
-                <span>GCC · EUROPE · INTERNATIONAL</span>
-            </div>
-        </section>
-
-        <section class="section intro-section">
-            <div class="section-container">
-
-                <div class="intro-label">01 / AZADIPOUR</div>
-
-                <div class="intro-content">
-
-                    <h2>
-                        From clinical requirements
-                        <br>
-                        to <em>global medical supply.</em>
-                    </h2>
-
-                    <p class="large-text">
-                        Azadipour connects healthcare organizations,
-                        hospital projects and international medical
-                        technology opportunities.
-                    </p>
-
-                    <p>
-                        Our focus is on identifying, sourcing and
-                        coordinating advanced medical technologies
-                        according to clinical, technical and project
-                        requirements.
-                    </p>
-
-                </div>
-            </div>
-        </section>
-
-        <section class="section solutions-section">
-            <div class="section-container">
-
-                <div class="section-heading">
-                    <div class="intro-label">02 / CORE SOLUTIONS</div>
-
-                    <div>
-                        <h2>
-                            Medical technology
-                            <br>
-                            with <em>purpose.</em>
-                        </h2>
-
-                        <p>
-                            Selected technology areas supporting
-                            modern hospitals and advanced surgical care.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="solution-grid">
-
-                    <a href="cardiac.html" class="solution-card cardiac-card">
-                        <div class="card-image"></div>
-                        <div class="card-overlay"></div>
-
-                        <div class="card-content">
-                            <span class="card-number">01</span>
-                            <h3>Cardiac &amp;<br>Cardiovascular</h3>
-
-                            <p>
-                                Cardiac surgery, cardiovascular technology,
-                                perfusion, cath lab and critical care.
-                            </p>
-
-                            <span class="card-link">EXPLORE →</span>
-                        </div>
-                    </a>
-
-                    <a href="robotic.html" class="solution-card robotic-card">
-                        <div class="card-image"></div>
-                        <div class="card-overlay"></div>
-
-                        <div class="card-content">
-                            <span class="card-number">02</span>
-                            <h3>Robotic<br>Surgery</h3>
-
-                            <p>
-                                Surgical robotics, Smart OR, surgical AI,
-                                navigation and digital surgery.
-                            </p>
-
-                            <span class="card-link">EXPLORE →</span>
-                        </div>
-                    </a>
-
-                    <a href="projects.html" class="solution-card hospital-card">
-                        <div class="card-image"></div>
-                        <div class="card-overlay"></div>
-
-                        <div class="card-content">
-                            <span class="card-number">03</span>
-                            <h3>Hospital<br>Technology</h3>
-
-                            <p>
-                                Medical equipment, operating rooms,
-                                ICU, diagnostics and hospital systems.
-                            </p>
-
-                            <span class="card-link">EXPLORE →</span>
-                        </div>
-                    </a>
-
-                </div>
-            </div>
-        </section>
-
-        <section class="project-feature">
-            <div class="project-image"></div>
-            <div class="project-overlay"></div>
-
-            <div class="section-container project-content">
-
-                <div class="intro-label">03 / HOSPITAL PROJECTS</div>
-
-                <h2>
-                    One project.
-                    <br>
-                    <em>Multiple medical requirements.</em>
-                </h2>
-
-                <p>
-                    From individual equipment requirements to larger
-                    hospital development projects, we coordinate across
-                    multiple medical technology categories.
-                </p>
-
-                <a href="projects.html" class="luxury-button">DISCUSS YOUR PROJECT</a>
-
-            </div>
-        </section>
-
-        <section class="section markets-section">
-            <div class="section-container">
-
-                <div class="section-heading">
-                    <div class="intro-label">04 / GLOBAL REACH</div>
-
-                    <div>
-                        <h2>
-                            International technology.
-                            <br>
-                            <em>Regional opportunity.</em>
-                        </h2>
-
-                        <p>
-                            Exploring international medical technology
-                            opportunities across the GCC and selected
-                            global markets.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="market-list">
-
-                    <div class="market-item">
-                        <span>01</span>
-                        <strong>Germany</strong>
-                        <small>Medical Engineering</small>
-                    </div>
-
-                    <div class="market-item">
-                        <span>02</span>
-                        <strong>Europe</strong>
-                        <small>Advanced Healthcare Technology</small>
-                    </div>
-
-                    <div class="market-item">
-                        <span>03</span>
-                        <strong>GCC</strong>
-                        <small>Regional Healthcare Markets</small>
-                    </div>
-
-                    <div class="market-item">
-                        <span>04</span>
-                        <strong>North Africa</strong>
-                        <small>Healthcare Market Opportunities</small>
-                    </div>
-
-                </div>
-
-                <div class="gcc-line">
-                    <span>OMAN</span>
-                    <span>SAUDI ARABIA</span>
-                    <span>QATAR</span>
-                    <span>BAHRAIN</span>
-                    <span>UAE</span>
-                    <span>KUWAIT</span>
-                </div>
-
-                <section class="oman-registration" aria-labelledby="omanRegistrationTitle">
-
-                    <div class="oman-registration-header">
-
-                        <div>
-                            <p class="oman-registration-eyebrow">
-                                GCC · COMPANY INFORMATION
-                            </p>
-
-                            <h3 class="oman-registration-title" id="omanRegistrationTitle">
-                                Oman Commercial
-                                <br>
-                                <em>Registration</em>
-                            </h3>
-                        </div>
-
-                        <div class="oman-registration-badge">
-                            Oman Registered
-                        </div>
-
-                    </div>
-
-                    <div class="oman-registration-grid">
-
-                        <div class="oman-registration-field">
-                            <span class="oman-registration-label">Company Name</span>
-                            <span class="oman-registration-value">Azadipour</span>
-                        </div>
-
-                        <div class="oman-registration-field">
-                            <span class="oman-registration-label">Country of Registration</span>
-                            <span class="oman-registration-value">Sultanate of Oman</span>
-                        </div>
-
-                        <div class="oman-registration-field">
-                            <span class="oman-registration-label">Commercial Registration Number</span>
-                            <span class="oman-registration-value registration-number">1678104</span>
-                        </div>
-
-                        <div class="oman-registration-field">
-                            <span class="oman-registration-label">Commercial License Number</span>
-                            <span class="oman-registration-value registration-number">L3914442</span>
-                        </div>
-
-                    </div>
-
-                </section>
-
-            </div>
-        </section>
-
-        <section class="final-cta">
-            <div class="section-container">
-
-                <div class="intro-label">AZADIPOUR · MEDICAL TECHNOLOGY</div>
-
-                <h2>
-                    Let's build the future
-                    <br>
-                    of <em>healthcare.</em>
-                </h2>
-
-                <p>
-                    Discuss medical technology, hospital projects,
-                    advanced surgery or potential international
-                    partnerships.
-                </p>
-
-                <a href="contact.html" class="luxury-button">START A CONVERSATION →</a>
-
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="site-footer">
-        <div class="footer-container">
-
-            <div class="footer-brand">
-
-                <a href="index.html" aria-label="Azadipour Home">
-                    <img
-                        src="assets/logo-transparent.png"
-                        alt="Azadipour Logo"
-                        class="custom-logo-img footer-custom-logo"
-                    >
-                </a>
-
-                <p>Medical Technology &amp; Hospital Solutions.</p>
-
-                <p>
-                    <a href="mailto:info@azadipourmedical.com">
-                        info@azadipourmedical.com
-                    </a>
-                </p>
-
-            </div>
-
-            <div class="footer-column">
-                <h4>NAVIGATION</h4>
-                <a href="index.html">Home</a>
-                <a href="medical.html">Medical Solutions</a>
-                <a href="cardiac.html">Cardiac Surgery</a>
-                <a href="robotic.html">Robotic Surgery</a>
-            </div>
-
-            <div class="footer-column">
-                <h4>PROJECTS</h4>
-                <a href="projects.html">Hospital Projects</a>
-                <a href="partners.html">Global Partners</a>
-                <a href="contact.html">Contact</a>
-            </div>
-
-        </div>
-
-        <div class="footer-bottom">
-            <span>© 2026 Azadipour. All rights reserved.</span>
-            <span>Oman · Saudi Arabia · Qatar · Bahrain · GCC</span>
-        </div>
-    </footer>
-
-    <script>
-        (function () {
-            const intro = document.getElementById("brandIntro");
-
-            if (!intro) return;
-
-            const reduceMotion = window.matchMedia &&
-                window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-            const introDuration = reduceMotion ? 1200 : 10000;
-
-            window.setTimeout(function () {
-                intro.classList.add("is-hidden");
-
-                window.setTimeout(function () {
-                    intro.remove();
-                }, 1100);
-
-            }, introDuration);
-        })();
-    </script>
+  <script src="script.js"></script>
 
 </body>
 </html>
