@@ -1,621 +1,476 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Medical Technology | Azadipour</title>
+    <title>Medical Technology | Azadipour</title>
+    <meta name="description" content="Azadipour connects international healthcare organizations and medical technology manufacturers with advanced surgical systems, medical equipment and hospital solutions worldwide.">
+    <meta name="theme-color" content="#08090b">
 
-  <meta name="description" content="Azadipour connects international healthcare organizations and medical technology manufacturers with advanced surgical systems, medical equipment and hospital solutions worldwide.">
+    <link rel="canonical" href="https://azadipourmedical.com/medical.html">
+    <link rel="icon" type="image/png" href="assets/logo-transparent.png">
 
-  <meta name="theme-color" content="#050607">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="canonical" href="https://azadipourmedical.com/medical.html">
-  <link rel="icon" href="assets/logo-transparent.png">
+    <link rel="stylesheet" href="style.css">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <style>
+        /* =========================================================
+           MEDICAL PAGE SPECIFIC STYLES
+           ========================================================= */
 
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        .medical-hero {
+            position: relative;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            padding: 150px 7% 100px;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border);
+            background: #050607;
+        }
 
-  <link rel="stylesheet" href="style.css">
+        .medical-hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: url('assets/medical-hero.jpg');
+            background-size: cover;
+            background-position: center 45%;
+            opacity: 0.35;
+            z-index: 0;
+        }
 
-  <style>
-    .medical-page {
-      background: #050607;
-      color: #f5f6f7;
-    }
+        .medical-hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                90deg, 
+                rgba(5,6,7,1) 0%, 
+                rgba(5,6,7,0.8) 50%, 
+                rgba(5,6,7,0.4) 100%
+            );
+            z-index: 1;
+        }
 
-    .medical-hero {
-      min-height: 680px;
-      display: flex;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-      padding: 145px 7% 100px;
-      background:
-        linear-gradient(90deg,
-          rgba(5,6,7,.96) 0%,
-          rgba(5,6,7,.83) 48%,
-          rgba(5,6,7,.38) 100%),
-        url("assets/medical-hero.jpg") center 45% / cover no-repeat;
-      border-bottom: 1px solid rgba(255,255,255,.13);
-    }
+        .medical-hero-content {
+            position: relative;
+            z-index: 2;
+            width: min(900px, 100%);
+        }
 
-    .medical-hero-content {
-      position: relative;
-      z-index: 2;
-      width: min(900px,100%);
-    }
+        .medical-eyebrow {
+            color: var(--silver);
+            font-size: 11px;
+            letter-spacing: .28em;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
 
-    .medical-eyebrow {
-      color: #c7cdd4;
-      font-size: 10px;
-      letter-spacing: .28em;
-      margin-bottom: 25px;
-      text-transform: uppercase;
-    }
+        .medical-eyebrow::before {
+            content: "";
+            display: block;
+            width: 40px;
+            height: 1px;
+            background: #fff;
+        }
 
-    .medical-hero h1 {
-      max-width: 850px;
-      font-family: "Cormorant Garamond",serif;
-      font-size: clamp(50px,7vw,88px);
-      font-weight: 400;
-      line-height: .99;
-      margin-bottom: 28px;
-    }
+        .medical-hero h1 {
+            font-family: "Cormorant Garamond", serif;
+            font-weight: 400;
+            font-size: clamp(48px, 7vw, 88px);
+            line-height: 1.05;
+            letter-spacing: -.025em;
+            max-width: 900px;
+            margin: 0 0 28px;
+            color: #fff;
+        }
 
-    .medical-hero h1 span {
-      display: block;
-      color: #c3cad2;
-    }
+        .medical-hero h1 span {
+            color: var(--silver);
+            display: block;
+        }
 
-    .medical-hero p {
-      max-width: 650px;
-      color: #d0d4d9;
-      font-size: 14px;
-      line-height: 1.95;
-      font-weight: 300;
-    }
+        .medical-hero p {
+            max-width: 650px;
+            color: var(--text-soft);
+            font-size: 15px;
+            line-height: 1.9;
+            font-weight: 300;
+        }
 
-    .medical-section {
-      padding: 100px 7%;
-    }
+        .medical-section {
+            padding: 110px 7%;
+            background: var(--bg);
+        }
 
-    .medical-section-inner {
-      width: min(1280px,100%);
-      margin: auto;
-    }
+        .medical-section.bg-soft {
+            background: var(--bg-soft);
+        }
 
-    .medical-section-heading {
-      max-width: 780px;
-      margin-bottom: 45px;
-    }
+        .medical-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
 
-    .medical-section-heading .eyebrow {
-      color: #9da5b0;
-      font-size: 10px;
-      letter-spacing: .25em;
-      margin-bottom: 18px;
-      text-transform: uppercase;
-    }
+        /* IMAGE GRID */
+        .medical-focus-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+        }
 
-    .medical-section-heading h2 {
-      font-family: "Cormorant Garamond",serif;
-      font-size: clamp(40px,5vw,64px);
-      font-weight: 400;
-      line-height: 1.05;
-      margin-bottom: 18px;
-    }
+        .medical-focus-card {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: var(--bg-card);
+            transition: var(--transition);
+        }
 
-    .medical-section-heading p {
-      max-width: 680px;
-      color: #aeb4bd;
-      font-size: 14px;
-      line-height: 1.9;
-    }
+        .medical-focus-card:hover {
+            border-color: var(--border-strong);
+            transform: translateY(-5px);
+        }
 
-    .medical-focus-grid {
-      display: grid;
-      grid-template-columns: repeat(2,minmax(0,1fr));
-      gap: 16px;
-    }
+        .medical-image-wrapper {
+            position: relative;
+            height: 285px;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border);
+        }
 
-    .medical-focus-card {
-      position: relative;
-      min-width: 0;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,.14);
-      background: #0b0e11;
-      transition: border-color .3s ease;
-    }
+        .medical-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(0.5);
+            transition: transform 0.6s ease, filter 0.6s ease;
+        }
 
-    .medical-focus-card:hover {
-      border-color: rgba(255,255,255,.45);
-    }
+        .medical-focus-card:hover .medical-image-wrapper img {
+            transform: scale(1.05);
+            filter: grayscale(0);
+        }
 
-    .medical-focus-card img {
-      width: 100%;
-      height: 285px;
-      object-fit: cover;
-      filter: grayscale(.55);
-      transition: transform .6s ease,filter .6s ease;
-    }
+        .medical-card-content {
+            padding: 35px;
+        }
 
-    .medical-focus-card:hover img {
-      transform: scale(1.035);
-      filter: grayscale(.1);
-    }
+        .medical-card-number {
+            color: var(--silver-dark);
+            font-size: 11px;
+            letter-spacing: .18em;
+            margin-bottom: 20px;
+        }
 
-    .medical-card-content {
-      padding: 28px 30px 32px;
-    }
+        .medical-focus-card h3 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 34px;
+            font-weight: 500;
+            margin: 0 0 15px;
+            color: #fff;
+        }
 
-    .medical-card-number {
-      color: #89929d;
-      font-size: 10px;
-      letter-spacing: .19em;
-      margin-bottom: 16px;
-    }
+        .medical-focus-card p {
+            color: var(--text-soft);
+            font-size: 13px;
+            line-height: 1.85;
+            margin: 0;
+        }
 
-    .medical-focus-card h3 {
-      font-family: "Cormorant Garamond",serif;
-      font-size: 34px;
-      font-weight: 500;
-      margin-bottom: 13px;
-    }
+        /* APPROACH SECTION */
+        .medical-approach-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
 
-    .medical-focus-card p {
-      color: #aeb4bd;
-      font-size: 13px;
-      line-height: 1.9;
-      margin: 0;
-    }
+        .medical-approach h2 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: clamp(38px, 5vw, 60px);
+            font-weight: 400;
+            line-height: 1.05;
+            margin: 0 0 25px;
+        }
 
-    .medical-approach {
-      background: #101318;
-      border-top: 1px solid rgba(255,255,255,.08);
-      border-bottom: 1px solid rgba(255,255,255,.08);
-    }
+        .medical-approach p {
+            color: var(--text-soft);
+            font-size: 14px;
+            line-height: 1.95;
+            margin-bottom: 20px;
+        }
 
-    .medical-approach-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 75px;
-      align-items: center;
-    }
+        .medical-approach-image {
+            position: relative;
+            min-height: 400px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
 
-    .medical-approach h2 {
-      font-family: "Cormorant Garamond",serif;
-      font-size: clamp(40px,5vw,60px);
-      font-weight: 400;
-      line-height: 1.06;
-      margin-bottom: 22px;
-    }
+        .medical-approach-image img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(0.4);
+            transition: var(--transition);
+        }
 
-    .medical-approach p {
-      color: #b2b8c1;
-      font-size: 14px;
-      line-height: 1.95;
-      margin-bottom: 15px;
-    }
+        .medical-approach-image:hover img {
+            filter: grayscale(0);
+            transform: scale(1.03);
+        }
 
-    .medical-approach-image {
-      position: relative;
-      min-height: 390px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,.15);
-    }
+        .medical-approach-image::after {
+            content: "";
+            position: absolute;
+            inset: 40% 0 0;
+            background: linear-gradient(transparent, rgba(5,6,7,0.95));
+        }
 
-    .medical-approach-image img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: grayscale(.5);
-    }
+        .medical-approach-image span {
+            position: absolute;
+            z-index: 2;
+            left: 30px;
+            bottom: 30px;
+            color: #fff;
+            font-size: 10px;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
 
-    .medical-approach-image::after {
-      content: "";
-      position: absolute;
-      inset: 45% 0 0;
-      background: linear-gradient(transparent,rgba(0,0,0,.8));
-    }
-
-    .medical-approach-image span {
-      position: absolute;
-      z-index: 2;
-      left: 24px;
-      bottom: 22px;
-      color: white;
-      font-size: 10px;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-    }
-
-    .medical-cta {
-      text-align: center;
-      padding: 110px 7%;
-      background:
-        radial-gradient(ellipse at center,rgba(180,190,205,.09),transparent 60%),
-        #08090b;
-    }
-
-    .medical-cta h2 {
-      font-family: "Cormorant Garamond",serif;
-      font-size: clamp(40px,5vw,65px);
-      font-weight: 400;
-      margin-bottom: 18px;
-    }
-
-    .medical-cta p {
-      color: #aeb4bd;
-      max-width: 650px;
-      margin: 0 auto 30px;
-      font-size: 14px;
-      line-height: 1.9;
-    }
-
-    .medical-cta-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0 26px;
-      border: 1px solid rgba(255,255,255,.65);
-      color: #fff;
-      font-size: 10px;
-      letter-spacing: .17em;
-      text-transform: uppercase;
-      transition: .25s ease;
-    }
-
-    .medical-cta-link:hover {
-      background: #fff;
-      color: #050607;
-    }
-
-    @media(max-width:760px) {
-      .medical-hero {
-        min-height: 570px;
-        padding: 120px 6% 75px;
-        background-position: 60% center;
-      }
-
-      .medical-section {
-        padding: 70px 6%;
-      }
-
-      .medical-focus-grid,
-      .medical-approach-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .medical-focus-card img {
-        height: 230px;
-      }
-
-      .medical-card-content {
-        padding: 23px;
-      }
-
-      .medical-approach-grid {
-        gap: 32px;
-      }
-
-      .medical-approach-image {
-        min-height: 270px;
-      }
-
-      .medical-cta {
-        padding: 75px 6%;
-      }
-    }
-  </style>
+        @media (max-width: 900px) {
+            .medical-hero { min-height: 60vh; padding: 130px 6% 80px; }
+            .medical-section { padding: 80px 6%; }
+            .medical-focus-grid, .medical-approach-grid { grid-template-columns: 1fr; }
+            .medical-image-wrapper { height: 240px; }
+            .medical-card-content { padding: 25px; }
+            .medical-approach-grid { gap: 40px; }
+            .medical-approach-image { min-height: 300px; }
+        }
+    </style>
 </head>
 
 <body class="medical-page">
 
-  <!-- INTRO -->
-  <div class="intro-screen" id="intro">
-    <div class="intro-content">
-      <img src="assets/logo-transparent.png" alt="Azadipour">
-      <div class="intro-name">AZADIPOUR</div>
-      <p>GLOBAL MEDICAL TECHNOLOGY</p>
-    </div>
-  </div>
-
-  <!-- HEADER -->
-  <header class="site-header">
-    <div class="header-inner">
-
-      <a class="brand" href="index.html">
-        <img src="assets/logo-transparent.png" alt="Azadipour">
-        <span>AZADIPOUR</span>
-      </a>
-
-      <button class="menu-toggle" id="menuToggle"
-        aria-label="Open navigation menu"
-        aria-expanded="false"
-        aria-controls="mainNav">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
-      <nav class="main-nav" id="mainNav">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="medical.html" class="active" aria-current="page">Medical Technology</a>
-        <a href="cardiac.html">Cardiac</a>
-        <a href="robotic.html">Robotics</a>
-        <a href="projects.html">Projects</a>
-        <a href="partners.html">Partners</a>
-        <a href="contact.html" class="nav-contact">Contact</a>
-      </nav>
-
-    </div>
-  </header>
-
-  <main>
-
-    <!-- MEDICAL HERO -->
-    <section class="medical-hero">
-
-      <div class="medical-hero-content">
-
-        <div class="medical-eyebrow">
-          AZADIPOUR / INTERNATIONAL MEDICAL TECHNOLOGY
+    <!-- INTRO -->
+    <div class="intro-screen" id="intro">
+        <div class="intro-content">
+            <img src="assets/logo-transparent.png" alt="Azadipour Logo">
+            <div class="intro-name">AZADIPOUR</div>
+            <p>GLOBAL MEDICAL TECHNOLOGY & HOSPITAL SOLUTIONS</p>
         </div>
-
-        <h1>
-          Advancing Global
-          <span>Healthcare Technology.</span>
-        </h1>
-
-        <p>
-          Connecting healthcare organizations with international
-          manufacturers, advanced surgical systems, medical equipment
-          and innovative hospital solutions.
-        </p>
-
-      </div>
-
-    </section>
-
-    <!-- TECHNOLOGY PORTFOLIO -->
-    <section class="medical-section">
-
-      <div class="medical-section-inner">
-
-        <div class="medical-section-heading">
-
-          <div class="eyebrow">MEDICAL TECHNOLOGY</div>
-
-          <h2>
-            Advanced Technologies.
-            Global Opportunities.
-          </h2>
-
-          <p>
-            Azadipour works across international medical technology
-            markets, identifying relevant solutions and connecting
-            healthcare requirements with manufacturers and technology
-            partners worldwide.
-          </p>
-
-        </div>
-
-        <div class="medical-focus-grid">
-
-          <article class="medical-focus-card">
-
-            <img
-              src="assets/robotic-hero.jpg"
-              alt="Advanced robotic surgery"
-              loading="lazy">
-
-            <div class="medical-card-content">
-              <div class="medical-card-number">01 / SURGICAL TECHNOLOGY</div>
-
-              <h3>Advanced Surgical Systems</h3>
-
-              <p>
-                Advanced surgical equipment and technologies
-                supporting modern operating environments,
-                procedural precision and surgical innovation.
-              </p>
-            </div>
-
-          </article>
-
-          <article class="medical-focus-card">
-
-            <img
-              src="assets/surgical-robotics.jpg"
-              alt="Surgical robotics technology"
-              loading="lazy">
-
-            <div class="medical-card-content">
-              <div class="medical-card-number">02 / DIGITAL SURGERY</div>
-
-              <h3>Robotics & Surgical AI</h3>
-
-              <p>
-                Robotic-assisted systems, digital workflows,
-                surgical navigation and intelligent technologies
-                for the future of surgical care.
-              </p>
-            </div>
-
-          </article>
-
-          <article class="medical-focus-card">
-
-            <img
-              src="assets/cardiac-hero.jpg"
-              alt="Cardiac and cardiovascular technology"
-              loading="lazy">
-
-            <div class="medical-card-content">
-              <div class="medical-card-number">03 / CARDIOVASCULAR</div>
-
-              <h3>Cardiac & Cardiovascular</h3>
-
-              <p>
-                Medical technologies and equipment supporting
-                cardiac surgery, perfusion services and
-                cardiovascular departments.
-              </p>
-            </div>
-
-          </article>
-
-          <article class="medical-focus-card">
-
-            <img
-              src="assets/hospital-technology.jpg"
-              alt="Hospital medical technology"
-              loading="lazy">
-
-            <div class="medical-card-content">
-              <div class="medical-card-number">04 / HOSPITAL SOLUTIONS</div>
-
-              <h3>Hospital Technology</h3>
-
-              <p>
-                Medical equipment and integrated solutions
-                for operating theatres, intensive care,
-                diagnostics and hospital departments.
-              </p>
-            </div>
-
-          </article>
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- INTERNATIONAL APPROACH -->
-    <section class="medical-section medical-approach">
-
-      <div class="medical-section-inner medical-approach-grid">
-
-        <div>
-
-          <div class="medical-eyebrow">
-            INTERNATIONAL APPROACH
-          </div>
-
-          <h2>
-            Connecting Clinical Needs
-            With Global Innovation.
-          </h2>
-
-          <p>
-            Successful medical technology projects begin with
-            understanding the needs of healthcare providers.
-            Azadipour connects those requirements with relevant
-            international manufacturers, technology developers
-            and supply partners.
-          </p>
-
-          <p>
-            Our approach is based on international communication,
-            professional coordination, market understanding
-            and long-term business relationships.
-          </p>
-
-        </div>
-
-        <div class="medical-approach-image">
-
-          <img
-            src="assets/germany-medical.jpg"
-            alt="International medical technology"
-            loading="lazy">
-
-          <span>INTERNATIONAL MEDICAL TECHNOLOGY</span>
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- CONTACT -->
-    <section class="medical-cta">
-
-      <div class="medical-section-inner">
-
-        <div class="medical-eyebrow">GLOBAL COOPERATION</div>
-
-        <h2>
-          Let's Explore
-          Global Opportunities.
-        </h2>
-
-        <p>
-          We welcome communication with international medical
-          manufacturers, healthcare organizations and strategic
-          business partners interested in developing cooperation.
-        </p>
-
-        <a href="contact.html" class="medical-cta-link">
-          Contact Azadipour
-        </a>
-
-      </div>
-
-    </section>
-
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="site-footer">
-
-    <div class="footer-main">
-
-      <div class="footer-brand">
-        <img src="assets/logo-transparent.png" alt="Azadipour">
-        <h3>AZADIPOUR</h3>
-        <p>Global Medical Technology & Hospital Solutions</p>
-      </div>
-
-      <div class="footer-column">
-        <h4>COMPANY</h4>
-        <a href="about.html">About</a>
-        <a href="index.html#global-network">Global Presence</a>
-        <a href="partners.html">Partners</a>
-        <a href="projects.html">Projects</a>
-      </div>
-
-      <div class="footer-column">
-        <h4>TECHNOLOGY</h4>
-        <a href="robotic.html">Robotic Surgery</a>
-        <a href="cardiac.html">Cardiovascular</a>
-        <a href="medical.html">Medical Technology</a>
-      </div>
-
-      <div class="footer-column">
-        <h4>CONTACT</h4>
-        <a href="mailto:info@azadipourmedical.com">Email Azadipour</a>
-        <span>International Enquiries</span>
-      </div>
-
     </div>
 
-    <div class="footer-bottom">
-      <span>© <span id="currentYear">2026</span> AZADIPOUR. ALL RIGHTS RESERVED.</span>
-      <span>GLOBAL MEDICAL TECHNOLOGY · WORLDWIDE</span>
-    </div>
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="index.html" class="brand" aria-label="Azadipour Home">
+                <img src="assets/logo-transparent.png" alt="Azadipour">
+                <span>AZADIPOUR</span>
+            </a>
 
-  </footer>
+            <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mainNav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
 
-  <script src="script.js" defer></script>
+            <nav class="main-nav" id="mainNav">
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="index.html#global-network">Global Presence</a>
+                <a href="medical.html" class="active">Medical Technology</a>
+                <a href="partners.html">Global Partnerships</a>
+                <a href="projects.html">Projects</a>
+                <a href="contact.html" class="nav-contact">Contact</a>
+            </nav>
+        </div>
+    </header>
 
+    <main>
+        <!-- HERO -->
+        <section class="medical-hero">
+            <div class="medical-hero-content">
+                <div class="medical-eyebrow">INTERNATIONAL MEDICAL TECHNOLOGY</div>
+                <h1>Advancing Global <span>Healthcare Technology.</span></h1>
+                <p>
+                    Connecting healthcare organizations with international
+                    manufacturers, advanced surgical systems, medical equipment
+                    and innovative hospital solutions.
+                </p>
+            </div>
+        </section>
+
+        <!-- PORTFOLIO -->
+        <section class="medical-section">
+            <div class="medical-inner">
+                <div class="section-heading">
+                    <div class="section-label">MEDICAL TECHNOLOGY PORTFOLIO</div>
+                    <h2>Advanced Technologies. <span>Global Opportunities.</span></h2>
+                    <p>
+                        Azadipour works across international medical technology
+                        markets, identifying relevant solutions and connecting
+                        healthcare requirements with manufacturers and technology
+                        partners worldwide.
+                    </p>
+                </div>
+
+                <div class="medical-focus-grid">
+                    <article class="medical-focus-card">
+                        <div class="medical-image-wrapper">
+                            <img src="assets/robotic-hero.jpg" alt="Advanced Surgical Systems" loading="lazy">
+                        </div>
+                        <div class="medical-card-content">
+                            <div class="medical-card-number">01 / SURGICAL TECHNOLOGY</div>
+                            <h3>Advanced Surgical Systems</h3>
+                            <p>
+                                Advanced surgical equipment and technologies
+                                supporting modern operating environments,
+                                procedural precision and surgical innovation.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="medical-focus-card">
+                        <div class="medical-image-wrapper">
+                            <img src="assets/surgical-robotics.jpg" alt="Robotics and Surgical AI" loading="lazy">
+                        </div>
+                        <div class="medical-card-content">
+                            <div class="medical-card-number">02 / DIGITAL SURGERY</div>
+                            <h3>Robotics & Surgical AI</h3>
+                            <p>
+                                Robotic-assisted systems, digital workflows,
+                                surgical navigation and intelligent technologies
+                                for the future of surgical care.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="medical-focus-card">
+                        <div class="medical-image-wrapper">
+                            <img src="assets/cardiac-hero.jpg" alt="Cardiac and Cardiovascular" loading="lazy">
+                        </div>
+                        <div class="medical-card-content">
+                            <div class="medical-card-number">03 / CARDIOVASCULAR</div>
+                            <h3>Cardiac & Cardiovascular</h3>
+                            <p>
+                                Medical technologies and equipment supporting
+                                cardiac surgery, perfusion services and
+                                cardiovascular departments.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="medical-focus-card">
+                        <div class="medical-image-wrapper">
+                            <img src="assets/hospital-technology.jpg" alt="Hospital Technology" loading="lazy">
+                        </div>
+                        <div class="medical-card-content">
+                            <div class="medical-card-number">04 / HOSPITAL SOLUTIONS</div>
+                            <h3>Hospital Technology</h3>
+                            <p>
+                                Medical equipment and integrated solutions
+                                for operating theatres, intensive care,
+                                diagnostics and hospital departments.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- APPROACH -->
+        <section class="medical-section bg-soft">
+            <div class="medical-inner medical-approach">
+                <div class="medical-approach-grid">
+                    <div>
+                        <div class="medical-eyebrow" style="margin-bottom: 20px;">INTERNATIONAL APPROACH</div>
+                        <h2>Connecting Clinical Needs <span>With Global Innovation.</span></h2>
+                        <p>
+                            Successful medical technology projects begin with
+                            understanding the needs of healthcare providers.
+                            Azadipour connects those requirements with relevant
+                            international manufacturers, technology developers
+                            and supply partners.
+                        </p>
+                        <p>
+                            Our approach is based on international communication,
+                            professional coordination, market understanding
+                            and long-term business relationships.
+                        </p>
+                    </div>
+
+                    <div class="medical-approach-image">
+                        <img src="assets/germany-medical.jpg" alt="International Medical Technology" loading="lazy">
+                        <span>INTERNATIONAL MEDICAL TECHNOLOGY</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="section contact-section" style="text-align: center;">
+            <div class="section-label" style="justify-content: center;">GLOBAL COOPERATION</div>
+            <h2 class="section-heading" style="margin-inline: auto;">
+                Let's Explore <span>Global Opportunities.</span>
+            </h2>
+            <p style="max-width: 650px; margin: 0 auto 30px; color: var(--text-soft);">
+                We welcome communication with international medical manufacturers, healthcare organizations and strategic business partners interested in developing cooperation.
+            </p>
+            <a href="contact.html" class="btn-primary">Contact Azadipour <span>↗</span></a>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-main">
+            <div class="footer-brand">
+                <img src="assets/logo-transparent.png" alt="Azadipour Logo">
+                <h3>AZADIPOUR</h3>
+                <p>Global Medical Technology & Hospital Solutions</p>
+            </div>
+
+            <div class="footer-column">
+                <h4>COMPANY</h4>
+                <a href="about.html">About Us</a>
+                <a href="index.html#global-network">Global Presence</a>
+                <a href="partners.html">Partnerships</a>
+                <a href="projects.html">Projects</a>
+            </div>
+
+            <div class="footer-column">
+                <h4>TECHNOLOGY</h4>
+                <a href="robotic.html">Robotic Surgery</a>
+                <a href="cardiac.html">Cardiovascular</a>
+                <a href="medical.html">Medical Technology</a>
+            </div>
+
+            <div class="footer-column">
+                <h4>CONTACT</h4>
+                <a href="mailto:info@azadipourmedical.com">Email</a>
+                <span>Oman</span>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>© <span id="currentYear">2026</span> AZADIPOUR. ALL RIGHTS RESERVED.</span>
+            <span>GLOBAL MEDICAL TECHNOLOGY · WORLDWIDE</span>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="script.js" defer></script>
 </body>
 </html>
