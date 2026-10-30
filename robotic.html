@@ -1,376 +1,580 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Robotic Surgery & Surgical Navigation | Azadipour</title>
-  <meta name="description" content="Explore Azadipour's focus on robotic surgery, surgical navigation, image-guided technologies and advanced operating room solutions across the GCC and international markets.">
-  <link rel="canonical" href="https://azadipourmedical.com/robotic.html">
-  <meta name="theme-color" content="#08090b">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Surgical Robotics & Digital Surgery | Azadipour</title>
+    <meta name="description" content="Azadipour focuses on surgical robotics, image-guided surgery, surgical AI, navigation technologies and smart operating room solutions.">
+    <meta name="theme-color" content="#08090b">
+
+    <link rel="canonical" href="https://azadipourmedical.com/robotic.html">
+    <link rel="icon" type="image/png" href="assets/logo-transparent.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .robotic-page {
+            background: #08090b;
+            color: #f1f1ef;
+        }
+
+        .robotic-hero {
+            min-height: 66vh;
+            display: flex;
+            align-items: center;
+            padding: 150px 7% 100px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(255,255,255,.10);
+            background:
+                radial-gradient(ellipse at 78% 35%, rgba(190,198,208,.11), transparent 38%),
+                linear-gradient(120deg, #08090b 0%, #101318 55%, #08090b 100%);
+        }
+
+        .robotic-hero::after {
+            content: "";
+            position: absolute;
+            width: 480px;
+            height: 480px;
+            right: -140px;
+            top: 10%;
+            border: 1px solid rgba(220,225,232,.10);
+            border-radius: 50%;
+            box-shadow:
+                0 0 0 55px rgba(220,225,232,.025),
+                0 0 0 110px rgba(220,225,232,.018);
+            pointer-events: none;
+        }
+
+        .robotic-hero-content {
+            width: min(900px, 100%);
+            position: relative;
+            z-index: 1;
+        }
+
+        .robotic-eyebrow {
+            color: #aeb5bf;
+            font-size: 11px;
+            letter-spacing: .28em;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+
+        .robotic-hero h1 {
+            font-family: "Cormorant Garamond", serif;
+            font-weight: 400;
+            font-size: clamp(48px, 7vw, 88px);
+            line-height: .98;
+            letter-spacing: -.025em;
+            max-width: 900px;
+            margin: 0 0 28px;
+        }
+
+        .robotic-hero h1 span {
+            color: #aeb5bf;
+        }
+
+        .robotic-hero p {
+            max-width: 650px;
+            color: #b9bec6;
+            font-size: 15px;
+            line-height: 1.9;
+            font-weight: 300;
+        }
+
+        .robotic-section {
+            padding: 105px 7%;
+        }
+
+        .robotic-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .robotic-heading {
+            max-width: 760px;
+            margin-bottom: 52px;
+        }
+
+        .robotic-heading .eyebrow {
+            color: #9da5b0;
+            font-size: 10px;
+            letter-spacing: .25em;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        .robotic-heading h2 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: clamp(38px, 5vw, 62px);
+            font-weight: 400;
+            line-height: 1.05;
+            margin: 0 0 18px;
+        }
+
+        .robotic-heading p {
+            color: #aeb4bd;
+            line-height: 1.9;
+            font-size: 14px;
+            max-width: 680px;
+        }
+
+        .robotic-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1px;
+            background: rgba(255,255,255,.13);
+            border: 1px solid rgba(255,255,255,.13);
+        }
+
+        .robotic-card {
+            min-height: 275px;
+            padding: 38px;
+            background: #0d1014;
+            transition: background .3s ease;
+        }
+
+        .robotic-card:hover {
+            background: #151a20;
+        }
+
+        .robotic-number {
+            color: #747d88;
+            font-size: 11px;
+            letter-spacing: .18em;
+            margin-bottom: 35px;
+        }
+
+        .robotic-card h3 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 31px;
+            font-weight: 500;
+            margin: 0 0 15px;
+        }
+
+        .robotic-card p {
+            color: #aeb4bd;
+            font-size: 13px;
+            line-height: 1.85;
+            max-width: 510px;
+            margin: 0;
+        }
+
+        .robotic-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 24px;
+        }
+
+        .robotic-tags span {
+            border: 1px solid rgba(255,255,255,.17);
+            color: #c4c9d0;
+            padding: 7px 10px;
+            font-size: 10px;
+            letter-spacing: .04em;
+        }
+
+        .robotic-vision {
+            background: #101318;
+            border-top: 1px solid rgba(255,255,255,.08);
+            border-bottom: 1px solid rgba(255,255,255,.08);
+        }
+
+        .robotic-vision-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .robotic-vision h2 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: clamp(38px, 5vw, 60px);
+            font-weight: 400;
+            line-height: 1.05;
+            margin: 0 0 22px;
+        }
+
+        .robotic-vision p {
+            color: #b2b8c1;
+            font-size: 14px;
+            line-height: 1.95;
+        }
+
+        .robotic-list {
+            border-top: 1px solid rgba(255,255,255,.18);
+        }
+
+        .robotic-list-item {
+            display: flex;
+            gap: 22px;
+            padding: 22px 0;
+            border-bottom: 1px solid rgba(255,255,255,.13);
+        }
+
+        .robotic-list-item span {
+            color: #858e99;
+            font-size: 11px;
+            letter-spacing: .12em;
+            padding-top: 4px;
+        }
+
+        .robotic-list-item strong {
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: .04em;
+        }
+
+        .robotic-note {
+            margin-top: 28px;
+            color: #858d98;
+            font-size: 11px;
+            line-height: 1.8;
+        }
+
+        .robotic-cta {
+            text-align: center;
+            padding: 105px 7%;
+            background:
+                radial-gradient(ellipse at center, rgba(180,190,205,.10), transparent 60%),
+                #08090b;
+        }
+
+        .robotic-cta h2 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: clamp(38px, 5vw, 62px);
+            font-weight: 400;
+            margin: 0 0 18px;
+        }
+
+        .robotic-cta p {
+            color: #aeb4bd;
+            max-width: 620px;
+            margin: 0 auto 30px;
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        .robotic-cta-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 0 25px;
+            border: 1px solid rgba(255,255,255,.55);
+            color: #f1f1ef;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 10px;
+            letter-spacing: .18em;
+            transition: background .25s ease, color .25s ease;
+        }
+
+        .robotic-cta-link:hover {
+            background: #f1f1ef;
+            color: #08090b;
+        }
+
+        @media (max-width: 760px) {
+            .robotic-hero {
+                min-height: 560px;
+                padding: 125px 6% 75px;
+            }
+
+            .robotic-hero::after {
+                width: 280px;
+                height: 280px;
+                right: -150px;
+                top: 18%;
+            }
+
+            .robotic-section {
+                padding: 75px 6%;
+            }
+
+            .robotic-grid,
+            .robotic-vision-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .robotic-card {
+                min-height: auto;
+                padding: 28px;
+            }
+
+            .robotic-vision-grid {
+                gap: 35px;
+            }
+
+            .robotic-cta {
+                padding: 75px 6%;
+            }
+        }
+    </style>
 </head>
 
-<body>
-  <header class="site-header">
-    <a class="brand" href="index.html" aria-label="Azadipour homepage">
-      <span class="brand-name">AZADIPOUR</span>
-      <span class="brand-subtitle">MEDICAL TECHNOLOGY</span>
-    </a>
+<body class="robotic-page">
 
-    <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false" aria-controls="mainNav">
-      <span></span><span></span>
-    </button>
-
-    <nav class="main-nav" id="mainNav">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="global-presence.html">Global Presence</a>
-      <a href="medical.html" class="active">Medical Technology</a>
-      <a href="partners.html">Partnerships</a>
-      <a href="projects.html">Projects</a>
-      <a href="contact.html" class="nav-contact">Contact</a>
-    </nav>
-  </header>
-
-  <main>
-    <section class="inner-hero robotic-hero">
-      <div class="inner-hero-decoration"></div>
-      <div class="inner-hero-content">
-        <span class="eyebrow">ADVANCED SURGICAL TECHNOLOGY</span>
-        <p class="inner-heading">Precision · Navigation · Innovation</p>
-        <h1>Robotic Surgery &<br><em>Surgical Navigation</em></h1>
-        <p>
-          Exploring advanced technologies that support surgical precision,
-          image-guided procedures and the evolution of modern operating rooms.
-        </p>
-        <div class="hero-buttons">
-          <a href="contact.html" class="btn btn-primary">Discuss an Opportunity</a>
-          <a href="medical.html" class="btn btn-outline">Explore Medical Technology</a>
+    <div class="intro-screen" id="introScreen">
+        <div class="intro-logo">
+            <img src="assets/logo-transparent.png" alt="Azadipour">
         </div>
-      </div>
-    </section>
-
-    <section class="section robotic-intro-section">
-      <div class="section-label">01 / OVERVIEW</div>
-      <div class="global-intro-grid">
-        <div class="global-intro-copy">
-          <span class="eyebrow">A NEW ERA OF SURGERY</span>
-          <h2>Technology designed to support <em>clinical precision.</em></h2>
-        </div>
-        <div class="robotic-intro-text">
-          <p>
-            Surgical robotics and navigation technologies are transforming
-            the way complex procedures are planned, guided and performed.
-            These systems can support clinical teams through enhanced
-            visualization, instrument guidance and workflow integration.
-          </p>
-          <p>
-            Azadipour explores opportunities to connect healthcare providers
-            with established manufacturers and technology developers in this
-            evolving field.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section robotic-areas-section">
-      <div class="section-label">02 / TECHNOLOGY AREAS</div>
-      <div class="section-heading">
-        <span class="eyebrow">OUR AREAS OF INTEREST</span>
-        <h2>Advanced surgical <em>technologies.</em></h2>
-        <p class="section-subtitle">
-          Selected technology fields relevant to modern surgical care and
-          hospital development.
-        </p>
-      </div>
-
-      <div class="medical-area-grid">
-        <article class="medical-area-card">
-          <div class="medical-area-top">
-            <span class="medical-area-number">01</span>
-            <span class="medical-area-symbol">01</span>
-          </div>
-          <span class="medical-area-label">ROBOTIC SYSTEMS</span>
-          <h3>Robotic-Assisted Surgery</h3>
-          <p>
-            Surgical robotic platforms designed to support clinicians in
-            selected procedures through advanced instrument control,
-            visualization and system integration.
-          </p>
-          <ul>
-            <li>Surgical robotic platforms</li>
-            <li>Robotic-assisted procedures</li>
-            <li>Clinical workflow integration</li>
-          </ul>
-        </article>
-
-        <article class="medical-area-card">
-          <div class="medical-area-top">
-            <span class="medical-area-number">02</span>
-            <span class="medical-area-symbol">02</span>
-          </div>
-          <span class="medical-area-label">IMAGE GUIDANCE</span>
-          <h3>Surgical Navigation</h3>
-          <p>
-            Navigation platforms that help surgical teams use imaging and
-            anatomical information to support procedural planning and
-            intraoperative orientation.
-          </p>
-          <ul>
-            <li>Image-guided navigation</li>
-            <li>Intraoperative guidance</li>
-            <li>Planning and visualization tools</li>
-          </ul>
-        </article>
-
-        <article class="medical-area-card">
-          <div class="medical-area-top">
-            <span class="medical-area-number">03</span>
-            <span class="medical-area-symbol">03</span>
-          </div>
-          <span class="medical-area-label">DIGITAL SURGERY</span>
-          <h3>Surgical AI & Digital Solutions</h3>
-          <p>
-            Emerging digital technologies designed to support surgical
-            planning, data interpretation, workflow coordination and
-            technology-enabled clinical environments.
-          </p>
-          <ul>
-            <li>AI-assisted surgical technologies</li>
-            <li>Digital surgical planning</li>
-            <li>Clinical data integration</li>
-          </ul>
-        </article>
-
-        <article class="medical-area-card">
-          <div class="medical-area-top">
-            <span class="medical-area-number">04</span>
-            <span class="medical-area-symbol">04</span>
-          </div>
-          <span class="medical-area-label">OPERATING ROOM</span>
-          <h3>Smart Operating Rooms</h3>
-          <p>
-            Connected operating room environments combining imaging,
-            visualization, equipment integration and digital workflow
-            technologies.
-          </p>
-          <ul>
-            <li>OR integration systems</li>
-            <li>Medical imaging displays</li>
-            <li>Connected surgical environments</li>
-          </ul>
-        </article>
-
-        <article class="medical-area-card">
-          <div class="medical-area-top">
-            <span class="medical-area-number">05</span>
-            <span class="medical-area-symbol">05</span>
-          </div>
-          <span class="medical-area-label">SPECIALIZED SURGERY</span>
-          <h3>Neurosurgical Technologies</h3>
-          <p>
-            Specialized systems and equipment supporting neurosurgical
-            planning, navigation and selected image-guided procedures.
-          </p>
-          <ul>
-            <li>Neurosurgical navigation</li>
-            <li>Image-guided technologies</li>
-            <li>Specialized surgical equipment</li>
-          </ul>
-        </article>
-
-        <article class="medical-area-card">
-          <div class="medical-area-top">
-            <span class="medical-area-number">06</span>
-            <span class="medical-area-symbol">06</span>
-          </div>
-          <span class="medical-area-label">CLINICAL INTEGRATION</span>
-          <h3>Surgical Visualization</h3>
-          <p>
-            Visualization and supporting technologies intended to improve
-            access to relevant clinical information during surgical
-            procedures.
-          </p>
-          <ul>
-            <li>Advanced visualization</li>
-            <li>Surgical imaging solutions</li>
-            <li>Integrated clinical systems</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <section class="section robotic-value-section">
-      <div class="section-label">03 / OUR APPROACH</div>
-      <div class="medical-principles-grid">
-        <div class="medical-principles-copy">
-          <span class="eyebrow">FROM TECHNOLOGY TO CLINICAL NEED</span>
-          <h2>Connecting innovation with <em>real requirements.</em></h2>
-          <p>
-            Technology selection should begin with clinical needs, hospital
-            infrastructure and a clear understanding of implementation
-            requirements.
-          </p>
-        </div>
-        <div class="principle-list">
-          <div class="principle-item">
-            <span>01</span>
-            <div>
-              <h3>Clinical Requirements</h3>
-              <p>Understanding the specialty, intended application and user requirements.</p>
-            </div>
-          </div>
-          <div class="principle-item">
-            <span>02</span>
-            <div>
-              <h3>Technology Assessment</h3>
-              <p>Reviewing technical capabilities, documentation and manufacturer information.</p>
-            </div>
-          </div>
-          <div class="principle-item">
-            <span>03</span>
-            <div>
-              <h3>Project Coordination</h3>
-              <p>Connecting relevant stakeholders and supporting structured discussions.</p>
-            </div>
-          </div>
-          <div class="principle-item">
-            <span>04</span>
-            <div>
-              <h3>Implementation Planning</h3>
-              <p>Considering training, service, registration and operational requirements.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section robotic-markets-section">
-      <div class="section-label">04 / MARKET DEVELOPMENT</div>
-      <div class="section-heading">
-        <span class="eyebrow">REGIONAL & INTERNATIONAL</span>
-        <h2>Developing opportunities across <em>markets.</em></h2>
-      </div>
-      <div class="presence-grid">
-        <article class="presence-card presence-card-featured">
-          <span class="presence-number">01</span>
-          <span class="presence-tag">REGISTERED ENTITY</span>
-          <h3>Oman</h3>
-          <p>
-            Our registered business base and an important starting point for
-            developing healthcare technology opportunities.
-          </p>
-          <strong>Business Base</strong>
-        </article>
-        <article class="presence-card">
-          <span class="presence-number">02</span>
-          <span class="presence-tag">TARGET MARKETS</span>
-          <h3>GCC Region</h3>
-          <p>
-            Exploring opportunities with hospitals, healthcare groups and
-            relevant industry stakeholders across the Gulf region.
-          </p>
-          <strong>Regional Development</strong>
-        </article>
-        <article class="presence-card">
-          <span class="presence-number">03</span>
-          <span class="presence-tag">INTERNATIONAL</span>
-          <h3>Europe & Beyond</h3>
-          <p>
-            Evaluating selected international technology providers and
-            potential business opportunities.
-          </p>
-          <strong>International Outlook</strong>
-        </article>
-      </div>
-    </section>
-
-    <section class="section medical-process-section">
-      <div class="section-label">05 / COOPERATION</div>
-      <div class="section-heading">
-        <span class="eyebrow">A STRUCTURED PROCESS</span>
-        <h2>From initial discussion to <em>project development.</em></h2>
-      </div>
-      <div class="medical-process-grid">
-        <div class="medical-process-item">
-          <span>01</span>
-          <h3>Identify</h3>
-          <p>Understand the hospital's clinical and technical requirements.</p>
-        </div>
-        <div class="medical-process-item">
-          <span>02</span>
-          <h3>Evaluate</h3>
-          <p>Review suitable technologies and manufacturer capabilities.</p>
-        </div>
-        <div class="medical-process-item">
-          <span>03</span>
-          <h3>Connect</h3>
-          <p>Coordinate communication between relevant stakeholders.</p>
-        </div>
-        <div class="medical-process-item">
-          <span>04</span>
-          <h3>Develop</h3>
-          <p>Explore practical next steps for a potential project or cooperation.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="global-cta">
-      <div class="global-cta-content">
-        <span class="eyebrow">LET'S EXPLORE NEW POSSIBILITIES</span>
-        <h2>Advancing surgical technology <em>together.</em></h2>
-        <p>
-          Contact Azadipour to discuss robotic surgery, surgical navigation
-          and advanced operating room opportunities.
-        </p>
-        <a href="contact.html" class="btn btn-primary">Contact Azadipour</a>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="footer-main">
-      <div class="footer-brand">
-        <a href="index.html" class="brand">
-          <span class="brand-name">AZADIPOUR</span>
-          <span class="brand-subtitle">MEDICAL TECHNOLOGY</span>
-        </a>
-        <p>Medical Technology & Hospital Solutions</p>
-        <span class="footer-caption">A Global Perspective.</span>
-      </div>
-
-      <div class="footer-column">
-        <h3>Company</h3>
-        <a href="about.html">About Us</a>
-        <a href="global-presence.html">Global Presence</a>
-        <a href="partners.html">Partnerships</a>
-        <a href="projects.html">Projects</a>
-      </div>
-
-      <div class="footer-column">
-        <h3>Technology</h3>
-        <a href="medical.html">Medical Technology</a>
-        <a href="robotic.html">Robotic Surgery</a>
-        <a href="cardiac.html">Cardiac Technology</a>
-      </div>
-
-      <div class="footer-column">
-        <h3>Contact</h3>
-        <a href="mailto:info@azadipourmedical.com">Email Us</a>
-        <a href="https://azadipourmedical.com/">Website</a>
-        <a href="contact.html">Business Enquiries</a>
-      </div>
+        <div class="intro-line"></div>
     </div>
 
-    <div class="footer-bottom">
-      <span>© <span id="currentYear"></span> Azadipour. All rights reserved.</span>
-      <span>Oman · GCC · Europe · International</span>
-    </div>
-  </footer>
+    <header class="site-header" id="siteHeader">
+        <div class="header-inner">
+            <a class="brand" href="index.html" aria-label="Azadipour Home">
+                <img src="assets/logo-transparent.png" alt="Azadipour logo">
+            </a>
 
-  <script src="script.js"></script>
+            <button class="menu-toggle" id="menuToggle"
+                    aria-label="Open navigation menu"
+                    aria-expanded="false"
+                    aria-controls="mainNav">
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="main-nav" id="mainNav">
+                <a href="index.html">Home</a>
+                <a href="medical.html">Medical</a>
+                <a href="cardiac.html">Cardiac</a>
+                <a href="robotic.html" class="active" aria-current="page">Robotics</a>
+                <a href="projects.html">Projects</a>
+                <a href="partners.html">Partners</a>
+                <a href="contact.html" class="nav-contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="robotic-hero">
+            <div class="robotic-hero-content">
+                <div class="robotic-eyebrow">AZADIPOUR / SURGICAL ROBOTICS &amp; DIGITAL SURGERY</div>
+
+                <h1>Precision. Intelligence. <span>The future of surgery.</span></h1>
+
+                <p>
+                    Exploring advanced surgical robotics, image-guided technologies,
+                    navigation systems and intelligent operating room solutions
+                    that are shaping the future of modern surgical care.
+                </p>
+            </div>
+        </section>
+
+        <section class="robotic-section">
+            <div class="robotic-inner">
+                <div class="robotic-heading">
+                    <div class="eyebrow">TECHNOLOGY FOCUS</div>
+
+                    <h2>Exploring the next generation of surgical technology.</h2>
+
+                    <p>
+                        Azadipour's technology focus includes advanced systems
+                        that support surgical workflows, image-guided procedures,
+                        digital integration and the development of modern
+                        operating environments.
+                    </p>
+                </div>
+
+                <div class="robotic-grid">
+                    <article class="robotic-card">
+                        <div class="robotic-number">01 / ROBOTIC-ASSISTED SURGERY</div>
+
+                        <h3>Surgical Robotics</h3>
+
+                        <p>
+                            Robotic-assisted surgical platforms and technologies
+                            designed to support modern surgical procedures,
+                            operating teams and evolving clinical workflows.
+                        </p>
+
+                        <div class="robotic-tags">
+                            <span>Robotic Systems</span>
+                            <span>Surgical Platforms</span>
+                            <span>Digital Surgery</span>
+                        </div>
+                    </article>
+
+                    <article class="robotic-card">
+                        <div class="robotic-number">02 / IMAGE-GUIDED SURGERY</div>
+
+                        <h3>Navigation &amp; Image Guidance</h3>
+
+                        <p>
+                            Image-guided technologies and navigation systems
+                            supporting surgical planning, intraoperative
+                            orientation and procedure-related workflows.
+                        </p>
+
+                        <div class="robotic-tags">
+                            <span>Surgical Navigation</span>
+                            <span>Image Guidance</span>
+                            <span>Planning</span>
+                        </div>
+                    </article>
+
+                    <article class="robotic-card">
+                        <div class="robotic-number">03 / ARTIFICIAL INTELLIGENCE</div>
+
+                        <h3>Surgical AI &amp; Digital Intelligence</h3>
+
+                        <p>
+                            Exploring artificial intelligence applications,
+                            digital tools and intelligent systems relevant to
+                            surgical workflows and healthcare technology.
+                        </p>
+
+                        <div class="robotic-tags">
+                            <span>Surgical AI</span>
+                            <span>Digital Workflows</span>
+                            <span>Data Integration</span>
+                        </div>
+                    </article>
+
+                    <article class="robotic-card">
+                        <div class="robotic-number">04 / SMART OPERATING ROOMS</div>
+
+                        <h3>Smart OR Solutions</h3>
+
+                        <p>
+                            Integrated operating room technologies, connected
+                            equipment and digital environments designed to
+                            support coordination across surgical departments.
+                        </p>
+
+                        <div class="robotic-tags">
+                            <span>Smart OR</span>
+                            <span>OR Integration</span>
+                            <span>Connected Systems</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="robotic-section robotic-vision">
+            <div class="robotic-inner robotic-vision-grid">
+                <div>
+                    <div class="robotic-eyebrow">OUR PERSPECTIVE</div>
+
+                    <h2>Connecting innovation with clinical requirements.</h2>
+
+                    <p>
+                        The adoption of advanced surgical technology requires
+                        more than introducing new equipment. It involves
+                        understanding clinical workflows, evaluating technical
+                        suitability and identifying the right opportunities
+                        for healthcare organizations.
+                    </p>
+
+                    <p>
+                        Azadipour aims to facilitate connections between
+                        healthcare providers and international technology
+                        developers through structured business development
+                        and professional communication.
+                    </p>
+                </div>
+
+                <div class="robotic-list">
+                    <div class="robotic-list-item">
+                        <span>01</span>
+                        <strong>Understanding surgical department needs</strong>
+                    </div>
+
+                    <div class="robotic-list-item">
+                        <span>02</span>
+                        <strong>Reviewing technology and clinical applications</strong>
+                    </div>
+
+                    <div class="robotic-list-item">
+                        <span>03</span>
+                        <strong>Identifying relevant international solutions</strong>
+                    </div>
+
+                    <div class="robotic-list-item">
+                        <span>04</span>
+                        <strong>Facilitating manufacturer and hospital communication</strong>
+                    </div>
+
+                    <div class="robotic-list-item">
+                        <span>05</span>
+                        <strong>Exploring potential regional opportunities</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="robotic-inner">
+                <p class="robotic-note">
+                    The technologies described on this page represent areas
+                    of business and technology focus. They do not imply that
+                    Azadipour manufactures, owns, distributes or has exclusive
+                    rights to any specific system unless separately confirmed.
+                    Product availability and cooperation are subject to
+                    individual agreements.
+                </p>
+            </div>
+        </section>
+
+        <section class="robotic-cta">
+            <div class="robotic-inner">
+                <div class="robotic-eyebrow">ADVANCED SURGICAL TECHNOLOGY</div>
+
+                <h2>Let's explore the possibilities.</h2>
+
+                <p>
+                    For surgical technology manufacturers, healthcare
+                    organizations and international partners interested
+                    in exploring potential cooperation, we welcome
+                    a professional discussion.
+                </p>
+
+                <a class="robotic-cta-link" href="contact.html">
+                    Contact Azadipour
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <a href="index.html">
+                    <img src="assets/logo-transparent.png" alt="Azadipour">
+                </a>
+                <p>Medical Technology &amp; Hospital Solutions</p>
+            </div>
+
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="medical.html">Medical</a>
+                <a href="cardiac.html">Cardiac</a>
+                <a href="robotic.html">Robotics</a>
+                <a href="projects.html">Projects</a>
+                <a href="partners.html">Partners</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+            <div class="footer-contact">
+                <a href="mailto:info@azadipourmedical.com">info@azadipourmedical.com</a>
+                <a href="tel:+96891646294">+968 9164 6294</a>
+                <a href="https://azadipourmedical.com/">azadipourmedical.com</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>© <span id="currentYear"></span> Azadipour. All rights reserved.</span>
+            <span>GCC · EUROPE · INTERNATIONAL</span>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
 </body>
 </html>
