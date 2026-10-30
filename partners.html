@@ -1,511 +1,575 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Global Partnerships | Azadipour</title>
-  <meta name="description" content="Azadipour welcomes cooperation with medical technology manufacturers, healthcare organizations and international business partners across the GCC, Europe and global markets.">
-  <link rel="canonical" href="https://azadipourmedical.com/partners.html">
-  <meta name="theme-color" content="#08090b">
+    <title>International Partnerships | Azadipour</title>
+    <meta name="description" content="Azadipour connects international medical technology manufacturers and healthcare solution providers with regional business opportunities across Oman and the GCC.">
+    <meta name="theme-color" content="#08090b">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="canonical" href="https://azadipourmedical.com/partners.html">
 
-  <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="assets/logo-transparent.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .partners-page {
+            background: #08090b;
+            color: #f1f1ef;
+        }
+
+        .partners-hero {
+            min-height: 66vh;
+            display: flex;
+            align-items: center;
+            padding: 150px 7% 100px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(255,255,255,.10);
+            background:
+                radial-gradient(ellipse at 78% 35%, rgba(190,198,208,.11), transparent 38%),
+                linear-gradient(120deg, #08090b 0%, #101318 55%, #08090b 100%);
+        }
+
+        .partners-hero::after {
+            content: "";
+            position: absolute;
+            width: 480px;
+            height: 480px;
+            right: -140px;
+            top: 10%;
+            border: 1px solid rgba(220,225,232,.10);
+            border-radius: 50%;
+            box-shadow:
+                0 0 0 55px rgba(220,225,232,.025),
+                0 0 0 110px rgba(220,225,232,.018);
+            pointer-events: none;
+        }
+
+        .partners-hero-content {
+            width: min(900px, 100%);
+            position: relative;
+            z-index: 1;
+        }
+
+        .partners-eyebrow {
+            color: #aeb5bf;
+            font-size: 11px;
+            letter-spacing: .28em;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+
+        .partners-hero h1 {
+            font-family: "Cormorant Garamond", serif;
+            font-weight: 400;
+            font-size: clamp(48px, 7vw, 88px);
+            line-height: .98;
+            letter-spacing: -.025em;
+            max-width: 850px;
+            margin: 0 0 28px;
+        }
+
+        .partners-hero h1 span {
+            color: #aeb5bf;
+        }
+
+        .partners-hero p {
+            max-width: 650px;
+            color: #b9bec6;
+            font-size: 15px;
+            line-height: 1.9;
+            font-weight: 300;
+        }
+
+        .partners-section {
+            padding: 105px 7%;
+        }
+
+        .partners-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .partners-heading {
+            max-width: 760px;
+            margin-bottom: 52px;
+        }
+
+        .partners-heading .eyebrow {
+            color: #9da5b0;
+            font-size: 10px;
+            letter-spacing: .25em;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        .partners-heading h2 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: clamp(38px, 5vw, 62px);
+            font-weight: 400;
+            line-height: 1.05;
+            margin: 0 0 18px;
+        }
+
+        .partners-heading p {
+            color: #aeb4bd;
+            line-height: 1.9;
+            font-size: 14px;
+            max-width: 680px;
+        }
+
+        .partners-audience-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1px;
+            background: rgba(255,255,255,.13);
+            border: 1px solid rgba(255,255,255,.13);
+        }
+
+        .partners-audience-card {
+            min-height: 250px;
+            padding: 38px;
+            background: #0d1014;
+            transition: background .3s ease;
+        }
+
+        .partners-audience-card:hover {
+            background: #151a20;
+        }
+
+        .partners-number {
+            color: #747d88;
+            font-size: 11px;
+            letter-spacing: .18em;
+            margin-bottom: 35px;
+        }
+
+        .partners-audience-card h3 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 31px;
+            font-weight: 500;
+            margin: 0 0 15px;
+        }
+
+        .partners-audience-card p {
+            color: #aeb4bd;
+            font-size: 13px;
+            line-height: 1.85;
+            max-width: 510px;
+            margin: 0;
+        }
+
+        .partners-model {
+            background: #101318;
+            border-top: 1px solid rgba(255,255,255,.08);
+            border-bottom: 1px solid rgba(255,255,255,.08);
+        }
+
+        .partners-model-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .partners-model h2 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: clamp(38px, 5vw, 60px);
+            font-weight: 400;
+            line-height: 1.05;
+            margin: 0 0 22px;
+        }
+
+        .partners-model p {
+            color: #b2b8c1;
+            font-size: 14px;
+            line-height: 1.95;
+        }
+
+        .partners-process {
+            border-top: 1px solid rgba(255,255,255,.18);
+        }
+
+        .partners-process-item {
+            display: flex;
+            gap: 22px;
+            padding: 22px 0;
+            border-bottom: 1px solid rgba(255,255,255,.13);
+        }
+
+        .partners-process-item span {
+            color: #858e99;
+            font-size: 11px;
+            letter-spacing: .12em;
+            padding-top: 4px;
+        }
+
+        .partners-process-item strong {
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: .04em;
+        }
+
+        .partners-market {
+            padding: 105px 7%;
+        }
+
+        .partners-market-panel {
+            display: grid;
+            grid-template-columns: .8fr 1.2fr;
+            gap: 60px;
+            align-items: center;
+            padding: 55px;
+            border: 1px solid rgba(255,255,255,.15);
+            background:
+                radial-gradient(ellipse at 85% 15%, rgba(180,190,205,.09), transparent 45%),
+                #0d1014;
+        }
+
+        .partners-market-panel h2 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: clamp(36px, 4vw, 52px);
+            font-weight: 400;
+            line-height: 1.05;
+            margin: 0;
+        }
+
+        .partners-market-panel p {
+            color: #aeb4bd;
+            font-size: 14px;
+            line-height: 1.9;
+            margin: 0 0 25px;
+        }
+
+        .partners-market-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .partners-market-list span {
+            border: 1px solid rgba(255,255,255,.20);
+            color: #d0d4da;
+            padding: 10px 13px;
+            font-size: 11px;
+            letter-spacing: .08em;
+        }
+
+        .partners-cta {
+            text-align: center;
+            padding: 105px 7%;
+            background:
+                radial-gradient(ellipse at center, rgba(180,190,205,.10), transparent 60%),
+                #08090b;
+        }
+
+        .partners-cta h2 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: clamp(38px, 5vw, 62px);
+            font-weight: 400;
+            margin: 0 0 18px;
+        }
+
+        .partners-cta p {
+            color: #aeb4bd;
+            max-width: 620px;
+            margin: 0 auto 30px;
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        .partners-cta-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 0 25px;
+            border: 1px solid rgba(255,255,255,.55);
+            color: #f1f1ef;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 10px;
+            letter-spacing: .18em;
+            transition: background .25s ease, color .25s ease;
+        }
+
+        .partners-cta-link:hover {
+            background: #f1f1ef;
+            color: #08090b;
+        }
+
+        @media (max-width: 760px) {
+            .partners-hero {
+                min-height: 560px;
+                padding: 125px 6% 75px;
+            }
+
+            .partners-hero::after {
+                width: 280px;
+                height: 280px;
+                right: -150px;
+                top: 18%;
+            }
+
+            .partners-section,
+            .partners-market {
+                padding: 75px 6%;
+            }
+
+            .partners-audience-grid,
+            .partners-model-grid,
+            .partners-market-panel {
+                grid-template-columns: 1fr;
+            }
+
+            .partners-audience-card {
+                min-height: auto;
+                padding: 28px;
+            }
+
+            .partners-model-grid {
+                gap: 35px;
+            }
+
+            .partners-market-panel {
+                padding: 30px;
+                gap: 25px;
+            }
+
+            .partners-cta {
+                padding: 75px 6%;
+            }
+        }
+    </style>
 </head>
 
-<body>
+<body class="partners-page">
 
-  <header class="site-header">
-    <a href="index.html" class="brand" aria-label="Azadipour Home">
-      <span class="brand-name">AZADIPOUR</span>
-      <span class="brand-caption">MEDICAL TECHNOLOGY & HOSPITAL SOLUTIONS</span>
-    </a>
-
-    <button class="menu-toggle" id="menuToggle"
-            aria-label="Open navigation" aria-expanded="false">
-      <span></span>
-      <span></span>
-    </button>
-
-    <nav class="main-nav" id="mainNav">
-      <a href="index.html">Home</a>
-      <a href="about.html">About Us</a>
-      <a href="global-presence.html">Global Presence</a>
-      <a href="medical.html">Medical Technology</a>
-      <a href="partners.html" class="active">Partnerships</a>
-      <a href="projects.html">Projects</a>
-      <a href="contact.html" class="nav-contact">Contact</a>
-    </nav>
-  </header>
-
-  <main>
-
-    <!-- HERO -->
-    <section class="inner-hero partners-hero">
-      <div class="inner-hero-content">
-        <span class="eyebrow">INTERNATIONAL COOPERATION</span>
-
-        <h1>Global <span>Partnerships</span></h1>
-
-        <p>
-          Building professional connections between medical technology
-          manufacturers, healthcare organizations and international markets.
-        </p>
-
-        <div class="hero-buttons">
-          <a href="#partnership-models" class="btn btn-primary">
-            Explore Cooperation
-          </a>
-
-          <a href="contact.html" class="btn btn-outline">
-            Partnership Enquiries
-          </a>
+    <div class="intro-screen" id="introScreen">
+        <div class="intro-logo">
+            <img src="assets/logo-transparent.png" alt="Azadipour">
         </div>
-      </div>
-
-      <div class="inner-hero-decoration"></div>
-    </section>
-
-
-    <!-- INTRODUCTION -->
-    <section class="section">
-      <div class="section-label">01 / OUR PARTNERSHIP APPROACH</div>
-
-      <div class="global-intro-grid">
-        <div>
-          <h2 class="section-heading">
-            Connecting Technology<br>
-            with <span>Healthcare Markets.</span>
-          </h2>
-        </div>
-
-        <div class="global-intro-copy">
-          <p>
-            Azadipour aims to develop professional business relationships
-            with international manufacturers, medical technology developers
-            and healthcare organizations.
-          </p>
-
-          <p>
-            Our focus is on identifying suitable technologies, understanding
-            local market requirements and facilitating communication between
-            suppliers and potential healthcare customers.
-          </p>
-
-          <p>
-            Cooperation opportunities are evaluated individually, with
-            consideration for market conditions, product suitability,
-            regulatory requirements and mutually agreed commercial terms.
-          </p>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- PARTNERSHIP MODELS -->
-    <section class="section partnership-models-section" id="partnership-models">
-      <div class="section-label">02 / COOPERATION MODELS</div>
-
-      <h2 class="section-heading">
-        Areas of <span>Cooperation</span>
-      </h2>
-
-      <p class="section-subtitle">
-        Flexible cooperation opportunities designed around the needs
-        of manufacturers and healthcare organizations.
-      </p>
-
-      <div class="medical-area-grid">
-
-        <article class="medical-area-card">
-          <div class="medical-area-top">
-            <span class="medical-area-number">01</span>
-            <span class="medical-area-symbol">◇</span>
-          </div>
-
-          <span class="medical-area-label">MANUFACTURER COOPERATION</span>
-
-          <h3>Market Development</h3>
-
-          <p>
-            Supporting manufacturers interested in evaluating and developing
-            business opportunities in Oman and selected international markets.
-          </p>
-
-          <ul>
-            <li>Market opportunity assessment</li>
-            <li>Business development</li>
-            <li>Local market communication</li>
-          </ul>
-
-          <a href="contact.html" class="text-link">
-            Discuss Cooperation <span>↗</span>
-          </a>
-        </article>
-
-
-        <article class="medical-area-card">
-          <div class="medical-area-top">
-            <span class="medical-area-number">02</span>
-            <span class="medical-area-symbol">◎</span>
-          </div>
-
-          <span class="medical-area-label">COMMERCIAL RELATIONSHIPS</span>
-
-          <h3>Distribution Opportunities</h3>
-
-          <p>
-            Exploring suitable distribution and commercial cooperation
-            arrangements with qualified medical technology manufacturers.
-          </p>
-
-          <ul>
-            <li>Non-exclusive cooperation</li>
-            <li>Project-based arrangements</li>
-            <li>Potential distribution agreements</li>
-          </ul>
-
-          <a href="contact.html" class="text-link">
-            Explore Opportunities <span>↗</span>
-          </a>
-        </article>
-
-
-        <article class="medical-area-card">
-          <div class="medical-area-top">
-            <span class="medical-area-number">03</span>
-            <span class="medical-area-symbol">⌖</span>
-          </div>
-
-          <span class="medical-area-label">HEALTHCARE ORGANIZATIONS</span>
-
-          <h3>Hospital Cooperation</h3>
-
-          <p>
-            Connecting healthcare organizations with manufacturers and
-            suppliers whose technologies may meet identified clinical needs.
-          </p>
-
-          <ul>
-            <li>Hospital requirements</li>
-            <li>Technology identification</li>
-            <li>Supplier communication</li>
-          </ul>
-
-          <a href="contact.html" class="text-link">
-            Healthcare Enquiries <span>↗</span>
-          </a>
-        </article>
-
-
-        <article class="medical-area-card">
-          <div class="medical-area-top">
-            <span class="medical-area-number">04</span>
-            <span class="medical-area-symbol">⌬</span>
-          </div>
-
-          <span class="medical-area-label">TECHNOLOGY DEVELOPMENT</span>
-
-          <h3>Technology Partnerships</h3>
-
-          <p>
-            Exploring relationships with developers of advanced surgical
-            systems, digital healthcare technologies and medical innovations.
-          </p>
-
-          <ul>
-            <li>Robotic surgery</li>
-            <li>Image-guided systems</li>
-            <li>Smart OR technologies</li>
-          </ul>
-
-          <a href="medical.html" class="text-link">
-            Explore Technology Focus <span>↗</span>
-          </a>
-        </article>
-
-
-        <article class="medical-area-card">
-          <div class="medical-area-top">
-            <span class="medical-area-number">05</span>
-            <span class="medical-area-symbol">▦</span>
-          </div>
-
-          <span class="medical-area-label">PROJECT DEVELOPMENT</span>
-
-          <h3>Project-Based Cooperation</h3>
-
-          <p>
-            Evaluating individual hospital requirements and identifying
-            suitable suppliers for specific procurement opportunities.
-          </p>
-
-          <ul>
-            <li>Project assessment</li>
-            <li>Product and supplier matching</li>
-            <li>Commercial coordination</li>
-          </ul>
-
-          <a href="projects.html" class="text-link">
-            View Project Approach <span>↗</span>
-          </a>
-        </article>
-
-
-        <article class="medical-area-card">
-          <div class="medical-area-top">
-            <span class="medical-area-number">06</span>
-            <span class="medical-area-symbol">✧</span>
-          </div>
-
-          <span class="medical-area-label">INTERNATIONAL NETWORK</span>
-
-          <h3>Strategic Relationships</h3>
-
-          <p>
-            Developing long-term professional relationships with selected
-            organizations across healthcare and medical technology markets.
-          </p>
-
-          <ul>
-            <li>International networking</li>
-            <li>Business introductions</li>
-            <li>Long-term cooperation opportunities</li>
-          </ul>
-
-          <a href="contact.html" class="text-link">
-            Connect with Us <span>↗</span>
-          </a>
-        </article>
-
-      </div>
-    </section>
-
-
-    <!-- PARTNER PROFILE -->
-    <section class="section partner-profile-section">
-      <div class="section-label">03 / WHO WE WELCOME</div>
-
-      <div class="medical-principles-grid">
-        <div>
-          <h2 class="section-heading">
-            Our Ideal <span>Partners</span>
-          </h2>
-
-          <p class="section-subtitle">
-            We are interested in professional cooperation with organizations
-            that offer relevant products, technologies and services.
-          </p>
-        </div>
-
-        <div class="medical-principles-copy">
-
-          <div class="principle-list">
-            <div>
-              <span>01</span>
-              Medical equipment manufacturers
-            </div>
-
-            <div>
-              <span>02</span>
-              Robotic surgery technology developers
-            </div>
-
-            <div>
-              <span>03</span>
-              Surgical navigation and imaging companies
-            </div>
-
-            <div>
-              <span>04</span>
-              Cardiac and cardiovascular technology suppliers
-            </div>
-
-            <div>
-              <span>05</span>
-              Hospital equipment and system providers
-            </div>
-
-            <div>
-              <span>06</span>
-              Healthcare organizations and medical institutions
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-
-    <!-- COOPERATION PROCESS -->
-    <section class="medical-process-section">
-      <div class="section-label">04 / HOW WE WORK TOGETHER</div>
-
-      <h2 class="section-heading">
-        A Structured <span>Cooperation Process</span>
-      </h2>
-
-      <p class="section-subtitle">
-        A clear process for evaluating potential business relationships.
-      </p>
-
-      <div class="medical-process-grid">
-
-        <div class="medical-process-item">
-          <span>01</span>
-          <h3>Introduction</h3>
-          <p>
-            Initial communication to understand the organization,
-            its technologies and cooperation objectives.
-          </p>
-        </div>
-
-        <div class="medical-process-item">
-          <span>02</span>
-          <h3>Evaluation</h3>
-          <p>
-            Review of products, target markets, regulatory requirements
-            and potential commercial suitability.
-          </p>
-        </div>
-
-        <div class="medical-process-item">
-          <span>03</span>
-          <h3>Planning</h3>
-          <p>
-            Identification of potential customers, projects and
-            mutually agreed commercial arrangements.
-          </p>
-        </div>
-
-        <div class="medical-process-item">
-          <span>04</span>
-          <h3>Development</h3>
-          <p>
-            Supporting agreed activities and developing opportunities
-            in accordance with the cooperation terms.
-          </p>
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- PARTNERSHIP PRINCIPLES -->
-    <section class="section">
-      <div class="section-label">05 / OUR COMMITMENT</div>
-
-      <div class="global-intro-grid">
-        <div>
-          <h2 class="section-heading">
-            Professionalism.<br>
-            <span>Transparency. Cooperation.</span>
-          </h2>
-        </div>
-
-        <div class="global-intro-copy">
-          <p>
-            We believe that successful business relationships are built
-            on clear communication, realistic expectations and mutual
-            understanding.
-          </p>
-
-          <p>
-            Our approach emphasizes responsible market development,
-            appropriate product evaluation and clearly defined commercial
-            responsibilities.
-          </p>
-
-          <p>
-            Any representation, exclusivity or distribution relationship
-            is subject to a separate written agreement between the relevant
-            parties.
-          </p>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- CTA -->
-    <section class="global-cta">
-      <div>
-        <span class="eyebrow">LET'S BUILD A CONNECTION</span>
-
-        <h2>
-          Interested in Working <span>Together?</span>
-        </h2>
-
-        <p>
-          We welcome enquiries from manufacturers, technology developers
-          and healthcare organizations interested in international cooperation.
-        </p>
-      </div>
-
-      <a href="contact.html" class="btn btn-primary">
-        Submit a Partnership Enquiry
-      </a>
-    </section>
-
-  </main>
-
-
-  <footer class="site-footer">
-    <div class="footer-main">
-
-      <div class="footer-brand">
-        <a href="index.html" class="brand">
-          <span class="brand-name">AZADIPOUR</span>
-          <span class="brand-caption">MEDICAL TECHNOLOGY & HOSPITAL SOLUTIONS</span>
-        </a>
-
-        <p>
-          Connecting healthcare organizations and international partners
-          with medical technology and hospital solutions.
-        </p>
-      </div>
-
-      <div class="footer-column">
-        <h4>COMPANY</h4>
-        <a href="about.html">About Us</a>
-        <a href="global-presence.html">Global Presence</a>
-        <a href="partners.html">Partnerships</a>
-        <a href="projects.html">Projects</a>
-      </div>
-
-      <div class="footer-column">
-        <h4>EXPERTISE</h4>
-        <a href="medical.html">Medical Technology</a>
-        <a href="robotic.html">Robotic Surgery</a>
-        <a href="cardiac.html">Cardiac Solutions</a>
-        <a href="contact.html">Contact</a>
-      </div>
-
-      <div class="footer-column">
-        <h4>CONTACT</h4>
-        <a href="mailto:info@azadipourmedical.com">
-          info@azadipourmedical.com
-        </a>
-        <a href="tel:+96891646294">+968 9164 6294</a>
-        <a href="https://azadipourmedical.com">
-          azadipourmedical.com
-        </a>
-        <span>Oman</span>
-      </div>
-
+        <div class="intro-line"></div>
     </div>
 
-    <div class="footer-bottom">
-      <span>
-        © <span id="currentYear"></span> Azadipour. All rights reserved.
-      </span>
+    <header class="site-header" id="siteHeader">
+        <div class="header-inner">
+            <a class="brand" href="index.html" aria-label="Azadipour Home">
+                <img src="assets/logo-transparent.png" alt="Azadipour logo">
+            </a>
 
-      <span>GCC · EUROPE · INTERNATIONAL</span>
-    </div>
-  </footer>
+            <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mainNav">
+                <span></span>
+                <span></span>
+            </button>
 
-  <script src="script.js"></script>
+            <nav class="main-nav" id="mainNav">
+                <a href="index.html">Home</a>
+                <a href="medical.html">Medical</a>
+                <a href="cardiac.html">Cardiac</a>
+                <a href="robotic.html">Robotics</a>
+                <a href="projects.html">Projects</a>
+                <a href="partners.html" class="active" aria-current="page">Partners</a>
+                <a href="contact.html" class="nav-contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="partners-hero">
+            <div class="partners-hero-content">
+                <div class="partners-eyebrow">AZADIPOUR / INTERNATIONAL PARTNERSHIPS</div>
+                <h1>Building connections. <span>Creating opportunities.</span></h1>
+                <p>
+                    Azadipour works to connect international medical technology
+                    manufacturers and healthcare solution providers with regional
+                    market opportunities across Oman and the wider GCC.
+                </p>
+            </div>
+        </section>
+
+        <section class="partners-section">
+            <div class="partners-inner">
+                <div class="partners-heading">
+                    <div class="eyebrow">WHO WE WORK WITH</div>
+                    <h2>Connecting expertise across healthcare.</h2>
+                    <p>
+                        We welcome discussions with organizations developing
+                        technologies and solutions that respond to the evolving
+                        requirements of hospitals and healthcare providers.
+                    </p>
+                </div>
+
+                <div class="partners-audience-grid">
+                    <article class="partners-audience-card">
+                        <div class="partners-number">01 / MANUFACTURERS</div>
+                        <h3>Medical Technology Manufacturers</h3>
+                        <p>
+                            Companies developing advanced medical devices, surgical
+                            systems, diagnostic technologies and hospital equipment
+                            for regional and international markets.
+                        </p>
+                    </article>
+
+                    <article class="partners-audience-card">
+                        <div class="partners-number">02 / TECHNOLOGY DEVELOPERS</div>
+                        <h3>Healthcare Technology Innovators</h3>
+                        <p>
+                            Developers of robotic surgery, image-guided technologies,
+                            surgical AI, digital health systems and next-generation
+                            clinical solutions.
+                        </p>
+                    </article>
+
+                    <article class="partners-audience-card">
+                        <div class="partners-number">03 / SOLUTION PROVIDERS</div>
+                        <h3>Hospital Solution Providers</h3>
+                        <p>
+                            Organizations offering integrated solutions for operating
+                            rooms, intensive care, cardiovascular departments,
+                            diagnostics and hospital infrastructure.
+                        </p>
+                    </article>
+
+                    <article class="partners-audience-card">
+                        <div class="partners-number">04 / REGIONAL NETWORK</div>
+                        <h3>Healthcare Business Partners</h3>
+                        <p>
+                            Qualified regional organizations and professional
+                            stakeholders interested in developing sustainable
+                            healthcare technology opportunities.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="partners-section partners-model">
+            <div class="partners-inner partners-model-grid">
+                <div>
+                    <div class="partners-eyebrow">OUR PARTNERSHIP APPROACH</div>
+                    <h2>A structured approach to market development.</h2>
+                    <p>
+                        Every market and technology requires a clear understanding
+                        of its commercial, operational and regulatory context.
+                        Azadipour aims to build cooperation around transparent
+                        communication, realistic opportunities and clearly defined
+                        responsibilities.
+                    </p>
+                    <p>
+                        Potential cooperation models may be discussed according
+                        to the product portfolio, target market, project status
+                        and mutual business objectives.
+                    </p>
+                </div>
+
+                <div class="partners-process">
+                    <div class="partners-process-item">
+                        <span>01</span>
+                        <strong>Initial introduction and company profile exchange</strong>
+                    </div>
+                    <div class="partners-process-item">
+                        <span>02</span>
+                        <strong>Product portfolio and market suitability review</strong>
+                    </div>
+                    <div class="partners-process-item">
+                        <span>03</span>
+                        <strong>Identification of relevant market opportunities</strong>
+                    </div>
+                    <div class="partners-process-item">
+                        <span>04</span>
+                        <strong>Discussion of commercial cooperation models</strong>
+                    </div>
+                    <div class="partners-process-item">
+                        <span>05</span>
+                        <strong>Definition of project scope and next steps</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="partners-market">
+            <div class="partners-inner">
+                <div class="partners-market-panel">
+                    <div>
+                        <div class="partners-eyebrow">MARKET PERSPECTIVE</div>
+                        <h2>Regional knowledge. International outlook.</h2>
+                    </div>
+
+                    <div>
+                        <p>
+                            Based in Oman, Azadipour's strategic market focus includes
+                            the GCC, selected European markets and wider international
+                            opportunities. These represent areas of business focus
+                            and development, not a statement of established operations
+                            or confirmed partnerships in every market.
+                        </p>
+
+                        <div class="partners-market-list">
+                            <span>OMAN</span>
+                            <span>SAUDI ARABIA</span>
+                            <span>QATAR</span>
+                            <span>BAHRAIN</span>
+                            <span>EUROPE</span>
+                            <span>INTERNATIONAL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="partners-cta">
+            <div class="partners-inner">
+                <div class="partners-eyebrow">START A CONVERSATION</div>
+                <h2>Let's explore working together.</h2>
+                <p>
+                    If your organization is seeking to explore regional business
+                    development or introduce medical technologies to new markets,
+                    we welcome an initial discussion.
+                </p>
+                <a class="partners-cta-link" href="contact.html">Discuss Cooperation</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <a href="index.html">
+                    <img src="assets/logo-transparent.png" alt="Azadipour">
+                </a>
+                <p>Medical Technology &amp; Hospital Solutions</p>
+            </div>
+
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="medical.html">Medical</a>
+                <a href="cardiac.html">Cardiac</a>
+                <a href="robotic.html">Robotics</a>
+                <a href="projects.html">Projects</a>
+                <a href="partners.html">Partners</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+            <div class="footer-contact">
+                <a href="mailto:info@azadipourmedical.com">info@azadipourmedical.com</a>
+                <a href="tel:+96891646294">+968 9164 6294</a>
+                <a href="https://azadipourmedical.com/">azadipourmedical.com</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>© <span id="currentYear"></span> Azadipour. All rights reserved.</span>
+            <span>GCC · EUROPE · INTERNATIONAL</span>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
 </body>
 </html>
