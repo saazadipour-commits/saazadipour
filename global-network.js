@@ -1,119 +1,68 @@
 /* =========================================================
-   AZADIPOUR — GLOBAL NETWORK ENGINE
-   Interactive Global World Map
-   D3.js + TopoJSON
-   Black / Silver / White
+   AZADIPOUR — GLOBAL NETWORK MAP
+   Oman Headquarters / WeMed Beijing
+   Black / White / Silver
    ========================================================= */
 
 (() => {
     "use strict";
 
-    const CONFIG = {
-        mapId: "globalNetworkMap",
-        loadingId: "mapLoading",
+    const canvas = document.getElementById("globalNetworkMap");
+    const loading = document.getElementById("mapLoading");
 
-        worldUrl:
-            "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json",
+    if (!canvas) return;
 
-        d3Url:
-            "https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js",
+    const ctx = canvas.getContext("2d");
 
-        topoUrl:
-            "https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"
+    const LIBRARIES = [
+        "https://cdn.jsdelivr.net/npm/d3-geo@3/dist/d3-geo.min.js",
+        "https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"
+    ];
+
+    /*
+     * Approximate WeMed location in Beijing, China.
+     * This is an indicative map marker, not a street-level pin.
+     * Coordinates: [longitude, latitude]
+     */
+
+    const WEMED = {
+        name: "WEMED",
+        coordinates: [116.50, 39.78]
     };
 
     /*
-       IMPORTANT:
-       Only verified business relationships belong here.
+     * Azadipour registered entity / regional base in Oman.
+     */
 
-       Oman is the company's registered presence.
-       No unconfirmed partnerships are displayed.
-    */
-
-    window.AZADIPOUR_NETWORK = {
-
-        registered: [
-            {
-                id: "oman",
-                name: "Oman",
-                city: "Muscat",
-                coordinates: [58.4059, 23.5880],
-                status: "registered",
-                description:
-                    "Registered company presence."
-            }
-        ],
-
-        partnerships: [
-            /*
-            Add verified partnerships here.
-
-            {
-                id: "partner-1",
-                name: "Company Name",
-                country: "Country",
-                coordinates: [longitude, latitude],
-                status: "partnership",
-                description: "Verified cooperation."
-            }
-            */
-        ],
-
-        negotiations: [
-            /*
-            Add active negotiations here only.
-
-            {
-                id: "negotiation-1",
-                name: "Company Name",
-                country: "Country",
-                coordinates: [longitude, latitude],
-                status: "negotiation",
-                description: "Business discussions in progress."
-            }
-            */
-        ]
+    const AZADIPOUR = {
+        name: "AZADIPOUR · OMAN",
+        coordinates: [58.4, 23.6]
     };
 
-    const $ = (id) => document.getElementById(id);
+    /*
+     * Country identifiers from world-atlas.
+     * Oman: 512
+     * Saudi Arabia: 682
+     * Qatar: 634
+     */
 
+    const MUTED_MARKETS = new Set([
+        "512",
+        "682",
+        "634"
+    ]);
+
+    let countries = [];
+    let countryBorders = null;
+    let projection = null;
+    let path = null;
+
+    let width = 0;
+    let height = 0;
     let resizeObserver = null;
-    let currentMapData = null;
-    let initialized = false;
 
     function loadScript(url) {
-
         return new Promise((resolve, reject) => {
-
-            const existing = [...document.scripts].find(
-                script => script.src === url
-            );
-
-            if (existing) {
-
-                const check = () => {
-                    if (window.d3 && window.topojson) {
-                        resolve();
-                    } else {
-                        reject(new Error("Library unavailable."));
-                    }
-                };
-
-                if (window.d3 && window.topojson) {
-                    resolve();
-                } else {
-                    existing.addEventListener("load", check, {
-                        once: true
-                    });
-
-                    existing.addEventListener("error", reject, {
-                        once: true
-                    });
-                }
-
-                return;
-            }
-
             const script = document.createElement("script");
 
             script.src = url;
@@ -121,416 +70,261 @@
 
             script.onload = resolve;
             script.onerror = () => reject(
-                new Error("Could not load map library.")
+                new Error("Could not load map library: " + url)
             );
 
             document.head.appendChild(script);
         });
     }
 
-    async function loadLibraries() {
+    function setCanvasSize() {
+        const rect = canvas.getBoundingClientRect();
 
-        await loadScript(CONFIG.d3Url);
+        if (!rect.width || !rect.height) return;
 
-        if (!window.topojson) {
-            await loadScript(CONFIG.topoUrl);
-        }
+        const pixelRatio = Math.min(
+            window.devicePixelRatio || 1,
+            2
+        );
 
-        if (!window.d3 || !window.topojson) {
-            throw new Error("Map libraries are unavailable.");
+        width = rect.width;
+        height = rect.height;
+
+        canvas.width = Math.round(width * pixelRatio);
+        canvas.height = Math.round(height * pixelRatio);
+
+        ctx.setTransform(
+            pixelRatio,
+            0,
+            0,
+            pixelRatio,
+            0,
+            0
+        );
+
+        if (countries.length) {
+            const padding = width < 600 ? 12 : 28;
+
+            projection = d3.geoNaturalEarth1()
+                .fitExtent(
+                    [
+                        [padding, padding],
+                        [width - padding, height - padding]
+                    ],
+                    {
+                        type: "FeatureCollection",
+                        features: countries
+                    }
+                );
+
+            path = d3.geoPath()
+                .projection(projection)
+                .context(ctx);
+
+            drawMap();
         }
     }
 
-    function setLoading(message) {
+    function drawBackground() {
+        ctx.fillStyle = "#050607";
+        ctx.fillRect(0, 0, width, height);
 
-        const loading = $(CONFIG.loadingId);
+        const glow = ctx.createRadialGradient(
+            width / 2,
+            height / 2,
+            5,
+            width / 2,
+            height / 2,
+            width * 0.65
+        );
 
-        if (!loading) return;
+        glow.addColorStop(
+            0,
+            "rgba(255,255,255,0.055)"
+        );
 
-        loading.classList.remove("is-hidden");
+        glow.addColorStop(
+            1,
+            "rgba(255,255,255,0)"
+        );
 
-        loading.innerHTML = `
-            <span class="loading-indicator"></span>
-            <span>${message}</span>
-        `;
+        ctx.fillStyle = glow;
+        ctx.fillRect(0, 0, width, height);
+    }
+
+    function drawGrid() {
+        ctx.beginPath();
+
+        path(
+            d3.geoGraticule()
+                .step([30, 20])()
+        );
+
+        ctx.strokeStyle = "rgba(255,255,255,0.065)";
+        ctx.lineWidth = 0.5;
+        ctx.stroke();
+    }
+
+    function drawCountries() {
+        countries.forEach(country => {
+            const countryId = String(country.id);
+
+            ctx.beginPath();
+            path(country);
+
+            if (MUTED_MARKETS.has(countryId)) {
+                ctx.fillStyle = "rgba(255,255,255,0.10)";
+            } else {
+                ctx.fillStyle = "rgba(185,191,198,0.43)";
+            }
+
+            ctx.fill();
+
+            ctx.strokeStyle = "rgba(8,10,12,0.58)";
+            ctx.lineWidth = 0.45;
+            ctx.stroke();
+        });
+
+        if (countryBorders) {
+            ctx.beginPath();
+            path(countryBorders);
+
+            ctx.strokeStyle = "rgba(10,12,14,0.65)";
+            ctx.lineWidth = 0.45;
+            ctx.stroke();
+        }
+    }
+
+    function drawLocationMarker(location, options = {}) {
+        const point = projection(location.coordinates);
+
+        if (!point) return;
+
+        const [x, y] = point;
+
+        const radius = options.radius || 4;
+        const color = options.color || "#ffffff";
+        const labelColor = options.labelColor || "#ffffff";
+
+        ctx.save();
+
+        // Outer halo
+        ctx.beginPath();
+        ctx.arc(x, y, radius + 8, 0, Math.PI * 2);
+
+        ctx.fillStyle = "rgba(255,255,255,0.13)";
+        ctx.fill();
+
+        // Main marker
+        ctx.beginPath();
+        ctx.arc(x, y, radius, 0, Math.PI * 2);
+
+        ctx.fillStyle = color;
+        ctx.shadowColor = color;
+        ctx.shadowBlur = 18;
+        ctx.fill();
+
+        ctx.shadowBlur = 0;
+
+        // Location label
+        const fontSize = width < 600 ? 8 : 10;
+
+        ctx.font = `800 ${fontSize}px Inter, Arial, sans-serif`;
+        ctx.fillStyle = labelColor;
+
+        ctx.fillText(
+            location.name,
+            x + 13,
+            y - 9
+        );
+
+        ctx.restore();
+    }
+
+    function drawConnectionLine() {
+        const interpolate = d3.geoInterpolate(
+            AZADIPOUR.coordinates,
+            WEMED.coordinates
+        );
+
+        ctx.beginPath();
+
+        for (let i = 0; i <= 90; i++) {
+            const coordinate = interpolate(i / 90);
+            const point = projection(coordinate);
+
+            if (!point) continue;
+
+            if (i === 0) {
+                ctx.moveTo(point[0], point[1]);
+            } else {
+                ctx.lineTo(point[0], point[1]);
+            }
+        }
+
+        ctx.save();
+
+        ctx.strokeStyle = "rgba(255,255,255,0.28)";
+        ctx.lineWidth = 1;
+        ctx.setLineDash([3, 5]);
+
+        ctx.stroke();
+
+        ctx.setLineDash([]);
+        ctx.restore();
+    }
+
+    function drawMap() {
+        if (!projection || !path) return;
+
+        ctx.clearRect(0, 0, width, height);
+
+        drawBackground();
+        drawGrid();
+        drawCountries();
+
+        // Connection between Oman and Beijing
+        drawConnectionLine();
+
+        // WeMed: prominent white marker
+        drawLocationMarker(WEMED, {
+            radius: 4.5,
+            color: "#ffffff",
+            labelColor: "#ffffff"
+        });
+
+        // Azadipour: Oman registered entity / regional base
+        drawLocationMarker(AZADIPOUR, {
+            radius: 3.8,
+            color: "#c9cdd1",
+            labelColor: "rgba(255,255,255,0.78)"
+        });
     }
 
     function hideLoading() {
-
-        const loading = $(CONFIG.loadingId);
-
         if (loading) {
             loading.classList.add("is-hidden");
         }
     }
 
-    function showError(message) {
-
-        const container = $(CONFIG.mapId);
-
-        if (!container) return;
-
-        container.innerHTML = "";
-
-        const error = document.createElement("div");
-
-        error.className = "global-map-error";
-        error.textContent = message;
-
-        container.appendChild(error);
-    }
-
-    /*
-       Decorative background network.
-       These lines are visual elements only.
-       They do not represent actual company partnerships.
-    */
-
-    function drawBackgroundNetwork(svg, projection, width, height) {
-
-        const d3 = window.d3;
-
-        const points = [
-            [-100, 40],
-            [-75, 40],
-            [-60, -10],
-            [-45, -20],
-            [-5, 50],
-            [15, 45],
-            [35, 5],
-            [55, 25],
-            [75, 30],
-            [100, 35],
-            [115, 5],
-            [135, 35],
-            [145, -25],
-            [20, -25],
-            [80, -20],
-            [-120, 30],
-            [-70, -35]
-        ];
-
-        const validPoints = points
-            .map(point => projection(point))
-            .filter(point =>
-                point &&
-                Number.isFinite(point[0]) &&
-                Number.isFinite(point[1])
-            );
-
-        const lineGroup = svg.append("g")
-            .attr("class", "global-network-lines");
-
-        const nodeGroup = svg.append("g");
-
-        validPoints.forEach((point, index) => {
-
-            validPoints.forEach((other, otherIndex) => {
-
-                if (otherIndex <= index) return;
-
-                const distance = Math.hypot(
-                    point[0] - other[0],
-                    point[1] - other[1]
-                );
-
-                if (distance < width * 0.24) {
-
-                    lineGroup.append("line")
-                        .attr("x1", point[0])
-                        .attr("y1", point[1])
-                        .attr("x2", other[0])
-                        .attr("y2", other[1])
-                        .attr("stroke-opacity", 0.35);
-                }
-            });
-
-            nodeGroup.append("circle")
-                .attr("class", "global-network-node-glow")
-                .attr("cx", point[0])
-                .attr("cy", point[1])
-                .attr("r", 5);
-
-            nodeGroup.append("circle")
-                .attr("class", "global-network-node")
-                .attr("cx", point[0])
-                .attr("cy", point[1])
-                .attr("r", 1.2);
-        });
-    }
-
-    function getAllLocations() {
-
-        const network = window.AZADIPOUR_NETWORK;
-
-        return [
-            ...network.registered,
-            ...network.partnerships,
-            ...network.negotiations
-        ];
-    }
-
-    function drawMarkers(svg, projection, width) {
-
-        const d3 = window.d3;
-
-        const locations = getAllLocations();
-
-        const markerGroup = svg.append("g")
-            .attr("class", "global-map-markers");
-
-        locations.forEach(location => {
-
-            const coordinates = projection(
-                location.coordinates
-            );
-
-            if (!coordinates) return;
-
-            const [x, y] = coordinates;
-
-            const marker = markerGroup.append("g")
-                .attr(
-                    "class",
-                    `global-map-marker ${location.status}`
-                )
-                .attr("transform", `translate(${x},${y})`)
-                .attr("tabindex", 0)
-                .attr("role", "button")
-                .attr(
-                    "aria-label",
-                    `${location.name}: ${location.status}`
-                );
-
-            marker.append("circle")
-                .attr("class", "marker-halo")
-                .attr("r", width > 700 ? 9 : 7);
-
-            marker.append("circle")
-                .attr("class", "marker-core")
-                .attr("r", width > 700 ? 3.5 : 3);
-
-            const label = marker.append("text")
-                .attr("class", "global-map-label")
-                .attr("x", 12)
-                .attr("y", -10)
-                .text(location.city || location.name);
-
-            if (location.status === "registered") {
-
-                label.attr("font-weight", 700);
-
-                marker.append("text")
-                    .attr("class", "global-map-label-sub")
-                    .attr("x", 12)
-                    .attr("y", 3)
-                    .text("REGISTERED PRESENCE");
-            }
-
-            marker.on("click", () => {
-                showLocationDetails(location);
-            });
-
-            marker.on("keydown", event => {
-
-                if (
-                    event.key === "Enter" ||
-                    event.key === " "
-                ) {
-                    event.preventDefault();
-                    showLocationDetails(location);
-                }
-            });
-        });
-    }
-
-    function showLocationDetails(location) {
-
-        const name = location.name;
-        const status = location.status;
-
-        const statusLabels = {
-            registered: "Registered presence",
-            partnership: "Verified partnership",
-            negotiation: "Active negotiations"
-        };
-
-        const event = new CustomEvent(
-            "azadipour:location-selected",
-            {
-                detail: {
-                    id: location.id,
-                    name: name,
-                    country: location.country || name,
-                    status: status,
-                    description: location.description || ""
-                }
-            }
-        );
-
-        document.dispatchEvent(event);
-
-        const map = $(CONFIG.mapId);
-
-        if (!map) return;
-
-        let tooltip = map.querySelector(
-            ".global-map-tooltip"
-        );
-
-        if (!tooltip) {
-
-            tooltip = document.createElement("div");
-
-            tooltip.className = "global-map-tooltip";
-
-            map.appendChild(tooltip);
+    function showError() {
+        if (loading) {
+            loading.textContent = "GLOBAL MAP TEMPORARILY UNAVAILABLE";
         }
 
-        tooltip.innerHTML = "";
-
-        const title = document.createElement("strong");
-        title.textContent = name;
-
-        const statusText = document.createElement("span");
-        statusText.textContent =
-            statusLabels[status] || "Company presence";
-
-        const description = document.createElement("span");
-        description.textContent =
-            location.description || "";
-
-        tooltip.appendChild(title);
-        tooltip.appendChild(statusText);
-
-        if (location.description) {
-            tooltip.appendChild(description);
-        }
-
-        tooltip.classList.add("visible");
-
-        window.clearTimeout(tooltip._hideTimer);
-
-        tooltip._hideTimer = window.setTimeout(() => {
-            tooltip.classList.remove("visible");
-        }, 4500);
+        console.error(
+            "Azadipour global map could not be initialized."
+        );
     }
 
-    function drawMap(worldData) {
-
-        const d3 = window.d3;
-        const container = $(CONFIG.mapId);
-
-        if (!container) return;
-
-        const width = Math.max(
-            container.clientWidth,
-            320
-        );
-
-        const height = Math.max(
-            container.clientHeight,
-            width * 0.51
-        );
-
-        container.innerHTML = "";
-
-        const svg = d3.select(container)
-            .append("svg")
-            .attr("class", "global-map-svg")
-            .attr("viewBox", `0 0 ${width} ${height}`)
-            .attr("preserveAspectRatio", "xMidYMid meet")
-            .attr("role", "img")
-            .attr(
-                "aria-label",
-                "Azadipour global presence and international network map"
-            );
-
-        svg.append("rect")
-            .attr("class", "global-map-ocean")
-            .attr("width", width)
-            .attr("height", height);
-
-        const projection = d3.geoNaturalEarth1()
-            .fitExtent(
-                [[12, 12], [width - 12, height - 12]],
-                { type: "Sphere" }
-            );
-
-        const path = d3.geoPath(projection);
-
-        const graticule = d3.geoGraticule()
-            .step([30, 30]);
-
-        svg.append("path")
-            .datum(graticule())
-            .attr("class", "global-map-graticule")
-            .attr("d", path);
-
-        const countries = window.topojson.feature(
-            worldData,
-            worldData.objects.countries
-        );
-
-        svg.append("g")
-            .selectAll("path")
-            .data(countries.features)
-            .join("path")
-            .attr("class", "global-map-land")
-            .attr("d", path);
-
-        svg.append("path")
-            .datum(
-                window.topojson.mesh(
-                    worldData,
-                    worldData.objects.countries,
-                    (a, b) => a !== b
-                )
-            )
-            .attr("class", "global-map-borders")
-            .attr("d", path);
-
-        drawBackgroundNetwork(
-            svg,
-            projection,
-            width,
-            height
-        );
-
-        drawMarkers(
-            svg,
-            projection,
-            width
-        );
-
-        hideLoading();
-
-        currentMapData = worldData;
-    }
-
-    async function initialize() {
-
-        if (initialized) return;
-
-        const container = $(CONFIG.mapId);
-
-        if (!container) return;
-
-        initialized = true;
-
-        setLoading("INITIALIZING GLOBAL NETWORK");
-
+    async function initializeMap() {
         try {
-
-            await loadLibraries();
-
-            setLoading("LOADING WORLD GEOGRAPHY");
+            for (const url of LIBRARIES) {
+                await loadScript(url);
+            }
 
             const response = await fetch(
-                CONFIG.worldUrl,
-                {
-                    cache: "force-cache"
-                }
+                "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json"
             );
 
             if (!response.ok) {
@@ -539,60 +333,38 @@
 
             const worldData = await response.json();
 
-            drawMap(worldData);
+            countries = topojson.feature(
+                worldData,
+                worldData.objects.countries
+            ).features;
 
-            if (resizeObserver) {
-                resizeObserver.disconnect();
+            countryBorders = topojson.mesh(
+                worldData,
+                worldData.objects.countries,
+                (a, b) => a !== b
+            );
+
+            setCanvasSize();
+            hideLoading();
+
+            if ("ResizeObserver" in window) {
+                resizeObserver = new ResizeObserver(() => {
+                    setCanvasSize();
+                });
+
+                resizeObserver.observe(canvas.parentElement);
+            } else {
+                window.addEventListener(
+                    "resize",
+                    setCanvasSize
+                );
             }
 
-            resizeObserver = new ResizeObserver(() => {
-
-                if (currentMapData) {
-                    drawMap(currentMapData);
-                }
-            });
-
-            resizeObserver.observe(container);
-
         } catch (error) {
-
-            console.error(
-                "Azadipour Global Map:",
-                error
-            );
-
-            initialized = false;
-
-            showError(
-                "GLOBAL MAP TEMPORARILY UNAVAILABLE"
-            );
+            showError();
         }
     }
 
-    if (document.readyState === "loading") {
-
-        document.addEventListener(
-            "DOMContentLoaded",
-            initialize,
-            { once: true }
-        );
-
-    } else {
-
-        initialize();
-    }
-
-    window.AZADIPOUR_MAP = {
-        refresh: () => {
-
-            if (currentMapData) {
-                drawMap(currentMapData);
-            } else {
-                initialize();
-            }
-        },
-
-        getLocations: getAllLocations
-    };
+    initializeMap();
 
 })();
