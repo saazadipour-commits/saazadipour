@@ -9,8 +9,8 @@
     <meta name="theme-color" content="#08090b">
 
     <link rel="canonical" href="https://azadipourmedical.com/partners.html">
-
     <link rel="icon" type="image/png" href="assets/logo-transparent.png">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -18,77 +18,77 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
-        .partners-page {
-            background: #08090b;
-            color: #f1f1ef;
-        }
-
+        /* =========================================================
+           PARTNERS PAGE SPECIFIC STYLES (LUXURY & INTERNATIONAL)
+           ========================================================= */
+        
         .partners-hero {
-            min-height: 66vh;
+            position: relative;
+            min-height: 75vh;
             display: flex;
             align-items: center;
             padding: 150px 7% 100px;
-            position: relative;
             overflow: hidden;
-            border-bottom: 1px solid rgba(255,255,255,.10);
-            background:
-                radial-gradient(ellipse at 78% 35%, rgba(190,198,208,.11), transparent 38%),
-                linear-gradient(120deg, #08090b 0%, #101318 55%, #08090b 100%);
-        }
-
-        .partners-hero::after {
-            content: "";
-            position: absolute;
-            width: 480px;
-            height: 480px;
-            right: -140px;
-            top: 10%;
-            border: 1px solid rgba(220,225,232,.10);
-            border-radius: 50%;
-            box-shadow:
-                0 0 0 55px rgba(220,225,232,.025),
-                0 0 0 110px rgba(220,225,232,.018);
-            pointer-events: none;
+            border-bottom: 1px solid var(--border);
+            background: linear-gradient(120deg, #050607 0%, #101318 55%, #050607 100%);
         }
 
         .partners-hero-content {
-            width: min(900px, 100%);
             position: relative;
-            z-index: 1;
+            z-index: 2;
+            width: min(900px, 100%);
         }
 
         .partners-eyebrow {
-            color: #aeb5bf;
+            color: var(--silver);
             font-size: 11px;
             letter-spacing: .28em;
             text-transform: uppercase;
             margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .partners-eyebrow::before {
+            content: "";
+            display: block;
+            width: 40px;
+            height: 1px;
+            background: #fff;
         }
 
         .partners-hero h1 {
             font-family: "Cormorant Garamond", serif;
             font-weight: 400;
             font-size: clamp(48px, 7vw, 88px);
-            line-height: .98;
+            line-height: 1.05;
             letter-spacing: -.025em;
-            max-width: 850px;
+            max-width: 900px;
             margin: 0 0 28px;
+            color: #fff;
         }
 
         .partners-hero h1 span {
-            color: #aeb5bf;
+            color: var(--silver);
+            display: block;
         }
 
         .partners-hero p {
             max-width: 650px;
-            color: #b9bec6;
+            color: var(--text-soft);
             font-size: 15px;
             line-height: 1.9;
             font-weight: 300;
         }
 
         .partners-section {
-            padding: 105px 7%;
+            padding: 110px 7%;
+            background: var(--bg);
+        }
+
+        .partners-section.bg-soft {
+            background: var(--bg-soft);
         }
 
         .partners-inner {
@@ -96,140 +96,58 @@
             margin: 0 auto;
         }
 
-        .partners-heading {
-            max-width: 760px;
-            margin-bottom: 52px;
-        }
-
-        .partners-heading .eyebrow {
-            color: #9da5b0;
-            font-size: 10px;
-            letter-spacing: .25em;
-            text-transform: uppercase;
-            margin-bottom: 18px;
-        }
-
-        .partners-heading h2 {
-            font-family: "Cormorant Garamond", serif;
-            font-size: clamp(38px, 5vw, 62px);
-            font-weight: 400;
-            line-height: 1.05;
-            margin: 0 0 18px;
-        }
-
-        .partners-heading p {
-            color: #aeb4bd;
-            line-height: 1.9;
-            font-size: 14px;
-            max-width: 680px;
-        }
-
-        .partners-audience-grid {
+        .partners-grid {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 1px;
-            background: rgba(255,255,255,.13);
-            border: 1px solid rgba(255,255,255,.13);
+            gap: 20px;
         }
 
-        .partners-audience-card {
-            min-height: 250px;
-            padding: 38px;
-            background: #0d1014;
-            transition: background .3s ease;
+        .partners-card {
+            min-height: 280px;
+            padding: 45px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            transition: var(--transition);
         }
 
-        .partners-audience-card:hover {
-            background: #151a20;
+        .partners-card:hover {
+            border-color: var(--border-strong);
+            transform: translateY(-5px);
+            background: var(--bg-light);
         }
 
         .partners-number {
-            color: #747d88;
+            color: var(--silver-dark);
             font-size: 11px;
             letter-spacing: .18em;
             margin-bottom: 35px;
         }
 
-        .partners-audience-card h3 {
+        .partners-card h3 {
             font-family: "Cormorant Garamond", serif;
-            font-size: 31px;
+            font-size: 34px;
             font-weight: 500;
             margin: 0 0 15px;
+            color: #fff;
         }
 
-        .partners-audience-card p {
-            color: #aeb4bd;
+        .partners-card p {
+            color: var(--text-soft);
             font-size: 13px;
             line-height: 1.85;
-            max-width: 510px;
             margin: 0;
         }
 
-        .partners-model {
-            background: #101318;
-            border-top: 1px solid rgba(255,255,255,.08);
-            border-bottom: 1px solid rgba(255,255,255,.08);
-        }
-
-        .partners-model-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: start;
-        }
-
-        .partners-model h2 {
-            font-family: "Cormorant Garamond", serif;
-            font-size: clamp(38px, 5vw, 60px);
-            font-weight: 400;
-            line-height: 1.05;
-            margin: 0 0 22px;
-        }
-
-        .partners-model p {
-            color: #b2b8c1;
-            font-size: 14px;
-            line-height: 1.95;
-        }
-
-        .partners-process {
-            border-top: 1px solid rgba(255,255,255,.18);
-        }
-
-        .partners-process-item {
-            display: flex;
-            gap: 22px;
-            padding: 22px 0;
-            border-bottom: 1px solid rgba(255,255,255,.13);
-        }
-
-        .partners-process-item span {
-            color: #858e99;
-            font-size: 11px;
-            letter-spacing: .12em;
-            padding-top: 4px;
-        }
-
-        .partners-process-item strong {
-            font-size: 13px;
-            font-weight: 500;
-            letter-spacing: .04em;
-        }
-
-        .partners-market {
-            padding: 105px 7%;
-        }
-
+        /* MARKET PANEL */
         .partners-market-panel {
             display: grid;
             grid-template-columns: .8fr 1.2fr;
             gap: 60px;
             align-items: center;
-            padding: 55px;
-            border: 1px solid rgba(255,255,255,.15);
-            background:
-                radial-gradient(ellipse at 85% 15%, rgba(180,190,205,.09), transparent 45%),
-                #0d1014;
+            padding: 60px;
+            border: 1px solid var(--border);
+            background: var(--bg-card);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
         }
 
         .partners-market-panel h2 {
@@ -238,10 +156,11 @@
             font-weight: 400;
             line-height: 1.05;
             margin: 0;
+            color: #fff;
         }
 
         .partners-market-panel p {
-            color: #aeb4bd;
+            color: var(--text-soft);
             font-size: 14px;
             line-height: 1.9;
             margin: 0 0 25px;
@@ -254,137 +173,66 @@
         }
 
         .partners-market-list span {
-            border: 1px solid rgba(255,255,255,.20);
-            color: #d0d4da;
-            padding: 10px 13px;
+            border: 1px solid var(--border);
+            color: var(--silver);
+            padding: 10px 15px;
             font-size: 11px;
             letter-spacing: .08em;
+            background: rgba(255,255,255,0.02);
         }
 
-        .partners-cta {
-            text-align: center;
-            padding: 105px 7%;
-            background:
-                radial-gradient(ellipse at center, rgba(180,190,205,.10), transparent 60%),
-                #08090b;
-        }
-
-        .partners-cta h2 {
-            font-family: "Cormorant Garamond", serif;
-            font-size: clamp(38px, 5vw, 62px);
-            font-weight: 400;
-            margin: 0 0 18px;
-        }
-
-        .partners-cta p {
-            color: #aeb4bd;
-            max-width: 620px;
-            margin: 0 auto 30px;
-            font-size: 14px;
-            line-height: 1.9;
-        }
-
-        .partners-cta-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 48px;
-            padding: 0 25px;
-            border: 1px solid rgba(255,255,255,.55);
-            color: #f1f1ef;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 10px;
-            letter-spacing: .18em;
-            transition: background .25s ease, color .25s ease;
-        }
-
-        .partners-cta-link:hover {
-            background: #f1f1ef;
-            color: #08090b;
-        }
-
-        @media (max-width: 760px) {
-            .partners-hero {
-                min-height: 560px;
-                padding: 125px 6% 75px;
-            }
-
-            .partners-hero::after {
-                width: 280px;
-                height: 280px;
-                right: -150px;
-                top: 18%;
-            }
-
-            .partners-section,
-            .partners-market {
-                padding: 75px 6%;
-            }
-
-            .partners-audience-grid,
-            .partners-model-grid,
-            .partners-market-panel {
-                grid-template-columns: 1fr;
-            }
-
-            .partners-audience-card {
-                min-height: auto;
-                padding: 28px;
-            }
-
-            .partners-model-grid {
-                gap: 35px;
-            }
-
-            .partners-market-panel {
-                padding: 30px;
-                gap: 25px;
-            }
-
-            .partners-cta {
-                padding: 75px 6%;
-            }
+        @media (max-width: 900px) {
+            .partners-hero { min-height: 60vh; padding: 130px 6% 80px; }
+            .partners-section { padding: 80px 6%; }
+            .partners-grid, .partners-market-panel { grid-template-columns: 1fr; }
+            .partners-card { padding: 35px; min-height: auto; }
+            .partners-market-panel { padding: 35px 25px; gap: 30px; }
         }
     </style>
 </head>
 
 <body class="partners-page">
 
-    <div class="intro-screen" id="introScreen">
-        <div class="intro-logo">
-            <img src="assets/logo-transparent.png" alt="Azadipour">
+    <!-- INTRO -->
+    <div class="intro-screen" id="intro">
+        <div class="intro-content">
+            <img src="assets/logo-transparent.png" alt="Azadipour Logo">
+            <div class="intro-name">AZADIPOUR</div>
+            <p>GLOBAL MEDICAL TECHNOLOGY & HOSPITAL SOLUTIONS</p>
         </div>
-        <div class="intro-line"></div>
     </div>
 
-    <header class="site-header" id="siteHeader">
+    <!-- HEADER -->
+    <header class="site-header">
         <div class="header-inner">
-            <a class="brand" href="index.html" aria-label="Azadipour Home">
-                <img src="assets/logo-transparent.png" alt="Azadipour logo">
+            <a href="index.html" class="brand" aria-label="Azadipour Home">
+                <img src="assets/logo-transparent.png" alt="Azadipour">
+                <span>AZADIPOUR</span>
             </a>
 
             <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mainNav">
+                <span></span>
                 <span></span>
                 <span></span>
             </button>
 
             <nav class="main-nav" id="mainNav">
                 <a href="index.html">Home</a>
-                <a href="medical.html">Medical</a>
-                <a href="cardiac.html">Cardiac</a>
-                <a href="robotic.html">Robotics</a>
+                <a href="about.html">About Us</a>
+                <a href="index.html#global-network">Global Presence</a>
+                <a href="medical.html">Medical Technology</a>
+                <a href="partners.html" class="active">Global Partnerships</a>
                 <a href="projects.html">Projects</a>
-                <a href="partners.html" class="active" aria-current="page">Partners</a>
                 <a href="contact.html" class="nav-contact">Contact</a>
             </nav>
         </div>
     </header>
 
     <main>
+        <!-- HERO -->
         <section class="partners-hero">
             <div class="partners-hero-content">
-                <div class="partners-eyebrow">AZADIPOUR / INTERNATIONAL PARTNERSHIPS</div>
+                <div class="partners-eyebrow">INTERNATIONAL PARTNERSHIPS</div>
                 <h1>Building connections. <span>Creating opportunities.</span></h1>
                 <p>
                     Azadipour works to connect international medical technology
@@ -394,10 +242,11 @@
             </div>
         </section>
 
+        <!-- WHO WE WORK WITH -->
         <section class="partners-section">
             <div class="partners-inner">
-                <div class="partners-heading">
-                    <div class="eyebrow">WHO WE WORK WITH</div>
+                <div class="section-heading">
+                    <div class="section-label">WHO WE WORK WITH</div>
                     <h2>Connecting expertise across healthcare.</h2>
                     <p>
                         We welcome discussions with organizations developing
@@ -406,8 +255,8 @@
                     </p>
                 </div>
 
-                <div class="partners-audience-grid">
-                    <article class="partners-audience-card">
+                <div class="partners-grid">
+                    <article class="partners-card">
                         <div class="partners-number">01 / MANUFACTURERS</div>
                         <h3>Medical Technology Manufacturers</h3>
                         <p>
@@ -417,7 +266,7 @@
                         </p>
                     </article>
 
-                    <article class="partners-audience-card">
+                    <article class="partners-card">
                         <div class="partners-number">02 / TECHNOLOGY DEVELOPERS</div>
                         <h3>Healthcare Technology Innovators</h3>
                         <p>
@@ -427,7 +276,7 @@
                         </p>
                     </article>
 
-                    <article class="partners-audience-card">
+                    <article class="partners-card">
                         <div class="partners-number">03 / SOLUTION PROVIDERS</div>
                         <h3>Hospital Solution Providers</h3>
                         <p>
@@ -437,7 +286,7 @@
                         </p>
                     </article>
 
-                    <article class="partners-audience-card">
+                    <article class="partners-card">
                         <div class="partners-number">04 / REGIONAL NETWORK</div>
                         <h3>Healthcare Business Partners</h3>
                         <p>
@@ -450,55 +299,57 @@
             </div>
         </section>
 
-        <section class="partners-section partners-model">
-            <div class="partners-inner partners-model-grid">
+        <!-- OUR PARTNERSHIP APPROACH -->
+        <section class="partners-section bg-soft">
+            <div class="partners-inner" style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;">
                 <div>
-                    <div class="partners-eyebrow">OUR PARTNERSHIP APPROACH</div>
-                    <h2>A structured approach to market development.</h2>
-                    <p>
+                    <div class="section-label">OUR PARTNERSHIP APPROACH</div>
+                    <h2 class="section-heading" style="margin-bottom: 20px;">A structured approach to market development.</h2>
+                    <p style="color: var(--text-soft); font-size: 14px; line-height: 1.95; margin-bottom: 20px;">
                         Every market and technology requires a clear understanding
                         of its commercial, operational and regulatory context.
                         Azadipour aims to build cooperation around transparent
                         communication, realistic opportunities and clearly defined
                         responsibilities.
                     </p>
-                    <p>
+                    <p style="color: var(--text-soft); font-size: 14px; line-height: 1.95;">
                         Potential cooperation models may be discussed according
                         to the product portfolio, target market, project status
                         and mutual business objectives.
                     </p>
                 </div>
 
-                <div class="partners-process">
-                    <div class="partners-process-item">
-                        <span>01</span>
-                        <strong>Initial introduction and company profile exchange</strong>
+                <div style="border-top: 1px solid var(--border);">
+                    <div class="focus-row" style="grid-template-columns: 50px 1fr; padding: 25px 0; border-bottom: 1px solid var(--border);">
+                        <span style="color: var(--silver-dark); font-size: 11px; letter-spacing: .12em;">01</span>
+                        <strong style="font-size: 14px; font-weight: 400; color: var(--text);">Initial introduction and company profile exchange</strong>
                     </div>
-                    <div class="partners-process-item">
-                        <span>02</span>
-                        <strong>Product portfolio and market suitability review</strong>
+                    <div class="focus-row" style="grid-template-columns: 50px 1fr; padding: 25px 0; border-bottom: 1px solid var(--border);">
+                        <span style="color: var(--silver-dark); font-size: 11px; letter-spacing: .12em;">02</span>
+                        <strong style="font-size: 14px; font-weight: 400; color: var(--text);">Product portfolio and market suitability review</strong>
                     </div>
-                    <div class="partners-process-item">
-                        <span>03</span>
-                        <strong>Identification of relevant market opportunities</strong>
+                    <div class="focus-row" style="grid-template-columns: 50px 1fr; padding: 25px 0; border-bottom: 1px solid var(--border);">
+                        <span style="color: var(--silver-dark); font-size: 11px; letter-spacing: .12em;">03</span>
+                        <strong style="font-size: 14px; font-weight: 400; color: var(--text);">Identification of relevant market opportunities</strong>
                     </div>
-                    <div class="partners-process-item">
-                        <span>04</span>
-                        <strong>Discussion of commercial cooperation models</strong>
+                    <div class="focus-row" style="grid-template-columns: 50px 1fr; padding: 25px 0; border-bottom: 1px solid var(--border);">
+                        <span style="color: var(--silver-dark); font-size: 11px; letter-spacing: .12em;">04</span>
+                        <strong style="font-size: 14px; font-weight: 400; color: var(--text);">Discussion of commercial cooperation models</strong>
                     </div>
-                    <div class="partners-process-item">
-                        <span>05</span>
-                        <strong>Definition of project scope and next steps</strong>
+                    <div class="focus-row" style="grid-template-columns: 50px 1fr; padding: 25px 0; border-bottom: 1px solid var(--border);">
+                        <span style="color: var(--silver-dark); font-size: 11px; letter-spacing: .12em;">05</span>
+                        <strong style="font-size: 14px; font-weight: 400; color: var(--text);">Definition of project scope and next steps</strong>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="partners-market">
+        <!-- MARKET PERSPECTIVE -->
+        <section class="partners-section">
             <div class="partners-inner">
                 <div class="partners-market-panel">
                     <div>
-                        <div class="partners-eyebrow">MARKET PERSPECTIVE</div>
+                        <div class="section-label">MARKET PERSPECTIVE</div>
                         <h2>Regional knowledge. International outlook.</h2>
                     </div>
 
@@ -510,7 +361,6 @@
                             and development, not a statement of established operations
                             or confirmed partnerships in every market.
                         </p>
-
                         <div class="partners-market-list">
                             <span>OMAN</span>
                             <span>SAUDI ARABIA</span>
@@ -524,52 +374,59 @@
             </div>
         </section>
 
-        <section class="partners-cta">
-            <div class="partners-inner">
-                <div class="partners-eyebrow">START A CONVERSATION</div>
-                <h2>Let's explore working together.</h2>
-                <p>
-                    If your organization is seeking to explore regional business
-                    development or introduce medical technologies to new markets,
-                    we welcome an initial discussion.
-                </p>
-                <a class="partners-cta-link" href="contact.html">Discuss Cooperation</a>
-            </div>
+        <!-- CTA -->
+        <section class="section contact-section" style="text-align: center;">
+            <div class="section-label" style="justify-content: center;">START A CONVERSATION</div>
+            <h2 class="section-heading" style="margin-inline: auto;">
+                Let's explore <span>working together.</span>
+            </h2>
+            <p style="max-width: 650px; margin: 0 auto 30px; color: var(--text-soft);">
+                If your organization is seeking to explore regional business
+                development or introduce medical technologies to new markets,
+                we welcome an initial discussion.
+            </p>
+            <a href="contact.html" class="btn-primary">Discuss Cooperation <span>↗</span></a>
         </section>
     </main>
 
+    <!-- FOOTER -->
     <footer class="site-footer">
-        <div class="footer-inner">
+        <div class="footer-main">
             <div class="footer-brand">
-                <a href="index.html">
-                    <img src="assets/logo-transparent.png" alt="Azadipour">
-                </a>
-                <p>Medical Technology &amp; Hospital Solutions</p>
+                <img src="assets/logo-transparent.png" alt="Azadipour Logo">
+                <h3>AZADIPOUR</h3>
+                <p>Global Medical Technology & Hospital Solutions</p>
             </div>
 
-            <div class="footer-links">
-                <a href="index.html">Home</a>
-                <a href="medical.html">Medical</a>
-                <a href="cardiac.html">Cardiac</a>
-                <a href="robotic.html">Robotics</a>
+            <div class="footer-column">
+                <h4>COMPANY</h4>
+                <a href="about.html">About Us</a>
+                <a href="index.html#global-network">Global Presence</a>
+                <a href="partners.html">Partnerships</a>
                 <a href="projects.html">Projects</a>
-                <a href="partners.html">Partners</a>
-                <a href="contact.html">Contact</a>
             </div>
 
-            <div class="footer-contact">
-                <a href="mailto:info@azadipourmedical.com">info@azadipourmedical.com</a>
-                <a href="tel:+96891646294">+968 9164 6294</a>
-                <a href="https://azadipourmedical.com/">azadipourmedical.com</a>
+            <div class="footer-column">
+                <h4>TECHNOLOGY</h4>
+                <a href="robotic.html">Robotic Surgery</a>
+                <a href="cardiac.html">Cardiovascular</a>
+                <a href="medical.html">Medical Technology</a>
+            </div>
+
+            <div class="footer-column">
+                <h4>CONTACT</h4>
+                <a href="mailto:info@azadipourmedical.com">Email</a>
+                <span>Oman</span>
             </div>
         </div>
 
         <div class="footer-bottom">
-            <span>© <span id="currentYear"></span> Azadipour. All rights reserved.</span>
-            <span>GCC · EUROPE · INTERNATIONAL</span>
+            <span>© <span id="currentYear">2026</span> AZADIPOUR. ALL RIGHTS RESERVED.</span>
+            <span>GLOBAL MEDICAL TECHNOLOGY · WORLDWIDE</span>
         </div>
     </footer>
 
+    <!-- SCRIPTS -->
     <script src="script.js" defer></script>
 </body>
 </html>
