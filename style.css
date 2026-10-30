@@ -1,8 +1,7 @@
 /* =========================================================
    AZADIPOUR
    GLOBAL MEDICAL TECHNOLOGY & HOSPITAL SOLUTIONS
-   NEW COMPLETE RESPONSIVE STYLESHEET
-   BLACK / SILVER / WHITE / 3D MAP
+   COMPLETE STYLESHEET (HOLOGRAPHIC MAP UPGRADE)
    ========================================================= */
 
 :root {
@@ -463,7 +462,7 @@ h1, h2, h3, h4 {
 }
 
 /* =========================================================
-   06 — GLOBAL NETWORK SECTION (3D MAP STYLING)
+   06 — GLOBAL NETWORK SECTION (HOLOGRAPHIC MAP)
    ========================================================= */
 
 .global-network-section {
@@ -508,8 +507,6 @@ h1, h2, h3, h4 {
   line-height: 1.9;
 }
 
-/* MAP FRAME */
-
 .network-map-frame {
   position: relative;
   overflow: hidden;
@@ -536,107 +533,120 @@ h1, h2, h3, h4 {
   background: linear-gradient(90deg,#090c0f,#11161b,#090c0f);
 }
 
-/* 3D MAP CANVAS */
+/* --- UPGRADED 3D HOLOGRAPHIC MAP STYLES --- */
 
 .network-map-canvas-wrap {
   position: relative;
   width: 100%;
-  min-height: 310px;
-  aspect-ratio: 1440 / 650;
+  min-height: 350px;
+  aspect-ratio: 1440 / 700;
   overflow: hidden;
-  background: radial-gradient(circle at center, #11151a 0%, #050505 100%);
-  perspective: 1200px; /* ایجاد فضای سه بعدی */
-  padding: 40px 0; /* فاصله برای دیده شدن بهتر زاویه */
+  background: radial-gradient(circle at 50% 50%, #1a222c 0%, #0a0d12 40%, #050607 100%);
+  perspective: 1500px;
+  padding: 50px 0;
 }
 
 .az-world-map {
   display: block;
   width: 100%;
   height: 100%;
-  min-height: 310px;
+  min-height: 350px;
   overflow: visible;
-  /* چرخش سه بعدی خود نقشه */
-  transform: rotateX(45deg) rotateZ(-10deg) scale(1.1);
+  transform: rotateX(55deg) rotateZ(-15deg) scale(1.15);
   transform-style: preserve-3d;
-  transition: transform 0.5s ease;
+  transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-/* افکت هاور برای حرکت ملایم نقشه */
 .network-map-canvas-wrap:hover .az-world-map {
-  transform: rotateX(40deg) rotateZ(-5deg) scale(1.15);
+  transform: rotateX(45deg) rotateZ(-10deg) scale(1.2);
 }
 
-/* استایل کشورها */
 .az-map-country {
-  fill: rgba(255, 255, 255, 0.03);
+  fill: rgba(255, 255, 255, 0.02);
   stroke: rgba(255, 255, 255, 0.15);
-  stroke-width: 0.5px;
-  transition: fill 0.3s;
+  stroke-width: 0.6px;
+  transition: fill 0.3s, stroke 0.3s;
+  filter: drop-shadow(0 0 2px rgba(255,255,255,0.2));
 }
 
 .az-map-country:hover {
   fill: rgba(255, 255, 255, 0.08);
+  stroke: rgba(255, 255, 255, 0.4);
 }
 
-/* خطوط گرید جغرافیایی */
-.az-map-graticule {
+.az-network-arc {
   fill: none;
-  stroke: rgba(255, 255, 255, 0.05);
-  stroke-width: 1px;
+  stroke: rgba(255, 255, 255, 0.3);
+  stroke-width: 0.8px;
+  stroke-dasharray: 4 6;
+  animation: dash 3s linear infinite;
+  filter: drop-shadow(0 0 4px rgba(255,255,255,0.5));
 }
 
-/* خطوط اتصال (مسیرها) */
 .az-map-route {
   fill: none;
   stroke: #ffffff;
-  stroke-width: 1.5px;
-  stroke-dasharray: 8 8;
-  animation: dash 2s linear infinite;
+  stroke-width: 2px;
+  stroke-dasharray: 10 10;
+  animation: dashMain 2s linear infinite;
+  filter: drop-shadow(0 0 8px #ffffff);
+}
+
+.az-map-route-glow {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.6);
+  stroke-width: 6px;
+  filter: blur(6px);
+}
+
+.az-map-node {
+  fill: #ffffff;
   filter: drop-shadow(0 0 6px #ffffff);
 }
 
-/* افکت درخشش زیر خط اتصال */
-.az-map-route-glow {
-  fill: none;
-  stroke: rgba(255, 255, 255, 0.4);
-  stroke-width: 4px;
-  filter: blur(4px);
-}
-
-/* نقاط (شهرها) */
 .az-map-endpoint-halo {
-  fill: rgba(255, 255, 255, 0.1);
+  fill: rgba(255, 255, 255, 0.15);
   animation: pulse 2s infinite;
 }
 
 .az-map-endpoint-core {
   fill: #ffffff;
-  filter: drop-shadow(0 0 5px #ffffff);
+  filter: drop-shadow(0 0 10px #ffffff);
 }
 
-/* متن‌های روی نقشه */
 .az-map-origin-label, .az-map-wemed-label {
   fill: #ffffff;
   font-family: 'Inter', sans-serif;
-  font-size: 11px;
-  letter-spacing: 1px;
-  text-shadow: 0 0 5px #000;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-shadow: 0 0 8px rgba(0,0,0,1), 0 0 15px rgba(255,255,255,0.5);
 }
 
-/* انیمیشن‌های نقشه */
 @keyframes dash {
-  to {
-    stroke-dashoffset: -16;
-  }
+  to { stroke-dashoffset: -20; }
+}
+
+@keyframes dashMain {
+  to { stroke-dashoffset: -40; }
 }
 
 @keyframes pulse {
   0% { r: 10; opacity: 0.8; }
-  50% { r: 15; opacity: 0.3; }
+  50% { r: 18; opacity: 0.2; }
   100% { r: 10; opacity: 0.8; }
 }
 
-/* MAP LOADING */
+.network-map-canvas-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0.05) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* --- END OF MAP STYLES --- */
 
 .map-loading {
   position: absolute;
@@ -668,17 +678,13 @@ h1, h2, h3, h4 {
 }
 
 @keyframes map-spin {
-  to {
-    transform: rotate(360deg);
-  }
+  to { transform: rotate(360deg); }
 }
 
 .map-caption {
   border-top: 1px solid var(--border);
   background: #080b0e;
 }
-
-/* NETWORK LEGEND */
 
 .network-legend {
   display: grid;
@@ -707,11 +713,6 @@ h1, h2, h3, h4 {
   box-shadow: 0 0 15px rgba(255,255,255,.85);
 }
 
-.legend-dot.partner {
-  background: #cbd1d7;
-  box-shadow: 0 0 12px rgba(255,255,255,.55);
-}
-
 .legend-dot.target {
   background: #777f88;
   box-shadow: 0 0 10px rgba(255,255,255,.25);
@@ -730,8 +731,6 @@ h1, h2, h3, h4 {
   font-size: 10px;
   line-height: 1.5;
 }
-
-/* NETWORK FOOTER */
 
 .network-footer {
   display: flex;
@@ -860,10 +859,6 @@ h1, h2, h3, h4 {
   color: #c8cdd2;
   font-size: 10px;
   letter-spacing: .7px;
-}
-
-.portfolio-more {
-  margin-top: 30px;
 }
 
 /* =========================================================
@@ -1422,11 +1417,7 @@ h1, h2, h3, h4 {
    ========================================================= */
 
 @media (max-width: 1050px) {
-
-  .menu-toggle {
-    display: flex;
-  }
-
+  .menu-toggle { display: flex; }
   .main-nav {
     position: absolute;
     top: 100%;
@@ -1440,45 +1431,15 @@ h1, h2, h3, h4 {
     border-bottom: 1px solid var(--border);
     background: #0a0c0e;
   }
-
-  .main-nav.open {
-    display: flex;
-  }
-
-  .main-nav a {
-    padding: 14px 5px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .main-nav a::after {
-    display: none;
-  }
-
-  .network-heading {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .network-legend {
-    grid-template-columns: repeat(2,minmax(0,1fr));
-  }
-
-  .footer-main {
-    grid-template-columns: repeat(2,minmax(0,1fr));
-  }
-
-  .footer-brand {
-    grid-column: 1 / -1;
-  }
-
-  .solutions-grid {
-    grid-template-columns: repeat(2,minmax(0,1fr));
-  }
-
-  .visual-portfolio-grid {
-    grid-template-columns: repeat(2,minmax(0,1fr));
-  }
-
+  .main-nav.open { display: flex; }
+  .main-nav a { padding: 14px 5px; border-bottom: 1px solid var(--border); }
+  .main-nav a::after { display: none; }
+  .network-heading { grid-template-columns: 1fr; gap: 20px; }
+  .network-legend { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .footer-main { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .footer-brand { grid-column: 1 / -1; }
+  .solutions-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .visual-portfolio-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
 }
 
 /* =========================================================
@@ -1486,217 +1447,55 @@ h1, h2, h3, h4 {
    ========================================================= */
 
 @media (max-width: 650px) {
-
-  body {
-    font-size: 14px;
-  }
-
-  .container,
-  .section {
-    width: calc(100% - 36px);
-  }
-
-  .site-header {
-    min-height: 68px;
-    padding: 9px 18px;
-  }
-
-  .brand img {
-    width: 38px;
-    height: 38px;
-  }
-
-  .brand span {
-    font-size: 18px;
-    letter-spacing: 2px;
-  }
-
-  .main-nav {
-    padding-inline: 18px;
-  }
-
-  .hero-section {
-    min-height: 650px;
-    padding: 80px 20px 145px;
-  }
-
-  .hero-content h1 {
-    font-size: clamp(42px,12vw,60px);
-  }
-
-  .hero-content > p {
-    font-size: 13px;
-  }
-
-  .hero-actions {
-    max-width: 320px;
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .hero-actions a {
-    width: 100%;
-  }
-
-  .hero-bottom {
-    bottom: 18px;
-    flex-direction: column;
-    gap: 5px;
-  }
-
-  .hero-scroll {
-    display: none;
-  }
-
-  .section,
-  .global-network-section,
-  .contact-section,
-  .about-focus,
-  .identity-section,
-  .approach-section,
-  .medical-process-section,
-  .robotic-intro-section,
-  .cardiac-intro-section,
-  .robotic-areas-section,
-  .cardiac-areas-section,
-  .robotic-value-section,
-  .cardiac-value-section,
-  .robotic-markets-section,
-  .cardiac-markets-section,
-  .partnership-models-section,
-  .partner-profile-section,
-  .projects-focus-section,
-  .projects-markets-section,
-  .global-cta {
+  body { font-size: 14px; }
+  .container, .section { width: calc(100% - 36px); }
+  .site-header { min-height: 68px; padding: 9px 18px; }
+  .brand img { width: 38px; height: 38px; }
+  .brand span { font-size: 18px; letter-spacing: 2px; }
+  .main-nav { padding-inline: 18px; }
+  .hero-section { min-height: 650px; padding: 80px 20px 145px; }
+  .hero-content h1 { font-size: clamp(42px,12vw,60px); }
+  .hero-content > p { font-size: 13px; }
+  .hero-actions { max-width: 320px; flex-direction: column; align-items: stretch; }
+  .hero-actions a { width: 100%; }
+  .hero-bottom { bottom: 18px; flex-direction: column; gap: 5px; }
+  .hero-scroll { display: none; }
+  
+  .section, .global-network-section, .contact-section, .about-focus, .identity-section, .approach-section, .medical-process-section, .robotic-intro-section, .cardiac-intro-section, .robotic-areas-section, .cardiac-areas-section, .robotic-value-section, .cardiac-value-section, .robotic-markets-section, .cardiac-markets-section, .partnership-models-section, .partner-profile-section, .projects-focus-section, .projects-markets-section, .global-cta {
     padding: 65px 18px;
   }
-
-  .section-heading h2 {
-    font-size: 36px;
-  }
-
-  .network-heading h2 {
-    font-size: 40px;
-  }
-
-  .network-heading > p {
-    font-size: 12px;
-  }
-
-  .network-map-topline,
-  .map-caption {
-    flex-direction: column;
-    gap: 7px;
-    padding: 13px;
-    font-size: 8px;
-  }
-
-  .network-map-canvas-wrap {
-    min-height: 235px;
-    aspect-ratio: 1.12 / 1;
-    padding: 20px 0;
-  }
-
-  .az-world-map {
-    min-height: 235px;
-    /* تنظیم زاویه برای موبایل که کل نقشه دیده شود */
-    transform: rotateX(25deg) rotateZ(-5deg) scale(1); 
-  }
-
-  .network-map-canvas-wrap:hover .az-world-map {
-    transform: rotateX(20deg) rotateZ(0deg) scale(1.05);
-  }
-
-  .network-legend {
-    grid-template-columns: 1fr;
-    gap: 18px;
-    padding: 25px 0;
-  }
-
-  .network-footer {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 17px;
-  }
-
-  .intro-details,
-  .technology-grid,
-  .medical-area-grid,
-  .presence-grid,
-  .mission-grid,
-  .approach-grid,
-  .contact-grid,
-  .solutions-grid,
-  .medical-process-grid {
+  
+  .section-heading h2 { font-size: 36px; }
+  .network-heading h2 { font-size: 40px; }
+  .network-heading > p { font-size: 12px; }
+  .network-map-topline, .map-caption { flex-direction: column; gap: 7px; padding: 13px; font-size: 8px; }
+  
+  /* Mobile Map Adjustments */
+  .network-map-canvas-wrap { min-height: 235px; aspect-ratio: 1.12 / 1; padding: 20px 0; }
+  .az-world-map { min-height: 235px; transform: rotateX(35deg) rotateZ(-5deg) scale(1.1); }
+  .network-map-canvas-wrap:hover .az-world-map { transform: rotateX(30deg) rotateZ(0deg) scale(1.15); }
+  
+  .network-legend { grid-template-columns: 1fr; gap: 18px; padding: 25px 0; }
+  .network-footer { flex-direction: column; align-items: flex-start; gap: 17px; }
+  
+  .intro-details, .technology-grid, .medical-area-grid, .presence-grid, .mission-grid, .approach-grid, .contact-grid, .solutions-grid, .medical-process-grid {
     grid-template-columns: 1fr;
   }
-
-  .visual-portfolio-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .visual-portfolio-card,
-  .visual-portfolio-card img {
-    min-height: 235px;
-  }
-
-  .partnership-content {
-    grid-template-columns: 1fr;
-    gap: 25px;
-  }
-
-  .partnership-content h2 {
-    font-size: 37px;
-  }
-
-  .partnership-mark {
-    min-height: 140px;
-  }
-
-  .inner-hero {
-    min-height: 350px;
-    padding: 75px 20px;
-  }
-
-  .inner-hero h1 {
-    font-size: clamp(39px,11vw,54px);
-  }
-
-  .inner-hero-decoration {
-    right: -130px;
-    width: 220px;
-    height: 220px;
-    opacity: .5;
-  }
-
-  .about-vision {
-    padding: 65px 20px;
-  }
-
-  .focus-row {
-    grid-template-columns: 35px 1fr;
-    gap: 12px;
-  }
-
-  .identity-card {
-    padding: 25px 18px;
-  }
-
-  .footer-main {
-    grid-template-columns: 1fr 1fr;
-    gap: 30px 18px;
-  }
-
-  .footer-brand {
-    grid-column: 1 / -1;
-  }
-
-  .footer-bottom {
-    flex-direction: column;
-    gap: 8px;
-    margin-top: 30px;
-  }
-
+  
+  .visual-portfolio-grid { grid-template-columns: 1fr; }
+  .visual-portfolio-card, .visual-portfolio-card img { min-height: 235px; }
+  .partnership-content { grid-template-columns: 1fr; gap: 25px; }
+  .partnership-content h2 { font-size: 37px; }
+  .partnership-mark { min-height: 140px; }
+  .inner-hero { min-height: 350px; padding: 75px 20px; }
+  .inner-hero h1 { font-size: clamp(39px,11vw,54px); }
+  .inner-hero-decoration { right: -130px; width: 220px; height: 220px; opacity: .5; }
+  .about-vision { padding: 65px 20px; }
+  .focus-row { grid-template-columns: 35px 1fr; gap: 12px; }
+  .identity-card { padding: 25px 18px; }
+  .footer-main { grid-template-columns: 1fr 1fr; gap: 30px 18px; }
+  .footer-brand { grid-column: 1 / -1; }
+  .footer-bottom { flex-direction: column; gap: 8px; margin-top: 30px; }
 }
 
 /* =========================================================
@@ -1704,29 +1503,11 @@ h1, h2, h3, h4 {
    ========================================================= */
 
 @media (max-width: 380px) {
-
-  .brand img {
-    width: 33px;
-    height: 33px;
-  }
-
-  .brand span {
-    font-size: 16px;
-    letter-spacing: 1.5px;
-  }
-
-  .hero-content h1 {
-    font-size: 39px;
-  }
-
-  .network-heading h2 {
-    font-size: 35px;
-  }
-
-  .footer-main {
-    grid-template-columns: 1fr;
-  }
-
+  .brand img { width: 33px; height: 33px; }
+  .brand span { font-size: 16px; letter-spacing: 1.5px; }
+  .hero-content h1 { font-size: 39px; }
+  .network-heading h2 { font-size: 35px; }
+  .footer-main { grid-template-columns: 1fr; }
 }
 
 /* =========================================================
@@ -1734,29 +1515,23 @@ h1, h2, h3, h4 {
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-
-  *,
-  *::before,
-  *::after {
+  *, *::before, *::after {
     scroll-behavior: auto !important;
     animation-duration: .01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: .01ms !important;
   }
-
 }
 
 /* =========================================================
    22 — JS ANIMATION SUPPORT
    ========================================================= */
 
-/* Header scrolled effect */
 .site-header.scrolled {
   background: rgba(5, 6, 7, 0.98);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
 }
 
-/* Reveal Animations */
 .reveal {
   opacity: 0;
   transform: translateY(30px);
