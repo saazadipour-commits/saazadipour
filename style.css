@@ -2,7 +2,7 @@
    AZADIPOUR
    GLOBAL MEDICAL TECHNOLOGY & HOSPITAL SOLUTIONS
    NEW COMPLETE RESPONSIVE STYLESHEET
-   BLACK / SILVER / WHITE
+   BLACK / SILVER / WHITE / 3D MAP
    ========================================================= */
 
 :root {
@@ -463,7 +463,7 @@ h1, h2, h3, h4 {
 }
 
 /* =========================================================
-   06 — GLOBAL NETWORK SECTION
+   06 — GLOBAL NETWORK SECTION (3D MAP STYLING)
    ========================================================= */
 
 .global-network-section {
@@ -536,7 +536,7 @@ h1, h2, h3, h4 {
   background: linear-gradient(90deg,#090c0f,#11161b,#090c0f);
 }
 
-/* MAP CANVAS */
+/* 3D MAP CANVAS */
 
 .network-map-canvas-wrap {
   position: relative;
@@ -544,8 +544,9 @@ h1, h2, h3, h4 {
   min-height: 310px;
   aspect-ratio: 1440 / 650;
   overflow: hidden;
-  background:
-    radial-gradient(ellipse at center, #171e25 0%, #090d12 68%, #050607 100%);
+  background: radial-gradient(circle at center, #11151a 0%, #050505 100%);
+  perspective: 1200px; /* ایجاد فضای سه بعدی */
+  padding: 40px 0; /* فاصله برای دیده شدن بهتر زاویه */
 }
 
 .az-world-map {
@@ -554,112 +555,85 @@ h1, h2, h3, h4 {
   height: 100%;
   min-height: 310px;
   overflow: visible;
+  /* چرخش سه بعدی خود نقشه */
+  transform: rotateX(45deg) rotateZ(-10deg) scale(1.1);
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
 }
 
-/* MAP OCEAN */
-
-.az-world-map > rect {
-  fill: url(#mapOcean);
+/* افکت هاور برای حرکت ملایم نقشه */
+.network-map-canvas-wrap:hover .az-world-map {
+  transform: rotateX(40deg) rotateZ(-5deg) scale(1.15);
 }
 
-/* MAP GRID */
+/* استایل کشورها */
+.az-map-country {
+  fill: rgba(255, 255, 255, 0.03);
+  stroke: rgba(255, 255, 255, 0.15);
+  stroke-width: 0.5px;
+  transition: fill 0.3s;
+}
 
-#mapGraticule path,
-#mapGraticule line {
+.az-map-country:hover {
+  fill: rgba(255, 255, 255, 0.08);
+}
+
+/* خطوط گرید جغرافیایی */
+.az-map-graticule {
   fill: none;
-  stroke: rgba(210,220,230,.09);
-  stroke-width: .8;
-  vector-effect: non-scaling-stroke;
+  stroke: rgba(255, 255, 255, 0.05);
+  stroke-width: 1px;
 }
 
-/* MAP COUNTRIES */
-
-#mapCountries path {
-  fill: url(#mapLandSilver);
-  stroke: rgba(255,255,255,.25);
-  stroke-width: .55;
-  vector-effect: non-scaling-stroke;
-  transition: fill .3s ease, opacity .3s ease;
-}
-
-#mapCountries path:hover {
-  fill: #f5f7f9;
-  opacity: 1;
-}
-
-#mapBorders path {
+/* خطوط اتصال (مسیرها) */
+.az-map-route {
   fill: none;
-  stroke: rgba(20,25,30,.55);
-  stroke-width: .6;
-  vector-effect: non-scaling-stroke;
+  stroke: #ffffff;
+  stroke-width: 1.5px;
+  stroke-dasharray: 8 8;
+  animation: dash 2s linear infinite;
+  filter: drop-shadow(0 0 6px #ffffff);
 }
 
-/* MAP CONNECTIONS */
-
-#mapConnections path {
+/* افکت درخشش زیر خط اتصال */
+.az-map-route-glow {
   fill: none;
-  stroke: url(#mapRouteSilver);
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-dasharray: 7 8;
-  opacity: .85;
-  filter: url(#mapGlow);
-  vector-effect: non-scaling-stroke;
+  stroke: rgba(255, 255, 255, 0.4);
+  stroke-width: 4px;
+  filter: blur(4px);
 }
 
-#mapConnections circle {
-  fill: #fff;
-  filter: url(#mapGlow);
+/* نقاط (شهرها) */
+.az-map-endpoint-halo {
+  fill: rgba(255, 255, 255, 0.1);
+  animation: pulse 2s infinite;
 }
 
-/* MAP MARKERS */
-
-#mapMarkers circle {
-  stroke: #fff;
-  stroke-width: 1.5;
-  fill: #fff;
-  filter: url(#mapStrongGlow);
-  vector-effect: non-scaling-stroke;
+.az-map-endpoint-core {
+  fill: #ffffff;
+  filter: drop-shadow(0 0 5px #ffffff);
 }
 
-#mapMarkers .marker-pulse {
-  fill: none;
-  stroke: rgba(255,255,255,.8);
-  stroke-width: 1;
-  animation: marker-pulse 2.5s ease-out infinite;
-  transform-box: fill-box;
-  transform-origin: center;
-}
-
-@keyframes marker-pulse {
-  0% {
-    opacity: .8;
-    transform: scale(.6);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(2.5);
-  }
-}
-
-/* MAP LABELS */
-
-#mapLabels text {
-  fill: #fff;
-  font-family: "Inter", Arial, sans-serif;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 1.2px;
-  paint-order: stroke;
-  stroke: #050607;
-  stroke-width: 3px;
-  stroke-linejoin: round;
-}
-
-#mapLabels .map-label-secondary {
-  fill: #cbd1d7;
-  font-size: 9px;
+/* متن‌های روی نقشه */
+.az-map-origin-label, .az-map-wemed-label {
+  fill: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
   letter-spacing: 1px;
+  text-shadow: 0 0 5px #000;
+}
+
+/* انیمیشن‌های نقشه */
+@keyframes dash {
+  to {
+    stroke-dashoffset: -16;
+  }
+}
+
+@keyframes pulse {
+  0% { r: 10; opacity: 0.8; }
+  50% { r: 15; opacity: 0.3; }
+  100% { r: 10; opacity: 0.8; }
 }
 
 /* MAP LOADING */
@@ -697,35 +671,6 @@ h1, h2, h3, h4 {
   to {
     transform: rotate(360deg);
   }
-}
-
-.map-error {
-  position: absolute;
-  inset: 0;
-  z-index: 6;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #080a0c;
-  color: var(--silver);
-  font-size: 10px;
-  letter-spacing: 2px;
-}
-
-/* MAP CORNER LABEL */
-
-.map-corner-label {
-  position: absolute;
-  right: 18px;
-  bottom: 18px;
-  padding: 9px 13px;
-  border: 1px solid rgba(255,255,255,.2);
-  background: rgba(5,6,7,.75);
-  color: #d9dfe5;
-  font-size: 8px;
-  letter-spacing: 1.5px;
-  backdrop-filter: blur(8px);
-  pointer-events: none;
 }
 
 .map-caption {
@@ -1518,10 +1463,6 @@ h1, h2, h3, h4 {
     grid-template-columns: repeat(2,minmax(0,1fr));
   }
 
-  .interactive-map-layout {
-    grid-template-columns: 1fr;
-  }
-
   .footer-main {
     grid-template-columns: repeat(2,minmax(0,1fr));
   }
@@ -1653,17 +1594,17 @@ h1, h2, h3, h4 {
   .network-map-canvas-wrap {
     min-height: 235px;
     aspect-ratio: 1.12 / 1;
+    padding: 20px 0;
   }
 
   .az-world-map {
     min-height: 235px;
+    /* تنظیم زاویه برای موبایل که کل نقشه دیده شود */
+    transform: rotateX(25deg) rotateZ(-5deg) scale(1); 
   }
 
-  .map-corner-label {
-    right: 8px;
-    bottom: 8px;
-    padding: 7px 9px;
-    font-size: 7px;
+  .network-map-canvas-wrap:hover .az-world-map {
+    transform: rotateX(20deg) rotateZ(0deg) scale(1.05);
   }
 
   .network-legend {
