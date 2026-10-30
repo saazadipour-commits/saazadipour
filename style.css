@@ -1,7 +1,7 @@
 /* =========================================================
    AZADIPOUR
    GLOBAL MEDICAL TECHNOLOGY & HOSPITAL SOLUTIONS
-   COMPLETE STYLESHEET (HOLOGRAPHIC MAP UPGRADE)
+   COMPLETE STYLESHEET (STATIC HUB MAP UPGRADE)
    ========================================================= */
 
 :root {
@@ -462,7 +462,7 @@ h1, h2, h3, h4 {
 }
 
 /* =========================================================
-   06 — GLOBAL NETWORK SECTION (HOLOGRAPHIC MAP)
+   06 — GLOBAL NETWORK SECTION (STATIC HUB MAP)
    ========================================================= */
 
 .global-network-section {
@@ -533,32 +533,30 @@ h1, h2, h3, h4 {
   background: linear-gradient(90deg,#090c0f,#11161b,#090c0f);
 }
 
-/* --- UPGRADED 3D HOLOGRAPHIC MAP STYLES --- */
+/* --- STATIC HUB MAP STYLES (NO 3D GLITCHES) --- */
 
 .network-map-canvas-wrap {
   position: relative;
   width: 100%;
-  min-height: 350px;
+  min-height: 400px;
   aspect-ratio: 1440 / 700;
   overflow: hidden;
-  background: radial-gradient(circle at 50% 50%, #1a222c 0%, #0a0d12 40%, #050607 100%);
-  perspective: 1500px;
-  padding: 50px 0;
+  background: radial-gradient(circle at 50% 50%, #111820 0%, #050607 100%);
+  padding: 20px 0;
 }
 
 .az-world-map {
   display: block;
   width: 100%;
   height: 100%;
-  min-height: 350px;
+  min-height: 400px;
   overflow: visible;
-  transform: rotateX(55deg) rotateZ(-15deg) scale(1.15);
-  transform-style: preserve-3d;
-  transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.network-map-canvas-wrap:hover .az-world-map {
-  transform: rotateX(45deg) rotateZ(-10deg) scale(1.2);
+.az-map-graticule {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.04);
+  stroke-width: 1px;
 }
 
 .az-map-country {
@@ -566,61 +564,60 @@ h1, h2, h3, h4 {
   stroke: rgba(255, 255, 255, 0.15);
   stroke-width: 0.6px;
   transition: fill 0.3s, stroke 0.3s;
-  filter: drop-shadow(0 0 2px rgba(255,255,255,0.2));
 }
 
 .az-map-country:hover {
-  fill: rgba(255, 255, 255, 0.08);
-  stroke: rgba(255, 255, 255, 0.4);
+  fill: rgba(255, 255, 255, 0.06);
+  stroke: rgba(255, 255, 255, 0.3);
 }
 
+/* Lines styling */
 .az-network-arc {
   fill: none;
-  stroke: rgba(255, 255, 255, 0.3);
-  stroke-width: 0.8px;
+  stroke: rgba(255, 255, 255, 0.25);
+  stroke-width: 1px;
   stroke-dasharray: 4 6;
   animation: dash 3s linear infinite;
-  filter: drop-shadow(0 0 4px rgba(255,255,255,0.5));
 }
 
-.az-map-route {
+.az-network-arc.dim {
+  stroke: rgba(255, 255, 255, 0.1);
+  stroke-width: 0.8px;
+}
+
+/* Main bright line from China */
+.az-map-route-main {
   fill: none;
   stroke: #ffffff;
   stroke-width: 2px;
-  stroke-dasharray: 10 10;
-  animation: dashMain 2s linear infinite;
-  filter: drop-shadow(0 0 8px #ffffff);
+  stroke-dasharray: 8 6;
+  animation: dashMain 1.5s linear infinite;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8));
 }
 
-.az-map-route-glow {
-  fill: none;
-  stroke: rgba(255, 255, 255, 0.6);
-  stroke-width: 6px;
-  filter: blur(6px);
+/* Hub Nodes */
+.az-hub-halo-outer {
+  fill: rgba(255, 255, 255, 0.05);
+  animation: pulse 3s infinite;
 }
 
-.az-map-node {
-  fill: #ffffff;
-  filter: drop-shadow(0 0 6px #ffffff);
-}
-
-.az-map-endpoint-halo {
+.az-hub-halo-inner {
   fill: rgba(255, 255, 255, 0.15);
   animation: pulse 2s infinite;
 }
 
-.az-map-endpoint-core {
+.az-hub-core {
   fill: #ffffff;
   filter: drop-shadow(0 0 10px #ffffff);
 }
 
-.az-map-origin-label, .az-map-wemed-label {
+.az-hub-label {
   fill: #ffffff;
   font-family: 'Inter', sans-serif;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 1.5px;
-  text-shadow: 0 0 8px rgba(0,0,0,1), 0 0 15px rgba(255,255,255,0.5);
+  text-shadow: 0 0 8px rgba(0,0,0,1);
 }
 
 @keyframes dash {
@@ -628,22 +625,13 @@ h1, h2, h3, h4 {
 }
 
 @keyframes dashMain {
-  to { stroke-dashoffset: -40; }
+  to { stroke-dashoffset: -28; }
 }
 
 @keyframes pulse {
-  0% { r: 10; opacity: 0.8; }
-  50% { r: 18; opacity: 0.2; }
-  100% { r: 10; opacity: 0.8; }
-}
-
-.network-map-canvas-wrap::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at center, rgba(255,255,255,0.05) 0%, transparent 60%);
-  pointer-events: none;
-  z-index: 1;
+  0% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.5); opacity: 0.2; }
+  100% { transform: scale(1); opacity: 0.8; }
 }
 
 /* --- END OF MAP STYLES --- */
@@ -688,7 +676,7 @@ h1, h2, h3, h4 {
 
 .network-legend {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0,1fr));
+  grid-template-columns: repeat(3, minmax(0,1fr));
   gap: 20px;
   padding: 30px 0;
   border-bottom: 1px solid var(--border);
@@ -714,8 +702,13 @@ h1, h2, h3, h4 {
 }
 
 .legend-dot.target {
-  background: #777f88;
+  background: #888;
   box-shadow: 0 0 10px rgba(255,255,255,.25);
+}
+
+.legend-dot.partner {
+  background: #444;
+  box-shadow: 0 0 8px rgba(255,255,255,.15);
 }
 
 .legend-item strong {
@@ -1471,9 +1464,8 @@ h1, h2, h3, h4 {
   .network-map-topline, .map-caption { flex-direction: column; gap: 7px; padding: 13px; font-size: 8px; }
   
   /* Mobile Map Adjustments */
-  .network-map-canvas-wrap { min-height: 235px; aspect-ratio: 1.12 / 1; padding: 20px 0; }
-  .az-world-map { min-height: 235px; transform: rotateX(35deg) rotateZ(-5deg) scale(1.1); }
-  .network-map-canvas-wrap:hover .az-world-map { transform: rotateX(30deg) rotateZ(0deg) scale(1.15); }
+  .network-map-canvas-wrap { min-height: 250px; aspect-ratio: 1.1 / 1; padding: 10px 0; }
+  .az-world-map { min-height: 250px; }
   
   .network-legend { grid-template-columns: 1fr; gap: 18px; padding: 25px 0; }
   .network-footer { flex-direction: column; align-items: flex-start; gap: 17px; }
