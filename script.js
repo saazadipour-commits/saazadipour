@@ -1,9 +1,10 @@
 /* =========================================================
-   AZADIPOUR — GLOBAL WEBSITE SCRIPT
-   Navigation / Mobile Menu / Intro / Footer Year
+   AZADIPOUR
+   MAIN WEBSITE JAVASCRIPT
+   Navigation / Intro / Scroll / Footer
    ========================================================= */
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
 
     "use strict";
 
@@ -23,23 +24,18 @@ document.addEventListener("DOMContentLoaded", () => {
     ===================================================== */
 
     if (intro) {
+        const hideIntro = function () {
+            intro.classList.add("is-hidden");
 
-        const hideIntro = () => {
-            intro.classList.add("hide");
-
-            window.setTimeout(() => {
+            window.setTimeout(function () {
                 intro.style.display = "none";
-            }, 900);
+            }, reduceMotion ? 0 : 900);
         };
 
-        if (sessionStorage.getItem("azadipourIntroShown")) {
+        if (reduceMotion) {
             hideIntro();
         } else {
-            sessionStorage.setItem("azadipourIntroShown", "true");
-
-            window.setTimeout(() => {
-                hideIntro();
-            }, reduceMotion ? 100 : 1600);
+            window.setTimeout(hideIntro, 1500);
         }
     }
 
@@ -48,74 +44,54 @@ document.addEventListener("DOMContentLoaded", () => {
        02. MOBILE NAVIGATION
     ===================================================== */
 
-    const closeMenu = () => {
-
+    function closeMenu() {
         if (!menuToggle || !mainNav) return;
 
         mainNav.classList.remove("open");
-        menuToggle.classList.remove("active");
+        mainNav.classList.remove("active");
 
+        menuToggle.classList.remove("active");
         menuToggle.setAttribute("aria-expanded", "false");
         menuToggle.setAttribute("aria-label", "Open navigation menu");
 
         body.classList.remove("menu-open");
-    };
-
-
-    const openMenu = () => {
-
-        if (!menuToggle || !mainNav) return;
-
-        mainNav.classList.add("open");
-        menuToggle.classList.add("active");
-
-        menuToggle.setAttribute("aria-expanded", "true");
-        menuToggle.setAttribute("aria-label", "Close navigation menu");
-
-        body.classList.add("menu-open");
-    };
+    }
 
 
     if (menuToggle && mainNav) {
 
-        menuToggle.addEventListener("click", (event) => {
+        menuToggle.addEventListener("click", function () {
 
-            event.stopPropagation();
+            const isOpen = mainNav.classList.toggle("open");
 
-            const isOpen =
-                menuToggle.getAttribute("aria-expanded") === "true";
+            mainNav.classList.toggle("active", isOpen);
+            menuToggle.classList.toggle("active", isOpen);
 
-            if (isOpen) {
-                closeMenu();
-            } else {
-                openMenu();
-            }
+            menuToggle.setAttribute(
+                "aria-expanded",
+                isOpen ? "true" : "false"
+            );
+
+            menuToggle.setAttribute(
+                "aria-label",
+                isOpen ? "Close navigation menu" : "Open navigation menu"
+            );
+
+            body.classList.toggle("menu-open", isOpen);
 
         });
 
 
-        mainNav.querySelectorAll("a").forEach((link) => {
+        mainNav.querySelectorAll("a").forEach(function (link) {
 
-            link.addEventListener("click", () => {
+            link.addEventListener("click", function () {
                 closeMenu();
             });
 
         });
 
 
-        document.addEventListener("click", (event) => {
-
-            const clickedInsideMenu = mainNav.contains(event.target);
-            const clickedToggle = menuToggle.contains(event.target);
-
-            if (!clickedInsideMenu && !clickedToggle) {
-                closeMenu();
-            }
-
-        });
-
-
-        document.addEventListener("keydown", (event) => {
+        document.addEventListener("keydown", function (event) {
 
             if (event.key === "Escape") {
                 closeMenu();
@@ -124,9 +100,12 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
 
-        window.addEventListener("resize", () => {
+        document.addEventListener("click", function (event) {
 
-            if (window.innerWidth > 900) {
+            const clickedInsideMenu = mainNav.contains(event.target);
+            const clickedToggle = menuToggle.contains(event.target);
+
+            if (!clickedInsideMenu && !clickedToggle) {
                 closeMenu();
             }
 
@@ -139,17 +118,16 @@ document.addEventListener("DOMContentLoaded", () => {
        03. HEADER SCROLL EFFECT
     ===================================================== */
 
-    const updateHeader = () => {
+    function updateHeader() {
 
         if (!header) return;
 
-        if (window.scrollY > 35) {
-            header.classList.add("scrolled");
-        } else {
-            header.classList.remove("scrolled");
-        }
+        header.classList.toggle(
+            "scrolled",
+            window.scrollY > 35
+        );
 
-    };
+    }
 
     updateHeader();
 
@@ -159,27 +137,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       04. CURRENT YEAR
+       04. SMOOTH INTERNAL LINKS
     ===================================================== */
 
-    const currentYear = new Date().getFullYear();
+    document.querySelectorAll('a[href^="#"]').forEach(function (link) {
 
-    document.querySelectorAll(
-        "#currentYear, [data-year]"
-    ).forEach((element) => {
-
-        element.textContent = currentYear;
-
-    });
-
-
-    /* =====================================================
-       05. SMOOTH INTERNAL LINKS
-    ===================================================== */
-
-    document.querySelectorAll('a[href^="#"]').forEach((link) => {
-
-        link.addEventListener("click", (event) => {
+        link.addEventListener("click", function (event) {
 
             const targetId = link.getAttribute("href");
 
@@ -211,36 +174,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       06. ACTIVE NAVIGATION LINK
-    ===================================================== */
-
-    const currentPage = (
-        window.location.pathname.split("/").pop() || "index.html"
-    ).toLowerCase();
-
-    document.querySelectorAll(
-        ".main-nav a, #mainNav a"
-    ).forEach((link) => {
-
-        const linkPage = (
-            link.getAttribute("href") || ""
-        ).split("/").pop().toLowerCase();
-
-        if (linkPage === currentPage) {
-            link.classList.add("active");
-        } else {
-            link.classList.remove("active");
-        }
-
-    });
-
-
-    /* =====================================================
-       07. REVEAL ANIMATIONS
+       05. REVEAL ANIMATIONS
     ===================================================== */
 
     const revealElements = document.querySelectorAll(
-        ".section, .section-heading, .intro-detail, .technology-card, .solution-item, .partnership-content"
+        ".section-heading, " +
+        ".intro-detail, " +
+        ".technology-card, " +
+        ".presence-card, " +
+        ".network-legend, " +
+        ".network-footer, " +
+        ".contact-inner"
     );
 
 
@@ -249,10 +193,15 @@ document.addEventListener("DOMContentLoaded", () => {
         "IntersectionObserver" in window
     ) {
 
-        const revealObserver = new IntersectionObserver(
-            (entries, observer) => {
+        revealElements.forEach(function (element) {
+            element.classList.add("reveal");
+        });
 
-                entries.forEach((entry) => {
+
+        const revealObserver = new IntersectionObserver(
+            function (entries, observer) {
+
+                entries.forEach(function (entry) {
 
                     if (entry.isIntersecting) {
 
@@ -272,17 +221,13 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
 
-        revealElements.forEach((element) => {
-
-            element.classList.add("reveal");
-
+        revealElements.forEach(function (element) {
             revealObserver.observe(element);
-
         });
 
     } else {
 
-        revealElements.forEach((element) => {
+        revealElements.forEach(function (element) {
             element.classList.add("reveal-visible");
         });
 
@@ -290,19 +235,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       08. ACCESSIBILITY
+       06. AUTOMATIC FOOTER YEAR
     ===================================================== */
 
-    if (menuToggle) {
+    const currentYear = new Date().getFullYear();
 
-        menuToggle.addEventListener("keydown", (event) => {
+    const yearElement = document.getElementById("currentYear");
 
-            if (event.key === "Enter" || event.key === " ") {
-                event.preventDefault();
-            }
-
-        });
-
+    if (yearElement) {
+        yearElement.textContent = currentYear;
     }
+
+    document.querySelectorAll("[data-year]").forEach(function (element) {
+        element.textContent = currentYear;
+    });
+
+
+    /* =====================================================
+       07. CLOSE MOBILE MENU ON RESIZE
+    ===================================================== */
+
+    window.addEventListener("resize", function () {
+
+        if (window.innerWidth > 900) {
+            closeMenu();
+        }
+
+    });
+
+
+    /* =====================================================
+       08. WEBSITE READY
+    ===================================================== */
+
+    body.classList.add("js-ready");
 
 });
