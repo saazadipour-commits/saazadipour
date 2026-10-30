@@ -129,7 +129,7 @@
       <div class="network-map-frame">
         <div class="network-map-topline">
           <span>AZADIPOUR — INTERNATIONAL NETWORK</span>
-          <span>GLOBAL PARTNERSHIP NETWORK</span>
+          <span>GLOBAL SUPPLY &amp; DISTRIBUTION NETWORK</span>
         </div>
 
         <div class="network-map-canvas-wrap">
@@ -141,8 +141,8 @@
         </div>
 
         <div class="map-caption">
-          <span>AZADIPOUR · OMAN (HUB)</span>
-          <span>GLOBAL SUPPLY &amp; HOSPITAL NETWORK</span>
+          <span>AZADIPOUR · OMAN (STRATEGIC HUB)</span>
+          <span>INBOUND SUPPLY &amp; OUTBOUND MARKETS</span>
         </div>
       </div>
 
@@ -153,16 +153,16 @@
         </div>
         <div class="legend-item">
           <span class="legend-dot target"></span>
-          <div><strong>International Partners</strong><small>Manufacturers &amp; Suppliers</small></div>
+          <div><strong>International Suppliers</strong><small>Inbound Technology</small></div>
         </div>
         <div class="legend-item">
           <span class="legend-dot partner"></span>
-          <div><strong>Regional Hospitals</strong><small>GCC Healthcare Market</small></div>
+          <div><strong>Regional Hospitals</strong><small>Outbound Distribution</small></div>
         </div>
       </div>
 
       <div class="network-footer">
-        <p>The map presents a strategic geographic view of Azadipour's network, illustrating connections between international suppliers and regional healthcare organizations through our Oman-based hub.</p>
+        <p>The map presents a strategic geographic view of Azadipour's supply chain, illustrating connections from international suppliers to our Oman-based hub, and from our hub to regional healthcare organizations.</p>
         <a href="partners.html">Explore Global Partnerships <span>↗</span></a>
       </div>
     </section>
@@ -422,7 +422,7 @@
   <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
   <script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
 
-  <!-- PRECISE STATIC NETWORK MAP SCRIPT -->
+  <!-- DIRECTIONAL NETWORK MAP SCRIPT -->
   <script>
   (() => {
     "use strict";
@@ -451,7 +451,7 @@
         viewBox: `0 0 ${W} ${H}`,
         preserveAspectRatio: "xMidYMid meet",
         role: "img",
-        "aria-label": "Static network hub map"
+        "aria-label": "Directional network map"
       });
 
       const features = topojson.feature(world, world.objects.countries);
@@ -475,92 +475,66 @@
 
       const omanHub = [58.383, 23.588]; // Muscat
 
-      // Helper to draw an arc and a source node
-      const drawConnection = (start, end, className, animSpeed) => {
+      // Helper to draw directional arcs
+      // type: 'inbound' (China -> Oman) or 'outbound' (Oman -> Target)
+      const drawConnection = (start, end, type, isDim = false) => {
         const interpolate = d3.geoInterpolate(start, end);
         const coordinates = d3.range(0, 1.001, 0.01).map(t => interpolate(t));
         const pathD = geoPath({ type: "LineString", coordinates });
         
+        let className = type === 'inbound' ? "az-arc-inbound" : "az-arc-outbound";
+        if (isDim) className += " dim";
+
         // Draw line
         add(svg, "path", { 
           d: pathD, 
-          class: className,
-          style: `animation-duration: ${animSpeed}s` 
+          class: className
         });
 
-        // Draw source node (small glowing dot)
-        const [x, y] = projection(start);
-        add(svg, "circle", { cx: x, cy: y, r: 2, class: "az-network-node" });
+        // Draw destination node (small glowing dot at the end of the arrow)
+        const [endX, endY] = projection(end);
+        add(svg, "circle", { cx: endX, cy: endY, r: 2.5, class: "az-network-node" });
       };
 
-      // --- 1. CHINA CONNECTIONS (3 Lines) ---
+      // --- 1. INBOUND: CHINA TO OMAN (3 Lines) ---
       const chinaMain = [116.407, 39.904]; // Beijing
       const chinaFaded1 = [121.473, 31.230]; // Shanghai
       const chinaFaded2 = [113.264, 23.129]; // Guangzhou
 
-      drawConnection(chinaMain, omanHub, "az-map-route-main", 2);
-      drawConnection(chinaFaded1, omanHub, "az-network-arc dim", 3);
-      drawConnection(chinaFaded2, omanHub, "az-network-arc dim", 3);
+      // Draw from China -> Oman
+      drawConnection(chinaMain, omanHub, 'inbound');
+      drawConnection(chinaFaded1, omanHub, 'inbound', true);
+      drawConnection(chinaFaded2, omanHub, 'inbound', true);
 
-      // --- 2. SAUDI ARABIA CONNECTIONS (20 Precise Points) ---
+      // --- 2. OUTBOUND: OMAN TO SAUDI ARABIA (20 Points) ---
       const ksaPoints = [
-        [46.7219, 24.6333], // Riyadh
-        [39.1979, 21.4858], // Jeddah
-        [50.1033, 26.4207], // Dammam
-        [39.8261, 21.4225], // Mecca
-        [39.6142, 24.4672], // Medina
-        [40.4158, 21.2703], // Taif
-        [36.5662, 28.3835], // Tabuk
-        [43.9725, 26.3260], // Buraydah
-        [42.7212, 18.3061], // Khamis Mushait
-        [42.5053, 18.2164], // Abha
-        [49.6583, 27.0046], // Al Jubail
-        [41.6905, 27.5219], // Hail
-        [44.1277, 17.4917], // Najran
-        [41.4677, 20.0129], // Al Bahah
-        [40.9978, 30.9753], // Arar
-        [40.1999, 29.9697], // Sakaka
-        [42.5511, 16.8892], // Jizan
-        [38.0618, 24.0895], // Yanbu
-        [50.2079, 26.2794], // Al Khobar
-        [49.6294, 25.3833]  // Al Hofuf
+        [46.7219, 24.6333], [39.1979, 21.4858], [50.1033, 26.4207], [39.8261, 21.4225],
+        [39.6142, 24.4672], [40.4158, 21.2703], [36.5662, 28.3835], [43.9725, 26.3260],
+        [42.7212, 18.3061], [42.5053, 18.2164], [49.6583, 27.0046], [41.6905, 27.5219],
+        [44.1277, 17.4917], [41.4677, 20.0129], [40.9978, 30.9753], [40.1999, 29.9697],
+        [42.5511, 16.8892], [38.0618, 24.0895], [50.2079, 26.2794], [49.6294, 25.3833]
       ];
-
       ksaPoints.forEach(point => {
-        drawConnection(point, omanHub, "az-network-arc", 2.5 + Math.random() * 2);
+        drawConnection(omanHub, point, 'outbound');
       });
 
-      // --- 3. QATAR CONNECTIONS (10 Precise Points) ---
+      // --- 3. OUTBOUND: OMAN TO QATAR (10 Points) ---
       const qatarPoints = [
-        [51.5310, 25.2854], // Doha
-        [51.4175, 25.2667], // Al Rayyan
-        [51.6033, 25.1605], // Al Wakrah
-        [51.5050, 25.6804], // Al Khor
-        [51.2000, 25.3667], // Al Shahaniya
-        [51.4000, 25.4167], // Umm Salal
-        [51.3167, 25.4500], // Al Daayen
-        [51.5500, 24.9833], // Mesaieed
-        [50.7833, 25.1333], // Dukhan
-        [51.2000, 26.1167]  // Al Shamal
+        [51.5310, 25.2854], [51.4175, 25.2667], [51.6033, 25.1605], [51.5050, 25.6804],
+        [51.2000, 25.3667], [51.4000, 25.4167], [51.3167, 25.4500], [51.5500, 24.9833],
+        [50.7833, 25.1333], [51.2000, 26.1167]
       ];
-
       qatarPoints.forEach(point => {
-        drawConnection(point, omanHub, "az-network-arc", 2 + Math.random() * 1.5);
+        drawConnection(omanHub, point, 'outbound');
       });
 
-      // --- 4. OMAN INTERNAL CONNECTIONS (5 Precise Points) ---
+      // --- 4. OUTBOUND: OMAN INTERNAL (5 Points) ---
       const omanPoints = [
-        [54.0924, 17.0151], // Salalah
-        [56.7075, 24.3419], // Sohar
-        [57.5400, 22.9333], // Nizwa
-        [59.5289, 22.5667], // Sur
-        [57.7000, 19.6667]  // Duqm
+        [54.0924, 17.0151], [56.7075, 24.3419], [57.5400, 22.9333], [59.5289, 22.5667], [57.7000, 19.6667]
       ];
-
       omanPoints.forEach(point => {
-        drawConnection(point, omanHub, "az-network-arc", 1.5 + Math.random());
+        drawConnection(omanHub, point, 'outbound');
       });
-
 
       // --- DRAW CENTRAL HUB (OMAN) ---
       const [hubX, hubY] = projection(omanHub);
@@ -570,7 +544,7 @@
       add(hubGroup, "circle", { r: 10, class: "az-hub-halo-inner" });
       add(hubGroup, "circle", { r: 4, class: "az-hub-core" });
 
-      // Hub Label (Shifted to the right so it doesn't get cut off)
+      // Hub Label (Shifted to the right to avoid clipping)
       const label = add(hubGroup, "text", {
         x: 15, y: 5, "text-anchor": "start", class: "az-hub-label"
       });
