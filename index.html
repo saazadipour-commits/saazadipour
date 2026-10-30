@@ -520,7 +520,7 @@
   <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
   <script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
 
-  <!-- ONE MAP ROUTE ONLY: OMAN TO CHINA / WEMED -->
+  <!-- 3D ANIMATED WORLD MAP SCRIPT -->
   <script>
   (() => {
     "use strict";
@@ -549,80 +549,11 @@
         viewBox: `0 0 ${W} ${H}`,
         preserveAspectRatio: "xMidYMid meet",
         role: "img",
-        "aria-label": "World map with one route from Azadipour in Muscat, Oman to WeMed in Beijing, China"
+        "aria-label": "3D World map with one route from Azadipour in Muscat, Oman to WeMed in Beijing, China"
       });
 
       const defs = add(svg, "defs");
-
-      const land = add(defs, "linearGradient", {
-        id: "azLandSilver",
-        x1: "0%",
-        y1: "0%",
-        x2: "0%",
-        y2: "100%"
-      });
-
-      add(land, "stop", { offset: "0%", "stop-color": "#f4f5f6" });
-      add(land, "stop", { offset: "48%", "stop-color": "#aeb5bd" });
-      add(land, "stop", { offset: "100%", "stop-color": "#68717b" });
-
-      const shadow = add(defs, "filter", {
-        id: "azLandShadow",
-        x: "-20%",
-        y: "-20%",
-        width: "140%",
-        height: "150%"
-      });
-
-      add(shadow, "feGaussianBlur", {
-        in: "SourceAlpha",
-        stdDeviation: "5",
-        result: "blur"
-      });
-
-      add(shadow, "feOffset", {
-        dx: "0",
-        dy: "5",
-        result: "offset"
-      });
-
-      const merge = add(shadow, "feMerge");
-      add(merge, "feMergeNode", { in: "offset" });
-      add(merge, "feMergeNode", { in: "SourceGraphic" });
-
-      const glow = add(defs, "filter", {
-        id: "azRouteGlow",
-        x: "-100%",
-        y: "-100%",
-        width: "300%",
-        height: "300%"
-      });
-
-      add(glow, "feGaussianBlur", {
-        stdDeviation: "5",
-        result: "blur"
-      });
-
-      const glowMerge = add(glow, "feMerge");
-      add(glowMerge, "feMergeNode", { in: "blur" });
-      add(glowMerge, "feMergeNode", { in: "SourceGraphic" });
-
-      const routeGrad = add(defs, "linearGradient", {
-        id: "azRouteSilver",
-        x1: "0%",
-        y1: "0%",
-        x2: "100%",
-        y2: "0%"
-      });
-
-      add(routeGrad, "stop", { offset: "0%", "stop-color": "#9aa3ad" });
-      add(routeGrad, "stop", { offset: "55%", "stop-color": "#ffffff" });
-      add(routeGrad, "stop", { offset: "100%", "stop-color": "#c3ccd5" });
-
-      const features = topojson.feature(
-        world,
-        world.objects.countries
-      );
+      const features = topojson.feature(world, world.objects.countries);
 
       const projection = d3.geoNaturalEarth1().fitExtent(
         [[22, 28], [W - 22, H - 28]],
@@ -631,17 +562,12 @@
 
       const geoPath = d3.geoPath(projection);
 
-      // Geographic grid
       add(svg, "path", {
         d: geoPath(d3.geoGraticule().step([30, 30])()),
         class: "az-map-graticule"
       });
 
-      // World land
-      const landGroup = add(svg, "g", {
-        class: "az-map-land"
-      });
-
+      const landGroup = add(svg, "g", { class: "az-map-land" });
       features.features.forEach(feature => {
         add(landGroup, "path", {
           d: geoPath(feature),
@@ -649,26 +575,20 @@
         });
       });
 
-      // Country borders
-      const borders = topojson.mesh(
-        world,
-        world.objects.countries,
-        (a, b) => a !== b
-      );
-
+      const borders = topojson.mesh(world, world.objects.countries, (a, b) => a !== b);
       add(svg, "path", {
         d: geoPath(borders),
-        class: "az-map-borders"
+        class: "az-map-borders",
+        fill: "none",
+        stroke: "rgba(255,255,255,0.1)",
+        "stroke-width": "0.5"
       });
 
-      // The only business connection: Muscat to Beijing
       const muscat = [58.383, 23.588];
       const beijing = [116.407, 39.904];
 
       const interpolate = d3.geoInterpolate(muscat, beijing);
-
-      const coordinates = d3.range(0, 1.001, 0.004)
-        .map(t => interpolate(t));
+      const coordinates = d3.range(0, 1.001, 0.004).map(t => interpolate(t));
 
       const route = geoPath({
         type: "LineString",
@@ -685,29 +605,13 @@
         class: "az-map-route"
       });
 
-      // Only two endpoint markers
       const endpoints = [
-        {
-          name: "AZADIPOUR",
-          point: muscat,
-          dx: -15,
-          dy: 28,
-          anchor: "end",
-          className: "az-map-origin-label"
-        },
-        {
-          name: "WeMed",
-          point: beijing,
-          dx: 15,
-          dy: -17,
-          anchor: "start",
-          className: "az-map-wemed-label"
-        }
+        { name: "AZADIPOUR", point: muscat, dx: -15, dy: 28, anchor: "end", className: "az-map-origin-label" },
+        { name: "WeMed", point: beijing, dx: 15, dy: -17, anchor: "start", className: "az-map-wemed-label" }
       ];
 
       endpoints.forEach((item, index) => {
         const [x, y] = projection(item.point);
-
         const group = add(svg, "g", {
           class: "az-map-endpoint",
           transform: `translate(${x},${y})`
@@ -719,7 +623,7 @@
         });
 
         add(group, "circle", {
-          r: 4,
+          r: 3,
           class: "az-map-endpoint-core"
         });
 
@@ -729,7 +633,6 @@
           "text-anchor": item.anchor,
           class: item.className
         });
-
         label.textContent = item.name;
       });
 
@@ -740,25 +643,20 @@
 
     fetch("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json")
       .then(response => {
-        if (!response.ok) {
-          throw new Error("Map data unavailable");
-        }
+        if (!response.ok) throw new Error("Map data unavailable");
         return response.json();
       })
       .then(draw)
       .catch(error => {
         console.error("Azadipour map:", error);
-
         if (loading) {
-          loading.innerHTML =
-            "GLOBAL MAP UNAVAILABLE — PLEASE CHECK YOUR CONNECTION";
+          loading.innerHTML = "GLOBAL MAP UNAVAILABLE — PLEASE CHECK YOUR CONNECTION";
           loading.classList.remove("is-hidden");
         }
       });
   })();
   </script>
 
-  <!-- WEBSITE SCRIPTS -->
   <script src="script.js" defer></script>
 
 </body>
