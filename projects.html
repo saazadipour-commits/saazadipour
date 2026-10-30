@@ -18,77 +18,77 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
-        .projects-page {
-            background: #08090b;
-            color: #f1f1ef;
-        }
-
+        /* =========================================================
+           PROJECTS PAGE SPECIFIC STYLES
+           ========================================================= */
+        
         .projects-hero {
-            min-height: 66vh;
+            position: relative;
+            min-height: 70vh;
             display: flex;
             align-items: center;
             padding: 150px 7% 100px;
-            position: relative;
             overflow: hidden;
-            border-bottom: 1px solid rgba(255,255,255,.10);
-            background:
-                radial-gradient(ellipse at 78% 35%, rgba(190,198,208,.11), transparent 38%),
-                linear-gradient(120deg, #08090b 0%, #101318 55%, #08090b 100%);
-        }
-
-        .projects-hero::after {
-            content: "";
-            position: absolute;
-            width: 480px;
-            height: 480px;
-            right: -140px;
-            top: 10%;
-            border: 1px solid rgba(220,225,232,.10);
-            border-radius: 50%;
-            box-shadow:
-                0 0 0 55px rgba(220,225,232,.025),
-                0 0 0 110px rgba(220,225,232,.018);
-            pointer-events: none;
+            border-bottom: 1px solid var(--border);
+            background: linear-gradient(120deg, #050607 0%, #101318 55%, #050607 100%);
         }
 
         .projects-hero-content {
-            width: min(900px, 100%);
             position: relative;
-            z-index: 1;
+            z-index: 2;
+            width: min(900px, 100%);
         }
 
         .projects-eyebrow {
-            color: #aeb5bf;
+            color: var(--silver);
             font-size: 11px;
             letter-spacing: .28em;
             text-transform: uppercase;
             margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .projects-eyebrow::before {
+            content: "";
+            display: block;
+            width: 40px;
+            height: 1px;
+            background: #fff;
         }
 
         .projects-hero h1 {
             font-family: "Cormorant Garamond", serif;
             font-weight: 400;
             font-size: clamp(48px, 7vw, 88px);
-            line-height: .98;
+            line-height: 1.05;
             letter-spacing: -.025em;
             max-width: 900px;
             margin: 0 0 28px;
+            color: #fff;
         }
 
         .projects-hero h1 span {
-            color: #aeb5bf;
+            color: var(--silver);
+            display: block;
         }
 
         .projects-hero p {
             max-width: 650px;
-            color: #b9bec6;
+            color: var(--text-soft);
             font-size: 15px;
             line-height: 1.9;
             font-weight: 300;
         }
 
         .projects-section {
-            padding: 105px 7%;
+            padding: 110px 7%;
+            background: var(--bg);
+        }
+
+        .projects-section.bg-soft {
+            background: var(--bg-soft);
         }
 
         .projects-inner {
@@ -96,55 +96,28 @@
             margin: 0 auto;
         }
 
-        .projects-heading {
-            max-width: 760px;
-            margin-bottom: 52px;
-        }
-
-        .projects-heading .eyebrow {
-            color: #9da5b0;
-            font-size: 10px;
-            letter-spacing: .25em;
-            text-transform: uppercase;
-            margin-bottom: 18px;
-        }
-
-        .projects-heading h2 {
-            font-family: "Cormorant Garamond", serif;
-            font-size: clamp(38px, 5vw, 62px);
-            font-weight: 400;
-            line-height: 1.05;
-            margin: 0 0 18px;
-        }
-
-        .projects-heading p {
-            color: #aeb4bd;
-            line-height: 1.9;
-            font-size: 14px;
-            max-width: 680px;
-        }
-
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 1px;
-            background: rgba(255,255,255,.13);
-            border: 1px solid rgba(255,255,255,.13);
+            gap: 20px;
         }
 
         .project-card {
-            min-height: 270px;
-            padding: 38px;
-            background: #0d1014;
-            transition: background .3s ease;
+            min-height: 280px;
+            padding: 45px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            transition: var(--transition);
         }
 
         .project-card:hover {
-            background: #151a20;
+            border-color: var(--border-strong);
+            transform: translateY(-5px);
+            background: var(--bg-light);
         }
 
         .project-number {
-            color: #747d88;
+            color: var(--silver-dark);
             font-size: 11px;
             letter-spacing: .18em;
             margin-bottom: 35px;
@@ -152,68 +125,42 @@
 
         .project-card h3 {
             font-family: "Cormorant Garamond", serif;
-            font-size: 31px;
+            font-size: 34px;
             font-weight: 500;
             margin: 0 0 15px;
+            color: #fff;
         }
 
         .project-card p {
-            color: #aeb4bd;
+            color: var(--text-soft);
             font-size: 13px;
             line-height: 1.85;
-            max-width: 510px;
             margin: 0;
         }
 
-        .projects-framework {
-            background: #101318;
-            border-top: 1px solid rgba(255,255,255,.08);
-            border-bottom: 1px solid rgba(255,255,255,.08);
-        }
-
-        .projects-framework-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
-        }
-
-        .projects-framework h2 {
-            font-family: "Cormorant Garamond", serif;
-            font-size: clamp(38px, 5vw, 60px);
-            font-weight: 400;
-            line-height: 1.05;
-            margin: 0 0 22px;
-        }
-
-        .projects-framework p {
-            color: #b2b8c1;
-            font-size: 14px;
-            line-height: 1.95;
-        }
-
-        .projects-process {
-            border-top: 1px solid rgba(255,255,255,.18);
+        .projects-process-list {
+            border-top: 1px solid var(--border);
         }
 
         .projects-process-item {
             display: flex;
-            gap: 22px;
-            padding: 22px 0;
-            border-bottom: 1px solid rgba(255,255,255,.13);
+            gap: 25px;
+            padding: 25px 0;
+            border-bottom: 1px solid var(--border);
         }
 
         .projects-process-item span {
-            color: #858e99;
+            color: var(--silver-dark);
             font-size: 11px;
             letter-spacing: .12em;
-            padding-top: 4px;
+            padding-top: 5px;
         }
 
         .projects-process-item strong {
-            font-size: 13px;
-            font-weight: 500;
-            letter-spacing: .04em;
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: .03em;
+            color: var(--text);
         }
 
         .projects-market-panel {
@@ -221,11 +168,10 @@
             grid-template-columns: .8fr 1.2fr;
             gap: 60px;
             align-items: center;
-            padding: 55px;
-            border: 1px solid rgba(255,255,255,.15);
-            background:
-                radial-gradient(ellipse at 85% 15%, rgba(180,190,205,.09), transparent 45%),
-                #0d1014;
+            padding: 60px;
+            border: 1px solid var(--border);
+            background: var(--bg-card);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
         }
 
         .projects-market-panel h2 {
@@ -234,151 +180,78 @@
             font-weight: 400;
             line-height: 1.05;
             margin: 0;
+            color: #fff;
         }
 
         .projects-market-panel p {
-            color: #aeb4bd;
+            color: var(--text-soft);
             font-size: 14px;
             line-height: 1.9;
-            margin: 0;
+            margin: 0 0 20px;
         }
 
         .projects-note {
-            color: #858d98;
+            color: var(--muted);
             font-size: 11px;
             line-height: 1.8;
-            margin-top: 25px;
+            margin-top: 30px;
+            border-left: 2px solid var(--silver-dark);
+            padding-left: 20px;
         }
 
-        .projects-cta {
-            text-align: center;
-            padding: 105px 7%;
-            background:
-                radial-gradient(ellipse at center, rgba(180,190,205,.10), transparent 60%),
-                #08090b;
-        }
-
-        .projects-cta h2 {
-            font-family: "Cormorant Garamond", serif;
-            font-size: clamp(38px, 5vw, 62px);
-            font-weight: 400;
-            margin: 0 0 18px;
-        }
-
-        .projects-cta p {
-            color: #aeb4bd;
-            max-width: 620px;
-            margin: 0 auto 30px;
-            font-size: 14px;
-            line-height: 1.9;
-        }
-
-        .projects-cta-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 48px;
-            padding: 0 25px;
-            border: 1px solid rgba(255,255,255,.55);
-            color: #f1f1ef;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 10px;
-            letter-spacing: .18em;
-            transition: background .25s ease, color .25s ease;
-        }
-
-        .projects-cta-link:hover {
-            background: #f1f1ef;
-            color: #08090b;
-        }
-
-        @media (max-width: 760px) {
-            .projects-hero {
-                min-height: 560px;
-                padding: 125px 6% 75px;
-            }
-
-            .projects-hero::after {
-                width: 280px;
-                height: 280px;
-                right: -150px;
-                top: 18%;
-            }
-
-            .projects-section {
-                padding: 75px 6%;
-            }
-
-            .projects-grid,
-            .projects-framework-grid,
-            .projects-market-panel {
-                grid-template-columns: 1fr;
-            }
-
-            .project-card {
-                min-height: auto;
-                padding: 28px;
-            }
-
-            .projects-framework-grid {
-                gap: 35px;
-            }
-
-            .projects-market-panel {
-                padding: 30px;
-                gap: 25px;
-            }
-
-            .projects-cta {
-                padding: 75px 6%;
-            }
+        @media (max-width: 900px) {
+            .projects-hero { min-height: 60vh; padding: 130px 6% 80px; }
+            .projects-section { padding: 80px 6%; }
+            .projects-grid, .projects-market-panel { grid-template-columns: 1fr; }
+            .project-card { padding: 35px; min-height: auto; }
+            .projects-market-panel { padding: 35px 25px; gap: 30px; }
         }
     </style>
 </head>
 
 <body class="projects-page">
 
-    <div class="intro-screen" id="introScreen">
-        <div class="intro-logo">
-            <img src="assets/logo-transparent.png" alt="Azadipour">
+    <!-- INTRO -->
+    <div class="intro-screen" id="intro">
+        <div class="intro-content">
+            <img src="assets/logo-transparent.png" alt="Azadipour Logo">
+            <div class="intro-name">AZADIPOUR</div>
+            <p>GLOBAL MEDICAL TECHNOLOGY & HOSPITAL SOLUTIONS</p>
         </div>
-        <div class="intro-line"></div>
     </div>
 
-    <header class="site-header" id="siteHeader">
+    <!-- HEADER -->
+    <header class="site-header">
         <div class="header-inner">
-            <a class="brand" href="index.html" aria-label="Azadipour Home">
-                <img src="assets/logo-transparent.png" alt="Azadipour logo">
+            <a href="index.html" class="brand" aria-label="Azadipour Home">
+                <img src="assets/logo-transparent.png" alt="Azadipour">
+                <span>AZADIPOUR</span>
             </a>
 
-            <button class="menu-toggle" id="menuToggle"
-                    aria-label="Open navigation menu"
-                    aria-expanded="false"
-                    aria-controls="mainNav">
+            <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mainNav">
+                <span></span>
                 <span></span>
                 <span></span>
             </button>
 
             <nav class="main-nav" id="mainNav">
                 <a href="index.html">Home</a>
-                <a href="medical.html">Medical</a>
-                <a href="cardiac.html">Cardiac</a>
-                <a href="robotic.html">Robotics</a>
-                <a href="projects.html" class="active" aria-current="page">Projects</a>
-                <a href="partners.html">Partners</a>
+                <a href="about.html">About Us</a>
+                <a href="index.html#global-network">Global Presence</a>
+                <a href="medical.html">Medical Technology</a>
+                <a href="partners.html">Global Partnerships</a>
+                <a href="projects.html" class="active">Projects</a>
                 <a href="contact.html" class="nav-contact">Contact</a>
             </nav>
         </div>
     </header>
 
     <main>
+        <!-- HERO -->
         <section class="projects-hero">
             <div class="projects-hero-content">
-                <div class="projects-eyebrow">AZADIPOUR / PROJECT DEVELOPMENT</div>
-
+                <div class="projects-eyebrow">PROJECT DEVELOPMENT</div>
                 <h1>Turning healthcare needs into <span>business opportunities.</span></h1>
-
                 <p>
                     Identifying medical technology requirements, exploring
                     relevant solutions and supporting the development of
@@ -388,13 +261,12 @@
             </div>
         </section>
 
+        <!-- PROJECT FOCUS -->
         <section class="projects-section">
             <div class="projects-inner">
-                <div class="projects-heading">
-                    <div class="eyebrow">PROJECT DEVELOPMENT FOCUS</div>
-
+                <div class="section-heading">
+                    <div class="section-label">PROJECT DEVELOPMENT FOCUS</div>
                     <h2>Where technology meets opportunity.</h2>
-
                     <p>
                         Azadipour's project development focus is built around
                         understanding healthcare requirements and connecting
@@ -406,7 +278,7 @@
                 <div class="projects-grid">
                     <article class="project-card">
                         <div class="project-number">01 / HOSPITAL TECHNOLOGY</div>
-                        <h3>Hospital Equipment &amp; Infrastructure</h3>
+                        <h3>Hospital Equipment & Infrastructure</h3>
                         <p>
                             Exploring equipment and integrated solutions for
                             hospital departments, operating rooms, intensive
@@ -416,7 +288,7 @@
 
                     <article class="project-card">
                         <div class="project-number">02 / ADVANCED SURGERY</div>
-                        <h3>Robotic &amp; Digital Surgery</h3>
+                        <h3>Robotic & Digital Surgery</h3>
                         <p>
                             Identifying opportunities involving surgical
                             robotics, image-guided systems, navigation
@@ -426,7 +298,7 @@
 
                     <article class="project-card">
                         <div class="project-number">03 / CARDIOVASCULAR</div>
-                        <h3>Cardiac &amp; Critical Care</h3>
+                        <h3>Cardiac & Critical Care</h3>
                         <p>
                             Exploring medical technologies and equipment
                             for cardiac surgery, perfusion, catheterization
@@ -447,49 +319,37 @@
             </div>
         </section>
 
-        <section class="projects-section projects-framework">
-            <div class="projects-inner projects-framework-grid">
+        <!-- APPROACH -->
+        <section class="projects-section bg-soft">
+            <div class="projects-inner" style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;">
                 <div>
                     <div class="projects-eyebrow">PROJECT APPROACH</div>
-
-                    <h2>A clear process. A professional approach.</h2>
-
-                    <p>
-                        Each potential opportunity requires an individual
-                        assessment. Our approach emphasizes understanding
-                        the requirements, identifying suitable technologies
-                        and establishing clear communication between relevant
-                        stakeholders.
+                    <h2 class="section-heading" style="margin-bottom: 20px;">A clear process. A professional approach.</h2>
+                    <p style="color: var(--text-soft); font-size: 14px; line-height: 1.95; margin-bottom: 20px;">
+                        Each potential opportunity requires an individual assessment. Our approach emphasizes understanding the requirements, identifying suitable technologies and establishing clear communication between relevant stakeholders.
                     </p>
-
-                    <p>
-                        Project scope, commercial terms, technical
-                        specifications and regulatory requirements are
-                        evaluated according to the individual opportunity.
+                    <p style="color: var(--text-soft); font-size: 14px; line-height: 1.95;">
+                        Project scope, commercial terms, technical specifications and regulatory requirements are evaluated according to the individual opportunity.
                     </p>
                 </div>
 
-                <div class="projects-process">
+                <div class="projects-process-list">
                     <div class="projects-process-item">
                         <span>01</span>
                         <strong>Requirement identification</strong>
                     </div>
-
                     <div class="projects-process-item">
                         <span>02</span>
                         <strong>Technical and product assessment</strong>
                     </div>
-
                     <div class="projects-process-item">
                         <span>03</span>
                         <strong>Supplier and manufacturer engagement</strong>
                     </div>
-
                     <div class="projects-process-item">
                         <span>04</span>
                         <strong>Commercial and operational review</strong>
                     </div>
-
                     <div class="projects-process-item">
                         <span>05</span>
                         <strong>Potential project coordination</strong>
@@ -498,28 +358,21 @@
             </div>
         </section>
 
+        <!-- MARKET DEVELOPMENT -->
         <section class="projects-section">
             <div class="projects-inner">
                 <div class="projects-market-panel">
                     <div>
-                        <div class="projects-eyebrow">MARKET DEVELOPMENT</div>
+                        <div class="section-label">MARKET DEVELOPMENT</div>
                         <h2>Oman as a base. A wider international perspective.</h2>
                     </div>
 
                     <div>
                         <p>
-                            Azadipour is an Oman-registered healthcare and
-                            medical technology company with a strategic
-                            focus on developing opportunities across the
-                            GCC and evaluating selected European and
-                            international markets.
+                            Azadipour is an Oman-registered healthcare and medical technology company with a strategic focus on developing opportunities across the GCC and evaluating selected European and international markets.
                         </p>
-
                         <p>
-                            These markets represent strategic areas of
-                            interest and development, not a claim of
-                            established operations or completed projects
-                            in every location.
+                            These markets represent strategic areas of interest and development, not a claim of established operations or completed projects in every location.
                         </p>
                     </div>
                 </div>
@@ -532,57 +385,57 @@
             </div>
         </section>
 
-        <section class="projects-cta">
-            <div class="projects-inner">
-                <div class="projects-eyebrow">PROJECT ENQUIRIES</div>
-
-                <h2>Have a healthcare requirement?</h2>
-
-                <p>
-                    Hospitals, healthcare groups and international suppliers
-                    are welcome to contact us to discuss potential projects,
-                    product requirements and business opportunities.
-                </p>
-
-                <a class="projects-cta-link" href="contact.html">
-                    Discuss an Opportunity
-                </a>
-            </div>
+        <!-- CTA -->
+        <section class="section contact-section" style="text-align: center;">
+            <div class="section-label" style="justify-content: center;">PROJECT ENQUIRIES</div>
+            <h2 class="section-heading" style="margin-inline: auto;">
+                Have a healthcare <span>requirement?</span>
+            </h2>
+            <p style="max-width: 650px; margin: 0 auto 30px; color: var(--text-soft);">
+                Hospitals, healthcare groups and international suppliers are welcome to contact us to discuss potential projects, product requirements and business opportunities.
+            </p>
+            <a href="contact.html" class="btn-primary">Discuss an Opportunity <span>↗</span></a>
         </section>
     </main>
 
+    <!-- FOOTER -->
     <footer class="site-footer">
-        <div class="footer-inner">
+        <div class="footer-main">
             <div class="footer-brand">
-                <a href="index.html">
-                    <img src="assets/logo-transparent.png" alt="Azadipour">
-                </a>
-                <p>Medical Technology &amp; Hospital Solutions</p>
+                <img src="assets/logo-transparent.png" alt="Azadipour Logo">
+                <h3>AZADIPOUR</h3>
+                <p>Global Medical Technology & Hospital Solutions</p>
             </div>
 
-            <div class="footer-links">
-                <a href="index.html">Home</a>
-                <a href="medical.html">Medical</a>
-                <a href="cardiac.html">Cardiac</a>
-                <a href="robotic.html">Robotics</a>
+            <div class="footer-column">
+                <h4>COMPANY</h4>
+                <a href="about.html">About Us</a>
+                <a href="index.html#global-network">Global Presence</a>
+                <a href="partners.html">Partnerships</a>
                 <a href="projects.html">Projects</a>
-                <a href="partners.html">Partners</a>
-                <a href="contact.html">Contact</a>
             </div>
 
-            <div class="footer-contact">
-                <a href="mailto:info@azadipourmedical.com">info@azadipourmedical.com</a>
-                <a href="tel:+96891646294">+968 9164 6294</a>
-                <a href="https://azadipourmedical.com/">azadipourmedical.com</a>
+            <div class="footer-column">
+                <h4>TECHNOLOGY</h4>
+                <a href="robotic.html">Robotic Surgery</a>
+                <a href="cardiac.html">Cardiovascular</a>
+                <a href="medical.html">Medical Technology</a>
+            </div>
+
+            <div class="footer-column">
+                <h4>CONTACT</h4>
+                <a href="mailto:info@azadipourmedical.com">Email</a>
+                <span>Oman</span>
             </div>
         </div>
 
         <div class="footer-bottom">
-            <span>© <span id="currentYear"></span> Azadipour. All rights reserved.</span>
-            <span>GCC · EUROPE · INTERNATIONAL</span>
+            <span>© <span id="currentYear">2026</span> AZADIPOUR. ALL RIGHTS RESERVED.</span>
+            <span>GLOBAL MEDICAL TECHNOLOGY · WORLDWIDE</span>
         </div>
     </footer>
 
+    <!-- SCRIPTS -->
     <script src="script.js" defer></script>
 </body>
 </html>
