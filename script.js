@@ -25,7 +25,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (intro) {
         const hideIntro = function () {
-            intro.classList.add("is-hidden");
+            // Matches the .hide class in CSS
+            intro.classList.add("hide");
 
             window.setTimeout(function () {
                 intro.style.display = "none";
@@ -257,7 +258,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     window.addEventListener("resize", function () {
 
-        if (window.innerWidth > 900) {
+        if (window.innerWidth > 1050) {
             closeMenu();
         }
 
