@@ -1,16 +1,13 @@
-
-/* ==========================================================
-   AZADIPOUR — EXECUTIVE GLOBAL NETWORK
-   Flat embossed 3D world map
-   Black / Silver / White
-========================================================== */
+/* =====================================================
+   AZADIPOUR — PREMIUM GLOBAL WORLD MAP
+   Flat geographic map / embossed silver relief
+===================================================== */
 
 .global-network-section {
   position: relative;
-  width: 100%;
   overflow: hidden;
-  padding: 95px 5% 85px;
-  background: #050607;
+  padding: 100px 5%;
+  background: #050608;
   color: #fff;
   isolation: isolate;
 }
@@ -20,88 +17,71 @@
   position: absolute;
   inset: 0;
   z-index: -1;
-  pointer-events: none;
   background:
     radial-gradient(
       ellipse at 50% 48%,
-      rgba(175,185,195,.055),
-      transparent 68%
+      rgba(190,200,210,.075),
+      transparent 70%
     );
 }
 
 .network-container {
-  position: relative;
   width: min(1480px, 100%);
-  margin: 0 auto;
+  margin: auto;
 }
-
-.network-top,
-.network-map-frame,
-.network-legend,
-.network-markets,
-.network-footer {
-  width: 100%;
-}
-
-/* ----------------------------------------------------------
-   HEADING
----------------------------------------------------------- */
 
 .network-top {
-  margin-bottom: 35px;
+  margin-bottom: 38px;
 }
 
-.network-top .section-label {
-  margin-bottom: 22px;
+.section-label {
+  margin-bottom: 24px;
   color: #aeb5bd;
-  font-family: "Inter", sans-serif;
+  font-family: Inter, sans-serif;
   font-size: 10px;
   letter-spacing: 3px;
 }
 
 .network-heading {
   display: grid;
-  grid-template-columns: 1.25fr .75fr;
+  grid-template-columns: 1.2fr .8fr;
   align-items: end;
   gap: 45px;
 }
 
 .network-heading h2 {
   margin: 0;
-  color: #f4f5f6;
+  color: #f5f6f7;
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(42px, 5.2vw, 72px);
+  font-size: clamp(45px, 5.5vw, 76px);
   font-weight: 400;
   line-height: 1.04;
-  letter-spacing: -1px;
 }
 
 .network-heading h2 span {
   display: block;
-  color: #b9c0c7;
+  color: #b9c0c8;
 }
 
-.network-heading > p {
-  max-width: 440px;
-  margin: 0 0 5px;
-  color: #9da5ad;
-  font-family: "Inter", sans-serif;
-  font-size: 12px;
+.network-heading p {
+  max-width: 460px;
+  margin: 0 0 6px;
+  color: #a2aab2;
+  font-family: Inter, sans-serif;
+  font-size: 13px;
   font-weight: 300;
   line-height: 1.9;
 }
 
-/* ----------------------------------------------------------
-   MAP FRAME
----------------------------------------------------------- */
+/* MAP FRAME */
 
 .network-map-frame {
   overflow: hidden;
-  border: 1px solid rgba(255,255,255,.17);
-  background: #07090b;
+  border: 1px solid rgba(255,255,255,.19);
+  background: #07090c;
   box-shadow:
-    0 25px 75px rgba(0,0,0,.42),
-    inset 0 1px rgba(255,255,255,.035);
+    0 30px 80px rgba(0,0,0,.48),
+    inset 0 1px rgba(255,255,255,.04);
 }
 
 .network-map-topline {
@@ -110,386 +90,274 @@
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 12px;
-  min-height: 48px;
-  padding: 13px 20px;
-  border-bottom: 1px solid rgba(255,255,255,.13);
-  color: #cbd0d5;
-  font-family: "Inter", sans-serif;
-  font-size: 9px;
-  letter-spacing: 1.7px;
+  padding: 18px 22px;
+  border-bottom: 1px solid rgba(255,255,255,.15);
+  color: #d6dbe0;
+  font-family: Inter, sans-serif;
+  font-size: 10px;
+  letter-spacing: 1.8px;
 }
 
-/* ----------------------------------------------------------
-   SVG WORLD MAP
----------------------------------------------------------- */
+/* WORLD MAP */
 
 .network-map-canvas-wrap {
   position: relative;
   width: 100%;
   overflow: hidden;
   aspect-ratio: 1440 / 650;
-  min-height: 0;
-  background:
-    radial-gradient(
-      ellipse at 50% 45%,
-      #161a1f 0%,
-      #090b0e 58%,
-      #050607 100%
-    );
+  background: #080a0d;
 }
 
 .az-world-map {
-  position: absolute;
-  inset: 0;
   display: block;
   width: 100%;
   height: 100%;
+  overflow: visible;
 }
 
-/* Background grid */
-
-.map-grid-lines {
+#mapGraticule path {
   fill: none;
-  stroke: rgba(220,230,240,.055);
+  stroke: rgba(190,205,220,.075);
+  stroke-width: 1;
+  stroke-dasharray: 3 8;
+}
+
+#mapCountries path {
+  stroke: rgba(255,255,255,.19);
   stroke-width: .8;
-}
-
-/* Network lines */
-
-.map-network-lines {
-  fill: none;
-  stroke: rgba(210,220,230,.16);
-  stroke-width: 1;
-}
-
-.map-network-lines circle {
-  fill: #e7edf3;
-  filter: url(#mapGlow);
-  opacity: .75;
-}
-
-/* ----------------------------------------------------------
-   CONTINENTS — EMBOSSED SILVER
----------------------------------------------------------- */
-
-.map-continent {
-  filter: url(#landRelief);
-}
-
-.land-shape {
-  fill: url(#landSilver);
-  stroke: url(#landEdge);
-  stroke-width: 2;
   stroke-linejoin: round;
-  stroke-linecap: round;
+  fill: url(#mapLandSilver);
+  transition:
+    fill .4s ease,
+    stroke .4s ease;
 }
 
-.land-detail {
-  fill: none;
-  stroke: rgba(55,64,74,.26);
-  stroke-width: 2;
-  stroke-linecap: round;
+#mapCountries path.region-china {
+  fill: url(#mapSoftSilver);
+  stroke: rgba(255,255,255,.5);
+  stroke-width: 1.2;
 }
 
-.antarctica {
-  opacity: .55;
-}
-
-.map-texture-layer {
-  fill: none;
-  stroke: rgba(255,255,255,.18);
-  stroke-width: 1;
-}
-
-/* ----------------------------------------------------------
-   SELECTED COUNTRY HIGHLIGHTS
----------------------------------------------------------- */
-
-.map-regions {
-  stroke-linejoin: round;
-}
-
-.region-saudi {
-  fill: rgba(235,239,243,.29);
-  stroke: rgba(255,255,255,.58);
-  stroke-width: 1.5;
-  filter: url(#mapGlow);
-}
-
-.region-qatar {
-  fill: rgba(255,255,255,.95);
-  stroke: #fff;
-  stroke-width: 1.5;
-  filter: url(#strongMapGlow);
-}
-
-.region-oman {
-  fill: rgba(255,255,255,.78);
+#mapCountries path.region-oman,
+#mapCountries path.region-qatar {
+  fill: url(#mapSelectedSilver);
   stroke: #fff;
   stroke-width: 1.8;
-  filter: url(#mapGlow);
 }
 
-.region-china {
-  fill: rgba(255,255,255,.14);
-  stroke: rgba(255,255,255,.43);
-  stroke-width: 1.4;
+#mapCountries path.region-saudi {
+  fill: url(#mapSoftSilver);
+  stroke: rgba(255,255,255,.55);
+  stroke-width: 1.1;
 }
 
-/* ----------------------------------------------------------
-   OMAN — CHINA CONNECTION
----------------------------------------------------------- */
-
-.map-main-route {
+#mapBorders path {
   fill: none;
+  stroke: rgba(25,31,38,.35);
+  stroke-width: .7;
   pointer-events: none;
 }
 
-.route-shadow {
-  stroke: rgba(255,255,255,.20);
-  stroke-width: 8;
-  filter: url(#strongMapGlow);
+#mapConnections path.route-shadow {
+  fill: none;
+  stroke: rgba(255,255,255,.15);
+  stroke-width: 12;
+  filter: url(#mapStrongGlow);
 }
 
-.route-line {
-  stroke: rgba(255,255,255,.85);
-  stroke-width: 1.8;
+#mapConnections path.route-line {
+  fill: none;
+  stroke: url(#mapRouteSilver);
+  stroke-width: 2.3;
   stroke-linecap: round;
+  stroke-dasharray: 4 12;
+  animation: mapRouteFlow 3.5s linear infinite;
+  filter: url(#mapGlow);
 }
 
-.route-moving-light {
-  stroke: url(#routeSilver);
-  stroke-width: 3;
-  stroke-linecap: round;
-  stroke-dasharray: 2 24;
-  animation: azadipour-route 3.2s linear infinite;
-  filter: url(#strongMapGlow);
-}
-
-@keyframes azadipour-route {
-  from {
-    stroke-dashoffset: 0;
-  }
+@keyframes mapRouteFlow {
   to {
-    stroke-dashoffset: -104;
+    stroke-dashoffset: -64;
   }
 }
 
-/* ----------------------------------------------------------
-   LOCATION MARKERS
----------------------------------------------------------- */
+/* MARKERS */
 
-.map-marker {
-  pointer-events: none;
+.map-marker-halo {
+  fill: rgba(255,255,255,.15);
+  filter: url(#mapStrongGlow);
 }
 
-.marker-halo {
-  fill: rgba(255,255,255,.13);
-  filter: url(#strongMapGlow);
+.map-marker-ring {
+  fill: none;
+  stroke: rgba(255,255,255,.8);
+  stroke-width: 1.5;
+  animation: mapPulse 2.5s ease-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
 }
 
-.marker-core {
+.map-marker-core {
   fill: #fff;
   stroke: #fff;
   stroke-width: 1;
   filter: url(#mapGlow);
 }
 
-.marker-pulse {
-  fill: rgba(255,255,255,.12);
-  stroke: rgba(255,255,255,.9);
-  stroke-width: 1.4;
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: azadipour-pulse 2.3s ease-out infinite;
+.map-marker-soft {
+  fill: #d0d6dc;
+  stroke: #fff;
+  stroke-width: .8;
 }
 
-.marker-pulse-qatar {
-  animation-duration: 2.7s;
-}
-
-.marker-core-soft {
-  fill: #c5cbd1;
-  stroke: #c5cbd1;
-  opacity: .8;
-  filter: none;
-}
-
-@keyframes azadipour-pulse {
+@keyframes mapPulse {
   0% {
     transform: scale(.7);
     opacity: .9;
   }
-
-  80% {
-    transform: scale(2.15);
-    opacity: .05;
-  }
-
   100% {
-    transform: scale(2.15);
+    transform: scale(2.7);
     opacity: 0;
   }
 }
 
-/* ----------------------------------------------------------
-   LOCATION LABELS
----------------------------------------------------------- */
+/* LABELS */
 
-.map-location-name {
+.map-label {
   fill: #fff;
-  font-family: "Inter", Arial, sans-serif;
-  font-size: 17px;
+  font-family: Inter, sans-serif;
+  font-size: 19px;
   font-weight: 600;
-  letter-spacing: 2.5px;
+  letter-spacing: 2px;
   paint-order: stroke;
-  stroke: rgba(0,0,0,.92);
-  stroke-width: 4px;
+  stroke: #050608;
+  stroke-width: 5px;
   stroke-linejoin: round;
 }
 
-.map-location-sub {
-  fill: #d5dbe1;
-  font-family: "Inter", Arial, sans-serif;
-  font-size: 10px;
+.map-label-sub {
+  fill: #d0d6dc;
+  font-family: Inter, sans-serif;
+  font-size: 11px;
+  font-weight: 400;
   letter-spacing: 1.7px;
   paint-order: stroke;
-  stroke: rgba(0,0,0,.92);
-  stroke-width: 3px;
+  stroke: #050608;
+  stroke-width: 4px;
 }
 
-.map-region-name {
-  fill: #fff;
-  font-family: "Inter", Arial, sans-serif;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 1.5px;
+.map-country-label {
+  fill: #f1f3f5;
+  font-family: Inter, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 1.7px;
   paint-order: stroke;
-  stroke: rgba(0,0,0,.95);
-  stroke-width: 3px;
-  stroke-linejoin: round;
+  stroke: #080a0d;
+  stroke-width: 4px;
 }
 
-.map-region-soft {
-  fill: #c3c9cf;
+.map-country-label.soft {
+  fill: #c0c7ce;
+  font-size: 12px;
   font-weight: 400;
 }
 
-/* Small light points */
-
-.map-light-nodes {
-  fill: #fff;
-  filter: url(#mapGlow);
-  opacity: .85;
-}
-
-/* Corner label */
+/* MAP CORNER LABEL */
 
 .map-corner-label {
   position: absolute;
-  right: 18px;
-  bottom: 15px;
-  z-index: 3;
-  padding: 7px 11px;
-  border: 1px solid rgba(255,255,255,.22);
-  background: rgba(0,0,0,.56);
-  color: #e0e4e8;
-  font-family: "Inter", sans-serif;
-  font-size: 8px;
-  letter-spacing: 1.7px;
-  backdrop-filter: blur(5px);
+  right: 20px;
+  bottom: 18px;
+  padding: 10px 14px;
+  border: 1px solid rgba(255,255,255,.25);
+  background: rgba(5,7,9,.78);
+  color: #e5e8eb;
+  font-family: Inter, sans-serif;
+  font-size: 9px;
+  letter-spacing: 1.6px;
+  backdrop-filter: blur(8px);
 }
 
-/* ----------------------------------------------------------
-   MAP CAPTION
----------------------------------------------------------- */
+/* CAPTION */
 
 .map-caption {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   flex-wrap: wrap;
-  gap: 10px;
-  padding: 14px 20px;
-  border-top: 1px solid rgba(255,255,255,.13);
-  background: #080a0c;
+  gap: 12px;
+  padding: 17px 22px;
+  border-top: 1px solid rgba(255,255,255,.14);
   color: #aeb5bd;
-  font-family: "Inter", sans-serif;
+  font-family: Inter, sans-serif;
   font-size: 9px;
-  letter-spacing: 1.4px;
+  letter-spacing: 1.6px;
 }
 
-/* ----------------------------------------------------------
-   LEGEND
----------------------------------------------------------- */
+/* LEGEND */
 
 .network-legend {
   display: grid;
   grid-template-columns: repeat(4, minmax(0,1fr));
   gap: 20px;
-  padding: 27px 0;
-  border-bottom: 1px solid rgba(255,255,255,.14);
+  padding: 32px 0;
+  border-bottom: 1px solid rgba(255,255,255,.15);
 }
 
 .legend-item {
   display: flex;
   align-items: center;
-  gap: 12px;
-  min-width: 0;
+  gap: 13px;
 }
 
 .legend-dot {
-  width: 9px;
-  height: 9px;
-  flex: 0 0 9px;
+  width: 10px;
+  height: 10px;
+  flex: 0 0 10px;
   border-radius: 50%;
 }
 
 .legend-dot.registered,
-.legend-dot.target {
+.legend-dot.partner {
   background: #fff;
-  box-shadow:
-    0 0 7px #fff,
-    0 0 14px rgba(255,255,255,.7);
+  box-shadow: 0 0 9px #fff, 0 0 19px rgba(255,255,255,.65);
 }
 
 .legend-dot.opportunity {
-  background: #b8c0c8;
+  background: #aeb7c0;
   box-shadow: 0 0 8px rgba(255,255,255,.35);
 }
 
 .legend-item strong {
   display: block;
-  color: #f1f3f5;
-  font-family: "Inter", sans-serif;
-  font-size: 11px;
+  color: #f2f4f6;
+  font-family: Inter, sans-serif;
+  font-size: 12px;
   font-weight: 500;
 }
 
 .legend-item small {
   display: block;
-  margin-top: 4px;
-  color: #929aa3;
-  font-family: "Inter", sans-serif;
-  font-size: 9px;
-  line-height: 1.5;
+  margin-top: 5px;
+  color: #969fa8;
+  font-family: Inter, sans-serif;
+  font-size: 10px;
+  line-height: 1.6;
 }
 
-/* ----------------------------------------------------------
-   REGIONAL MARKETS
----------------------------------------------------------- */
+/* MARKETS */
 
 .network-markets {
-  padding: 27px 0;
-  border-bottom: 1px solid rgba(255,255,255,.14);
+  padding: 30px 0;
+  border-bottom: 1px solid rgba(255,255,255,.15);
 }
 
 .market-label {
-  margin-bottom: 17px;
-  color: #aeb5bd;
-  font-family: "Inter", sans-serif;
-  font-size: 9px;
-  letter-spacing: 2.5px;
+  margin-bottom: 19px;
+  color: #b0b7bf;
+  font-family: Inter, sans-serif;
+  font-size: 10px;
+  letter-spacing: 2.7px;
 }
 
 .market-list {
@@ -499,64 +367,46 @@
 }
 
 .market-list span {
-  padding: 8px 14px;
-  border: 1px solid rgba(255,255,255,.17);
-  color: #dce0e4;
-  font-family: "Inter", sans-serif;
+  padding: 9px 15px;
+  border: 1px solid rgba(255,255,255,.19);
+  color: #e0e4e8;
+  font-family: Inter, sans-serif;
   font-size: 10px;
-  transition:
-    border-color .3s ease,
-    background .3s ease;
 }
 
-.market-list span:hover {
-  border-color: rgba(255,255,255,.7);
-  background: rgba(255,255,255,.055);
-}
-
-/* ----------------------------------------------------------
-   FOOTER
----------------------------------------------------------- */
+/* FOOTER */
 
 .network-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 25px;
-  padding-top: 25px;
+  padding-top: 27px;
 }
 
 .network-footer p {
-  max-width: 760px;
+  max-width: 750px;
   margin: 0;
-  color: #9098a0;
-  font-family: "Inter", sans-serif;
+  color: #969fa8;
+  font-family: Inter, sans-serif;
   font-size: 10px;
   line-height: 1.9;
 }
 
 .network-footer a {
-  flex-shrink: 0;
   color: #f2f4f6;
-  font-family: "Inter", sans-serif;
+  font-family: Inter, sans-serif;
   font-size: 10px;
   letter-spacing: 1px;
   text-decoration: none;
   white-space: nowrap;
 }
 
-.network-footer a:hover {
-  color: #bfc8d1;
-}
-
-/* ----------------------------------------------------------
-   TABLET
----------------------------------------------------------- */
+/* TABLET */
 
 @media (max-width: 900px) {
-
   .global-network-section {
-    padding: 75px 4% 65px;
+    padding: 75px 4%;
   }
 
   .network-heading {
@@ -564,154 +414,86 @@
     gap: 18px;
   }
 
-  .network-heading > p {
-    max-width: 620px;
-  }
-
   .network-legend {
-    grid-template-columns: repeat(2, minmax(0,1fr));
+    grid-template-columns: repeat(2,1fr);
   }
-
 }
 
-/* ----------------------------------------------------------
-   MOBILE
----------------------------------------------------------- */
+/* MOBILE */
 
 @media (max-width: 600px) {
-
   .global-network-section {
-    padding: 62px 15px 55px;
-  }
-
-  .network-top {
-    margin-bottom: 24px;
-  }
-
-  .network-top .section-label {
-    font-size: 8px;
-    letter-spacing: 2px;
-  }
-
-  .network-heading {
-    gap: 14px;
+    padding: 60px 15px;
   }
 
   .network-heading h2 {
-    font-size: clamp(38px, 9.5vw, 49px);
-    line-height: 1.04;
+    font-size: clamp(39px, 9vw, 50px);
   }
 
-  .network-heading > p {
+  .network-heading p {
     font-size: 11px;
-    line-height: 1.8;
   }
 
   .network-map-topline {
-    align-items: flex-start;
     flex-direction: column;
-    gap: 6px;
-    padding: 12px;
+    align-items: flex-start;
+    padding: 13px;
     font-size: 8px;
-    letter-spacing: 1px;
   }
 
   .network-map-canvas-wrap {
-    aspect-ratio: 1440 / 650;
+    aspect-ratio: 1.35 / 1;
   }
 
-  .map-location-name {
-    font-size: 20px;
-    letter-spacing: 1.5px;
-  }
-
-  .map-location-sub {
-    font-size: 13px;
+  .map-label {
+    font-size: 22px;
     letter-spacing: 1px;
   }
 
-  .map-region-name {
-    font-size: 16px;
-    letter-spacing: 1px;
+  .map-label-sub {
+    font-size: 14px;
+  }
+
+  .map-country-label {
+    font-size: 17px;
   }
 
   .map-corner-label {
     right: 7px;
     bottom: 7px;
-    padding: 5px 7px;
+    padding: 6px 8px;
     font-size: 6px;
-    letter-spacing: .8px;
   }
 
   .map-caption {
-    align-items: flex-start;
     flex-direction: column;
-    gap: 6px;
-    padding: 11px 12px;
-    font-size: 7px;
-    letter-spacing: .8px;
+    padding: 12px;
+    font-size: 8px;
   }
 
   .network-legend {
     grid-template-columns: 1fr;
-    gap: 17px;
-    padding: 23px 0;
+    gap: 20px;
   }
 
-  .network-markets {
-    padding: 22px 0;
+  .network-footer {
+    align-items: flex-start;
+    flex-direction: column;
   }
 
   .market-list {
-    gap: 8px;
+    gap: 7px;
   }
 
   .market-list span {
     padding: 7px 10px;
     font-size: 9px;
   }
-
-  .network-footer {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  .network-footer p {
-    font-size: 9px;
-  }
-
 }
-
-/* ----------------------------------------------------------
-   SMALL PHONES
----------------------------------------------------------- */
-
-@media (max-width: 380px) {
-
-  .network-heading h2 {
-    font-size: 36px;
-  }
-
-  .map-location-name {
-    font-size: 18px;
-  }
-
-  .map-location-sub {
-    font-size: 11px;
-  }
-
-}
-
-/* ----------------------------------------------------------
-   ACCESSIBILITY
----------------------------------------------------------- */
 
 @media (prefers-reduced-motion: reduce) {
-
-  .route-moving-light,
-  .marker-pulse {
+  .map-marker-ring,
+  #mapConnections path.route-line {
     animation: none !important;
   }
-
 }
