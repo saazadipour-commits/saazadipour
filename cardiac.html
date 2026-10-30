@@ -18,77 +18,101 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
-        .cardiac-page {
-            background: #08090b;
-            color: #f1f1ef;
-        }
+        /* =========================================================
+           CARDIAC PAGE SPECIFIC STYLES (LUXURY & INTERNATIONAL)
+           ========================================================= */
 
         .cardiac-hero {
-            min-height: 66vh;
+            position: relative;
+            min-height: 85vh;
             display: flex;
             align-items: center;
             padding: 150px 7% 100px;
-            position: relative;
             overflow: hidden;
-            border-bottom: 1px solid rgba(255,255,255,.10);
-            background:
-                radial-gradient(ellipse at 78% 35%, rgba(190,198,208,.11), transparent 38%),
-                linear-gradient(120deg, #08090b 0%, #101318 55%, #08090b 100%);
+            border-bottom: 1px solid var(--border);
+            background: #050607;
+        }
+
+        .cardiac-hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: url('assets/cardiac-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.35;
+            z-index: 0;
         }
 
         .cardiac-hero::after {
             content: "";
             position: absolute;
-            width: 480px;
-            height: 480px;
-            right: -140px;
-            top: 10%;
-            border: 1px solid rgba(220,225,232,.10);
-            border-radius: 50%;
-            box-shadow:
-                0 0 0 55px rgba(220,225,232,.025),
-                0 0 0 110px rgba(220,225,232,.018);
-            pointer-events: none;
-        }
-
-        .cardiac-hero-content {
-            width: min(900px, 100%);
-            position: relative;
+            inset: 0;
+            background: linear-gradient(
+                90deg, 
+                rgba(5,6,7,1) 0%, 
+                rgba(5,6,7,0.8) 50%, 
+                rgba(5,6,7,0.4) 100%
+            );
             z-index: 1;
         }
 
+        .cardiac-hero-content {
+            position: relative;
+            z-index: 2;
+            width: min(900px, 100%);
+        }
+
         .cardiac-eyebrow {
-            color: #aeb5bf;
+            color: var(--silver);
             font-size: 11px;
             letter-spacing: .28em;
             text-transform: uppercase;
             margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .cardiac-eyebrow::before {
+            content: "";
+            display: block;
+            width: 40px;
+            height: 1px;
+            background: #fff;
         }
 
         .cardiac-hero h1 {
             font-family: "Cormorant Garamond", serif;
             font-weight: 400;
             font-size: clamp(48px, 7vw, 88px);
-            line-height: .98;
+            line-height: 1.05;
             letter-spacing: -.025em;
-            max-width: 850px;
+            max-width: 900px;
             margin: 0 0 28px;
+            color: #fff;
         }
 
         .cardiac-hero h1 span {
-            color: #aeb5bf;
+            color: var(--silver);
+            display: block;
         }
 
         .cardiac-hero p {
             max-width: 650px;
-            color: #b9bec6;
+            color: var(--text-soft);
             font-size: 15px;
             line-height: 1.9;
             font-weight: 300;
         }
 
         .cardiac-section {
-            padding: 105px 7%;
+            padding: 110px 7%;
+            background: var(--bg);
+        }
+
+        .cardiac-section.bg-soft {
+            background: var(--bg-soft);
         }
 
         .cardiac-inner {
@@ -98,11 +122,11 @@
 
         .cardiac-heading {
             max-width: 760px;
-            margin-bottom: 52px;
+            margin-bottom: 60px;
         }
 
         .cardiac-heading .eyebrow {
-            color: #9da5b0;
+            color: var(--silver-dark);
             font-size: 10px;
             letter-spacing: .25em;
             text-transform: uppercase;
@@ -114,11 +138,12 @@
             font-size: clamp(38px, 5vw, 62px);
             font-weight: 400;
             line-height: 1.05;
-            margin: 0 0 18px;
+            margin: 0 0 20px;
+            color: #fff;
         }
 
         .cardiac-heading p {
-            color: #aeb4bd;
+            color: var(--text-soft);
             line-height: 1.9;
             font-size: 14px;
             max-width: 680px;
@@ -127,24 +152,28 @@
         .cardiac-grid {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 1px;
-            background: rgba(255,255,255,.13);
-            border: 1px solid rgba(255,255,255,.13);
+            gap: 20px;
         }
 
         .cardiac-card {
-            min-height: 275px;
-            padding: 38px;
-            background: #0d1014;
-            transition: background .3s ease;
+            min-height: 280px;
+            padding: 45px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .cardiac-card:hover {
-            background: #151a20;
+            border-color: var(--border-strong);
+            transform: translateY(-5px);
+            background: var(--bg-light);
         }
 
         .cardiac-number {
-            color: #747d88;
+            color: var(--silver-dark);
             font-size: 11px;
             letter-spacing: .18em;
             margin-bottom: 35px;
@@ -152,38 +181,34 @@
 
         .cardiac-card h3 {
             font-family: "Cormorant Garamond", serif;
-            font-size: 31px;
+            font-size: 34px;
             font-weight: 500;
             margin: 0 0 15px;
+            color: #fff;
         }
 
         .cardiac-card p {
-            color: #aeb4bd;
+            color: var(--text-soft);
             font-size: 13px;
             line-height: 1.85;
             max-width: 510px;
-            margin: 0;
+            margin: 0 0 25px;
         }
 
         .cardiac-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 24px;
+            gap: 10px;
+            margin-top: auto;
         }
 
         .cardiac-tags span {
-            border: 1px solid rgba(255,255,255,.17);
-            color: #c4c9d0;
-            padding: 7px 10px;
+            border: 1px solid var(--border);
+            color: var(--silver);
+            padding: 7px 12px;
             font-size: 10px;
-            letter-spacing: .04em;
-        }
-
-        .cardiac-approach {
-            background: #101318;
-            border-top: 1px solid rgba(255,255,255,.08);
-            border-bottom: 1px solid rgba(255,255,255,.08);
+            letter-spacing: .05em;
+            background: rgba(255,255,255,0.02);
         }
 
         .cardiac-approach-grid {
@@ -198,65 +223,69 @@
             font-size: clamp(38px, 5vw, 60px);
             font-weight: 400;
             line-height: 1.05;
-            margin: 0 0 22px;
+            margin: 0 0 25px;
         }
 
         .cardiac-approach p {
-            color: #b2b8c1;
+            color: var(--text-soft);
             font-size: 14px;
             line-height: 1.95;
+            margin-bottom: 20px;
         }
 
         .cardiac-list {
-            border-top: 1px solid rgba(255,255,255,.18);
+            border-top: 1px solid var(--border);
         }
 
         .cardiac-list-item {
             display: flex;
-            gap: 22px;
-            padding: 22px 0;
-            border-bottom: 1px solid rgba(255,255,255,.13);
+            gap: 25px;
+            padding: 25px 0;
+            border-bottom: 1px solid var(--border);
         }
 
         .cardiac-list-item span {
-            color: #858e99;
+            color: var(--silver-dark);
             font-size: 11px;
             letter-spacing: .12em;
-            padding-top: 4px;
+            padding-top: 5px;
         }
 
         .cardiac-list-item strong {
-            font-size: 13px;
-            font-weight: 500;
-            letter-spacing: .04em;
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: .03em;
+            color: var(--text);
         }
 
         .cardiac-note {
-            margin-top: 25px;
-            color: #858d98;
+            margin-top: 40px;
+            color: var(--muted);
             font-size: 11px;
             line-height: 1.8;
+            border-left: 2px solid var(--silver-dark);
+            padding-left: 20px;
         }
 
         .cardiac-cta {
             text-align: center;
-            padding: 105px 7%;
-            background:
-                radial-gradient(ellipse at center, rgba(180,190,205,.10), transparent 60%),
-                #08090b;
+            padding: 120px 7%;
+            background: linear-gradient(180deg, var(--bg) 0%, #11161a 100%);
+            border-top: 1px solid var(--border);
         }
 
         .cardiac-cta h2 {
             font-family: "Cormorant Garamond", serif;
             font-size: clamp(38px, 5vw, 62px);
             font-weight: 400;
-            margin: 0 0 18px;
+            margin: 0 0 20px;
+            color: #fff;
         }
 
         .cardiac-cta p {
-            color: #aeb4bd;
+            color: var(--text-soft);
             max-width: 620px;
-            margin: 0 auto 30px;
+            margin: 0 auto 40px;
             font-size: 14px;
             line-height: 1.9;
         }
@@ -265,102 +294,76 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            min-height: 48px;
-            padding: 0 25px;
-            border: 1px solid rgba(255,255,255,.55);
-            color: #f1f1ef;
+            min-height: 50px;
+            padding: 0 35px;
+            border: 1px solid var(--silver);
+            color: var(--bg);
+            background: #fff;
             text-decoration: none;
             text-transform: uppercase;
             font-size: 10px;
             letter-spacing: .18em;
-            transition: background .25s ease, color .25s ease;
+            transition: var(--transition);
         }
 
         .cardiac-cta-link:hover {
-            background: #f1f1ef;
-            color: #08090b;
+            background: var(--silver);
+            border-color: var(--silver);
         }
 
-        @media (max-width: 760px) {
-            .cardiac-hero {
-                min-height: 560px;
-                padding: 125px 6% 75px;
-            }
-
-            .cardiac-hero::after {
-                width: 280px;
-                height: 280px;
-                right: -150px;
-                top: 18%;
-            }
-
-            .cardiac-section {
-                padding: 75px 6%;
-            }
-
-            .cardiac-grid,
-            .cardiac-approach-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .cardiac-card {
-                min-height: auto;
-                padding: 28px;
-            }
-
-            .cardiac-approach-grid {
-                gap: 35px;
-            }
-
-            .cardiac-cta {
-                padding: 75px 6%;
-            }
+        @media (max-width: 900px) {
+            .cardiac-hero { min-height: 70vh; padding: 130px 6% 80px; }
+            .cardiac-section { padding: 80px 6%; }
+            .cardiac-grid, .cardiac-approach-grid { grid-template-columns: 1fr; }
+            .cardiac-card { padding: 35px; min-height: auto; }
+            .cardiac-cta { padding: 80px 6%; }
         }
     </style>
 </head>
 
 <body class="cardiac-page">
 
-    <div class="intro-screen" id="introScreen">
-        <div class="intro-logo">
-            <img src="assets/logo-transparent.png" alt="Azadipour">
+    <!-- INTRO -->
+    <div class="intro-screen" id="intro">
+        <div class="intro-content">
+            <img src="assets/logo-transparent.png" alt="Azadipour Logo">
+            <div class="intro-name">AZADIPOUR</div>
+            <p>GLOBAL MEDICAL TECHNOLOGY & HOSPITAL SOLUTIONS</p>
         </div>
-        <div class="intro-line"></div>
     </div>
 
-    <header class="site-header" id="siteHeader">
+    <!-- HEADER -->
+    <header class="site-header">
         <div class="header-inner">
-            <a class="brand" href="index.html" aria-label="Azadipour Home">
-                <img src="assets/logo-transparent.png" alt="Azadipour logo">
+            <a href="index.html" class="brand" aria-label="Azadipour Home">
+                <img src="assets/logo-transparent.png" alt="Azadipour">
+                <span>AZADIPOUR</span>
             </a>
 
-            <button class="menu-toggle" id="menuToggle"
-                    aria-label="Open navigation menu"
-                    aria-expanded="false"
-                    aria-controls="mainNav">
+            <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mainNav">
+                <span></span>
                 <span></span>
                 <span></span>
             </button>
 
             <nav class="main-nav" id="mainNav">
                 <a href="index.html">Home</a>
-                <a href="medical.html">Medical</a>
-                <a href="cardiac.html" class="active" aria-current="page">Cardiac</a>
-                <a href="robotic.html">Robotics</a>
-                <a href="projects.html">Projects</a>
-                <a href="partners.html">Partners</a>
+                <a href="about.html">About Us</a>
+                <a href="index.html#global-network">Global Presence</a>
+                <a href="medical.html">Medical Technology</a>
+                <a href="cardiac.html" class="active">Cardiovascular</a>
+                <a href="partners.html">Global Partnerships</a>
                 <a href="contact.html" class="nav-contact">Contact</a>
             </nav>
         </div>
     </header>
 
     <main>
+        <!-- HERO SECTION -->
         <section class="cardiac-hero">
             <div class="cardiac-hero-content">
-                <div class="cardiac-eyebrow">AZADIPOUR / CARDIAC &amp; CARDIOVASCULAR</div>
-
+                <div class="cardiac-eyebrow">CARDIAC & CARDIOVASCULAR</div>
                 <h1>Supporting the future of <span>cardiovascular care.</span></h1>
-
                 <p>
                     Exploring advanced medical technologies and equipment for
                     cardiac surgery, cardiovascular interventions, perfusion
@@ -369,6 +372,7 @@
             </div>
         </section>
 
+        <!-- AREAS OF INTEREST -->
         <section class="cardiac-section">
             <div class="cardiac-inner">
                 <div class="cardiac-heading">
@@ -383,13 +387,15 @@
 
                 <div class="cardiac-grid">
                     <article class="cardiac-card">
-                        <div class="cardiac-number">01 / CARDIAC SURGERY</div>
-                        <h3>Cardiac Surgery Solutions</h3>
-                        <p>
-                            Medical technologies and equipment relevant to
-                            cardiothoracic operating rooms, surgical procedures
-                            and the needs of specialized cardiac surgery teams.
-                        </p>
+                        <div>
+                            <div class="cardiac-number">01 / CARDIAC SURGERY</div>
+                            <h3>Cardiac Surgery Solutions</h3>
+                            <p>
+                                Medical technologies and equipment relevant to
+                                cardiothoracic operating rooms, surgical procedures
+                                and the needs of specialized cardiac surgery teams.
+                            </p>
+                        </div>
                         <div class="cardiac-tags">
                             <span>Cardiac OR</span>
                             <span>Surgical Equipment</span>
@@ -398,13 +404,15 @@
                     </article>
 
                     <article class="cardiac-card">
-                        <div class="cardiac-number">02 / PERFUSION</div>
-                        <h3>Perfusion Technologies</h3>
-                        <p>
-                            Technologies and equipment supporting cardiopulmonary
-                            bypass services, perfusion departments and related
-                            cardiac surgery workflows.
-                        </p>
+                        <div>
+                            <div class="cardiac-number">02 / PERFUSION</div>
+                            <h3>Perfusion Technologies</h3>
+                            <p>
+                                Technologies and equipment supporting cardiopulmonary
+                                bypass services, perfusion departments and related
+                                cardiac surgery workflows.
+                            </p>
+                        </div>
                         <div class="cardiac-tags">
                             <span>Heart-Lung Systems</span>
                             <span>Perfusion</span>
@@ -413,13 +421,15 @@
                     </article>
 
                     <article class="cardiac-card">
-                        <div class="cardiac-number">03 / INTERVENTIONAL CARDIOLOGY</div>
-                        <h3>Catheterization Laboratories</h3>
-                        <p>
-                            Equipment and technologies for catheterization
-                            laboratories and cardiovascular diagnostic and
-                            interventional environments.
-                        </p>
+                        <div>
+                            <div class="cardiac-number">03 / INTERVENTIONAL CARDIOLOGY</div>
+                            <h3>Catheterization Laboratories</h3>
+                            <p>
+                                Equipment and technologies for catheterization
+                                laboratories and cardiovascular diagnostic and
+                                interventional environments.
+                            </p>
+                        </div>
                         <div class="cardiac-tags">
                             <span>Cath Lab</span>
                             <span>Imaging</span>
@@ -428,13 +438,15 @@
                     </article>
 
                     <article class="cardiac-card">
-                        <div class="cardiac-number">04 / CRITICAL CARE</div>
-                        <h3>Critical Care &amp; Monitoring</h3>
-                        <p>
-                            Medical equipment and monitoring solutions relevant
-                            to intensive care units and the ongoing care of
-                            patients in specialized hospital settings.
-                        </p>
+                        <div>
+                            <div class="cardiac-number">04 / CRITICAL CARE</div>
+                            <h3>Critical Care &amp; Monitoring</h3>
+                            <p>
+                                Medical equipment and monitoring solutions relevant
+                                to intensive care units and the ongoing care of
+                                patients in specialized hospital settings.
+                            </p>
+                        </div>
                         <div class="cardiac-tags">
                             <span>ICU</span>
                             <span>Patient Monitoring</span>
@@ -445,13 +457,12 @@
             </div>
         </section>
 
-        <section class="cardiac-section cardiac-approach">
+        <!-- APPROACH -->
+        <section class="cardiac-section bg-soft">
             <div class="cardiac-inner cardiac-approach-grid">
                 <div>
-                    <div class="cardiac-eyebrow">OUR APPROACH</div>
-
+                    <div class="cardiac-eyebrow" style="margin-bottom: 20px;">OUR APPROACH</div>
                     <h2>Connecting clinical needs with relevant technologies.</h2>
-
                     <p>
                         Cardiovascular departments require reliable technologies,
                         appropriate clinical support and a clear understanding
@@ -459,7 +470,6 @@
                         healthcare organizations with relevant international
                         manufacturers and solution providers.
                     </p>
-
                     <p>
                         Each opportunity is approached according to its clinical
                         context, technical requirements, commercial scope and
@@ -472,22 +482,18 @@
                         <span>01</span>
                         <strong>Understanding department requirements</strong>
                     </div>
-
                     <div class="cardiac-list-item">
                         <span>02</span>
                         <strong>Identifying relevant medical technologies</strong>
                     </div>
-
                     <div class="cardiac-list-item">
                         <span>03</span>
                         <strong>Engaging with qualified technology providers</strong>
                     </div>
-
                     <div class="cardiac-list-item">
                         <span>04</span>
                         <strong>Reviewing technical and commercial suitability</strong>
                     </div>
-
                     <div class="cardiac-list-item">
                         <span>05</span>
                         <strong>Supporting potential project development</strong>
@@ -505,57 +511,61 @@
             </div>
         </section>
 
+        <!-- CTA -->
         <section class="cardiac-cta">
             <div class="cardiac-inner">
-                <div class="cardiac-eyebrow">CARDIOVASCULAR TECHNOLOGY</div>
-
+                <div class="cardiac-eyebrow" style="justify-content: center; margin-bottom: 20px;">CARDIOVASCULAR TECHNOLOGY</div>
                 <h2>Discuss your requirements with us.</h2>
-
                 <p>
                     For hospitals, healthcare organizations and manufacturers
                     interested in cardiovascular technologies and potential
                     cooperation, we welcome an initial discussion.
                 </p>
-
                 <a class="cardiac-cta-link" href="contact.html">
-                    Contact Azadipour
+                    Contact Azadipour <span>↗</span>
                 </a>
             </div>
         </section>
     </main>
 
+    <!-- FOOTER -->
     <footer class="site-footer">
-        <div class="footer-inner">
+        <div class="footer-main">
             <div class="footer-brand">
-                <a href="index.html">
-                    <img src="assets/logo-transparent.png" alt="Azadipour">
-                </a>
-                <p>Medical Technology &amp; Hospital Solutions</p>
+                <img src="assets/logo-transparent.png" alt="Azadipour Logo">
+                <h3>AZADIPOUR</h3>
+                <p>Global Medical Technology & Hospital Solutions</p>
             </div>
 
-            <div class="footer-links">
-                <a href="index.html">Home</a>
-                <a href="medical.html">Medical</a>
-                <a href="cardiac.html">Cardiac</a>
-                <a href="robotic.html">Robotics</a>
+            <div class="footer-column">
+                <h4>COMPANY</h4>
+                <a href="about.html">About Us</a>
+                <a href="index.html#global-network">Global Presence</a>
+                <a href="partners.html">Partnerships</a>
                 <a href="projects.html">Projects</a>
-                <a href="partners.html">Partners</a>
-                <a href="contact.html">Contact</a>
             </div>
 
-            <div class="footer-contact">
-                <a href="mailto:info@azadipourmedical.com">info@azadipourmedical.com</a>
-                <a href="tel:+96891646294">+968 9164 6294</a>
-                <a href="https://azadipourmedical.com/">azadipourmedical.com</a>
+            <div class="footer-column">
+                <h4>TECHNOLOGY</h4>
+                <a href="robotic.html">Robotic Surgery</a>
+                <a href="cardiac.html">Cardiovascular</a>
+                <a href="medical.html">Medical Technology</a>
+            </div>
+
+            <div class="footer-column">
+                <h4>CONTACT</h4>
+                <a href="mailto:info@azadipourmedical.com">Email</a>
+                <span>Oman</span>
             </div>
         </div>
 
         <div class="footer-bottom">
-            <span>© <span id="currentYear"></span> Azadipour. All rights reserved.</span>
-            <span>GCC · EUROPE · INTERNATIONAL</span>
+            <span>© <span id="currentYear">2026</span> AZADIPOUR. ALL RIGHTS RESERVED.</span>
+            <span>GLOBAL MEDICAL TECHNOLOGY · WORLDWIDE</span>
         </div>
     </footer>
 
+    <!-- SCRIPTS -->
     <script src="script.js" defer></script>
 </body>
 </html>
