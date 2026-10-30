@@ -7,9 +7,7 @@
   <title>Azadipour | Global Medical Technology & Hospital Solutions</title>
 
   <meta name="description" content="Azadipour connects healthcare organizations, medical technology manufacturers and international partners with advanced surgical technologies, medical equipment and hospital solutions worldwide.">
-
-  <meta name="keywords" content="Azadipour, global medical technology, robotic surgery, surgical robotics, medical equipment, hospital solutions, surgical navigation, digital surgery, healthcare technology">
-
+  <meta name="keywords" content="Azadipour, global medical technology, robotic surgery, medical equipment, hospital solutions, healthcare technology">
   <meta name="author" content="Azadipour">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#08090b">
@@ -18,7 +16,7 @@
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="Azadipour | Global Medical Technology">
-  <meta property="og:description" content="Connecting healthcare organizations and international partners with advanced medical technology and hospital solutions worldwide.">
+  <meta property="og:description" content="Connecting healthcare organizations and international partners with advanced medical technology worldwide.">
   <meta property="og:url" content="https://azadipourmedical.com/">
   <meta property="og:image" content="https://azadipourmedical.com/assets/logo-transparent.png">
 
@@ -39,7 +37,7 @@
     "name": "Azadipour",
     "url": "https://azadipourmedical.com/",
     "logo": "https://azadipourmedical.com/assets/logo-transparent.png",
-    "description": "An Oman-registered healthcare and medical technology company connecting healthcare organizations and international partners with medical technology, advanced surgical equipment and hospital solutions.",
+    "description": "An Oman-registered healthcare and medical technology company connecting healthcare organizations and international partners with medical technology and hospital solutions.",
     "email": "info@azadipourmedical.com",
     "areaServed": "Worldwide"
   }
@@ -95,6 +93,7 @@
       <div class="hero-overlay"></div>
 
       <div class="hero-content">
+
         <div class="hero-eyebrow">
           <span class="eyebrow-line"></span>
           GLOBAL MEDICAL TECHNOLOGY NETWORK
@@ -114,14 +113,14 @@
 
         <div class="hero-actions">
           <a href="#global-network" class="btn-primary">
-            Explore Our Global Presence
-            <span>↗</span>
+            Explore Our Global Presence <span>↗</span>
           </a>
 
           <a href="medical.html" class="btn-secondary">
             Discover Our Technology Areas
           </a>
         </div>
+
       </div>
 
       <div class="hero-bottom">
@@ -137,37 +136,35 @@
       </div>
     </section>
 
-
-    <!-- =================================================
-         AZADIPOUR GLOBAL PRESENCE
-         Original SVG map — no image, no globe
-    ================================================== -->
-
-    <section class="global-network-section" id="global-network">
+    <!-- ONE GLOBAL MAP ONLY -->
+    <section class="global-network-section"
+      id="global-network"
+      aria-labelledby="network-title">
 
       <div class="network-container">
 
         <div class="network-top">
+
           <div class="section-label">
             01 — AZADIPOUR GLOBAL PRESENCE
           </div>
 
           <div class="network-heading">
-            <div>
-              <h2>
-                One World.
-                <span>Connected Through Healthcare.</span>
-              </h2>
-            </div>
+
+            <h2 id="network-title">
+              One World.
+              <span>Connected Through Healthcare.</span>
+            </h2>
 
             <p>
-              Connecting international medical technology
-              partners and healthcare markets through
-              Azadipour's global network.
+              Connecting international medical technology partners
+              and healthcare markets through Azadipour's global network.
             </p>
+
           </div>
         </div>
 
+        <!-- MAP FRAME -->
         <div class="network-map-frame">
 
           <div class="network-map-topline">
@@ -177,717 +174,84 @@
 
           <div class="network-map-canvas-wrap">
 
+            <!-- SVG WORLD MAP -->
             <svg
+              id="azadipourWorldMap"
               class="az-world-map"
               viewBox="0 0 1440 650"
-              xmlns="http://www.w3.org/2000/svg"
               role="img"
-              aria-labelledby="azMapTitle azMapDescription"
-            >
-
-              <title id="azMapTitle">
-                Azadipour International Medical Technology Network
-              </title>
-
-              <desc id="azMapDescription">
-                A silver embossed flat world map showing
-                Azadipour in Oman, WeMed in Beijing, Qatar
-                and Saudi Arabia, connected by subtle
-                international network lines.
-              </desc>
+              aria-label="World map showing Azadipour in Oman, WeMed in China, Qatar and Saudi Arabia">
 
               <defs>
 
-                <!-- Raised silver land -->
-                <linearGradient id="landSilver"
-                  x1="0" y1="0" x2="0.15" y2="1">
+                <linearGradient id="mapLandSilver" x1="0" y1="0" x2="0.25" y2="1">
                   <stop offset="0%" stop-color="#ffffff"/>
-                  <stop offset="35%" stop-color="#d9dde1"/>
-                  <stop offset="70%" stop-color="#858c94"/>
-                  <stop offset="100%" stop-color="#e5e8eb"/>
+                  <stop offset="25%" stop-color="#dce1e6"/>
+                  <stop offset="60%" stop-color="#aeb6bf"/>
+                  <stop offset="100%" stop-color="#555e68"/>
                 </linearGradient>
 
-                <linearGradient id="landEdge"
-                  x1="0" y1="0" x2="0" y2="1">
+                <linearGradient id="mapSelectedSilver" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="0%" stop-color="#ffffff"/>
-                  <stop offset="100%" stop-color="#626a73"/>
+                  <stop offset="100%" stop-color="#bfc8d1"/>
                 </linearGradient>
 
-                <radialGradient id="landLight">
-                  <stop offset="0%" stop-color="#ffffff" stop-opacity=".35"/>
-                  <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+                <linearGradient id="mapSoftSilver" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#dce1e6"/>
+                  <stop offset="100%" stop-color="#818b96"/>
+                </linearGradient>
+
+                <linearGradient id="mapRouteSilver">
+                  <stop offset="0%" stop-color="#ffffff"/>
+                  <stop offset="50%" stop-color="#e1e6eb"/>
+                  <stop offset="100%" stop-color="#ffffff"/>
+                </linearGradient>
+
+                <radialGradient id="mapOcean">
+                  <stop offset="0%" stop-color="#171c22"/>
+                  <stop offset="100%" stop-color="#050608"/>
                 </radialGradient>
 
-                <!-- Relief and depth -->
-                <filter id="landRelief"
-                  x="-15%" y="-15%" width="130%" height="140%">
+                <filter id="mapRelief" x="-15%" y="-15%" width="130%" height="140%">
+                  <feGaussianBlur in="SourceAlpha" stdDeviation="5" result="shadow"/>
+                  <feOffset in="shadow" dx="2" dy="7" result="offset"/>
 
-                  <feGaussianBlur
-                    in="SourceAlpha"
-                    stdDeviation="7"
-                    result="shadow"
-                  />
-
-                  <feOffset
-                    in="shadow"
-                    dx="0"
-                    dy="8"
-                    result="shadowOffset"
-                  />
-
-                  <feFlood
-                    flood-color="#ffffff"
-                    flood-opacity=".30"
-                    result="lightColor"
-                  />
-
-                  <feComposite
-                    in="lightColor"
-                    in2="SourceAlpha"
-                    operator="in"
-                    result="highlight"
-                  />
+                  <feComponentTransfer in="offset" result="darkShadow">
+                    <feFuncA type="linear" slope="0.65"/>
+                  </feComponentTransfer>
 
                   <feMerge>
-                    <feMergeNode in="shadowOffset"/>
-                    <feMergeNode in="highlight"/>
+                    <feMergeNode in="darkShadow"/>
                     <feMergeNode in="SourceGraphic"/>
                   </feMerge>
                 </filter>
 
                 <filter id="mapGlow">
-                  <feGaussianBlur stdDeviation="4" result="blur"/>
+                  <feGaussianBlur stdDeviation="5" result="blur"/>
                   <feMerge>
                     <feMergeNode in="blur"/>
                     <feMergeNode in="SourceGraphic"/>
                   </feMerge>
                 </filter>
 
-                <filter id="strongMapGlow">
-                  <feGaussianBlur stdDeviation="9" result="blur"/>
+                <filter id="mapStrongGlow">
+                  <feGaussianBlur stdDeviation="11" result="blur"/>
                   <feMerge>
                     <feMergeNode in="blur"/>
                     <feMergeNode in="SourceGraphic"/>
                   </feMerge>
                 </filter>
-
-                <pattern id="landTexture"
-                  width="13" height="13"
-                  patternUnits="userSpaceOnUse">
-
-                  <circle
-                    cx="3" cy="3" r="1"
-                    fill="#ffffff"
-                    opacity=".18"
-                  />
-
-                  <circle
-                    cx="10" cy="9" r=".8"
-                    fill="#222830"
-                    opacity=".18"
-                  />
-
-                </pattern>
-
-                <linearGradient id="routeSilver"
-                  x1="0" y1="0" x2="1" y2="0">
-
-                  <stop offset="0%" stop-color="#ffffff"/>
-                  <stop offset="50%" stop-color="#bfc6ce"/>
-                  <stop offset="100%" stop-color="#ffffff"/>
-
-                </linearGradient>
 
               </defs>
 
-              <!-- MAP BACKGROUND -->
-              <rect
-                x="0" y="0"
-                width="1440" height="650"
-                fill="#07090b"
-              />
-
-              <ellipse
-                cx="720" cy="320"
-                rx="670" ry="290"
-                fill="url(#landLight)"
-                opacity=".15"
-              />
-
-              <!-- SUBTLE GLOBAL NETWORK LINES -->
-              <g class="map-grid-lines">
-
-                <path d="M0 170 L1440 170"/>
-                <path d="M0 325 L1440 325"/>
-                <path d="M0 480 L1440 480"/>
-
-                <path d="M240 0 L240 650"/>
-                <path d="M480 0 L480 650"/>
-                <path d="M720 0 L720 650"/>
-                <path d="M960 0 L960 650"/>
-                <path d="M1200 0 L1200 650"/>
-
-              </g>
-
-              <!-- CONNECTION WEB -->
-              <g class="map-network-lines">
-
-                <path d="M85 290 L300 130 L520 250 L720 190 L920 280 L1150 130 L1360 260"/>
-                <path d="M150 450 L350 350 L520 250 L720 430 L920 280 L1100 450 L1330 390"/>
-                <path d="M300 130 L520 250 L720 430 L920 280 L1150 130"/>
-                <path d="M350 350 L520 250 L720 190 L920 280 L1100 450"/>
-                <path d="M85 290 L350 350 L600 550 L920 280 L1360 260"/>
-
-                <circle cx="85" cy="290" r="3"/>
-                <circle cx="300" cy="130" r="3"/>
-                <circle cx="520" cy="250" r="3"/>
-                <circle cx="720" cy="190" r="3"/>
-                <circle cx="920" cy="280" r="3"/>
-                <circle cx="1150" cy="130" r="3"/>
-                <circle cx="1360" cy="260" r="3"/>
-                <circle cx="350" cy="350" r="3"/>
-                <circle cx="720" cy="430" r="3"/>
-                <circle cx="1100" cy="450" r="3"/>
-                <circle cx="600" cy="550" r="3"/>
-
-              </g>
-
-
-              <!-- NORTH AMERICA -->
-              <g class="map-continent">
-
-                <path
-                  class="land-shape"
-                  d="
-                    M75 155
-                    L110 110 155 90 190 62
-                    230 67 255 90 290 80
-                    315 103 340 115 357 145
-                    340 175 315 190 305 220
-                    280 237 270 265 245 285
-                    235 320 215 342 195 330
-                    175 300 155 275 125 260
-                    105 230 80 220 60 190 Z
-                  "
-                />
-
-                <path
-                  class="land-detail"
-                  d="M95 160 L160 130 210 150 260 115
-                     M125 220 L185 190 235 210 280 180
-                     M175 270 L220 245 260 255"
-                />
-
-                <!-- Greenland -->
-                <path
-                  class="land-shape"
-                  d="
-                    M355 50
-                    L390 35 430 45 455 70
-                    445 100 415 115
-                    385 105 365 85 Z
-                  "
-                />
-
-                <!-- Central America -->
-                <path
-                  class="land-shape"
-                  d="
-                    M245 315
-                    L265 335 280 350
-                    300 360 310 380
-                    300 395 285 380
-                    270 365 255 350 Z
-                  "
-                />
-
-              </g>
-
-
-              <!-- SOUTH AMERICA -->
-              <g class="map-continent">
-
-                <path
-                  class="land-shape"
-                  d="
-                    M330 385
-                    L365 365 405 375
-                    430 395 450 420
-                    455 455 445 490
-                    425 520 415 555
-                    395 590 375 620
-                    360 600 355 565
-                    340 530 335 495
-                    315 460 305 425 Z
-                  "
-                />
-
-                <path
-                  class="land-detail"
-                  d="
-                    M340 420 L390 405 430 430
-                    M350 465 L410 450
-                    M370 500 L425 480
-                    M380 535 L410 520
-                  "
-                />
-
-              </g>
-
-
-              <!-- EUROPE -->
-              <g class="map-continent">
-
-                <path
-                  class="land-shape"
-                  d="
-                    M650 145
-                    L675 120 710 115
-                    730 95 760 100
-                    780 115 810 105
-                    835 120 845 145
-                    825 165 800 170
-                    780 185 755 175
-                    735 190 715 175
-                    690 180 670 165 Z
-                  "
-                />
-
-                <!-- Scandinavia -->
-                <path
-                  class="land-shape"
-                  d="
-                    M720 105
-                    L735 60 760 40
-                    780 55 775 90
-                    760 125 745 145
-                    730 130 Z
-                  "
-                />
-
-                <!-- British Isles -->
-                <path
-                  class="land-shape"
-                  d="
-                    M625 140 L638 125 650 135
-                    647 160 632 168 620 155 Z
-                  "
-                />
-
-                <path
-                  class="land-detail"
-                  d="
-                    M675 145 L720 130 760 140
-                    M710 165 L750 155 800 150
-                  "
-                />
-
-              </g>
-
-
-              <!-- AFRICA -->
-              <g class="map-continent">
-
-                <path
-                  class="land-shape"
-                  d="
-                    M665 225
-                    L700 200 745 205
-                    775 225 800 250
-                    795 280 780 315
-                    765 350 745 385
-                    730 425 710 455
-                    690 440 675 405
-                    660 365 645 330
-                    635 290 645 255 Z
-                  "
-                />
-
-                <path
-                  class="land-detail"
-                  d="
-                    M660 265 L710 245 760 260
-                    M655 305 L715 285 775 300
-                    M670 350 L725 335 760 350
-                    M685 390 L720 375 750 390
-                  "
-                />
-
-                <!-- Madagascar -->
-                <path
-                  class="land-shape"
-                  d="
-                    M790 390
-                    L800 410 795 440
-                    785 455 780 435 Z
-                  "
-                />
-
-              </g>
-
-
-              <!-- ASIA -->
-              <g class="map-continent">
-
-                <path
-                  class="land-shape"
-                  d="
-                    M820 115
-                    L850 90 890 75
-                    930 65 975 75
-                    1010 60 1050 70
-                    1090 65 1130 85
-                    1170 80 1205 100
-                    1240 90 1275 115
-                    1310 125 1340 150
-                    1365 175 1340 200
-                    1310 210 1280 230
-                    1250 220 1225 240
-                    1195 225 1170 250
-                    1130 245 1100 260
-                    1070 240 1040 250
-                    1010 225 980 230
-                    950 210 920 220
-                    890 195 865 190
-                    845 165 Z
-                  "
-                />
-
-                <!-- Arabian Peninsula -->
-                <path
-                  class="land-shape"
-                  d="
-                    M820 255
-                    L855 235 890 245
-                    915 270 905 305
-                    880 335 850 340
-                    825 320 810 285 Z
-                  "
-                />
-
-                <!-- India -->
-                <path
-                  class="land-shape"
-                  d="
-                    M955 245
-                    L985 255 1005 280
-                    995 320 975 355
-                    960 330 945 295 Z
-                  "
-                />
-
-                <!-- Southeast Asia -->
-                <path
-                  class="land-shape"
-                  d="
-                    M1070 280
-                    L1100 275 1125 295
-                    1140 320 1125 340
-                    1105 325 1080 310 Z
-                  "
-                />
-
-                <path
-                  class="land-detail"
-                  d="
-                    M860 130 L940 110 1020 130
-                    M930 165 L1010 150 1090 175
-                    M1050 200 L1130 185 1210 200
-                    M1120 225 L1190 215 1260 225
-                  "
-                />
-
-              </g>
-
-
-              <!-- JAPAN -->
-              <g class="map-continent">
-
-                <path
-                  class="land-shape"
-                  d="
-                    M1285 255
-                    L1298 265 1295 280
-                    1285 290 1278 275 Z
-                  "
-                />
-
-                <path
-                  class="land-shape"
-                  d="
-                    M1305 300
-                    L1315 310 1308 325
-                    1298 320 Z
-                  "
-                />
-
-              </g>
-
-
-              <!-- AUSTRALIA -->
-              <g class="map-continent">
-
-                <path
-                  class="land-shape"
-                  d="
-                    M1130 390
-                    L1165 365 1210 365
-                    1245 385 1270 415
-                    1255 450 1225 475
-                    1190 470 1160 485
-                    1125 465 1105 430 Z
-                  "
-                />
-
-                <path
-                  class="land-detail"
-                  d="
-                    M1135 415 L1180 395 1225 415
-                    M1145 450 L1190 440 1230 450
-                  "
-                />
-
-              </g>
-
-
-              <!-- ANTARCTICA -->
-              <path
-                class="land-shape antarctica"
-                d="
-                  M390 580
-                  L480 565 580 575
-                  680 565 790 580
-                  900 570 1000 585
-                  1100 575 1200 590
-                  1120 615 1000 625
-                  870 615 740 630
-                  610 615 490 625 400 610 Z
-                "
-              />
-
-
-              <!-- COUNTRY / REGION HIGHLIGHTS -->
-              <g class="map-regions">
-
-                <!-- Saudi Arabia: subtle silver -->
-                <path
-                  class="region-saudi"
-                  d="
-                    M820 265
-                    L845 250 875 255
-                    892 275 882 305
-                    855 320 830 305 Z
-                  "
-                />
-
-                <!-- Qatar: brighter highlight -->
-                <path
-                  class="region-qatar"
-                  d="
-                    M898 287
-                    L903 289 904 300
-                    900 305 896 299 Z
-                  "
-                />
-
-                <!-- Oman: company headquarters -->
-                <path
-                  class="region-oman"
-                  d="
-                    M905 310
-                    L920 310 929 322
-                    920 338 906 332 Z
-                  "
-                />
-
-                <!-- China -->
-                <path
-                  class="region-china"
-                  d="
-                    M1060 125
-                    L1100 110 1150 120
-                    1190 145 1170 190
-                    1135 210 1090 195
-                    1065 165 Z
-                  "
-                />
-
-              </g>
-
-
-              <!-- RELIEF TEXTURE ON LAND -->
-              <g class="map-texture-layer">
-
-                <path
-                  d="
-                    M75 155 L110 110 155 90 190 62
-                    M330 385 L365 365 405 375
-                    M650 145 L675 120 710 115
-                    M665 225 L700 200 745 205
-                    M820 115 L850 90 890 75
-                    M1130 390 L1165 365 1210 365
-                  "
-                />
-
-              </g>
-
-
-              <!-- OMAN TO CHINA CONNECTION -->
-              <g class="map-main-route">
-
-                <path
-                  class="route-shadow"
-                  d="M918 324 Q1000 170 1115 158"
-                />
-
-                <path
-                  class="route-line"
-                  d="M918 324 Q1000 170 1115 158"
-                />
-
-                <path
-                  class="route-moving-light"
-                  d="M918 324 Q1000 170 1115 158"
-                />
-
-              </g>
-
-
-              <!-- OMAN / AZADIPOUR -->
-              <g class="map-marker map-marker-main">
-
-                <circle
-                  class="marker-halo"
-                  cx="918"
-                  cy="324"
-                  r="25"
-                />
-
-                <circle
-                  class="marker-pulse"
-                  cx="918"
-                  cy="324"
-                  r="12"
-                />
-
-                <circle
-                  class="marker-core"
-                  cx="918"
-                  cy="324"
-                  r="5"
-                />
-
-                <text
-                  class="map-location-name"
-                  x="938"
-                  y="354"
-                >AZADIPOUR</text>
-
-                <text
-                  class="map-location-sub"
-                  x="938"
-                  y="371"
-                >MUSCAT · OMAN</text>
-
-              </g>
-
-
-              <!-- WEMED / CHINA -->
-              <g class="map-marker map-marker-main">
-
-                <circle
-                  class="marker-halo"
-                  cx="1115"
-                  cy="158"
-                  r="25"
-                />
-
-                <circle
-                  class="marker-pulse"
-                  cx="1115"
-                  cy="158"
-                  r="12"
-                />
-
-                <circle
-                  class="marker-core"
-                  cx="1115"
-                  cy="158"
-                  r="5"
-                />
-
-                <text
-                  class="map-location-name"
-                  x="1135"
-                  y="150"
-                >WEMED</text>
-
-                <text
-                  class="map-location-sub"
-                  x="1135"
-                  y="168"
-                >BEIJING · CHINA</text>
-
-              </g>
-
-
-              <!-- QATAR -->
-              <g class="map-marker">
-
-                <circle
-                  class="marker-pulse marker-pulse-qatar"
-                  cx="901"
-                  cy="296"
-                  r="9"
-                />
-
-                <circle
-                  class="marker-core"
-                  cx="901"
-                  cy="296"
-                  r="4"
-                />
-
-                <text
-                  class="map-region-name"
-                  x="870"
-                  y="276"
-                >QATAR</text>
-
-              </g>
-
-
-              <!-- SAUDI ARABIA -->
-              <g class="map-marker">
-
-                <circle
-                  class="marker-core marker-core-soft"
-                  cx="855"
-                  cy="285"
-                  r="4"
-                />
-
-                <text
-                  class="map-region-name map-region-soft"
-                  x="790"
-                  y="310"
-                >SAUDI ARABIA</text>
-
-              </g>
-
-
-              <!-- SUBTLE INTERNATIONAL NODES -->
-              <g class="map-light-nodes">
-
-                <circle cx="145" cy="220" r="2"/>
-                <circle cx="350" cy="390" r="2"/>
-                <circle cx="690" cy="160" r="2"/>
-                <circle cx="750" cy="280" r="2"/>
-                <circle cx="1000" cy="220" r="2"/>
-                <circle cx="1260" cy="250" r="2"/>
-                <circle cx="1180" cy="430" r="2"/>
-
-              </g>
+              <rect width="1440" height="650" fill="url(#mapOcean)"/>
+
+              <g id="mapGraticule"></g>
+              <g id="mapCountries" filter="url(#mapRelief)"></g>
+              <g id="mapBorders"></g>
+              <g id="mapConnections"></g>
+              <g id="mapMarkers"></g>
+              <g id="mapLabels"></g>
 
             </svg>
 
@@ -904,8 +268,7 @@
 
         </div>
 
-
-        <!-- NETWORK LEGEND -->
+        <!-- MAP LEGEND -->
         <div class="network-legend">
 
           <div class="legend-item">
@@ -917,7 +280,7 @@
           </div>
 
           <div class="legend-item">
-            <span class="legend-dot target"></span>
+            <span class="legend-dot partner"></span>
             <div>
               <strong>WeMed — China</strong>
               <small>Selected international connection</small>
@@ -925,7 +288,7 @@
           </div>
 
           <div class="legend-item">
-            <span class="legend-dot target"></span>
+            <span class="legend-dot partner"></span>
             <div>
               <strong>Qatar</strong>
               <small>Selected regional connection</small>
@@ -941,7 +304,6 @@
           </div>
 
         </div>
-
 
         <!-- REGIONAL MARKETS -->
         <div class="network-markets">
@@ -961,14 +323,11 @@
 
         </div>
 
-
         <div class="network-footer">
 
           <p>
-            Geographic markers illustrate selected business-development
-            locations and regional markets. The Oman–China line represents
-            an indicative international connection and does not imply
-            a confirmed contractual relationship.
+            Geographic locations are indicative and illustrate
+            selected international business-development connections.
           </p>
 
           <a href="partners.html">
@@ -978,9 +337,7 @@
         </div>
 
       </div>
-
     </section>
-
 
     <!-- ABOUT -->
     <section class="section intro-section">
@@ -988,6 +345,7 @@
       <div class="section-label">02 — ABOUT AZADIPOUR</div>
 
       <div class="section-heading">
+
         <h2>
           Connecting Healthcare
           <span>With Global Innovation.</span>
@@ -999,6 +357,7 @@
           and international partners with medical technology,
           advanced surgical equipment and hospital solutions.
         </p>
+
       </div>
 
       <div class="intro-details">
@@ -1033,13 +392,13 @@
       </div>
     </section>
 
-
     <!-- TECHNOLOGY -->
     <section class="section technology-section">
 
       <div class="section-label">03 — TECHNOLOGY PORTFOLIO</div>
 
       <div class="section-heading">
+
         <h2>
           Advanced Technology.
           <span>Meaningful Healthcare Solutions.</span>
@@ -1049,6 +408,7 @@
           Exploring technologies that contribute to the evolution
           of modern healthcare and advanced clinical environments.
         </p>
+
       </div>
 
       <div class="technology-grid">
@@ -1105,7 +465,6 @@
       </div>
     </section>
 
-
     <!-- VISUAL TECHNOLOGY PORTFOLIO -->
     <section class="section visual-portfolio-section">
 
@@ -1122,7 +481,8 @@
       <div class="visual-portfolio-grid">
 
         <figure class="visual-portfolio-card">
-          <img src="assets/robotic-hero.jpg" alt="Robotic surgery technology" loading="lazy">
+          <img src="assets/robotic-hero.jpg"
+            alt="Robotic surgery technology" loading="lazy">
           <figcaption>
             <strong>Robotic Surgery</strong>
             <span>Advanced surgical platforms</span>
@@ -1130,7 +490,8 @@
         </figure>
 
         <figure class="visual-portfolio-card">
-          <img src="assets/surgical-robotics.jpg" alt="Surgical robotics equipment" loading="lazy">
+          <img src="assets/surgical-robotics.jpg"
+            alt="Surgical robotics equipment" loading="lazy">
           <figcaption>
             <strong>Surgical Robotics</strong>
             <span>Next-generation operating rooms</span>
@@ -1138,7 +499,8 @@
         </figure>
 
         <figure class="visual-portfolio-card">
-          <img src="assets/cardiac-hero.jpg" alt="Cardiac and cardiovascular technology" loading="lazy">
+          <img src="assets/cardiac-hero.jpg"
+            alt="Cardiac and cardiovascular technology" loading="lazy">
           <figcaption>
             <strong>Cardiovascular</strong>
             <span>Cardiac care technologies</span>
@@ -1146,7 +508,8 @@
         </figure>
 
         <figure class="visual-portfolio-card">
-          <img src="assets/hospital-technology.jpg" alt="Modern hospital technology" loading="lazy">
+          <img src="assets/hospital-technology.jpg"
+            alt="Modern hospital technology" loading="lazy">
           <figcaption>
             <strong>Hospital Technology</strong>
             <span>Integrated hospital solutions</span>
@@ -1154,7 +517,8 @@
         </figure>
 
         <figure class="visual-portfolio-card">
-          <img src="assets/hospital-project.jpg" alt="Hospital project environment" loading="lazy">
+          <img src="assets/hospital-project.jpg"
+            alt="Hospital project environment" loading="lazy">
           <figcaption>
             <strong>Hospital Projects</strong>
             <span>Healthcare infrastructure</span>
@@ -1162,7 +526,8 @@
         </figure>
 
         <figure class="visual-portfolio-card">
-          <img src="assets/germany-medical.jpg" alt="Medical technology in Germany" loading="lazy">
+          <img src="assets/germany-medical.jpg"
+            alt="Medical technology in Germany" loading="lazy">
           <figcaption>
             <strong>International Markets</strong>
             <span>Global medical technology</span>
@@ -1171,7 +536,6 @@
 
       </div>
     </section>
-
 
     <!-- INTERNATIONAL PARTNERSHIPS -->
     <section class="section partnership-section">
@@ -1205,8 +569,7 @@
       </div>
     </section>
 
-
-    <!-- SOLUTIONS -->
+    <!-- BUSINESS APPROACH -->
     <section class="section solutions-section">
 
       <div class="section-label">06 — BUSINESS APPROACH</div>
@@ -1259,13 +622,13 @@
       </div>
     </section>
 
-
     <!-- PROJECTS -->
     <section class="section projects-section">
 
       <div class="section-label">07 — PROJECT DEVELOPMENT</div>
 
       <div class="section-heading">
+
         <h2>
           Transforming Healthcare Needs
           <span>Into Opportunities.</span>
@@ -1276,6 +639,7 @@
           relevant technologies and exploring potential
           opportunities with international partners.
         </p>
+
       </div>
 
       <a href="projects.html" class="text-link">
@@ -1283,7 +647,6 @@
       </a>
 
     </section>
-
 
     <!-- CONTACT -->
     <section class="section contact-section">
@@ -1314,7 +677,6 @@
     </section>
 
   </main>
-
 
   <!-- FOOTER -->
   <footer class="site-footer">
@@ -1360,8 +722,11 @@
 
   </footer>
 
+  <!-- WORLD MAP DATA LIBRARIES -->
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
 
-  <!-- WEBSITE SCRIPTS -->
+  <!-- WEBSITE SCRIPTS — EACH LOADED ONCE -->
   <script src="global-network.js" defer></script>
   <script src="script.js" defer></script>
 
