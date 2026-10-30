@@ -1,7 +1,7 @@
 /* =========================================================
    AZADIPOUR — GLOBAL NETWORK MAP
    Oman Headquarters / WeMed Beijing
-   Black / White / Silver
+   STRICT BLACK / SILVER / WHITE
    ========================================================= */
 
 (() => {
@@ -14,6 +14,8 @@
 
     const ctx = canvas.getContext("2d");
 
+    if (!ctx) return;
+
     const LIBRARIES = [
         "https://cdn.jsdelivr.net/npm/d3-geo@3/dist/d3-geo.min.js",
         "https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"
@@ -21,7 +23,7 @@
 
     /*
      * Approximate WeMed location in Beijing, China.
-     * This is an indicative map marker, not a street-level pin.
+     * Indicative location only, not a street-level pin.
      * Coordinates: [longitude, latitude]
      */
 
@@ -40,7 +42,7 @@
     };
 
     /*
-     * Country identifiers from world-atlas.
+     * ISO numeric country identifiers.
      * Oman: 512
      * Saudi Arabia: 682
      * Qatar: 634
@@ -59,19 +61,35 @@
 
     let width = 0;
     let height = 0;
-    let resizeObserver = null;
 
     function loadScript(url) {
         return new Promise((resolve, reject) => {
+            const existing = [...document.scripts].find(
+                script => script.src === url
+            );
+
+            if (existing) {
+                if (
+                    (url.includes("d3-geo") && window.d3) ||
+                    (url.includes("topojson") && window.topojson)
+                ) {
+                    resolve();
+                    return;
+                }
+            }
+
             const script = document.createElement("script");
 
             script.src = url;
             script.async = true;
 
             script.onload = resolve;
-            script.onerror = () => reject(
-                new Error("Could not load map library: " + url)
-            );
+
+            script.onerror = () => {
+                reject(
+                    new Error("Map library could not be loaded.")
+                );
+            };
 
             document.head.appendChild(script);
         });
@@ -102,27 +120,26 @@
             0
         );
 
-        if (countries.length) {
-            const padding = width < 600 ? 12 : 28;
+        if (!countries.length || !window.d3) return;
 
-            projection = d3.geoNaturalEarth1()
-                .fitExtent(
-                    [
-                        [padding, padding],
-                        [width - padding, height - padding]
-                    ],
-                    {
-                        type: "FeatureCollection",
-                        features: countries
-                    }
-                );
+        const padding = width < 600 ? 12 : 28;
 
-            path = d3.geoPath()
-                .projection(projection)
-                .context(ctx);
+        projection = d3.geoNaturalEarth1().fitExtent(
+            [
+                [padding, padding],
+                [width - padding, height - padding]
+            ],
+            {
+                type: "FeatureCollection",
+                features: countries
+            }
+        );
 
-            drawMap();
-        }
+        path = d3.geoPath()
+            .projection(projection)
+            .context(ctx);
+
+        drawMap();
     }
 
     function drawBackground() {
@@ -153,6 +170,8 @@
     }
 
     function drawGrid() {
+        if (!window.d3) return;
+
         ctx.beginPath();
 
         path(
@@ -302,14 +321,15 @@
     }
 
     function hideLoading() {
-        if (loading) {
-            loading.classList.add("is-hidden");
-        }
+        if (!loading) return;
+
+        loading.classList.add("is-hidden");
     }
 
     function showError() {
         if (loading) {
-            loading.textContent = "GLOBAL MAP TEMPORARILY UNAVAILABLE";
+            loading.textContent =
+                "GLOBAL MAP TEMPORARILY UNAVAILABLE";
         }
 
         console.error(
@@ -348,11 +368,11 @@
             hideLoading();
 
             if ("ResizeObserver" in window) {
-                resizeObserver = new ResizeObserver(() => {
+                const observer = new ResizeObserver(() => {
                     setCanvasSize();
                 });
 
-                resizeObserver.observe(canvas.parentElement);
+                observer.observe(canvas.parentElement);
             } else {
                 window.addEventListener(
                     "resize",
