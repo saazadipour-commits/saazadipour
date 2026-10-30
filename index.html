@@ -475,8 +475,6 @@
 
       const omanHub = [58.383, 23.588]; // Muscat
 
-      // Helper to draw directional arcs
-      // type: 'inbound' (China -> Oman) or 'outbound' (Oman -> Target)
       const drawConnection = (start, end, type, isDim = false) => {
         const interpolate = d3.geoInterpolate(start, end);
         const coordinates = d3.range(0, 1.001, 0.01).map(t => interpolate(t));
@@ -485,13 +483,11 @@
         let className = type === 'inbound' ? "az-arc-inbound" : "az-arc-outbound";
         if (isDim) className += " dim";
 
-        // Draw line
         add(svg, "path", { 
           d: pathD, 
           class: className
         });
 
-        // Draw destination node (small glowing dot at the end of the arrow)
         const [endX, endY] = projection(end);
         add(svg, "circle", { cx: endX, cy: endY, r: 2.5, class: "az-network-node" });
       };
@@ -501,7 +497,6 @@
       const chinaFaded1 = [121.473, 31.230]; // Shanghai
       const chinaFaded2 = [113.264, 23.129]; // Guangzhou
 
-      // Draw from China -> Oman
       drawConnection(chinaMain, omanHub, 'inbound');
       drawConnection(chinaFaded1, omanHub, 'inbound', true);
       drawConnection(chinaFaded2, omanHub, 'inbound', true);
@@ -544,7 +539,6 @@
       add(hubGroup, "circle", { r: 10, class: "az-hub-halo-inner" });
       add(hubGroup, "circle", { r: 4, class: "az-hub-core" });
 
-      // Hub Label (Shifted to the right to avoid clipping)
       const label = add(hubGroup, "text", {
         x: 15, y: 5, "text-anchor": "start", class: "az-hub-label"
       });
