@@ -1,15 +1,22 @@
 /* =====================================================
    AZADIPOUR — WORLD MAP ENGINE
-   Natural Earth / SVG / Silver Relief
+   REAL GEOGRAPHIC DATA / NATURAL EARTH / SILVER RELIEF
 ===================================================== */
 
 document.addEventListener("DOMContentLoaded", async () => {
-
   "use strict";
 
-  const svg = d3.select("#azadipourWorldMap");
+  const svgElement = document.getElementById("azadipourWorldMap");
+  if (!svgElement || svgElement.dataset.initialized === "true") return;
 
-  if (svg.empty()) return;
+  svgElement.dataset.initialized = "true";
+
+  if (!window.d3 || !window.topojson) {
+    showMapError("MAP LIBRARIES COULD NOT BE LOADED");
+    return;
+  }
+
+  const svg = d3.select(svgElement);
 
   const countriesLayer = svg.select("#mapCountries");
   const bordersLayer = svg.select("#mapBorders");
@@ -24,6 +31,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   const reduceMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)"
   ).matches;
+
+  const geoUrl =
+    "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
 
   const mapLocations = {
     azadipour: {
@@ -42,17 +52,20 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     qatar: {
       name: "QATAR",
+      sub: "DOHA · QATAR",
       coordinates: [51.1839, 25.3548],
       type: "partner"
     },
 
     saudi: {
       name: "SAUDI ARABIA",
+      sub: "REGIONAL MARKET",
       coordinates: [45.0792, 23.8859],
       type: "market"
     }
   };
 
+  // ISO numeric country identifiers used by world-atlas.
   const countryStyles = {
     "512": "region-oman",
     "156": "region-china",
@@ -60,19 +73,79 @@ document.addEventListener("DOMContentLoaded", async () => {
     "682": "region-saudi"
   };
 
-  const geoUrl =
-    "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
+  function showMapError(message) {
+    const loading = document.getElementById("mapLoading");
+    const error = document.getElementById("mapError");
+
+    if (loading) loading.classList.add("is-hidden");
+
+    if (error) {
+      error.textContent = message;
+      error.hidden = false;
+    }
+
+    console.error("AZADIPOUR WORLD MAP:", message);
+  }
+
+  function hideMapLoading() {
+    const loading = document.getElementById("mapLoading");
+    if (loading) loading.classList.add("is-hidden");
+  }
+
+  function addLabel(text, position, className, dx = 0, dy = 0, anchor = "start") {
+    if (!position) return;
+
+    labelsLayer
+      .append("text")
+      .attr("class", className)
+      .attr("x", position.x + dx)
+      .attr("y", position.y + dy)
+      .attr("text-anchor", anchor)
+      .text(text);
+  }
+
+  function addMarker(location, key, projection) {
+    const point = projection(location.coordinates);
+    if (!point) return null;
+
+    const [x, y] = point;
+
+    const marker = markersLayer
+      .append("g")
+      .attr("class", `map-marker marker-${key}`)
+      .attr("transform", `translate(${x},${y})`);
+
+    marker
+      .append("circle")
+      .attr("class", "map-marker-halo")
+      .attr("r", key === "azadipour" || key === "wemed" ? 19 : 14);
+
+    if (!reduceMotion) {
+      marker
+        .append("circle")
+        .attr("class", "map-marker-ring")
+        .attr("r", key === "azadipour" || key === "wemed" ? 10 : 7);
+    }
+
+    marker
+      .append("circle")
+      .attr("class", location.type === "market"
+        ? "map-marker-soft"
+        : "map-marker-core")
+      .attr("r", key === "azadipour" || key === "wemed" ? 5.5 : 4.5);
+
+    marker
+      .append("title")
+      .text(`${location.name}${location.sub ? " — " + location.sub : ""}`);
+
+    return { x, y };
+  }
 
   try {
-
-    /* -----------------------------------------------
-       01. LOAD REAL WORLD GEOGRAPHIC DATA
-    ----------------------------------------------- */
-
     const world = await d3.json(geoUrl);
 
-    if (!world) {
-      throw new Error("World geographic data unavailable.");
+    if (!world || !world.objects || !world.objects.countries) {
+      throw new Error("World geographic data is incomplete.");
     }
 
     const countries = topojson.feature(
@@ -86,24 +159,15 @@ document.addEventListener("DOMContentLoaded", async () => {
       (a, b) => a !== b
     );
 
-    /* -----------------------------------------------
-       02. MAP PROJECTION
-    ----------------------------------------------- */
-
     const projection = d3.geoNaturalEarth1()
       .fitExtent(
-        [[28, 35], [1412, 615]],
-        {
-          type: "Sphere"
-        }
+        [[28, 32], [1412, 618]],
+        { type: "Sphere" }
       );
 
-    // Adjust scale to fill the complete horizontal map.
     const path = d3.geoPath(projection);
 
-    /* -----------------------------------------------
-       03. GEOGRAPHIC GRID
-    ----------------------------------------------- */
+    /* GEOGRAPHIC GRID */
 
     const graticule = d3.geoGraticule()
       .step([30, 20])();
@@ -111,44 +175,41 @@ document.addEventListener("DOMContentLoaded", async () => {
     graticuleLayer
       .append("path")
       .datum(graticule)
+      .attr("class", "map-graticule-line")
       .attr("d", path);
 
-    /* -----------------------------------------------
-       04. DRAW COUNTRIES
-    ----------------------------------------------- */
+    /* COUNTRIES */
 
     countriesLayer
       .selectAll("path")
       .data(countries.features)
       .join("path")
-      .attr("d", path)
       .attr("class", d => {
-        return countryStyles[String(d.id)] || "";
+        const id = String(d.id);
+        const regionClass = countryStyles[id] || "";
+        return `map-country ${regionClass}`;
       })
+      .attr("d", path)
       .append("title")
-      .text(d => d.properties.name || "Country");
+      .text(d => d.properties?.name || "Country");
 
-    /* -----------------------------------------------
-       05. COUNTRY BORDERS
-    ----------------------------------------------- */
+    /* COUNTRY BORDERS */
 
     bordersLayer
       .append("path")
       .datum(borders)
+      .attr("class", "map-country-borders")
       .attr("d", path);
 
-    /* -----------------------------------------------
-       06. OMAN TO CHINA CONNECTION
-    ----------------------------------------------- */
+    /* OMAN TO CHINA ROUTE */
 
     const start = mapLocations.azadipour.coordinates;
     const end = mapLocations.wemed.coordinates;
 
     const interpolate = d3.geoInterpolate(start, end);
 
-    const routeCoordinates = d3.range(0, 101).map(i => {
-      return interpolate(i / 100);
-    });
+    const routeCoordinates = d3.range(0, 1.001, 0.01)
+      .map(t => interpolate(t));
 
     const route = {
       type: "LineString",
@@ -167,125 +228,47 @@ document.addEventListener("DOMContentLoaded", async () => {
       .attr("class", "route-line")
       .attr("d", routePath);
 
-    /* -----------------------------------------------
-       07. LOCATION MARKERS
-    ----------------------------------------------- */
-
-    function addMarker(location, key) {
-
-      const point = projection(location.coordinates);
-
-      if (!point) return;
-
-      const [x, y] = point;
-
-      const marker = markersLayer
-        .append("g")
-        .attr("class", "map-marker")
-        .attr("transform", `translate(${x},${y})`);
-
-      marker
-        .append("circle")
-        .attr("class", "map-marker-halo")
-        .attr("r", key === "wemed" ? 15 : 12);
-
-      if (!reduceMotion) {
-        marker
-          .append("circle")
-          .attr("class", "map-marker-ring")
-          .attr("r", 7);
-      }
-
-      marker
-        .append("circle")
-        .attr("class",
-          location.type === "market"
-            ? "map-marker-soft"
-            : "map-marker-core"
-        )
-        .attr("r",
-          key === "wemed" ? 5 :
-          key === "azadipour" ? 5 :
-          key === "qatar" ? 4 : 4
-        );
-
-      return { x, y };
-    }
+    /* MARKERS */
 
     const markerPositions = {};
 
     Object.entries(mapLocations).forEach(([key, location]) => {
-      markerPositions[key] = addMarker(location, key);
+      markerPositions[key] = addMarker(location, key, projection);
     });
 
-    /* -----------------------------------------------
-       08. LABEL HELPERS
-    ----------------------------------------------- */
-
-    function addLabel(
-      text,
-      position,
-      className,
-      dx = 0,
-      dy = 0,
-      anchor = "start"
-    ) {
-
-      if (!position) return;
-
-      labelsLayer
-        .append("text")
-        .attr("class", className)
-        .attr("x", position.x + dx)
-        .attr("y", position.y + dy)
-        .attr("text-anchor", anchor)
-        .text(text);
-
-    }
-
-    /* -----------------------------------------------
-       09. AZADIPOUR LABEL
-    ----------------------------------------------- */
+    /* LABELS */
 
     addLabel(
       "AZADIPOUR",
       markerPositions.azadipour,
-      "map-label",
-      15,
-      -12
+      "map-label map-label-main",
+      17,
+      -13
     );
 
     addLabel(
       "MUSCAT · OMAN",
       markerPositions.azadipour,
       "map-label-sub",
-      15,
+      17,
       8
     );
-
-    /* -----------------------------------------------
-       10. WEMED LABEL
-    ----------------------------------------------- */
 
     addLabel(
       "WEMED",
       markerPositions.wemed,
-      "map-label",
-      16,
-      -10
+      "map-label map-label-partner",
+      17,
+      -12
     );
 
     addLabel(
       "BEIJING · CHINA",
       markerPositions.wemed,
       "map-label-sub",
-      16,
-      12
+      17,
+      9
     );
-
-    /* -----------------------------------------------
-       11. QATAR LABEL
-    ----------------------------------------------- */
 
     addLabel(
       "QATAR",
@@ -296,10 +279,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       "middle"
     );
 
-    /* -----------------------------------------------
-       12. SAUDI ARABIA LABEL
-    ----------------------------------------------- */
-
     addLabel(
       "SAUDI ARABIA",
       markerPositions.saudi,
@@ -309,33 +288,17 @@ document.addEventListener("DOMContentLoaded", async () => {
       "middle"
     );
 
-    /* -----------------------------------------------
-       13. MAP READY
-    ----------------------------------------------- */
+    /* MAP READY */
+
+    hideMapLoading();
 
     const section = document.getElementById("global-network");
+    if (section) section.classList.add("map-ready");
 
-    if (section) {
-      section.classList.add("map-ready");
-    }
-
-    console.info(
-      "AZADIPOUR WORLD MAP: SUCCESSFULLY INITIALIZED"
-    );
+    console.info("AZADIPOUR WORLD MAP: SUCCESSFULLY INITIALIZED");
 
   } catch (error) {
-
-    console.error("AZADIPOUR MAP ERROR:", error);
-
-    countriesLayer
-      .append("text")
-      .attr("x", width / 2)
-      .attr("y", height / 2)
-      .attr("fill", "#dce1e6")
-      .attr("font-size", "20")
-      .attr("text-anchor", "middle")
-      .text("GLOBAL MAP TEMPORARILY UNAVAILABLE");
-
+    showMapError("GLOBAL MAP TEMPORARILY UNAVAILABLE");
+    console.error(error);
   }
-
 });
