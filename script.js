@@ -1,120 +1,89 @@
 /* =========================================================
-   AZADIPOUR — MAIN WEBSITE JAVASCRIPT
-   Navigation / Intro / Responsive / Accessibility
+   AZADIPOUR — GLOBAL WEBSITE SCRIPT
+   Navigation / Mobile Menu / Intro / Footer Year
    ========================================================= */
 
-(() => {
+document.addEventListener("DOMContentLoaded", () => {
+
     "use strict";
 
-    const SELECTORS = {
-        intro: "#introScreen",
-        menu: "#menuToggle",
-        navigation: "#mainNavigation",
-        year: "#currentYear"
-    };
+    const body = document.body;
+    const header = document.querySelector(".site-header");
+    const menuToggle = document.getElementById("menuToggle");
+    const mainNav = document.getElementById("mainNav");
+    const intro = document.getElementById("intro");
 
-    const intro = document.querySelector(SELECTORS.intro);
-    const menu = document.querySelector(SELECTORS.menu);
-    const navigation = document.querySelector(SELECTORS.navigation);
-    const year = document.querySelector(SELECTORS.year);
+    const reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches;
 
-    /* -----------------------------------------
-       01 — INTRO ANIMATION
-    ----------------------------------------- */
 
-    function hideIntro() {
-
-        if (!intro) return;
-
-        intro.classList.add("hide");
-
-        window.setTimeout(() => {
-            intro.style.display = "none";
-        }, 900);
-    }
+    /* =====================================================
+       01. INTRO SCREEN
+    ===================================================== */
 
     if (intro) {
 
-        const alreadyVisited =
-            sessionStorage.getItem("azadipour_intro_seen");
+        const hideIntro = () => {
+            intro.classList.add("hide");
 
-        if (alreadyVisited) {
+            window.setTimeout(() => {
+                intro.style.display = "none";
+            }, 900);
+        };
 
-            intro.style.display = "none";
-
+        if (sessionStorage.getItem("azadipourIntroShown")) {
+            hideIntro();
         } else {
+            sessionStorage.setItem("azadipourIntroShown", "true");
 
-            window.addEventListener("load", () => {
-
-                window.setTimeout(() => {
-
-                    hideIntro();
-
-                    sessionStorage.setItem(
-                        "azadipour_intro_seen",
-                        "true"
-                    );
-
-                }, 1100);
-
-            }, { once: true });
-
+            window.setTimeout(() => {
+                hideIntro();
+            }, reduceMotion ? 100 : 1600);
         }
     }
 
 
-    /* -----------------------------------------
-       02 — MOBILE NAVIGATION
-    ----------------------------------------- */
+    /* =====================================================
+       02. MOBILE NAVIGATION
+    ===================================================== */
 
-    function openMenu() {
+    const closeMenu = () => {
 
-        if (!menu || !navigation) return;
+        if (!menuToggle || !mainNav) return;
 
-        navigation.classList.add("open");
+        mainNav.classList.remove("open");
+        menuToggle.classList.remove("active");
 
-        menu.classList.add("active");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation menu");
 
-        menu.setAttribute(
-            "aria-expanded",
-            "true"
-        );
+        body.classList.remove("menu-open");
+    };
 
-        menu.setAttribute(
-            "aria-label",
-            "Close navigation menu"
-        );
 
-        document.body.classList.add("menu-open");
-    }
+    const openMenu = () => {
 
-    function closeMenu() {
+        if (!menuToggle || !mainNav) return;
 
-        if (!menu || !navigation) return;
+        mainNav.classList.add("open");
+        menuToggle.classList.add("active");
 
-        navigation.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "true");
+        menuToggle.setAttribute("aria-label", "Close navigation menu");
 
-        menu.classList.remove("active");
+        body.classList.add("menu-open");
+    };
 
-        menu.setAttribute(
-            "aria-expanded",
-            "false"
-        );
 
-        menu.setAttribute(
-            "aria-label",
-            "Open navigation menu"
-        );
+    if (menuToggle && mainNav) {
 
-        document.body.classList.remove("menu-open");
-    }
+        menuToggle.addEventListener("click", (event) => {
 
-    if (menu && navigation) {
-
-        menu.addEventListener("click", () => {
+            event.stopPropagation();
 
             const isOpen =
-                navigation.classList.contains("open");
+                menuToggle.getAttribute("aria-expanded") === "true";
 
             if (isOpen) {
                 closeMenu();
@@ -124,25 +93,29 @@
 
         });
 
-        navigation.querySelectorAll("a").forEach(link => {
 
-            link.addEventListener("click", closeMenu);
+        mainNav.querySelectorAll("a").forEach((link) => {
+
+            link.addEventListener("click", () => {
+                closeMenu();
+            });
 
         });
 
-        document.addEventListener("click", event => {
 
-            const clickedInside =
-                navigation.contains(event.target) ||
-                menu.contains(event.target);
+        document.addEventListener("click", (event) => {
 
-            if (!clickedInside) {
+            const clickedInsideMenu = mainNav.contains(event.target);
+            const clickedToggle = menuToggle.contains(event.target);
+
+            if (!clickedInsideMenu && !clickedToggle) {
                 closeMenu();
             }
 
         });
 
-        document.addEventListener("keydown", event => {
+
+        document.addEventListener("keydown", (event) => {
 
             if (event.key === "Escape") {
                 closeMenu();
@@ -150,9 +123,10 @@
 
         });
 
+
         window.addEventListener("resize", () => {
 
-            if (window.innerWidth > 1050) {
+            if (window.innerWidth > 900) {
                 closeMenu();
             }
 
@@ -161,174 +135,174 @@
     }
 
 
-    /* -----------------------------------------
-       03 — CURRENT YEAR
-    ----------------------------------------- */
+    /* =====================================================
+       03. HEADER SCROLL EFFECT
+    ===================================================== */
 
-    if (year) {
-        year.textContent = new Date().getFullYear();
-    }
+    const updateHeader = () => {
 
+        if (!header) return;
 
-    /* -----------------------------------------
-       04 — ACTIVE NAVIGATION
-    ----------------------------------------- */
+        if (window.scrollY > 35) {
+            header.classList.add("scrolled");
+        } else {
+            header.classList.remove("scrolled");
+        }
 
-    const currentPage = (
-        window.location.pathname.split("/").pop() ||
-        "index.html"
-    ).toLowerCase();
+    };
 
-    if (navigation) {
+    updateHeader();
 
-        navigation.querySelectorAll("a").forEach(link => {
-
-            const href = (
-                link.getAttribute("href") || ""
-            ).toLowerCase();
-
-            if (href === currentPage) {
-
-                link.classList.add("active");
-
-                link.setAttribute(
-                    "aria-current",
-                    "page"
-                );
-
-            } else {
-
-                link.classList.remove("active");
-
-                link.removeAttribute("aria-current");
-
-            }
-
-        });
-
-    }
+    window.addEventListener("scroll", updateHeader, {
+        passive: true
+    });
 
 
-    /* -----------------------------------------
-       05 — SMOOTH INTERNAL NAVIGATION
-    ----------------------------------------- */
+    /* =====================================================
+       04. CURRENT YEAR
+    ===================================================== */
+
+    const currentYear = new Date().getFullYear();
 
     document.querySelectorAll(
-        'a[href^="#"]'
-    ).forEach(link => {
+        "#currentYear, [data-year]"
+    ).forEach((element) => {
 
-        link.addEventListener("click", event => {
+        element.textContent = currentYear;
 
-            const targetId =
-                link.getAttribute("href");
+    });
+
+
+    /* =====================================================
+       05. SMOOTH INTERNAL LINKS
+    ===================================================== */
+
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+
+        link.addEventListener("click", (event) => {
+
+            const targetId = link.getAttribute("href");
 
             if (!targetId || targetId === "#") return;
 
-            const target =
-                document.querySelector(targetId);
+            const target = document.querySelector(targetId);
 
             if (!target) return;
 
             event.preventDefault();
 
-            target.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
+            const headerHeight = header
+                ? header.offsetHeight
+                : 0;
 
-            closeMenu();
+            const targetPosition =
+                target.getBoundingClientRect().top +
+                window.scrollY -
+                headerHeight;
+
+            window.scrollTo({
+                top: targetPosition,
+                behavior: reduceMotion ? "auto" : "smooth"
+            });
 
         });
 
     });
 
 
-    /* -----------------------------------------
-       06 — HEADER SCROLL EFFECT
-    ----------------------------------------- */
+    /* =====================================================
+       06. ACTIVE NAVIGATION LINK
+    ===================================================== */
 
-    const header = document.querySelector(".site-header");
+    const currentPage = (
+        window.location.pathname.split("/").pop() || "index.html"
+    ).toLowerCase();
 
-    function updateHeader() {
+    document.querySelectorAll(
+        ".main-nav a, #mainNav a"
+    ).forEach((link) => {
 
-        if (!header) return;
+        const linkPage = (
+            link.getAttribute("href") || ""
+        ).split("/").pop().toLowerCase();
 
-        if (window.scrollY > 40) {
-
-            header.classList.add("scrolled");
-
+        if (linkPage === currentPage) {
+            link.classList.add("active");
         } else {
-
-            header.classList.remove("scrolled");
-
+            link.classList.remove("active");
         }
+
+    });
+
+
+    /* =====================================================
+       07. REVEAL ANIMATIONS
+    ===================================================== */
+
+    const revealElements = document.querySelectorAll(
+        ".section, .section-heading, .intro-detail, .technology-card, .solution-item, .partnership-content"
+    );
+
+
+    if (
+        !reduceMotion &&
+        "IntersectionObserver" in window
+    ) {
+
+        const revealObserver = new IntersectionObserver(
+            (entries, observer) => {
+
+                entries.forEach((entry) => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add("reveal-visible");
+
+                        observer.unobserve(entry.target);
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.12,
+                rootMargin: "0px 0px -35px 0px"
+            }
+        );
+
+
+        revealElements.forEach((element) => {
+
+            element.classList.add("reveal");
+
+            revealObserver.observe(element);
+
+        });
+
+    } else {
+
+        revealElements.forEach((element) => {
+            element.classList.add("reveal-visible");
+        });
 
     }
 
-    window.addEventListener(
-        "scroll",
-        updateHeader,
-        { passive: true }
-    );
 
-    updateHeader();
+    /* =====================================================
+       08. ACCESSIBILITY
+    ===================================================== */
 
+    if (menuToggle) {
 
-    /* -----------------------------------------
-       07 — ACCESSIBILITY
-    ----------------------------------------- */
+        menuToggle.addEventListener("keydown", (event) => {
 
-    if (menu) {
-
-        menu.addEventListener("keydown", event => {
-
-            if (
-                event.key === "Enter" ||
-                event.key === " "
-            ) {
-
+            if (event.key === "Enter" || event.key === " ") {
                 event.preventDefault();
-
-                menu.click();
-
             }
 
         });
 
     }
 
-
-    /* -----------------------------------------
-       08 — NETWORK EVENT LISTENER
-    ----------------------------------------- */
-
-    document.addEventListener(
-        "azadipour:location-selected",
-        event => {
-
-            const location = event.detail;
-
-            if (!location) return;
-
-            console.info(
-                "Azadipour network location selected:",
-                location.name
-            );
-
-        }
-    );
-
-
-    /* -----------------------------------------
-       09 — INITIALIZATION
-    ----------------------------------------- */
-
-    document.documentElement.classList.add(
-        "azadipour-ready"
-    );
-
-    console.info(
-        "AZADIPOUR WEBSITE INITIALIZED"
-    );
-
-})();
+});
