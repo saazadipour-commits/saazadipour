@@ -2081,3 +2081,86 @@ h1, h2, h3, h4 {
         transition-duration: .01ms !important;
     }
 }
+
+
+/* AZADIPOUR — HOMEPAGE VISUAL PORTFOLIO */
+
+.visual-portfolio-section {
+  background: #090b0d;
+}
+
+.visual-portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 17px;
+  margin-top: 38px;
+}
+
+.visual-portfolio-card {
+  position: relative;
+  min-width: 0;
+  min-height: 260px;
+  overflow: hidden;
+  border: 1px solid rgba(225,230,235,.16);
+  background: #101316;
+}
+
+.visual-portfolio-card img {
+  width: 100%;
+  height: 100%;
+  min-height: 260px;
+  object-fit: cover;
+  opacity: .78;
+  transition: transform .65s ease, opacity .65s ease;
+}
+
+.visual-portfolio-card:hover img {
+  transform: scale(1.045);
+  opacity: 1;
+}
+
+.visual-portfolio-card figcaption {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 35px 20px 19px;
+  background: linear-gradient(transparent, rgba(0,0,0,.92));
+}
+
+.visual-portfolio-card figcaption strong {
+  color: #fff;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.visual-portfolio-card figcaption span {
+  color: #c8cdd2;
+  font-size: 10px;
+  letter-spacing: .7px;
+}
+
+.portfolio-more {
+  margin-top: 30px;
+}
+
+@media (max-width: 900px) {
+  .visual-portfolio-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .visual-portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .visual-portfolio-card,
+  .visual-portfolio-card img {
+    min-height: 235px;
+  }
+}
