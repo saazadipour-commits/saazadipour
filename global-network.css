@@ -1,313 +1,342 @@
 /* =====================================================
-   AZADIPOUR — PREMIUM GLOBAL WORLD MAP
-   Flat geographic map / embossed silver relief
+   AZADIPOUR — GLOBAL NETWORK MAP
+   PREMIUM BLACK / SILVER / WHITE
 ===================================================== */
 
 .global-network-section {
   position: relative;
+  padding: 110px 24px;
   overflow: hidden;
-  padding: 100px 5%;
-  background: #050608;
-  color: #fff;
-  isolation: isolate;
-}
-
-.global-network-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background:
-    radial-gradient(
-      ellipse at 50% 48%,
-      rgba(190,200,210,.075),
-      transparent 70%
-    );
+  background: #050607;
 }
 
 .network-container {
-  width: min(1480px, 100%);
-  margin: auto;
+  width: min(1560px, 100%);
+  margin-inline: auto;
 }
 
-.network-top {
-  margin-bottom: 38px;
-}
-
-.section-label {
-  margin-bottom: 24px;
-  color: #aeb5bd;
-  font-family: Inter, sans-serif;
-  font-size: 10px;
-  letter-spacing: 3px;
+.network-top,
+.network-map-frame,
+.network-legend,
+.network-markets,
+.network-footer {
+  width: 100%;
+  margin-inline: auto;
 }
 
 .network-heading {
   display: grid;
   grid-template-columns: 1.2fr .8fr;
   align-items: end;
-  gap: 45px;
+  gap: 40px;
+  margin-bottom: 38px;
 }
 
 .network-heading h2 {
-  margin: 0;
-  color: #f5f6f7;
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(45px, 5.5vw, 76px);
-  font-weight: 400;
-  line-height: 1.04;
+  max-width: 760px;
+  font-size: clamp(40px, 5vw, 66px);
+  line-height: 1.05;
 }
 
 .network-heading h2 span {
   display: block;
-  color: #b9c0c8;
+  color: #c8cdd2;
 }
 
-.network-heading p {
-  max-width: 460px;
-  margin: 0 0 6px;
-  color: #a2aab2;
-  font-family: Inter, sans-serif;
+.network-heading > p {
+  max-width: 470px;
+  color: #aeb4ba;
   font-size: 13px;
-  font-weight: 300;
-  line-height: 1.9;
 }
-
-/* MAP FRAME */
 
 .network-map-frame {
+  position: relative;
   overflow: hidden;
-  border: 1px solid rgba(255,255,255,.19);
-  background: #07090c;
-  box-shadow:
-    0 30px 80px rgba(0,0,0,.48),
-    inset 0 1px rgba(255,255,255,.04);
+  border: 1px solid rgba(225,230,235,.2);
+  background: #050607;
+  box-shadow: 0 30px 100px rgba(0,0,0,.5);
+}
+
+.network-map-topline,
+.map-caption {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 16px 20px;
+  color: #c8cdd2;
+  font-size: 9px;
+  letter-spacing: 1.7px;
 }
 
 .network-map-topline {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 12px;
-  padding: 18px 22px;
-  border-bottom: 1px solid rgba(255,255,255,.15);
-  color: #d6dbe0;
-  font-family: Inter, sans-serif;
-  font-size: 10px;
-  letter-spacing: 1.8px;
+  border-bottom: 1px solid rgba(225,230,235,.13);
 }
-
-/* WORLD MAP */
 
 .network-map-canvas-wrap {
   position: relative;
   width: 100%;
-  overflow: hidden;
   aspect-ratio: 1440 / 650;
-  background: #080a0d;
+  min-height: 300px;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 52% 46%, #151b21 0%, #090c10 54%, #050607 100%);
 }
 
 .az-world-map {
   display: block;
   width: 100%;
   height: 100%;
+  min-height: 300px;
   overflow: visible;
 }
 
 #mapGraticule path {
   fill: none;
-  stroke: rgba(190,205,220,.075);
+  stroke: rgba(210,220,230,.085);
   stroke-width: 1;
-  stroke-dasharray: 3 8;
+  vector-effect: non-scaling-stroke;
 }
 
-#mapCountries path {
-  stroke: rgba(255,255,255,.19);
-  stroke-width: .8;
-  stroke-linejoin: round;
+.map-country {
   fill: url(#mapLandSilver);
-  transition:
-    fill .4s ease,
-    stroke .4s ease;
+  stroke: rgba(255,255,255,.16);
+  stroke-width: .55;
+  vector-effect: non-scaling-stroke;
+  transition: fill .35s ease, opacity .35s ease;
 }
 
-#mapCountries path.region-china {
-  fill: url(#mapSoftSilver);
-  stroke: rgba(255,255,255,.5);
-  stroke-width: 1.2;
+.map-country:hover {
+  fill: #f0f2f4;
 }
 
-#mapCountries path.region-oman,
-#mapCountries path.region-qatar {
-  fill: url(#mapSelectedSilver);
-  stroke: #fff;
-  stroke-width: 1.8;
-}
-
-#mapCountries path.region-saudi {
-  fill: url(#mapSoftSilver);
-  stroke: rgba(255,255,255,.55);
+.region-oman {
+  fill: #ffffff;
+  stroke: #ffffff;
   stroke-width: 1.1;
+  filter: url(#mapGlow);
+}
+
+.region-china {
+  fill: #ffffff;
+  stroke: #ffffff;
+  stroke-width: 1.1;
+  filter: url(#mapGlow);
+}
+
+.region-qatar {
+  fill: #ffffff;
+  stroke: #ffffff;
+  stroke-width: 1;
+  filter: url(#mapGlow);
+}
+
+.region-saudi {
+  fill: #aeb6bf;
+  stroke: #c8cdd2;
+  stroke-width: .7;
 }
 
 #mapBorders path {
   fill: none;
-  stroke: rgba(25,31,38,.35);
-  stroke-width: .7;
+  stroke: rgba(5,6,7,.48);
+  stroke-width: .8;
+  vector-effect: non-scaling-stroke;
+}
+
+#mapConnections {
   pointer-events: none;
 }
 
-#mapConnections path.route-shadow {
+.route-shadow {
   fill: none;
-  stroke: rgba(255,255,255,.15);
-  stroke-width: 12;
+  stroke: rgba(255,255,255,.2);
+  stroke-width: 8;
+  stroke-linecap: round;
   filter: url(#mapStrongGlow);
 }
 
-#mapConnections path.route-line {
+.route-line {
   fill: none;
   stroke: url(#mapRouteSilver);
-  stroke-width: 2.3;
+  stroke-width: 2;
   stroke-linecap: round;
-  stroke-dasharray: 4 12;
-  animation: mapRouteFlow 3.5s linear infinite;
+  stroke-dasharray: 7 8;
+  animation: azRouteFlow 18s linear infinite;
   filter: url(#mapGlow);
+  vector-effect: non-scaling-stroke;
 }
 
-@keyframes mapRouteFlow {
+@keyframes azRouteFlow {
   to {
-    stroke-dashoffset: -64;
+    stroke-dashoffset: -240;
   }
 }
 
-/* MARKERS */
+.map-marker {
+  pointer-events: auto;
+}
 
 .map-marker-halo {
-  fill: rgba(255,255,255,.15);
-  filter: url(#mapStrongGlow);
+  fill: rgba(255,255,255,.08);
+  stroke: rgba(255,255,255,.23);
+  stroke-width: 1;
 }
 
 .map-marker-ring {
   fill: none;
-  stroke: rgba(255,255,255,.8);
-  stroke-width: 1.5;
-  animation: mapPulse 2.5s ease-out infinite;
+  stroke: rgba(255,255,255,.85);
+  stroke-width: 1.1;
   transform-box: fill-box;
   transform-origin: center;
+  animation: azMarkerPulse 3s ease-out infinite;
+}
+
+.marker-wemed .map-marker-ring {
+  animation-delay: 1.2s;
 }
 
 .map-marker-core {
-  fill: #fff;
-  stroke: #fff;
+  fill: #ffffff;
+  stroke: #050607;
   stroke-width: 1;
   filter: url(#mapGlow);
 }
 
 .map-marker-soft {
-  fill: #d0d6dc;
-  stroke: #fff;
-  stroke-width: .8;
+  fill: #c8cdd2;
+  stroke: #050607;
+  stroke-width: 1;
 }
 
-@keyframes mapPulse {
+@keyframes azMarkerPulse {
   0% {
-    transform: scale(.7);
     opacity: .9;
+    transform: scale(.7);
   }
-  100% {
-    transform: scale(2.7);
+  75%, 100% {
     opacity: 0;
+    transform: scale(1.9);
   }
 }
-
-/* LABELS */
 
 .map-label {
-  fill: #fff;
-  font-family: Inter, sans-serif;
-  font-size: 19px;
-  font-weight: 600;
+  fill: #ffffff;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
   letter-spacing: 2px;
   paint-order: stroke;
-  stroke: #050608;
-  stroke-width: 5px;
+  stroke: rgba(5,6,7,.9);
+  stroke-width: 4px;
   stroke-linejoin: round;
 }
 
 .map-label-sub {
-  fill: #d0d6dc;
-  font-family: Inter, sans-serif;
-  font-size: 11px;
-  font-weight: 400;
-  letter-spacing: 1.7px;
+  fill: #c8cdd2;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 1.4px;
   paint-order: stroke;
-  stroke: #050608;
-  stroke-width: 4px;
+  stroke: rgba(5,6,7,.9);
+  stroke-width: 3px;
 }
 
 .map-country-label {
-  fill: #f1f3f5;
-  font-family: Inter, sans-serif;
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 1.7px;
+  fill: #ffffff;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.3px;
   paint-order: stroke;
-  stroke: #080a0d;
-  stroke-width: 4px;
+  stroke: rgba(5,6,7,.9);
+  stroke-width: 3px;
 }
 
 .map-country-label.soft {
-  fill: #c0c7ce;
-  font-size: 12px;
-  font-weight: 400;
+  fill: #c1c7ce;
 }
-
-/* MAP CORNER LABEL */
 
 .map-corner-label {
   position: absolute;
   right: 20px;
   bottom: 18px;
-  padding: 10px 14px;
-  border: 1px solid rgba(255,255,255,.25);
-  background: rgba(5,7,9,.78);
-  color: #e5e8eb;
-  font-family: Inter, sans-serif;
-  font-size: 9px;
-  letter-spacing: 1.6px;
-  backdrop-filter: blur(8px);
+  color: rgba(220,225,230,.55);
+  font-size: 8px;
+  letter-spacing: 2px;
+  pointer-events: none;
 }
-
-/* CAPTION */
 
 .map-caption {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 12px;
-  padding: 17px 22px;
-  border-top: 1px solid rgba(255,255,255,.14);
-  color: #aeb5bd;
-  font-family: Inter, sans-serif;
-  font-size: 9px;
-  letter-spacing: 1.6px;
+  border-top: 1px solid rgba(225,230,235,.13);
 }
 
-/* LEGEND */
+.map-loading {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: rgba(5,6,7,.96);
+  color: #dce1e6;
+  font-size: 10px;
+  letter-spacing: 1.6px;
+  text-align: center;
+  transition: opacity .35s ease, visibility .35s ease;
+}
+
+.map-loading.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loading-indicator {
+  width: 17px;
+  height: 17px;
+  border: 1px solid rgba(255,255,255,.2);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: azMapSpin 1s linear infinite;
+}
+
+@keyframes azMapSpin {
+  to { transform: rotate(360deg); }
+}
+
+.map-error {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: #080a0c;
+  color: #dce1e6;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-align: center;
+}
+
+.map-error[hidden] {
+  display: none;
+}
 
 .network-legend {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0,1fr));
-  gap: 20px;
-  padding: 32px 0;
-  border-bottom: 1px solid rgba(255,255,255,.15);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 30px 0;
+  border-bottom: 1px solid rgba(225,230,235,.13);
 }
 
 .legend-item {
   display: flex;
   align-items: center;
-  gap: 13px;
+  gap: 11px;
 }
 
 .legend-dot {
@@ -319,181 +348,135 @@
 
 .legend-dot.registered,
 .legend-dot.partner {
-  background: #fff;
-  box-shadow: 0 0 9px #fff, 0 0 19px rgba(255,255,255,.65);
+  background: #ffffff;
+  box-shadow: 0 0 12px rgba(255,255,255,.5);
 }
 
-.legend-dot.opportunity {
-  background: #aeb7c0;
-  box-shadow: 0 0 8px rgba(255,255,255,.35);
+.legend-dot.target {
+  background: #aeb6bf;
 }
 
 .legend-item strong {
   display: block;
-  color: #f2f4f6;
-  font-family: Inter, sans-serif;
-  font-size: 12px;
-  font-weight: 500;
+  color: #f5f6f7;
+  font-size: 11px;
+  font-weight: 600;
 }
 
 .legend-item small {
   display: block;
-  margin-top: 5px;
-  color: #969fa8;
-  font-family: Inter, sans-serif;
-  font-size: 10px;
-  line-height: 1.6;
-}
-
-/* MARKETS */
-
-.network-markets {
-  padding: 30px 0;
-  border-bottom: 1px solid rgba(255,255,255,.15);
-}
-
-.market-label {
-  margin-bottom: 19px;
-  color: #b0b7bf;
-  font-family: Inter, sans-serif;
-  font-size: 10px;
-  letter-spacing: 2.7px;
-}
-
-.market-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.market-list span {
-  padding: 9px 15px;
-  border: 1px solid rgba(255,255,255,.19);
-  color: #e0e4e8;
-  font-family: Inter, sans-serif;
+  color: #9ca2a9;
   font-size: 10px;
 }
-
-/* FOOTER */
 
 .network-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 25px;
-  padding-top: 27px;
+  padding-top: 26px;
 }
 
 .network-footer p {
-  max-width: 750px;
-  margin: 0;
-  color: #969fa8;
-  font-family: Inter, sans-serif;
-  font-size: 10px;
-  line-height: 1.9;
+  max-width: 720px;
+  color: #a5aab0;
+  font-size: 12px;
 }
 
 .network-footer a {
-  color: #f2f4f6;
-  font-family: Inter, sans-serif;
+  flex-shrink: 0;
+  color: #ffffff;
   font-size: 10px;
   letter-spacing: 1px;
-  text-decoration: none;
-  white-space: nowrap;
+}
+
+.network-footer a:hover {
+  color: #c8cdd2;
 }
 
 /* TABLET */
 
 @media (max-width: 900px) {
-  .global-network-section {
-    padding: 75px 4%;
-  }
-
   .network-heading {
     grid-template-columns: 1fr;
     gap: 18px;
   }
 
   .network-legend {
-    grid-template-columns: repeat(2,1fr);
+    gap: 22px;
   }
 }
 
 /* MOBILE */
 
-@media (max-width: 600px) {
+@media (max-width: 650px) {
   .global-network-section {
-    padding: 60px 15px;
+    padding: 65px 18px;
   }
 
   .network-heading h2 {
-    font-size: clamp(39px, 9vw, 50px);
+    font-size: 39px;
   }
 
-  .network-heading p {
-    font-size: 11px;
-  }
-
-  .network-map-topline {
+  .network-map-topline,
+  .map-caption {
     flex-direction: column;
-    align-items: flex-start;
+    gap: 7px;
     padding: 13px;
     font-size: 8px;
   }
 
   .network-map-canvas-wrap {
-    aspect-ratio: 1.35 / 1;
+    min-height: 230px;
+    aspect-ratio: 1.12 / 1;
+  }
+
+  .az-world-map {
+    min-height: 230px;
   }
 
   .map-label {
-    font-size: 22px;
-    letter-spacing: 1px;
+    font-size: 13px;
   }
 
   .map-label-sub {
-    font-size: 14px;
-  }
-
-  .map-country-label {
-    font-size: 17px;
-  }
-
-  .map-corner-label {
-    right: 7px;
-    bottom: 7px;
-    padding: 6px 8px;
-    font-size: 6px;
-  }
-
-  .map-caption {
-    flex-direction: column;
-    padding: 12px;
     font-size: 8px;
   }
 
+  .map-country-label {
+    font-size: 8px;
+  }
+
+  .map-corner-label {
+    right: 10px;
+    bottom: 10px;
+    font-size: 7px;
+  }
+
   .network-legend {
+    display: grid;
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 17px;
+    padding: 24px 0;
   }
 
   .network-footer {
-    align-items: flex-start;
     flex-direction: column;
-  }
-
-  .market-list {
-    gap: 7px;
-  }
-
-  .market-list span {
-    padding: 7px 10px;
-    font-size: 9px;
+    align-items: flex-start;
+    gap: 15px;
   }
 }
 
+/* REDUCED MOTION */
+
 @media (prefers-reduced-motion: reduce) {
+  .route-line,
   .map-marker-ring,
-  #mapConnections path.route-line {
+  .loading-indicator {
     animation: none !important;
+  }
+
+  .map-country {
+    transition: none !important;
   }
 }
