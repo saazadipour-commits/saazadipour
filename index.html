@@ -133,7 +133,7 @@
         </div>
 
         <div class="network-map-canvas-wrap">
-          <div id="azadipourWorldMap" class="az-world-map" role="img" aria-label="World map showing global network and one connection from Azadipour in Oman to WeMed in China"></div>
+          <div id="azadipourWorldMap" class="az-world-map" role="img" aria-label="Static world map showing hub connections from suppliers and to hospitals"></div>
           <div class="map-loading" id="mapLoading">
             <span class="loading-indicator"></span>
             LOADING GLOBAL GEOGRAPHIC DATA
@@ -141,24 +141,28 @@
         </div>
 
         <div class="map-caption">
-          <span>AZADIPOUR · OMAN</span>
-          <span>WEMED · CHINA</span>
+          <span>AZADIPOUR · OMAN (HUB)</span>
+          <span>GLOBAL SUPPLY &amp; HOSPITAL NETWORK</span>
         </div>
       </div>
 
       <div class="network-legend">
         <div class="legend-item">
           <span class="legend-dot registered"></span>
-          <div><strong>Azadipour — Oman</strong><small>Company base</small></div>
+          <div><strong>Azadipour — Oman</strong><small>Strategic Hub</small></div>
         </div>
         <div class="legend-item">
           <span class="legend-dot target"></span>
-          <div><strong>WeMed — China</strong><small>International business connection</small></div>
+          <div><strong>International Partners</strong><small>Manufacturers &amp; Suppliers</small></div>
+        </div>
+        <div class="legend-item">
+          <span class="legend-dot partner"></span>
+          <div><strong>Regional Hospitals</strong><small>GCC Healthcare Market</small></div>
         </div>
       </div>
 
       <div class="network-footer">
-        <p>The map presents a global geographic view. Only the selected Azadipour–WeMed connection is illustrated; no other market or partnership routes are implied.</p>
+        <p>The map presents a strategic geographic view of Azadipour's network, illustrating connections between international suppliers and regional healthcare organizations through our Oman-based hub.</p>
         <a href="partners.html">Explore Global Partnerships <span>↗</span></a>
       </div>
     </section>
@@ -246,7 +250,7 @@
       </div>
     </section>
 
-    <!-- VISUAL TECHNOLOGY PORTFOLIO (Kept for now, can be removed as per previous advice) -->
+    <!-- VISUAL TECHNOLOGY PORTFOLIO -->
     <section class="section visual-portfolio-section">
       <div class="section-label">04 — SELECTED TECHNOLOGY AREAS</div>
       <div class="section-heading">
@@ -418,7 +422,7 @@
   <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
   <script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
 
-  <!-- HOLOGRAPHIC NETWORK MAP SCRIPT -->
+  <!-- STATIC NETWORK HUB MAP SCRIPT -->
   <script>
   (() => {
     "use strict";
@@ -447,7 +451,7 @@
         viewBox: `0 0 ${W} ${H}`,
         preserveAspectRatio: "xMidYMid meet",
         role: "img",
-        "aria-label": "Holographic World map showing global network"
+        "aria-label": "Static network hub map"
       });
 
       const features = topojson.feature(world, world.objects.countries);
@@ -469,68 +473,76 @@
         });
       });
 
-      // Secondary Network Arcs (To simulate the dense network in the image)
-      const networkHubs = [
-        [-74.006, 40.7128], // New York
-        [-0.1276, 51.5072], // London
-        [139.6917, 35.6895], // Tokyo
-        [151.2093, -33.8688], // Sydney
-        [-58.3816, -34.6037], // Buenos Aires
-        [28.0473, -26.2041], // Johannesburg
-        [55.2708, 25.2048], // Dubai
-        [72.8777, 19.0760], // Mumbai
-        [-122.4194, 37.7749], // San Francisco
-        [103.8198, 1.3521], // Singapore
-        [37.6173, 55.7558], // Moscow
-        [13.4050, 52.5200] // Berlin
-      ];
+      // Helper to draw an arc
+      const drawArc = (start, end, className, animSpeed) => {
+        const interpolate = d3.geoInterpolate(start, end);
+        const coordinates = d3.range(0, 1.001, 0.01).map(t => interpolate(t));
+        const pathD = geoPath({ type: "LineString", coordinates });
+        
+        add(svg, "path", { 
+          d: pathD, 
+          class: className,
+          style: `animation-duration: ${animSpeed}s` 
+        });
+      };
 
-      for (let i = 0; i < networkHubs.length; i++) {
-        for (let j = i + 1; j < networkHubs.length; j++) {
-          if (Math.random() > 0.3) continue; // Thin out the lines
-          const start = networkHubs[i];
-          const end = networkHubs[j];
-          const interpolate = d3.geoInterpolate(start, end);
-          const coordinates = d3.range(0, 1.001, 0.01).map(t => interpolate(t));
-          const pathD = geoPath({ type: "LineString", coordinates });
-          add(svg, "path", { d: pathD, class: "az-network-arc" });
-        }
+      // Helper to generate random point in a bounding box
+      const getRandomPoint = (minLat, maxLat, minLng, maxLng) => {
+        const lat = Math.random() * (maxLat - minLat) + minLat;
+        const lng = Math.random() * (maxLng - minLng) + minLng;
+        return [lng, lat];
+      };
+
+      const omanHub = [58.383, 23.588]; // Muscat
+
+      // 1. China Connections (3 lines: 1 bright, 2 faded)
+      const chinaPoints = [
+        [116.407, 39.904], // Beijing (Bright)
+        [121.473, 31.230], // Shanghai
+        [113.264, 23.129]  // Guangzhou
+      ];
+      
+      // Main bright line from China
+      drawArc(chinaPoints[0], omanHub, "az-map-route-main", 2);
+      
+      // Faded lines from China
+      drawArc(chinaPoints[1], omanHub, "az-network-arc dim", 3);
+      drawArc(chinaPoints[2], omanHub, "az-network-arc dim", 3);
+
+      // 2. Saudi Arabia Connections (20 lines)
+      for (let i = 0; i < 20; i++) {
+        // Bounding box roughly around KSA
+        const ksaPoint = getRandomPoint(16.3, 32.1, 34.5, 55.6);
+        drawArc(ksaPoint, omanHub, "az-network-arc", 2.5 + Math.random() * 2);
       }
 
-      // Main Route (Oman to China)
-      const muscat = [58.383, 23.588];
-      const beijing = [116.407, 39.904];
-      const interpolateMain = d3.geoInterpolate(muscat, beijing);
-      const coordinatesMain = d3.range(0, 1.001, 0.004).map(t => interpolateMain(t));
-      const route = geoPath({ type: "LineString", coordinates: coordinatesMain });
+      // 3. Qatar Connections (10 lines)
+      for (let i = 0; i < 10; i++) {
+        // Bounding box roughly around Qatar
+        const qatarPoint = getRandomPoint(24.5, 26.2, 50.7, 51.7);
+        drawArc(qatarPoint, omanHub, "az-network-arc", 2 + Math.random() * 1.5);
+      }
 
-      add(svg, "path", { d: route, class: "az-map-route-glow" });
-      add(svg, "path", { d: route, class: "az-map-route" });
+      // 4. Oman Internal Connections (5 lines)
+      for (let i = 0; i < 5; i++) {
+        // Bounding box roughly around Oman
+        const omanPoint = getRandomPoint(16.6, 26.3, 52.0, 59.8);
+        drawArc(omanPoint, omanHub, "az-network-arc", 1.5 + Math.random());
+      }
 
-      // Draw Hubs as Glowing Nodes
-      networkHubs.forEach(coord => {
-          const [x, y] = projection(coord);
-          add(svg, "circle", { cx: x, cy: y, r: 2.5, class: "az-map-node" });
+      // Draw Central Hub Node (Oman)
+      const [hubX, hubY] = projection(omanHub);
+      const hubGroup = add(svg, "g", { transform: `translate(${hubX},${hubY})` });
+      
+      add(hubGroup, "circle", { r: 20, class: "az-hub-halo-outer" });
+      add(hubGroup, "circle", { r: 10, class: "az-hub-halo-inner" });
+      add(hubGroup, "circle", { r: 4, class: "az-hub-core" });
+
+      // Hub Label
+      const label = add(hubGroup, "text", {
+        x: -15, y: 35, "text-anchor": "end", class: "az-hub-label"
       });
-
-      // Endpoints (Oman, China)
-      const endpoints = [
-        { name: "AZADIPOUR", point: muscat, dx: -15, dy: 30, anchor: "end", className: "az-map-origin-label" },
-        { name: "WeMed", point: beijing, dx: 15, dy: -20, anchor: "start", className: "az-map-wemed-label" }
-      ];
-
-      endpoints.forEach((item, index) => {
-        const [x, y] = projection(item.point);
-        const group = add(svg, "g", { transform: `translate(${x},${y})` });
-
-        add(group, "circle", { r: index === 0 ? 14 : 12, class: "az-map-endpoint-halo" });
-        add(group, "circle", { r: 4, class: "az-map-endpoint-core" });
-
-        const label = add(group, "text", {
-          x: item.dx, y: item.dy, "text-anchor": item.anchor, class: item.className
-        });
-        label.textContent = item.name;
-      });
+      label.textContent = "AZADIPOUR HUB";
 
       if (loading) loading.classList.add("is-hidden");
     }
