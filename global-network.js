@@ -1,73 +1,54 @@
-/* =========================================================
-   AZADIPOUR — FLAT WORLD NETWORK
-   SVG route animation and map initialization
-========================================================= */
+/* ==========================================================
+   AZADIPOUR — GLOBAL NETWORK MAP
+   SVG Map Initialization
+   No Globe / No External Map Library
+========================================================== */
 
 document.addEventListener("DOMContentLoaded", function () {
 
   "use strict";
 
-  const map = document.querySelector(".world-map-container");
-  const mapImage = document.querySelector(".world-map-image");
-  const route = document.querySelector(".network-route-light");
-  const loading = document.querySelector(".map-loading");
+  const mapSection = document.getElementById("global-network");
+  const map = document.querySelector(".az-world-map");
 
-  if (!map || !mapImage) {
-    console.warn("Azadipour world map element was not found.");
+  if (!mapSection || !map) {
+    console.warn("Azadipour global map was not found.");
     return;
   }
 
-  // Show map after image loads
-  function mapReady() {
-    map.classList.add("map-ready");
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
 
-    if (loading) {
-      loading.classList.add("is-hidden");
-    }
+  // Accessibility: pause SVG animation when reduced motion is preferred.
+  if (reduceMotion) {
+    map.querySelectorAll(
+      ".route-moving-light, .marker-pulse"
+    ).forEach(function (element) {
+      element.style.animation = "none";
+    });
   }
 
-  if (mapImage.complete && mapImage.naturalWidth > 0) {
-    mapReady();
-  } else {
-    mapImage.addEventListener("load", mapReady, { once: true });
-
-    mapImage.addEventListener("error", function () {
-      console.error(
-        "World map image not found. Check assets/world-network-map.jpg"
-      );
-
-      map.classList.add("map-image-error");
-
-      if (loading) {
-        loading.textContent = "WORLD MAP IMAGE NOT FOUND";
-      }
-    }, { once: true });
+  // Make sure the SVG is rendered correctly.
+  function refreshMap() {
+    map.setAttribute("preserveAspectRatio", "xMidYMid meet");
   }
 
-  // Animate the Oman–Beijing route
-  if (route) {
-    route.style.animationPlayState =
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches
-        ? "paused"
-        : "running";
-  }
+  refreshMap();
 
-  // Ensure SVG overlay follows the image dimensions
-  function updateMapSize() {
-    const overlay = map.querySelector(".world-network-overlay");
-
-    if (!overlay) return;
-
-    overlay.setAttribute("preserveAspectRatio", "none");
-  }
-
-  updateMapSize();
-
+  // Keep the map responsive.
   if ("ResizeObserver" in window) {
-    const resizeObserver = new ResizeObserver(updateMapSize);
-    resizeObserver.observe(map);
+    const observer = new ResizeObserver(refreshMap);
+    observer.observe(mapSection);
   } else {
-    window.addEventListener("resize", updateMapSize);
+    window.addEventListener("resize", refreshMap);
   }
+
+  // Confirm map initialization.
+  mapSection.classList.add("az-map-ready");
+
+  console.info(
+    "Azadipour international SVG map initialized successfully."
+  );
 
 });
