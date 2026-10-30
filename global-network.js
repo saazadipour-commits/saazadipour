@@ -1,165 +1,136 @@
 /* =========================================
-   AZADIPOUR — GLOBAL NETWORK MAP
-   Silver Monochrome Edition
+   AZADIPOUR — GLOBAL NETWORK
+   International Silver Edition
+   One connection: Oman — WeMed — China
 ========================================= */
 
 (() => {
     "use strict";
 
-    const container = document.getElementById("worldMap");
+    const container = document.getElementById("azadipourWorldMap");
     if (!container) return;
 
+    if (!window.d3 || !window.topojson) {
+        container.innerHTML =
+            '<div class="world-map-loading">MAP LIBRARIES COULD NOT BE LOADED</div>';
+        return;
+    }
+
     const width = 1440;
-    const height = 747;
+    const height = 680;
 
-    const locations = [
-        {
-            name: "MUSCAT",
-            country: "Oman",
-            lat: 23.588,
-            lng: 58.383,
-            type: "registered",
-            label: true
-        },
-        {
-            name: "BEIJING",
-            country: "China",
-            lat: 39.904,
-            lng: 116.407,
-            type: "partner",
-            label: true
-        },
-        {
-            name: "GERMANY",
-            country: "Germany",
-            lat: 50.11,
-            lng: 8.68,
-            type: "target",
-            label: true
-        },
-        {
-            name: "RIYADH",
-            country: "Saudi Arabia",
-            lat: 24.713,
-            lng: 46.675,
-            type: "target"
-        },
-        {
-            name: "DUBAI",
-            country: "UAE",
-            lat: 25.204,
-            lng: 55.270,
-            type: "target"
-        },
-        {
-            name: "DOHA",
-            country: "Qatar",
-            lat: 25.285,
-            lng: 51.531,
-            type: "target"
-        },
-        {
-            name: "MANAMA",
-            country: "Bahrain",
-            lat: 26.228,
-            lng: 50.586,
-            type: "target"
-        },
-        {
-            name: "KUWAIT",
-            country: "Kuwait",
-            lat: 29.375,
-            lng: 47.977,
-            type: "target"
-        }
-    ];
+    // The only business connection displayed on the map
+    const origin = {
+        name: "Azadipour",
+        country: "Oman",
+        coordinates: [58.383, 23.588]
+    };
 
-    const connections = locations
-        .filter(d => d.country !== "Oman")
-        .map(d => ({
-            source: locations[0],
-            target: d
-        }));
+    const destination = {
+        name: "WeMed",
+        country: "China",
+        coordinates: [116.407, 39.904]
+    };
 
     const svgNS = "http://www.w3.org/2000/svg";
 
-    function element(parent, tag, attrs = {}) {
-        const el = document.createElementNS(svgNS, tag);
+    function createElement(parent, tag, attributes = {}) {
+        const element = document.createElementNS(svgNS, tag);
 
-        Object.entries(attrs).forEach(([key, value]) => {
-            el.setAttribute(key, value);
+        Object.entries(attributes).forEach(([key, value]) => {
+            element.setAttribute(key, value);
         });
 
-        parent.appendChild(el);
-        return el;
+        parent.appendChild(element);
+        return element;
     }
 
-    function createSVG() {
+    function showError() {
+        container.innerHTML =
+            '<div class="world-map-loading">' +
+            'GLOBAL MAP COULD NOT BE LOADED — PLEASE REFRESH' +
+            '</div>';
+    }
+
+    function createMap(worldData) {
         container.innerHTML = "";
 
-        const svg = element(container, "svg", {
+        const svg = createElement(container, "svg", {
             viewBox: `0 0 ${width} ${height}`,
             preserveAspectRatio: "xMidYMid meet",
             role: "img",
-            "aria-label": "Azadipour international medical technology network map"
+            "aria-label": "Azadipour international network map showing its WeMed connection to China"
         });
 
-        const defs = element(svg, "defs");
+        const defs = createElement(svg, "defs");
 
-        const gradient = element(defs, "linearGradient", {
-            id: "silverLand",
+        // Silver land gradient
+        const landGradient = createElement(defs, "linearGradient", {
+            id: "azSilverLand",
             x1: "0%",
             y1: "0%",
             x2: "100%",
             y2: "100%"
         });
 
-        element(gradient, "stop", {
+        createElement(landGradient, "stop", {
             offset: "0%",
-            "stop-color": "#f5f6f7"
+            "stop-color": "#f0f1f2"
         });
 
-        element(gradient, "stop", {
-            offset: "55%",
-            "stop-color": "#aeb4ba"
+        createElement(landGradient, "stop", {
+            offset: "50%",
+            "stop-color": "#aeb4bb"
         });
 
-        element(gradient, "stop", {
+        createElement(landGradient, "stop", {
             offset: "100%",
-            "stop-color": "#626a72"
+            "stop-color": "#626a73"
         });
 
-        const glow = element(defs, "filter", {
-            id: "lightGlow",
-            x: "-200%",
-            y: "-200%",
-            width: "400%",
-            height: "400%"
+        // Route gradient
+        const routeGradient = createElement(defs, "linearGradient", {
+            id: "azRouteGradient",
+            x1: "0%",
+            y1: "0%",
+            x2: "100%",
+            y2: "0%"
         });
 
-        element(glow, "feGaussianBlur", {
-            stdDeviation: "3",
+        createElement(routeGradient, "stop", {
+            offset: "0%",
+            "stop-color": "#8c949d"
+        });
+
+        createElement(routeGradient, "stop", {
+            offset: "50%",
+            "stop-color": "#ffffff"
+        });
+
+        createElement(routeGradient, "stop", {
+            offset: "100%",
+            "stop-color": "#aeb8c3"
+        });
+
+        // Soft glow
+        const glow = createElement(defs, "filter", {
+            id: "azMapGlow",
+            x: "-100%",
+            y: "-100%",
+            width: "300%",
+            height: "300%"
+        });
+
+        createElement(glow, "feGaussianBlur", {
+            stdDeviation: "4",
             result: "blur"
         });
 
-        const merge = element(glow, "feMerge");
-        element(merge, "feMergeNode", { in: "blur" });
-        element(merge, "feMergeNode", { in: "SourceGraphic" });
+        const merge = createElement(glow, "feMerge");
+        createElement(merge, "feMergeNode", { in: "blur" });
+        createElement(merge, "feMergeNode", { in: "SourceGraphic" });
 
-        const routeGlow = element(defs, "filter", {
-            id: "routeGlow"
-        });
-
-        element(routeGlow, "feGaussianBlur", {
-            stdDeviation: "2"
-        });
-
-        return svg;
-    }
-
-    function renderMap(worldData) {
-        const svg = createSVG();
-
+        // Geographic data
         const countries = topojson.feature(
             worldData,
             worldData.objects.countries
@@ -167,117 +138,116 @@
 
         const projection = d3.geoNaturalEarth1()
             .fitExtent(
-                [[15, 35], [width - 15, height - 35]],
+                [[22, 28], [width - 22, height - 28]],
                 countries
             );
 
         const path = d3.geoPath(projection);
 
-        // Country shapes
-        const landGroup = element(svg, "g");
+        // Subtle geographic grid
+        const graticule = d3.geoGraticule()
+            .step([30, 30])();
+
+        createElement(svg, "path", {
+            d: path(graticule),
+            class: "world-graticule"
+        });
+
+        // World countries
+        const landGroup = createElement(svg, "g", {
+            class: "world-land-group"
+        });
 
         countries.features.forEach(country => {
-            element(landGroup, "path", {
+            createElement(landGroup, "path", {
                 d: path(country),
                 class: "world-land"
             });
         });
 
-        // Country boundary lines
-        const boundaries = topojson.mesh(
+        // Country borders
+        const borders = topojson.mesh(
             worldData,
             worldData.objects.countries,
             (a, b) => a !== b
         );
 
-        element(svg, "path", {
-            d: path(boundaries),
+        createElement(svg, "path", {
+            d: path(borders),
             class: "world-country-lines"
         });
 
-        // Subtle background network stars
-        const stars = [
-            [-155, 20], [-120, 48], [-100, 10],
-            [-75, -25], [-30, 35], [0, 55],
-            [25, 10], [75, 5], [100, 50],
-            [130, 20], [150, -20], [35, -25],
-            [-10, -10], [65, 35], [115, -35]
-        ];
+        // The single Azadipour — WeMed connection
+        const interpolate = d3.geoInterpolate(
+            origin.coordinates,
+            destination.coordinates
+        );
 
-        stars.forEach(([lng, lat]) => {
-            const point = projection([lng, lat]);
-            if (!point) return;
+        const routeCoordinates = d3.range(0, 1.001, 0.005)
+            .map(t => interpolate(t));
 
-            element(svg, "circle", {
-                cx: point[0],
-                cy: point[1],
-                r: 2.2,
-                class: "world-star",
-                opacity: ".75"
-            });
+        const routePath = path({
+            type: "LineString",
+            coordinates: routeCoordinates
         });
 
-        // Connection routes
-        connections.forEach(connection => {
-            const interpolate = d3.geoInterpolate(
-                [
-                    connection.source.lng,
-                    connection.source.lat
-                ],
-                [
-                    connection.target.lng,
-                    connection.target.lat
-                ]
-            );
-
-            const coordinates = d3.range(0, 1.001, 0.012)
-                .map(t => projection(interpolate(t)));
-
-            const route = d3.line()(coordinates);
-
-            element(svg, "path", {
-                d: route,
-                class: "world-route"
-            });
+        // Route glow
+        createElement(svg, "path", {
+            d: routePath,
+            class: "world-route-glow"
         });
 
-        // Location points
-        locations.forEach(location => {
-            const point = projection([
-                location.lng,
-                location.lat
-            ]);
+        // Main route
+        createElement(svg, "path", {
+            d: routePath,
+            class: "world-route"
+        });
 
-            if (!point) return;
+        // Route midpoint for WeMed label
+        const midpoint = projection(interpolate(0.5));
 
-            const group = element(svg, "g", {
-                class: "world-node",
-                transform: `translate(${point[0]},${point[1]})`
+        // WeMed label background
+        const labelGroup = createElement(svg, "g", {
+            class: "wemed-label",
+            transform: `translate(${midpoint[0]}, ${midpoint[1] - 22})`
+        });
+
+        createElement(labelGroup, "rect", {
+            x: -49,
+            y: -17,
+            width: 98,
+            height: 34,
+            rx: 17,
+            class: "wemed-label-bg"
+        });
+
+        const label = createElement(labelGroup, "text", {
+            x: 0,
+            y: 5,
+            "text-anchor": "middle",
+            class: "wemed-label-text"
+        });
+
+        label.textContent = "WeMed";
+
+        // Origin and destination points
+        [origin, destination].forEach((location, index) => {
+            const point = projection(location.coordinates);
+
+            const marker = createElement(svg, "g", {
+                class: "world-endpoint",
+                transform: `translate(${point[0]}, ${point[1]})`
             });
 
-            const title = element(group, "title");
-            title.textContent =
-                `${location.name} — ${location.country} — ${location.type}`;
-
-            element(group, "circle", {
-                r: location.type === "registered" ? 9 : 6,
-                class: "world-node-ring"
+            createElement(marker, "circle", {
+                r: index === 0 ? 8 : 7,
+                class: "world-endpoint-glow"
             });
 
-            element(group, "circle", {
-                r: location.type === "registered" ? 4 : 3,
-                class: "world-node-core"
+            createElement(marker, "circle", {
+                r: 3.5,
+                class: "world-endpoint-core"
             });
-
-            if (location.label) {
-                const label = element(group, "text", {
-                    x: 13,
-                    y: -12,
-                    class: "world-node-label"
-                });
-
-                label.textContent = location.name;
-            }
         });
     }
 
@@ -292,18 +262,13 @@
             }
 
             const worldData = await response.json();
-            renderMap(worldData);
+            createMap(worldData);
 
         } catch (error) {
-            console.error("Azadipour map error:", error);
-
-            container.innerHTML =
-                '<div class="world-map-loading">' +
-                'GLOBAL MAP COULD NOT BE LOADED — CHECK CONNECTION' +
-                '</div>';
+            console.error("Azadipour global map:", error);
+            showError();
         }
     }
 
     init();
-
 })();
