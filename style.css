@@ -1,7 +1,7 @@
 /* =========================================================
    AZADIPOUR
    GLOBAL MEDICAL TECHNOLOGY & HOSPITAL SOLUTIONS
-   COMPLETE STYLESHEET (STATIC HUB MAP UPGRADE)
+   COMPLETE STYLESHEET (DIRECTIONAL MAP UPGRADE)
    ========================================================= */
 
 :root {
@@ -462,7 +462,7 @@ h1, h2, h3, h4 {
 }
 
 /* =========================================================
-   06 — GLOBAL NETWORK SECTION (STATIC HUB MAP)
+   06 — GLOBAL NETWORK SECTION (DIRECTIONAL MAP)
    ========================================================= */
 
 .global-network-section {
@@ -533,7 +533,7 @@ h1, h2, h3, h4 {
   background: linear-gradient(90deg,#090c0f,#11161b,#090c0f);
 }
 
-/* --- STATIC HUB MAP STYLES (NO 3D GLITCHES) --- */
+/* --- DIRECTIONAL NETWORK MAP STYLES --- */
 
 .network-map-canvas-wrap {
   position: relative;
@@ -571,39 +571,51 @@ h1, h2, h3, h4 {
   stroke: rgba(255, 255, 255, 0.3);
 }
 
-/* Lines styling */
-.az-network-arc {
+/* --- INBOUND LINES (China to Oman) --- */
+/* Direction: Moving forward (start to end) */
+.az-arc-inbound {
   fill: none;
-  stroke: rgba(255, 255, 255, 0.25);
-  stroke-width: 1px;
-  stroke-dasharray: 4 6;
-  animation: dash 3s linear infinite;
-}
-
-.az-network-arc.dim {
-  stroke: rgba(255, 255, 255, 0.1);
-  stroke-width: 0.8px;
-}
-
-/* Main bright line from China */
-.az-map-route-main {
-  fill: none;
-  stroke: #ffffff;
+  stroke: rgba(255, 255, 255, 0.9);
   stroke-width: 2px;
   stroke-dasharray: 8 6;
-  animation: dashMain 1.5s linear infinite;
-  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8));
+  animation: dash-inbound 1.5s linear infinite;
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.6));
 }
 
-/* Hub Nodes */
+.az-arc-inbound.dim {
+  stroke: rgba(255, 255, 255, 0.3);
+  stroke-width: 1px;
+  stroke-dasharray: 4 6;
+  animation: dash-inbound 3s linear infinite;
+  filter: none;
+}
+
+/* --- OUTBOUND LINES (Oman to Markets) --- */
+/* Direction: Moving forward (start to end) */
+.az-arc-outbound {
+  fill: none;
+  stroke: rgba(180, 200, 220, 0.4); /* Cooler/silver for distribution */
+  stroke-width: 1.2px;
+  stroke-dasharray: 4 6;
+  animation: dash-outbound 2.5s linear infinite;
+}
+
+/* Nodes at the end of the lines */
+.az-network-node {
+  fill: #ffffff;
+  opacity: 0.9;
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.8));
+}
+
+/* Central Hub Nodes */
 .az-hub-halo-outer {
   fill: rgba(255, 255, 255, 0.05);
-  animation: pulse 3s infinite;
+  animation: pulse-hub 3s infinite;
 }
 
 .az-hub-halo-inner {
   fill: rgba(255, 255, 255, 0.15);
-  animation: pulse 2s infinite;
+  animation: pulse-hub 2s infinite;
 }
 
 .az-hub-core {
@@ -620,15 +632,16 @@ h1, h2, h3, h4 {
   text-shadow: 0 0 8px rgba(0,0,0,1);
 }
 
-@keyframes dash {
-  to { stroke-dashoffset: -20; }
+/* Animations for Map */
+@keyframes dash-inbound {
+  to { stroke-dashoffset: -28; } /* Moves towards Oman */
 }
 
-@keyframes dashMain {
-  to { stroke-dashoffset: -28; }
+@keyframes dash-outbound {
+  to { stroke-dashoffset: -20; } /* Moves away from Oman towards targets */
 }
 
-@keyframes pulse {
+@keyframes pulse-hub {
   0% { transform: scale(1); opacity: 0.8; }
   50% { transform: scale(1.5); opacity: 0.2; }
   100% { transform: scale(1); opacity: 0.8; }
@@ -1533,10 +1546,4 @@ h1, h2, h3, h4 {
 .reveal-visible {
   opacity: 1;
   transform: translateY(0);
-}
-/* Add small glowing nodes at the source of connection lines */
-.az-network-node {
-  fill: #ffffff;
-  opacity: 0.8;
-  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.8));
 }
