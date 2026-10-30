@@ -1,27 +1,27 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Azadipour | Global Medical Technology</title>
+  <title>Azadipour | Global Medical Technology & Hospital Solutions</title>
 
   <meta name="description" content="Azadipour is an international medical technology and healthcare solutions company connecting healthcare organizations, medical manufacturers and global partners.">
-
   <meta name="keywords" content="Azadipour, global medical technology, robotic surgery, medical equipment, international healthcare, hospital solutions">
-
   <meta name="author" content="Azadipour">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#050607">
 
   <link rel="canonical" href="https://azadipourmedical.com/">
 
+  <meta property="og:type" content="website">
   <meta property="og:title" content="Azadipour | Global Medical Technology">
   <meta property="og:description" content="Connecting global healthcare through medical innovation.">
   <meta property="og:url" content="https://azadipourmedical.com/">
   <meta property="og:image" content="https://azadipourmedical.com/assets/medical-hero.jpg">
 
-  <link rel="icon" href="assets/logo-transparent.png">
+  <link rel="icon" href="assets/logo-transparent.png" type="image/png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -60,12 +60,15 @@
   <header class="site-header">
     <div class="header-inner">
 
-      <a href="index.html" class="brand">
+      <a href="index.html" class="brand" aria-label="Azadipour Home">
         <img src="assets/logo-transparent.png" alt="Azadipour">
         <span>AZADIPOUR</span>
       </a>
 
-      <button class="menu-toggle" id="menuToggle"
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
         aria-label="Open navigation menu"
         aria-expanded="false"
         aria-controls="mainNav">
@@ -74,7 +77,7 @@
         <span></span>
       </button>
 
-      <nav class="main-nav" id="mainNav">
+      <nav class="main-nav" id="mainNav" aria-label="Main navigation">
         <a href="index.html" class="active">Home</a>
         <a href="about.html">About</a>
         <a href="#global-network">Global Presence</a>
@@ -114,7 +117,6 @@
         </p>
 
         <div class="hero-actions">
-
           <a href="#global-network" class="btn-primary">
             Explore Global Presence ↗
           </a>
@@ -122,7 +124,6 @@
           <a href="medical.html" class="btn-secondary">
             Medical Technology
           </a>
-
         </div>
 
       </div>
@@ -153,7 +154,6 @@
           </div>
 
           <div class="network-heading">
-
             <h2>
               One World.
               <span>Connected Through Healthcare.</span>
@@ -164,7 +164,6 @@
               across medical technology, healthcare markets
               and global business networks.
             </p>
-
           </div>
 
         </div>
@@ -182,8 +181,9 @@
               id="azadipourWorldMap"
               class="az-world-map"
               viewBox="0 0 1440 650"
+              preserveAspectRatio="xMidYMid meet"
               role="img"
-              aria-label="International world map showing Azadipour in Oman, WeMed in China, Qatar and Saudi Arabia">
+              aria-label="World map showing Azadipour in Oman, WeMed in China, Qatar and Saudi Arabia">
 
               <defs>
 
@@ -194,23 +194,13 @@
                   <stop offset="100%" stop-color="#626c77"/>
                 </linearGradient>
 
-                <linearGradient id="mapSelectedSilver" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#ffffff"/>
-                  <stop offset="100%" stop-color="#c4ccd4"/>
-                </linearGradient>
-
-                <linearGradient id="mapSoftSilver" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#e0e4e8"/>
-                  <stop offset="100%" stop-color="#89939e"/>
-                </linearGradient>
-
-                <linearGradient id="mapRouteSilver">
+                <linearGradient id="mapRouteSilver" x1="0" y1="0" x2="1" y2="0">
                   <stop offset="0%" stop-color="#ffffff"/>
                   <stop offset="50%" stop-color="#d9e0e7"/>
                   <stop offset="100%" stop-color="#ffffff"/>
                 </linearGradient>
 
-                <radialGradient id="mapOcean">
+                <radialGradient id="mapOcean" cx="50%" cy="45%" r="70%">
                   <stop offset="0%" stop-color="#171c22"/>
                   <stop offset="100%" stop-color="#050608"/>
                 </radialGradient>
@@ -227,16 +217,16 @@
                   </feMerge>
                 </filter>
 
-                <filter id="mapGlow">
-                  <feGaussianBlur stdDeviation="5" result="blur"/>
+                <filter id="mapGlow" x="-100%" y="-100%" width="300%" height="300%">
+                  <feGaussianBlur stdDeviation="4" result="blur"/>
                   <feMerge>
                     <feMergeNode in="blur"/>
                     <feMergeNode in="SourceGraphic"/>
                   </feMerge>
                 </filter>
 
-                <filter id="mapStrongGlow">
-                  <feGaussianBlur stdDeviation="11" result="blur"/>
+                <filter id="mapStrongGlow" x="-100%" y="-100%" width="300%" height="300%">
+                  <feGaussianBlur stdDeviation="9" result="blur"/>
                   <feMerge>
                     <feMergeNode in="blur"/>
                     <feMergeNode in="SourceGraphic"/>
@@ -255,6 +245,15 @@
               <g id="mapLabels"></g>
 
             </svg>
+
+            <div class="map-loading" id="mapLoading">
+              <span class="loading-indicator"></span>
+              LOADING GLOBAL GEOGRAPHIC DATA
+            </div>
+
+            <div class="map-error" id="mapError" hidden>
+              GLOBAL MAP TEMPORARILY UNAVAILABLE
+            </div>
 
             <div class="map-corner-label">
               GLOBAL MEDICAL CONNECTIONS
@@ -297,7 +296,7 @@
           </div>
 
           <div class="legend-item">
-            <span class="legend-dot opportunity"></span>
+            <span class="legend-dot target"></span>
             <div>
               <strong>Saudi Arabia</strong>
               <small>Regional market</small>
@@ -368,10 +367,7 @@
       <div class="visual-portfolio-grid">
 
         <figure class="visual-portfolio-card">
-          <img
-            src="assets/robotic-hero.jpg"
-            alt="Advanced robotic surgery technology"
-            loading="lazy">
+          <img src="assets/robotic-hero.jpg" alt="Advanced robotic surgery technology" loading="lazy">
           <figcaption>
             <strong>Robotic Surgery</strong>
             <span>Advanced surgical technologies</span>
@@ -379,10 +375,7 @@
         </figure>
 
         <figure class="visual-portfolio-card">
-          <img
-            src="assets/surgical-robotics.jpg"
-            alt="Surgical robotics equipment"
-            loading="lazy">
+          <img src="assets/surgical-robotics.jpg" alt="Surgical robotics equipment" loading="lazy">
           <figcaption>
             <strong>Surgical Robotics</strong>
             <span>Next-generation surgical systems</span>
@@ -390,10 +383,7 @@
         </figure>
 
         <figure class="visual-portfolio-card">
-          <img
-            src="assets/cardiac-hero.jpg"
-            alt="Cardiac surgery technology"
-            loading="lazy">
+          <img src="assets/cardiac-hero.jpg" alt="Cardiac surgery technology" loading="lazy">
           <figcaption>
             <strong>Cardiovascular Technology</strong>
             <span>Advanced cardiac solutions</span>
@@ -401,10 +391,7 @@
         </figure>
 
         <figure class="visual-portfolio-card">
-          <img
-            src="assets/hospital-technology.jpg"
-            alt="Modern hospital technology"
-            loading="lazy">
+          <img src="assets/hospital-technology.jpg" alt="Modern hospital technology" loading="lazy">
           <figcaption>
             <strong>Hospital Technology</strong>
             <span>Medical equipment and systems</span>
@@ -412,10 +399,7 @@
         </figure>
 
         <figure class="visual-portfolio-card">
-          <img
-            src="assets/hospital-project.jpg"
-            alt="Hospital project"
-            loading="lazy">
+          <img src="assets/hospital-project.jpg" alt="Hospital project" loading="lazy">
           <figcaption>
             <strong>Healthcare Projects</strong>
             <span>Hospital development</span>
@@ -423,10 +407,7 @@
         </figure>
 
         <figure class="visual-portfolio-card">
-          <img
-            src="assets/germany-medical.jpg"
-            alt="International medical technology"
-            loading="lazy">
+          <img src="assets/germany-medical.jpg" alt="International medical technology" loading="lazy">
           <figcaption>
             <strong>International Technology</strong>
             <span>Global medical industry</span>
@@ -451,7 +432,6 @@
       <div class="partnership-content">
 
         <div>
-
           <h2>
             Connecting Manufacturers
             <span>With Healthcare Markets.</span>
@@ -466,7 +446,6 @@
           <a href="partners.html" class="text-link">
             Explore Partnerships ↗
           </a>
-
         </div>
 
         <div class="partnership-mark">
