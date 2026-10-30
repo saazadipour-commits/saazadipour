@@ -1,126 +1,334 @@
 /* =========================================================
-   AZADIPOUR — MAIN JAVASCRIPT
-   Navigation / Intro / Footer / Accessibility
+   AZADIPOUR — MAIN WEBSITE JAVASCRIPT
+   Navigation / Intro / Responsive / Accessibility
    ========================================================= */
 
 (() => {
     "use strict";
 
-    document.addEventListener("DOMContentLoaded", () => {
+    const SELECTORS = {
+        intro: "#introScreen",
+        menu: "#menuToggle",
+        navigation: "#mainNavigation",
+        year: "#currentYear"
+    };
 
-        /* INTRO SCREEN */
-        const intro = document.getElementById("intro");
+    const intro = document.querySelector(SELECTORS.intro);
+    const menu = document.querySelector(SELECTORS.menu);
+    const navigation = document.querySelector(SELECTORS.navigation);
+    const year = document.querySelector(SELECTORS.year);
 
-        if (intro) {
-            const hideIntro = () => {
-                intro.classList.add("hide");
+    /* -----------------------------------------
+       01 — INTRO ANIMATION
+    ----------------------------------------- */
+
+    function hideIntro() {
+
+        if (!intro) return;
+
+        intro.classList.add("hide");
+
+        window.setTimeout(() => {
+            intro.style.display = "none";
+        }, 900);
+    }
+
+    if (intro) {
+
+        const alreadyVisited =
+            sessionStorage.getItem("azadipour_intro_seen");
+
+        if (alreadyVisited) {
+
+            intro.style.display = "none";
+
+        } else {
+
+            window.addEventListener("load", () => {
+
                 window.setTimeout(() => {
-                    intro.remove();
-                }, 900);
-            };
 
-            if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-                hideIntro();
-            } else {
-                window.setTimeout(hideIntro, 1200);
-            }
+                    hideIntro();
+
+                    sessionStorage.setItem(
+                        "azadipour_intro_seen",
+                        "true"
+                    );
+
+                }, 1100);
+
+            }, { once: true });
+
         }
+    }
 
-        /* MOBILE NAVIGATION */
-        const menuToggle = document.getElementById("menuToggle");
-        const mainNav = document.getElementById("mainNav");
 
-        if (menuToggle && mainNav) {
-            const closeMenu = () => {
-                mainNav.classList.remove("open");
-                menuToggle.setAttribute("aria-expanded", "false");
-                menuToggle.setAttribute("aria-label", "Open navigation menu");
-            };
+    /* -----------------------------------------
+       02 — MOBILE NAVIGATION
+    ----------------------------------------- */
 
-            menuToggle.addEventListener("click", () => {
-                const isOpen = mainNav.classList.toggle("open");
+    function openMenu() {
 
-                menuToggle.setAttribute("aria-expanded", String(isOpen));
-                menuToggle.setAttribute(
-                    "aria-label",
-                    isOpen ? "Close navigation menu" : "Open navigation menu"
-                );
-            });
+        if (!menu || !navigation) return;
 
-            mainNav.querySelectorAll("a").forEach(link => {
-                link.addEventListener("click", closeMenu);
-            });
+        navigation.classList.add("open");
 
-            document.addEventListener("click", event => {
-                if (
-                    !mainNav.contains(event.target) &&
-                    !menuToggle.contains(event.target)
-                ) {
-                    closeMenu();
-                }
-            });
+        menu.classList.add("active");
 
-            document.addEventListener("keydown", event => {
-                if (event.key === "Escape") {
-                    closeMenu();
-                    menuToggle.focus();
-                }
-            });
+        menu.setAttribute(
+            "aria-expanded",
+            "true"
+        );
 
-            window.addEventListener("resize", () => {
-                if (window.innerWidth > 1000) {
-                    closeMenu();
-                }
-            });
-        }
+        menu.setAttribute(
+            "aria-label",
+            "Close navigation menu"
+        );
 
-        /* ACTIVE NAVIGATION */
-        const currentPage = (
-            window.location.pathname.split("/").pop() || "index.html"
-        ).toLowerCase();
+        document.body.classList.add("menu-open");
+    }
 
-        document.querySelectorAll(".main-nav a").forEach(link => {
-            const linkPage = (
-                link.getAttribute("href") || ""
-            ).split("/").pop().toLowerCase();
+    function closeMenu() {
 
-            if (linkPage === currentPage) {
-                link.classList.add("active");
-                link.setAttribute("aria-current", "page");
+        if (!menu || !navigation) return;
+
+        navigation.classList.remove("open");
+
+        menu.classList.remove("active");
+
+        menu.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+        menu.setAttribute(
+            "aria-label",
+            "Open navigation menu"
+        );
+
+        document.body.classList.remove("menu-open");
+    }
+
+    if (menu && navigation) {
+
+        menu.addEventListener("click", () => {
+
+            const isOpen =
+                navigation.classList.contains("open");
+
+            if (isOpen) {
+                closeMenu();
             } else {
-                link.classList.remove("active");
-                link.removeAttribute("aria-current");
+                openMenu();
             }
+
         });
 
-        /* FOOTER YEAR */
-        const currentYear = document.getElementById("currentYear");
+        navigation.querySelectorAll("a").forEach(link => {
 
-        if (currentYear) {
-            currentYear.textContent = new Date().getFullYear();
-        }
+            link.addEventListener("click", closeMenu);
 
-        /* SMOOTH INTERNAL LINKS */
-        document.querySelectorAll('a[href^="#"]').forEach(link => {
-            link.addEventListener("click", event => {
-                const targetId = link.getAttribute("href");
+        });
 
-                if (!targetId || targetId === "#") return;
+        document.addEventListener("click", event => {
 
-                const target = document.querySelector(targetId);
+            const clickedInside =
+                navigation.contains(event.target) ||
+                menu.contains(event.target);
 
-                if (target) {
-                    event.preventDefault();
-                    target.scrollIntoView({
-                        behavior: window.matchMedia(
-                            "(prefers-reduced-motion: reduce)"
-                        ).matches ? "auto" : "smooth",
-                        block: "start"
-                    });
-                }
+            if (!clickedInside) {
+                closeMenu();
+            }
+
+        });
+
+        document.addEventListener("keydown", event => {
+
+            if (event.key === "Escape") {
+                closeMenu();
+            }
+
+        });
+
+        window.addEventListener("resize", () => {
+
+            if (window.innerWidth > 1050) {
+                closeMenu();
+            }
+
+        });
+
+    }
+
+
+    /* -----------------------------------------
+       03 — CURRENT YEAR
+    ----------------------------------------- */
+
+    if (year) {
+        year.textContent = new Date().getFullYear();
+    }
+
+
+    /* -----------------------------------------
+       04 — ACTIVE NAVIGATION
+    ----------------------------------------- */
+
+    const currentPage = (
+        window.location.pathname.split("/").pop() ||
+        "index.html"
+    ).toLowerCase();
+
+    if (navigation) {
+
+        navigation.querySelectorAll("a").forEach(link => {
+
+            const href = (
+                link.getAttribute("href") || ""
+            ).toLowerCase();
+
+            if (href === currentPage) {
+
+                link.classList.add("active");
+
+                link.setAttribute(
+                    "aria-current",
+                    "page"
+                );
+
+            } else {
+
+                link.classList.remove("active");
+
+                link.removeAttribute("aria-current");
+
+            }
+
+        });
+
+    }
+
+
+    /* -----------------------------------------
+       05 — SMOOTH INTERNAL NAVIGATION
+    ----------------------------------------- */
+
+    document.querySelectorAll(
+        'a[href^="#"]'
+    ).forEach(link => {
+
+        link.addEventListener("click", event => {
+
+            const targetId =
+                link.getAttribute("href");
+
+            if (!targetId || targetId === "#") return;
+
+            const target =
+                document.querySelector(targetId);
+
+            if (!target) return;
+
+            event.preventDefault();
+
+            target.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
             });
+
+            closeMenu();
+
         });
 
     });
+
+
+    /* -----------------------------------------
+       06 — HEADER SCROLL EFFECT
+    ----------------------------------------- */
+
+    const header = document.querySelector(".site-header");
+
+    function updateHeader() {
+
+        if (!header) return;
+
+        if (window.scrollY > 40) {
+
+            header.classList.add("scrolled");
+
+        } else {
+
+            header.classList.remove("scrolled");
+
+        }
+
+    }
+
+    window.addEventListener(
+        "scroll",
+        updateHeader,
+        { passive: true }
+    );
+
+    updateHeader();
+
+
+    /* -----------------------------------------
+       07 — ACCESSIBILITY
+    ----------------------------------------- */
+
+    if (menu) {
+
+        menu.addEventListener("keydown", event => {
+
+            if (
+                event.key === "Enter" ||
+                event.key === " "
+            ) {
+
+                event.preventDefault();
+
+                menu.click();
+
+            }
+
+        });
+
+    }
+
+
+    /* -----------------------------------------
+       08 — NETWORK EVENT LISTENER
+    ----------------------------------------- */
+
+    document.addEventListener(
+        "azadipour:location-selected",
+        event => {
+
+            const location = event.detail;
+
+            if (!location) return;
+
+            console.info(
+                "Azadipour network location selected:",
+                location.name
+            );
+
+        }
+    );
+
+
+    /* -----------------------------------------
+       09 — INITIALIZATION
+    ----------------------------------------- */
+
+    document.documentElement.classList.add(
+        "azadipour-ready"
+    );
+
+    console.info(
+        "AZADIPOUR WEBSITE INITIALIZED"
+    );
 
 })();
