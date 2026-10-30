@@ -1,304 +1,309 @@
-/* =====================================================
-   AZADIPOUR — WORLD MAP ENGINE
-   REAL GEOGRAPHIC DATA / NATURAL EARTH / SILVER RELIEF
-===================================================== */
+/* =========================================
+   AZADIPOUR — GLOBAL NETWORK MAP
+   Silver Monochrome Edition
+========================================= */
 
-document.addEventListener("DOMContentLoaded", async () => {
-  "use strict";
+(() => {
+    "use strict";
 
-  const svgElement = document.getElementById("azadipourWorldMap");
-  if (!svgElement || svgElement.dataset.initialized === "true") return;
+    const container = document.getElementById("worldMap");
+    if (!container) return;
 
-  svgElement.dataset.initialized = "true";
+    const width = 1440;
+    const height = 747;
 
-  if (!window.d3 || !window.topojson) {
-    showMapError("MAP LIBRARIES COULD NOT BE LOADED");
-    return;
-  }
+    const locations = [
+        {
+            name: "MUSCAT",
+            country: "Oman",
+            lat: 23.588,
+            lng: 58.383,
+            type: "registered",
+            label: true
+        },
+        {
+            name: "BEIJING",
+            country: "China",
+            lat: 39.904,
+            lng: 116.407,
+            type: "partner",
+            label: true
+        },
+        {
+            name: "GERMANY",
+            country: "Germany",
+            lat: 50.11,
+            lng: 8.68,
+            type: "target",
+            label: true
+        },
+        {
+            name: "RIYADH",
+            country: "Saudi Arabia",
+            lat: 24.713,
+            lng: 46.675,
+            type: "target"
+        },
+        {
+            name: "DUBAI",
+            country: "UAE",
+            lat: 25.204,
+            lng: 55.270,
+            type: "target"
+        },
+        {
+            name: "DOHA",
+            country: "Qatar",
+            lat: 25.285,
+            lng: 51.531,
+            type: "target"
+        },
+        {
+            name: "MANAMA",
+            country: "Bahrain",
+            lat: 26.228,
+            lng: 50.586,
+            type: "target"
+        },
+        {
+            name: "KUWAIT",
+            country: "Kuwait",
+            lat: 29.375,
+            lng: 47.977,
+            type: "target"
+        }
+    ];
 
-  const svg = d3.select(svgElement);
+    const connections = locations
+        .filter(d => d.country !== "Oman")
+        .map(d => ({
+            source: locations[0],
+            target: d
+        }));
 
-  const countriesLayer = svg.select("#mapCountries");
-  const bordersLayer = svg.select("#mapBorders");
-  const graticuleLayer = svg.select("#mapGraticule");
-  const connectionsLayer = svg.select("#mapConnections");
-  const markersLayer = svg.select("#mapMarkers");
-  const labelsLayer = svg.select("#mapLabels");
+    const svgNS = "http://www.w3.org/2000/svg";
 
-  const width = 1440;
-  const height = 650;
+    function element(parent, tag, attrs = {}) {
+        const el = document.createElementNS(svgNS, tag);
 
-  const reduceMotion = window.matchMedia(
-    "(prefers-reduced-motion: reduce)"
-  ).matches;
+        Object.entries(attrs).forEach(([key, value]) => {
+            el.setAttribute(key, value);
+        });
 
-  const geoUrl =
-    "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
-
-  const mapLocations = {
-    azadipour: {
-      name: "AZADIPOUR",
-      sub: "MUSCAT · OMAN",
-      coordinates: [58.3829, 23.5880],
-      type: "main"
-    },
-
-    wemed: {
-      name: "WEMED",
-      sub: "BEIJING · CHINA",
-      coordinates: [116.4074, 39.9042],
-      type: "partner"
-    },
-
-    qatar: {
-      name: "QATAR",
-      sub: "DOHA · QATAR",
-      coordinates: [51.1839, 25.3548],
-      type: "partner"
-    },
-
-    saudi: {
-      name: "SAUDI ARABIA",
-      sub: "REGIONAL MARKET",
-      coordinates: [45.0792, 23.8859],
-      type: "market"
-    }
-  };
-
-  // ISO numeric country identifiers used by world-atlas.
-  const countryStyles = {
-    "512": "region-oman",
-    "156": "region-china",
-    "634": "region-qatar",
-    "682": "region-saudi"
-  };
-
-  function showMapError(message) {
-    const loading = document.getElementById("mapLoading");
-    const error = document.getElementById("mapError");
-
-    if (loading) loading.classList.add("is-hidden");
-
-    if (error) {
-      error.textContent = message;
-      error.hidden = false;
-    }
-
-    console.error("AZADIPOUR WORLD MAP:", message);
-  }
-
-  function hideMapLoading() {
-    const loading = document.getElementById("mapLoading");
-    if (loading) loading.classList.add("is-hidden");
-  }
-
-  function addLabel(text, position, className, dx = 0, dy = 0, anchor = "start") {
-    if (!position) return;
-
-    labelsLayer
-      .append("text")
-      .attr("class", className)
-      .attr("x", position.x + dx)
-      .attr("y", position.y + dy)
-      .attr("text-anchor", anchor)
-      .text(text);
-  }
-
-  function addMarker(location, key, projection) {
-    const point = projection(location.coordinates);
-    if (!point) return null;
-
-    const [x, y] = point;
-
-    const marker = markersLayer
-      .append("g")
-      .attr("class", `map-marker marker-${key}`)
-      .attr("transform", `translate(${x},${y})`);
-
-    marker
-      .append("circle")
-      .attr("class", "map-marker-halo")
-      .attr("r", key === "azadipour" || key === "wemed" ? 19 : 14);
-
-    if (!reduceMotion) {
-      marker
-        .append("circle")
-        .attr("class", "map-marker-ring")
-        .attr("r", key === "azadipour" || key === "wemed" ? 10 : 7);
+        parent.appendChild(el);
+        return el;
     }
 
-    marker
-      .append("circle")
-      .attr("class", location.type === "market"
-        ? "map-marker-soft"
-        : "map-marker-core")
-      .attr("r", key === "azadipour" || key === "wemed" ? 5.5 : 4.5);
+    function createSVG() {
+        container.innerHTML = "";
 
-    marker
-      .append("title")
-      .text(`${location.name}${location.sub ? " — " + location.sub : ""}`);
+        const svg = element(container, "svg", {
+            viewBox: `0 0 ${width} ${height}`,
+            preserveAspectRatio: "xMidYMid meet",
+            role: "img",
+            "aria-label": "Azadipour international medical technology network map"
+        });
 
-    return { x, y };
-  }
+        const defs = element(svg, "defs");
 
-  try {
-    const world = await d3.json(geoUrl);
+        const gradient = element(defs, "linearGradient", {
+            id: "silverLand",
+            x1: "0%",
+            y1: "0%",
+            x2: "100%",
+            y2: "100%"
+        });
 
-    if (!world || !world.objects || !world.objects.countries) {
-      throw new Error("World geographic data is incomplete.");
+        element(gradient, "stop", {
+            offset: "0%",
+            "stop-color": "#f5f6f7"
+        });
+
+        element(gradient, "stop", {
+            offset: "55%",
+            "stop-color": "#aeb4ba"
+        });
+
+        element(gradient, "stop", {
+            offset: "100%",
+            "stop-color": "#626a72"
+        });
+
+        const glow = element(defs, "filter", {
+            id: "lightGlow",
+            x: "-200%",
+            y: "-200%",
+            width: "400%",
+            height: "400%"
+        });
+
+        element(glow, "feGaussianBlur", {
+            stdDeviation: "3",
+            result: "blur"
+        });
+
+        const merge = element(glow, "feMerge");
+        element(merge, "feMergeNode", { in: "blur" });
+        element(merge, "feMergeNode", { in: "SourceGraphic" });
+
+        const routeGlow = element(defs, "filter", {
+            id: "routeGlow"
+        });
+
+        element(routeGlow, "feGaussianBlur", {
+            stdDeviation: "2"
+        });
+
+        return svg;
     }
 
-    const countries = topojson.feature(
-      world,
-      world.objects.countries
-    );
+    function renderMap(worldData) {
+        const svg = createSVG();
 
-    const borders = topojson.mesh(
-      world,
-      world.objects.countries,
-      (a, b) => a !== b
-    );
+        const countries = topojson.feature(
+            worldData,
+            worldData.objects.countries
+        );
 
-    const projection = d3.geoNaturalEarth1()
-      .fitExtent(
-        [[28, 32], [1412, 618]],
-        { type: "Sphere" }
-      );
+        const projection = d3.geoNaturalEarth1()
+            .fitExtent(
+                [[15, 35], [width - 15, height - 35]],
+                countries
+            );
 
-    const path = d3.geoPath(projection);
+        const path = d3.geoPath(projection);
 
-    /* GEOGRAPHIC GRID */
+        // Country shapes
+        const landGroup = element(svg, "g");
 
-    const graticule = d3.geoGraticule()
-      .step([30, 20])();
+        countries.features.forEach(country => {
+            element(landGroup, "path", {
+                d: path(country),
+                class: "world-land"
+            });
+        });
 
-    graticuleLayer
-      .append("path")
-      .datum(graticule)
-      .attr("class", "map-graticule-line")
-      .attr("d", path);
+        // Country boundary lines
+        const boundaries = topojson.mesh(
+            worldData,
+            worldData.objects.countries,
+            (a, b) => a !== b
+        );
 
-    /* COUNTRIES */
+        element(svg, "path", {
+            d: path(boundaries),
+            class: "world-country-lines"
+        });
 
-    countriesLayer
-      .selectAll("path")
-      .data(countries.features)
-      .join("path")
-      .attr("class", d => {
-        const id = String(d.id);
-        const regionClass = countryStyles[id] || "";
-        return `map-country ${regionClass}`;
-      })
-      .attr("d", path)
-      .append("title")
-      .text(d => d.properties?.name || "Country");
+        // Subtle background network stars
+        const stars = [
+            [-155, 20], [-120, 48], [-100, 10],
+            [-75, -25], [-30, 35], [0, 55],
+            [25, 10], [75, 5], [100, 50],
+            [130, 20], [150, -20], [35, -25],
+            [-10, -10], [65, 35], [115, -35]
+        ];
 
-    /* COUNTRY BORDERS */
+        stars.forEach(([lng, lat]) => {
+            const point = projection([lng, lat]);
+            if (!point) return;
 
-    bordersLayer
-      .append("path")
-      .datum(borders)
-      .attr("class", "map-country-borders")
-      .attr("d", path);
+            element(svg, "circle", {
+                cx: point[0],
+                cy: point[1],
+                r: 2.2,
+                class: "world-star",
+                opacity: ".75"
+            });
+        });
 
-    /* OMAN TO CHINA ROUTE */
+        // Connection routes
+        connections.forEach(connection => {
+            const interpolate = d3.geoInterpolate(
+                [
+                    connection.source.lng,
+                    connection.source.lat
+                ],
+                [
+                    connection.target.lng,
+                    connection.target.lat
+                ]
+            );
 
-    const start = mapLocations.azadipour.coordinates;
-    const end = mapLocations.wemed.coordinates;
+            const coordinates = d3.range(0, 1.001, 0.012)
+                .map(t => projection(interpolate(t)));
 
-    const interpolate = d3.geoInterpolate(start, end);
+            const route = d3.line()(coordinates);
 
-    const routeCoordinates = d3.range(0, 1.001, 0.01)
-      .map(t => interpolate(t));
+            element(svg, "path", {
+                d: route,
+                class: "world-route"
+            });
+        });
 
-    const route = {
-      type: "LineString",
-      coordinates: routeCoordinates
-    };
+        // Location points
+        locations.forEach(location => {
+            const point = projection([
+                location.lng,
+                location.lat
+            ]);
 
-    const routePath = path(route);
+            if (!point) return;
 
-    connectionsLayer
-      .append("path")
-      .attr("class", "route-shadow")
-      .attr("d", routePath);
+            const group = element(svg, "g", {
+                class: "world-node",
+                transform: `translate(${point[0]},${point[1]})`
+            });
 
-    connectionsLayer
-      .append("path")
-      .attr("class", "route-line")
-      .attr("d", routePath);
+            const title = element(group, "title");
+            title.textContent =
+                `${location.name} — ${location.country} — ${location.type}`;
 
-    /* MARKERS */
+            element(group, "circle", {
+                r: location.type === "registered" ? 9 : 6,
+                class: "world-node-ring"
+            });
 
-    const markerPositions = {};
+            element(group, "circle", {
+                r: location.type === "registered" ? 4 : 3,
+                class: "world-node-core"
+            });
 
-    Object.entries(mapLocations).forEach(([key, location]) => {
-      markerPositions[key] = addMarker(location, key, projection);
-    });
+            if (location.label) {
+                const label = element(group, "text", {
+                    x: 13,
+                    y: -12,
+                    class: "world-node-label"
+                });
 
-    /* LABELS */
+                label.textContent = location.name;
+            }
+        });
+    }
 
-    addLabel(
-      "AZADIPOUR",
-      markerPositions.azadipour,
-      "map-label map-label-main",
-      17,
-      -13
-    );
+    async function init() {
+        try {
+            const response = await fetch(
+                "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json"
+            );
 
-    addLabel(
-      "MUSCAT · OMAN",
-      markerPositions.azadipour,
-      "map-label-sub",
-      17,
-      8
-    );
+            if (!response.ok) {
+                throw new Error("World map data unavailable");
+            }
 
-    addLabel(
-      "WEMED",
-      markerPositions.wemed,
-      "map-label map-label-partner",
-      17,
-      -12
-    );
+            const worldData = await response.json();
+            renderMap(worldData);
 
-    addLabel(
-      "BEIJING · CHINA",
-      markerPositions.wemed,
-      "map-label-sub",
-      17,
-      9
-    );
+        } catch (error) {
+            console.error("Azadipour map error:", error);
 
-    addLabel(
-      "QATAR",
-      markerPositions.qatar,
-      "map-country-label",
-      0,
-      -17,
-      "middle"
-    );
+            container.innerHTML =
+                '<div class="world-map-loading">' +
+                'GLOBAL MAP COULD NOT BE LOADED — CHECK CONNECTION' +
+                '</div>';
+        }
+    }
 
-    addLabel(
-      "SAUDI ARABIA",
-      markerPositions.saudi,
-      "map-country-label soft",
-      0,
-      23,
-      "middle"
-    );
+    init();
 
-    /* MAP READY */
-
-    hideMapLoading();
-
-    const section = document.getElementById("global-network");
-    if (section) section.classList.add("map-ready");
-
-    console.info("AZADIPOUR WORLD MAP: SUCCESSFULLY INITIALIZED");
-
-  } catch (error) {
-    showMapError("GLOBAL MAP TEMPORARILY UNAVAILABLE");
-    console.error(error);
-  }
-});
+})();
