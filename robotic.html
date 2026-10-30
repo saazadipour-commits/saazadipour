@@ -18,77 +18,102 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
-        .robotic-page {
-            background: #08090b;
-            color: #f1f1ef;
-        }
+        /* =========================================================
+           ROBOTICS PAGE SPECIFIC STYLES (LUXURY & INTERNATIONAL)
+           ========================================================= */
 
         .robotic-hero {
-            min-height: 66vh;
+            position: relative;
+            min-height: 85vh;
             display: flex;
             align-items: center;
             padding: 150px 7% 100px;
-            position: relative;
             overflow: hidden;
-            border-bottom: 1px solid rgba(255,255,255,.10);
-            background:
-                radial-gradient(ellipse at 78% 35%, rgba(190,198,208,.11), transparent 38%),
-                linear-gradient(120deg, #08090b 0%, #101318 55%, #08090b 100%);
+            border-bottom: 1px solid var(--border);
+            background: #050607;
+        }
+
+        /* Background Image with Dark Overlay */
+        .robotic-hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: url('assets/robotic-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.35;
+            z-index: 0;
         }
 
         .robotic-hero::after {
             content: "";
             position: absolute;
-            width: 480px;
-            height: 480px;
-            right: -140px;
-            top: 10%;
-            border: 1px solid rgba(220,225,232,.10);
-            border-radius: 50%;
-            box-shadow:
-                0 0 0 55px rgba(220,225,232,.025),
-                0 0 0 110px rgba(220,225,232,.018);
-            pointer-events: none;
-        }
-
-        .robotic-hero-content {
-            width: min(900px, 100%);
-            position: relative;
+            inset: 0;
+            background: linear-gradient(
+                90deg, 
+                rgba(5,6,7,1) 0%, 
+                rgba(5,6,7,0.8) 50%, 
+                rgba(5,6,7,0.4) 100%
+            );
             z-index: 1;
         }
 
+        .robotic-hero-content {
+            position: relative;
+            z-index: 2;
+            width: min(900px, 100%);
+        }
+
         .robotic-eyebrow {
-            color: #aeb5bf;
+            color: var(--silver);
             font-size: 11px;
             letter-spacing: .28em;
             text-transform: uppercase;
             margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .robotic-eyebrow::before {
+            content: "";
+            display: block;
+            width: 40px;
+            height: 1px;
+            background: #fff;
         }
 
         .robotic-hero h1 {
             font-family: "Cormorant Garamond", serif;
             font-weight: 400;
             font-size: clamp(48px, 7vw, 88px);
-            line-height: .98;
+            line-height: 1.05;
             letter-spacing: -.025em;
             max-width: 900px;
             margin: 0 0 28px;
+            color: #fff;
         }
 
         .robotic-hero h1 span {
-            color: #aeb5bf;
+            color: var(--silver);
+            display: block;
         }
 
         .robotic-hero p {
             max-width: 650px;
-            color: #b9bec6;
+            color: var(--text-soft);
             font-size: 15px;
             line-height: 1.9;
             font-weight: 300;
         }
 
         .robotic-section {
-            padding: 105px 7%;
+            padding: 110px 7%;
+            background: var(--bg);
+        }
+
+        .robotic-section.bg-soft {
+            background: var(--bg-soft);
         }
 
         .robotic-inner {
@@ -98,11 +123,11 @@
 
         .robotic-heading {
             max-width: 760px;
-            margin-bottom: 52px;
+            margin-bottom: 60px;
         }
 
         .robotic-heading .eyebrow {
-            color: #9da5b0;
+            color: var(--silver-dark);
             font-size: 10px;
             letter-spacing: .25em;
             text-transform: uppercase;
@@ -114,37 +139,43 @@
             font-size: clamp(38px, 5vw, 62px);
             font-weight: 400;
             line-height: 1.05;
-            margin: 0 0 18px;
+            margin: 0 0 20px;
+            color: #fff;
         }
 
         .robotic-heading p {
-            color: #aeb4bd;
+            color: var(--text-soft);
             line-height: 1.9;
             font-size: 14px;
             max-width: 680px;
         }
 
+        /* GRID CARDS */
         .robotic-grid {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 1px;
-            background: rgba(255,255,255,.13);
-            border: 1px solid rgba(255,255,255,.13);
+            gap: 20px;
         }
 
         .robotic-card {
-            min-height: 275px;
-            padding: 38px;
-            background: #0d1014;
-            transition: background .3s ease;
+            min-height: 280px;
+            padding: 45px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .robotic-card:hover {
-            background: #151a20;
+            border-color: var(--border-strong);
+            transform: translateY(-5px);
+            background: var(--bg-light);
         }
 
         .robotic-number {
-            color: #747d88;
+            color: var(--silver-dark);
             font-size: 11px;
             letter-spacing: .18em;
             margin-bottom: 35px;
@@ -152,40 +183,65 @@
 
         .robotic-card h3 {
             font-family: "Cormorant Garamond", serif;
-            font-size: 31px;
+            font-size: 34px;
             font-weight: 500;
             margin: 0 0 15px;
+            color: #fff;
         }
 
         .robotic-card p {
-            color: #aeb4bd;
+            color: var(--text-soft);
             font-size: 13px;
             line-height: 1.85;
             max-width: 510px;
-            margin: 0;
+            margin: 0 0 25px;
         }
 
         .robotic-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 24px;
+            gap: 10px;
+            margin-top: auto;
         }
 
         .robotic-tags span {
-            border: 1px solid rgba(255,255,255,.17);
-            color: #c4c9d0;
-            padding: 7px 10px;
+            border: 1px solid var(--border);
+            color: var(--silver);
+            padding: 7px 12px;
             font-size: 10px;
-            letter-spacing: .04em;
+            letter-spacing: .05em;
+            background: rgba(255,255,255,0.02);
         }
 
-        .robotic-vision {
-            background: #101318;
-            border-top: 1px solid rgba(255,255,255,.08);
-            border-bottom: 1px solid rgba(255,255,255,.08);
+        /* IMAGE SECTION */
+        .robotic-image-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 20px;
+            margin-top: 50px;
         }
 
+        .robotic-image-box {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            min-height: 350px;
+        }
+
+        .robotic-image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+
+        .robotic-image-box:hover img {
+            opacity: 1;
+            transform: scale(1.03);
+        }
+
+        /* VISION SECTION */
         .robotic-vision-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -198,65 +254,70 @@
             font-size: clamp(38px, 5vw, 60px);
             font-weight: 400;
             line-height: 1.05;
-            margin: 0 0 22px;
+            margin: 0 0 25px;
         }
 
         .robotic-vision p {
-            color: #b2b8c1;
+            color: var(--text-soft);
             font-size: 14px;
             line-height: 1.95;
+            margin-bottom: 20px;
         }
 
         .robotic-list {
-            border-top: 1px solid rgba(255,255,255,.18);
+            border-top: 1px solid var(--border);
         }
 
         .robotic-list-item {
             display: flex;
-            gap: 22px;
-            padding: 22px 0;
-            border-bottom: 1px solid rgba(255,255,255,.13);
+            gap: 25px;
+            padding: 25px 0;
+            border-bottom: 1px solid var(--border);
         }
 
         .robotic-list-item span {
-            color: #858e99;
+            color: var(--silver-dark);
             font-size: 11px;
             letter-spacing: .12em;
-            padding-top: 4px;
+            padding-top: 5px;
         }
 
         .robotic-list-item strong {
-            font-size: 13px;
-            font-weight: 500;
-            letter-spacing: .04em;
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: .03em;
+            color: var(--text);
         }
 
         .robotic-note {
-            margin-top: 28px;
-            color: #858d98;
+            margin-top: 40px;
+            color: var(--muted);
             font-size: 11px;
             line-height: 1.8;
+            border-left: 2px solid var(--silver-dark);
+            padding-left: 20px;
         }
 
+        /* CTA SECTION */
         .robotic-cta {
             text-align: center;
-            padding: 105px 7%;
-            background:
-                radial-gradient(ellipse at center, rgba(180,190,205,.10), transparent 60%),
-                #08090b;
+            padding: 120px 7%;
+            background: linear-gradient(180deg, var(--bg) 0%, #11161a 100%);
+            border-top: 1px solid var(--border);
         }
 
         .robotic-cta h2 {
             font-family: "Cormorant Garamond", serif;
             font-size: clamp(38px, 5vw, 62px);
             font-weight: 400;
-            margin: 0 0 18px;
+            margin: 0 0 20px;
+            color: #fff;
         }
 
         .robotic-cta p {
-            color: #aeb4bd;
+            color: var(--text-soft);
             max-width: 620px;
-            margin: 0 auto 30px;
+            margin: 0 auto 40px;
             font-size: 14px;
             line-height: 1.9;
         }
@@ -265,102 +326,76 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            min-height: 48px;
-            padding: 0 25px;
-            border: 1px solid rgba(255,255,255,.55);
-            color: #f1f1ef;
+            min-height: 50px;
+            padding: 0 35px;
+            border: 1px solid var(--silver);
+            color: var(--bg);
+            background: #fff;
             text-decoration: none;
             text-transform: uppercase;
             font-size: 10px;
             letter-spacing: .18em;
-            transition: background .25s ease, color .25s ease;
+            transition: var(--transition);
         }
 
         .robotic-cta-link:hover {
-            background: #f1f1ef;
-            color: #08090b;
+            background: var(--silver);
+            border-color: var(--silver);
         }
 
-        @media (max-width: 760px) {
-            .robotic-hero {
-                min-height: 560px;
-                padding: 125px 6% 75px;
-            }
-
-            .robotic-hero::after {
-                width: 280px;
-                height: 280px;
-                right: -150px;
-                top: 18%;
-            }
-
-            .robotic-section {
-                padding: 75px 6%;
-            }
-
-            .robotic-grid,
-            .robotic-vision-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .robotic-card {
-                min-height: auto;
-                padding: 28px;
-            }
-
-            .robotic-vision-grid {
-                gap: 35px;
-            }
-
-            .robotic-cta {
-                padding: 75px 6%;
-            }
+        @media (max-width: 900px) {
+            .robotic-hero { min-height: 70vh; padding: 130px 6% 80px; }
+            .robotic-section { padding: 80px 6%; }
+            .robotic-grid, .robotic-vision-grid, .robotic-image-grid { grid-template-columns: 1fr; }
+            .robotic-card { padding: 35px; min-height: auto; }
+            .robotic-cta { padding: 80px 6%; }
         }
     </style>
 </head>
 
 <body class="robotic-page">
 
-    <div class="intro-screen" id="introScreen">
-        <div class="intro-logo">
-            <img src="assets/logo-transparent.png" alt="Azadipour">
+    <!-- INTRO -->
+    <div class="intro-screen" id="intro">
+        <div class="intro-content">
+            <img src="assets/logo-transparent.png" alt="Azadipour Logo">
+            <div class="intro-name">AZADIPOUR</div>
+            <p>GLOBAL MEDICAL TECHNOLOGY & HOSPITAL SOLUTIONS</p>
         </div>
-        <div class="intro-line"></div>
     </div>
 
-    <header class="site-header" id="siteHeader">
+    <!-- HEADER -->
+    <header class="site-header">
         <div class="header-inner">
-            <a class="brand" href="index.html" aria-label="Azadipour Home">
-                <img src="assets/logo-transparent.png" alt="Azadipour logo">
+            <a href="index.html" class="brand" aria-label="Azadipour Home">
+                <img src="assets/logo-transparent.png" alt="Azadipour">
+                <span>AZADIPOUR</span>
             </a>
 
-            <button class="menu-toggle" id="menuToggle"
-                    aria-label="Open navigation menu"
-                    aria-expanded="false"
-                    aria-controls="mainNav">
+            <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mainNav">
+                <span></span>
                 <span></span>
                 <span></span>
             </button>
 
             <nav class="main-nav" id="mainNav">
                 <a href="index.html">Home</a>
-                <a href="medical.html">Medical</a>
-                <a href="cardiac.html">Cardiac</a>
-                <a href="robotic.html" class="active" aria-current="page">Robotics</a>
-                <a href="projects.html">Projects</a>
-                <a href="partners.html">Partners</a>
+                <a href="about.html">About Us</a>
+                <a href="index.html#global-network">Global Presence</a>
+                <a href="medical.html">Medical Technology</a>
+                <a href="robotic.html" class="active">Robotic Surgery</a>
+                <a href="partners.html">Global Partnerships</a>
                 <a href="contact.html" class="nav-contact">Contact</a>
             </nav>
         </div>
     </header>
 
     <main>
+        <!-- HERO SECTION -->
         <section class="robotic-hero">
             <div class="robotic-hero-content">
-                <div class="robotic-eyebrow">AZADIPOUR / SURGICAL ROBOTICS &amp; DIGITAL SURGERY</div>
-
+                <div class="robotic-eyebrow">SURGICAL ROBOTICS & DIGITAL SURGERY</div>
                 <h1>Precision. Intelligence. <span>The future of surgery.</span></h1>
-
                 <p>
                     Exploring advanced surgical robotics, image-guided technologies,
                     navigation systems and intelligent operating room solutions
@@ -369,13 +404,12 @@
             </div>
         </section>
 
+        <!-- TECHNOLOGY FOCUS -->
         <section class="robotic-section">
             <div class="robotic-inner">
                 <div class="robotic-heading">
                     <div class="eyebrow">TECHNOLOGY FOCUS</div>
-
                     <h2>Exploring the next generation of surgical technology.</h2>
-
                     <p>
                         Azadipour's technology focus includes advanced systems
                         that support surgical workflows, image-guided procedures,
@@ -386,16 +420,15 @@
 
                 <div class="robotic-grid">
                     <article class="robotic-card">
-                        <div class="robotic-number">01 / ROBOTIC-ASSISTED SURGERY</div>
-
-                        <h3>Surgical Robotics</h3>
-
-                        <p>
-                            Robotic-assisted surgical platforms and technologies
-                            designed to support modern surgical procedures,
-                            operating teams and evolving clinical workflows.
-                        </p>
-
+                        <div>
+                            <div class="robotic-number">01 / ROBOTIC-ASSISTED SURGERY</div>
+                            <h3>Surgical Robotics</h3>
+                            <p>
+                                Robotic-assisted surgical platforms and technologies
+                                designed to support modern surgical procedures,
+                                operating teams and evolving clinical workflows.
+                            </p>
+                        </div>
                         <div class="robotic-tags">
                             <span>Robotic Systems</span>
                             <span>Surgical Platforms</span>
@@ -404,16 +437,15 @@
                     </article>
 
                     <article class="robotic-card">
-                        <div class="robotic-number">02 / IMAGE-GUIDED SURGERY</div>
-
-                        <h3>Navigation &amp; Image Guidance</h3>
-
-                        <p>
-                            Image-guided technologies and navigation systems
-                            supporting surgical planning, intraoperative
-                            orientation and procedure-related workflows.
-                        </p>
-
+                        <div>
+                            <div class="robotic-number">02 / IMAGE-GUIDED SURGERY</div>
+                            <h3>Navigation &amp; Image Guidance</h3>
+                            <p>
+                                Image-guided technologies and navigation systems
+                                supporting surgical planning, intraoperative
+                                orientation and procedure-related workflows.
+                            </p>
+                        </div>
                         <div class="robotic-tags">
                             <span>Surgical Navigation</span>
                             <span>Image Guidance</span>
@@ -422,16 +454,15 @@
                     </article>
 
                     <article class="robotic-card">
-                        <div class="robotic-number">03 / ARTIFICIAL INTELLIGENCE</div>
-
-                        <h3>Surgical AI &amp; Digital Intelligence</h3>
-
-                        <p>
-                            Exploring artificial intelligence applications,
-                            digital tools and intelligent systems relevant to
-                            surgical workflows and healthcare technology.
-                        </p>
-
+                        <div>
+                            <div class="robotic-number">03 / ARTIFICIAL INTELLIGENCE</div>
+                            <h3>Surgical AI &amp; Digital Intelligence</h3>
+                            <p>
+                                Exploring artificial intelligence applications,
+                                digital tools and intelligent systems relevant to
+                                surgical workflows and healthcare technology.
+                            </p>
+                        </div>
                         <div class="robotic-tags">
                             <span>Surgical AI</span>
                             <span>Digital Workflows</span>
@@ -440,16 +471,15 @@
                     </article>
 
                     <article class="robotic-card">
-                        <div class="robotic-number">04 / SMART OPERATING ROOMS</div>
-
-                        <h3>Smart OR Solutions</h3>
-
-                        <p>
-                            Integrated operating room technologies, connected
-                            equipment and digital environments designed to
-                            support coordination across surgical departments.
-                        </p>
-
+                        <div>
+                            <div class="robotic-number">04 / SMART OPERATING ROOMS</div>
+                            <h3>Smart OR Solutions</h3>
+                            <p>
+                                Integrated operating room technologies, connected
+                                equipment and digital environments designed to
+                                support coordination across surgical departments.
+                            </p>
+                        </div>
                         <div class="robotic-tags">
                             <span>Smart OR</span>
                             <span>OR Integration</span>
@@ -457,61 +487,65 @@
                         </div>
                     </article>
                 </div>
+
+                <!-- IMAGES FROM YOUR ASSETS -->
+                <div class="robotic-image-grid">
+                    <div class="robotic-image-box">
+                        <img src="assets/surgical-robotics.jpg" alt="Advanced Surgical Robotics Equipment" loading="lazy">
+                    </div>
+                    <div class="robotic-image-box">
+                        <img src="assets/hospital-technology.jpg" alt="Modern Hospital Operating Room Technology" loading="lazy">
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section class="robotic-section robotic-vision">
-            <div class="robotic-inner robotic-vision-grid">
-                <div>
-                    <div class="robotic-eyebrow">OUR PERSPECTIVE</div>
-
-                    <h2>Connecting innovation with clinical requirements.</h2>
-
-                    <p>
-                        The adoption of advanced surgical technology requires
-                        more than introducing new equipment. It involves
-                        understanding clinical workflows, evaluating technical
-                        suitability and identifying the right opportunities
-                        for healthcare organizations.
-                    </p>
-
-                    <p>
-                        Azadipour aims to facilitate connections between
-                        healthcare providers and international technology
-                        developers through structured business development
-                        and professional communication.
-                    </p>
-                </div>
-
-                <div class="robotic-list">
-                    <div class="robotic-list-item">
-                        <span>01</span>
-                        <strong>Understanding surgical department needs</strong>
+        <!-- VISION & PERSPECTIVE -->
+        <section class="robotic-section bg-soft">
+            <div class="robotic-inner robotic-vision">
+                <div class="robotic-vision-grid">
+                    <div>
+                        <div class="robotic-eyebrow" style="margin-bottom: 20px;">OUR PERSPECTIVE</div>
+                        <h2>Connecting innovation with clinical requirements.</h2>
+                        <p>
+                            The adoption of advanced surgical technology requires
+                            more than introducing new equipment. It involves
+                            understanding clinical workflows, evaluating technical
+                            suitability and identifying the right opportunities
+                            for healthcare organizations.
+                        </p>
+                        <p>
+                            Azadipour aims to facilitate connections between
+                            healthcare providers and international technology
+                            developers through structured business development
+                            and professional communication.
+                        </p>
                     </div>
 
-                    <div class="robotic-list-item">
-                        <span>02</span>
-                        <strong>Reviewing technology and clinical applications</strong>
-                    </div>
-
-                    <div class="robotic-list-item">
-                        <span>03</span>
-                        <strong>Identifying relevant international solutions</strong>
-                    </div>
-
-                    <div class="robotic-list-item">
-                        <span>04</span>
-                        <strong>Facilitating manufacturer and hospital communication</strong>
-                    </div>
-
-                    <div class="robotic-list-item">
-                        <span>05</span>
-                        <strong>Exploring potential regional opportunities</strong>
+                    <div class="robotic-list">
+                        <div class="robotic-list-item">
+                            <span>01</span>
+                            <strong>Understanding surgical department needs</strong>
+                        </div>
+                        <div class="robotic-list-item">
+                            <span>02</span>
+                            <strong>Reviewing technology and clinical applications</strong>
+                        </div>
+                        <div class="robotic-list-item">
+                            <span>03</span>
+                            <strong>Identifying relevant international solutions</strong>
+                        </div>
+                        <div class="robotic-list-item">
+                            <span>04</span>
+                            <strong>Facilitating manufacturer and hospital communication</strong>
+                        </div>
+                        <div class="robotic-list-item">
+                            <span>05</span>
+                            <strong>Exploring potential regional opportunities</strong>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="robotic-inner">
                 <p class="robotic-note">
                     The technologies described on this page represent areas
                     of business and technology focus. They do not imply that
@@ -523,58 +557,62 @@
             </div>
         </section>
 
+        <!-- CTA SECTION -->
         <section class="robotic-cta">
             <div class="robotic-inner">
-                <div class="robotic-eyebrow">ADVANCED SURGICAL TECHNOLOGY</div>
-
+                <div class="robotic-eyebrow" style="justify-content: center; margin-bottom: 20px;">ADVANCED SURGICAL TECHNOLOGY</div>
                 <h2>Let's explore the possibilities.</h2>
-
                 <p>
                     For surgical technology manufacturers, healthcare
                     organizations and international partners interested
                     in exploring potential cooperation, we welcome
                     a professional discussion.
                 </p>
-
                 <a class="robotic-cta-link" href="contact.html">
-                    Contact Azadipour
+                    Contact Azadipour <span>↗</span>
                 </a>
             </div>
         </section>
     </main>
 
+    <!-- FOOTER (MATCHING INDEX.HTML) -->
     <footer class="site-footer">
-        <div class="footer-inner">
+        <div class="footer-main">
             <div class="footer-brand">
-                <a href="index.html">
-                    <img src="assets/logo-transparent.png" alt="Azadipour">
-                </a>
-                <p>Medical Technology &amp; Hospital Solutions</p>
+                <img src="assets/logo-transparent.png" alt="Azadipour Logo">
+                <h3>AZADIPOUR</h3>
+                <p>Global Medical Technology & Hospital Solutions</p>
             </div>
 
-            <div class="footer-links">
-                <a href="index.html">Home</a>
-                <a href="medical.html">Medical</a>
-                <a href="cardiac.html">Cardiac</a>
-                <a href="robotic.html">Robotics</a>
+            <div class="footer-column">
+                <h4>COMPANY</h4>
+                <a href="about.html">About Us</a>
+                <a href="index.html#global-network">Global Presence</a>
+                <a href="partners.html">Partnerships</a>
                 <a href="projects.html">Projects</a>
-                <a href="partners.html">Partners</a>
-                <a href="contact.html">Contact</a>
             </div>
 
-            <div class="footer-contact">
-                <a href="mailto:info@azadipourmedical.com">info@azadipourmedical.com</a>
-                <a href="tel:+96891646294">+968 9164 6294</a>
-                <a href="https://azadipourmedical.com/">azadipourmedical.com</a>
+            <div class="footer-column">
+                <h4>TECHNOLOGY</h4>
+                <a href="robotic.html">Robotic Surgery</a>
+                <a href="cardiac.html">Cardiovascular</a>
+                <a href="medical.html">Medical Technology</a>
+            </div>
+
+            <div class="footer-column">
+                <h4>CONTACT</h4>
+                <a href="mailto:info@azadipourmedical.com">Email</a>
+                <span>Oman</span>
             </div>
         </div>
 
         <div class="footer-bottom">
-            <span>© <span id="currentYear"></span> Azadipour. All rights reserved.</span>
-            <span>GCC · EUROPE · INTERNATIONAL</span>
+            <span>© <span id="currentYear">2026</span> AZADIPOUR. ALL RIGHTS RESERVED.</span>
+            <span>GLOBAL MEDICAL TECHNOLOGY · WORLDWIDE</span>
         </div>
     </footer>
 
+    <!-- SCRIPTS -->
     <script src="script.js" defer></script>
 </body>
 </html>
