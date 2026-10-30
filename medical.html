@@ -1,334 +1,534 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Medical Technology | Azadipour</title>
-  <meta name="description" content="Explore Azadipour's focus areas in robotic surgery, surgical navigation, cardiac and cardiovascular technologies, Smart OR and hospital solutions.">
-  <link rel="canonical" href="https://azadipourmedical.com/medical.html">
-  <meta name="theme-color" content="#08090b">
+    <title>Medical Technology & Hospital Solutions | Azadipour</title>
+    <meta name="description" content="Explore Azadipour's medical technology focus, including advanced surgical systems, robotic surgery, cardiovascular technologies and hospital solutions.">
+    <meta name="theme-color" content="#08090b">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="canonical" href="https://azadipourmedical.com/medical.html">
 
-  <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="assets/logo-transparent.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .medical-page {
+            background: #08090b;
+            color: #f1f1ef;
+        }
+
+        .medical-hero {
+            min-height: 66vh;
+            display: flex;
+            align-items: center;
+            padding: 150px 7% 100px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(255,255,255,.10);
+            background:
+                radial-gradient(ellipse at 78% 35%, rgba(190,198,208,.11), transparent 38%),
+                linear-gradient(120deg, #08090b 0%, #101318 55%, #08090b 100%);
+        }
+
+        .medical-hero::after {
+            content: "";
+            position: absolute;
+            width: 480px;
+            height: 480px;
+            right: -140px;
+            top: 10%;
+            border: 1px solid rgba(220,225,232,.10);
+            border-radius: 50%;
+            box-shadow:
+                0 0 0 55px rgba(220,225,232,.025),
+                0 0 0 110px rgba(220,225,232,.018);
+            pointer-events: none;
+        }
+
+        .medical-hero-content {
+            width: min(900px, 100%);
+            position: relative;
+            z-index: 1;
+        }
+
+        .medical-eyebrow {
+            color: #aeb5bf;
+            font-size: 11px;
+            letter-spacing: .28em;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+
+        .medical-hero h1 {
+            font-family: "Cormorant Garamond", serif;
+            font-weight: 400;
+            font-size: clamp(48px, 7vw, 88px);
+            line-height: .98;
+            letter-spacing: -.025em;
+            max-width: 850px;
+            margin: 0 0 28px;
+        }
+
+        .medical-hero h1 span {
+            color: #aeb5bf;
+        }
+
+        .medical-hero p {
+            max-width: 650px;
+            color: #b9bec6;
+            font-size: 15px;
+            line-height: 1.9;
+            font-weight: 300;
+        }
+
+        .medical-section {
+            padding: 105px 7%;
+        }
+
+        .medical-section-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .medical-section-heading {
+            max-width: 760px;
+            margin-bottom: 52px;
+        }
+
+        .medical-section-heading .eyebrow {
+            color: #9da5b0;
+            font-size: 10px;
+            letter-spacing: .25em;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        .medical-section-heading h2 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: clamp(38px, 5vw, 62px);
+            font-weight: 400;
+            line-height: 1.05;
+            margin: 0 0 18px;
+        }
+
+        .medical-section-heading p {
+            color: #aeb4bd;
+            line-height: 1.9;
+            font-size: 14px;
+            max-width: 680px;
+        }
+
+        .medical-focus-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1px;
+            background: rgba(255,255,255,.13);
+            border: 1px solid rgba(255,255,255,.13);
+        }
+
+        .medical-focus-card {
+            min-height: 285px;
+            padding: 38px;
+            background: #0d1014;
+            transition: background .3s ease, transform .3s ease;
+        }
+
+        .medical-focus-card:hover {
+            background: #151a20;
+        }
+
+        .medical-card-number {
+            color: #747d88;
+            font-size: 11px;
+            letter-spacing: .18em;
+            margin-bottom: 35px;
+        }
+
+        .medical-focus-card h3 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 31px;
+            font-weight: 500;
+            margin: 0 0 15px;
+        }
+
+        .medical-focus-card p {
+            color: #aeb4bd;
+            font-size: 13px;
+            line-height: 1.85;
+            max-width: 510px;
+            margin: 0;
+        }
+
+        .medical-focus-card .medical-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 24px;
+        }
+
+        .medical-tags span {
+            border: 1px solid rgba(255,255,255,.17);
+            color: #c4c9d0;
+            padding: 7px 10px;
+            font-size: 10px;
+            letter-spacing: .04em;
+        }
+
+        .medical-approach {
+            background: #101318;
+            border-top: 1px solid rgba(255,255,255,.08);
+            border-bottom: 1px solid rgba(255,255,255,.08);
+        }
+
+        .medical-approach-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .medical-approach h2 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: clamp(38px, 5vw, 60px);
+            font-weight: 400;
+            line-height: 1.05;
+            margin: 0 0 22px;
+        }
+
+        .medical-approach p {
+            color: #b2b8c1;
+            font-size: 14px;
+            line-height: 1.95;
+        }
+
+        .medical-approach-list {
+            border-top: 1px solid rgba(255,255,255,.18);
+        }
+
+        .medical-approach-item {
+            display: flex;
+            gap: 22px;
+            padding: 22px 0;
+            border-bottom: 1px solid rgba(255,255,255,.13);
+        }
+
+        .medical-approach-item span {
+            color: #858e99;
+            font-size: 11px;
+            letter-spacing: .12em;
+            padding-top: 4px;
+        }
+
+        .medical-approach-item strong {
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: .04em;
+        }
+
+        .medical-disclaimer {
+            margin-top: 28px;
+            color: #858d98;
+            font-size: 11px;
+            line-height: 1.8;
+        }
+
+        .medical-cta {
+            text-align: center;
+            padding: 105px 7%;
+            background:
+                radial-gradient(ellipse at center, rgba(180,190,205,.10), transparent 60%),
+                #08090b;
+        }
+
+        .medical-cta h2 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: clamp(38px, 5vw, 62px);
+            font-weight: 400;
+            margin: 0 0 18px;
+        }
+
+        .medical-cta p {
+            color: #aeb4bd;
+            max-width: 620px;
+            margin: 0 auto 30px;
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        .medical-cta-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 0 25px;
+            border: 1px solid rgba(255,255,255,.55);
+            color: #f1f1ef;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 10px;
+            letter-spacing: .18em;
+            transition: background .25s ease, color .25s ease;
+        }
+
+        .medical-cta-link:hover {
+            background: #f1f1ef;
+            color: #08090b;
+        }
+
+        @media (max-width: 760px) {
+            .medical-hero {
+                min-height: 560px;
+                padding: 125px 6% 75px;
+            }
+
+            .medical-hero::after {
+                width: 280px;
+                height: 280px;
+                right: -150px;
+                top: 18%;
+            }
+
+            .medical-section {
+                padding: 75px 6%;
+            }
+
+            .medical-focus-grid,
+            .medical-approach-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .medical-focus-card {
+                min-height: auto;
+                padding: 28px;
+            }
+
+            .medical-approach-grid {
+                gap: 35px;
+            }
+
+            .medical-cta {
+                padding: 75px 6%;
+            }
+        }
+    </style>
 </head>
 
-<body>
+<body class="medical-page">
 
-  <header class="site-header">
-    <a href="index.html" class="brand" aria-label="Azadipour Home">
-      <span class="brand-name">AZADIPOUR</span>
-      <span class="brand-caption">MEDICAL TECHNOLOGY & HOSPITAL SOLUTIONS</span>
-    </a>
-
-    <button class="menu-toggle" id="menuToggle"
-            aria-label="Open navigation" aria-expanded="false">
-      <span></span><span></span>
-    </button>
-
-    <nav class="main-nav" id="mainNav">
-      <a href="index.html">Home</a>
-      <a href="about.html">About Us</a>
-      <a href="global-presence.html">Global Presence</a>
-      <a href="medical.html" class="active">Medical Technology</a>
-      <a href="partners.html">Partnerships</a>
-      <a href="projects.html">Projects</a>
-      <a href="contact.html" class="nav-contact">Contact</a>
-    </nav>
-  </header>
-
-  <main>
-
-    <section class="inner-hero medical-hero">
-      <div class="inner-hero-content">
-        <span class="eyebrow">OUR TECHNOLOGY FOCUS</span>
-        <h1>Medical <span>Technology</span></h1>
-        <p>
-          Supporting the development of advanced medical technology
-          opportunities and hospital solutions across international markets.
-        </p>
-        <div class="hero-buttons">
-          <a href="#technology-areas" class="btn btn-primary">Explore Our Focus Areas</a>
-          <a href="contact.html" class="btn btn-outline">Discuss an Opportunity</a>
+    <div class="intro-screen" id="introScreen">
+        <div class="intro-logo">
+            <img src="assets/logo-transparent.png" alt="Azadipour">
         </div>
-      </div>
-      <div class="inner-hero-decoration medical-decoration"></div>
-    </section>
-
-    <section class="section medical-intro-section">
-      <div class="section-label">01 / MEDICAL TECHNOLOGY & HOSPITAL SOLUTIONS</div>
-
-      <div class="medical-intro-grid">
-        <div>
-          <h2 class="section-heading">
-            Technology that supports<br>
-            <span>modern healthcare.</span>
-          </h2>
-        </div>
-
-        <div class="medical-intro-copy">
-          <p>
-            Azadipour focuses on connecting healthcare organizations with
-            international manufacturers and technology developers across
-            selected areas of medical technology.
-          </p>
-          <p>
-            Our areas of interest include advanced surgical systems,
-            image-guided technologies, cardiovascular solutions, operating
-            room technologies and integrated hospital equipment.
-          </p>
-          <p>
-            Specific products and projects are evaluated according to clinical
-            requirements, technical suitability, regulatory considerations
-            and the availability of suitable suppliers.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section medical-areas-section" id="technology-areas">
-      <div class="section-label">02 / OUR AREAS OF FOCUS</div>
-      <h2 class="section-heading">Medical Technology <span>Areas</span></h2>
-      <p class="section-subtitle">
-        Selected technology fields relevant to the evolving needs of hospitals
-        and healthcare providers.
-      </p>
-
-      <div class="medical-area-grid">
-
-        <article class="medical-area-card medical-area-featured">
-          <div class="medical-area-top">
-            <span class="medical-area-number">01</span>
-            <span class="medical-area-symbol">✳</span>
-          </div>
-          <span class="medical-area-label">ADVANCED SURGICAL SYSTEMS</span>
-          <h3>Robotic Surgery</h3>
-          <p>
-            Exploring robotic-assisted surgical technologies and advanced
-            systems designed to support precision, workflow and surgical
-            capabilities.
-          </p>
-          <ul>
-            <li>Robotic-assisted surgery platforms</li>
-            <li>Advanced surgical instruments</li>
-            <li>Operating room integration</li>
-          </ul>
-          <a href="robotic.html" class="text-link">Explore Robotic Surgery <span>↗</span></a>
-        </article>
-
-        <article class="medical-area-card">
-          <div class="medical-area-top">
-            <span class="medical-area-number">02</span>
-            <span class="medical-area-symbol">◎</span>
-          </div>
-          <span class="medical-area-label">IMAGE-GUIDED TECHNOLOGY</span>
-          <h3>Surgical Navigation</h3>
-          <p>
-            Image-guided technologies and navigation systems that support
-            surgical planning, visualization and procedural guidance.
-          </p>
-          <ul>
-            <li>Surgical navigation systems</li>
-            <li>Image-guided procedures</li>
-            <li>Digital surgical planning</li>
-          </ul>
-          <a href="robotic.html" class="text-link">Explore Technologies <span>↗</span></a>
-        </article>
-
-        <article class="medical-area-card">
-          <div class="medical-area-top">
-            <span class="medical-area-number">03</span>
-            <span class="medical-area-symbol">⌁</span>
-          </div>
-          <span class="medical-area-label">CARDIAC & VASCULAR CARE</span>
-          <h3>Cardiac & Cardiovascular</h3>
-          <p>
-            Medical technologies and equipment supporting cardiac care,
-            cardiovascular procedures and specialized clinical environments.
-          </p>
-          <ul>
-            <li>Cardiac surgery technologies</li>
-            <li>Perfusion systems</li>
-            <li>Catheterization laboratory equipment</li>
-          </ul>
-          <a href="cardiac.html" class="text-link">Explore Cardiac Solutions <span>↗</span></a>
-        </article>
-
-        <article class="medical-area-card">
-          <div class="medical-area-top">
-            <span class="medical-area-number">04</span>
-            <span class="medical-area-symbol">▦</span>
-          </div>
-          <span class="medical-area-label">OPERATING ROOM TECHNOLOGY</span>
-          <h3>Smart OR & Digital Surgery</h3>
-          <p>
-            Connected operating room technologies designed to support
-            coordination, information flow and digital surgical workflows.
-          </p>
-          <ul>
-            <li>Integrated operating rooms</li>
-            <li>Surgical video and data systems</li>
-            <li>Digital workflow technologies</li>
-          </ul>
-          <a href="contact.html" class="text-link">Discuss a Requirement <span>↗</span></a>
-        </article>
-
-        <article class="medical-area-card">
-          <div class="medical-area-top">
-            <span class="medical-area-number">05</span>
-            <span class="medical-area-symbol">⌬</span>
-          </div>
-          <span class="medical-area-label">HOSPITAL INFRASTRUCTURE</span>
-          <h3>Hospital Technology</h3>
-          <p>
-            Equipment and technology solutions for hospitals and specialized
-            healthcare facilities, subject to project requirements.
-          </p>
-          <ul>
-            <li>Critical care and ICU equipment</li>
-            <li>Medical equipment systems</li>
-            <li>Hospital technology integration</li>
-          </ul>
-          <a href="contact.html" class="text-link">Explore Hospital Solutions <span>↗</span></a>
-        </article>
-
-        <article class="medical-area-card">
-          <div class="medical-area-top">
-            <span class="medical-area-number">06</span>
-            <span class="medical-area-symbol">◇</span>
-          </div>
-          <span class="medical-area-label">CLINICAL TECHNOLOGY</span>
-          <h3>Diagnostics & Critical Care</h3>
-          <p>
-            Evaluating selected diagnostic and critical care technologies
-            according to healthcare provider needs and technical requirements.
-          </p>
-          <ul>
-            <li>Patient monitoring technologies</li>
-            <li>Diagnostic equipment</li>
-            <li>Critical care solutions</li>
-          </ul>
-          <a href="contact.html" class="text-link">Submit an Enquiry <span>↗</span></a>
-        </article>
-
-      </div>
-    </section>
-
-    <section class="medical-process-section">
-      <div class="section-label">03 / HOW WE APPROACH PROJECTS</div>
-      <h2 class="section-heading">From Clinical Needs to <span>Technology Solutions</span></h2>
-      <p class="section-subtitle">
-        A structured approach to understanding requirements and evaluating
-        suitable technology opportunities.
-      </p>
-
-      <div class="medical-process-grid">
-        <div class="medical-process-item">
-          <span>01</span>
-          <h3>Understand</h3>
-          <p>Identify the clinical, technical and operational requirements.</p>
-        </div>
-        <div class="medical-process-item">
-          <span>02</span>
-          <h3>Evaluate</h3>
-          <p>Review suitable technologies, suppliers and project conditions.</p>
-        </div>
-        <div class="medical-process-item">
-          <span>03</span>
-          <h3>Connect</h3>
-          <p>Facilitate communication between healthcare organizations and suppliers.</p>
-        </div>
-        <div class="medical-process-item">
-          <span>04</span>
-          <h3>Develop</h3>
-          <p>Support the development of appropriate commercial opportunities.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section medical-principles-section">
-      <div class="section-label">04 / OUR PRINCIPLES</div>
-      <div class="medical-principles-grid">
-        <div>
-          <h2 class="section-heading">A Responsible Approach to <span>Technology</span></h2>
-        </div>
-        <div class="medical-principles-copy">
-          <p>
-            Medical technology decisions require careful consideration of
-            clinical needs, regulatory requirements, technical specifications
-            and the long-term needs of healthcare providers.
-          </p>
-          <div class="principle-list">
-            <div><span>01</span> Clinical and operational relevance</div>
-            <div><span>02</span> Technical and regulatory consideration</div>
-            <div><span>03</span> Professional supplier relationships</div>
-            <div><span>04</span> Long-term cooperation and support</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="global-cta">
-      <div>
-        <span class="eyebrow">LET'S CONNECT</span>
-        <h2>Have a Healthcare <span>Technology Requirement?</span></h2>
-        <p>
-          Contact us to discuss your project, clinical requirements
-          or potential technology partnership.
-        </p>
-      </div>
-      <a href="contact.html" class="btn btn-primary">Start a Conversation</a>
-    </section>
-
-  </main>
-
-  <footer class="site-footer">
-    <div class="footer-main">
-      <div class="footer-brand">
-        <a href="index.html" class="brand">
-          <span class="brand-name">AZADIPOUR</span>
-          <span class="brand-caption">MEDICAL TECHNOLOGY & HOSPITAL SOLUTIONS</span>
-        </a>
-        <p>
-          Connecting healthcare organizations and international partners
-          with medical technology and hospital solutions.
-        </p>
-      </div>
-
-      <div class="footer-column">
-        <h4>COMPANY</h4>
-        <a href="about.html">About Us</a>
-        <a href="global-presence.html">Global Presence</a>
-        <a href="partners.html">Partnerships</a>
-        <a href="projects.html">Projects</a>
-      </div>
-
-      <div class="footer-column">
-        <h4>EXPERTISE</h4>
-        <a href="medical.html">Medical Technology</a>
-        <a href="robotic.html">Robotic Surgery</a>
-        <a href="cardiac.html">Cardiac Solutions</a>
-        <a href="contact.html">Contact</a>
-      </div>
-
-      <div class="footer-column">
-        <h4>CONTACT</h4>
-        <a href="mailto:info@azadipourmedical.com">info@azadipourmedical.com</a>
-        <a href="tel:+96891646294">+968 9164 6294</a>
-        <a href="https://azadipourmedical.com">azadipourmedical.com</a>
-        <span>Oman</span>
-      </div>
+        <div class="intro-line"></div>
     </div>
 
-    <div class="footer-bottom">
-      <span>© <span id="currentYear"></span> Azadipour. All rights reserved.</span>
-      <span>GCC · EUROPE · INTERNATIONAL</span>
-    </div>
-  </footer>
+    <header class="site-header" id="siteHeader">
+        <div class="header-inner">
+            <a class="brand" href="index.html" aria-label="Azadipour Home">
+                <img src="assets/logo-transparent.png" alt="Azadipour logo">
+            </a>
 
-  <script src="script.js"></script>
+            <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mainNav">
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="main-nav" id="mainNav">
+                <a href="index.html">Home</a>
+                <a href="medical.html" class="active" aria-current="page">Medical</a>
+                <a href="cardiac.html">Cardiac</a>
+                <a href="robotic.html">Robotics</a>
+                <a href="projects.html">Projects</a>
+                <a href="partners.html">Partners</a>
+                <a href="contact.html" class="nav-contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="medical-hero">
+            <div class="medical-hero-content">
+                <div class="medical-eyebrow">AZADIPOUR / MEDICAL TECHNOLOGY</div>
+                <h1>Advancing the future of <span>healthcare technology.</span></h1>
+                <p>
+                    Connecting clinical requirements with advanced medical technologies,
+                    surgical systems and hospital solutions through a global perspective
+                    and a regional understanding of healthcare markets.
+                </p>
+            </div>
+        </section>
+
+        <section class="medical-section">
+            <div class="medical-section-inner">
+                <div class="medical-section-heading">
+                    <div class="eyebrow">OUR AREAS OF FOCUS</div>
+                    <h2>Technology shaped around clinical needs.</h2>
+                    <p>
+                        Azadipour focuses on identifying relevant technologies and
+                        connecting healthcare organizations with international
+                        manufacturers and solution providers.
+                    </p>
+                </div>
+
+                <div class="medical-focus-grid">
+                    <article class="medical-focus-card">
+                        <div class="medical-card-number">01 / SURGICAL TECHNOLOGY</div>
+                        <h3>Advanced Surgical Systems</h3>
+                        <p>
+                            Surgical technologies designed to support modern operating
+                            environments, procedural precision and the evolving needs
+                            of surgical teams.
+                        </p>
+                        <div class="medical-tags">
+                            <span>Surgical Equipment</span>
+                            <span>Operating Rooms</span>
+                            <span>Image Guidance</span>
+                        </div>
+                    </article>
+
+                    <article class="medical-focus-card">
+                        <div class="medical-card-number">02 / DIGITAL SURGERY</div>
+                        <h3>Robotics & Surgical AI</h3>
+                        <p>
+                            Robotic-assisted systems, surgical navigation, digital
+                            workflows and intelligent technologies for the next
+                            generation of surgical care.
+                        </p>
+                        <div class="medical-tags">
+                            <span>Robotic Surgery</span>
+                            <span>Surgical AI</span>
+                            <span>Navigation</span>
+                        </div>
+                    </article>
+
+                    <article class="medical-focus-card">
+                        <div class="medical-card-number">03 / CARDIOVASCULAR CARE</div>
+                        <h3>Cardiac & Cardiovascular</h3>
+                        <p>
+                            Technologies and equipment supporting cardiovascular
+                            departments, cardiac surgery, perfusion services and
+                            catheterization laboratories.
+                        </p>
+                        <div class="medical-tags">
+                            <span>Cardiac Surgery</span>
+                            <span>Perfusion</span>
+                            <span>Cath Lab</span>
+                        </div>
+                    </article>
+
+                    <article class="medical-focus-card">
+                        <div class="medical-card-number">04 / HOSPITAL INFRASTRUCTURE</div>
+                        <h3>Hospital Technology</h3>
+                        <p>
+                            Medical equipment and integrated solutions for operating
+                            theatres, intensive care, diagnostics and essential
+                            hospital departments.
+                        </p>
+                        <div class="medical-tags">
+                            <span>ICU</span>
+                            <span>Diagnostics</span>
+                            <span>Hospital Systems</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="medical-section medical-approach">
+            <div class="medical-section-inner medical-approach-grid">
+                <div>
+                    <div class="medical-eyebrow">OUR APPROACH</div>
+                    <h2>From clinical requirements to global medical supply.</h2>
+                    <p>
+                        Successful medical technology projects begin with understanding
+                        the needs of healthcare providers. Azadipour works to connect
+                        those requirements with relevant international manufacturers,
+                        technology developers and supply partners.
+                    </p>
+                    <p>
+                        Our approach is built around professional communication,
+                        market understanding and the development of long-term
+                        business relationships.
+                    </p>
+                </div>
+
+                <div class="medical-approach-list">
+                    <div class="medical-approach-item">
+                        <span>01</span>
+                        <strong>Understanding healthcare requirements</strong>
+                    </div>
+                    <div class="medical-approach-item">
+                        <span>02</span>
+                        <strong>Identifying relevant technologies</strong>
+                    </div>
+                    <div class="medical-approach-item">
+                        <span>03</span>
+                        <strong>Connecting with international suppliers</strong>
+                    </div>
+                    <div class="medical-approach-item">
+                        <span>04</span>
+                        <strong>Supporting regional business development</strong>
+                    </div>
+                    <div class="medical-approach-item">
+                        <span>05</span>
+                        <strong>Developing long-term partnerships</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="medical-cta">
+            <div class="medical-section-inner">
+                <div class="medical-eyebrow">LET'S CONNECT</div>
+                <h2>Explore a potential opportunity.</h2>
+                <p>
+                    For healthcare organizations, technology manufacturers and
+                    international partners interested in exploring cooperation,
+                    we welcome a professional conversation.
+                </p>
+                <a class="medical-cta-link" href="contact.html">Contact Azadipour</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <a href="index.html">
+                    <img src="assets/logo-transparent.png" alt="Azadipour">
+                </a>
+                <p>Medical Technology &amp; Hospital Solutions</p>
+            </div>
+
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="medical.html">Medical</a>
+                <a href="cardiac.html">Cardiac</a>
+                <a href="robotic.html">Robotics</a>
+                <a href="projects.html">Projects</a>
+                <a href="partners.html">Partners</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+            <div class="footer-contact">
+                <a href="mailto:info@azadipourmedical.com">info@azadipourmedical.com</a>
+                <a href="tel:+96891646294">+968 9164 6294</a>
+                <a href="https://azadipourmedical.com/">azadipourmedical.com</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>© <span id="currentYear"></span> Azadipour. All rights reserved.</span>
+            <span>GCC · EUROPE · INTERNATIONAL</span>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
 </body>
 </html>
