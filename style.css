@@ -1,7 +1,7 @@
 /* =========================================================
    AZADIPOUR
    GLOBAL MEDICAL TECHNOLOGY & HOSPITAL SOLUTIONS
-   COMPLETE STYLESHEET (FIXED MAP)
+   COMPLETE STYLESHEET (IRAN BLACKOUT + FIXES)
    ========================================================= */
 
 :root {
@@ -109,7 +109,7 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
 .network-map-canvas-wrap {
   position: relative;
   width: 100%;
-  aspect-ratio: 1440 / 700; /* Exact ratio to prevent zoom/crop */
+  aspect-ratio: 1440 / 700;
   overflow: hidden;
   background: radial-gradient(circle at 50% 50%, #111820 0%, #050607 100%);
 }
@@ -119,7 +119,19 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
 .az-map-country { fill: rgba(255, 255, 255, 0.02); stroke: rgba(255, 255, 255, 0.15); stroke-width: 0.6px; transition: fill 0.3s, stroke 0.3s; }
 .az-map-country:hover { fill: rgba(255, 255, 255, 0.06); stroke: rgba(255, 255, 255, 0.3); }
 
-/* Lines (Removed drop-shadow to fix mobile GPU glitches) */
+/* IRAN BLACKOUT STYLE */
+.az-map-country-iran {
+  fill: #000000 !important;
+  stroke: #111111 !important; /* Very dark border so it doesn't blend perfectly with the ocean */
+  stroke-width: 1px;
+  transition: none !important;
+}
+.az-map-country-iran:hover {
+  fill: #000000 !important;
+  stroke: #111111 !important;
+}
+
+/* Lines */
 .az-arc-inbound {
   fill: none !important;
   stroke: rgba(255, 255, 255, 0.9);
@@ -143,10 +155,7 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
   animation: dash-outbound 2.5s linear infinite;
 }
 
-.az-network-node {
-  fill: #ffffff;
-  opacity: 0.8;
-}
+.az-network-node { fill: #ffffff; opacity: 0.8; }
 
 .az-hub-halo-outer { fill: rgba(255, 255, 255, 0.05); animation: pulse-hub 3s infinite; }
 .az-hub-halo-inner { fill: rgba(255, 255, 255, 0.15); animation: pulse-hub 2s infinite; }
@@ -337,7 +346,6 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
   .network-heading > p { font-size: 12px; }
   .network-map-topline, .map-caption { flex-direction: column; gap: 7px; padding: 13px; font-size: 8px; }
   
-  /* FIX: Force map container to maintain the correct aspect ratio so it fits without zooming */
   .network-map-canvas-wrap {
     aspect-ratio: 1440 / 700; 
     padding: 0;
