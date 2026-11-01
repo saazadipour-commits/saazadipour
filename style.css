@@ -119,16 +119,16 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
 .az-map-country { fill: rgba(255, 255, 255, 0.02); stroke: rgba(255, 255, 255, 0.15); stroke-width: 0.6px; transition: fill 0.3s, stroke 0.3s; }
 .az-map-country:hover { fill: rgba(255, 255, 255, 0.06); stroke: rgba(255, 255, 255, 0.3); }
 
-/* IRAN BLACKOUT STYLE */
-.az-map-country-iran {
+/* IRAN BLACKOUT STYLE - Aggressive selectors to ensure it overrides */
+path.az-map-country.az-map-country-iran {
   fill: #000000 !important;
-  stroke: #111111 !important; /* Very dark border so it doesn't blend perfectly with the ocean */
-  stroke-width: 1px;
+  stroke: #000000 !important;
+  stroke-width: 0 !important;
   transition: none !important;
 }
-.az-map-country-iran:hover {
+path.az-map-country.az-map-country-iran:hover {
   fill: #000000 !important;
-  stroke: #111111 !important;
+  stroke: #000000 !important;
 }
 
 /* Lines */
