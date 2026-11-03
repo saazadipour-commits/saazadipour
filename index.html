@@ -37,7 +37,7 @@
 
 <body>
 
-  <!-- INTRO -->
+  <!-- INTRO SCREEN -->
   <div class="intro-screen" id="intro">
     <div class="intro-content">
       <img src="assets/logo-transparent.png" alt="Azadipour Logo">
@@ -74,7 +74,7 @@
 
   <main>
 
-    <!-- HERO -->
+    <!-- HERO SECTION -->
     <section class="hero-section">
       <div class="hero-overlay"></div>
       <div class="hero-content">
@@ -114,7 +114,7 @@
       </div>
     </section>
 
-    <!-- GLOBAL NETWORK -->
+    <!-- GLOBAL NETWORK SECTION -->
     <section class="global-network-section" id="global-network" aria-label="Azadipour global network">
       <div class="network-top">
         <div class="section-label">01 — GLOBAL PRESENCE</div>
@@ -133,6 +133,7 @@
         </div>
 
         <div class="network-map-canvas-wrap">
+          <!-- Map Canvas Container -->
           <div id="azadipourWorldMap" class="az-world-map" role="img" aria-label="Static world map showing hub connections from suppliers and to hospitals"></div>
           <div class="map-loading" id="mapLoading">
             <span class="loading-indicator"></span>
@@ -167,7 +168,7 @@
       </div>
     </section>
 
-    <!-- ABOUT -->
+    <!-- ABOUT SECTION -->
     <section class="section intro-section">
       <div class="section-label">02 — ABOUT AZADIPOUR</div>
       <div class="section-heading">
@@ -201,7 +202,7 @@
       </div>
     </section>
 
-    <!-- TECHNOLOGY -->
+    <!-- TECHNOLOGY PORTFOLIO SECTION -->
     <section class="section technology-section">
       <div class="section-label">03 — TECHNOLOGY PORTFOLIO</div>
       <div class="section-heading">
@@ -250,7 +251,7 @@
       </div>
     </section>
 
-    <!-- VISUAL TECHNOLOGY PORTFOLIO -->
+    <!-- VISUAL TECHNOLOGY PORTFOLIO SECTION -->
     <section class="section visual-portfolio-section">
       <div class="section-label">04 — SELECTED TECHNOLOGY AREAS</div>
       <div class="section-heading">
@@ -285,7 +286,7 @@
       </div>
     </section>
 
-    <!-- INTERNATIONAL PARTNERSHIPS -->
+    <!-- INTERNATIONAL PARTNERSHIPS SECTION -->
     <section class="section partnership-section">
       <div class="section-label">05 — INTERNATIONAL PARTNERSHIPS</div>
       <div class="partnership-content">
@@ -310,7 +311,7 @@
       </div>
     </section>
 
-    <!-- SOLUTIONS -->
+    <!-- BUSINESS APPROACH SECTION -->
     <section class="section solutions-section">
       <div class="section-label">06 — BUSINESS APPROACH</div>
       <div class="section-heading">
@@ -343,7 +344,7 @@
       </div>
     </section>
 
-    <!-- PROJECTS -->
+    <!-- PROJECT DEVELOPMENT SECTION -->
     <section class="section projects-section">
       <div class="section-label">07 — PROJECT DEVELOPMENT</div>
       <div class="section-heading">
@@ -362,7 +363,7 @@
       </a>
     </section>
 
-    <!-- CONTACT -->
+    <!-- CONTACT SECTION -->
     <section class="section contact-section">
       <div class="section-label">08 — CONNECT WITH AZADIPOUR</div>
       <div class="contact-content">
@@ -418,11 +419,11 @@
     </div>
   </footer>
 
-  <!-- کتابخانه‌های مورد نیاز برای نقشه مسطح -->
+  <!-- D3.js & TopoJSON Libraries for the 2D Black & White Map -->
   <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
   <script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
 
-  <!-- اسکریپت ساخت نقشه مشکی و سفید -->
+  <!-- Map Rendering Script -->
   <script>
   (() => {
     "use strict";
@@ -435,7 +436,7 @@
     const H = 700;
     const ns = "http://www.w3.org/2000/svg";
 
-    // تابع کمکی برای ساخت المان‌های SVG
+    // Helper function to create SVG elements
     const add = (parent, tag, attrs = {}) => {
       const node = document.createElementNS(ns, tag);
       Object.entries(attrs).forEach(([key, value]) => {
@@ -459,24 +460,27 @@
       const projection = d3.geoNaturalEarth1().fitExtent([[22, 28], [W - 22, H - 28]], features);
       const geoPath = d3.geoPath(projection);
 
-      // خطوط نصف النهار (Graticule) با رنگ بسیار تیره
+      // Draw Graticule (Grid lines)
       add(svg, "path", {
         d: geoPath(d3.geoGraticule().step([30, 30])()),
         class: "az-map-graticule"
       });
 
-      // رسم کشورها با رنگ خاکستری تیره
+      // Draw Countries
       const landGroup = add(svg, "g", { class: "az-map-land" });
       features.features.forEach(feature => {
+        const isIran = String(feature.id) === "364" || 
+                       (feature.properties && feature.properties.name && feature.properties.name.includes("Iran"));
+        
         add(landGroup, "path", {
           d: geoPath(feature),
-          class: "az-map-country"
+          class: isIran ? "az-map-country az-map-country-iran" : "az-map-country"
         });
       });
 
-      const omanHub = [58.383, 23.588]; // مسقط، عمان
+      const omanHub = [58.383, 23.588]; // Muscat, Oman
 
-      // تابع رسم خطوط اتصال
+      // Function to draw connection lines
       const drawConnection = (start, end, type, isDim = false) => {
         const interpolate = d3.geoInterpolate(start, end);
         const coordinates = d3.range(0, 1.001, 0.01).map(t => interpolate(t));
@@ -490,96 +494,81 @@
           class: className
         });
 
-        // رسم نقطه مقصد به صورت دایره سفید کوچک با افکت درخشش
         const [endX, endY] = projection(end);
         add(svg, "circle", { cx: endX, cy: endY, r: 2.5, class: "az-network-node" });
       };
 
       // ==========================================
-      // ۱. نقاط ورودی (تامین‌کنندگان) به عمان
+      // 1. INBOUND SUPPLIERS TO OMAN
       // ==========================================
-      // ۲ نقطه از چین
       const ronovoShanghai = [121.438, 31.188]; // Ronovo Surgical
       const wemedBeijing = [116.407, 39.904];   // WeMed Medical
-      
-      // ۱ نقطه از تایوان
       const taiwanCompany = [121.565, 25.033];  // Taipei
+      const shenzhenCompany = [114.057, 22.543]; // Shenzhen
 
-      // ۱ نقطه دیگر از چین (مثلا شنژن)
-      const shenzhenCompany = [114.057, 22.543];
-
-      // اتصال این نقاط به عمان
       drawConnection(ronovoShanghai, omanHub, 'inbound');
       drawConnection(wemedBeijing, omanHub, 'inbound', true);
       drawConnection(taiwanCompany, omanHub, 'inbound', true);
       drawConnection(shenzhenCompany, omanHub, 'inbound', true);
 
       // ==========================================
-      // ۲. نقاط خروجی (بیمارستان‌ها) از عمان
+      // 2. OUTBOUND HOSPITALS FROM OMAN
       // ==========================================
       
-      // عربستان سعودی (۵ نقطه)
+      // Saudi Arabia (5 points)
       const ksaHospitals = [
-        [46.675, 24.713], // ریاض
-        [39.197, 21.485], // جده
-        [50.103, 26.420], // دمام
-        [39.826, 21.422], // مکه
-        [39.614, 24.467]  // مدینه
+        [46.675, 24.713], [39.197, 21.485], [50.103, 26.420], [39.826, 21.422], [39.614, 24.467]
       ];
       ksaHospitals.forEach(h => drawConnection(omanHub, h, 'outbound'));
 
-      // قطر (۵ نقطه)
+      // Qatar (5 points)
       const qatarHospitals = [
         [51.531, 25.285], [51.367, 25.291], [51.597, 25.165], [51.505, 25.680], [51.488, 25.409]
       ];
       qatarHospitals.forEach(h => drawConnection(omanHub, h, 'outbound'));
 
-      // کویت (۵ نقطه)
+      // Kuwait (5 points)
       const kuwaitHospitals = [
         [47.977, 29.375], [48.028, 29.332], [48.078, 29.333], [47.958, 29.277], [47.658, 29.337]
       ];
       kuwaitHospitals.forEach(h => drawConnection(omanHub, h, 'outbound'));
 
-      // بحرین (۵ نقطه)
+      // Bahrain (5 points)
       const bahrainHospitals = [
         [50.586, 26.228], [50.555, 26.130], [50.611, 26.257], [50.506, 26.115], [50.547, 26.173]
       ];
       bahrainHospitals.forEach(h => drawConnection(omanHub, h, 'outbound'));
 
-      // عمان (۵ نقطه - به جز خود هاب)
+      // Oman (5 points)
       const omanHospitals = [
         [54.092, 17.015], [56.707, 24.341], [57.533, 22.933], [59.528, 22.566], [56.250, 24.500]
       ];
       omanHospitals.forEach(h => drawConnection(omanHub, h, 'outbound'));
 
-      // آلمان (۵ نقطه)
+      // Germany (5 points)
       const germanyHospitals = [
         [13.405, 52.520], [11.582, 48.135], [9.993, 53.551], [6.960, 50.937], [8.682, 50.110]
       ];
       germanyHospitals.forEach(h => drawConnection(omanHub, h, 'outbound'));
 
       // ==========================================
-      // رسم هاب اصلی (عمان)
+      // DRAW CENTRAL HUB (OMAN)
       // ==========================================
       const [hubX, hubY] = projection(omanHub);
       const hubGroup = add(svg, "g", { transform: `translate(${hubX},${hubY})` });
       
-      // هاله‌های نورانی برای هاب (افکت درخشش)
       add(hubGroup, "circle", { r: 20, class: "az-hub-halo-outer" });
       add(hubGroup, "circle", { r: 10, class: "az-hub-halo-inner" });
       add(hubGroup, "circle", { r: 4, class: "az-hub-core" });
 
-      // نام هاب
       const label = add(hubGroup, "text", {
         x: 15, y: 5, "text-anchor": "start", class: "az-hub-label"
       });
       label.textContent = "AZADIPOUR";
 
-      // مخفی کردن لودینگ
       if (loading) loading.classList.add("is-hidden");
     }
 
-    // دریافت دیتای نقشه جهان
     fetch("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json")
       .then(res => res.json())
       .then(draw)
