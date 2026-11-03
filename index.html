@@ -497,52 +497,64 @@
         add(svg, "circle", { cx: endX, cy: endY, r: 2.5, class: "az-network-node" });
       };
 
-      // --- 1. INBOUND: CHINA COMPANIES TO OMAN ---
-      // Ronovo Surgical (Shanghai) - Exact coordinates
-      const ronovo = [121.438, 31.188]; 
-      // WeMed Medical (Berlin, Germany) - Note: User mentioned Germany company NOAC
-      const wemedBerlin = [13.405, 52.520]; 
-      // NOAC (Hellstern medical) - Wannweil, Germany
-      const noacGermany = [9.116, 48.516];
+      // --- 1. INBOUND COMPANIES TO OMAN ---
+      // 2 Companies from China
+      const ronovoShanghai = [121.438, 31.188]; // Ronovo Surgical
+      const wemedBeijing = [116.407, 39.904];   // WeMed Medical
+      
+      // 1 Company from Taiwan
+      const taiwanCompany = [121.565, 25.033];  // Taipei
 
-      drawConnection(ronovo, omanHub, 'inbound');
-      drawConnection(wemedBerlin, omanHub, 'inbound', true);
+      // 1 Company from Germany
+      const noacGermany = [9.116, 48.516];      // NOAC
+
+      drawConnection(ronovoShanghai, omanHub, 'inbound');
+      drawConnection(wemedBeijing, omanHub, 'inbound', true);
+      drawConnection(taiwanCompany, omanHub, 'inbound', true);
       drawConnection(noacGermany, omanHub, 'inbound', true);
 
-      // --- 2. OUTBOUND: OMAN TO MIDDLE EAST HOSPITALS ---
-      // Saudi Arabia Hospitals (Riyadh, Jeddah, Dammam)
+      // --- 2. OUTBOUND: 5 HOSPITALS PER COUNTRY ---
+      
+      // Saudi Arabia (Riyadh, Jeddah, Dammam, Mecca, Medina)
       const ksaHospitals = [
-        [46.675, 24.713], // Riyadh
-        [39.197, 21.485], // Jeddah
-        [50.103, 26.420]  // Dammam
+        [46.675, 24.713], [39.197, 21.485], [50.103, 26.420], [39.826, 21.422], [39.614, 24.467]
       ];
       ksaHospitals.forEach(h => drawConnection(omanHub, h, 'outbound'));
 
-      // Qatar Hospitals (Doha)
+      // Qatar (Doha, Al Rayyan, Al Wakrah, Al Khor, Lusail)
       const qatarHospitals = [
-        [51.531, 25.285] // Doha
+        [51.531, 25.285], [51.367, 25.291], [51.597, 25.165], [51.505, 25.680], [51.488, 25.409]
       ];
       qatarHospitals.forEach(h => drawConnection(omanHub, h, 'outbound'));
 
-      // Kuwait Hospitals (Kuwait City)
+      // Kuwait (Kuwait City, Hawalli, Salmiya, Farwaniya, Jahra)
       const kuwaitHospitals = [
-        [47.977, 29.375] // Kuwait City
+        [47.977, 29.375], [48.028, 29.332], [48.078, 29.333], [47.958, 29.277], [47.658, 29.337]
       ];
       kuwaitHospitals.forEach(h => drawConnection(omanHub, h, 'outbound'));
 
-      // Bahrain Hospitals (Manama)
+      // Bahrain (Manama, Riffa, Muharraq, Hamad Town, Isa Town)
       const bahrainHospitals = [
-        [50.586, 26.228] // Manama
+        [50.586, 26.228], [50.555, 26.130], [50.611, 26.257], [50.506, 26.115], [50.547, 26.173]
       ];
       bahrainHospitals.forEach(h => drawConnection(omanHub, h, 'outbound'));
 
-      // Oman Internal Hospitals (Muscat, Salalah, Sohar)
+      // Oman (Muscat, Salalah, Sohar, Nizwa, Sur)
       const omanHospitals = [
-        [58.383, 23.588], // Muscat (Hub itself, maybe skip or draw near)
-        [54.092, 17.015], // Salalah
-        [56.707, 24.341]  // Sohar
+        [58.383, 23.588], [54.092, 17.015], [56.707, 24.341], [57.533, 22.933], [59.528, 22.566]
       ];
-      omanHospitals.forEach(h => drawConnection(omanHub, h, 'outbound'));
+      omanHospitals.forEach(h => {
+        // Avoid drawing a line to the hub itself
+        if (h[0] !== omanHub[0] || h[1] !== omanHub[1]) {
+          drawConnection(omanHub, h, 'outbound');
+        }
+      });
+
+      // Germany (Berlin, Munich, Hamburg, Cologne, Frankfurt)
+      const germanyHospitals = [
+        [13.405, 52.520], [11.582, 48.135], [9.993, 53.551], [6.960, 50.937], [8.682, 50.110]
+      ];
+      germanyHospitals.forEach(h => drawConnection(omanHub, h, 'outbound'));
 
       // --- DRAW CENTRAL HUB (OMAN) ---
       const [hubX, hubY] = projection(omanHub);
