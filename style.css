@@ -119,7 +119,7 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
 .az-map-country { fill: rgba(255, 255, 255, 0.02); stroke: rgba(255, 255, 255, 0.15); stroke-width: 0.6px; transition: fill 0.3s, stroke 0.3s; }
 .az-map-country:hover { fill: rgba(255, 255, 255, 0.06); stroke: rgba(255, 255, 255, 0.3); }
 
-/* IRAN BLACKOUT STYLE - Aggressive selectors to ensure it overrides */
+/* IRAN BLACKOUT STYLE */
 path.az-map-country.az-map-country-iran {
   fill: #000000 !important;
   stroke: #000000 !important;
@@ -351,49 +351,4 @@ path.az-map-country.az-map-country-iran:hover {
     padding: 0;
   }
   
-  .network-legend { grid-template-columns: 1fr; gap: 18px; padding: 25px 0; }
-  .network-footer { flex-direction: column; align-items: flex-start; gap: 17px; }
-  
-  .intro-details, .technology-grid, .medical-area-grid, .presence-grid, .mission-grid, .approach-grid, .contact-grid, .solutions-grid, .medical-process-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .visual-portfolio-grid { grid-template-columns: 1fr; }
-  .visual-portfolio-card, .visual-portfolio-card img { min-height: 235px; }
-  .partnership-content { grid-template-columns: 1fr; gap: 25px; }
-  .partnership-content h2 { font-size: 37px; }
-  .partnership-mark { min-height: 140px; }
-  .inner-hero { min-height: 350px; padding: 75px 20px; }
-  .inner-hero h1 { font-size: clamp(39px,11vw,54px); }
-  .inner-hero-decoration { right: -130px; width: 220px; height: 220px; opacity: .5; }
-  .about-vision { padding: 65px 20px; }
-  .focus-row { grid-template-columns: 35px 1fr; gap: 12px; }
-  .identity-card { padding: 25px 18px; }
-  .footer-main { grid-template-columns: 1fr 1fr; gap: 30px 18px; }
-  .footer-brand { grid-column: 1 / -1; }
-  .footer-bottom { flex-direction: column; gap: 8px; margin-top: 30px; }
-}
-
-/* 20 — SMALL MOBILE */
-@media (max-width: 380px) {
-  .brand img { width: 33px; height: 33px; }
-  .brand span { font-size: 16px; letter-spacing: 1.5px; }
-  .hero-content h1 { font-size: 39px; }
-  .network-heading h2 { font-size: 35px; }
-  .footer-main { grid-template-columns: 1fr; }
-}
-
-/* 21 — ACCESSIBILITY */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    scroll-behavior: auto !important;
-    animation-duration: .01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: .01ms !important;
-  }
-}
-
-/* 22 — JS ANIMATION SUPPORT */
-.site-header.scrolled { background: rgba(5, 6, 7, 0.98); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5); }
-.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
-.reveal-visible { opacity: 1; transform: translateY(0); }
+  .network-legend { grid-template-column
