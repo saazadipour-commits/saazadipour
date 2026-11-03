@@ -134,7 +134,7 @@
 
         <div class="network-map-canvas-wrap">
           <!-- Map Canvas Container -->
-          <div id="azadipourWorldMap" class="az-world-map" role="img" aria-label="Static world map showing hub connections from suppliers and to hospitals"></div>
+          <div id="azadipourWorldMap" class="az-world-map" role="img" aria-label="3D world map showing hub connections from suppliers and to hospitals"></div>
           <div class="map-loading" id="mapLoading">
             <span class="loading-indicator"></span>
             LOADING GLOBAL GEOGRAPHIC DATA
@@ -419,160 +419,170 @@
     </div>
   </footer>
 
-  <!-- D3.js & TopoJSON Libraries for the 2D Black & White Map -->
-  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
-  <script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
+  <!-- ECharts & ECharts GL Libraries for 3D Map Rendering -->
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/echarts-gl@2.0.9/dist/echarts-gl.min.js"></script>
 
-  <!-- Map Rendering Script -->
+  <!-- 3D Tilted Map Rendering Script -->
   <script>
   (() => {
     "use strict";
 
-    const host = document.getElementById("azadipourWorldMap");
-    const loading = document.getElementById("mapLoading");
-    if (!host) return;
+    const chartDom = document.getElementById('azadipourWorldMap');
+    const loading = document.getElementById('mapLoading');
+    if (!chartDom) return;
 
-    const W = 1440;
-    const H = 700;
-    const ns = "http://www.w3.org/2000/svg";
+    const myChart = echarts.init(chartDom);
 
-    // Helper function to create SVG elements
-    const add = (parent, tag, attrs = {}) => {
-      const node = document.createElementNS(ns, tag);
-      Object.entries(attrs).forEach(([key, value]) => {
-        node.setAttribute(key, value);
-      });
-      parent.appendChild(node);
-      return node;
+    // Coordinates
+    const omanHub = [58.383, 23.588]; // Muscat, Oman
+
+    // Inbound Suppliers
+    const suppliers = [
+      [121.438, 31.188], // Ronovo (Shanghai, China)
+      [116.407, 39.904], // WeMed (Beijing, China)
+      [121.565, 25.033], // Taiwan
+      [114.057, 22.543]  // Shenzhen, China
+    ];
+
+    // Outbound Hospitals (Saudi Arabia - 5 points)
+    const ksaHospitals = [
+      [46.675, 24.713], // Riyadh
+      [39.197, 21.485], // Jeddah
+      [50.103, 26.420], // Dammam
+      [39.826, 21.422], // Mecca
+      [39.614, 24.467]  // Medina
+    ];
+
+    // Prepare data for Lines3D
+    const inboundData = suppliers.map(coord => ({
+      coords: [coord, omanHub],
+      lineStyle: { color: '#ffffff', width: 1.5, opacity: 0.8 }
+    }));
+
+    const outboundData = ksaHospitals.map(coord => ({
+      coords: [omanHub, coord],
+      lineStyle: { color: '#888888', width: 1, opacity: 0.5 }
+    }));
+
+    // Prepare data for scatter3D (Glowing Nodes)
+    const scatterData = [
+      { name: 'Azadipour Hub', value: [...omanHub, 0], itemStyle: { color: '#ffffff', shadowBlur: 20, shadowColor: '#ffffff' } },
+      ...suppliers.map(coord => ({ value: [...coord, 0], itemStyle: { color: '#ffffff', shadowBlur: 10, shadowColor: '#ffffff' } })),
+      ...ksaHospitals.map(coord => ({ value: [...coord, 0], itemStyle: { color: '#aaaaaa', shadowBlur: 5, shadowColor: '#aaaaaa' } }))
+    ];
+
+    const option = {
+      backgroundColor: '#050607',
+      tooltip: { show: false },
+      
+      // 3D Tilted Map Configuration
+      geo3D: {
+        map: 'world',
+        shading: 'lambert',
+        environment: '#050607',
+        itemStyle: {
+          color: '#111111', // Dark grey landmass
+          borderWidth: 0.5,
+          borderColor: '#333333'
+        },
+        // Blackout for Iran region (Optional)
+        regions: [
+          { name: 'Iran', itemStyle: { color: '#050607', borderColor: '#050607' } }
+        ],
+        light: {
+          main: { intensity: 1.2, shadow: true, alpha: 40, beta: 40 },
+          ambient: { intensity: 0.5 }
+        },
+        viewControl: {
+          alpha: 40,       // Tilt angle (makes it 3D perspective)
+          beta: 0,         
+          distance: 120,   
+          center: [30, 40],// Center on Middle East/Asia
+          autoRotate: false,
+          panMouseButton: 'left',
+          rotateMouseButton: 'right'
+        },
+        boxWidth: 100,
+        boxHeight: 20,
+        boxDepth: 100
+      },
+      
+      series: [
+        // Inbound Glowing Lines (Curved in 3D space)
+        {
+          type: 'lines3D',
+          coordinateSystem: 'geo3D',
+          effect: {
+            show: true,
+            trailWidth: 3,
+            trailOpacity: 1,
+            trailLength: 0.3,
+            constantSpeed: 20
+          },
+          blendMode: 'lighter',
+          lineStyle: { width: 1, color: '#fff', opacity: 0.6 },
+          data: inboundData
+        },
+        // Outbound Lines
+        {
+          type: 'lines3D',
+          coordinateSystem: 'geo3D',
+          effect: {
+            show: true,
+            trailWidth: 2,
+            trailOpacity: 0.5,
+            trailLength: 0.2,
+            constantSpeed: 15
+          },
+          blendMode: 'lighter',
+          lineStyle: { width: 1, color: '#999', opacity: 0.4 },
+          data: outboundData
+        },
+        // Glowing Nodes
+        {
+          type: 'scatter3D',
+          coordinateSystem: 'geo3D',
+          symbol: 'circle',
+          symbolSize: 6,
+          itemStyle: {
+            color: '#fff',
+            opacity: 1
+          },
+          label: {
+            show: true,
+            formatter: function(param) {
+              return param.data.name === 'Azadipour Hub' ? 'AZADIPOUR' : '';
+            },
+            textStyle: {
+              color: '#fff',
+              fontFamily: 'Inter, sans-serif',
+              fontSize: 12,
+              fontWeight: 'bold',
+              backgroundColor: 'rgba(0,0,0,0.5)',
+              padding: [4, 8]
+            }
+          },
+          data: scatterData
+        }
+      ]
     };
 
-    function draw(world) {
-      host.innerHTML = "";
-
-      const svg = add(host, "svg", {
-        viewBox: `0 0 ${W} ${H}`,
-        preserveAspectRatio: "xMidYMid meet",
-        role: "img",
-        "aria-label": "Directional network map"
-      });
-
-      const features = topojson.feature(world, world.objects.countries);
-      const projection = d3.geoNaturalEarth1().fitExtent([[22, 28], [W - 22, H - 28]], features);
-      const geoPath = d3.geoPath(projection);
-
-      // Draw Graticule (Grid lines)
-      add(svg, "path", {
-        d: geoPath(d3.geoGraticule().step([30, 30])()),
-        class: "az-map-graticule"
-      });
-
-      // Draw Countries
-      const landGroup = add(svg, "g", { class: "az-map-land" });
-      features.features.forEach(feature => {
-        const isIran = String(feature.id) === "364" || 
-                       (feature.properties && feature.properties.name && feature.properties.name.includes("Iran"));
-        
-        add(landGroup, "path", {
-          d: geoPath(feature),
-          class: isIran ? "az-map-country az-map-country-iran" : "az-map-country"
-        });
-      });
-
-      const omanHub = [58.383, 23.588]; // Muscat, Oman
-
-      // Function to draw connection lines
-      const drawConnection = (start, end, type, isDim = false) => {
-        const interpolate = d3.geoInterpolate(start, end);
-        const coordinates = d3.range(0, 1.001, 0.01).map(t => interpolate(t));
-        const pathD = geoPath({ type: "LineString", coordinates });
-        
-        let className = type === 'inbound' ? "az-arc-inbound" : "az-arc-outbound";
-        if (isDim) className += " dim";
-
-        add(svg, "path", { 
-          d: pathD, 
-          class: className
-        });
-
-        const [endX, endY] = projection(end);
-        add(svg, "circle", { cx: endX, cy: endY, r: 2.5, class: "az-network-node" });
-      };
-
-      // ==========================================
-      // 1. INBOUND SUPPLIERS TO OMAN
-      // ==========================================
-      const ronovoShanghai = [121.438, 31.188]; // Ronovo Surgical
-      const wemedBeijing = [116.407, 39.904];   // WeMed Medical
-      const taiwanCompany = [121.565, 25.033];  // Taipei
-      const shenzhenCompany = [114.057, 22.543]; // Shenzhen
-
-      drawConnection(ronovoShanghai, omanHub, 'inbound');
-      drawConnection(wemedBeijing, omanHub, 'inbound', true);
-      drawConnection(taiwanCompany, omanHub, 'inbound', true);
-      drawConnection(shenzhenCompany, omanHub, 'inbound', true);
-
-      // ==========================================
-      // 2. OUTBOUND HOSPITALS FROM OMAN
-      // ==========================================
-      
-      // Saudi Arabia (5 points)
-      const ksaHospitals = [
-        [46.675, 24.713], [39.197, 21.485], [50.103, 26.420], [39.826, 21.422], [39.614, 24.467]
-      ];
-      ksaHospitals.forEach(h => drawConnection(omanHub, h, 'outbound'));
-
-      // Qatar (5 points)
-      const qatarHospitals = [
-        [51.531, 25.285], [51.367, 25.291], [51.597, 25.165], [51.505, 25.680], [51.488, 25.409]
-      ];
-      qatarHospitals.forEach(h => drawConnection(omanHub, h, 'outbound'));
-
-      // Kuwait (5 points)
-      const kuwaitHospitals = [
-        [47.977, 29.375], [48.028, 29.332], [48.078, 29.333], [47.958, 29.277], [47.658, 29.337]
-      ];
-      kuwaitHospitals.forEach(h => drawConnection(omanHub, h, 'outbound'));
-
-      // Bahrain (5 points)
-      const bahrainHospitals = [
-        [50.586, 26.228], [50.555, 26.130], [50.611, 26.257], [50.506, 26.115], [50.547, 26.173]
-      ];
-      bahrainHospitals.forEach(h => drawConnection(omanHub, h, 'outbound'));
-
-      // Oman (5 points)
-      const omanHospitals = [
-        [54.092, 17.015], [56.707, 24.341], [57.533, 22.933], [59.528, 22.566], [56.250, 24.500]
-      ];
-      omanHospitals.forEach(h => drawConnection(omanHub, h, 'outbound'));
-
-      // Germany (5 points)
-      const germanyHospitals = [
-        [13.405, 52.520], [11.582, 48.135], [9.993, 53.551], [6.960, 50.937], [8.682, 50.110]
-      ];
-      germanyHospitals.forEach(h => drawConnection(omanHub, h, 'outbound'));
-
-      // ==========================================
-      // DRAW CENTRAL HUB (OMAN)
-      // ==========================================
-      const [hubX, hubY] = projection(omanHub);
-      const hubGroup = add(svg, "g", { transform: `translate(${hubX},${hubY})` });
-      
-      add(hubGroup, "circle", { r: 20, class: "az-hub-halo-outer" });
-      add(hubGroup, "circle", { r: 10, class: "az-hub-halo-inner" });
-      add(hubGroup, "circle", { r: 4, class: "az-hub-core" });
-
-      const label = add(hubGroup, "text", {
-        x: 15, y: 5, "text-anchor": "start", class: "az-hub-label"
-      });
-      label.textContent = "AZADIPOUR";
-
-      if (loading) loading.classList.add("is-hidden");
-    }
-
-    fetch("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json")
-      .then(res => res.json())
-      .then(draw)
+    // Fetch and register map data
+    fetch('https://cdn.jsdelivr.net/npm/echarts@4.9.0/map/json/world.json')
+      .then(response => response.json())
+      .then(worldJson => {
+        echarts.registerMap('world', worldJson);
+        myChart.setOption(option);
+        if (loading) loading.classList.add('is-hidden');
+      })
       .catch(err => console.error("Error loading map data:", err));
+
+    // Handle window resize
+    window.addEventListener('resize', () => {
+      myChart.resize();
+    });
+
   })();
   </script>
 
