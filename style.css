@@ -1,7 +1,7 @@
 /* =========================================================
    AZADIPOUR
    GLOBAL MEDICAL TECHNOLOGY & HOSPITAL SOLUTIONS
-   PREMIUM STYLESHEET (3D MAP EDITION)
+   PREMIUM STYLESHEET (3D MAP EDITION - B&W THEME)
    ========================================================= */
 
 :root {
@@ -111,7 +111,7 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
 .network-map-canvas-wrap {
   position: relative;
   width: 100%;
-  height: 600px; /* Fixed height for the 3D map */
+  height: 600px;
   overflow: hidden;
   background: #050607;
 }
@@ -150,12 +150,12 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
 .intro-detail h3 { margin-bottom: 12px; font-size: 27px; }
 .intro-detail p { font-size: 12px; }
 
-/* 08 — VISUAL PORTFOLIO */
+/* 08 — VISUAL PORTFOLIO (Images are Colorful) */
 .visual-portfolio-section { background: #090c0f; }
 .visual-portfolio-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 17px; margin-top: 38px; }
 .visual-portfolio-card { position: relative; min-width: 0; min-height: 270px; overflow: hidden; border: 1px solid var(--border); background: #101316; border-radius: 2px; }
-.visual-portfolio-card img { width: 100%; height: 100%; min-height: 270px; object-fit: cover; opacity: .7; transition: transform .7s ease, opacity .7s ease; filter: grayscale(100%); }
-.visual-portfolio-card:hover img { transform: scale(1.06); opacity: 1; filter: grayscale(0%); }
+.visual-portfolio-card img { width: 100%; height: 100%; min-height: 270px; object-fit: cover; opacity: 1; transition: transform .7s ease; }
+.visual-portfolio-card:hover img { transform: scale(1.06); }
 .visual-portfolio-card figcaption { position: absolute; right: 0; bottom: 0; left: 0; display: flex; flex-direction: column; gap: 5px; padding: 38px 20px 20px; background: linear-gradient(transparent,rgba(0,0,0,.94)); }
 .visual-portfolio-card figcaption strong { color: #fff; font-family: "Cormorant Garamond", Georgia, serif; font-size: 25px; font-weight: 500; }
 .visual-portfolio-card figcaption span { color: #c8cdd2; font-size: 10px; letter-spacing: .7px; }
