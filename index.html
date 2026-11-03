@@ -423,6 +423,9 @@
     </div>
   </footer>
 
+  <!-- Local World Map Data (world.js must be created in the same folder) -->
+  <script src="world.js"></script>
+
   <!-- 3D TILTED MAP SCRIPT (WEBGL) -->
   <script>
   (() => {
@@ -569,18 +572,19 @@
       ]
     };
 
-    // Fetch and register LOCAL map data
-    fetch('world.json')
-      .then(response => response.json())
-      .then(worldJson => {
-        echarts.registerMap('world', worldJson);
+    // Register map using the variable from world.js and render
+    try {
+      if (typeof worldData !== 'undefined') {
+        echarts.registerMap('world', worldData);
         myChart.setOption(option);
         if (loading) loading.classList.add('is-hidden');
-      })
-      .catch(err => {
-        console.error("Error loading local map data:", err);
-        if (loading) loading.textContent = "MAP DATA UNAVAILABLE";
-      });
+      } else {
+        throw new Error("worldData variable is not defined. Check world.js file.");
+      }
+    } catch (err) {
+      console.error("Error loading map data:", err);
+      if (loading) loading.textContent = "MAP DATA UNAVAILABLE";
+    }
 
     // Handle window resize
     window.addEventListener('resize', () => {
