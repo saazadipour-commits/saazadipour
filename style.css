@@ -333,22 +333,3 @@ path.az-map-country.az-map-country-iran:hover {
   .hero-content h1 { font-size: clamp(42px,12vw,60px); }
   .hero-content > p { font-size: 13px; }
   .hero-actions { max-width: 320px; flex-direction: column; align-items: stretch; }
-  .hero-actions a { width: 100%; }
-  .hero-bottom { bottom: 18px; flex-direction: column; gap: 5px; }
-  .hero-scroll { display: none; }
-  
-  .section, .global-network-section, .contact-section, .about-focus, .identity-section, .approach-section, .medical-process-section, .robotic-intro-section, .cardiac-intro-section, .robotic-areas-section, .cardiac-areas-section, .robotic-value-section, .cardiac-value-section, .robotic-markets-section, .cardiac-markets-section, .partnership-models-section, .partner-profile-section, .projects-focus-section, .projects-markets-section, .global-cta {
-    padding: 65px 18px;
-  }
-  
-  .section-heading h2 { font-size: 36px; }
-  .network-heading h2 { font-size: 40px; }
-  .network-heading > p { font-size: 12px; }
-  .network-map-topline, .map-caption { flex-direction: column; gap: 7px; padding: 13px; font-size: 8px; }
-  
-  .network-map-canvas-wrap {
-    aspect-ratio: 1440 / 700; 
-    padding: 0;
-  }
-  
-  .network-legend { grid-template-column
