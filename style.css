@@ -1,7 +1,7 @@
 /* =========================================================
    AZADIPOUR
    GLOBAL MEDICAL TECHNOLOGY & HOSPITAL SOLUTIONS
-   PREMIUM STYLESHEET (BLACK & WHITE MAP EDITION)
+   PREMIUM STYLESHEET (3D MAP EDITION)
    ========================================================= */
 
 :root {
@@ -106,89 +106,20 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
 .network-map-topline { border-bottom: 1px solid var(--border); background: linear-gradient(90deg,#090c0f,#11161b,#090c0f); }
 
 /* =========================================
-   DIRECTIONAL MAP STYLES (BLACK & WHITE)
+   DIRECTIONAL MAP STYLES (WEBGL 3D)
    ========================================= */
 .network-map-canvas-wrap {
   position: relative;
   width: 100%;
-  aspect-ratio: 1440 / 700;
+  height: 600px; /* Fixed height for the 3D map */
   overflow: hidden;
-  background: #000000; /* Solid black background */
+  background: #050607;
 }
 
-.az-world-map { display: block; width: 100%; height: 100%; overflow: visible; }
-
-/* Graticule lines */
-.az-map-graticule { fill: none; stroke: rgba(255, 255, 255, 0.05); stroke-width: 1px; }
-
-/* Country bodies */
-.az-map-country { 
-  fill: #0a0a0a; /* Very dark grey to blend with black */
-  stroke: #2a2a2a; /* Dark grey borders */
-  stroke-width: 0.5px; 
-  transition: fill 0.3s, stroke 0.3s; 
-}
-.az-map-country:hover { fill: #151515; stroke: #444; }
-
-/* Iran Blackout Effect */
-path.az-map-country.az-map-country-iran {
-  fill: #000000 !important;
-  stroke: #000000 !important;
-  stroke-width: 0 !important;
-  transition: none !important;
-}
-path.az-map-country.az-map-country-iran:hover {
-  fill: #000000 !important;
-  stroke: #000000 !important;
-}
-
-/* Inbound Connection Lines (White and glowing) */
-.az-arc-inbound {
-  fill: none !important;
-  stroke: rgba(255, 255, 255, 0.9);
-  stroke-width: 1.5px;
-  stroke-dasharray: 8 6;
-  animation: dash-inbound 1.5s linear infinite;
-  filter: drop-shadow(0 0 3px rgba(255,255,255,0.5));
-}
-
-.az-arc-inbound.dim {
-  stroke: rgba(255, 255, 255, 0.4);
-  stroke-width: 1px;
-  stroke-dasharray: 4 6;
-  animation: dash-inbound 3s linear infinite;
-  filter: none;
-}
-
-/* Outbound Connection Lines (Subtle grey) */
-.az-arc-outbound {
-  fill: none !important;
-  stroke: rgba(200, 200, 200, 0.5);
-  stroke-width: 1px;
-  stroke-dasharray: 4 6;
-  animation: dash-outbound 2.5s linear infinite;
-}
-
-/* White nodes on the map */
-.az-network-node { 
-  fill: #ffffff; 
-  opacity: 0.9; 
-  filter: drop-shadow(0 0 5px #ffffff);
-}
-
-/* Main Hub (Oman) */
-.az-hub-halo-outer { fill: rgba(255, 255, 255, 0.05); animation: pulse-hub 3s infinite; }
-.az-hub-halo-inner { fill: rgba(255, 255, 255, 0.15); animation: pulse-hub 2s infinite; }
-.az-hub-core { fill: #ffffff; filter: drop-shadow(0 0 10px #ffffff); }
-.az-hub-label { fill: #ffffff; font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 2px; text-shadow: 0 0 8px #000, 0 0 4px #000; }
-
-/* Map Animations */
-@keyframes dash-inbound { to { stroke-dashoffset: -28; } }
-@keyframes dash-outbound { to { stroke-dashoffset: -20; } }
-@keyframes pulse-hub {
-  0% { transform: scale(1); opacity: 0.8; }
-  50% { transform: scale(1.6); opacity: 0.1; }
-  100% { transform: scale(1); opacity: 0.8; }
+.az-world-map { 
+  display: block; 
+  width: 100%; 
+  height: 100%; 
 }
 
 /* Map Loading State */
@@ -341,7 +272,6 @@ path.az-map-country.az-map-country-iran:hover {
   .footer-brand { grid-column: 1 / -1; }
   .solutions-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .visual-portfolio-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
-  .network-map-canvas-wrap { aspect-ratio: 16 / 9; } 
 }
 
 /* 19 — RESPONSIVE MOBILE */
@@ -358,8 +288,7 @@ path.az-map-country.az-map-country-iran:hover {
   .hero-actions { max-width: 320px; flex-direction: column; align-items: stretch; }
   
   /* Map settings for mobile */
-  .network-map-canvas-wrap { aspect-ratio: auto; height: 350px; }
-  .az-hub-label { font-size: 9px; }
+  .network-map-canvas-wrap { height: 400px; }
   .network-map-topline, .map-caption { flex-direction: column; gap: 5px; text-align: center; }
   .network-footer { flex-direction: column; align-items: flex-start; }
 }
