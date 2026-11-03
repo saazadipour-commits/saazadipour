@@ -21,7 +21,7 @@
 
   <link rel="stylesheet" href="style.css">
 
-  <!-- ECharts & ECharts GL Libraries for 3D Map -->
+  <!-- ECharts Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/echarts-gl@2.0.9/dist/echarts-gl.min.js"></script>
 
@@ -423,42 +423,42 @@
     </div>
   </footer>
 
-  <!-- Local World Map Data (world.js must be created in the same folder) -->
+  <!-- Local World Map Data (Ensure world.js exists in the root folder) -->
   <script src="world.js"></script>
 
-  <!-- 3D TILTED MAP SCRIPT (WEBGL) -->
+  <!-- 3D TILTED MAP SCRIPT -->
   <script>
-  (() => {
-    "use strict";
-
+  window.addEventListener('load', function() {
     const chartDom = document.getElementById('azadipourWorldMap');
     const loading = document.getElementById('mapLoading');
+    
     if (!chartDom) return;
 
-    // Initialize ECharts instance
+    // Ensure ECharts is loaded
+    if (typeof echarts === 'undefined') {
+      console.error("ECharts library failed to load.");
+      if (loading) loading.textContent = "FAILED TO LOAD LIBRARIES";
+      return;
+    }
+
+    // Ensure worldData is loaded
+    if (typeof worldData === 'undefined') {
+      console.error("worldData is not defined. Check world.js file.");
+      if (loading) loading.textContent = "MAP DATA UNAVAILABLE";
+      return;
+    }
+
+    // Initialize ECharts
     const myChart = echarts.init(chartDom);
 
-    // Coordinates
-    const omanHub = [58.383, 23.588]; // Muscat, Oman
-
-    // Inbound Suppliers
+    const omanHub = [58.383, 23.588];
     const suppliers = [
-      [121.438, 31.188], // Ronovo (Shanghai, China)
-      [116.407, 39.904], // WeMed (Beijing, China)
-      [121.565, 25.033], // Taiwan
-      [114.057, 22.543]  // Shenzhen, China
+      [121.438, 31.188], [116.407, 39.904], [121.565, 25.033], [114.057, 22.543]
     ];
-
-    // Outbound Hospitals (Saudi Arabia - 5 points)
     const ksaHospitals = [
-      [46.675, 24.713], // Riyadh
-      [39.197, 21.485], // Jeddah
-      [50.103, 26.420], // Dammam
-      [39.826, 21.422], // Mecca
-      [39.614, 24.467]  // Medina
+      [46.675, 24.713], [39.197, 21.485], [50.103, 26.420], [39.826, 21.422], [39.614, 24.467]
     ];
 
-    // Prepare data for Lines3D
     const inboundData = suppliers.map(coord => ({
       coords: [coord, omanHub],
       lineStyle: { color: '#ffffff', width: 1.5, opacity: 0.8 }
@@ -469,7 +469,6 @@
       lineStyle: { color: '#888888', width: 1, opacity: 0.5 }
     }));
 
-    // Prepare data for scatter3D (Glowing Nodes)
     const scatterData = [
       { name: 'Azadipour Hub', value: [...omanHub, 0], itemStyle: { color: '#ffffff', shadowBlur: 20, shadowColor: '#ffffff' } },
       ...suppliers.map(coord => ({ value: [...coord, 0], itemStyle: { color: '#ffffff', shadowBlur: 10, shadowColor: '#ffffff' } })),
@@ -479,119 +478,59 @@
     const option = {
       backgroundColor: '#050607',
       tooltip: { show: false },
-      
-      // 3D Tilted Map Configuration
       geo3D: {
         map: 'world',
         shading: 'lambert',
         environment: '#050607',
-        itemStyle: {
-          color: '#111111', // Dark grey landmass
-          borderWidth: 0.5,
-          borderColor: '#333333'
-        },
-        // Hide Iran region
-        regions: [
-          { name: 'Iran', itemStyle: { color: '#050607', borderColor: '#050607' } }
-        ],
+        itemStyle: { color: '#111111', borderWidth: 0.5, borderColor: '#333333' },
+        regions: [ { name: 'Iran', itemStyle: { color: '#050607', borderColor: '#050607' } } ],
         light: {
           main: { intensity: 1.2, shadow: true, alpha: 40, beta: 40 },
           ambient: { intensity: 0.5 }
         },
         viewControl: {
-          alpha: 40,       // Tilt angle
-          beta: 0,         
-          distance: 120,   
-          center: [30, 40],// Center on Middle East/Asia
-          autoRotate: false,
-          panMouseButton: 'left',
-          rotateMouseButton: 'right'
+          alpha: 40, beta: 0, distance: 120, center: [30, 40],
+          autoRotate: false, panMouseButton: 'left', rotateMouseButton: 'right'
         },
-        boxWidth: 100,
-        boxHeight: 20,
-        boxDepth: 100
+        boxWidth: 100, boxHeight: 20, boxDepth: 100
       },
-      
       series: [
-        // Inbound Glowing Lines
         {
-          type: 'lines3D',
-          coordinateSystem: 'geo3D',
-          effect: {
-            show: true,
-            trailWidth: 3,
-            trailOpacity: 1,
-            trailLength: 0.3,
-            constantSpeed: 20
-          },
-          blendMode: 'lighter',
-          lineStyle: { width: 1, color: '#fff', opacity: 0.6 },
+          type: 'lines3D', coordinateSystem: 'geo3D',
+          effect: { show: true, trailWidth: 3, trailOpacity: 1, trailLength: 0.3, constantSpeed: 20 },
+          blendMode: 'lighter', lineStyle: { width: 1, color: '#fff', opacity: 0.6 },
           data: inboundData
         },
-        // Outbound Lines
         {
-          type: 'lines3D',
-          coordinateSystem: 'geo3D',
-          effect: {
-            show: true,
-            trailWidth: 2,
-            trailOpacity: 0.5,
-            trailLength: 0.2,
-            constantSpeed: 15
-          },
-          blendMode: 'lighter',
-          lineStyle: { width: 1, color: '#999', opacity: 0.4 },
+          type: 'lines3D', coordinateSystem: 'geo3D',
+          effect: { show: true, trailWidth: 2, trailOpacity: 0.5, trailLength: 0.2, constantSpeed: 15 },
+          blendMode: 'lighter', lineStyle: { width: 1, color: '#999', opacity: 0.4 },
           data: outboundData
         },
-        // Glowing Nodes
         {
-          type: 'scatter3D',
-          coordinateSystem: 'geo3D',
-          symbol: 'circle',
-          symbolSize: 6,
-          itemStyle: {
-            color: '#fff',
-            opacity: 1
-          },
+          type: 'scatter3D', coordinateSystem: 'geo3D',
+          symbol: 'circle', symbolSize: 6, itemStyle: { color: '#fff', opacity: 1 },
           label: {
             show: true,
-            formatter: function(param) {
-              return param.data.name === 'Azadipour Hub' ? 'AZADIPOUR' : '';
-            },
-            textStyle: {
-              color: '#fff',
-              fontFamily: 'Inter, sans-serif',
-              fontSize: 12,
-              fontWeight: 'bold',
-              backgroundColor: 'rgba(0,0,0,0.5)',
-              padding: [4, 8]
-            }
+            formatter: function(param) { return param.data.name === 'Azadipour Hub' ? 'AZADIPOUR' : ''; },
+            textStyle: { color: '#fff', fontFamily: 'Inter, sans-serif', fontSize: 12, fontWeight: 'bold', backgroundColor: 'rgba(0,0,0,0.5)', padding: [4, 8] }
           },
           data: scatterData
         }
       ]
     };
 
-    // Register map using the variable from world.js and render
     try {
-      if (typeof worldData !== 'undefined') {
-        echarts.registerMap('world', worldData);
-        myChart.setOption(option);
-        if (loading) loading.classList.add('is-hidden');
-      } else {
-        throw new Error("worldData variable is not defined. Check world.js file.");
-      }
+      echarts.registerMap('world', worldData);
+      myChart.setOption(option);
+      if (loading) loading.classList.add('is-hidden');
     } catch (err) {
-      console.error("Error loading map data:", err);
-      if (loading) loading.textContent = "MAP DATA UNAVAILABLE";
+      console.error("Error initializing map:", err);
+      if (loading) loading.textContent = "ERROR RENDERING MAP";
     }
 
-    // Handle window resize
-    window.addEventListener('resize', () => {
-      myChart.resize();
-    });
-
-  })();
+    window.addEventListener('resize', () => myChart.resize());
+  });
   </script>
 
   <script src="script.js" defer></script>
