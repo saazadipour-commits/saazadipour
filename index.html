@@ -21,6 +21,10 @@
 
   <link rel="stylesheet" href="style.css">
 
+  <!-- ECharts & ECharts GL for 3D Map -->
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/echarts-gl@2.0.9/dist/echarts-gl.min.js"></script>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -419,11 +423,7 @@
     </div>
   </footer>
 
-  <!-- ECharts & ECharts GL Libraries for 3D Map Rendering -->
-  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/echarts-gl@2.0.9/dist/echarts-gl.min.js"></script>
-
-  <!-- 3D Tilted Map Rendering Script -->
+  <!-- 3D TILTED MAP SCRIPT -->
   <script>
   (() => {
     "use strict";
@@ -432,9 +432,10 @@
     const loading = document.getElementById('mapLoading');
     if (!chartDom) return;
 
+    // Initialize ECharts instance
     const myChart = echarts.init(chartDom);
 
-    // Coordinates
+    // Define coordinates
     const omanHub = [58.383, 23.588]; // Muscat, Oman
 
     // Inbound Suppliers
@@ -486,7 +487,7 @@
           borderWidth: 0.5,
           borderColor: '#333333'
         },
-        // Blackout for Iran region (Optional)
+        // Blackout for Iran region
         regions: [
           { name: 'Iran', itemStyle: { color: '#050607', borderColor: '#050607' } }
         ],
@@ -495,7 +496,7 @@
           ambient: { intensity: 0.5 }
         },
         viewControl: {
-          alpha: 40,       // Tilt angle (makes it 3D perspective)
+          alpha: 40,       // Tilt angle
           beta: 0,         
           distance: 120,   
           center: [30, 40],// Center on Middle East/Asia
@@ -576,7 +577,10 @@
         myChart.setOption(option);
         if (loading) loading.classList.add('is-hidden');
       })
-      .catch(err => console.error("Error loading map data:", err));
+      .catch(err => {
+        console.error("Error loading map data:", err);
+        if (loading) loading.textContent = "MAP DATA UNAVAILABLE";
+      });
 
     // Handle window resize
     window.addEventListener('resize', () => {
@@ -590,7 +594,3 @@
 
 </body>
 </html>
-
-<!-- ECharts & ECharts GL Libraries -->
-<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/echarts-gl@2.0.9/dist/echarts-gl.min.js"></script>
