@@ -418,11 +418,11 @@
     </div>
   </footer>
 
-  <!-- MAP LIBRARIES -->
+  <!-- کتابخانه‌های مورد نیاز برای نقشه مسطح -->
   <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
   <script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
 
-  <!-- DIRECTIONAL NETWORK MAP SCRIPT -->
+  <!-- اسکریپت ساخت نقشه مشکی و سفید -->
   <script>
   (() => {
     "use strict";
@@ -435,6 +435,7 @@
     const H = 700;
     const ns = "http://www.w3.org/2000/svg";
 
+    // تابع کمکی برای ساخت المان‌های SVG
     const add = (parent, tag, attrs = {}) => {
       const node = document.createElementNS(ns, tag);
       Object.entries(attrs).forEach(([key, value]) => {
@@ -458,28 +459,24 @@
       const projection = d3.geoNaturalEarth1().fitExtent([[22, 28], [W - 22, H - 28]], features);
       const geoPath = d3.geoPath(projection);
 
-      // Grid Lines
+      // خطوط نصف النهار (Graticule) با رنگ بسیار تیره
       add(svg, "path", {
         d: geoPath(d3.geoGraticule().step([30, 30])()),
         class: "az-map-graticule"
       });
 
-      // Countries
+      // رسم کشورها با رنگ خاکستری تیره
       const landGroup = add(svg, "g", { class: "az-map-land" });
       features.features.forEach(feature => {
-        
-        // Robust check for Iran (ID 364 or name including Iran)
-        const isIran = String(feature.id) === "364" || 
-                       (feature.properties && feature.properties.name && feature.properties.name.includes("Iran"));
-        
-        const path = add(landGroup, "path", {
+        add(landGroup, "path", {
           d: geoPath(feature),
-          class: isIran ? "az-map-country az-map-country-iran" : "az-map-country"
+          class: "az-map-country"
         });
       });
 
-      const omanHub = [58.383, 23.588]; // Muscat
+      const omanHub = [58.383, 23.588]; // مسقط، عمان
 
+      // تابع رسم خطوط اتصال
       const drawConnection = (start, end, type, isDim = false) => {
         const interpolate = d3.geoInterpolate(start, end);
         const coordinates = d3.range(0, 1.001, 0.01).map(t => interpolate(t));
@@ -493,89 +490,100 @@
           class: className
         });
 
+        // رسم نقطه مقصد به صورت دایره سفید کوچک با افکت درخشش
         const [endX, endY] = projection(end);
         add(svg, "circle", { cx: endX, cy: endY, r: 2.5, class: "az-network-node" });
       };
 
-      // --- 1. INBOUND COMPANIES TO OMAN ---
-      // 2 Companies from China
+      // ==========================================
+      // ۱. نقاط ورودی (تامین‌کنندگان) به عمان
+      // ==========================================
+      // ۲ نقطه از چین
       const ronovoShanghai = [121.438, 31.188]; // Ronovo Surgical
       const wemedBeijing = [116.407, 39.904];   // WeMed Medical
       
-      // 1 Company from Taiwan
+      // ۱ نقطه از تایوان
       const taiwanCompany = [121.565, 25.033];  // Taipei
 
-      // 1 Company from Germany
-      const noacGermany = [9.116, 48.516];      // NOAC
+      // ۱ نقطه دیگر از چین (مثلا شنژن)
+      const shenzhenCompany = [114.057, 22.543];
 
+      // اتصال این نقاط به عمان
       drawConnection(ronovoShanghai, omanHub, 'inbound');
       drawConnection(wemedBeijing, omanHub, 'inbound', true);
       drawConnection(taiwanCompany, omanHub, 'inbound', true);
-      drawConnection(noacGermany, omanHub, 'inbound', true);
+      drawConnection(shenzhenCompany, omanHub, 'inbound', true);
 
-      // --- 2. OUTBOUND: 5 HOSPITALS PER COUNTRY ---
+      // ==========================================
+      // ۲. نقاط خروجی (بیمارستان‌ها) از عمان
+      // ==========================================
       
-      // Saudi Arabia (Riyadh, Jeddah, Dammam, Mecca, Medina)
+      // عربستان سعودی (۵ نقطه)
       const ksaHospitals = [
-        [46.675, 24.713], [39.197, 21.485], [50.103, 26.420], [39.826, 21.422], [39.614, 24.467]
+        [46.675, 24.713], // ریاض
+        [39.197, 21.485], // جده
+        [50.103, 26.420], // دمام
+        [39.826, 21.422], // مکه
+        [39.614, 24.467]  // مدینه
       ];
       ksaHospitals.forEach(h => drawConnection(omanHub, h, 'outbound'));
 
-      // Qatar (Doha, Al Rayyan, Al Wakrah, Al Khor, Lusail)
+      // قطر (۵ نقطه)
       const qatarHospitals = [
         [51.531, 25.285], [51.367, 25.291], [51.597, 25.165], [51.505, 25.680], [51.488, 25.409]
       ];
       qatarHospitals.forEach(h => drawConnection(omanHub, h, 'outbound'));
 
-      // Kuwait (Kuwait City, Hawalli, Salmiya, Farwaniya, Jahra)
+      // کویت (۵ نقطه)
       const kuwaitHospitals = [
         [47.977, 29.375], [48.028, 29.332], [48.078, 29.333], [47.958, 29.277], [47.658, 29.337]
       ];
       kuwaitHospitals.forEach(h => drawConnection(omanHub, h, 'outbound'));
 
-      // Bahrain (Manama, Riffa, Muharraq, Hamad Town, Isa Town)
+      // بحرین (۵ نقطه)
       const bahrainHospitals = [
         [50.586, 26.228], [50.555, 26.130], [50.611, 26.257], [50.506, 26.115], [50.547, 26.173]
       ];
       bahrainHospitals.forEach(h => drawConnection(omanHub, h, 'outbound'));
 
-      // Oman (Muscat, Salalah, Sohar, Nizwa, Sur)
+      // عمان (۵ نقطه - به جز خود هاب)
       const omanHospitals = [
-        [58.383, 23.588], [54.092, 17.015], [56.707, 24.341], [57.533, 22.933], [59.528, 22.566]
+        [54.092, 17.015], [56.707, 24.341], [57.533, 22.933], [59.528, 22.566], [56.250, 24.500]
       ];
-      omanHospitals.forEach(h => {
-        // Avoid drawing a line to the hub itself
-        if (h[0] !== omanHub[0] || h[1] !== omanHub[1]) {
-          drawConnection(omanHub, h, 'outbound');
-        }
-      });
+      omanHospitals.forEach(h => drawConnection(omanHub, h, 'outbound'));
 
-      // Germany (Berlin, Munich, Hamburg, Cologne, Frankfurt)
+      // آلمان (۵ نقطه)
       const germanyHospitals = [
         [13.405, 52.520], [11.582, 48.135], [9.993, 53.551], [6.960, 50.937], [8.682, 50.110]
       ];
       germanyHospitals.forEach(h => drawConnection(omanHub, h, 'outbound'));
 
-      // --- DRAW CENTRAL HUB (OMAN) ---
+      // ==========================================
+      // رسم هاب اصلی (عمان)
+      // ==========================================
       const [hubX, hubY] = projection(omanHub);
       const hubGroup = add(svg, "g", { transform: `translate(${hubX},${hubY})` });
       
+      // هاله‌های نورانی برای هاب (افکت درخشش)
       add(hubGroup, "circle", { r: 20, class: "az-hub-halo-outer" });
       add(hubGroup, "circle", { r: 10, class: "az-hub-halo-inner" });
       add(hubGroup, "circle", { r: 4, class: "az-hub-core" });
 
+      // نام هاب
       const label = add(hubGroup, "text", {
         x: 15, y: 5, "text-anchor": "start", class: "az-hub-label"
       });
       label.textContent = "AZADIPOUR";
 
+      // مخفی کردن لودینگ
       if (loading) loading.classList.add("is-hidden");
     }
 
+    // دریافت دیتای نقشه جهان
     fetch("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json")
       .then(res => res.json())
       .then(draw)
-      .catch(err => console.error(err));
+      .catch(err => console.error("Error loading map data:", err));
   })();
   </script>
 
