@@ -21,7 +21,7 @@
 
   <link rel="stylesheet" href="style.css">
 
-  <!-- ECharts & ECharts GL for 3D Map -->
+  <!-- ECharts & ECharts GL Libraries for 3D Map -->
   <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/echarts-gl@2.0.9/dist/echarts-gl.min.js"></script>
 
@@ -138,7 +138,7 @@
 
         <div class="network-map-canvas-wrap">
           <!-- Map Canvas Container -->
-          <div id="azadipourWorldMap" class="az-world-map" role="img" aria-label="3D world map showing hub connections from suppliers and to hospitals"></div>
+          <div id="azadipourWorldMap" class="az-world-map" role="img" aria-label="3D world map showing hub connections"></div>
           <div class="map-loading" id="mapLoading">
             <span class="loading-indicator"></span>
             LOADING GLOBAL GEOGRAPHIC DATA
@@ -423,7 +423,7 @@
     </div>
   </footer>
 
-  <!-- 3D TILTED MAP SCRIPT -->
+  <!-- 3D TILTED MAP SCRIPT (WEBGL) -->
   <script>
   (() => {
     "use strict";
@@ -435,7 +435,7 @@
     // Initialize ECharts instance
     const myChart = echarts.init(chartDom);
 
-    // Define coordinates
+    // Coordinates
     const omanHub = [58.383, 23.588]; // Muscat, Oman
 
     // Inbound Suppliers
@@ -487,7 +487,7 @@
           borderWidth: 0.5,
           borderColor: '#333333'
         },
-        // Blackout for Iran region
+        // Hide Iran region
         regions: [
           { name: 'Iran', itemStyle: { color: '#050607', borderColor: '#050607' } }
         ],
@@ -510,7 +510,7 @@
       },
       
       series: [
-        // Inbound Glowing Lines (Curved in 3D space)
+        // Inbound Glowing Lines
         {
           type: 'lines3D',
           coordinateSystem: 'geo3D',
@@ -569,8 +569,8 @@
       ]
     };
 
-    // Fetch and register map data
-    fetch('https://cdn.jsdelivr.net/npm/echarts@4.9.0/map/json/world.json')
+    // Fetch and register LOCAL map data
+    fetch('world.json')
       .then(response => response.json())
       .then(worldJson => {
         echarts.registerMap('world', worldJson);
@@ -578,7 +578,7 @@
         if (loading) loading.classList.add('is-hidden');
       })
       .catch(err => {
-        console.error("Error loading map data:", err);
+        console.error("Error loading local map data:", err);
         if (loading) loading.textContent = "MAP DATA UNAVAILABLE";
       });
 
