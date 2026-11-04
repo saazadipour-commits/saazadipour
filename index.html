@@ -139,9 +139,10 @@
         <div class="network-map-canvas-wrap">
           <!-- Map Canvas Container -->
           <div id="azadipourWorldMap" class="az-world-map" role="img" aria-label="3D world map showing hub connections"></div>
+          <!-- Loading & Error Message Container -->
           <div class="map-loading" id="mapLoading">
             <span class="loading-indicator"></span>
-            LOADING GLOBAL GEOGRAPHIC DATA
+            <span id="loadingText">LOADING GLOBAL GEOGRAPHIC DATA</span>
           </div>
         </div>
 
@@ -424,112 +425,133 @@
   </footer>
 
   <!-- Local World Map Data (Ensure world.js exists in the root folder) -->
-<script src="world.js" defer></script>
+  <script src="world.js"></script>
 
-  <!-- 3D TILTED MAP SCRIPT -->
+  <!-- 3D TILTED MAP SCRIPT WITH ON-SCREEN ERROR REPORTING -->
   <script>
   window.addEventListener('load', function() {
     const chartDom = document.getElementById('azadipourWorldMap');
-    const loading = document.getElementById('mapLoading');
+    const loadingDiv = document.getElementById('mapLoading');
+    const loadingText = document.getElementById('loadingText');
     
+    // Function to show errors directly on the screen
+    function showError(msg) {
+      if (loadingDiv) {
+        loadingDiv.classList.remove('is-hidden');
+        loadingDiv.style.color = '#ff4444'; // Red color for error
+        if (loadingText) loadingText.textContent = "ERROR: " + msg;
+      }
+      console.error(msg);
+    }
+
     if (!chartDom) return;
 
-    // Ensure ECharts is loaded
+    // 1. Check if ECharts library is loaded
     if (typeof echarts === 'undefined') {
-      console.error("ECharts library failed to load.");
-      if (loading) loading.textContent = "FAILED TO LOAD LIBRARIES";
+      showError("ECharts Library Failed to Load. Check internet or CDN.");
       return;
     }
 
-    // Ensure worldData is loaded
+    // 2. Check if ECharts GL library is loaded
+    if (typeof echarts.gl === 'undefined' && !echarts.getInstanceByDom(chartDom)) {
+       // Sometimes gl is bundled, but we check if it exists on window
+       if(!window.echarts.gl) {
+          showError("ECharts GL (3D) Library Failed to Load.");
+          return;
+       }
+    }
+
+    // 3. Check if world.js loaded correctly
     if (typeof worldData === 'undefined') {
-      console.error("worldData is not defined. Check world.js file.");
-      if (loading) loading.textContent = "MAP DATA UNAVAILABLE";
+      showError("Map Data Missing. 'world.js' not found or has syntax error.");
       return;
     }
-
-    // Initialize ECharts
-    const myChart = echarts.init(chartDom);
-
-    const omanHub = [58.383, 23.588];
-    const suppliers = [
-      [121.438, 31.188], [116.407, 39.904], [121.565, 25.033], [114.057, 22.543]
-    ];
-    const ksaHospitals = [
-      [46.675, 24.713], [39.197, 21.485], [50.103, 26.420], [39.826, 21.422], [39.614, 24.467]
-    ];
-
-    const inboundData = suppliers.map(coord => ({
-      coords: [coord, omanHub],
-      lineStyle: { color: '#ffffff', width: 1.5, opacity: 0.8 }
-    }));
-
-    const outboundData = ksaHospitals.map(coord => ({
-      coords: [omanHub, coord],
-      lineStyle: { color: '#888888', width: 1, opacity: 0.5 }
-    }));
-
-    const scatterData = [
-      { name: 'Azadipour Hub', value: [...omanHub, 0], itemStyle: { color: '#ffffff', shadowBlur: 20, shadowColor: '#ffffff' } },
-      ...suppliers.map(coord => ({ value: [...coord, 0], itemStyle: { color: '#ffffff', shadowBlur: 10, shadowColor: '#ffffff' } })),
-      ...ksaHospitals.map(coord => ({ value: [...coord, 0], itemStyle: { color: '#aaaaaa', shadowBlur: 5, shadowColor: '#aaaaaa' } }))
-    ];
-
-    const option = {
-      backgroundColor: '#050607',
-      tooltip: { show: false },
-      geo3D: {
-        map: 'world',
-        shading: 'lambert',
-        environment: '#050607',
-        itemStyle: { color: '#111111', borderWidth: 0.5, borderColor: '#333333' },
-        regions: [ { name: 'Iran', itemStyle: { color: '#050607', borderColor: '#050607' } } ],
-        light: {
-          main: { intensity: 1.2, shadow: true, alpha: 40, beta: 40 },
-          ambient: { intensity: 0.5 }
-        },
-        viewControl: {
-          alpha: 40, beta: 0, distance: 120, center: [30, 40],
-          autoRotate: false, panMouseButton: 'left', rotateMouseButton: 'right'
-        },
-        boxWidth: 100, boxHeight: 20, boxDepth: 100
-      },
-      series: [
-        {
-          type: 'lines3D', coordinateSystem: 'geo3D',
-          effect: { show: true, trailWidth: 3, trailOpacity: 1, trailLength: 0.3, constantSpeed: 20 },
-          blendMode: 'lighter', lineStyle: { width: 1, color: '#fff', opacity: 0.6 },
-          data: inboundData
-        },
-        {
-          type: 'lines3D', coordinateSystem: 'geo3D',
-          effect: { show: true, trailWidth: 2, trailOpacity: 0.5, trailLength: 0.2, constantSpeed: 15 },
-          blendMode: 'lighter', lineStyle: { width: 1, color: '#999', opacity: 0.4 },
-          data: outboundData
-        },
-        {
-          type: 'scatter3D', coordinateSystem: 'geo3D',
-          symbol: 'circle', symbolSize: 6, itemStyle: { color: '#fff', opacity: 1 },
-          label: {
-            show: true,
-            formatter: function(param) { return param.data.name === 'Azadipour Hub' ? 'AZADIPOUR' : ''; },
-            textStyle: { color: '#fff', fontFamily: 'Inter, sans-serif', fontSize: 12, fontWeight: 'bold', backgroundColor: 'rgba(0,0,0,0.5)', padding: [4, 8] }
-          },
-          data: scatterData
-        }
-      ]
-    };
 
     try {
+      // Initialize ECharts
+      const myChart = echarts.init(chartDom);
+
+      const omanHub = [58.383, 23.588];
+      const suppliers = [
+        [121.438, 31.188], [116.407, 39.904], [121.565, 25.033], [114.057, 22.543]
+      ];
+      const ksaHospitals = [
+        [46.675, 24.713], [39.197, 21.485], [50.103, 26.420], [39.826, 21.422], [39.614, 24.467]
+      ];
+
+      const inboundData = suppliers.map(coord => ({
+        coords: [coord, omanHub],
+        lineStyle: { color: '#ffffff', width: 1.5, opacity: 0.8 }
+      }));
+
+      const outboundData = ksaHospitals.map(coord => ({
+        coords: [omanHub, coord],
+        lineStyle: { color: '#888888', width: 1, opacity: 0.5 }
+      }));
+
+      const scatterData = [
+        { name: 'Azadipour Hub', value: [...omanHub, 0], itemStyle: { color: '#ffffff', shadowBlur: 20, shadowColor: '#ffffff' } },
+        ...suppliers.map(coord => ({ value: [...coord, 0], itemStyle: { color: '#ffffff', shadowBlur: 10, shadowColor: '#ffffff' } })),
+        ...ksaHospitals.map(coord => ({ value: [...coord, 0], itemStyle: { color: '#aaaaaa', shadowBlur: 5, shadowColor: '#aaaaaa' } }))
+      ];
+
+      const option = {
+        backgroundColor: '#050607',
+        tooltip: { show: false },
+        geo3D: {
+          map: 'world',
+          shading: 'lambert',
+          environment: '#050607',
+          itemStyle: { color: '#111111', borderWidth: 0.5, borderColor: '#333333' },
+          regions: [ { name: 'Iran', itemStyle: { color: '#050607', borderColor: '#050607' } } ],
+          light: {
+            main: { intensity: 1.2, shadow: true, alpha: 40, beta: 40 },
+            ambient: { intensity: 0.5 }
+          },
+          viewControl: {
+            alpha: 40, beta: 0, distance: 120, center: [30, 40],
+            autoRotate: false, panMouseButton: 'left', rotateMouseButton: 'right'
+          },
+          boxWidth: 100, boxHeight: 20, boxDepth: 100
+        },
+        series: [
+          {
+            type: 'lines3D', coordinateSystem: 'geo3D',
+            effect: { show: true, trailWidth: 3, trailOpacity: 1, trailLength: 0.3, constantSpeed: 20 },
+            blendMode: 'lighter', lineStyle: { width: 1, color: '#fff', opacity: 0.6 },
+            data: inboundData
+          },
+          {
+            type: 'lines3D', coordinateSystem: 'geo3D',
+            effect: { show: true, trailWidth: 2, trailOpacity: 0.5, trailLength: 0.2, constantSpeed: 15 },
+            blendMode: 'lighter', lineStyle: { width: 1, color: '#999', opacity: 0.4 },
+            data: outboundData
+          },
+          {
+            type: 'scatter3D', coordinateSystem: 'geo3D',
+            symbol: 'circle', symbolSize: 6, itemStyle: { color: '#fff', opacity: 1 },
+            label: {
+              show: true,
+              formatter: function(param) { return param.data.name === 'Azadipour Hub' ? 'AZADIPOUR' : ''; },
+              textStyle: { color: '#fff', fontFamily: 'Inter, sans-serif', fontSize: 12, fontWeight: 'bold', backgroundColor: 'rgba(0,0,0,0.5)', padding: [4, 8] }
+            },
+            data: scatterData
+          }
+        ]
+      };
+
+      // Register map and render
       echarts.registerMap('world', worldData);
       myChart.setOption(option);
-      if (loading) loading.classList.add('is-hidden');
-    } catch (err) {
-      console.error("Error initializing map:", err);
-      if (loading) loading.textContent = "ERROR RENDERING MAP";
-    }
+      
+      // Hide loading screen on success
+      if (loadingDiv) loadingDiv.classList.add('is-hidden');
 
-    window.addEventListener('resize', () => myChart.resize());
+      window.addEventListener('resize', () => myChart.resize());
+
+    } catch (err) {
+      showError(err.message);
+    }
   });
   </script>
 
