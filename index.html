@@ -21,9 +21,10 @@
 
   <link rel="stylesheet" href="style.css">
 
-  <!-- Local ECharts Core Library -->
+  <!-- ECharts Core (from CDN) -->
   <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
-  <!-- Local ECharts GL Library (Downloaded) -->
+  
+  <!-- ECharts GL (Local File - Downloaded) -->
   <script src="echarts-gl.min.js"></script>
 
   <script type="application/ld+json">
@@ -425,9 +426,6 @@
     </div>
   </footer>
 
-  <!-- Local World Map Data (Ensure world.js exists in the root folder) -->
-  <script src="world.js"></script>
-
   <!-- 3D TILTED MAP SCRIPT -->
   <script>
   window.addEventListener('load', function() {
@@ -447,17 +445,12 @@
     if (!chartDom) return;
 
     if (typeof echarts === 'undefined') {
-      showError("ECharts Library Failed to Load.");
+      showError("ECharts Core Library Failed to Load.");
       return;
     }
 
     if (typeof echarts.gl === 'undefined') {
       showError("ECharts GL (3D) Library Failed to Load.");
-      return;
-    }
-
-    if (typeof worldData === 'undefined') {
-      showError("Map Data Missing. 'world.js' not found.");
       return;
     }
 
