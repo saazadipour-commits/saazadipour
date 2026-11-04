@@ -21,9 +21,10 @@
 
   <link rel="stylesheet" href="style.css">
 
-  <!-- ECharts Libraries -->
+  <!-- Local ECharts Core Library -->
   <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/echarts-gl@2.0.9/dist/echarts-gl.min.js"></script>
+  <!-- Local ECharts GL Library (Downloaded) -->
+  <script src="echarts-gl.min.js"></script>
 
   <script type="application/ld+json">
   {
@@ -427,18 +428,17 @@
   <!-- Local World Map Data (Ensure world.js exists in the root folder) -->
   <script src="world.js"></script>
 
-  <!-- 3D TILTED MAP SCRIPT WITH ON-SCREEN ERROR REPORTING -->
+  <!-- 3D TILTED MAP SCRIPT -->
   <script>
   window.addEventListener('load', function() {
     const chartDom = document.getElementById('azadipourWorldMap');
     const loadingDiv = document.getElementById('mapLoading');
     const loadingText = document.getElementById('loadingText');
     
-    // Function to show errors directly on the screen
     function showError(msg) {
       if (loadingDiv) {
         loadingDiv.classList.remove('is-hidden');
-        loadingDiv.style.color = '#ff4444'; // Red color for error
+        loadingDiv.style.color = '#ff4444';
         if (loadingText) loadingText.textContent = "ERROR: " + msg;
       }
       console.error(msg);
@@ -446,29 +446,22 @@
 
     if (!chartDom) return;
 
-    // 1. Check if ECharts library is loaded
     if (typeof echarts === 'undefined') {
-      showError("ECharts Library Failed to Load. Check internet or CDN.");
+      showError("ECharts Library Failed to Load.");
       return;
     }
 
-    // 2. Check if ECharts GL library is loaded
-    if (typeof echarts.gl === 'undefined' && !echarts.getInstanceByDom(chartDom)) {
-       // Sometimes gl is bundled, but we check if it exists on window
-       if(!window.echarts.gl) {
-          showError("ECharts GL (3D) Library Failed to Load.");
-          return;
-       }
+    if (typeof echarts.gl === 'undefined') {
+      showError("ECharts GL (3D) Library Failed to Load.");
+      return;
     }
 
-    // 3. Check if world.js loaded correctly
     if (typeof worldData === 'undefined') {
-      showError("Map Data Missing. 'world.js' not found or has syntax error.");
+      showError("Map Data Missing. 'world.js' not found.");
       return;
     }
 
     try {
-      // Initialize ECharts
       const myChart = echarts.init(chartDom);
 
       const omanHub = [58.383, 23.588];
@@ -540,11 +533,9 @@
         ]
       };
 
-      // Register map and render
       echarts.registerMap('world', worldData);
       myChart.setOption(option);
       
-      // Hide loading screen on success
       if (loadingDiv) loadingDiv.classList.add('is-hidden');
 
       window.addEventListener('resize', () => myChart.resize());
