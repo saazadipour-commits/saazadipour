@@ -24,7 +24,7 @@
   <!-- ECharts Core (from CDN) -->
   <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
   
-  <!-- ECharts GL (Local File - Downloaded) -->
+  <!-- ECharts GL 3D (Local File) -->
   <script src="echarts-gl.min.js"></script>
 
   <script type="application/ld+json">
@@ -144,7 +144,7 @@
           <!-- Loading & Error Message Container -->
           <div class="map-loading" id="mapLoading">
             <span class="loading-indicator"></span>
-            <span id="loadingText">LOADING GLOBAL GEOGRAPHIC DATA</span>
+            <span id="loadingText">LOADING 3D MAP DATA</span>
           </div>
         </div>
 
@@ -426,6 +426,9 @@
     </div>
   </footer>
 
+  <!-- Local World Map Data -->
+  <script src="world.js"></script>
+
   <!-- 3D TILTED MAP SCRIPT -->
   <script>
   window.addEventListener('load', function() {
@@ -444,13 +447,17 @@
 
     if (!chartDom) return;
 
+    // Check Libraries
     if (typeof echarts === 'undefined') {
       showError("ECharts Core Library Failed to Load.");
       return;
     }
-
     if (typeof echarts.gl === 'undefined') {
       showError("ECharts GL (3D) Library Failed to Load.");
+      return;
+    }
+    if (typeof worldData === 'undefined') {
+      showError("Map Data Missing. 'world.js' not found or has syntax error.");
       return;
     }
 
@@ -526,6 +533,7 @@
         ]
       };
 
+      // Register map from local world.js file
       echarts.registerMap('world', worldData);
       myChart.setOption(option);
       
