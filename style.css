@@ -1,7 +1,7 @@
 /* =========================================================
    AZADIPOUR
    GLOBAL MEDICAL TECHNOLOGY & HOSPITAL SOLUTIONS
-   PREMIUM STYLESHEET (3D MAP EDITION - B&W THEME)
+   PREMIUM STYLESHEET (2.5D CURVED MAP EDITION - B&W THEME)
    ========================================================= */
 
 :root {
@@ -106,20 +106,90 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
 .network-map-topline { border-bottom: 1px solid var(--border); background: linear-gradient(90deg,#090c0f,#11161b,#090c0f); }
 
 /* =========================================
-   DIRECTIONAL MAP STYLES (WEBGL 3D)
+   DIRECTIONAL MAP STYLES (2.5D CURVED LINES)
    ========================================= */
 .network-map-canvas-wrap {
   position: relative;
   width: 100%;
   height: 600px;
   overflow: hidden;
-  background: #050607;
+  background: #000000; /* Solid black background */
 }
 
 .az-world-map { 
   display: block; 
   width: 100%; 
   height: 100%; 
+}
+
+/* Graticule lines */
+.az-map-graticule { fill: none; stroke: rgba(255, 255, 255, 0.05); stroke-width: 1px; }
+
+/* Country bodies (Dark grey) */
+.az-map-country { 
+  fill: #0a0a0a; 
+  stroke: #2a2a2a; 
+  stroke-width: 0.5px; 
+  transition: fill 0.3s, stroke 0.3s; 
+}
+.az-map-country:hover { fill: #151515; stroke: #444; }
+
+/* Iran Blackout Effect */
+path.az-map-country.az-map-country-iran {
+  fill: #000000 !important;
+  stroke: #000000 !important;
+  stroke-width: 0 !important;
+  transition: none !important;
+}
+
+/* Inbound Connection Lines (White and glowing) */
+.az-arc-inbound {
+  fill: none !important;
+  stroke: rgba(255, 255, 255, 0.9);
+  stroke-width: 1.5px;
+  stroke-dasharray: 8 6;
+  animation: dash-inbound 1.5s linear infinite;
+  filter: drop-shadow(0 0 4px rgba(255,255,255,0.8)); /* Neon Glow */
+}
+
+.az-arc-inbound.dim {
+  stroke: rgba(255, 255, 255, 0.4);
+  stroke-width: 1px;
+  stroke-dasharray: 4 6;
+  animation: dash-inbound 3s linear infinite;
+  filter: none;
+}
+
+/* Outbound Connection Lines (Subtle grey) */
+.az-arc-outbound {
+  fill: none !important;
+  stroke: rgba(200, 200, 200, 0.5);
+  stroke-width: 1px;
+  stroke-dasharray: 4 6;
+  animation: dash-outbound 2.5s linear infinite;
+  filter: drop-shadow(0 0 2px rgba(255,255,255,0.4));
+}
+
+/* White nodes on the map */
+.az-network-node { 
+  fill: #ffffff; 
+  opacity: 0.9; 
+  filter: drop-shadow(0 0 6px #ffffff); /* Strong Glow */
+}
+
+/* Main Hub (Oman) */
+.az-hub-halo-outer { fill: rgba(255, 255, 255, 0.05); animation: pulse-hub 3s infinite; }
+.az-hub-halo-inner { fill: rgba(255, 255, 255, 0.15); animation: pulse-hub 2s infinite; }
+.az-hub-core { fill: #ffffff; filter: drop-shadow(0 0 10px #ffffff); }
+.az-hub-label { fill: #ffffff; font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 2px; text-shadow: 0 0 8px #000, 0 0 4px #000; }
+
+/* Map Animations */
+@keyframes dash-inbound { to { stroke-dashoffset: -28; } }
+@keyframes dash-outbound { to { stroke-dashoffset: -20; } }
+@keyframes pulse-hub {
+  0% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.6); opacity: 0.1; }
+  100% { transform: scale(1); opacity: 0.8; }
 }
 
 /* Map Loading State */
