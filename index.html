@@ -142,7 +142,7 @@
           <!-- Loading & Error Message Container -->
           <div class="map-loading" id="mapLoading">
             <span class="loading-indicator"></span>
-            <span id="loadingText">LOADING 3D GLOBE DATA</span>
+            <span id="loadingText">LOADING GLOBAL BORDERS &amp; DATA</span>
           </div>
         </div>
 
@@ -424,7 +424,7 @@
     </div>
   </footer>
 
-  <!-- 3D GLOBE SCRIPT (ENHANCED LUXURY VERSION) -->
+  <!-- 3D GLOBE SCRIPT (WITH COUNTRY BORDERS) -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const globeContainer = document.getElementById("globeViz");
@@ -444,8 +444,8 @@
         // Initialize Globe with High-Quality Textures & Starfield
         const world = Globe()(globeContainer)
           .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-dark.jpg')
-          .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png') // Adds 3D depth to mountains
-          .backgroundImageUrl('https://unpkg.com/three-globe/example/img/night-sky.png') // Starfield background
+          .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
+          .backgroundImageUrl('https://unpkg.com/three-globe/example/img/night-sky.png')
           .backgroundColor('#050607')
           .showAtmosphere(true)
           .atmosphereColor('#cbd1d7')
@@ -453,36 +453,51 @@
           .width(globeContainer.clientWidth)
           .height(globeContainer.clientHeight);
 
-        // Initial point of view (Centered on Middle East)
-        world.pointOfView({ lat: 25, lng: 55, altitude: 2.0 });
+        // Initial point of view
+        world.pointOfView({ lat: 25, lng: 55, altitude: 2.2 });
 
-        // Data: Oman Hub (The Centerpiece)
+        // ==========================================
+        // 1. DRAW COUNTRY BORDERS (NEW!)
+        // ==========================================
+        // We fetch a GeoJSON file containing the precise borders of all countries.
+        fetch('https://raw.githubusercontent.com/vasturiano/globe.gl/master/example/datasets/ne_110m_admin_0_countries.geojson')
+          .then(res => res.json())
+          .then(countries => {
+            world.pathsData(countries.features)
+              .pathStrokeColor(() => 'rgba(200, 210, 220, 0.7)') // Silver/White borders
+              .pathStrokeWidth(0.4) // Thin, elegant lines
+              .pathPointLat('properties.LABEL_Y')
+              .pathPointLng('properties.LABEL_X')
+              .pathPointAlt(0.001)
+              .pathTransitionDuration(0);
+          })
+          .catch(err => console.error("Error loading borders:", err));
+
+        // ==========================================
+        // 2. DRAW ARCS (CONNECTIONS)
+        // ==========================================
         const omanHub = { lat: 23.58, lng: 58.38, name: "AZADIPOUR" };
 
-        // Data: Suppliers (Inbound)
         const suppliers = [
-          { lat: 22.54, lng: 114.05, name: "Shenzhen" }, // China
-          { lat: 31.23, lng: 121.47, name: "Shanghai" }, // China
-          { lat: 25.03, lng: 121.56, name: "Taipei" },   // Taiwan
-          { lat: 52.52, lng: 13.40, name: "Berlin" }     // Germany
+          { lat: 22.54, lng: 114.05, name: "Shenzhen" },
+          { lat: 31.23, lng: 121.47, name: "Shanghai" },
+          { lat: 25.03, lng: 121.56, name: "Taipei" },
+          { lat: 52.52, lng: 13.40, name: "Berlin" }
         ];
 
-        // Data: Hospitals (Outbound)
         const hospitals = [
-          { lat: 25.28, lng: 51.53, name: "Doha" },      // Qatar
-          { lat: 25.29, lng: 51.36, name: "Al Rayyan" }, // Qatar
-          { lat: 26.22, lng: 50.58, name: "Manama" },    // Bahrain
-          { lat: 26.13, lng: 50.55, name: "Riffa" },     // Bahrain
-          { lat: 24.71, lng: 46.67, name: "Riyadh" },    // KSA
-          { lat: 21.48, lng: 39.19, name: "Jeddah" },    // KSA
-          { lat: 26.42, lng: 50.10, name: "Dammam" },    // KSA
-          { lat: 21.42, lng: 39.82, name: "Mecca" },     // KSA
-          { lat: 24.46, lng: 39.61, name: "Medina" }     // KSA
+          { lat: 25.28, lng: 51.53, name: "Doha" },
+          { lat: 25.29, lng: 51.36, name: "Al Rayyan" },
+          { lat: 26.22, lng: 50.58, name: "Manama" },
+          { lat: 26.13, lng: 50.55, name: "Riffa" },
+          { lat: 24.71, lng: 46.67, name: "Riyadh" },
+          { lat: 21.48, lng: 39.19, name: "Jeddah" },
+          { lat: 26.42, lng: 50.10, name: "Dammam" },
+          { lat: 21.42, lng: 39.82, name: "Mecca" },
+          { lat: 24.46, lng: 39.61, name: "Medina" }
         ];
 
-        // 1. Draw Arcs (Connections)
         const arcsData = [];
-        // Inbound arcs (Suppliers to Oman) - Bright White
         suppliers.forEach(s => {
           arcsData.push({
             startLat: s.lat, startLng: s.lng,
@@ -490,12 +505,11 @@
             color: ['rgba(255,255,255,0.9)', 'rgba(255,255,255,0.1)']
           });
         });
-        // Outbound arcs (Oman to Hospitals) - Subtle Silver
         hospitals.forEach(h => {
           arcsData.push({
             startLat: omanHub.lat, startLng: omanHub.lng,
             endLat: h.lat, endLng: h.lng,
-            color: ['rgba(180,190,200,0.6)', 'rgba(180,190,200,0.1)']
+            color: ['rgba(150,150,150,0.6)', 'rgba(150,150,150,0.1)']
           });
         });
 
@@ -506,25 +520,30 @@
           .arcDashAnimateTime(2000)
           .arcStroke(0.8);
 
-        // 2. Draw Points (Nodes) - Flattened to look like dots, not cylinders
+        // ==========================================
+        // 3. DRAW POINTS (NODES)
+        // ==========================================
         const pointsData = [omanHub, ...suppliers, ...hospitals];
 
         world.pointsData(pointsData)
-          .pointColor(d => d.name === "AZADIPOUR" ? '#ffffff' : (d.name === "Shenzhen" || d.name === "Shanghai" || d.name === "Taipei" || d.name === "Berlin" ? 'rgba(255,255,255,0.8)' : 'rgba(150,150,150,0.6)'))
-          .pointAltitude(0.005) // Very low altitude makes it a flat dot instead of a cylinder
-          .pointRadius(d => d.name === "AZADIPOUR" ? 0.6 : (d.name === "Shenzhen" || d.name === "Shanghai" || d.name === "Taipei" || d.name === "Berlin" ? 0.3 : 0.2))
+          .pointColor(d => d.name === "AZADIPOUR" ? '#ffffff' : (d.name === "Shenzhen" || d.name === "Shanghai" || d.name === "Taipei" || d.name === "Berlin" ? 'rgba(255,255,255,0.9)' : 'rgba(180,180,180,0.6)'))
+          .pointAltitude(0.005)
+          .pointRadius(d => d.name === "AZADIPOUR" ? 0.6 : (d.name === "Shenzhen" || d.name === "Shanghai" || d.name === "Taipei" || d.name === "Berlin" ? 0.35 : 0.25))
           .pointsMerge(false);
 
-        // 3. Add Labels for the Hub
+        // ==========================================
+        // 4. LABELS & RINGS
+        // ==========================================
         world.labelsData([omanHub])
-          .labelSize(d => d.name === "AZADIPOUR" ? 1.8 : 0)
-          .labelDotRadius(0) // Hide default dot in label
+          .labelSize(d => d.name === "AZADIPOUR" ? 1.6 : 0)
+          .labelDotRadius(0)
           .labelColor(() => '#ffffff')
           .labelText('name')
-          .labelAltitude(0.01)
-          .labelResolution(2);
+          .labelAltitude(0.02)
+          .labelResolution(2)
+          .labelBackgroundColor('rgba(5,6,7,0.7)') // Dark background for readability
+          .labelPadding(0.5);
 
-        // 4. Add Radar Rings (Ripples) around the Hub
         world.ringsData([omanHub])
           .ringColor(() => t => `rgba(255,255,255,${1-t})`)
           .ringMaxRadius(3)
@@ -535,7 +554,7 @@
         world.controls().autoRotate = true;
         world.controls().autoRotateSpeed = 0.4;
         world.controls().enableZoom = true;
-        world.controls().minDistance = 150; // Prevent zooming too close
+        world.controls().minDistance = 150;
 
         // Hide Loading Screen
         if (loading) loading.style.display = "none";
