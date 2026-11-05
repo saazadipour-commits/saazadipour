@@ -424,7 +424,7 @@
     </div>
   </footer>
 
-  <!-- 3D GLOBE SCRIPT (WITH COUNTRY BORDERS - FIXED) -->
+  <!-- 3D GLOBE SCRIPT (HIGH-CONTRAST BORDERS) -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const globeContainer = document.getElementById("globeViz");
@@ -454,17 +454,18 @@
         world.pointOfView({ lat: 25, lng: 55, altitude: 2.2 });
 
         // ==========================================
-        // 1. DRAW COUNTRY BORDERS (SILVER LINES)
+        // 1. DRAW HIGH-CONTRAST COUNTRY BORDERS
         // ==========================================
-        fetch('https://raw.githubusercontent.com/vasturiano/globe.gl/master/example/datasets/ne_110m_admin_0_countries.geojson')
+        // Fetching a highly reliable GeoJSON dataset
+        fetch('https://cdn.jsdelivr.net/npm/three-globe/example/datasets/ne_110m_admin_0_countries.geojson')
           .then(res => res.json())
           .then(countries => {
             world.pathsData(countries.features)
-              .pathStrokeColor(() => 'rgba(200, 210, 220, 0.7)')
-              .pathStrokeWidth(0.4)
+              .pathStrokeColor(() => 'rgba(200, 220, 255, 0.9)') // Very bright silver/blue border
+              .pathStrokeWidth(0.8) // Thicker lines for mobile visibility
               .pathPointLat('properties.LABEL_Y')
               .pathPointLng('properties.LABEL_X')
-              .pathPointAlt(0.001)
+              .pathPointAlt(0.015) // Elevate slightly above the texture so it doesn't get lost
               .pathTransitionDuration(0);
           })
           .catch(err => console.error("Error loading borders:", err));
@@ -528,19 +529,16 @@
           .pointsMerge(false);
 
         // ==========================================
-        // 4. LABELS & RINGS (FIXED)
+        // 4. LABELS & RINGS
         // ==========================================
-        // We removed the invalid labelBackgroundColor method.
-        world.labelsData([omanHub])
-          .labelSize(d => d.name === "AZADIPOUR" ? 1.6 : 0)
-          .labelDotRadius(0)
-          .labelColor(() => '#ffffff')
-          .labelText('name')
-          .labelAltitude(0.02)
-          .labelResolution(2);
-          
-        // To make the text pop without labelBackgroundColor, we can use a subtle HTML shadow via CSS in the label or just rely on the glow of the globe. 
-        // The native text is white and crisp.
+        // Use HTML labels for the Hub to ensure it has a solid background and is readable over borders
+        world.htmlElementsData([omanHub])
+          .htmlElement(d => {
+            const el = document.createElement('div');
+            el.innerHTML = `<div style="color: #fff; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700; text-shadow: 0 0 10px #000, 0 0 20px #000; padding: 4px 8px; background: rgba(0,0,0,0.7); border: 1px solid rgba(255,255,255,0.3); border-radius: 4px; white-space: nowrap;">AZADIPOUR</div>`;
+            return el;
+          })
+          .htmlAltitude(0.02);
 
         world.ringsData([omanHub])
           .ringColor(() => t => `rgba(255,255,255,${1-t})`)
