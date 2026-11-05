@@ -1,7 +1,7 @@
 /* =========================================================
    AZADIPOUR
    GLOBAL MEDICAL TECHNOLOGY & HOSPITAL SOLUTIONS
-   PREMIUM STYLESHEET (2.5D PERSPECTIVE MAP EDITION)
+   PREMIUM STYLESHEET (3D GLOBE EDITION)
    ========================================================= */
 
 :root {
@@ -22,9 +22,26 @@
   --transition: .3s ease;
 }
 
+/* Hide scrollbar for a cleaner look */
+::-webkit-scrollbar { width: 0px; background: transparent; }
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 100px; background: var(--bg); }
-body { min-width: 320px; overflow-x: hidden; background: var(--bg); color: var(--text); font-family: "Inter", Arial, sans-serif; font-size: 15px; line-height: 1.75; -webkit-font-smoothing: antialiased; }
+
+html { 
+  scroll-behavior: smooth; 
+  scroll-padding-top: 100px; 
+  background: var(--bg); 
+  overflow-x: hidden; 
+}
+body { 
+  min-width: 320px; 
+  overflow-x: hidden; 
+  background: var(--bg); 
+  color: var(--text); 
+  font-family: "Inter", Arial, sans-serif; 
+  font-size: 15px; 
+  line-height: 1.75; 
+  -webkit-font-smoothing: antialiased; 
+}
 body, button, input, textarea { font-family: "Inter", Arial, sans-serif; }
 img { display: block; max-width: 100%; height: auto; }
 a { color: inherit; text-decoration: none; }
@@ -105,84 +122,23 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
 .network-map-topline, .map-caption { display: flex; justify-content: space-between; gap: 15px; padding: 17px 22px; color: #cbd1d7; font-size: 9px; letter-spacing: 1.8px; }
 .network-map-topline { border-bottom: 1px solid var(--border); background: linear-gradient(90deg,#090c0f,#11161b,#090c0f); }
 
-/* =========================================
-   2.5D PERSPECTIVE MAP STYLES
-   ========================================= */
+/* 3D GLOBE STYLES */
 .network-map-canvas-wrap {
   position: relative;
   width: 100%;
   height: 600px;
   overflow: hidden;
   background: #000000;
-  /* Create the 3D perspective effect */
-  perspective: 1200px;
-  perspective-origin: 50% 0%;
-}
-
-.az-map-3d-wrapper {
-  width: 100%;
-  height: 100%;
-  /* Tilt the map to look 3D */
-  transform: rotateX(45deg);
-  transform-origin: 50% 100%;
 }
 
 .az-world-map { 
   display: block; 
   width: 100%; 
   height: 100%; 
-  filter: drop-shadow(0 20px 30px rgba(0,0,0,0.8));
-}
-
-/* Graticule lines (faint grid) */
-.az-map-graticule { 
-  stroke: rgba(255, 255, 255, 0.05); 
-  stroke-width: 1px; 
-}
-
-/* Inbound Connection Lines (White and glowing) */
-.az-arc-inbound {
-  stroke: rgba(255, 255, 255, 0.9);
-  stroke-width: 1.5px;
-  stroke-dasharray: 8 6;
-  animation: dash-inbound 1.5s linear infinite;
-  filter: drop-shadow(0 0 4px rgba(255,255,255,0.8));
-}
-
-/* Outbound Connection Lines (Subtle grey) */
-.az-arc-outbound {
-  stroke: rgba(200, 200, 200, 0.6);
-  stroke-width: 1px;
-  stroke-dasharray: 4 6;
-  animation: dash-outbound 2.5s linear infinite;
-  filter: drop-shadow(0 0 2px rgba(255,255,255,0.4));
-}
-
-/* White nodes on the map */
-.az-network-node { 
-  fill: #ffffff; 
-  opacity: 0.9; 
-  filter: drop-shadow(0 0 6px #ffffff);
-}
-
-/* Main Hub (Oman) */
-.az-hub-halo-outer { fill: rgba(255, 255, 255, 0.05); animation: pulse-hub 3s infinite; }
-.az-hub-halo-inner { fill: rgba(255, 255, 255, 0.15); animation: pulse-hub 2s infinite; }
-.az-hub-core { fill: #ffffff; filter: drop-shadow(0 0 10px #ffffff); }
-.az-hub-label { fill: #ffffff; font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 2px; text-shadow: 0 0 8px #000, 0 0 4px #000; }
-
-/* Animations */
-@keyframes dash-inbound { to { stroke-dashoffset: -28; } }
-@keyframes dash-outbound { to { stroke-dashoffset: -20; } }
-@keyframes pulse-hub {
-  0% { transform: scale(1); opacity: 0.8; }
-  50% { transform: scale(1.6); opacity: 0.1; }
-  100% { transform: scale(1); opacity: 0.8; }
 }
 
 /* Map Loading State */
 .map-loading { position: absolute; inset: 0; z-index: 5; display: flex; align-items: center; justify-content: center; gap: 13px; background: #000; color: var(--silver); font-size: 10px; letter-spacing: 2px; text-align: center; transition: opacity .5s ease; }
-.map-loading.is-hidden { display: none; }
 .loading-indicator { width: 18px; height: 18px; border: 1px solid rgba(255,255,255,.2); border-top-color: #fff; border-radius: 50%; animation: map-spin 1s linear infinite; }
 @keyframes map-spin { to { transform: rotate(360deg); } }
 
@@ -208,7 +164,7 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
 .intro-detail h3 { margin-bottom: 12px; font-size: 27px; }
 .intro-detail p { font-size: 12px; }
 
-/* 08 — VISUAL PORTFOLIO (Images are Colorful) */
+/* 08 — VISUAL PORTFOLIO */
 .visual-portfolio-section { background: #090c0f; }
 .visual-portfolio-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 17px; margin-top: 38px; }
 .visual-portfolio-card { position: relative; min-width: 0; min-height: 270px; overflow: hidden; border: 1px solid var(--border); background: #101316; border-radius: 2px; }
@@ -347,7 +303,6 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
   
   /* Map settings for mobile */
   .network-map-canvas-wrap { height: 400px; }
-  .az-map-3d-wrapper { transform: rotateX(40deg); } /* Slightly less tilt for mobile */
   .network-map-topline, .map-caption { flex-direction: column; gap: 5px; text-align: center; }
   .network-footer { flex-direction: column; align-items: flex-start; }
 }
