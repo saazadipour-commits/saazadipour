@@ -21,11 +21,11 @@
 
   <link rel="stylesheet" href="style.css">
 
-  <!-- ECharts Core (Stable CDN) -->
+  <!-- ECharts Core (from Stable CDN) -->
   <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
   
-  <!-- ECharts GL 3D (Stable CDN - Alternative Server) -->
-  <script src="https://unpkg.com/echarts-gl@2.0.9/dist/echarts-gl.min.js"></script>
+  <!-- ECharts GL 3D (from Local Repository) -->
+  <script src="./echarts-gl.min.js"></script>
 
   <script type="application/ld+json">
   {
@@ -444,13 +444,14 @@
 
     if (!chartDom) return;
 
-    // Check if both libraries are loaded
-    if (typeof echarts === 'undefined') {
+    // Check if ECharts Core is loaded
+    if (typeof window.echarts === 'undefined') {
       showError("ECharts Core Library Failed to Load.");
       return;
     }
-    if (typeof echarts.gl === 'undefined') {
-      showError("ECharts GL (3D) Library Failed to Load.");
+
+    if (typeof echarts.init !== 'function') {
+      showError("ECharts Initialization Failed.");
       return;
     }
 
@@ -526,16 +527,21 @@
         ]
       };
 
-      // Fetch map data from CDN
+      // Fetch map data from Stable CDN
       fetch('https://cdn.jsdelivr.net/npm/echarts@4.9.0/map/json/world.json')
-        .then(response => response.json())
+        .then(response => {
+          if (!response.ok) {
+            throw new Error("World map data HTTP error: " + response.status);
+          }
+          return response.json();
+        })
         .then(worldJson => {
           echarts.registerMap('world', worldJson);
           myChart.setOption(option);
           if (loadingDiv) loadingDiv.classList.add('is-hidden');
         })
         .catch(err => {
-          showError("Failed to load world map data. Check internet.");
+          showError("World Map Loading Failed: " + err.message);
         });
 
       window.addEventListener('resize', () => myChart.resize());
