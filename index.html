@@ -424,7 +424,7 @@
     </div>
   </footer>
 
-  <!-- 3D GLOBE SCRIPT -->
+  <!-- 3D GLOBE SCRIPT (ENHANCED LUXURY VERSION) -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const globeContainer = document.getElementById("globeViz");
@@ -441,21 +441,23 @@
       }
 
       try {
-        // Initialize Globe
+        // Initialize Globe with High-Quality Textures & Starfield
         const world = Globe()(globeContainer)
           .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-dark.jpg')
+          .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png') // Adds 3D depth to mountains
+          .backgroundImageUrl('https://unpkg.com/three-globe/example/img/night-sky.png') // Starfield background
           .backgroundColor('#050607')
           .showAtmosphere(true)
-          .atmosphereColor('#ffffff')
+          .atmosphereColor('#cbd1d7')
           .atmosphereAltitude(0.15)
           .width(globeContainer.clientWidth)
           .height(globeContainer.clientHeight);
 
         // Initial point of view (Centered on Middle East)
-        world.pointOfView({ lat: 25, lng: 55, altitude: 2.2 });
+        world.pointOfView({ lat: 25, lng: 55, altitude: 2.0 });
 
-        // Data: Oman Hub
-        const omanHub = { lat: 23.58, lng: 58.38, name: "AZADIPOUR", size: 1.5 };
+        // Data: Oman Hub (The Centerpiece)
+        const omanHub = { lat: 23.58, lng: 58.38, name: "AZADIPOUR" };
 
         // Data: Suppliers (Inbound)
         const suppliers = [
@@ -478,8 +480,9 @@
           { lat: 24.46, lng: 39.61, name: "Medina" }     // KSA
         ];
 
-        // Prepare Arcs Data
+        // 1. Draw Arcs (Connections)
         const arcsData = [];
+        // Inbound arcs (Suppliers to Oman) - Bright White
         suppliers.forEach(s => {
           arcsData.push({
             startLat: s.lat, startLng: s.lng,
@@ -487,36 +490,52 @@
             color: ['rgba(255,255,255,0.9)', 'rgba(255,255,255,0.1)']
           });
         });
+        // Outbound arcs (Oman to Hospitals) - Subtle Silver
         hospitals.forEach(h => {
           arcsData.push({
             startLat: omanHub.lat, startLng: omanHub.lng,
             endLat: h.lat, endLng: h.lng,
-            color: ['rgba(150,150,150,0.6)', 'rgba(150,150,150,0.1)']
+            color: ['rgba(180,190,200,0.6)', 'rgba(180,190,200,0.1)']
           });
         });
 
-        // Draw Arcs
         world.arcsData(arcsData)
           .arcColor('color')
-          .arcDashLength(0.5)
+          .arcDashLength(0.4)
           .arcDashGap(0.2)
           .arcDashAnimateTime(2000)
-          .arcStroke(0.6);
+          .arcStroke(0.8);
 
-        // Prepare Points Data
+        // 2. Draw Points (Nodes) - Flattened to look like dots, not cylinders
         const pointsData = [omanHub, ...suppliers, ...hospitals];
 
-        // Draw Points
         world.pointsData(pointsData)
-          .pointColor(d => d.name === "AZADIPOUR" ? '#ffffff' : 'rgba(255,255,255,0.7)')
-          .pointAltitude(d => d.name === "AZADIPOUR" ? 0.05 : 0.01)
-          .pointRadius(d => d.name === "AZADIPOUR" ? 0.8 : 0.4)
-          .pointsMerge(false)
-          .pointLabel(d => d.name === "AZADIPOUR" ? "<b>AZADIPOUR</b>" : "");
+          .pointColor(d => d.name === "AZADIPOUR" ? '#ffffff' : (d.name === "Shenzhen" || d.name === "Shanghai" || d.name === "Taipei" || d.name === "Berlin" ? 'rgba(255,255,255,0.8)' : 'rgba(150,150,150,0.6)'))
+          .pointAltitude(0.005) // Very low altitude makes it a flat dot instead of a cylinder
+          .pointRadius(d => d.name === "AZADIPOUR" ? 0.6 : (d.name === "Shenzhen" || d.name === "Shanghai" || d.name === "Taipei" || d.name === "Berlin" ? 0.3 : 0.2))
+          .pointsMerge(false);
 
-        // Optional: Add subtle auto-rotation
+        // 3. Add Labels for the Hub
+        world.labelsData([omanHub])
+          .labelSize(d => d.name === "AZADIPOUR" ? 1.8 : 0)
+          .labelDotRadius(0) // Hide default dot in label
+          .labelColor(() => '#ffffff')
+          .labelText('name')
+          .labelAltitude(0.01)
+          .labelResolution(2);
+
+        // 4. Add Radar Rings (Ripples) around the Hub
+        world.ringsData([omanHub])
+          .ringColor(() => t => `rgba(255,255,255,${1-t})`)
+          .ringMaxRadius(3)
+          .ringPropagationSpeed(2)
+          .ringRepeatPeriod(1500);
+
+        // Controls Setup
         world.controls().autoRotate = true;
-        world.controls().autoRotateSpeed = 0.5;
+        world.controls().autoRotateSpeed = 0.4;
+        world.controls().enableZoom = true;
+        world.controls().minDistance = 150; // Prevent zooming too close
 
         // Hide Loading Screen
         if (loading) loading.style.display = "none";
