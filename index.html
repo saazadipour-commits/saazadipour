@@ -424,7 +424,7 @@
     </div>
   </footer>
 
-  <!-- 3D GLOBE SCRIPT (WITH COUNTRY BORDERS) -->
+  <!-- 3D GLOBE SCRIPT (WITH COUNTRY BORDERS - FIXED) -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const globeContainer = document.getElementById("globeViz");
@@ -433,7 +433,6 @@
 
       if (!globeContainer) return;
 
-      // Check if libraries loaded
       if (typeof Globe === 'undefined' || typeof THREE === 'undefined') {
         if (loadingText) loadingText.textContent = "ERROR: 3D LIBRARY FAILED TO LOAD";
         if (loading) loading.style.color = "#ff4444";
@@ -441,7 +440,6 @@
       }
 
       try {
-        // Initialize Globe with High-Quality Textures & Starfield
         const world = Globe()(globeContainer)
           .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-dark.jpg')
           .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
@@ -453,19 +451,17 @@
           .width(globeContainer.clientWidth)
           .height(globeContainer.clientHeight);
 
-        // Initial point of view
         world.pointOfView({ lat: 25, lng: 55, altitude: 2.2 });
 
         // ==========================================
-        // 1. DRAW COUNTRY BORDERS (NEW!)
+        // 1. DRAW COUNTRY BORDERS (SILVER LINES)
         // ==========================================
-        // We fetch a GeoJSON file containing the precise borders of all countries.
         fetch('https://raw.githubusercontent.com/vasturiano/globe.gl/master/example/datasets/ne_110m_admin_0_countries.geojson')
           .then(res => res.json())
           .then(countries => {
             world.pathsData(countries.features)
-              .pathStrokeColor(() => 'rgba(200, 210, 220, 0.7)') // Silver/White borders
-              .pathStrokeWidth(0.4) // Thin, elegant lines
+              .pathStrokeColor(() => 'rgba(200, 210, 220, 0.7)')
+              .pathStrokeWidth(0.4)
               .pathPointLat('properties.LABEL_Y')
               .pathPointLng('properties.LABEL_X')
               .pathPointAlt(0.001)
@@ -532,17 +528,19 @@
           .pointsMerge(false);
 
         // ==========================================
-        // 4. LABELS & RINGS
+        // 4. LABELS & RINGS (FIXED)
         // ==========================================
+        // We removed the invalid labelBackgroundColor method.
         world.labelsData([omanHub])
           .labelSize(d => d.name === "AZADIPOUR" ? 1.6 : 0)
           .labelDotRadius(0)
           .labelColor(() => '#ffffff')
           .labelText('name')
           .labelAltitude(0.02)
-          .labelResolution(2)
-          .labelBackgroundColor('rgba(5,6,7,0.7)') // Dark background for readability
-          .labelPadding(0.5);
+          .labelResolution(2);
+          
+        // To make the text pop without labelBackgroundColor, we can use a subtle HTML shadow via CSS in the label or just rely on the glow of the globe. 
+        // The native text is white and crisp.
 
         world.ringsData([omanHub])
           .ringColor(() => t => `rgba(255,255,255,${1-t})`)
