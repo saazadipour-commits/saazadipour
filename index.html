@@ -424,7 +424,7 @@
     </div>
   </footer>
 
-  <!-- 3D GLOBE SCRIPT (HIGH-CONTRAST BORDERS) -->
+  <!-- 3D GLOBE SCRIPT (PERFECTED VERSION) -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const globeContainer = document.getElementById("globeViz");
@@ -441,7 +441,8 @@
 
       try {
         const world = Globe()(globeContainer)
-          .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-dark.jpg')
+          // Using a high-quality dark map texture that highlights landmasses
+          .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-night.jpg')
           .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
           .backgroundImageUrl('https://unpkg.com/three-globe/example/img/night-sky.png')
           .backgroundColor('#050607')
@@ -451,47 +452,47 @@
           .width(globeContainer.clientWidth)
           .height(globeContainer.clientHeight);
 
+        // Center view on Oman
         world.pointOfView({ lat: 25, lng: 55, altitude: 2.2 });
 
         // ==========================================
-        // 1. DRAW HIGH-CONTRAST COUNTRY BORDERS
+        // 1. DRAW ACCURATE COUNTRY BORDERS
         // ==========================================
-        // Fetching a highly reliable GeoJSON dataset
         fetch('https://cdn.jsdelivr.net/npm/three-globe/example/datasets/ne_110m_admin_0_countries.geojson')
           .then(res => res.json())
           .then(countries => {
             world.pathsData(countries.features)
-              .pathStrokeColor(() => 'rgba(200, 220, 255, 0.9)') // Very bright silver/blue border
-              .pathStrokeWidth(0.8) // Thicker lines for mobile visibility
-              .pathPointLat('properties.LABEL_Y')
-              .pathPointLng('properties.LABEL_X')
-              .pathPointAlt(0.015) // Elevate slightly above the texture so it doesn't get lost
+              .pathStrokeColor(() => 'rgba(200, 200, 200, 0.6)') // Visible silver borders
+              .pathStrokeWidth(0.5)
               .pathTransitionDuration(0);
           })
           .catch(err => console.error("Error loading borders:", err));
 
         // ==========================================
-        // 2. DRAW ARCS (CONNECTIONS)
+        // 2. DRAW ARCS (EXACT COORDINATES)
         // ==========================================
-        const omanHub = { lat: 23.58, lng: 58.38, name: "AZADIPOUR" };
+        // Hub: Oman (Muscat)
+        const omanHub = { lat: 23.588, lng: 58.383, name: "AZADIPOUR" };
 
+        // Suppliers (Inbound)
         const suppliers = [
-          { lat: 22.54, lng: 114.05, name: "Shenzhen" },
-          { lat: 31.23, lng: 121.47, name: "Shanghai" },
-          { lat: 25.03, lng: 121.56, name: "Taipei" },
-          { lat: 52.52, lng: 13.40, name: "Berlin" }
+          { lat: 22.543, lng: 114.057 }, // Shenzhen, China
+          { lat: 31.230, lng: 121.473 }, // Shanghai, China
+          { lat: 25.033, lng: 121.565 }, // Taipei, Taiwan
+          { lat: 52.520, lng: 13.405 }   // Berlin, Germany (Exact coordinate)
         ];
 
+        // Hospitals (Outbound)
         const hospitals = [
-          { lat: 25.28, lng: 51.53, name: "Doha" },
-          { lat: 25.29, lng: 51.36, name: "Al Rayyan" },
-          { lat: 26.22, lng: 50.58, name: "Manama" },
-          { lat: 26.13, lng: 50.55, name: "Riffa" },
-          { lat: 24.71, lng: 46.67, name: "Riyadh" },
-          { lat: 21.48, lng: 39.19, name: "Jeddah" },
-          { lat: 26.42, lng: 50.10, name: "Dammam" },
-          { lat: 21.42, lng: 39.82, name: "Mecca" },
-          { lat: 24.46, lng: 39.61, name: "Medina" }
+          { lat: 25.285, lng: 51.531 }, // Doha, Qatar
+          { lat: 25.291, lng: 51.367 }, // Al Rayyan, Qatar
+          { lat: 26.228, lng: 50.586 }, // Manama, Bahrain
+          { lat: 26.130, lng: 50.555 }, // Riffa, Bahrain
+          { lat: 24.713, lng: 46.675 }, // Riyadh, KSA
+          { lat: 21.485, lng: 39.197 }, // Jeddah, KSA
+          { lat: 26.420, lng: 50.103 }, // Dammam, KSA
+          { lat: 21.422, lng: 39.826 }, // Mecca, KSA
+          { lat: 24.467, lng: 39.614 }  // Medina, KSA
         ];
 
         const arcsData = [];
@@ -499,7 +500,7 @@
           arcsData.push({
             startLat: s.lat, startLng: s.lng,
             endLat: omanHub.lat, endLng: omanHub.lng,
-            color: ['rgba(255,255,255,0.9)', 'rgba(255,255,255,0.1)']
+            color: ['rgba(255,255,255,0.9)', 'rgba(255,255,255,0.2)']
           });
         });
         hospitals.forEach(h => {
@@ -512,10 +513,10 @@
 
         world.arcsData(arcsData)
           .arcColor('color')
-          .arcDashLength(0.4)
-          .arcDashGap(0.2)
+          .arcDashLength(0.5)
+          .arcDashGap(0.1)
           .arcDashAnimateTime(2000)
-          .arcStroke(0.8);
+          .arcStroke(0.6);
 
         // ==========================================
         // 3. DRAW POINTS (NODES)
@@ -523,23 +524,24 @@
         const pointsData = [omanHub, ...suppliers, ...hospitals];
 
         world.pointsData(pointsData)
-          .pointColor(d => d.name === "AZADIPOUR" ? '#ffffff' : (d.name === "Shenzhen" || d.name === "Shanghai" || d.name === "Taipei" || d.name === "Berlin" ? 'rgba(255,255,255,0.9)' : 'rgba(180,180,180,0.6)'))
-          .pointAltitude(0.005)
-          .pointRadius(d => d.name === "AZADIPOUR" ? 0.6 : (d.name === "Shenzhen" || d.name === "Shanghai" || d.name === "Taipei" || d.name === "Berlin" ? 0.35 : 0.25))
+          .pointColor(d => d.name === "AZADIPOUR" ? '#ffffff' : (d.lat > 40 ? 'rgba(255,255,255,1)' : 'rgba(180,180,180,0.7)'))
+          .pointAltitude(0.01)
+          .pointRadius(d => d.name === "AZADIPOUR" ? 0.7 : (d.lat > 40 ? 0.4 : 0.3))
           .pointsMerge(false);
 
         // ==========================================
-        // 4. LABELS & RINGS
+        // 4. LABELS (CLEAN & LUXURIOUS)
         // ==========================================
-        // Use HTML labels for the Hub to ensure it has a solid background and is readable over borders
-        world.htmlElementsData([omanHub])
-          .htmlElement(d => {
-            const el = document.createElement('div');
-            el.innerHTML = `<div style="color: #fff; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700; text-shadow: 0 0 10px #000, 0 0 20px #000; padding: 4px 8px; background: rgba(0,0,0,0.7); border: 1px solid rgba(255,255,255,0.3); border-radius: 4px; white-space: nowrap;">AZADIPOUR</div>`;
-            return el;
-          })
-          .htmlAltitude(0.02);
+        // Using native text labels (no HTML div boxes) to keep it elegant
+        world.labelsData([omanHub])
+          .labelSize(d => d.name === "AZADIPOUR" ? 1.6 : 0)
+          .labelDotRadius(0.4) // Adds a nice glowing dot next to text
+          .labelColor(() => '#ffffff')
+          .labelText('name')
+          .labelAltitude(0.015)
+          .labelResolution(2);
 
+        // Radar Rings around Hub
         world.ringsData([omanHub])
           .ringColor(() => t => `rgba(255,255,255,${1-t})`)
           .ringMaxRadius(3)
@@ -548,7 +550,7 @@
 
         // Controls Setup
         world.controls().autoRotate = true;
-        world.controls().autoRotateSpeed = 0.4;
+        world.controls().autoRotateSpeed = 0.3;
         world.controls().enableZoom = true;
         world.controls().minDistance = 150;
 
