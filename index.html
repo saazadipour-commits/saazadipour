@@ -21,12 +21,6 @@
 
   <link rel="stylesheet" href="style.css">
 
-  <!-- ECharts Core (from Stable CDN) -->
-  <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
-  
-  <!-- ECharts GL 3D (from Local Repository) -->
-  <script src="./echarts-gl.min.js"></script>
-
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -138,13 +132,15 @@
           <span>GLOBAL SUPPLY &amp; DISTRIBUTION NETWORK</span>
         </div>
 
+        <!-- 2.5D Map Container -->
         <div class="network-map-canvas-wrap">
-          <!-- Map Canvas Container -->
-          <div id="azadipourWorldMap" class="az-world-map" role="img" aria-label="3D world map showing hub connections"></div>
+          <div class="az-map-3d-wrapper">
+            <div id="azadipourWorldMap" class="az-world-map" role="img" aria-label="2.5D world map showing hub connections"></div>
+          </div>
           <!-- Loading & Error Message Container -->
           <div class="map-loading" id="mapLoading">
             <span class="loading-indicator"></span>
-            <span id="loadingText">LOADING 3D MAP DATA</span>
+            <span id="loadingText">LOADING MAP DATA</span>
           </div>
         </div>
 
@@ -426,129 +422,144 @@
     </div>
   </footer>
 
-  <!-- 3D MAP SCRIPT -->
+  <!-- MAP SCRIPT (Pure SVG + CSS Perspective) -->
   <script>
-  window.addEventListener('load', function() {
-    const chartDom = document.getElementById('azadipourWorldMap');
-    const loadingDiv = document.getElementById('mapLoading');
-    const loadingText = document.getElementById('loadingText');
-    
-    function showError(msg) {
-      if (loadingDiv) {
-        loadingDiv.classList.remove('is-hidden');
-        loadingDiv.style.color = '#ff4444';
-        if (loadingText) loadingText.textContent = "ERROR: " + msg;
+  document.addEventListener("DOMContentLoaded", function() {
+    const host = document.getElementById("azadipourWorldMap");
+    const loading = document.getElementById("mapLoading");
+    const loadingText = document.getElementById("loadingText");
+    if (!host) return;
+
+    const W = 1200;
+    const H = 600;
+    const ns = "http://www.w3.org/2000/svg";
+
+    function createSvgElement(parent, tag, attrs = {}) {
+      const el = document.createElementNS(ns, tag);
+      for (const [key, value] of Object.entries(attrs)) {
+        el.setAttribute(key, value);
       }
-      console.error(msg);
+      parent.appendChild(el);
+      return el;
     }
 
-    if (!chartDom) return;
+    // Coordinates
+    const omanHub = { lat: 23.58, lng: 58.38, name: "AZADIPOUR" };
 
-    // Check if ECharts Core is loaded
-    if (typeof window.echarts === 'undefined') {
-      showError("ECharts Core Library Failed to Load.");
-      return;
+    const suppliers = [
+      { lat: 22.54, lng: 114.05, name: "Shenzhen" },
+      { lat: 31.23, lng: 121.47, name: "Shanghai" },
+      { lat: 25.03, lng: 121.56, name: "Taipei" },
+      { lat: 52.52, lng: 13.40, name: "Berlin" }
+    ];
+
+    const hospitals = [
+      { lat: 25.28, lng: 51.53, name: "Doha" },
+      { lat: 25.29, lng: 51.36, name: "Al Rayyan" },
+      { lat: 26.22, lng: 50.58, name: "Manama" },
+      { lat: 26.13, lng: 50.55, name: "Riffa" },
+      { lat: 24.71, lng: 46.67, name: "Riyadh" },
+      { lat: 21.48, lng: 39.19, name: "Jeddah" },
+      { lat: 26.42, lng: 50.10, name: "Dammam" },
+      { lat: 21.42, lng: 39.82, name: "Mecca" },
+      { lat: 24.46, lng: 39.61, name: "Medina" }
+    ];
+
+    // Convert lat/lng to SVG coordinates
+    function project(lat, lng) {
+      const x = ((lng + 180) / 360) * W;
+      const y = ((90 - lat) / 180) * H;
+      return [x, y];
     }
 
-    if (typeof echarts.init !== 'function') {
-      showError("ECharts Initialization Failed.");
-      return;
+    // Draw curved lines
+    function drawCurvedLine(svg, start, end, type) {
+      const [x1, y1] = project(start.lat, start.lng);
+      const [x2, y2] = project(end.lat, end.lng);
+
+      const dx = x2 - x1;
+      const dy = y2 - y1;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+
+      // Control point for curve
+      const midX = (x1 + x2) / 2;
+      const midY = (y1 + y2) / 2;
+      const offset = dist * 0.2;
+      const angle = Math.atan2(dy, dx);
+      const perpAngle = angle - Math.PI / 2;
+      const ctrlX = midX + Math.cos(perpAngle) * offset;
+      const ctrlY = midY + Math.sin(perpAngle) * offset;
+
+      const pathData = `M ${x1} ${y1} Q ${ctrlX} ${ctrlY} ${x2} ${y2}`;
+
+      createSvgElement(svg, "path", {
+        d: pathData,
+        class: type === 'inbound' ? "az-arc-inbound" : "az-arc-outbound",
+        fill: "none"
+      });
+
+      // Draw end point
+      const radius = type === 'inbound' ? 3 : 2.5;
+      createSvgElement(svg, "circle", {
+        cx: x2, cy: y2, r: radius,
+        class: "az-network-node"
+      });
     }
 
-    try {
-      const myChart = echarts.init(chartDom);
+    // Main drawing function
+    function drawMap() {
+      host.innerHTML = "";
 
-      const omanHub = [58.383, 23.588];
-      const suppliers = [
-        [121.438, 31.188], [116.407, 39.904], [121.565, 25.033], [114.057, 22.543]
-      ];
-      const ksaHospitals = [
-        [46.675, 24.713], [39.197, 21.485], [50.103, 26.420], [39.826, 21.422], [39.614, 24.467]
-      ];
+      const svg = createSvgElement(host, "svg", {
+        viewBox: `0 0 ${W} ${H}`,
+        preserveAspectRatio: "xMidYMid meet"
+      });
 
-      const inboundData = suppliers.map(coord => ({
-        coords: [coord, omanHub],
-        lineStyle: { color: '#ffffff', width: 1.5, opacity: 0.8 }
-      }));
+      // Simple background rectangle
+      createSvgElement(svg, "rect", { width: W, height: H, fill: "#050607" });
 
-      const outboundData = ksaHospitals.map(coord => ({
-        coords: [omanHub, coord],
-        lineStyle: { color: '#888888', width: 1, opacity: 0.5 }
-      }));
+      // Draw very faint grid lines to simulate a map
+      for (let i = 0; i <= W; i += 100) {
+        createSvgElement(svg, "line", { x1: i, y1: 0, x2: i, y2: H, class: "az-map-graticule" });
+      }
+      for (let i = 0; i <= H; i += 100) {
+        createSvgElement(svg, "line", { x1: 0, y1: i, x2: W, y2: i, class: "az-map-graticule" });
+      }
 
-      const scatterData = [
-        { name: 'Azadipour Hub', value: [...omanHub, 0], itemStyle: { color: '#ffffff', shadowBlur: 20, shadowColor: '#ffffff' } },
-        ...suppliers.map(coord => ({ value: [...coord, 0], itemStyle: { color: '#ffffff', shadowBlur: 10, shadowColor: '#ffffff' } })),
-        ...ksaHospitals.map(coord => ({ value: [...coord, 0], itemStyle: { color: '#aaaaaa', shadowBlur: 5, shadowColor: '#aaaaaa' } }))
-      ];
+      // Draw connections
+      suppliers.forEach(s => drawCurvedLine(svg, s, omanHub, 'inbound'));
+      hospitals.forEach(h => drawCurvedLine(svg, omanHub, h, 'outbound'));
 
-      const option = {
-        backgroundColor: '#050607',
-        tooltip: { show: false },
-        geo3D: {
-          map: 'world',
-          shading: 'lambert',
-          environment: '#050607',
-          itemStyle: { color: '#111111', borderWidth: 0.5, borderColor: '#333333' },
-          regions: [ { name: 'Iran', itemStyle: { color: '#050607', borderColor: '#050607' } } ],
-          light: {
-            main: { intensity: 1.2, shadow: true, alpha: 40, beta: 40 },
-            ambient: { intensity: 0.5 }
-          },
-          viewControl: {
-            alpha: 40, beta: 0, distance: 120, center: [30, 40],
-            autoRotate: false, panMouseButton: 'left', rotateMouseButton: 'right'
-          },
-          boxWidth: 100, boxHeight: 20, boxDepth: 100
-        },
-        series: [
-          {
-            type: 'lines3D', coordinateSystem: 'geo3D',
-            effect: { show: true, trailWidth: 3, trailOpacity: 1, trailLength: 0.3, constantSpeed: 20 },
-            blendMode: 'lighter', lineStyle: { width: 1, color: '#fff', opacity: 0.6 },
-            data: inboundData
-          },
-          {
-            type: 'lines3D', coordinateSystem: 'geo3D',
-            effect: { show: true, trailWidth: 2, trailOpacity: 0.5, trailLength: 0.2, constantSpeed: 15 },
-            blendMode: 'lighter', lineStyle: { width: 1, color: '#999', opacity: 0.4 },
-            data: outboundData
-          },
-          {
-            type: 'scatter3D', coordinateSystem: 'geo3D',
-            symbol: 'circle', symbolSize: 6, itemStyle: { color: '#fff', opacity: 1 },
-            label: {
-              show: true,
-              formatter: function(param) { return param.data.name === 'Azadipour Hub' ? 'AZADIPOUR' : ''; },
-              textStyle: { color: '#fff', fontFamily: 'Inter, sans-serif', fontSize: 12, fontWeight: 'bold', backgroundColor: 'rgba(0,0,0,0.5)', padding: [4, 8] }
-            },
-            data: scatterData
-          }
-        ]
-      };
+      // Draw Hub
+      const [hubX, hubY] = project(omanHub.lat, omanHub.lng);
+      const hubGroup = createSvgElement(svg, "g", { transform: `translate(${hubX},${hubY})` });
+      
+      createSvgElement(hubGroup, "circle", { r: 20, class: "az-hub-halo-outer" });
+      createSvgElement(hubGroup, "circle", { r: 10, class: "az-hub-halo-inner" });
+      createSvgElement(hubGroup, "circle", { r: 4, class: "az-hub-core" });
 
-      // Fetch map data from Stable CDN
-      fetch('https://cdn.jsdelivr.net/npm/echarts@4.9.0/map/json/world.json')
-        .then(response => {
-          if (!response.ok) {
-            throw new Error("World map data HTTP error: " + response.status);
-          }
-          return response.json();
-        })
-        .then(worldJson => {
-          echarts.registerMap('world', worldJson);
-          myChart.setOption(option);
-          if (loadingDiv) loadingDiv.classList.add('is-hidden');
-        })
-        .catch(err => {
-          showError("World Map Loading Failed: " + err.message);
-        });
+      const label = createSvgElement(hubGroup, "text", {
+        x: 15, y: 5, "text-anchor": "start", class: "az-hub-label"
+      });
+      label.textContent = "AZADIPOUR";
 
-      window.addEventListener('resize', () => myChart.resize());
-
-    } catch (err) {
-      showError(err.message);
+      if (loading) loading.classList.add("is-hidden");
     }
+
+    // Check if D3 is loaded (not strictly needed but good practice)
+    if (typeof d3 === 'undefined') {
+        if (loadingText) loadingText.textContent = "ERROR: D3 LIBRARY NOT LOADED";
+        if (loading) loading.style.color = "#ff4444";
+        return;
+    }
+
+    // Draw the map
+    drawMap();
+
+    // Handle resize
+    window.addEventListener('resize', () => {
+        // In a real scenario, you might re-calculate positions, but SVG is responsive.
+    });
   });
   </script>
 
