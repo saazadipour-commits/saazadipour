@@ -546,20 +546,8 @@
       if (loading) loading.classList.add("is-hidden");
     }
 
-    // Check if D3 is loaded (not strictly needed but good practice)
-    if (typeof d3 === 'undefined') {
-        if (loadingText) loadingText.textContent = "ERROR: D3 LIBRARY NOT LOADED";
-        if (loading) loading.style.color = "#ff4444";
-        return;
-    }
-
     // Draw the map
     drawMap();
-
-    // Handle resize
-    window.addEventListener('resize', () => {
-        // In a real scenario, you might re-calculate positions, but SVG is responsive.
-    });
   });
   </script>
 
