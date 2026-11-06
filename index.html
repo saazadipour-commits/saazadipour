@@ -21,7 +21,7 @@
 
   <link rel="stylesheet" href="style.css">
 
-  <!-- 3D Globe Libraries (Three.js + Globe.gl) -->
+  <!-- 3D Globe Libraries -->
   <script src="https://unpkg.com/three@0.150.1/build/three.min.js"></script>
   <script src="https://unpkg.com/globe.gl@2.27.2/dist/globe.gl.min.js"></script>
 
@@ -136,13 +136,13 @@
           <span>GLOBAL SUPPLY &amp; DISTRIBUTION NETWORK</span>
         </div>
 
-        <!-- 3D Globe Container -->
-        <div class="network-map-canvas-wrap">
+        <!-- 3D Globe Container with Fallback Image -->
+        <div class="network-map-canvas-wrap" style="background-image: url('https://unpkg.com/three-globe/example/img/earth-dark.jpg'); background-size: cover; background-position: center;">
           <div id="globeViz" class="az-world-map"></div>
-          <!-- Loading & Error Message Container -->
+          <!-- Loading State -->
           <div class="map-loading" id="mapLoading">
             <span class="loading-indicator"></span>
-            <span id="loadingText">LOADING GLOBAL BORDERS &amp; DATA</span>
+            <span id="loadingText">INITIALIZING 3D GRAPHICS...</span>
           </div>
         </div>
 
@@ -424,7 +424,7 @@
     </div>
   </footer>
 
-  <!-- 3D GLOBE SCRIPT (PERFECTED VERSION) -->
+  <!-- 3D GLOBE SCRIPT (ENHANCED ACCURACY & CITY LABELS) -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const globeContainer = document.getElementById("globeViz");
@@ -433,17 +433,24 @@
 
       if (!globeContainer) return;
 
-      if (typeof Globe === 'undefined' || typeof THREE === 'undefined') {
-        if (loadingText) loadingText.textContent = "ERROR: 3D LIBRARY FAILED TO LOAD";
-        if (loading) loading.style.color = "#ff4444";
+      function isWebGLAvailable() {
+        try {
+          const canvas = document.createElement('canvas');
+          return !!(window.WebGLRenderingContext && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl')));
+        } catch (e) {
+          return false;
+        }
+      }
+
+      if (!isWebGLAvailable() || typeof Globe === 'undefined' || typeof THREE === 'undefined') {
+        if (loading) loading.style.display = "none";
+        console.warn("WebGL not supported. Showing static fallback.");
         return;
       }
 
       try {
         const world = Globe()(globeContainer)
-          // Using a high-quality dark map texture that highlights landmasses
-          .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-night.jpg')
-          .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
+          .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-dark.jpg')
           .backgroundImageUrl('https://unpkg.com/three-globe/example/img/night-sky.png')
           .backgroundColor('#050607')
           .showAtmosphere(true)
@@ -452,121 +459,80 @@
           .width(globeContainer.clientWidth)
           .height(globeContainer.clientHeight);
 
-        // Center view on Oman
         world.pointOfView({ lat: 25, lng: 55, altitude: 2.2 });
 
-        // ==========================================
-        // 1. DRAW ACCURATE COUNTRY BORDERS
-        // ==========================================
+        // High-Precision Borders
         fetch('https://cdn.jsdelivr.net/npm/three-globe/example/datasets/ne_110m_admin_0_countries.geojson')
           .then(res => res.json())
           .then(countries => {
             world.pathsData(countries.features)
-              .pathStrokeColor(() => 'rgba(200, 200, 200, 0.6)') // Visible silver borders
+              .pathStrokeColor(() => 'rgba(200, 200, 200, 0.7)')
               .pathStrokeWidth(0.5)
               .pathTransitionDuration(0);
-          })
-          .catch(err => console.error("Error loading borders:", err));
+          });
 
-        // ==========================================
-        // 2. DRAW ARCS (EXACT COORDINATES)
-        // ==========================================
-        // Hub: Oman (Muscat)
-        const omanHub = { lat: 23.588, lng: 58.383, name: "AZADIPOUR" };
-
-        // Suppliers (Inbound)
+        // EXACT Coordinates & City Names
+        const omanHub = { lat: 23.588, lng: 58.383, name: "AZADIPOUR (MUSCAT)" };
+        
         const suppliers = [
-          { lat: 22.543, lng: 114.057 }, // Shenzhen, China
-          { lat: 31.230, lng: 121.473 }, // Shanghai, China
-          { lat: 25.033, lng: 121.565 }, // Taipei, Taiwan
-          { lat: 52.520, lng: 13.405 }   // Berlin, Germany (Exact coordinate)
+          { lat: 22.543, lng: 114.057, name: "Shenzhen" },
+          { lat: 31.230, lng: 121.473, name: "Shanghai" },
+          { lat: 25.033, lng: 121.565, name: "Taipei" },
+          { lat: 52.520, lng: 13.405, name: "Berlin" }
         ];
 
-        // Hospitals (Outbound)
         const hospitals = [
-          { lat: 25.285, lng: 51.531 }, // Doha, Qatar
-          { lat: 25.291, lng: 51.367 }, // Al Rayyan, Qatar
-          { lat: 26.228, lng: 50.586 }, // Manama, Bahrain
-          { lat: 26.130, lng: 50.555 }, // Riffa, Bahrain
-          { lat: 24.713, lng: 46.675 }, // Riyadh, KSA
-          { lat: 21.485, lng: 39.197 }, // Jeddah, KSA
-          { lat: 26.420, lng: 50.103 }, // Dammam, KSA
-          { lat: 21.422, lng: 39.826 }, // Mecca, KSA
-          { lat: 24.467, lng: 39.614 }  // Medina, KSA
+          { lat: 25.285, lng: 51.531, name: "Doha" },
+          { lat: 25.291, lng: 51.367, name: "Al Rayyan" },
+          { lat: 26.228, lng: 50.586, name: "Manama" },
+          { lat: 26.130, lng: 50.555, name: "Riffa" },
+          { lat: 24.713, lng: 46.675, name: "Riyadh" },
+          { lat: 21.485, lng: 39.197, name: "Jeddah" },
+          { lat: 26.420, lng: 50.103, name: "Dammam" },
+          { lat: 21.422, lng: 39.826, name: "Mecca" },
+          { lat: 24.467, lng: 39.614, name: "Medina" }
         ];
 
         const arcsData = [];
-        suppliers.forEach(s => {
-          arcsData.push({
-            startLat: s.lat, startLng: s.lng,
-            endLat: omanHub.lat, endLng: omanHub.lng,
-            color: ['rgba(255,255,255,0.9)', 'rgba(255,255,255,0.2)']
-          });
-        });
-        hospitals.forEach(h => {
-          arcsData.push({
-            startLat: omanHub.lat, startLng: omanHub.lng,
-            endLat: h.lat, endLng: h.lng,
-            color: ['rgba(150,150,150,0.6)', 'rgba(150,150,150,0.1)']
-          });
-        });
+        suppliers.forEach(s => arcsData.push({ startLat: s.lat, startLng: s.lng, endLat: omanHub.lat, endLng: omanHub.lng, color: ['rgba(255,255,255,0.9)', 'rgba(255,255,255,0.2)'] }));
+        hospitals.forEach(h => arcsData.push({ startLat: omanHub.lat, startLng: omanHub.lng, endLat: h.lat, endLng: h.lng, color: ['rgba(150,150,150,0.6)', 'rgba(150,150,150,0.1)'] }));
 
-        world.arcsData(arcsData)
-          .arcColor('color')
-          .arcDashLength(0.5)
-          .arcDashGap(0.1)
-          .arcDashAnimateTime(2000)
-          .arcStroke(0.6);
+        world.arcsData(arcsData).arcColor('color').arcDashLength(0.5).arcDashGap(0.1).arcDashAnimateTime(2000).arcStroke(0.6);
 
-        // ==========================================
-        // 3. DRAW POINTS (NODES)
-        // ==========================================
         const pointsData = [omanHub, ...suppliers, ...hospitals];
-
         world.pointsData(pointsData)
-          .pointColor(d => d.name === "AZADIPOUR" ? '#ffffff' : (d.lat > 40 ? 'rgba(255,255,255,1)' : 'rgba(180,180,180,0.7)'))
+          .pointColor(d => d.name === "AZADIPOUR (MUSCAT)" ? '#ffffff' : (d.lat > 40 ? 'rgba(255,255,255,1)' : 'rgba(180,180,180,0.7)'))
           .pointAltitude(0.01)
-          .pointRadius(d => d.name === "AZADIPOUR" ? 0.7 : (d.lat > 40 ? 0.4 : 0.3))
+          .pointRadius(d => d.name === "AZADIPOUR (MUSCAT)" ? 0.7 : (d.lat > 40 ? 0.4 : 0.3))
           .pointsMerge(false);
 
-        // ==========================================
-        // 4. LABELS (CLEAN & LUXURIOUS)
-        // ==========================================
-        // Using native text labels (no HTML div boxes) to keep it elegant
-        world.labelsData([omanHub])
-          .labelSize(d => d.name === "AZADIPOUR" ? 1.6 : 0)
-          .labelDotRadius(0.4) // Adds a nice glowing dot next to text
-          .labelColor(() => '#ffffff')
+        // ADD LABELS FOR ALL CITIES
+        const allLabels = [omanHub, ...suppliers, ...hospitals];
+        world.labelsData(allLabels)
+          .labelSize(d => d.name === "AZADIPOUR (MUSCAT)" ? 1.4 : 0.8) // Hub is bigger
+          .labelDotRadius(0.2)
+          .labelColor(d => d.name === "AZADIPOUR (MUSCAT)" ? '#ffffff' : 'rgba(200,200,200,0.8)')
           .labelText('name')
           .labelAltitude(0.015)
           .labelResolution(2);
 
-        // Radar Rings around Hub
-        world.ringsData([omanHub])
-          .ringColor(() => t => `rgba(255,255,255,${1-t})`)
-          .ringMaxRadius(3)
-          .ringPropagationSpeed(2)
-          .ringRepeatPeriod(1500);
+        world.ringsData([omanHub]).ringColor(() => t => `rgba(255,255,255,${1-t})`).ringMaxRadius(3).ringPropagationSpeed(2).ringRepeatPeriod(1500);
 
-        // Controls Setup
         world.controls().autoRotate = true;
         world.controls().autoRotateSpeed = 0.3;
         world.controls().enableZoom = true;
         world.controls().minDistance = 150;
 
-        // Hide Loading Screen
         if (loading) loading.style.display = "none";
 
-        // Handle Window Resize
         window.addEventListener('resize', () => {
           world.width(globeContainer.clientWidth);
           world.height(globeContainer.clientHeight);
         });
 
       } catch (err) {
-        console.error(err);
-        if (loadingText) loadingText.textContent = "ERROR: " + err.message;
-        if (loading) loading.style.color = "#ff4444";
+        console.error("Critical Error:", err);
+        if (loading) loading.style.display = "none";
       }
     });
   </script>
