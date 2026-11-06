@@ -182,27 +182,28 @@
           <span>With Global Innovation.</span>
         </h2>
         <p>
-          Azadipour is an Oman-registered healthcare and medical
-          technology company connecting healthcare organizations
-          and international partners with medical technology,
-          advanced surgical equipment and hospital solutions.
+          Azadipour is an Oman-registered healthcare and medical technology company. 
+          We are currently in active negotiations with several leading robotics companies 
+          and hold dedicated exclusive sales lines for selected global robotic products. 
+          Furthermore, we are continuously upgrading our strategic relationships with 
+          premier international hospitals to integrate advanced surgical solutions.
         </p>
       </div>
       <div class="intro-details">
         <div class="intro-detail">
           <span>01</span>
-          <h3>Healthcare Focus</h3>
-          <p>Understanding institutional healthcare needs and identifying relevant medical technology solutions.</p>
+          <h3>Robotic Negotiations</h3>
+          <p>Actively engaging with global leaders in surgical robotics to integrate next-generation platforms into our network.</p>
         </div>
         <div class="intro-detail">
           <span>02</span>
-          <h3>Global Connections</h3>
-          <p>Building relationships between healthcare organizations, international manufacturers and technology providers.</p>
+          <h3>Dedicated Sales Lines</h3>
+          <p>Holding dedicated sales lines and specific distribution rights for selected advanced global robotic medical products.</p>
         </div>
         <div class="intro-detail">
           <span>03</span>
-          <h3>Strategic Development</h3>
-          <p>Exploring opportunities across international healthcare markets and industry sectors.</p>
+          <h3>International Hospitals</h3>
+          <p>Continuously upgrading and expanding our strategic relationships with premier international hospitals and healthcare institutions.</p>
         </div>
       </div>
     </section>
@@ -424,7 +425,7 @@
     </div>
   </footer>
 
-  <!-- 3D GLOBE SCRIPT (ENHANCED ACCURACY & CITY LABELS) -->
+  <!-- 3D GLOBE SCRIPT (HIGH-CONTRAST WHITE BORDERS) -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const globeContainer = document.getElementById("globeViz");
@@ -450,6 +451,7 @@
 
       try {
         const world = Globe()(globeContainer)
+          // Using a high-quality dark map texture
           .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-dark.jpg')
           .backgroundImageUrl('https://unpkg.com/three-globe/example/img/night-sky.png')
           .backgroundColor('#050607')
@@ -461,17 +463,21 @@
 
         world.pointOfView({ lat: 25, lng: 55, altitude: 2.2 });
 
-        // High-Precision Borders
+        // ==========================================
+        // DRAW HIGH-CONTRAST WHITE BORDERS FOR ALL COUNTRIES
+        // ==========================================
         fetch('https://cdn.jsdelivr.net/npm/three-globe/example/datasets/ne_110m_admin_0_countries.geojson')
           .then(res => res.json())
           .then(countries => {
             world.pathsData(countries.features)
-              .pathStrokeColor(() => 'rgba(200, 200, 200, 0.7)')
-              .pathStrokeWidth(0.5)
+              .pathStrokeColor(() => '#ffffff') // Pure White
+              .pathStrokeWidth(1.2)           // Thicker for mobile visibility
+              .pathAltitude(0.002)            // Slightly above surface to avoid clipping
               .pathTransitionDuration(0);
-          });
+          })
+          .catch(err => console.error("Error loading borders:", err));
 
-        // EXACT Coordinates & City Names
+        // Data Coordinates & Names
         const omanHub = { lat: 23.588, lng: 58.383, name: "AZADIPOUR (MUSCAT)" };
         
         const suppliers = [
@@ -506,10 +512,10 @@
           .pointRadius(d => d.name === "AZADIPOUR (MUSCAT)" ? 0.7 : (d.lat > 40 ? 0.4 : 0.3))
           .pointsMerge(false);
 
-        // ADD LABELS FOR ALL CITIES
+        // City Labels
         const allLabels = [omanHub, ...suppliers, ...hospitals];
         world.labelsData(allLabels)
-          .labelSize(d => d.name === "AZADIPOUR (MUSCAT)" ? 1.4 : 0.8) // Hub is bigger
+          .labelSize(d => d.name === "AZADIPOUR (MUSCAT)" ? 1.4 : 0.8)
           .labelDotRadius(0.2)
           .labelColor(d => d.name === "AZADIPOUR (MUSCAT)" ? '#ffffff' : 'rgba(200,200,200,0.8)')
           .labelText('name')
