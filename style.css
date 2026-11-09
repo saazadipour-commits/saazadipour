@@ -167,6 +167,86 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
 .intro-detail h3 { margin-bottom: 12px; font-size: 27px; }
 .intro-detail p { font-size: 12px; }
 
+/* =========================================
+   LUXURIOUS CORPORATE CREDENTIALS CARD
+   ========================================= */
+.corporate-credentials-card {
+  position: relative;
+  margin-top: 60px;
+  padding: 40px;
+  background: linear-gradient(145deg, rgba(15, 20, 25, 0.9), rgba(5, 7, 9, 0.95));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), inset 0 0 30px rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(12px);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1.2fr 1.5fr;
+  gap: 40px;
+  align-items: center;
+}
+.corporate-credentials-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(200, 200, 200, 0.8), transparent);
+}
+.credential-header {
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  padding-right: 40px;
+}
+.credential-seal {
+  display: inline-block;
+  padding: 6px 12px;
+  border: 1px solid var(--silver-dark);
+  color: var(--silver);
+  font-size: 9px;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+.credential-header h3 {
+  color: #fff;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 32px;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+.credential-header p {
+  color: var(--text-soft);
+  font-size: 13.5px;
+  line-height: 1.8;
+  text-align: justify;
+}
+.credential-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+.credential-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.cred-label {
+  color: var(--silver-dark);
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.cred-value {
+  color: #ffffff;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
 /* 08 — VISUAL PORTFOLIO */
 .visual-portfolio-section { background: #090c0f; }
 .visual-portfolio-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 17px; margin-top: 38px; }
@@ -286,9 +366,9 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
   
   /* Collapse Grids to Single Column for Tablets/Mobile */
   .network-heading { grid-template-columns: 1fr; gap: 20px; }
-  .partnership-content { grid-template-columns: 1fr; gap: 30px; text-align: center; } /* Fix for AZADIPOUR box overflow */
+  .partnership-content { grid-template-columns: 1fr; gap: 30px; text-align: center; }
   .partnership-mark { max-width: 400px; margin: 0 auto; width: 100%; }
-  .intro-details { grid-template-columns: 1fr; } /* Fix for 3 cards squishing */
+  .intro-details { grid-template-columns: 1fr; }
   .mission-grid, .approach-grid, .presence-grid, .medical-area-grid, .technology-grid, .contact-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .solutions-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .visual-portfolio-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
@@ -296,6 +376,10 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
   .network-legend { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .footer-main { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .footer-brand { grid-column: 1 / -1; }
+
+  /* Credentials Card Responsive */
+  .corporate-credentials-card { grid-template-columns: 1fr; padding: 30px; gap: 30px; }
+  .credential-header { border-right: none; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-right: 0; padding-bottom: 30px; }
 }
 
 /* 19 — RESPONSIVE MOBILE */
@@ -320,19 +404,9 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
   .network-map-canvas-wrap { height: 400px; }
   .network-map-topline, .map-caption { flex-direction: column; gap: 5px; text-align: center; }
   .network-footer { flex-direction: column; align-items: flex-start; }
-}
 
-/* Smooth scroll behavior for anchor links */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Optional: Fade-in effect for sections when scrolling */
-.global-network-section {
-  animation: fadeIn 1.5s ease-in-out;
-}
-
-@keyframes fadeIn {
-  0% { opacity: 0; transform: translateY(20px); }
-  100% { opacity: 1; transform: translateY(0); }
+  /* Credentials Card Mobile */
+  .credential-grid { grid-template-columns: 1fr; gap: 15px; }
+  .credential-header h3 { font-size: 26px; }
+  .credential-header p { font-size: 12.5px; }
 }
