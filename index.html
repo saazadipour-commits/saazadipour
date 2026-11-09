@@ -25,7 +25,6 @@
   <script src="https://unpkg.com/three@0.150.1/build/three.min.js"></script>
   <script src="https://unpkg.com/globe.gl@2.27.2/dist/globe.gl.min.js"></script>
 
-  <!-- Inline CSS to fix the top bar overlap on mobile and ensure fallback image works -->
   <style>
     .network-map-topline {
       display: flex;
@@ -40,7 +39,6 @@
         gap: 5px;
       }
     }
-    /* High-quality fallback background if WebGL fails */
     .network-map-canvas-wrap {
       background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop');
       background-size: cover;
@@ -64,7 +62,6 @@
 
 <body>
 
-  <!-- INTRO SCREEN -->
   <div class="intro-screen" id="intro">
     <div class="intro-content">
       <img src="assets/logo-transparent.png" alt="Azadipour Logo">
@@ -73,7 +70,6 @@
     </div>
   </div>
 
-  <!-- HEADER -->
   <header class="site-header">
     <div class="header-inner">
       <a href="index.html" class="brand" aria-label="Azadipour Home">
@@ -101,7 +97,6 @@
 
   <main>
 
-    <!-- HERO SECTION -->
     <section class="hero-section">
       <div class="hero-overlay"></div>
       <div class="hero-content">
@@ -141,7 +136,6 @@
       </div>
     </section>
 
-    <!-- GLOBAL NETWORK SECTION -->
     <section class="global-network-section" id="global-network" aria-label="Azadipour global network">
       <div class="network-top">
         <div class="section-label">01 — GLOBAL PRESENCE</div>
@@ -154,16 +148,13 @@
       </div>
 
       <div class="network-map-frame">
-        <!-- CSS fix for the topline -->
         <div class="network-map-topline">
           <span>AZADIPOUR — INTERNATIONAL NETWORK</span>
           <span>GLOBAL SUPPLY &amp; DISTRIBUTION NETWORK</span>
         </div>
 
-        <!-- 3D Globe Container with High-Quality Fallback Image -->
         <div class="network-map-canvas-wrap">
           <div id="globeViz" class="az-world-map"></div>
-          <!-- Loading State -->
           <div class="map-loading" id="mapLoading">
             <span class="loading-indicator"></span>
             <span id="loadingText">INITIALIZING 3D GRAPHICS...</span>
@@ -197,7 +188,6 @@
       </div>
     </section>
 
-    <!-- ABOUT SECTION (UPDATED WITH STRATEGIC INFO) -->
     <section class="section intro-section">
       <div class="section-label">02 — ABOUT AZADIPOUR</div>
       <div class="section-heading">
@@ -230,9 +220,39 @@
           <p>Continuously upgrading and expanding our strategic relationships with premier international hospitals and healthcare institutions.</p>
         </div>
       </div>
+
+      <!-- LUXURIOUS CORPORATE CREDENTIALS CARD -->
+      <div class="corporate-credentials-card">
+        <div class="credential-header">
+          <span class="credential-seal">VERIFIED &amp; LICENSED</span>
+          <h3>Corporate Credentials</h3>
+          <p>
+            Azadipour is a premier entity in international trade with a dedicated focus on the medical sector. We hold the fundamental regulatory licenses for medical product entry and comprehensive commercial licenses, facilitating the transfer of advanced medical technologies across global markets.
+          </p>
+        </div>
+        <div class="credential-grid">
+          <div class="credential-item">
+            <span class="cred-label">COMMERCIAL REGISTRATION (CR)</span>
+            <span class="cred-value">1678104</span>
+          </div>
+          <div class="credential-item">
+            <span class="cred-label">OCCI MEMBERSHIP</span>
+            <span class="cred-value">5551647</span>
+          </div>
+          <div class="credential-item">
+            <span class="cred-label">ACTIVITY CODE</span>
+            <span class="cred-value">461003 (Export &amp; Import)</span>
+          </div>
+          <div class="credential-item">
+            <span class="cred-label">REGISTERED OFFICE</span>
+            <span class="cred-value">Muscat, Sultanate of Oman</span>
+          </div>
+        </div>
+      </div>
+      <!-- END CREDENTIALS CARD -->
+
     </section>
 
-    <!-- TECHNOLOGY PORTFOLIO SECTION -->
     <section class="section technology-section">
       <div class="section-label">03 — TECHNOLOGY PORTFOLIO</div>
       <div class="section-heading">
@@ -281,7 +301,6 @@
       </div>
     </section>
 
-    <!-- VISUAL TECHNOLOGY PORTFOLIO SECTION -->
     <section class="section visual-portfolio-section">
       <div class="section-label">04 — SELECTED TECHNOLOGY AREAS</div>
       <div class="section-heading">
@@ -316,7 +335,6 @@
       </div>
     </section>
 
-    <!-- INTERNATIONAL PARTNERSHIPS SECTION -->
     <section class="section partnership-section">
       <div class="section-label">05 — INTERNATIONAL PARTNERSHIPS</div>
       <div class="partnership-content">
@@ -341,7 +359,6 @@
       </div>
     </section>
 
-    <!-- BUSINESS APPROACH SECTION -->
     <section class="section solutions-section">
       <div class="section-label">06 — BUSINESS APPROACH</div>
       <div class="section-heading">
@@ -374,7 +391,6 @@
       </div>
     </section>
 
-    <!-- PROJECT DEVELOPMENT SECTION -->
     <section class="section projects-section">
       <div class="section-label">07 — PROJECT DEVELOPMENT</div>
       <div class="section-heading">
@@ -393,7 +409,6 @@
       </a>
     </section>
 
-    <!-- CONTACT SECTION -->
     <section class="section contact-section">
       <div class="section-label">08 — CONNECT WITH AZADIPOUR</div>
       <div class="contact-content">
@@ -416,7 +431,6 @@
 
   </main>
 
-  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="footer-main">
       <div class="footer-brand">
@@ -449,7 +463,6 @@
     </div>
   </footer>
 
-  <!-- 3D GLOBE SCRIPT (HIGH QUALITY & THIN LINES) -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const globeContainer = document.getElementById("globeViz");
@@ -475,7 +488,6 @@
 
       try {
         const world = Globe()(globeContainer)
-          // HIGH-QUALITY DARK TEXTURE
           .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-night.jpg')
           .backgroundImageUrl('https://unpkg.com/three-globe/example/img/night-sky.png')
           .backgroundColor('#050607')
@@ -485,17 +497,15 @@
           .width(globeContainer.clientWidth)
           .height(globeContainer.clientHeight);
 
-        // Center view on Middle East/Asia
         world.pointOfView({ lat: 25, lng: 55, altitude: 2.5 });
 
-        // 1. DRAW COUNTRY BORDERS
         fetch('https://raw.githubusercontent.com/vasturiano/globe.gl/master/example/datasets/ne_110m_admin_0_countries.geojson')
           .then(res => res.json())
           .then(countries => {
             world.polygonsData(countries.features)
               .polygonCapColor(() => 'rgba(0,0,0,0)') 
               .polygonSideColor(() => 'rgba(0,0,0,0)')
-              .polygonStrokeColor(() => 'rgba(200, 200, 200, 0.3)') // Faint silver borders
+              .polygonStrokeColor(() => 'rgba(200, 200, 200, 0.3)')
               .polygonAltitude(0.005);
               
             const countryLabels = [
@@ -516,7 +526,6 @@
           })
           .catch(err => console.error("Error loading borders:", err));
 
-        // 2. EXACT DATA POINTS
         const omanHub = { lat: 23.588, lng: 58.383, name: "AZADIPOUR (MUSCAT)" };
         
         const suppliers = [
@@ -538,7 +547,6 @@
           { lat: 24.467, lng: 39.614, name: "Medina" }
         ];
 
-        // 3. DRAW THINNER ARCS
         const arcsData = [];
         suppliers.forEach(s => arcsData.push({ 
           startLat: s.lat, startLng: s.lng, 
@@ -557,17 +565,15 @@
           .arcDashLength(0.5)
           .arcDashGap(0.1)
           .arcDashAnimateTime(2000)
-          .arcStroke(0.4); // THINNER LINES
+          .arcStroke(0.4);
 
-        // 4. DRAW POINTS
         const pointsData = [omanHub, ...suppliers, ...hospitals];
         world.pointsData(pointsData)
           .pointColor(d => d.name === "AZADIPOUR (MUSCAT)" ? '#ffffff' : '#c0c0c0')
           .pointAltitude(0.01)
-          .pointRadius(d => d.name === "AZADIPOUR (MUSCAT)" ? 0.5 : 0.25) // Smaller points
+          .pointRadius(d => d.name === "AZADIPOUR (MUSCAT)" ? 0.5 : 0.25)
           .pointsMerge(false);
 
-        // 5. CITY LABELS
         const allLabels = [omanHub, ...suppliers, ...hospitals];
         world.labelsData(allLabels)
           .labelSize(d => d.name === "AZADIPOUR (MUSCAT)" ? 1.2 : 0.6)
@@ -577,23 +583,19 @@
           .labelAltitude(0.015)
           .labelResolution(2);
 
-        // Ring effect for Oman Hub
         world.ringsData([omanHub])
           .ringColor(() => t => `rgba(255, 255, 255, ${1-t})`)
           .ringMaxRadius(3)
           .ringPropagationSpeed(2)
           .ringRepeatPeriod(1500);
 
-        // Controls Setup
         world.controls().autoRotate = true;
         world.controls().autoRotateSpeed = 0.3;
         world.controls().enableZoom = true;
         world.controls().minDistance = 150;
 
-        // Hide Loading
         if (loading) loading.style.display = "none";
 
-        // Handle Resize
         window.addEventListener('resize', () => {
           world.width(globeContainer.clientWidth);
           world.height(globeContainer.clientHeight);
