@@ -1,541 +1,249 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Contact Azadipour | Medical Technology & Hospital Solutions</title>
-    <meta name="description" content="Contact Azadipour for medical technology enquiries, hospital equipment requirements, international partnerships and business development opportunities.">
-    <meta name="theme-color" content="#08090b">
+  <title>Contact Azadipour | Global Medical Technology</title>
+  <meta name="description" content="Contact Azadipour for international partnerships, medical technology opportunities, and advanced hospital solutions.">
+  <meta name="theme-color" content="#08090b">
 
-    <link rel="canonical" href="https://azadipourmedical.com/contact.html">
-    <link rel="icon" type="image/png" href="assets/logo-transparent.png">
+  <link rel="canonical" href="https://azadipourmedical.com/contact.html">
+  <link rel="icon" type="image/png" href="assets/logo-transparent.png">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css">
-
-    <style>
-        /* =========================================================
-           CONTACT PAGE SPECIFIC STYLES (LUXURY & INTERNATIONAL)
-           ========================================================= */
-
-        .contact-hero {
-            position: relative;
-            min-height: 60vh;
-            display: flex;
-            align-items: center;
-            padding: 150px 7% 90px;
-            overflow: hidden;
-            border-bottom: 1px solid var(--border);
-            background: linear-gradient(120deg, #050607 0%, #101318 55%, #050607 100%);
-        }
-
-        .contact-hero-content {
-            position: relative;
-            z-index: 2;
-            width: min(900px, 100%);
-        }
-
-        .contact-eyebrow {
-            color: var(--silver);
-            font-size: 11px;
-            letter-spacing: .28em;
-            text-transform: uppercase;
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .contact-eyebrow::before {
-            content: "";
-            display: block;
-            width: 40px;
-            height: 1px;
-            background: #fff;
-        }
-
-        .contact-hero h1 {
-            font-family: "Cormorant Garamond", serif;
-            font-weight: 400;
-            font-size: clamp(48px, 7vw, 86px);
-            line-height: 1.05;
-            letter-spacing: -.025em;
-            max-width: 900px;
-            margin: 0 0 28px;
-            color: #fff;
-        }
-
-        .contact-hero h1 span {
-            color: var(--silver);
-            display: block;
-        }
-
-        .contact-hero p {
-            max-width: 650px;
-            color: var(--text-soft);
-            font-size: 15px;
-            line-height: 1.9;
-            font-weight: 300;
-        }
-
-        .contact-section {
-            padding: 110px 7%;
-            background: var(--bg);
-        }
-
-        .contact-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .contact-layout {
-            display: grid;
-            grid-template-columns: .85fr 1.15fr;
-            gap: 75px;
-            align-items: start;
-        }
-
-        .contact-info-heading {
-            margin-bottom: 40px;
-        }
-
-        .contact-info-heading .eyebrow {
-            color: var(--silver-dark);
-            font-size: 10px;
-            letter-spacing: .25em;
-            text-transform: uppercase;
-            margin-bottom: 18px;
-        }
-
-        .contact-info-heading h2 {
-            font-family: "Cormorant Garamond", serif;
-            font-size: clamp(36px, 4vw, 52px);
-            font-weight: 400;
-            line-height: 1.05;
-            margin: 0 0 20px;
-            color: #fff;
-        }
-
-        .contact-info-heading p {
-            color: var(--text-soft);
-            font-size: 14px;
-            line-height: 1.9;
-        }
-
-        .contact-details {
-            border-top: 1px solid var(--border);
-        }
-
-        .contact-detail {
-            padding: 25px 0;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .contact-detail-label {
-            display: block;
-            color: var(--silver-dark);
-            font-size: 10px;
-            letter-spacing: .18em;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-
-        .contact-detail a,
-        .contact-detail strong {
-            color: var(--text);
-            font-size: 15px;
-            font-weight: 400;
-            text-decoration: none;
-            overflow-wrap: anywhere;
-            transition: var(--transition);
-        }
-
-        .contact-detail a:hover {
-            color: #fff;
-            text-decoration: underline;
-            text-underline-offset: 5px;
-        }
-
-        .contact-form-panel {
-            padding: 50px;
-            border: 1px solid var(--border);
-            background: var(--bg-card);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-        }
-
-        .contact-form-panel h2 {
-            font-family: "Cormorant Garamond", serif;
-            font-size: 42px;
-            font-weight: 400;
-            margin: 0 0 15px;
-            color: #fff;
-        }
-
-        .contact-form-intro {
-            color: var(--silver-dark);
-            font-size: 13px;
-            line-height: 1.8;
-            margin-bottom: 35px;
-        }
-
-        .contact-form {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-        }
-
-        .contact-field {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .contact-field.full {
-            grid-column: 1 / -1;
-        }
-
-        .contact-field label {
-            color: var(--silver);
-            font-size: 10px;
-            letter-spacing: .12em;
-            text-transform: uppercase;
-        }
-
-        .contact-field input,
-        .contact-field select,
-        .contact-field textarea {
-            width: 100%;
-            box-sizing: border-box;
-            min-height: 50px;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border);
-            border-radius: 0;
-            color: #fff;
-            font-family: "Inter", sans-serif;
-            font-size: 13px;
-            outline: none;
-            transition: var(--transition);
-        }
-
-        .contact-field input:focus,
-        .contact-field select:focus,
-        .contact-field textarea:focus {
-            border-color: var(--silver);
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .contact-field input::placeholder,
-        .contact-field textarea::placeholder {
-            color: var(--muted);
-        }
-
-        .contact-field select {
-            color: var(--text);
-            appearance: none;
-            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23cbd1d7%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
-            background-repeat: no-repeat;
-            background-position: right 15px top 50%;
-            background-size: 10px auto;
-        }
-
-        .contact-field select option {
-            background: #11161a;
-            color: #fff;
-        }
-
-        .contact-field textarea {
-            min-height: 150px;
-            resize: vertical;
-            line-height: 1.7;
-        }
-
-        .contact-submit {
-            grid-column: 1 / -1;
-            min-height: 52px;
-            padding: 0 30px;
-            background: #fff;
-            color: var(--bg);
-            border: 1px solid #fff;
-            font-family: "Inter", sans-serif;
-            font-size: 11px;
-            font-weight: 500;
-            letter-spacing: .17em;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .contact-submit:hover {
-            background: var(--silver);
-            border-color: var(--silver);
-        }
-
-        .contact-form-note {
-            grid-column: 1 / -1;
-            color: var(--muted);
-            font-size: 11px;
-            line-height: 1.7;
-            margin: 0;
-        }
-
-        @media (max-width: 900px) {
-            .contact-layout { grid-template-columns: 1fr; gap: 50px; }
-            .contact-form-panel { padding: 35px 25px; }
-            .contact-form { grid-template-columns: 1fr; }
-            .contact-field.full, .contact-submit, .contact-form-note { grid-column: auto; }
-            .contact-hero { padding: 130px 6% 70px; min-height: 50vh; }
-            .contact-section { padding: 80px 6%; }
-        }
-    </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="contact-page">
 
-    <!-- INTRO -->
-    <div class="intro-screen" id="intro">
-        <div class="intro-content">
-            <img src="assets/logo-transparent.png" alt="Azadipour Logo">
-            <div class="intro-name">AZADIPOUR</div>
-            <p>GLOBAL MEDICAL TECHNOLOGY & HOSPITAL SOLUTIONS</p>
-        </div>
+  <!-- INTRO SCREEN -->
+  <div class="intro-screen" id="intro">
+    <div class="intro-content">
+      <img src="assets/logo-transparent.png" alt="Azadipour Logo">
+      <div class="intro-name">AZADIPOUR</div>
+      <p>GLOBAL MEDICAL TECHNOLOGY & HOSPITAL SOLUTIONS</p>
     </div>
+  </div>
 
-    <!-- HEADER -->
-    <header class="site-header">
-        <div class="header-inner">
-            <a href="index.html" class="brand" aria-label="Azadipour Home">
-                <img src="assets/logo-transparent.png" alt="Azadipour">
-                <span>AZADIPOUR</span>
-            </a>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand" aria-label="Azadipour Home">
+        <img src="assets/logo-transparent.png" alt="Azadipour">
+        <span>AZADIPOUR</span>
+      </a>
 
-            <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mainNav">
-                <span></span>
-                <span></span>
-                <span></span>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mainNav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="main-nav" id="mainNav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="index.html#global-network">Global Presence</a>
+        <a href="medical.html">Medical Technology</a>
+        <a href="partners.html">Global Partnerships</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html" class="nav-contact active">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- INNER HERO -->
+    <section class="inner-hero">
+      <div class="inner-hero-content">
+        <div class="section-label" style="margin-bottom: 20px;">CONTACT US</div>
+        <h1>
+          Let's Build
+          <span>Global Healthcare Connections.</span>
+        </h1>
+        <p>
+          For international partnerships, medical technology opportunities, and business enquiries, connect with our executive team.
+        </p>
+      </div>
+      <div class="inner-hero-decoration"></div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="section">
+      <div class="section-label">01 — GET IN TOUCH</div>
+      
+      <div class="contact-luxury-grid">
+        
+        <!-- LEFT SIDE: CONTACT INFO -->
+        <div class="contact-info-panel">
+          <h3>Corporate Headquarters</h3>
+          <p>Our team is ready to discuss how Azadipour can facilitate your access to advanced medical technologies and strategic partnerships.</p>
+          
+          <div class="contact-info-item">
+            <span>EMAIL ADDRESS</span>
+            <strong>info@azadipourmedical.com</strong>
+          </div>
+          
+          <div class="contact-info-item">
+            <span>REGISTERED OFFICE</span>
+            <strong>Muscat, Sultanate of Oman</strong>
+          </div>
+          
+          <div class="contact-info-item">
+            <span>COMMERCIAL REGISTRATION</span>
+            <strong>CR: 1678104</strong>
+          </div>
+          
+          <div class="contact-info-item" style="border-bottom: none; margin-bottom: 0; padding-bottom: 0;">
+            <span>OCCI MEMBERSHIP</span>
+            <strong>5551647</strong>
+          </div>
+        </div>
+
+        <!-- RIGHT SIDE: FORMSPREE FORM -->
+        <div class="contact-form-panel">
+          <!-- IMPORTANT: action points to your Formspree endpoint -->
+          <form id="luxuryContactForm" class="luxury-form" action="https://formspree.io/f/mkjoonby" method="POST">
+            
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" class="luxury-input" required placeholder="John Doe">
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" class="luxury-input" required placeholder="john@company.com">
+            </div>
+
+            <div class="form-group full-width">
+              <label for="company">Company / Organization</label>
+              <input type="text" id="company" name="company" class="luxury-input" placeholder="Company Name">
+            </div>
+
+            <div class="form-group full-width">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" class="luxury-input" required placeholder="Inquiry regarding...">
+            </div>
+
+            <div class="form-group full-width">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" class="luxury-textarea" required placeholder="Please describe your requirements..."></textarea>
+            </div>
+
+            <!-- Hidden field for Formspree (Subject of the email you receive) -->
+            <input type="hidden" name="_subject" value="New Inquiry from Azadipour Website">
+
+            <button type="submit" class="btn-primary luxury-submit">
+              Send Message <span>↗</span>
             </button>
 
-            <nav class="main-nav" id="mainNav">
-                <a href="index.html">Home</a>
-                <a href="about.html">About Us</a>
-                <a href="index.html#global-network">Global Presence</a>
-                <a href="medical.html">Medical Technology</a>
-                <a href="cardiac.html">Cardiovascular</a>
-                <a href="partners.html">Global Partnerships</a>
-                <a href="contact.html" class="nav-contact active">Contact</a>
-            </nav>
-        </div>
-    </header>
-
-    <main>
-        <!-- HERO -->
-        <section class="contact-hero">
-            <div class="contact-hero-content">
-                <div class="contact-eyebrow">AZADIPOUR / CONTACT</div>
-                <h1>Let's start a <span>conversation.</span></h1>
-                <p>
-                    Whether you represent a hospital, medical technology
-                    manufacturer or international healthcare organization,
-                    we welcome the opportunity to connect and explore
-                    potential cooperation.
-                </p>
-            </div>
-        </section>
-
-        <!-- CONTACT SECTION -->
-        <section class="contact-section">
-            <div class="contact-inner contact-layout">
-
-                <!-- INFO -->
-                <div class="contact-information">
-                    <div class="contact-info-heading">
-                        <div class="eyebrow">GET IN TOUCH</div>
-                        <h2>Professional connections begin here.</h2>
-                        <p>
-                            Contact Azadipour for medical technology enquiries,
-                            hospital requirements, supplier introductions
-                            and potential business cooperation.
-                        </p>
-                    </div>
-
-                    <div class="contact-details">
-                        <div class="contact-detail">
-                            <span class="contact-detail-label">Business Enquiries</span>
-                            <a href="mailto:info@azadipourmedical.com">info@azadipourmedical.com</a>
-                        </div>
-
-                        <div class="contact-detail">
-                            <span class="contact-detail-label">Telephone</span>
-                            <a href="tel:+96891646294">+968 9164 6294</a>
-                        </div>
-
-                        <div class="contact-detail">
-                            <span class="contact-detail-label">Website</span>
-                            <a href="https://azadipourmedical.com/">azadipourmedical.com</a>
-                        </div>
-
-                        <div class="contact-detail">
-                            <span class="contact-detail-label">Company Base</span>
-                            <strong>Oman</strong>
-                        </div>
-
-                        <div class="contact-detail">
-                            <span class="contact-detail-label">Strategic Market Focus</span>
-                            <strong>GCC · Europe · International</strong>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FORM -->
-                <div class="contact-form-panel">
-                    <h2>Send an Enquiry</h2>
-                    <p class="contact-form-intro">
-                        Share a few details about your organization and
-                        enquiry. Your email application will open with
-                        the message prepared for review and sending.
-                    </p>
-
-                    <form class="contact-form" id="contactForm">
-                        <div class="contact-field">
-                            <label for="contactName">Full Name *</label>
-                            <input type="text" id="contactName" name="name" placeholder="Your full name" autocomplete="name" required>
-                        </div>
-
-                        <div class="contact-field">
-                            <label for="contactEmail">Business Email *</label>
-                            <input type="email" id="contactEmail" name="email" placeholder="name@company.com" autocomplete="email" required>
-                        </div>
-
-                        <div class="contact-field">
-                            <label for="contactCompany">Organization</label>
-                            <input type="text" id="contactCompany" name="company" placeholder="Company or hospital name" autocomplete="organization">
-                        </div>
-
-                        <div class="contact-field">
-                            <label for="contactCountry">Country</label>
-                            <input type="text" id="contactCountry" name="country" placeholder="Your country" autocomplete="country-name">
-                        </div>
-
-                        <div class="contact-field full">
-                            <label for="contactSubject">Enquiry Type *</label>
-                            <select id="contactSubject" name="subject" required>
-                                <option value="">Select an enquiry type</option>
-                                <option value="Hospital Equipment Requirement">Hospital Equipment Requirement</option>
-                                <option value="Surgical Robotics & Digital Surgery">Surgical Robotics &amp; Digital Surgery</option>
-                                <option value="Cardiac & Cardiovascular Technology">Cardiac &amp; Cardiovascular Technology</option>
-                                <option value="International Supplier Partnership">International Supplier Partnership</option>
-                                <option value="Business Development">Business Development</option>
-                                <option value="Other Enquiry">Other Enquiry</option>
-                            </select>
-                        </div>
-
-                        <div class="contact-field full">
-                            <label for="contactMessage">Message *</label>
-                            <textarea id="contactMessage" name="message" placeholder="Please describe your enquiry or potential opportunity..." required></textarea>
-                        </div>
-
-                        <button type="submit" class="contact-submit">Prepare Email</button>
-
-                        <p class="contact-form-note">
-                            This form prepares an email using your device's
-                            default email application. It does not directly
-                            submit or store your information on this website.
-                        </p>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- FOOTER -->
-    <footer class="site-footer">
-        <div class="footer-main">
-            <div class="footer-brand">
-                <img src="assets/logo-transparent.png" alt="Azadipour Logo">
-                <h3>AZADIPOUR</h3>
-                <p>Global Medical Technology & Hospital Solutions</p>
-            </div>
-
-            <div class="footer-column">
-                <h4>COMPANY</h4>
-                <a href="about.html">About Us</a>
-                <a href="index.html#global-network">Global Presence</a>
-                <a href="partners.html">Partnerships</a>
-                <a href="projects.html">Projects</a>
-            </div>
-
-            <div class="footer-column">
-                <h4>TECHNOLOGY</h4>
-                <a href="robotic.html">Robotic Surgery</a>
-                <a href="cardiac.html">Cardiovascular</a>
-                <a href="medical.html">Medical Technology</a>
-            </div>
-
-            <div class="footer-column">
-                <h4>CONTACT</h4>
-                <a href="mailto:info@azadipourmedical.com">Email</a>
-                <span>Oman</span>
-            </div>
+            <!-- Status message container -->
+            <div id="form-status"></div>
+          </form>
         </div>
 
-        <div class="footer-bottom">
-            <span>© <span id="currentYear">2026</span> AZADIPOUR. ALL RIGHTS RESERVED.</span>
-            <span>GLOBAL MEDICAL TECHNOLOGY · WORLDWIDE</span>
-        </div>
-    </footer>
+      </div>
+    </section>
+  </main>
 
-    <!-- SCRIPTS -->
-    <script src="script.js" defer></script>
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <img src="assets/logo-transparent.png" alt="Azadipour Logo">
+        <h3>AZADIPOUR</h3>
+        <p>Global Medical Technology & Hospital Solutions</p>
+      </div>
 
-    <!-- CONTACT FORM SCRIPT -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const form = document.getElementById("contactForm");
-            if (!form) return;
+      <div class="footer-column">
+        <h4>COMPANY</h4>
+        <a href="about.html">About Us</a>
+        <a href="index.html#global-network">Global Presence</a>
+        <a href="partners.html">Partnerships</a>
+        <a href="projects.html">Projects</a>
+      </div>
 
-            form.addEventListener("submit", function (event) {
-                event.preventDefault();
-                if (!form.reportValidity()) return;
+      <div class="footer-column">
+        <h4>TECHNOLOGY</h4>
+        <a href="robotic.html">Robotic Surgery</a>
+        <a href="cardiac.html">Cardiovascular</a>
+        <a href="medical.html">Medical Technology</a>
+      </div>
 
-                const name = document.getElementById("contactName").value.trim();
-                const email = document.getElementById("contactEmail").value.trim();
-                const company = document.getElementById("contactCompany").value.trim();
-                const country = document.getElementById("contactCountry").value.trim();
-                const subject = document.getElementById("contactSubject").value;
-                const message = document.getElementById("contactMessage").value.trim();
+      <div class="footer-column">
+        <h4>CONTACT</h4>
+        <a href="mailto:info@azadipourmedical.com">Email</a>
+        <span>Oman</span>
+      </div>
+    </div>
 
-                const emailSubject = "Website Enquiry - " + subject;
+    <div class="footer-bottom">
+      <span>© <span id="currentYear">2026</span> AZADIPOUR. ALL RIGHTS RESERVED.</span>
+      <span>GLOBAL MEDICAL TECHNOLOGY · WORLDWIDE</span>
+    </div>
+  </footer>
 
-                const emailBody = [
-                    "Dear Azadipour Team,",
-                    "",
-                    "I would like to contact you regarding the following enquiry.",
-                    "",
-                    "Full Name: " + name,
-                    "Business Email: " + email,
-                    "Organization: " + (company || "Not provided"),
-                    "Country: " + (country || "Not provided"),
-                    "Enquiry Type: " + subject,
-                    "",
-                    "Message:",
-                    message,
-                    "",
-                    "Kind regards,",
-                    name
-                ].join("\n");
+  <!-- SCRIPTS -->
+  <script src="script.js" defer></script>
 
-                const mailtoLink =
-                    "mailto:info@azadipourmedical.com" +
-                    "?subject=" + encodeURIComponent(emailSubject) +
-                    "&body=" + encodeURIComponent(emailBody);
+  <!-- CUSTOM FORM HANDLING SCRIPT (AJAX for smoother UX) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('luxuryContactForm');
+      const statusDiv = document.getElementById('form-status');
 
-                window.location.href = mailtoLink;
-            });
+      if (form) {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault(); // Prevent standard page reload
+          
+          const formData = new FormData(form);
+          const submitBtn = form.querySelector('button[type="submit"]');
+          const originalBtnText = submitBtn.innerHTML;
+          
+          // Show loading state on button
+          submitBtn.innerHTML = 'Sending...';
+          submitBtn.disabled = true;
+          statusDiv.className = '';
+          statusDiv.style.display = 'none';
+
+          fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+              'Accept': 'application/json'
+            }
+          }).then(response => {
+            if (response.ok) {
+              // Success
+              statusDiv.textContent = 'Thank you. Your message has been sent successfully. Our team will contact you shortly.';
+              statusDiv.className = 'success';
+              form.reset();
+            } else {
+              // Error from Formspree
+              response.json().then(data => {
+                if (Object.hasOwn(data, 'errors')) {
+                  statusDiv.textContent = data["errors"].map(error => error["message"]).join(", ");
+                } else {
+                  statusDiv.textContent = 'Oops! There was a problem submitting your form.';
+                }
+                statusDiv.className = 'error';
+              })
+            }
+          }).catch(error => {
+            // Network error
+            statusDiv.textContent = 'Connection error. Please try again or email us directly.';
+            statusDiv.className = 'error';
+          }).finally(() => {
+            // Restore button
+            submitBtn.innerHTML = originalBtnText;
+            submitBtn.disabled = false;
+          });
         });
-    </script>
+      }
+    });
+  </script>
 </body>
 </html>
