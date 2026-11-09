@@ -25,7 +25,7 @@
   <script src="https://unpkg.com/three@0.150.1/build/three.min.js"></script>
   <script src="https://unpkg.com/globe.gl@2.27.2/dist/globe.gl.min.js"></script>
 
-  <!-- Inline CSS to fix the top bar overlap on mobile -->
+  <!-- Inline CSS to fix the top bar overlap on mobile and ensure fallback image works -->
   <style>
     .network-map-topline {
       display: flex;
@@ -40,7 +40,7 @@
         gap: 5px;
       }
     }
-    /* High-quality fallback background */
+    /* High-quality fallback background if WebGL fails */
     .network-map-canvas-wrap {
       background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop');
       background-size: cover;
@@ -197,7 +197,7 @@
       </div>
     </section>
 
-    <!-- ABOUT SECTION -->
+    <!-- ABOUT SECTION (UPDATED WITH STRATEGIC INFO) -->
     <section class="section intro-section">
       <div class="section-label">02 — ABOUT AZADIPOUR</div>
       <div class="section-heading">
@@ -468,7 +468,6 @@
       }
 
       if (!isWebGLAvailable() || typeof Globe === 'undefined' || typeof THREE === 'undefined') {
-        // Fallback: Hide loading, CSS will show the high-quality background image
         if (loading) loading.style.display = "none";
         console.warn("WebGL not supported. Showing high-quality static fallback.");
         return;
@@ -476,7 +475,7 @@
 
       try {
         const world = Globe()(globeContainer)
-          // HIGH-QUALITY DARK TEXTURE (Less pixelated, very professional)
+          // HIGH-QUALITY DARK TEXTURE
           .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-night.jpg')
           .backgroundImageUrl('https://unpkg.com/three-globe/example/img/night-sky.png')
           .backgroundColor('#050607')
@@ -486,23 +485,19 @@
           .width(globeContainer.clientWidth)
           .height(globeContainer.clientHeight);
 
-        // Center view on Middle East/Asia (Altitude 2.5 is perfect for mobile)
+        // Center view on Middle East/Asia
         world.pointOfView({ lat: 25, lng: 55, altitude: 2.5 });
 
-        // ==========================================
-        // 1. DRAW COUNTRY BORDERS & NAMES
-        // ==========================================
+        // 1. DRAW COUNTRY BORDERS
         fetch('https://raw.githubusercontent.com/vasturiano/globe.gl/master/example/datasets/ne_110m_admin_0_countries.geojson')
           .then(res => res.json())
           .then(countries => {
-            // Draw faint borders
             world.polygonsData(countries.features)
-              .polygonCapColor(() => 'rgba(0,0,0,0)') // Make land transparent so night texture shows
+              .polygonCapColor(() => 'rgba(0,0,0,0)') 
               .polygonSideColor(() => 'rgba(0,0,0,0)')
               .polygonStrokeColor(() => 'rgba(200, 200, 200, 0.3)') // Faint silver borders
               .polygonAltitude(0.005);
               
-            // Extract major country names for labels
             const countryLabels = [
               { lat: 35.0, lng: 105.0, name: "CHINA" },
               { lat: 32.0, lng: 53.0, name: "IRAN" },
@@ -511,20 +506,17 @@
               { lat: 20.0, lng: 78.0, name: "INDIA" }
             ];
             
-            // Add labels for countries
             world.labelsData(countryLabels)
               .labelSize(0.5)
               .labelDotRadius(0)
-              .labelColor(() => 'rgba(255, 255, 255, 0.4)') // Dim white
+              .labelColor(() => 'rgba(255, 255, 255, 0.4)')
               .labelText('name')
               .labelAltitude(0.01)
               .labelResolution(2);
           })
           .catch(err => console.error("Error loading borders:", err));
 
-        // ==========================================
         // 2. EXACT DATA POINTS
-        // ==========================================
         const omanHub = { lat: 23.588, lng: 58.383, name: "AZADIPOUR (MUSCAT)" };
         
         const suppliers = [
@@ -546,9 +538,7 @@
           { lat: 24.467, lng: 39.614, name: "Medina" }
         ];
 
-        // ==========================================
         // 3. DRAW THINNER ARCS
-        // ==========================================
         const arcsData = [];
         suppliers.forEach(s => arcsData.push({ 
           startLat: s.lat, startLng: s.lng, 
@@ -567,11 +557,9 @@
           .arcDashLength(0.5)
           .arcDashGap(0.1)
           .arcDashAnimateTime(2000)
-          .arcStroke(0.4); // THINNER LINES FOR ELEGANCE
+          .arcStroke(0.4); // THINNER LINES
 
-        // ==========================================
         // 4. DRAW POINTS
-        // ==========================================
         const pointsData = [omanHub, ...suppliers, ...hospitals];
         world.pointsData(pointsData)
           .pointColor(d => d.name === "AZADIPOUR (MUSCAT)" ? '#ffffff' : '#c0c0c0')
@@ -579,9 +567,7 @@
           .pointRadius(d => d.name === "AZADIPOUR (MUSCAT)" ? 0.5 : 0.25) // Smaller points
           .pointsMerge(false);
 
-        // ==========================================
         // 5. CITY LABELS
-        // ==========================================
         const allLabels = [omanHub, ...suppliers, ...hospitals];
         world.labelsData(allLabels)
           .labelSize(d => d.name === "AZADIPOUR (MUSCAT)" ? 1.2 : 0.6)
