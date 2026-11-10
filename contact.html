@@ -3,24 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Contact Azadipour | Global Medical Technology</title>
   <meta name="description" content="Contact Azadipour for international partnerships, medical technology opportunities, and advanced hospital solutions.">
   <meta name="theme-color" content="#08090b">
-
   <link rel="canonical" href="https://azadipourmedical.com/contact.html">
   <link rel="icon" type="image/png" href="assets/logo-transparent.png">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body class="contact-page">
 
-  <!-- INTRO SCREEN -->
   <div class="intro-screen" id="intro">
     <div class="intro-content">
       <img src="assets/logo-transparent.png" alt="Azadipour Logo">
@@ -29,25 +23,26 @@
     </div>
   </div>
 
-  <!-- HEADER -->
   <header class="site-header">
     <div class="header-inner">
       <a href="index.html" class="brand" aria-label="Azadipour Home">
         <img src="assets/logo-transparent.png" alt="Azadipour">
         <span>AZADIPOUR</span>
       </a>
-
       <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mainNav">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </button>
-
       <nav class="main-nav" id="mainNav">
         <a href="index.html">Home</a>
         <a href="about.html">About Us</a>
         <a href="index.html#global-network">Global Presence</a>
-        <a href="medical.html">Medical Technology</a>
+        <div class="nav-dropdown">
+          <a href="medical.html" class="nav-dropdown-toggle">Medical Technology ▾</a>
+          <div class="nav-dropdown-menu">
+            <a href="robotic.html">Robotic Surgery</a>
+            <a href="cardiac.html">Cardiovascular</a>
+          </div>
+        </div>
         <a href="partners.html">Global Partnerships</a>
         <a href="projects.html">Projects</a>
         <a href="contact.html" class="nav-contact active">Contact</a>
@@ -56,140 +51,70 @@
   </header>
 
   <main>
-    <!-- INNER HERO -->
     <section class="inner-hero">
       <div class="inner-hero-content">
         <div class="section-label" style="margin-bottom: 20px;">CONTACT US</div>
-        <h1>
-          Let's Build
-          <span>Global Healthcare Connections.</span>
-        </h1>
-        <p>
-          For international partnerships, medical technology opportunities, and business enquiries, connect with our executive team.
-        </p>
+        <h1>Let's Build <span>Global Healthcare Connections.</span></h1>
+        <p>For international partnerships, medical technology opportunities, and business enquiries, connect with our executive team.</p>
       </div>
       <div class="inner-hero-decoration"></div>
     </section>
 
-    <!-- CONTACT SECTION -->
     <section class="section">
       <div class="section-label">01 — GET IN TOUCH</div>
-      
       <div class="contact-luxury-grid">
         
-        <!-- LEFT SIDE: CONTACT INFO -->
         <div class="contact-info-panel">
           <h3>Corporate Headquarters</h3>
           <p>Our team is ready to discuss how Azadipour can facilitate your access to advanced medical technologies and strategic partnerships.</p>
-          
-          <div class="contact-info-item">
-            <span>EMAIL ADDRESS</span>
-            <strong>info@azadipourmedical.com</strong>
-          </div>
-          
-          <div class="contact-info-item">
-            <span>REGISTERED OFFICE</span>
-            <strong>Muscat, Sultanate of Oman</strong>
-          </div>
-          
-          <div class="contact-info-item">
-            <span>COMMERCIAL REGISTRATION</span>
-            <strong>CR: 1678104</strong>
-          </div>
-          
-          <div class="contact-info-item" style="border-bottom: none; margin-bottom: 0; padding-bottom: 0;">
-            <span>OCCI MEMBERSHIP</span>
-            <strong>5551647</strong>
-          </div>
+          <div class="contact-info-item"><span>EMAIL ADDRESS</span><strong>info@azadipourmedical.com</strong></div>
+          <div class="contact-info-item"><span>REGISTERED OFFICE</span><strong>Muscat, Sultanate of Oman</strong></div>
+          <div class="contact-info-item"><span>COMMERCIAL REGISTRATION</span><strong>CR: 1678104</strong></div>
+          <div class="contact-info-item" style="border-bottom: none; margin-bottom: 0; padding-bottom: 0;"><span>OCCI MEMBERSHIP</span><strong>5551647</strong></div>
         </div>
 
-        <!-- RIGHT SIDE: FORMSPREE FORM -->
         <div class="contact-form-panel">
-          <!-- IMPORTANT: action points to your Formspree endpoint -->
           <form id="luxuryContactForm" class="luxury-form" action="https://formspree.io/f/mkjoonby" method="POST">
-            
             <div class="form-group">
               <label for="name">Full Name</label>
               <input type="text" id="name" name="name" class="luxury-input" required placeholder="John Doe">
             </div>
-
             <div class="form-group">
               <label for="email">Email Address</label>
               <input type="email" id="email" name="email" class="luxury-input" required placeholder="john@company.com">
             </div>
-
             <div class="form-group full-width">
               <label for="company">Company / Organization</label>
               <input type="text" id="company" name="company" class="luxury-input" placeholder="Company Name">
             </div>
-
             <div class="form-group full-width">
               <label for="subject">Subject</label>
               <input type="text" id="subject" name="subject" class="luxury-input" required placeholder="Inquiry regarding...">
             </div>
-
             <div class="form-group full-width">
               <label for="message">Message</label>
               <textarea id="message" name="message" class="luxury-textarea" required placeholder="Please describe your requirements..."></textarea>
             </div>
-
-            <!-- Hidden field for Formspree (Subject of the email you receive) -->
             <input type="hidden" name="_subject" value="New Inquiry from Azadipour Website">
-
-            <button type="submit" class="btn-primary luxury-submit">
-              Send Message <span>↗</span>
-            </button>
-
-            <!-- Status message container -->
+            <button type="submit" class="btn-primary luxury-submit">Send Message <span>↗</span></button>
             <div id="form-status"></div>
           </form>
         </div>
-
       </div>
     </section>
   </main>
 
-  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="footer-main">
-      <div class="footer-brand">
-        <img src="assets/logo-transparent.png" alt="Azadipour Logo">
-        <h3>AZADIPOUR</h3>
-        <p>Global Medical Technology & Hospital Solutions</p>
-      </div>
-
-      <div class="footer-column">
-        <h4>COMPANY</h4>
-        <a href="about.html">About Us</a>
-        <a href="index.html#global-network">Global Presence</a>
-        <a href="partners.html">Partnerships</a>
-        <a href="projects.html">Projects</a>
-      </div>
-
-      <div class="footer-column">
-        <h4>TECHNOLOGY</h4>
-        <a href="robotic.html">Robotic Surgery</a>
-        <a href="cardiac.html">Cardiovascular</a>
-        <a href="medical.html">Medical Technology</a>
-      </div>
-
-      <div class="footer-column">
-        <h4>CONTACT</h4>
-        <a href="mailto:info@azadipourmedical.com">Email</a>
-        <span>Oman</span>
-      </div>
+      <div class="footer-brand"><img src="assets/logo-transparent.png" alt="Azadipour Logo"><h3>AZADIPOUR</h3><p>Global Medical Technology & Hospital Solutions</p></div>
+      <div class="footer-column"><h4>COMPANY</h4><a href="about.html">About Us</a><a href="index.html#global-network">Global Presence</a><a href="partners.html">Partnerships</a><a href="projects.html">Projects</a></div>
+      <div class="footer-column"><h4>TECHNOLOGY</h4><a href="robotic.html">Robotic Surgery</a><a href="cardiac.html">Cardiovascular</a><a href="medical.html">Medical Technology</a></div>
+      <div class="footer-column"><h4>CONTACT</h4><a href="mailto:info@azadipourmedical.com">Email</a><span>Oman</span></div>
     </div>
-
-    <div class="footer-bottom">
-      <span>© <span id="currentYear">2026</span> AZADIPOUR. ALL RIGHTS RESERVED.</span>
-      <span>GLOBAL MEDICAL TECHNOLOGY · WORLDWIDE</span>
-    </div>
+    <div class="footer-bottom"><span>© <span id="currentYear">2026</span> AZADIPOUR. ALL RIGHTS RESERVED.</span><span>GLOBAL MEDICAL TECHNOLOGY · WORLDWIDE</span></div>
   </footer>
 
-  <!-- SCRIPTS -->
   <script src="script.js" defer></script>
-
-  <!-- CUSTOM FORM HANDLING SCRIPT (AJAX for smoother UX) -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const form = document.getElementById('luxuryContactForm');
@@ -197,13 +122,11 @@
 
       if (form) {
         form.addEventListener('submit', function(e) {
-          e.preventDefault(); // Prevent standard page reload
-          
+          e.preventDefault();
           const formData = new FormData(form);
           const submitBtn = form.querySelector('button[type="submit"]');
           const originalBtnText = submitBtn.innerHTML;
           
-          // Show loading state on button
           submitBtn.innerHTML = 'Sending...';
           submitBtn.disabled = true;
           statusDiv.className = '';
@@ -212,17 +135,13 @@
           fetch(form.action, {
             method: 'POST',
             body: formData,
-            headers: {
-              'Accept': 'application/json'
-            }
+            headers: { 'Accept': 'application/json' }
           }).then(response => {
             if (response.ok) {
-              // Success
               statusDiv.textContent = 'Thank you. Your message has been sent successfully. Our team will contact you shortly.';
               statusDiv.className = 'success';
               form.reset();
             } else {
-              // Error from Formspree
               response.json().then(data => {
                 if (Object.hasOwn(data, 'errors')) {
                   statusDiv.textContent = data["errors"].map(error => error["message"]).join(", ");
@@ -233,11 +152,9 @@
               })
             }
           }).catch(error => {
-            // Network error
             statusDiv.textContent = 'Connection error. Please try again or email us directly.';
             statusDiv.className = 'error';
           }).finally(() => {
-            // Restore button
             submitBtn.innerHTML = originalBtnText;
             submitBtn.disabled = false;
           });
