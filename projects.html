@@ -1,441 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Projects & Market Development | Azadipour</title>
-    <meta name="description" content="Explore Azadipour's areas of project development, medical technology opportunities and healthcare market engagement across Oman, the GCC and international markets.">
-    <meta name="theme-color" content="#08090b">
-
-    <link rel="canonical" href="https://azadipourmedical.com/projects.html">
-    <link rel="icon" type="image/png" href="assets/logo-transparent.png">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="style.css">
-
-    <style>
-        /* =========================================================
-           PROJECTS PAGE SPECIFIC STYLES
-           ========================================================= */
-        
-        .projects-hero {
-            position: relative;
-            min-height: 70vh;
-            display: flex;
-            align-items: center;
-            padding: 150px 7% 100px;
-            overflow: hidden;
-            border-bottom: 1px solid var(--border);
-            background: linear-gradient(120deg, #050607 0%, #101318 55%, #050607 100%);
-        }
-
-        .projects-hero-content {
-            position: relative;
-            z-index: 2;
-            width: min(900px, 100%);
-        }
-
-        .projects-eyebrow {
-            color: var(--silver);
-            font-size: 11px;
-            letter-spacing: .28em;
-            text-transform: uppercase;
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .projects-eyebrow::before {
-            content: "";
-            display: block;
-            width: 40px;
-            height: 1px;
-            background: #fff;
-        }
-
-        .projects-hero h1 {
-            font-family: "Cormorant Garamond", serif;
-            font-weight: 400;
-            font-size: clamp(48px, 7vw, 88px);
-            line-height: 1.05;
-            letter-spacing: -.025em;
-            max-width: 900px;
-            margin: 0 0 28px;
-            color: #fff;
-        }
-
-        .projects-hero h1 span {
-            color: var(--silver);
-            display: block;
-        }
-
-        .projects-hero p {
-            max-width: 650px;
-            color: var(--text-soft);
-            font-size: 15px;
-            line-height: 1.9;
-            font-weight: 300;
-        }
-
-        .projects-section {
-            padding: 110px 7%;
-            background: var(--bg);
-        }
-
-        .projects-section.bg-soft {
-            background: var(--bg-soft);
-        }
-
-        .projects-inner {
-            max-width: 1280px;
-            margin: 0 auto;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 20px;
-        }
-
-        .project-card {
-            min-height: 280px;
-            padding: 45px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            transition: var(--transition);
-        }
-
-        .project-card:hover {
-            border-color: var(--border-strong);
-            transform: translateY(-5px);
-            background: var(--bg-light);
-        }
-
-        .project-number {
-            color: var(--silver-dark);
-            font-size: 11px;
-            letter-spacing: .18em;
-            margin-bottom: 35px;
-        }
-
-        .project-card h3 {
-            font-family: "Cormorant Garamond", serif;
-            font-size: 34px;
-            font-weight: 500;
-            margin: 0 0 15px;
-            color: #fff;
-        }
-
-        .project-card p {
-            color: var(--text-soft);
-            font-size: 13px;
-            line-height: 1.85;
-            margin: 0;
-        }
-
-        .projects-process-list {
-            border-top: 1px solid var(--border);
-        }
-
-        .projects-process-item {
-            display: flex;
-            gap: 25px;
-            padding: 25px 0;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .projects-process-item span {
-            color: var(--silver-dark);
-            font-size: 11px;
-            letter-spacing: .12em;
-            padding-top: 5px;
-        }
-
-        .projects-process-item strong {
-            font-size: 14px;
-            font-weight: 400;
-            letter-spacing: .03em;
-            color: var(--text);
-        }
-
-        .projects-market-panel {
-            display: grid;
-            grid-template-columns: .8fr 1.2fr;
-            gap: 60px;
-            align-items: center;
-            padding: 60px;
-            border: 1px solid var(--border);
-            background: var(--bg-card);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-        }
-
-        .projects-market-panel h2 {
-            font-family: "Cormorant Garamond", serif;
-            font-size: clamp(36px, 4vw, 52px);
-            font-weight: 400;
-            line-height: 1.05;
-            margin: 0;
-            color: #fff;
-        }
-
-        .projects-market-panel p {
-            color: var(--text-soft);
-            font-size: 14px;
-            line-height: 1.9;
-            margin: 0 0 20px;
-        }
-
-        .projects-note {
-            color: var(--muted);
-            font-size: 11px;
-            line-height: 1.8;
-            margin-top: 30px;
-            border-left: 2px solid var(--silver-dark);
-            padding-left: 20px;
-        }
-
-        @media (max-width: 900px) {
-            .projects-hero { min-height: 60vh; padding: 130px 6% 80px; }
-            .projects-section { padding: 80px 6%; }
-            .projects-grid, .projects-market-panel { grid-template-columns: 1fr; }
-            .project-card { padding: 35px; min-height: auto; }
-            .projects-market-panel { padding: 35px 25px; gap: 30px; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Development | Azadipour</title>
+  <meta name="description" content="Azadipour transforms healthcare needs into strategic opportunities through expert project development and international cooperation.">
+  <meta name="theme-color" content="#08090b">
+  <link rel="canonical" href="https://azadipourmedical.com/projects.html">
+  <link rel="icon" type="image/png" href="assets/logo-transparent.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
+<body>
 
-<body class="projects-page">
-
-    <!-- INTRO -->
-    <div class="intro-screen" id="intro">
-        <div class="intro-content">
-            <img src="assets/logo-transparent.png" alt="Azadipour Logo">
-            <div class="intro-name">AZADIPOUR</div>
-            <p>GLOBAL MEDICAL TECHNOLOGY & HOSPITAL SOLUTIONS</p>
-        </div>
+  <div class="intro-screen" id="intro">
+    <div class="intro-content">
+      <img src="assets/logo-transparent.png" alt="Azadipour Logo">
+      <div class="intro-name">AZADIPOUR</div>
+      <p>GLOBAL MEDICAL TECHNOLOGY & HOSPITAL SOLUTIONS</p>
     </div>
+  </div>
 
-    <!-- HEADER -->
-    <header class="site-header">
-        <div class="header-inner">
-            <a href="index.html" class="brand" aria-label="Azadipour Home">
-                <img src="assets/logo-transparent.png" alt="Azadipour">
-                <span>AZADIPOUR</span>
-            </a>
-
-            <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mainNav">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-
-            <nav class="main-nav" id="mainNav">
-                <a href="index.html">Home</a>
-                <a href="about.html">About Us</a>
-                <a href="index.html#global-network">Global Presence</a>
-                <a href="medical.html">Medical Technology</a>
-                <a href="partners.html">Global Partnerships</a>
-                <a href="projects.html" class="active">Projects</a>
-                <a href="contact.html" class="nav-contact">Contact</a>
-            </nav>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand" aria-label="Azadipour Home">
+        <img src="assets/logo-transparent.png" alt="Azadipour">
+        <span>AZADIPOUR</span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mainNav">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="main-nav" id="mainNav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="index.html#global-network">Global Presence</a>
+        <div class="nav-dropdown">
+          <a href="medical.html" class="nav-dropdown-toggle">Medical Technology ▾</a>
+          <div class="nav-dropdown-menu">
+            <a href="robotic.html">Robotic Surgery</a>
+            <a href="cardiac.html">Cardiovascular</a>
+          </div>
         </div>
-    </header>
+        <a href="partners.html">Global Partnerships</a>
+        <a href="projects.html" class="active">Projects</a>
+        <a href="contact.html" class="nav-contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-    <main>
-        <!-- HERO -->
-        <section class="projects-hero">
-            <div class="projects-hero-content">
-                <div class="projects-eyebrow">PROJECT DEVELOPMENT</div>
-                <h1>Turning healthcare needs into <span>business opportunities.</span></h1>
-                <p>
-                    Identifying medical technology requirements, exploring
-                    relevant solutions and supporting the development of
-                    potential healthcare projects across regional and
-                    international markets.
-                </p>
-            </div>
-        </section>
+  <main>
+    <section class="inner-hero">
+      <div class="inner-hero-content">
+        <div class="section-label" style="margin-bottom: 20px;">PROJECT DEVELOPMENT</div>
+        <h1>Transforming Healthcare Needs <span>Into Opportunities.</span></h1>
+        <p>Understanding healthcare requirements, identifying relevant technologies, and exploring potential opportunities with international partners.</p>
+      </div>
+      <div class="inner-hero-decoration"></div>
+    </section>
 
-        <!-- PROJECT FOCUS -->
-        <section class="projects-section">
-            <div class="projects-inner">
-                <div class="section-heading">
-                    <div class="section-label">PROJECT DEVELOPMENT FOCUS</div>
-                    <h2>Where technology meets opportunity.</h2>
-                    <p>
-                        Azadipour's project development focus is built around
-                        understanding healthcare requirements and connecting
-                        them with relevant technologies, manufacturers and
-                        potential supply partners.
-                    </p>
-                </div>
-
-                <div class="projects-grid">
-                    <article class="project-card">
-                        <div class="project-number">01 / HOSPITAL TECHNOLOGY</div>
-                        <h3>Hospital Equipment & Infrastructure</h3>
-                        <p>
-                            Exploring equipment and integrated solutions for
-                            hospital departments, operating rooms, intensive
-                            care units and diagnostic environments.
-                        </p>
-                    </article>
-
-                    <article class="project-card">
-                        <div class="project-number">02 / ADVANCED SURGERY</div>
-                        <h3>Robotic & Digital Surgery</h3>
-                        <p>
-                            Identifying opportunities involving surgical
-                            robotics, image-guided systems, navigation
-                            technologies and smart operating rooms.
-                        </p>
-                    </article>
-
-                    <article class="project-card">
-                        <div class="project-number">03 / CARDIOVASCULAR</div>
-                        <h3>Cardiac & Critical Care</h3>
-                        <p>
-                            Exploring medical technologies and equipment
-                            for cardiac surgery, perfusion, catheterization
-                            laboratories and critical care departments.
-                        </p>
-                    </article>
-
-                    <article class="project-card">
-                        <div class="project-number">04 / INTERNATIONAL SUPPLY</div>
-                        <h3>Medical Technology Sourcing</h3>
-                        <p>
-                            Connecting identified clinical and technical
-                            requirements with international manufacturers
-                            and qualified medical technology suppliers.
-                        </p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- APPROACH -->
-        <section class="projects-section bg-soft">
-            <div class="projects-inner" style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;">
-                <div>
-                    <div class="projects-eyebrow">PROJECT APPROACH</div>
-                    <h2 class="section-heading" style="margin-bottom: 20px;">A clear process. A professional approach.</h2>
-                    <p style="color: var(--text-soft); font-size: 14px; line-height: 1.95; margin-bottom: 20px;">
-                        Each potential opportunity requires an individual assessment. Our approach emphasizes understanding the requirements, identifying suitable technologies and establishing clear communication between relevant stakeholders.
-                    </p>
-                    <p style="color: var(--text-soft); font-size: 14px; line-height: 1.95;">
-                        Project scope, commercial terms, technical specifications and regulatory requirements are evaluated according to the individual opportunity.
-                    </p>
-                </div>
-
-                <div class="projects-process-list">
-                    <div class="projects-process-item">
-                        <span>01</span>
-                        <strong>Requirement identification</strong>
-                    </div>
-                    <div class="projects-process-item">
-                        <span>02</span>
-                        <strong>Technical and product assessment</strong>
-                    </div>
-                    <div class="projects-process-item">
-                        <span>03</span>
-                        <strong>Supplier and manufacturer engagement</strong>
-                    </div>
-                    <div class="projects-process-item">
-                        <span>04</span>
-                        <strong>Commercial and operational review</strong>
-                    </div>
-                    <div class="projects-process-item">
-                        <span>05</span>
-                        <strong>Potential project coordination</strong>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- MARKET DEVELOPMENT -->
-        <section class="projects-section">
-            <div class="projects-inner">
-                <div class="projects-market-panel">
-                    <div>
-                        <div class="section-label">MARKET DEVELOPMENT</div>
-                        <h2>Oman as a base. A wider international perspective.</h2>
-                    </div>
-
-                    <div>
-                        <p>
-                            Azadipour is an Oman-registered healthcare and medical technology company with a strategic focus on developing opportunities across the GCC and evaluating selected European and international markets.
-                        </p>
-                        <p>
-                            These markets represent strategic areas of interest and development, not a claim of established operations or completed projects in every location.
-                        </p>
-                    </div>
-                </div>
-
-                <p class="projects-note">
-                    This page presents areas of business focus and potential
-                    project development. It does not represent a list of
-                    completed projects, confirmed contracts or awarded tenders.
-                </p>
-            </div>
-        </section>
-
-        <!-- CTA -->
-        <section class="section contact-section" style="text-align: center;">
-            <div class="section-label" style="justify-content: center;">PROJECT ENQUIRIES</div>
-            <h2 class="section-heading" style="margin-inline: auto;">
-                Have a healthcare <span>requirement?</span>
-            </h2>
-            <p style="max-width: 650px; margin: 0 auto 30px; color: var(--text-soft);">
-                Hospitals, healthcare groups and international suppliers are welcome to contact us to discuss potential projects, product requirements and business opportunities.
-            </p>
-            <a href="contact.html" class="btn-primary">Discuss an Opportunity <span>↗</span></a>
-        </section>
-    </main>
-
-    <!-- FOOTER -->
-    <footer class="site-footer">
-        <div class="footer-main">
-            <div class="footer-brand">
-                <img src="assets/logo-transparent.png" alt="Azadipour Logo">
-                <h3>AZADIPOUR</h3>
-                <p>Global Medical Technology & Hospital Solutions</p>
-            </div>
-
-            <div class="footer-column">
-                <h4>COMPANY</h4>
-                <a href="about.html">About Us</a>
-                <a href="index.html#global-network">Global Presence</a>
-                <a href="partners.html">Partnerships</a>
-                <a href="projects.html">Projects</a>
-            </div>
-
-            <div class="footer-column">
-                <h4>TECHNOLOGY</h4>
-                <a href="robotic.html">Robotic Surgery</a>
-                <a href="cardiac.html">Cardiovascular</a>
-                <a href="medical.html">Medical Technology</a>
-            </div>
-
-            <div class="footer-column">
-                <h4>CONTACT</h4>
-                <a href="mailto:info@azadipourmedical.com">Email</a>
-                <span>Oman</span>
-            </div>
+    <section class="section">
+      <div class="section-label">01 — OUR METHODOLOGY</div>
+      <div class="section-heading">
+        <h2>From Clinical Requirements <span>To Global Medical Supply.</span></h2>
+        <p>We specialize in developing comprehensive healthcare projects that bridge the gap between clinical necessity and advanced technological solutions.</p>
+      </div>
+      
+      <div class="solutions-grid">
+        <div class="solution-item">
+          <span>01</span>
+          <h3>Medical Equipment</h3>
+          <p>Exploring and sourcing equipment solutions aligned with specific healthcare requirements and international standards.</p>
         </div>
-
-        <div class="footer-bottom">
-            <span>© <span id="currentYear">2026</span> AZADIPOUR. ALL RIGHTS RESERVED.</span>
-            <span>GLOBAL MEDICAL TECHNOLOGY · WORLDWIDE</span>
+        <div class="solution-item">
+          <span>02</span>
+          <h3>Technology Integration</h3>
+          <p>Identifying advanced technologies and ensuring seamless integration into modern clinical environments.</p>
         </div>
-    </footer>
+        <div class="solution-item">
+          <span>03</span>
+          <h3>International Sourcing</h3>
+          <p>Connecting healthcare needs with leading international manufacturers to secure the best technology available.</p>
+        </div>
+        <div class="solution-item">
+          <span>04</span>
+          <h3>Business Development</h3>
+          <p>Exploring international market opportunities and establishing long-term industry relationships.</p>
+        </div>
+      </div>
+    </section>
 
-    <!-- SCRIPTS -->
-    <script src="script.js" defer></script>
+    <section class="section approach-section">
+      <div class="section-label">02 — OUR APPROACH</div>
+      <div class="section-heading">
+        <h2>Professional Cooperation. <span>Purposeful Development.</span></h2>
+        <p>We believe successful healthcare projects begin with understanding requirements and establishing clear professional relationships.</p>
+      </div>
+      <div class="approach-grid">
+        <div><span>01</span><h3>Understand</h3><p>Understand the clinical and operational requirements of your facility.</p></div>
+        <div><span>02</span><h3>Evaluate</h3><p>Explore relevant technologies and evaluate potential suppliers.</p></div>
+        <div><span>03</span><h3>Connect</h3><p>Establish communication between relevant international stakeholders.</p></div>
+        <div><span>04</span><h3>Develop</h3><p>Support the development of suitable business opportunities and projects.</p></div>
+      </div>
+    </section>
+
+    <section class="section contact-section">
+      <div class="section-label">START A PROJECT</div>
+      <h2 class="section-heading">Discuss Your Next <span>Medical Project.</span></h2>
+      <p style="max-width: 600px; margin-bottom: 30px;">Our team is ready to assist you in developing comprehensive medical technology projects tailored to your institution's needs.</p>
+      <a href="contact.html" class="btn-primary">Contact Our Project Team <span>↗</span></a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div class="footer-brand"><img src="assets/logo-transparent.png" alt="Azadipour Logo"><h3>AZADIPOUR</h3><p>Global Medical Technology & Hospital Solutions</p></div>
+      <div class="footer-column"><h4>COMPANY</h4><a href="about.html">About Us</a><a href="index.html#global-network">Global Presence</a><a href="partners.html">Partnerships</a><a href="projects.html">Projects</a></div>
+      <div class="footer-column"><h4>TECHNOLOGY</h4><a href="robotic.html">Robotic Surgery</a><a href="cardiac.html">Cardiovascular</a><a href="medical.html">Medical Technology</a></div>
+      <div class="footer-column"><h4>CONTACT</h4><a href="mailto:info@azadipourmedical.com">Email</a><span>Oman</span></div>
+    </div>
+    <div class="footer-bottom"><span>© <span id="currentYear">2026</span> AZADIPOUR. ALL RIGHTS RESERVED.</span><span>GLOBAL MEDICAL TECHNOLOGY · WORLDWIDE</span></div>
+  </footer>
+  <script src="script.js" defer></script>
 </body>
 </html>
