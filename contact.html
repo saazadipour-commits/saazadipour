@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Azadipour | Global Medical Technology</title>
+  <title>Contact Azadipour | Premier Global Medical Technology</title>
   <meta name="description" content="Contact Azadipour for international partnerships, medical technology opportunities, and advanced hospital solutions.">
   <meta name="theme-color" content="#08090b">
   <link rel="canonical" href="https://azadipourmedical.com/contact.html">
@@ -12,6 +12,17 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact Azadipour",
+    "description": "Contact Azadipour for international partnerships, medical technology opportunities, and advanced hospital solutions.",
+    "url": "https://azadipourmedical.com/contact.html",
+    "mainEntity": { "@id": "https://azadipourmedical.com/#organization" }
+  }
+  </script>
 </head>
 <body class="contact-page">
 
@@ -96,7 +107,8 @@
               <textarea id="message" name="message" class="luxury-textarea" required placeholder="Please describe your requirements..."></textarea>
             </div>
             <input type="hidden" name="_subject" value="New Inquiry from Azadipour Website">
-            <button type="submit" class="btn-primary luxury-submit">Send Message <span>↗</span></button>
+            <input type="hidden" name="_next" value="https://azadipourmedical.com/contact.html?success=true">
+            <button type="submit" class="btn-primary luxury-submit" id="submitBtn">Send Message <span>↗</span></button>
             <div id="form-status"></div>
           </form>
         </div>
@@ -113,18 +125,26 @@
     </div>
     <div class="footer-bottom"><span>© <span id="currentYear">2026</span> AZADIPOUR. ALL RIGHTS RESERVED.</span><span>GLOBAL MEDICAL TECHNOLOGY · WORLDWIDE</span></div>
   </footer>
-
   <script src="script.js" defer></script>
+  
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const form = document.getElementById('luxuryContactForm');
       const statusDiv = document.getElementById('form-status');
+      const submitBtn = document.getElementById('submitBtn');
+
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.has('success')) {
+        statusDiv.textContent = 'Thank you. Your message has been sent successfully. Our team will contact you shortly.';
+        statusDiv.className = 'success';
+        statusDiv.style.display = 'block';
+        window.history.replaceState({}, document.title, window.location.pathname);
+      }
 
       if (form) {
         form.addEventListener('submit', function(e) {
           e.preventDefault();
           const formData = new FormData(form);
-          const submitBtn = form.querySelector('button[type="submit"]');
           const originalBtnText = submitBtn.innerHTML;
           
           submitBtn.innerHTML = 'Sending...';
@@ -138,22 +158,29 @@
             headers: { 'Accept': 'application/json' }
           }).then(response => {
             if (response.ok) {
-              statusDiv.textContent = 'Thank you. Your message has been sent successfully. Our team will contact you shortly.';
+              statusDiv.textContent = 'Thank you. Your message has been sent successfully.';
               statusDiv.className = 'success';
+              statusDiv.style.display = 'block';
               form.reset();
             } else {
               response.json().then(data => {
                 if (Object.hasOwn(data, 'errors')) {
                   statusDiv.textContent = data["errors"].map(error => error["message"]).join(", ");
                 } else {
-                  statusDiv.textContent = 'Oops! There was a problem submitting your form.';
+                  statusDiv.textContent = 'Error: Please ensure your Formspree email is verified.';
                 }
                 statusDiv.className = 'error';
-              })
+                statusDiv.style.display = 'block';
+              }).catch(() => {
+                 statusDiv.textContent = 'Error: Unable to process form submission.';
+                 statusDiv.className = 'error';
+                 statusDiv.style.display = 'block';
+              });
             }
           }).catch(error => {
-            statusDiv.textContent = 'Connection error. Please try again or email us directly.';
+            statusDiv.textContent = 'Connection error. Please check your internet or disable AdBlock, then try again.';
             statusDiv.className = 'error';
+            statusDiv.style.display = 'block';
           }).finally(() => {
             submitBtn.innerHTML = originalBtnText;
             submitBtn.disabled = false;
