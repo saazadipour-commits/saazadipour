@@ -3,21 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>About Azadipour | Global Medical Technology Company</title>
   <meta name="description" content="Discover Azadipour, an Oman-registered healthcare and medical technology company connecting healthcare organizations with international technology providers and medical solutions.">
   <meta name="theme-color" content="#08090b">
-
   <link rel="canonical" href="https://azadipourmedical.com/about.html">
   <link rel="icon" type="image/png" href="assets/logo-transparent.png">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body class="about-page">
 
   <div class="intro-screen" id="intro">
@@ -34,18 +29,20 @@
         <img src="assets/logo-transparent.png" alt="Azadipour">
         <span>AZADIPOUR</span>
       </a>
-
       <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mainNav">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </button>
-
       <nav class="main-nav" id="mainNav">
         <a href="index.html">Home</a>
         <a href="about.html" class="active">About Us</a>
         <a href="index.html#global-network">Global Presence</a>
-        <a href="medical.html">Medical Technology</a>
+        <div class="nav-dropdown">
+          <a href="medical.html" class="nav-dropdown-toggle">Medical Technology ▾</a>
+          <div class="nav-dropdown-menu">
+            <a href="robotic.html">Robotic Surgery</a>
+            <a href="cardiac.html">Cardiovascular</a>
+          </div>
+        </div>
         <a href="partners.html">Global Partnerships</a>
         <a href="projects.html">Projects</a>
         <a href="contact.html" class="nav-contact">Contact</a>
@@ -57,250 +54,103 @@
     <section class="inner-hero">
       <div class="inner-hero-content">
         <div class="section-label" style="margin-bottom: 20px;">ABOUT AZADIPOUR</div>
-        <h1>
-          Connecting Healthcare.
-          <span>Creating Global Opportunities.</span>
-        </h1>
-        <p>
-          An international perspective on medical technology, advanced surgical solutions and strategic business development.
-        </p>
+        <h1>Connecting Healthcare. <span>Creating Global Opportunities.</span></h1>
+        <p>An international perspective on medical technology, advanced surgical solutions and strategic business development.</p>
       </div>
       <div class="inner-hero-decoration"></div>
     </section>
 
     <section class="section">
       <div class="section-label">01 — CORPORATE OVERVIEW</div>
-      
       <div class="about-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start;">
-        <div>
-          <h2 class="section-heading" style="margin-bottom: 0;">
-            A Global Perspective
-            <span>In Medical Technology.</span>
-          </h2>
-        </div>
-        
+        <div><h2 class="section-heading" style="margin-bottom: 0;">A Global Perspective <span>In Medical Technology.</span></h2></div>
         <div class="about-copy" style="color: var(--text-soft); line-height: 1.9;">
-          <p style="margin-bottom: 20px;">
-            Azadipour is an Oman-registered healthcare and medical technology company focused on international business development and the advancement of advanced medical technologies.
-          </p>
-          <p style="margin-bottom: 20px; color: #fff; font-weight: 500;">
-            We currently hold <strong>dedicated sales lines</strong> for select global robotic products and are in active negotiations with several leading robotics companies to further expand our portfolio.
-          </p>
-          <p>
-            Through our strategic hub in Oman, we connect healthcare organizations and international manufacturers. We are continuously upgrading our relationships with premier international hospitals to integrate next-generation surgical technologies and comprehensive hospital solutions into the region.
-          </p>
+          <p style="margin-bottom: 20px;">Azadipour is an Oman-registered healthcare and medical technology company focused on international business development and the advancement of advanced medical technologies.</p>
+          <p style="margin-bottom: 20px; color: #fff; font-weight: 500;">We currently hold <strong>dedicated sales lines</strong> for select global robotic products and are in active negotiations with several leading robotics companies to further expand our portfolio.</p>
+          <p>Through our strategic hub in Oman, we connect healthcare organizations and international manufacturers. We are continuously upgrading our relationships with premier international hospitals to integrate next-generation surgical technologies and comprehensive hospital solutions into the region.</p>
         </div>
       </div>
 
-      <!-- LUXURIOUS CORPORATE CREDENTIALS CARD -->
       <div class="corporate-credentials-card">
         <div class="credential-header">
           <span class="credential-seal">VERIFIED &amp; LICENSED</span>
           <h3>Corporate Credentials</h3>
-          <p>
-            Azadipour is a premier entity in international trade with a dedicated focus on the medical sector. We hold the fundamental regulatory licenses for medical product entry and comprehensive commercial licenses, facilitating the transfer of advanced medical technologies across global markets.
-          </p>
+          <p>Azadipour is a premier entity in international trade with a dedicated focus on the medical sector. We hold the fundamental regulatory licenses for medical product entry and comprehensive commercial licenses, facilitating the transfer of advanced medical technologies across global markets.</p>
         </div>
         <div class="credential-grid">
-          <div class="credential-item">
-            <span class="cred-label">COMMERCIAL REGISTRATION (CR)</span>
-            <span class="cred-value">1678104</span>
-          </div>
-          <div class="credential-item">
-            <span class="cred-label">OCCI MEMBERSHIP</span>
-            <span class="cred-value">5551647</span>
-          </div>
-          <div class="credential-item">
-            <span class="cred-label">ACTIVITY CODE</span>
-            <span class="cred-value">461003 (Export &amp; Import)</span>
-          </div>
-          <div class="credential-item">
-            <span class="cred-label">REGISTERED OFFICE</span>
-            <span class="cred-value">Muscat, Sultanate of Oman</span>
-          </div>
+          <div class="credential-item"><span class="cred-label">COMMERCIAL REGISTRATION (CR)</span><span class="cred-value">1678104</span></div>
+          <div class="credential-item"><span class="cred-label">OCCI MEMBERSHIP</span><span class="cred-value">5551647</span></div>
+          <div class="credential-item"><span class="cred-label">ACTIVITY CODE</span><span class="cred-value">461003 (Export &amp; Import)</span></div>
+          <div class="credential-item"><span class="cred-label">REGISTERED OFFICE</span><span class="cred-value">Muscat, Sultanate of Oman</span></div>
         </div>
       </div>
-      <!-- END CREDENTIALS CARD -->
     </section>
 
     <section class="section about-vision">
       <div class="section-label">02 — OUR VISION</div>
       <div class="vision-content">
         <span class="vision-mark" style="font-family: 'Cormorant Garamond', serif; font-size: 80px; color: var(--silver-dark); line-height: 1; display: block; margin-bottom: -20px;">“</span>
-        <h2 class="section-heading" style="margin-bottom: 20px;">
-          Connecting Global Innovation
-          <span>With Healthcare Needs.</span>
-        </h2>
-        <p style="max-width: 700px;">
-          Our vision is to contribute to a more connected healthcare ecosystem by providing <strong>dedicated access</strong> to advanced medical technologies and building meaningful, long-term international partnerships with world-class hospitals.
-        </p>
+        <h2 class="section-heading" style="margin-bottom: 20px;">Connecting Global Innovation <span>With Healthcare Needs.</span></h2>
+        <p style="max-width: 700px;">Our vision is to contribute to a more connected healthcare ecosystem by providing <strong>dedicated access</strong> to advanced medical technologies and building meaningful, long-term international partnerships with world-class hospitals.</p>
       </div>
     </section>
 
     <section class="section">
       <div class="section-label">03 — OUR MISSION</div>
-      
       <div class="section-heading">
         <h2>Turning Healthcare Requirements<span>Into Strategic Opportunities.</span></h2>
-        <p>
-          We focus on practical business development, dedicated distribution rights, and international cooperation across the medical technology sector.
-        </p>
+        <p>We focus on practical business development, dedicated distribution rights, and international cooperation across the medical technology sector.</p>
       </div>
-
       <div class="mission-grid">
-        <article class="mission-card">
-          <span class="presence-number">01</span>
-          <h3>Dedicated Distribution</h3>
-          <p>Holding dedicated sales lines and specific distribution rights for selected advanced global robotic medical products.</p>
-        </article>
-
-        <article class="mission-card">
-          <span class="presence-number">02</span>
-          <h3>Global Negotiations</h3>
-          <p>Actively engaging with leading global robotics companies to secure next-generation surgical platforms.</p>
-        </article>
-
-        <article class="mission-card">
-          <span class="presence-number">03</span>
-          <h3>Hospital Alliances</h3>
-          <p>Continuously upgrading and expanding our strategic relationships with premier international hospitals.</p>
-        </article>
-
-        <article class="mission-card">
-          <span class="presence-number">04</span>
-          <h3>Advanced Technology</h3>
-          <p>Connecting clinical requirements with the most advanced medical technology and digital surgery solutions available worldwide.</p>
-        </article>
+        <article class="mission-card"><span class="presence-number">01</span><h3>Dedicated Distribution</h3><p>Holding dedicated sales lines and specific distribution rights for selected advanced global robotic medical products.</p></article>
+        <article class="mission-card"><span class="presence-number">02</span><h3>Global Negotiations</h3><p>Actively engaging with leading global robotics companies to secure next-generation surgical platforms.</p></article>
+        <article class="mission-card"><span class="presence-number">03</span><h3>Hospital Alliances</h3><p>Continuously upgrading and expanding our strategic relationships with premier international hospitals.</p></article>
+        <article class="mission-card"><span class="presence-number">04</span><h3>Advanced Technology</h3><p>Connecting clinical requirements with the most advanced medical technology and digital surgery solutions available worldwide.</p></article>
       </div>
     </section>
 
     <section class="section about-focus">
       <div class="section-label">04 — AREAS OF FOCUS</div>
-      
-      <div class="section-heading">
-        <h2>Our Business<span>Focus Areas.</span></h2>
-      </div>
-
+      <div class="section-heading"><h2>Our Business<span>Focus Areas.</span></h2></div>
       <div class="focus-list">
-        <div class="focus-row">
-          <span>01</span>
-          <div>
-            <h3>Robotic & Digital Surgery</h3>
-            <p>Advanced robotic platforms, dedicated product lines, and next-generation digital operating environments.</p>
-          </div>
-        </div>
-
-        <div class="focus-row">
-          <span>02</span>
-          <div>
-            <h3>Cardiac & Cardiovascular Technology</h3>
-            <p>Cardiac surgery, perfusion and cardiovascular care technologies from global leaders.</p>
-          </div>
-        </div>
-
-        <div class="focus-row">
-          <span>03</span>
-          <div>
-            <h3>Surgical Navigation & Imaging</h3>
-            <p>Image-guided procedures and precision-focused surgical solutions.</p>
-          </div>
-        </div>
-
-        <div class="focus-row">
-          <span>04</span>
-          <div>
-            <h3>Hospital & Critical Care Solutions</h3>
-            <p>Medical equipment, operating rooms and critical care systems for international hospitals.</p>
-          </div>
-        </div>
+        <div class="focus-row"><span>01</span><div><h3>Robotic & Digital Surgery</h3><p>Advanced robotic platforms, dedicated product lines, and next-generation digital operating environments.</p></div></div>
+        <div class="focus-row"><span>02</span><div><h3>Cardiac & Cardiovascular Technology</h3><p>Cardiac surgery, perfusion and cardiovascular care technologies from global leaders.</p></div></div>
+        <div class="focus-row"><span>03</span><div><h3>Surgical Navigation & Imaging</h3><p>Image-guided procedures and precision-focused surgical solutions.</p></div></div>
+        <div class="focus-row"><span>04</span><div><h3>Hospital & Critical Care Solutions</h3><p>Medical equipment, operating rooms and critical care systems for international hospitals.</p></div></div>
       </div>
     </section>
 
     <section class="section approach-section">
       <div class="section-label">05 — OUR APPROACH</div>
-
       <div class="section-heading">
         <h2>Professional Cooperation.<span>Purposeful Development.</span></h2>
-        <p>
-          We believe successful healthcare cooperation begins with understanding requirements and establishing clear, dedicated partnerships.
-        </p>
+        <p>We believe successful healthcare cooperation begins with understanding requirements and establishing clear, dedicated partnerships.</p>
       </div>
-
       <div class="approach-grid">
-        <div>
-          <span>01</span>
-          <h3>Understand</h3>
-          <p>Understand the clinical and operational requirements of our hospital partners.</p>
-        </div>
-        <div>
-          <span>02</span>
-          <h3>Evaluate</h3>
-          <p>Explore and evaluate relevant advanced robotic technologies and potential suppliers.</p>
-        </div>
-        <div>
-          <span>03</span>
-          <h3>Connect</h3>
-          <p>Establish dedicated communication channels between hospitals and global manufacturers.</p>
-        </div>
-        <div>
-          <span>04</span>
-          <h3>Develop</h3>
-          <p>Support the development of suitable business opportunities and long-term partnerships.</p>
-        </div>
+        <div><span>01</span><h3>Understand</h3><p>Understand the clinical and operational requirements of our hospital partners.</p></div>
+        <div><span>02</span><h3>Evaluate</h3><p>Explore and evaluate relevant advanced robotic technologies and potential suppliers.</p></div>
+        <div><span>03</span><h3>Connect</h3><p>Establish dedicated communication channels between hospitals and global manufacturers.</p></div>
+        <div><span>04</span><h3>Develop</h3><p>Support the development of suitable business opportunities and long-term partnerships.</p></div>
       </div>
     </section>
 
     <section class="section contact-section">
       <div class="section-label">LET'S CONNECT</div>
-      <h2 class="section-heading">
-        Explore Opportunities
-        <span>With Azadipour.</span>
-      </h2>
-      <p style="max-width: 600px; margin-bottom: 30px;">
-        We welcome professional enquiries from healthcare organizations, robotics manufacturers and international partners.
-      </p>
-      <a href="contact.html" class="btn-primary">
-        Contact Our Company <span>↗</span>
-      </a>
+      <h2 class="section-heading">Explore Opportunities <span>With Azadipour.</span></h2>
+      <p style="max-width: 600px; margin-bottom: 30px;">We welcome professional enquiries from healthcare organizations, robotics manufacturers and international partners.</p>
+      <a href="contact.html" class="btn-primary">Contact Our Company <span>↗</span></a>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="footer-main">
-      <div class="footer-brand">
-        <img src="assets/logo-transparent.png" alt="Azadipour Logo">
-        <h3>AZADIPOUR</h3>
-        <p>Global Medical Technology & Hospital Solutions</p>
-      </div>
-
-      <div class="footer-column">
-        <h4>COMPANY</h4>
-        <a href="about.html">About Us</a>
-        <a href="index.html#global-network">Global Presence</a>
-        <a href="partners.html">Partnerships</a>
-        <a href="projects.html">Projects</a>
-      </div>
-
-      <div class="footer-column">
-        <h4>TECHNOLOGY</h4>
-        <a href="robotic.html">Robotic Surgery</a>
-        <a href="cardiac.html">Cardiovascular</a>
-        <a href="medical.html">Medical Technology</a>
-      </div>
-
-      <div class="footer-column">
-        <h4>CONTACT</h4>
-        <a href="mailto:info@azadipourmedical.com">Email</a>
-        <span>Oman</span>
-      </div>
+      <div class="footer-brand"><img src="assets/logo-transparent.png" alt="Azadipour Logo"><h3>AZADIPOUR</h3><p>Global Medical Technology & Hospital Solutions</p></div>
+      <div class="footer-column"><h4>COMPANY</h4><a href="about.html">About Us</a><a href="index.html#global-network">Global Presence</a><a href="partners.html">Partnerships</a><a href="projects.html">Projects</a></div>
+      <div class="footer-column"><h4>TECHNOLOGY</h4><a href="robotic.html">Robotic Surgery</a><a href="cardiac.html">Cardiovascular</a><a href="medical.html">Medical Technology</a></div>
+      <div class="footer-column"><h4>CONTACT</h4><a href="mailto:info@azadipourmedical.com">Email</a><span>Oman</span></div>
     </div>
-
-    <div class="footer-bottom">
-      <span>© <span id="currentYear">2026</span> AZADIPOUR. ALL RIGHTS RESERVED.</span>
-      <span>GLOBAL MEDICAL TECHNOLOGY · WORLDWIDE</span>
-    </div>
+    <div class="footer-bottom"><span>© <span id="currentYear">2026</span> AZADIPOUR. ALL RIGHTS RESERVED.</span><span>GLOBAL MEDICAL TECHNOLOGY · WORLDWIDE</span></div>
   </footer>
-
   <script src="script.js" defer></script>
 </body>
 </html>
