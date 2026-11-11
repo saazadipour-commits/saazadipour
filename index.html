@@ -12,14 +12,12 @@
   <link rel="canonical" href="https://azadipourmedical.com/">
   <link rel="icon" type="image/png" href="assets/logo-transparent.png">
 
-  <!-- Performance Optimizations -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="dns-prefetch" href="https://unpkg.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 
-  <!-- Advanced SEO Schema: Organization & WebSite -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -92,6 +90,7 @@
         </div>
         <a href="partners.html">Global Partnerships</a>
         <a href="projects.html">Projects</a>
+        <a href="media.html">Media</a>
         <a href="contact.html" class="nav-contact">Contact</a>
       </nav>
     </div>
@@ -120,7 +119,7 @@
         <div class="section-label">01 — GLOBAL PRESENCE</div>
         <div class="network-heading">
           <div><h2>One World.<span>Connected Through Clinical Excellence.</span></h2></div>
-          <p>Azadipour architect international medical technology relationships, bridging elite healthcare opportunities with world-class global manufacturers.</p>
+          <p>Azadipour architects international medical technology relationships, bridging elite healthcare opportunities with world-class global manufacturers.</p>
         </div>
       </div>
       <div class="network-map-frame">
@@ -169,21 +168,25 @@
         </div>
       </div>
 
-      <div class="corporate-credentials-card">
-        <div class="credential-header">
-          <span class="credential-seal">VERIFIED &amp; LICENSED</span>
-          <h3>Corporate Credentials</h3>
-          <p>Azadipour is a premier entity in international trade with a dedicated focus on the medical sector. We hold the fundamental regulatory licenses for medical product entry and comprehensive commercial licenses, facilitating the transfer of advanced medical technologies across global markets.</p>
-        </div>
-        <div class="credential-grid">
-          <div class="credential-item"><span class="cred-label">COMMERCIAL REGISTRATION (CR)</span><span class="cred-value">1678104</span></div>
-          <div class="credential-item"><span class="cred-label">OCCI MEMBERSHIP</span><span class="cred-value">5551647</span></div>
-          <div class="credential-item"><span class="cred-label">ACTIVITY CODE</span><span class="cred-value">461003 (Export &amp; Import)</span></div>
-          <div class="credential-item"><span class="cred-label">REGISTERED OFFICE</span><span class="cred-value">Muscat, Sultanate of Oman</span></div>
+      <!-- 3D LUXURY CREDENTIALS CARD -->
+      <div class="credential-3d-wrapper">
+        <div class="corporate-credentials-card">
+          <div class="credential-header">
+            <span class="credential-seal">VERIFIED &amp; LICENSED</span>
+            <h3>Corporate Credentials</h3>
+            <p>Azadipour is a premier entity in international trade with a dedicated focus on the medical sector. We hold the fundamental regulatory licenses for medical product entry and comprehensive commercial licenses, facilitating the transfer of advanced medical technologies across global markets.</p>
+          </div>
+          <div class="credential-grid">
+            <div class="credential-item"><span class="cred-label">COMMERCIAL REGISTRATION (CR)</span><span class="cred-value">1678104</span></div>
+            <div class="credential-item"><span class="cred-label">OCCI MEMBERSHIP</span><span class="cred-value">5551647</span></div>
+            <div class="credential-item"><span class="cred-label">ACTIVITY CODE</span><span class="cred-value">461003 (Export &amp; Import)</span></div>
+            <div class="credential-item new-branch"><span class="cred-label">EUROPEAN BRANCH (COMING SOON)</span><span class="cred-value">Berlin, Germany</span></div>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- (The rest of index.html sections remain the same) -->
     <section class="section technology-section">
       <div class="section-label">03 — TECHNOLOGY PORTFOLIO</div>
       <div class="section-heading">
@@ -276,7 +279,6 @@
     <div class="footer-bottom"><span>© <span id="currentYear">2026</span> AZADIPOUR. ALL RIGHTS RESERVED.</span><span>GLOBAL MEDICAL TECHNOLOGY · WORLDWIDE</span></div>
   </footer>
 
-  <!-- Deferred Scripts for Speed -->
   <script src="https://unpkg.com/three@0.150.1/build/three.min.js" defer></script>
   <script src="https://unpkg.com/globe.gl@2.27.2/dist/globe.gl.min.js" defer></script>
   
@@ -286,7 +288,6 @@
       const loading = document.getElementById("mapLoading");
       if (!globeContainer) return;
 
-      // Delay globe initialization slightly to allow main thread to paint first
       setTimeout(() => {
         if (typeof Globe === 'undefined' || typeof THREE === 'undefined') {
           if (loading) loading.style.display = "none";
@@ -304,7 +305,8 @@
             .width(globeContainer.clientWidth)
             .height(globeContainer.clientHeight);
 
-          world.pointOfView({ lat: 25, lng: 55, altitude: 2.5 });
+          // Zoom in slightly to show the region better
+          world.pointOfView({ lat: 35, lng: 45, altitude: 2.2 });
 
           fetch('https://raw.githubusercontent.com/vasturiano/globe.gl/master/example/datasets/ne_110m_admin_0_countries.geojson')
             .then(res => res.json())
@@ -328,11 +330,19 @@
                 .labelText('name').labelAltitude(0.01).labelResolution(2);
             }).catch(err => console.error("Error loading borders:", err));
 
+          // Exact Coordinates
           const omanHub = { lat: 23.588, lng: 58.383, name: "AZADIPOUR (MUSCAT)" };
+          
           const suppliers = [
-            { lat: 22.543, lng: 114.057, name: "Shenzhen" }, { lat: 31.230, lng: 121.473, name: "Shanghai" },
-            { lat: 25.033, lng: 121.565, name: "Taipei" }, { lat: 52.520, lng: 13.405, name: "Berlin" }
+            { lat: 22.543, lng: 114.057, name: "Shenzhen" }, // China
+            { lat: 31.230, lng: 121.473, name: "Shanghai" }, // China
+            { lat: 25.033, lng: 121.565, name: "Taipei" },   // Taiwan
+            { lat: 52.520, lng: 13.405, name: "Berlin (Supplier)" } // Germany
           ];
+
+          // NEW POINT: Berlin Branch
+          const newBerlinBranch = { lat: 52.530, lng: 13.380, name: "Berlin Branch" };
+
           const hospitals = [
             { lat: 25.285, lng: 51.531, name: "Doha" }, { lat: 25.291, lng: 51.367, name: "Al Rayyan" },
             { lat: 26.228, lng: 50.586, name: "Manama" }, { lat: 26.130, lng: 50.555, name: "Riffa" },
@@ -342,20 +352,27 @@
           ];
 
           const arcsData = [];
+          // Arcs to Oman
           suppliers.forEach(s => arcsData.push({ startLat: s.lat, startLng: s.lng, endLat: omanHub.lat, endLng: omanHub.lng, color: ['rgba(255, 255, 255, 0.9)', 'rgba(255, 255, 255, 0.1)'] }));
+          // Arc from Oman to new Berlin branch
+          arcsData.push({ startLat: omanHub.lat, startLng: omanHub.lng, endLat: newBerlinBranch.lat, endLng: newBerlinBranch.lng, color: ['rgba(255, 255, 255, 0.5)', 'rgba(255, 255, 255, 0.05)'] });
+          
           hospitals.forEach(h => arcsData.push({ startLat: omanHub.lat, startLng: omanHub.lng, endLat: h.lat, endLng: h.lng, color: ['rgba(150, 150, 150, 0.6)', 'rgba(150, 150, 150, 0.1)'] }));
 
           world.arcsData(arcsData).arcColor('color').arcDashLength(0.5).arcDashGap(0.1).arcDashAnimateTime(2000).arcStroke(0.4);
 
-          const pointsData = [omanHub, ...suppliers, ...hospitals];
+          const pointsData = [omanHub, ...suppliers, newBerlinBranch, ...hospitals];
           world.pointsData(pointsData)
-            .pointColor(d => d.name === "AZADIPOUR (MUSCAT)" ? '#ffffff' : '#c0c0c0')
-            .pointAltitude(0.01).pointRadius(d => d.name === "AZADIPOUR (MUSCAT)" ? 0.5 : 0.25).pointsMerge(false);
+            .pointColor(d => d.name.includes("AZADIPOUR") ? '#ffffff' : (d.name.includes("Berlin") ? '#ffffff' : '#c0c0c0'))
+            .pointAltitude(0.01)
+            .pointRadius(d => d.name.includes("AZADIPOUR") ? 0.5 : (d.name.includes("Berlin") ? 0.35 : 0.25))
+            .pointsMerge(false);
 
-          const allLabels = [omanHub, ...suppliers, ...hospitals];
+          const allLabels = [omanHub, ...suppliers, newBerlinBranch, ...hospitals];
           world.labelsData(allLabels)
-            .labelSize(d => d.name === "AZADIPOUR (MUSCAT)" ? 1.2 : 0.6).labelDotRadius(0)
-            .labelColor(d => d.name === "AZADIPOUR (MUSCAT)" ? '#ffffff' : 'rgba(200,200,200,0.8)')
+            .labelSize(d => d.name.includes("AZADIPOUR") ? 1.2 : (d.name.includes("Berlin") ? 0.7 : 0.6))
+            .labelDotRadius(0)
+            .labelColor(d => d.name.includes("AZADIPOUR") ? '#ffffff' : (d.name.includes("Berlin") ? '#ffffff' : 'rgba(200,200,200,0.8)'))
             .labelText('name').labelAltitude(0.015).labelResolution(2);
 
           world.ringsData([omanHub]).ringColor(() => t => `rgba(255, 255, 255, ${1-t})`).ringMaxRadius(3).ringPropagationSpeed(2).ringRepeatPeriod(1500);
@@ -380,4 +397,3 @@
   <script src="script.js" defer></script>
 </body>
 </html>
-
