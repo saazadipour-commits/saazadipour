@@ -698,3 +698,176 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
 @media (max-width: 650px) {
   .article-grid { grid-template-columns: 1fr; }
 }
+
+/* =========================================
+   ULTIMATE 3D LUXURY CREDENTIALS CARD
+   ========================================= */
+.credential-3d-wrapper {
+  perspective: 1200px;
+  margin-top: 60px;
+}
+
+.corporate-credentials-card {
+  position: relative;
+  padding: 45px;
+  background: linear-gradient(135deg, rgba(20, 25, 30, 0.7), rgba(5, 7, 9, 0.95));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.9), 
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05),
+    inset 0 0 40px rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(20px);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 40px;
+  align-items: center;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.6s ease;
+}
+
+.corporate-credentials-card:hover {
+  transform: rotateY(-5deg) rotateX(5deg) translateZ(10px);
+  box-shadow: 
+    -20px 30px 60px rgba(0, 0, 0, 1), 
+    inset 0 0 0 1px rgba(255, 255, 255, 0.2),
+    inset 0 0 50px rgba(255, 255, 255, 0.05);
+}
+
+/* The shiny edge line */
+.corporate-credentials-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+  z-index: 2;
+}
+
+/* Subtle grid texture for the "tech" feel */
+.corporate-credentials-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.credential-header {
+  position: relative;
+  z-index: 2;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  padding-right: 40px;
+  transform: translateZ(30px); /* Pushes it forward in 3D space */
+}
+
+.credential-seal {
+  display: inline-block;
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--silver-dark);
+  color: var(--silver);
+  font-size: 9px;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  border-radius: 4px;
+}
+
+.credential-header h3 {
+  color: #fff;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 34px;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.credential-header p {
+  color: var(--text-soft);
+  font-size: 13.5px;
+  line-height: 1.8;
+  text-align: justify;
+}
+
+.credential-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+  transform: translateZ(20px); /* Pushes it forward */
+}
+
+.credential-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+.credential-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.cred-label {
+  color: var(--silver-dark);
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.cred-value {
+  color: #ffffff;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+/* Special Highlight for the New Branch */
+.credential-item.new-branch {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: linear-gradient(90deg, rgba(255,255,255,0.05), transparent);
+  position: relative;
+}
+
+.credential-item.new-branch::after {
+  content: "NEW";
+  position: absolute;
+  top: -10px;
+  right: 10px;
+  background: #fff;
+  color: #000;
+  font-size: 8px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  padding: 2px 6px;
+  border-radius: 2px;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 900px) {
+  .corporate-credentials-card {
+    grid-template-columns: 1fr;
+    padding: 30px;
+    transform: none !important; /* Disable 3D tilt on mobile for stability */
+  }
+  .credential-header {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-right: 0;
+    padding-bottom: 30px;
+  }
+  .credential-grid { grid-template-columns: 1fr; }
+}
