@@ -14,7 +14,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 
-  <!-- Schema for Media/Knowledge Hub (Boosts SEO) -->
+  <!-- Schema for Media/Knowledge Hub -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -75,43 +75,29 @@
       <div class="inner-hero-decoration"></div>
     </section>
 
-    <!-- VIDEO GALLERY SECTION -->
+    <!-- VIDEO GALLERY SECTION (SINGLE LUXURY VIDEO) -->
     <section class="section">
-      <div class="section-label">01 — EXCLUSIVE VIDEO GALLERY</div>
-      <div class="section-heading">
+      <div class="section-label" style="text-align: center;">01 — EXCLUSIVE VIDEO GALLERY</div>
+      <div class="section-heading" style="margin: 0 auto 40px auto; text-align: center;">
         <h2>Visualizing <span>The Future.</span></h2>
-        <p>Watch our latest project developments, advanced surgical technologies, and the architectural vision behind our Smart Hospital initiatives.</p>
+        <p>Watch the architectural vision and technological ecosystem behind our Smart Hospital initiatives.</p>
       </div>
 
-      <div class="video-grid">
+      <!-- Single Luxury Video Player -->
+      <div class="video-luxury-container" style="max-width: 1000px; margin: 0 auto; position: relative; border-radius: 4px; overflow: hidden; border: 1px solid var(--border); background: #000; box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8);">
         
-        <!-- Video 1 -->
-        <div class="video-wrapper">
-          <!-- 
-            راهنما: برای قرار دادن ویدیو، فایل mp4 خود را در پوشه assets آپلود کنید 
-            و آدرس آن را در تگ source قرار دهید. 
-            تصویر poster همان عکسی است که قبل از پخش ویدیو دیده می‌شود.
-          -->
-          <video controls preload="none" poster="assets/smart-hospital.jpg">
-            <source src="assets/smart-hospital-video.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-          <div class="video-title">
-            <h3>The Smart Hospital Vision</h3>
-            <span>Future Infrastructure</span>
-          </div>
-        </div>
-
-        <!-- Video 2 -->
-        <div class="video-wrapper">
-          <video controls preload="none" poster="assets/robotic-hero.jpg">
-            <source src="assets/robotic-video.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-          <div class="video-title">
-            <h3>Advanced Robotic Surgery</h3>
-            <span>Surgical Precision</span>
-          </div>
+        <!-- 
+          نکته: اگر ویدیو پخش نشد، حتماً بررسی کنید که فایل در Git LFS نباشد.
+          مسیر فایل: assets/smart-hospital-video.mp4
+        -->
+        <video controls preload="metadata" poster="assets/smart-hospital.jpg" style="display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover;">
+          <source src="assets/smart-hospital-video.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        
+        <div class="video-title" style="padding: 30px; background: linear-gradient(145deg, #101418, #050607); border-top: 1px solid var(--border); text-align: center;">
+          <h3 style="color: #fff; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 32px; margin-bottom: 10px;">The Smart Hospital Vision</h3>
+          <span style="color: var(--silver); font-size: 11px; letter-spacing: 3px; text-transform: uppercase;">Future Infrastructure</span>
         </div>
 
       </div>
