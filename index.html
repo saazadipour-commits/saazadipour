@@ -186,7 +186,6 @@
       </div>
     </section>
 
-    <!-- (The rest of index.html sections remain the same) -->
     <section class="section technology-section">
       <div class="section-label">03 — TECHNOLOGY PORTFOLIO</div>
       <div class="section-heading">
@@ -296,17 +295,18 @@
 
         try {
           const world = Globe()(globeContainer)
-            .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-night.jpg')
+            // Using a high contrast, slightly desaturated texture for a refined look
+            .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-dark.jpg')
             .backgroundImageUrl('https://unpkg.com/three-globe/example/img/night-sky.png')
-            .backgroundColor('#050607')
+            .backgroundColor('#000000')
             .showAtmosphere(true)
             .atmosphereColor('#ffffff')
             .atmosphereAltitude(0.1)
             .width(globeContainer.clientWidth)
             .height(globeContainer.clientHeight);
 
-          // Zoom in slightly to show the region better
-          world.pointOfView({ lat: 35, lng: 45, altitude: 2.2 });
+          // Zoomed in heavily to make countries larger and clearer
+          world.pointOfView({ lat: 35, lng: 40, altitude: 1.5 });
 
           fetch('https://raw.githubusercontent.com/vasturiano/globe.gl/master/example/datasets/ne_110m_admin_0_countries.geojson')
             .then(res => res.json())
@@ -314,9 +314,11 @@
               world.polygonsData(countries.features)
                 .polygonCapColor(() => 'rgba(0,0,0,0)') 
                 .polygonSideColor(() => 'rgba(0,0,0,0)')
-                .polygonStrokeColor(() => 'rgba(200, 200, 200, 0.3)')
+                // ULTRA THIN, ELEGANT BORDERS
+                .polygonStrokeColor(() => 'rgba(255, 255, 255, 0.25)') 
                 .polygonAltitude(0.005);
                 
+              // Add very subtle country labels
               const countryLabels = [
                 { lat: 35.0, lng: 105.0, name: "CHINA" },
                 { lat: 32.0, lng: 53.0, name: "IRAN" },
@@ -326,59 +328,108 @@
               ];
               
               world.labelsData(countryLabels)
-                .labelSize(0.5).labelDotRadius(0).labelColor(() => 'rgba(255, 255, 255, 0.4)')
-                .labelText('name').labelAltitude(0.01).labelResolution(2);
+                .labelSize(0.5).labelDotRadius(0).labelColor(() => 'rgba(255, 255, 255, 0.3)')
+                .labelText('name').labelAltitude(0.005).labelResolution(2);
             }).catch(err => console.error("Error loading borders:", err));
 
           // Exact Coordinates
           const omanHub = { lat: 23.588, lng: 58.383, name: "AZADIPOUR (MUSCAT)" };
           
           const suppliers = [
-            { lat: 22.543, lng: 114.057, name: "Shenzhen" }, // China
-            { lat: 31.230, lng: 121.473, name: "Shanghai" }, // China
-            { lat: 25.033, lng: 121.565, name: "Taipei" },   // Taiwan
-            { lat: 52.520, lng: 13.405, name: "Berlin (Supplier)" } // Germany
+            { lat: 22.543, lng: 114.057, name: "Shenzhen" },
+            { lat: 31.230, lng: 121.473, name: "Shanghai" },
+            { lat: 25.033, lng: 121.565, name: "Taipei" },
+            { lat: 52.520, lng: 13.405, name: "Berlin (Supplier)" }
           ];
 
-          // NEW POINT: Berlin Branch
-          const newBerlinBranch = { lat: 52.530, lng: 13.380, name: "Berlin Branch" };
+          // The upcoming branch in Berlin (Gold Node)
+          const newBerlinBranch = { lat: 52.500, lng: 13.450, name: "BERLIN BRANCH (COMING SOON)" };
 
           const hospitals = [
-            { lat: 25.285, lng: 51.531, name: "Doha" }, { lat: 25.291, lng: 51.367, name: "Al Rayyan" },
-            { lat: 26.228, lng: 50.586, name: "Manama" }, { lat: 26.130, lng: 50.555, name: "Riffa" },
-            { lat: 24.713, lng: 46.675, name: "Riyadh" }, { lat: 21.485, lng: 39.197, name: "Jeddah" },
-            { lat: 26.420, lng: 50.103, name: "Dammam" }, { lat: 21.422, lng: 39.826, name: "Mecca" },
-            { lat: 24.467, lng: 39.614, name: "Medina" }
+            { lat: 25.285, lng: 51.531 }, { lat: 25.291, lng: 51.367 },
+            { lat: 26.228, lng: 50.586 }, { lat: 26.130, lng: 50.555 },
+            { lat: 24.713, lng: 46.675 }, { lat: 21.485, lng: 39.197 },
+            { lat: 26.420, lng: 50.103 }, { lat: 21.422, lng: 39.826 },
+            { lat: 24.467, lng: 39.614 }
           ];
 
           const arcsData = [];
-          // Arcs to Oman
-          suppliers.forEach(s => arcsData.push({ startLat: s.lat, startLng: s.lng, endLat: omanHub.lat, endLng: omanHub.lng, color: ['rgba(255, 255, 255, 0.9)', 'rgba(255, 255, 255, 0.1)'] }));
-          // Arc from Oman to new Berlin branch
-          arcsData.push({ startLat: omanHub.lat, startLng: omanHub.lng, endLat: newBerlinBranch.lat, endLng: newBerlinBranch.lng, color: ['rgba(255, 255, 255, 0.5)', 'rgba(255, 255, 255, 0.05)'] });
           
-          hospitals.forEach(h => arcsData.push({ startLat: omanHub.lat, startLng: omanHub.lng, endLat: h.lat, endLng: h.lng, color: ['rgba(150, 150, 150, 0.6)', 'rgba(150, 150, 150, 0.1)'] }));
+          // Arcs: Suppliers -> Oman (Thin White)
+          suppliers.forEach(s => arcsData.push({ 
+            startLat: s.lat, startLng: s.lng, 
+            endLat: omanHub.lat, endLng: omanHub.lng, 
+            color: ['rgba(255, 255, 255, 0.8)', 'rgba(255, 255, 255, 0.05)'] 
+          }));
+          
+          // Arc: Oman -> Berlin Branch (Thin Gold)
+          arcsData.push({ 
+            startLat: omanHub.lat, startLng: omanHub.lng, 
+            endLat: newBerlinBranch.lat, endLng: newBerlinBranch.lng, 
+            color: ['rgba(255, 215, 0, 0.8)', 'rgba(255, 215, 0, 0.05)'] 
+          });
+          
+          // Arcs: Oman -> Hospitals (Very subtle grey)
+          hospitals.forEach(h => arcsData.push({ 
+            startLat: omanHub.lat, startLng: omanHub.lng, 
+            endLat: h.lat, endLng: h.lng, 
+            color: ['rgba(150, 150, 150, 0.3)', 'rgba(150, 150, 150, 0.01)'] 
+          }));
 
-          world.arcsData(arcsData).arcColor('color').arcDashLength(0.5).arcDashGap(0.1).arcDashAnimateTime(2000).arcStroke(0.4);
+          // THINNER ARCS
+          world.arcsData(arcsData)
+            .arcColor('color')
+            .arcDashLength(0.6)
+            .arcDashGap(0.2)
+            .arcDashAnimateTime(3000)
+            .arcStroke(0.2); // Ultra thin
 
+          // Points Data
           const pointsData = [omanHub, ...suppliers, newBerlinBranch, ...hospitals];
+          
           world.pointsData(pointsData)
-            .pointColor(d => d.name.includes("AZADIPOUR") ? '#ffffff' : (d.name.includes("Berlin") ? '#ffffff' : '#c0c0c0'))
-            .pointAltitude(0.01)
-            .pointRadius(d => d.name.includes("AZADIPOUR") ? 0.5 : (d.name.includes("Berlin") ? 0.35 : 0.25))
+            .pointColor(d => {
+              if (d.name && d.name.includes("AZADIPOUR")) return '#ffffff';
+              if (d.name && d.name.includes("BERLIN BRANCH")) return '#FFD700'; // GOLD
+              if (d.name && d.name.includes("Supplier")) return 'rgba(255,255,255,0.7)';
+              return 'rgba(150,150,150,0.3)'; // Subtle hospitals
+            })
+            .pointAltitude(0.01) 
+            .pointRadius(d => {
+              if (d.name && d.name.includes("AZADIPOUR")) return 0.5;
+              if (d.name && d.name.includes("BERLIN BRANCH")) return 0.4; // Slightly smaller than hub
+              if (d.name && d.name.includes("Supplier")) return 0.25;
+              return 0.1; // Very small dots for hospitals
+            })
             .pointsMerge(false);
 
-          const allLabels = [omanHub, ...suppliers, newBerlinBranch, ...hospitals];
-          world.labelsData(allLabels)
-            .labelSize(d => d.name.includes("AZADIPOUR") ? 1.2 : (d.name.includes("Berlin") ? 0.7 : 0.6))
+          // Labels: ONLY for Hub, Suppliers, and Gold Branch
+          const importantLabels = [omanHub, ...suppliers, newBerlinBranch];
+          world.labelsData(importantLabels)
+            .labelSize(d => d.name && d.name.includes("AZADIPOUR") ? 1.5 : 0.8)
             .labelDotRadius(0)
-            .labelColor(d => d.name.includes("AZADIPOUR") ? '#ffffff' : (d.name.includes("Berlin") ? '#ffffff' : 'rgba(200,200,200,0.8)'))
-            .labelText('name').labelAltitude(0.015).labelResolution(2);
+            .labelColor(d => {
+              if (d.name && d.name.includes("BERLIN BRANCH")) return '#FFD700'; // Gold Text
+              return '#ffffff';
+            })
+            .labelText('name')
+            .labelAltitude(0.02)
+            .labelResolution(2);
 
-          world.ringsData([omanHub]).ringColor(() => t => `rgba(255, 255, 255, ${1-t})`).ringMaxRadius(3).ringPropagationSpeed(2).ringRepeatPeriod(1500);
+          // Rings
+          const ringsData = [
+            { ...omanHub, color: 'rgba(255, 255, 255, 0.8)' },
+            { ...newBerlinBranch, color: 'rgba(255, 215, 0, 0.8)' } // GOLD RING
+          ];
+
+          world.ringsData(ringsData)
+            .ringColor(d => t => d.color.replace('0.8', 1-t))
+            .ringMaxRadius(d => d.name && d.name.includes("AZADIPOUR") ? 3 : 2)
+            .ringPropagationSpeed(2)
+            .ringRepeatPeriod(2000);
 
           world.controls().autoRotate = true;
-          world.controls().autoRotateSpeed = 0.3;
+          world.controls().autoRotateSpeed = 0.2; // Slow, elegant rotation
           world.controls().enableZoom = true;
           world.controls().minDistance = 150;
 
