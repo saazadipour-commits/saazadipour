@@ -14,7 +14,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 
-  <!-- Schema for Media/Knowledge Hub -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -65,7 +64,6 @@
   </header>
 
   <main>
-    <!-- HERO SECTION -->
     <section class="inner-hero">
       <div class="inner-hero-content">
         <div class="section-label" style="margin-bottom: 20px;">KNOWLEDGE HUB</div>
@@ -75,7 +73,7 @@
       <div class="inner-hero-decoration"></div>
     </section>
 
-    <!-- VIDEO GALLERY SECTION (SINGLE LUXURY VIDEO) -->
+    <!-- VIDEO GALLERY SECTION (YOUTUBE EMBED) -->
     <section class="section">
       <div class="section-label" style="text-align: center;">01 — EXCLUSIVE VIDEO GALLERY</div>
       <div class="section-heading" style="margin: 0 auto 40px auto; text-align: center;">
@@ -83,18 +81,22 @@
         <p>Watch the architectural vision and technological ecosystem behind our Smart Hospital initiatives.</p>
       </div>
 
-      <!-- Single Luxury Video Player -->
-      <div class="video-luxury-container" style="max-width: 1000px; margin: 0 auto; position: relative; border-radius: 4px; overflow: hidden; border: 1px solid var(--border); background: #000; box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8);">
+      <!-- Single Luxury Video Player (YouTube) -->
+      <div class="video-luxury-container" style="max-width: 1000px; margin: 0 auto; position: relative; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); background: #000; box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8);">
         
-        <!-- 
-          نکته: اگر ویدیو پخش نشد، حتماً بررسی کنید که فایل در Git LFS نباشد.
-          مسیر فایل: assets/smart-hospital-video.mp4
-        -->
-        <video controls preload="metadata" poster="assets/smart-hospital.jpg" style="display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover;">
-          <source src="assets/smart-hospital-video.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-        
+        <!-- YOUR YOUTUBE VIDEO ID IS HERE -->
+        <iframe 
+          width="100%" 
+          height="100%" 
+          src="https://www.youtube.com/embed/SJfsFzdf7RY?rel=0&showinfo=0&autohide=1" 
+          title="Smart Hospital Vision" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          referrerpolicy="strict-origin-when-cross-origin" 
+          allowfullscreen
+          style="display:block; width:100%; aspect-ratio:16/9; object-fit:cover;">
+        </iframe>
+
         <div class="video-title" style="padding: 30px; background: linear-gradient(145deg, #101418, #050607); border-top: 1px solid var(--border); text-align: center;">
           <h3 style="color: #fff; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 32px; margin-bottom: 10px;">The Smart Hospital Vision</h3>
           <span style="color: var(--silver); font-size: 11px; letter-spacing: 3px; text-transform: uppercase;">Future Infrastructure</span>
@@ -108,66 +110,65 @@
       <div class="section-label">02 — SCIENTIFIC PUBLICATIONS & ARTICLES</div>
       <div class="section-heading">
         <h2>Expert Insights & <span>Industry Analysis.</span></h2>
-        <p>Authoritative perspectives on the technologies shaping modern medicine, written and reviewed by industry professionals.</p>
+        <p>Authoritative perspectives on the technologies shaping modern medicine, curated from the world's leading surgical robotics pioneers.</p>
       </div>
 
       <div class="article-grid">
         
-        <!-- Article 1 -->
+        <!-- Article 1: Prof. Russell H. Taylor -->
         <article class="article-card">
           <div class="article-img-wrap">
-            <img src="assets/robotic-hero.jpg" alt="Robotic Surgery Article" loading="lazy">
-            <span class="article-tag">Surgical Robotics</span>
+            <img src="assets/robotic-hero.jpg" alt="Systematic Review of Robotic Surgery" loading="lazy">
+            <span class="article-tag">Robotic Autonomy</span>
           </div>
           <div class="article-content">
             <div class="article-meta">
-              <span>By Azadipour Editorial</span>
-              <span>Oct 2026</span>
+              <span>By Prof. Russell H. Taylor</span>
+              <span>Johns Hopkins University</span>
             </div>
-            <h3>The Future of Minimally Invasive Robotic Surgery</h3>
-            <p>An in-depth analysis of how next-generation robotic platforms are redefining surgical precision, reducing recovery times, and expanding access to complex procedures.</p>
-            <a href="#" class="read-more">Read Publication <span>↗</span></a>
+            <h3>A Systematic Review of Robotic Surgery: From Supervised Paradigms to Fully Autonomous Approaches</h3>
+            <p>An authoritative review by the pioneering Professor Taylor, exploring the evolution of surgical robotics and the pathway toward fully autonomous robotic interventions.</p>
+            <a href="https://doi.org/10.1002/rcs.2358" target="_blank" rel="noopener noreferrer" class="read-more">Read Original Publication <span>↗</span></a>
           </div>
         </article>
 
-        <!-- Article 2 -->
+        <!-- Article 2: Prof. Vipul R. Patel -->
         <article class="article-card">
           <div class="article-img-wrap">
-            <img src="assets/smart-hospital.jpg" alt="Smart Hospitals Article" loading="lazy">
-            <span class="article-tag">Smart Hospitals</span>
+            <img src="assets/surgical-robotics.jpg" alt="Robotic Prostatectomy Outcomes" loading="lazy">
+            <span class="article-tag">Clinical Outcomes</span>
           </div>
           <div class="article-content">
             <div class="article-meta">
-              <span>By Azadipour Editorial</span>
-              <span>Sep 2026</span>
+              <span>By Prof. Vipul R. Patel</span>
+              <span>AdventHealth Global Robotics Institute</span>
             </div>
-            <h3>AI-Driven Ecosystems: The Rise of Fully Automated Hospitals</h3>
-            <p>Exploring the integration of artificial intelligence and automated clinical workflows to operate ultra-modern hospitals with minimal human intervention while maximizing patient care.</p>
-            <a href="#" class="read-more">Read Publication <span>↗</span></a>
+            <h3>Robotic-Assisted Radical Prostatectomy: A Comprehensive Analysis of Outcomes</h3>
+            <p>Insights from one of the world's most experienced robotic surgeons (with over 19,000 procedures), detailing clinical outcomes and best practices in robotic urologic oncology.</p>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/18423747/" target="_blank" rel="noopener noreferrer" class="read-more">Read Original Publication <span>↗</span></a>
           </div>
         </article>
 
-        <!-- Article 3 -->
+        <!-- Article 3: Prof. Tony Costello (Definitive Textbook) -->
         <article class="article-card">
           <div class="article-img-wrap">
-            <img src="assets/cardiac-hero.jpg" alt="Cardiovascular Technology Article" loading="lazy">
-            <span class="article-tag">Cardiovascular</span>
+            <img src="assets/smart-hospital.jpg" alt="Principles and Practice of Robotic Surgery Book" loading="lazy">
+            <span class="article-tag">Definitive Textbook</span>
           </div>
           <div class="article-content">
             <div class="article-meta">
-              <span>By Azadipour Editorial</span>
-              <span>Aug 2026</span>
+              <span>Edited by Prof. Tony Costello</span>
+              <span>Elsevier Publishing</span>
             </div>
-            <h3>Advancements in Cardiovascular Perfusion Systems</h3>
-            <p>A technical review of the latest life-support technologies and monitoring systems utilized in critical cardiac care units across premier international hospitals.</p>
-            <a href="#" class="read-more">Read Publication <span>↗</span></a>
+            <h3>Principles and Practice of Robotic Surgery</h3>
+            <p>The definitive global textbook on robotic surgery, edited by master surgeon Tony Costello, featuring contributions from the world's leading robotic specialists.</p>
+            <a href="https://shop.elsevier.com/books/principles-and-practice-of-robotic-surgery/costello/978-0-323-81089-5" target="_blank" rel="noopener noreferrer" class="read-more">View Book Details <span>↗</span></a>
           </div>
         </article>
 
       </div>
     </section>
 
-    <!-- CTA SECTION -->
     <section class="section contact-section">
       <div class="section-label">STAY INFORMED</div>
       <h2 class="section-heading">Subscribe to Our <span>Global Insights.</span></h2>
