@@ -18,6 +18,55 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 
+  <!-- Custom Styles for the Globe Markers -->
+  <style>
+    .globe-marker {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 4px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      color: #fff;
+      backdrop-filter: blur(4px);
+      box-shadow: 0 0 15px rgba(0,0,0,0.8);
+      transition: transform 0.2s ease;
+      cursor: pointer;
+      pointer-events: none; /* Prevents interfering with globe drag */
+    }
+    
+    /* Style for Companies (C) */
+    .marker-c {
+      background: rgba(255, 170, 0, 0.15);
+      border: 1px solid rgba(255, 170, 0, 0.8);
+      color: #ffaa00;
+      box-shadow: 0 0 15px rgba(255, 170, 0, 0.3);
+    }
+
+    /* Style for Hospitals (H) */
+    .marker-h {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      color: #ffffff;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    }
+
+    /* Style for the main Hub */
+    .marker-hub {
+      width: 40px;
+      height: 40px;
+      font-size: 16px;
+      background: rgba(255, 255, 255, 0.2);
+      border: 2px solid #ffffff;
+      color: #ffffff;
+      border-radius: 50%;
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
+    }
+  </style>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -141,8 +190,8 @@
       </div>
       <div class="network-legend">
         <div class="legend-item"><span class="legend-dot registered"></span><div><strong>Azadipour — Oman</strong><small>Strategic Command Hub</small></div></div>
-        <div class="legend-item"><span class="legend-dot target"></span><div><strong>International Suppliers</strong><small>Inbound Technology</small></div></div>
-        <div class="legend-item"><span class="legend-dot partner"></span><div><strong>Regional Hospitals</strong><small>Outbound Distribution</small></div></div>
+        <div class="legend-item"><span class="legend-dot target"></span><div><strong>International Suppliers</strong><small>Inbound Technology (C)</small></div></div>
+        <div class="legend-item"><span class="legend-dot partner"></span><div><strong>Regional Hospitals</strong><small>Outbound Distribution (H)</small></div></div>
       </div>
       <div class="network-footer">
         <p>The map presents a strategic geographic view of Azadipour's supply chain, illustrating critical connections from international suppliers to our Oman-based hub, and from our hub to regional healthcare organizations.</p>
@@ -170,12 +219,9 @@
 
       <!-- LUXURY SLIDER CREDENTIALS -->
       <div class="luxury-slider-wrapper">
-        <!-- Optional Prev Button for Desktop -->
         <button class="slider-nav-btn prev" onclick="document.getElementById('sliderTrack').scrollBy({left: -400, behavior: 'smooth'})">❮</button>
-        
         <div class="luxury-slider-track" id="sliderTrack">
           
-          <!-- Slide 1: Muscat (Main Hub) -->
           <div class="credential-slide">
             <div class="credential-header">
               <span class="credential-seal">VERIFIED &amp; LICENSED</span>
@@ -183,26 +229,13 @@
               <p>Azadipour is a premier entity in international trade with a dedicated focus on the medical sector. We hold fundamental regulatory licenses for medical product entry and comprehensive commercial licenses.</p>
             </div>
             <div class="credential-grid">
-              <div class="credential-item">
-                <span class="cred-label">COMMERCIAL REGISTRATION (CR)</span>
-                <span class="cred-value">1678104</span>
-              </div>
-              <div class="credential-item">
-                <span class="cred-label">OCCI MEMBERSHIP</span>
-                <span class="cred-value">5551647</span>
-              </div>
-              <div class="credential-item">
-                <span class="cred-label">ACTIVITY CODE</span>
-                <span class="cred-value">461003</span>
-              </div>
-              <div class="credential-item">
-                <span class="cred-label">REGISTERED OFFICE</span>
-                <span class="cred-value">Muscat, Oman</span>
-              </div>
+              <div class="credential-item"><span class="cred-label">COMMERCIAL REGISTRATION (CR)</span><span class="cred-value">1678104</span></div>
+              <div class="credential-item"><span class="cred-label">OCCI MEMBERSHIP</span><span class="cred-value">5551647</span></div>
+              <div class="credential-item"><span class="cred-label">ACTIVITY CODE</span><span class="cred-value">461003</span></div>
+              <div class="credential-item"><span class="cred-label">REGISTERED OFFICE</span><span class="cred-value">Muscat, Oman</span></div>
             </div>
           </div>
 
-          <!-- Slide 2: Berlin (Gold Branch) -->
           <div class="credential-slide gold-card">
             <div class="gold-icon">◈</div>
             <span class="credential-seal" style="display:inline-block; margin-bottom:20px;">NEW EXPANSION</span>
@@ -212,11 +245,8 @@
           </div>
 
         </div>
-        
-        <!-- Optional Next Button for Desktop -->
         <button class="slider-nav-btn next" onclick="document.getElementById('sliderTrack').scrollBy({left: 400, behavior: 'smooth'})">❯</button>
       </div>
-      <!-- END SLIDER -->
 
     </section>
 
@@ -329,135 +359,128 @@
 
         try {
           const world = Globe()(globeContainer)
-            // USING REALISTIC BLUE MARBLE TEXTURE
-            .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
-            .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
+            // VERY DARK GLOBE TEXTURE (Like Image 1)
+            .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-dark.jpg')
             .backgroundImageUrl('https://unpkg.com/three-globe/example/img/night-sky.png')
             .backgroundColor('#000000')
-            .showAtmosphere(true)
-            .atmosphereColor('#87CEEB') 
-            .atmosphereAltitude(0.15)
+            .showAtmosphere(false) // REMOVED CLOUDS & ATMOSPHERE
             .width(globeContainer.clientWidth)
             .height(globeContainer.clientHeight);
 
-          // Zoom to show Europe and Asia clearly
-          world.pointOfView({ lat: 35, lng: 45, altitude: 1.8 });
+          world.pointOfView({ lat: 30, lng: 45, altitude: 1.8 });
 
-          // Country Borders (Subtle but visible)
+          // Subtle Country Borders
           fetch('https://raw.githubusercontent.com/vasturiano/globe.gl/master/example/datasets/ne_110m_admin_0_countries.geojson')
             .then(res => res.json())
             .then(countries => {
               world.polygonsData(countries.features)
                 .polygonCapColor(() => 'rgba(0,0,0,0)') 
                 .polygonSideColor(() => 'rgba(0,0,0,0)')
-                .polygonStrokeColor(() => 'rgba(255, 255, 255, 0.3)') 
+                .polygonStrokeColor(() => 'rgba(255, 255, 255, 0.15)') // Very faint borders
                 .polygonAltitude(0.005);
                 
+              // Country Names (Like Image 1)
               const countryLabels = [
+                { lat: 37.0, lng: -95.0, name: "UNITED STATES" },
+                { lat: 23.0, lng: -102.0, name: "MEXICO" },
                 { lat: 35.0, lng: 105.0, name: "CHINA" },
-                { lat: 32.0, lng: 53.0, name: "IRAN" },
-                { lat: 23.0, lng: 45.0, name: "SAUDI ARABIA" },
-                { lat: 51.0, lng: 10.0, name: "GERMANY" }
+                { lat: 51.0, lng: 10.0, name: "GERMANY" },
+                { lat: 46.0, lng: 2.0, name: "FRANCE" },
+                { lat: 40.0, lng: -4.0, name: "SPAIN" },
+                { lat: 42.0, lng: 12.0, name: "ITALY" },
+                { lat: 23.0, lng: 45.0, name: "SAUDI ARABIA" }
               ];
               
               world.labelsData(countryLabels)
-                .labelSize(0.6).labelDotRadius(0).labelColor(() => 'rgba(255, 255, 255, 0.5)')
+                .labelSize(0.5).labelDotRadius(0).labelColor(() => 'rgba(255, 255, 255, 0.4)')
                 .labelText('name').labelAltitude(0.01).labelResolution(2);
             }).catch(err => console.error("Error loading borders:", err));
 
-          // Precise Coordinates
-          const omanHub = { lat: 23.5880, lng: 58.3829, name: "AZADIPOUR (MUSCAT)" };
+          // Data
+          const omanHub = { lat: 23.588, lng: 58.383, name: "AZADIPOUR" };
           
           const suppliers = [
-            { lat: 22.5431, lng: 114.0579, name: "Shenzhen" },
-            { lat: 31.2304, lng: 121.4737, name: "Shanghai" },
-            { lat: 39.9042, lng: 116.4074, name: "Beijing" }, // Exact Beijing
-            { lat: 25.0330, lng: 121.5654, name: "Taipei" },
-            { lat: 53.5511, lng: 9.9937, name: "Hamburg" } // Exact Hamburg
+            { lat: 22.543, lng: 114.057, name: "Shenzhen" },
+            { lat: 31.230, lng: 121.473, name: "Shanghai" },
+            { lat: 39.904, lng: 116.407, name: "Beijing" },
+            { lat: 25.033, lng: 121.565, name: "Taipei" },
+            { lat: 53.551, lng: 9.993, name: "Hamburg" },
+            { lat: 37.774, lng: -122.419, name: "San Francisco" }, // Extra US Company
+            { lat: 52.520, lng: 13.405, name: "Berlin" } // Berlin Company
           ];
-
-          // NEW Berlin Branch
-          const berlinBranch = { lat: 52.5200, lng: 13.4050, name: "BERLIN BRANCH" };
 
           const hospitals = [
-            { lat: 25.285, lng: 51.531 }, { lat: 25.291, lng: 51.367 },
-            { lat: 26.228, lng: 50.586 }, { lat: 26.130, lng: 50.555 },
-            { lat: 24.713, lng: 46.675 }, { lat: 21.485, lng: 39.197 },
-            { lat: 26.420, lng: 50.103 }, { lat: 21.422, lng: 39.826 },
-            { lat: 24.467, lng: 39.614 }
+            { lat: 25.285, lng: 51.531, name: "Doha" }, { lat: 25.291, lng: 51.367, name: "Al Rayyan" },
+            { lat: 26.228, lng: 50.586, name: "Manama" }, { lat: 26.130, lng: 50.555, name: "Riffa" },
+            { lat: 24.713, lng: 46.675, name: "Riyadh" }, { lat: 21.485, lng: 39.197, name: "Jeddah" },
+            { lat: 26.420, lng: 50.103, name: "Dammam" }, { lat: 21.422, lng: 39.826, name: "Mecca" },
+            { lat: 24.467, lng: 39.614, name: "Medina" }
           ];
 
+          // 1. Draw Arcs (Glowing Copper/Gold Lines)
           const arcsData = [];
           
-          // Suppliers -> Oman (White)
+          // Suppliers -> Oman
           suppliers.forEach(s => arcsData.push({ 
             startLat: s.lat, startLng: s.lng, 
             endLat: omanHub.lat, endLng: omanHub.lng, 
-            color: ['rgba(255, 255, 255, 0.8)', 'rgba(255, 255, 255, 0.1)'] 
+            color: ['rgba(255, 170, 0, 0.8)', 'rgba(255, 170, 0, 0.1)'] // Copper
           }));
           
-          // Oman -> Berlin Branch (Gold)
-          arcsData.push({ 
-            startLat: omanHub.lat, startLng: omanHub.lng, 
-            endLat: berlinBranch.lat, endLng: berlinBranch.lng, 
-            color: ['rgba(255, 215, 0, 0.8)', 'rgba(255, 215, 0, 0.1)'] 
-          });
-          
-          // Oman -> Hospitals (Light grey)
+          // Oman -> Hospitals
           hospitals.forEach(h => arcsData.push({ 
             startLat: omanHub.lat, startLng: omanHub.lng, 
             endLat: h.lat, endLng: h.lng, 
-            color: ['rgba(255, 255, 255, 0.3)', 'rgba(255, 255, 255, 0.05)'] 
+            color: ['rgba(255, 255, 255, 0.4)', 'rgba(255, 255, 255, 0.05)'] // Subtle white
           }));
 
           world.arcsData(arcsData)
             .arcColor('color')
-            .arcDashLength(0.5)
+            .arcDashLength(0.6)
             .arcDashGap(0.2)
-            .arcDashAnimateTime(3000)
-            .arcStroke(0.4);
+            .arcDashAnimateTime(2500)
+            .arcStroke(0.3); // Very thin and elegant
 
-          const pointsData = [omanHub, ...suppliers, berlinBranch, ...hospitals];
+          // 2. Draw Custom HTML Markers for "C" (Companies) and "H" (Hospitals)
           
-          world.pointsData(pointsData)
-            .pointColor(d => {
-              if (d.name && d.name.includes("AZADIPOUR")) return '#ffffff';
-              if (d.name && d.name.includes("BERLIN BRANCH")) return '#FFD700';
-              if (d.name && d.name.includes("Supplier") || d.name === "Hamburg" || d.name === "Beijing" || d.name === "Shanghai" || d.name === "Taipei" || d.name === "Shenzhen") return '#87CEEB'; 
-              return 'rgba(255,255,255,0.4)';
-            })
-            .pointAltitude(d => (d.name && d.name.includes("AZADIPOUR")) || (d.name && d.name.includes("BERLIN")) ? 0.02 : 0.01) 
-            .pointRadius(d => {
-              if (d.name && d.name.includes("AZADIPOUR")) return 0.6;
-              if (d.name && d.name.includes("BERLIN BRANCH")) return 0.5;
-              if (d.name && (d.name === "Hamburg" || d.name === "Beijing" || d.name === "Shanghai" || d.name === "Taipei" || d.name === "Shenzhen")) return 0.3;
-              return 0.15;
-            })
-            .pointsMerge(false);
-
-          const importantLabels = [omanHub, ...suppliers, berlinBranch];
-          world.labelsData(importantLabels)
-            .labelSize(d => d.name && d.name.includes("AZADIPOUR") ? 1.5 : 0.8)
-            .labelDotRadius(0)
-            .labelColor(d => d.name && d.name.includes("BERLIN BRANCH") ? '#FFD700' : '#ffffff')
-            .labelText('name')
-            .labelAltitude(0.025)
-            .labelResolution(2);
-
-          // Rings
-          const ringsData = [
-            { ...omanHub, color: 'rgba(255, 255, 255, 0.8)' },
-            { ...berlinBranch, color: 'rgba(255, 215, 0, 0.8)' } // Gold Ring
+          const htmlElementsData = [
+            // The Hub
+            { lat: omanHub.lat, lng: omanHub.lng, type: 'hub', text: 'A' },
+            // Companies
+            ...suppliers.map(s => ({ ...s, type: 'company', text: 'C' })),
+            // Hospitals
+            ...hospitals.map(h => ({ ...h, type: 'hospital', text: 'H' }))
           ];
 
-          world.ringsData(ringsData)
-            .ringColor(d => t => d.color.replace('0.8', 1-t))
-            .ringMaxRadius(d => d.name && d.name.includes("AZADIPOUR") ? 3 : 2)
-            .ringPropagationSpeed(2)
-            .ringRepeatPeriod(2000);
+          world.htmlElementsData(htmlElementsData)
+            .htmlElement(d => {
+              const el = document.createElement('div');
+              
+              if (d.type === 'hub') {
+                el.className = 'globe-marker marker-hub';
+                el.innerHTML = `<span style="font-family: 'Cormorant Garamond';">${d.text}</span>`;
+              } else if (d.type === 'company') {
+                el.className = 'globe-marker marker-c';
+                el.innerHTML = d.text;
+              } else if (d.type === 'hospital') {
+                el.className = 'globe-marker marker-h';
+                el.innerHTML = d.text;
+              }
+              
+              return el;
+            })
+            .htmlAltitude(d => d.type === 'hub' ? 0.025 : 0.015);
 
+          // 3. Add Rings around the Hub
+          world.ringsData([omanHub])
+            .ringColor(() => t => `rgba(255, 170, 0, ${1-t})`) // Copper ring
+            .ringMaxRadius(4)
+            .ringPropagationSpeed(2)
+            .ringRepeatPeriod(1500);
+
+          // Controls
           world.controls().autoRotate = true;
-          world.controls().autoRotateSpeed = 0.2;
+          world.controls().autoRotateSpeed = 0.3;
           world.controls().enableZoom = true;
           world.controls().minDistance = 150;
 
@@ -468,6 +491,7 @@
             world.height(globeContainer.clientHeight);
           });
         } catch (err) {
+          console.error(err);
           if (loading) loading.style.display = "none";
         }
       }, 100);
