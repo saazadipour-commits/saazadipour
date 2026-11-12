@@ -13,21 +13,19 @@
   --silver-dark: #858e98;
   --border: rgba(225,230,235,.14);
   --border-strong: rgba(225,230,235,.28);
+  --gold: #FFD700;
   --container: 1180px;
   --header-height: 82px;
   --transition: .3s ease;
 }
 
-/* Hide scrollbar for cleaner look */
 ::-webkit-scrollbar { width: 0px; background: transparent; }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 html { scroll-behavior: smooth; scroll-padding-top: 100px; background: var(--bg); overflow-x: hidden; }
 body { min-width: 320px; overflow-x: hidden; background: var(--bg); color: var(--text); font-family: "Inter", Arial, sans-serif; font-size: 15px; line-height: 1.75; -webkit-font-smoothing: antialiased; }
-body, button, input, textarea { font-family: "Inter", Arial, sans-serif; }
 img { display: block; max-width: 100%; height: auto; }
 a { color: inherit; text-decoration: none; }
-button { font: inherit; }
 ul { list-style: none; }
 p { color: var(--text-soft); }
 h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia, serif; font-weight: 500; line-height: 1.15; }
@@ -68,7 +66,6 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
 .menu-toggle { display: none; width: 43px; height: 43px; flex-direction: column; align-items: center; justify-content: center; gap: 6px; border: 1px solid var(--border); background: transparent; cursor: pointer; }
 .menu-toggle span { width: 19px; height: 1px; background: #fff; transition: var(--transition); }
 
-/* Dropdown Menu */
 .nav-dropdown { position: relative; display: inline-block; }
 .nav-dropdown-toggle { cursor: pointer; display: flex; align-items: center; gap: 5px; }
 .nav-dropdown-menu { position: absolute; top: 100%; left: 0; min-width: 220px; background: #0a0c0e; border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.8); display: none; flex-direction: column; z-index: 1000; padding: 10px 0; }
@@ -110,8 +107,7 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
 .network-map-topline, .map-caption { display: flex; justify-content: space-between; gap: 15px; padding: 17px 22px; color: #cbd1d7; font-size: 9px; letter-spacing: 1.8px; }
 .network-map-topline { border-bottom: 1px solid var(--border); background: linear-gradient(90deg,#090c0f,#11161b,#090c0f); }
 
-/* 3D Globe Canvas */
-.network-map-canvas-wrap { position: relative; width: 100%; height: 600px; overflow: hidden; background-color: #050607; background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop'); background-size: cover; background-position: center; }
+.network-map-canvas-wrap { position: relative; width: 100%; height: 600px; overflow: hidden; background-color: #050607; background-image: url('https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg'); background-size: cover; background-position: center; }
 .az-world-map { display: block; width: 100%; height: 100%; }
 .map-loading { position: absolute; inset: 0; z-index: 5; display: flex; align-items: center; justify-content: center; gap: 13px; background: #000; color: var(--silver); font-size: 10px; letter-spacing: 2px; text-align: center; transition: opacity .5s ease; }
 .loading-indicator { width: 18px; height: 18px; border: 1px solid rgba(255,255,255,.2); border-top-color: #fff; border-radius: 50%; animation: map-spin 1s linear infinite; }
@@ -121,7 +117,7 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
 .legend-item { display: flex; align-items: center; gap: 12px; min-width: 0; }
 .legend-dot { width: 10px; height: 10px; flex-shrink: 0; border-radius: 50%; }
 .legend-dot.registered { background: #fff; box-shadow: 0 0 15px rgba(255,255,255,.85); }
-.legend-dot.target { background: #888; box-shadow: 0 0 10px rgba(255,255,255,.25); }
+.legend-dot.target { background: #87CEEB; box-shadow: 0 0 10px rgba(135,206,235,.5); }
 .legend-dot.partner { background: #444; box-shadow: 0 0 8px rgba(255,255,255,.15); }
 .legend-item strong { display: block; color: #f5f6f7; font-size: 11px; font-weight: 600; }
 .legend-item small { display: block; color: #929ba4; font-size: 10px; line-height: 1.5; }
@@ -139,26 +135,116 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
 .intro-detail p { font-size: 13px; }
 
 /* =========================================
-   ULTIMATE 3D LUXURY CREDENTIALS CARD
+   LUXURY SLIDER CREDENTIALS
    ========================================= */
-.credential-3d-wrapper { perspective: 1200px; margin-top: 60px; }
-.corporate-credentials-card { position: relative; padding: 45px; background: linear-gradient(135deg, rgba(20, 25, 30, 0.7), rgba(5, 7, 9, 0.95)); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 12px; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9), inset 0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 0 40px rgba(255, 255, 255, 0.02); backdrop-filter: blur(20px); overflow: hidden; display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; align-items: center; transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.6s ease; }
-.corporate-credentials-card:hover { transform: rotateY(-5deg) rotateX(5deg) translateZ(10px); box-shadow: -20px 30px 60px rgba(0, 0, 0, 1), inset 0 0 0 1px rgba(255, 255, 255, 0.2), inset 0 0 50px rgba(255, 255, 255, 0.05); }
-.corporate-credentials-card::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 1px; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent); z-index: 2; }
-.corporate-credentials-card::after { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px); background-size: 20px 20px; z-index: 1; pointer-events: none; }
-.credential-header { position: relative; z-index: 2; border-right: 1px solid rgba(255, 255, 255, 0.1); padding-right: 40px; transform: translateZ(30px); }
-.credential-seal { display: inline-block; padding: 6px 14px; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--silver-dark); color: var(--silver); font-size: 9px; letter-spacing: 2px; margin-bottom: 20px; text-transform: uppercase; border-radius: 4px; }
-.credential-header h3 { color: #fff; font-family: "Cormorant Garamond", Georgia, serif; font-size: 34px; font-weight: 500; margin-bottom: 15px; }
-.credential-header p { color: var(--text-soft); font-size: 13.5px; line-height: 1.8; text-align: justify; }
-.credential-grid { position: relative; z-index: 2; display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; transform: translateZ(20px); }
-.credential-item { display: flex; flex-direction: column; gap: 6px; padding: 15px; background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 6px; transition: background 0.3s ease; }
-.credential-item:hover { background: rgba(255, 255, 255, 0.05); }
+.luxury-slider-wrapper {
+  position: relative;
+  margin-top: 60px;
+  max-width: 1100px;
+  margin-inline: auto;
+}
+
+.luxury-slider-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  gap: 30px;
+  padding-bottom: 20px; /* Space for scrollbar if visible */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+.luxury-slider-track::-webkit-scrollbar { display: none; }
+
+.credential-slide {
+  scroll-snap-align: center;
+  flex: 0 0 100%; /* 100% width on mobile */
+  padding: 45px;
+  background: linear-gradient(135deg, rgba(20, 25, 30, 0.95), rgba(5, 7, 9, 0.98));
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 40px;
+  align-items: center;
+}
+
+/* Specific Styling for the Gold Berlin Card */
+.credential-slide.gold-card {
+  background: linear-gradient(135deg, #0d0e12, #000);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  box-shadow: 0 0 40px rgba(255, 215, 0, 0.05), inset 0 0 40px rgba(255, 215, 0, 0.05);
+  grid-template-columns: 1fr;
+  text-align: center;
+}
+
+.credential-slide::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+}
+.credential-slide.gold-card::before {
+  background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.8), transparent);
+}
+
+/* Front Content */
+.credential-header h3 { font-size: 34px; margin-bottom: 15px; color: #fff; }
+.credential-header p { font-size: 13.5px; color: var(--text-soft); line-height: 1.8; text-align: justify; }
+.credential-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+.credential-item { display: flex; flex-direction: column; gap: 6px; padding: 15px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05); border-radius: 4px; }
 .cred-label { color: var(--silver-dark); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; }
 .cred-value { color: #ffffff; font-family: "Inter", sans-serif; font-size: 16px; font-weight: 500; letter-spacing: 1px; }
-.credential-item.new-branch { border-color: rgba(255, 215, 0, 0.4); background: linear-gradient(90deg, rgba(255,215,0,0.05), transparent); position: relative; }
-.credential-item.new-branch::after { content: "NEW"; position: absolute; top: -10px; right: 10px; background: #FFD700; color: #000; font-size: 8px; font-weight: bold; letter-spacing: 1px; padding: 2px 6px; border-radius: 2px; }
+
+/* Gold Card Content */
+.gold-icon { font-size: 50px; color: var(--gold); margin-bottom: 20px; filter: drop-shadow(0 0 15px rgba(255,215,0,0.4)); }
+.gold-card h3 { color: var(--gold); font-size: 36px; margin-bottom: 10px; }
+.gold-card p { color: #ccc; letter-spacing: 2px; text-transform: uppercase; font-size: 12px; }
+.gold-card .credential-seal { border-color: var(--gold); color: var(--gold); background: rgba(255,215,0,0.05); }
+
+/* Navigation Buttons */
+.slider-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background: rgba(10, 12, 15, 0.8);
+  border: 1px solid var(--border-strong);
+  border-radius: 50%;
+  color: #fff;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: var(--transition);
+  backdrop-filter: blur(5px);
+}
+.slider-nav-btn:hover { background: #fff; color: #000; }
+.slider-nav-btn.prev { left: -25px; }
+.slider-nav-btn.next { right: -25px; }
+
+@media (max-width: 1200px) {
+  .slider-nav-btn { display: none; } /* Hide arrows on mobile, rely on swipe */
+}
+
+@media (min-width: 901px) {
+  .credential-slide { flex: 0 0 calc(50% - 15px); } /* Show side by side on desktop */
+}
+
+@media (max-width: 900px) {
+  .credential-slide { grid-template-columns: 1fr; padding: 30px; text-align: center; }
+  .credential-header { text-align: center; }
+  .credential-grid { grid-template-columns: 1fr; }
+}
 
 /* 08 — VISUAL PORTFOLIO */
+/* ... (بقیه استایل‌های پورتفولیو، تکنولوژی و فوتر بدون تغییر باقی می‌مانند) ... */
 .visual-portfolio-section { background: #090c0f; }
 .visual-portfolio-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 17px; margin-top: 38px; }
 .visual-portfolio-card { position: relative; min-width: 0; min-height: 270px; overflow: hidden; border: 1px solid var(--border); background: #101316; border-radius: 2px; }
@@ -168,7 +254,6 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
 .visual-portfolio-card figcaption strong { color: #fff; font-family: "Cormorant Garamond", Georgia, serif; font-size: 25px; font-weight: 500; }
 .visual-portfolio-card figcaption span { color: #c8cdd2; font-size: 10px; letter-spacing: .7px; }
 
-/* 09 — PARTNERSHIPS */
 .partnership-section { background: #050607; }
 .partnership-content { display: grid; grid-template-columns: 1.2fr .8fr; align-items: center; gap: 50px; }
 .partnership-content h2 { margin-bottom: 20px; font-size: clamp(38px,5vw,60px); }
@@ -178,7 +263,6 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
 .partnership-mark span { color: #fff; font-family: "Cormorant Garamond", Georgia, serif; font-size: 34px; letter-spacing: 6px; }
 .partnership-mark small { color: var(--silver-dark); font-size: 9px; letter-spacing: 2px; }
 
-/* 10 — CONTACT & FORMS */
 .contact-section { padding: 100px 24px; }
 .contact-content { max-width: 780px; margin-inline: auto; }
 .contact-content h2 { margin-bottom: 20px; font-size: clamp(38px,5.5vw,62px); }
@@ -203,9 +287,6 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
 #form-status.success { display: block; background: rgba(40, 167, 69, 0.1); border: 1px solid rgba(40, 167, 69, 0.3); color: #28a745; }
 #form-status.error { display: block; background: rgba(220, 53, 69, 0.1); border: 1px solid rgba(220, 53, 69, 0.3); color: #dc3545; }
 
-/* =========================================
-   EXECUTIVE LEADERSHIP SECTION
-   ========================================= */
 .leadership-section { background: radial-gradient(ellipse at 50% 0%, rgba(20, 25, 30, 0.8), #050607 80%); border-top: 1px solid var(--border); padding: 100px 24px; }
 .executive-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-top: 50px; max-width: 1000px; margin-inline: auto; }
 .exec-card { position: relative; padding: 40px 30px; background: linear-gradient(145deg, rgba(15, 20, 25, 0.6), rgba(5, 7, 9, 0.9)); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 4px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7); backdrop-filter: blur(10px); transition: var(--transition); overflow: hidden; display: flex; flex-direction: column; }
@@ -221,7 +302,6 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
 .confidentiality-note { margin-top: 60px; padding: 30px; text-align: center; border: 1px dashed rgba(255, 255, 255, 0.15); border-radius: 4px; background: rgba(255, 255, 255, 0.02); }
 .confidentiality-note p { color: var(--muted); font-size: 12px; line-height: 1.8; margin: 0; font-style: italic; }
 
-/* 11 — INNER PAGES */
 .inner-hero { position: relative; min-height: 430px; display: flex; align-items: center; padding: 85px 24px; overflow: hidden; background: linear-gradient(120deg,#050607,#171d22); }
 .inner-hero-content { position: relative; z-index: 2; width: min(var(--container),100%); margin: auto; }
 .inner-hero h1 { max-width: 850px; margin-bottom: 20px; font-size: clamp(45px,7vw,75px); }
@@ -231,7 +311,6 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
 .inner-hero-decoration::before, .inner-hero-decoration::after { position: absolute; inset: 25px; border: 1px solid rgba(255,255,255,.09); border-radius: 50%; content: ""; }
 .inner-hero-decoration::after { inset: 60px; }
 
-/* 12 — GENERAL CONTENT CARDS */
 .mission-grid, .approach-grid, .presence-grid, .medical-area-grid, .technology-grid, .contact-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; margin-top: 35px; }
 .mission-card, .approach-grid > div, .presence-card, .medical-area-card, .contact-card { padding: 30px; border: 1px solid var(--border); background: var(--bg-card); transition: var(--transition); border-radius: 2px; }
 .mission-card:hover, .presence-card:hover, .medical-area-card:hover, .contact-card:hover { border-color: var(--silver-dark); transform: translateY(-4px); box-shadow: 0 15px 40px rgba(0,0,0,0.6); }
@@ -239,7 +318,6 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
 .presence-card p, .medical-area-card p, .mission-card p { font-size: 13px; }
 .presence-number, .medical-area-number { color: var(--silver-dark); font-size: 11px; letter-spacing: 2px; margin-bottom: 15px; display: block; }
 
-/* 13 — ABOUT / VISION */
 .about-vision { padding: 85px max(24px,calc((100% - var(--container))/2)); border-block: 1px solid var(--border); background: #101316; }
 .vision-content { max-width: 850px; }
 .vision-content h2 { margin-bottom: 18px; font-size: clamp(34px,4.5vw,52px); }
@@ -251,7 +329,6 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
 .focus-row { display: grid; grid-template-columns: 60px 1fr; gap: 20px; padding: 20px 0; border-bottom: 1px solid var(--border); }
 .focus-row h3 { margin-bottom: 6px; font-size: 25px; }
 
-/* 14 — SOLUTIONS / TECHNOLOGY CARDS */
 .technology-section, .solutions-section { background: #090c0f; }
 .technology-card { position: relative; min-height: 270px; display: flex; flex-direction: column; justify-content: space-between; padding: 30px; overflow: hidden; border: 1px solid var(--border); background: linear-gradient(145deg,#151a1f,#090b0d); transition: var(--transition); border-radius: 2px; }
 .technology-card:hover { border-color: rgba(255,255,255,.45); transform: translateY(-4px); box-shadow: 0 15px 40px rgba(0,0,0,0.6); }
@@ -264,7 +341,6 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
 .solution-item h3 { margin-bottom: 12px; font-size: 24px; }
 .solution-item p { font-size: 13px; }
 
-/* 15 — MEDIA PAGE (Video & Articles) */
 .video-luxury-container { max-width: 1000px; margin: 50px auto 0; position: relative; border-radius: 4px; overflow: hidden; border: 1px solid var(--border); background: #000; box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8); transition: var(--transition); }
 .video-luxury-container video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
 .video-luxury-info { padding: 30px; background: linear-gradient(145deg, #101418, #050607); border-top: 1px solid var(--border); text-align: center; }
@@ -285,7 +361,6 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
 .read-more span { transition: transform var(--transition); }
 .article-card:hover .read-more span { transform: translateX(5px); }
 
-/* 16 — FOOTER */
 .site-footer { padding: 65px 24px 22px; border-top: 1px solid var(--border); background: #050607; }
 .footer-main { width: min(var(--container),100%); display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 35px; margin: auto; }
 .footer-brand { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
@@ -297,7 +372,6 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
 .footer-column a:hover { color: #fff; }
 .footer-bottom { width: min(var(--container),100%); display: flex; justify-content: space-between; gap: 20px; margin: 45px auto 0; padding-top: 20px; border-top: 1px solid var(--border); color: var(--muted); font-size: 10px; }
 
-/* 17 — RESPONSIVE (TABLET & MOBILE) */
 @media (max-width: 1050px) {
   .menu-toggle { display: flex; }
   .main-nav { position: absolute; top: 100%; left: 0; right: 0; display: none; flex-direction: column; align-items: stretch; gap: 0; padding: 12px 24px 22px; border-bottom: 1px solid var(--border); background: #0a0c0e; }
@@ -319,9 +393,6 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
   .network-legend { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .footer-main { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .footer-brand { grid-column: 1 / -1; }
-  .corporate-credentials-card { grid-template-columns: 1fr; padding: 30px; gap: 30px; transform: none !important; }
-  .credential-header { border-right: none; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-right: 0; padding-bottom: 30px; }
-  .credential-grid { grid-template-columns: 1fr; }
   .contact-luxury-grid { grid-template-columns: 1fr; gap: 40px; }
   .luxury-form { grid-template-columns: 1fr; }
 }
@@ -345,10 +416,6 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
   .network-map-canvas-wrap { height: 400px; }
   .network-map-topline, .map-caption { flex-direction: column; gap: 5px; text-align: center; }
   .network-footer { flex-direction: column; align-items: flex-start; }
-  .credential-grid { grid-template-columns: 1fr; gap: 15px; }
-  .credential-header h3 { font-size: 26px; }
-  .credential-header p { font-size: 12.5px; }
-  
   .executive-grid { grid-template-columns: 1fr; }
   .exec-card { padding: 30px 20px; }
 }
