@@ -4,7 +4,7 @@
   <!-- Homepage (Highest Priority) -->
   <url>
     <loc>https://azadipourmedical.com/</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -12,7 +12,7 @@
   <!-- About Us -->
   <url>
     <loc>https://azadipourmedical.com/about.html</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -20,7 +20,7 @@
   <!-- Medical Technology (Main Category) -->
   <url>
     <loc>https://azadipourmedical.com/medical.html</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -28,15 +28,31 @@
   <!-- Global Partnerships -->
   <url>
     <loc>https://azadipourmedical.com/partners.html</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Projects (Includes Smart Hospitals) -->
+  <url>
+    <loc>https://azadipourmedical.com/projects.html</loc>
+    <lastmod>2026-11-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Media & Scientific Publications -->
+  <url>
+    <loc>https://azadipourmedical.com/media.html</loc>
+    <lastmod>2026-11-12</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Robotic Surgery -->
   <url>
     <loc>https://azadipourmedical.com/robotic.html</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -44,15 +60,7 @@
   <!-- Cardiovascular -->
   <url>
     <loc>https://azadipourmedical.com/cardiac.html</loc>
-    <lastmod>2026-11-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- Projects -->
-  <url>
-    <loc>https://azadipourmedical.com/projects.html</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -60,7 +68,7 @@
   <!-- Contact -->
   <url>
     <loc>https://azadipourmedical.com/contact.html</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
