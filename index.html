@@ -18,52 +18,58 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 
-  <!-- Custom Styles for the Globe Markers -->
+  <!-- Custom Styles for the Globe Markers (Smaller & Refined) -->
   <style>
     .globe-marker {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 32px;
-      height: 32px;
+      width: 20px;  /* Smaller size */
+      height: 20px; /* Smaller size */
       border-radius: 4px;
       font-family: 'Inter', sans-serif;
       font-weight: 700;
-      font-size: 14px;
-      color: #fff;
+      font-size: 9px; /* Smaller font */
       backdrop-filter: blur(4px);
-      box-shadow: 0 0 15px rgba(0,0,0,0.8);
+      box-shadow: 0 0 10px rgba(0,0,0,0.8);
       transition: transform 0.2s ease;
       cursor: pointer;
-      pointer-events: none; /* Prevents interfering with globe drag */
+      pointer-events: none; 
     }
     
-    /* Style for Companies (C) */
+    /* Companies (White) */
     .marker-c {
-      background: rgba(255, 170, 0, 0.15);
-      border: 1px solid rgba(255, 170, 0, 0.8);
-      color: #ffaa00;
-      box-shadow: 0 0 15px rgba(255, 170, 0, 0.3);
-    }
-
-    /* Style for Hospitals (H) */
-    .marker-h {
       background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.7);
       color: #ffffff;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
     }
 
-    /* Style for the main Hub */
+    /* Hospitals (Subtle White/Grey) */
+    .marker-h {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #cccccc;
+    }
+
+    /* Main Hub (Oman) */
     .marker-hub {
-      width: 40px;
-      height: 40px;
-      font-size: 16px;
-      background: rgba(255, 255, 255, 0.2);
+      width: 30px;
+      height: 30px;
+      font-size: 12px;
+      background: rgba(255, 255, 255, 0.15);
       border: 2px solid #ffffff;
       color: #ffffff;
       border-radius: 50%;
-      box-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
+    }
+
+    /* Germany Branch (Gold) */
+    .marker-gold {
+      background: rgba(255, 215, 0, 0.1);
+      border: 1px solid rgba(255, 215, 0, 0.8);
+      color: #FFD700;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
     }
   </style>
 
@@ -359,30 +365,29 @@
 
         try {
           const world = Globe()(globeContainer)
-            // VERY DARK GLOBE TEXTURE (Like Image 1)
-            .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-dark.jpg')
+            // HIGH QUALITY DARK TEXTURE
+            .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-night.jpg')
             .backgroundImageUrl('https://unpkg.com/three-globe/example/img/night-sky.png')
             .backgroundColor('#000000')
-            .showAtmosphere(false) // REMOVED CLOUDS & ATMOSPHERE
+            .showAtmosphere(false) // REMOVED CLOUDS
             .width(globeContainer.clientWidth)
             .height(globeContainer.clientHeight);
 
-          world.pointOfView({ lat: 30, lng: 45, altitude: 1.8 });
+          // Zoom to show the global network clearly
+          world.pointOfView({ lat: 30, lng: 40, altitude: 2.2 });
 
-          // Subtle Country Borders
+          // Country Borders
           fetch('https://raw.githubusercontent.com/vasturiano/globe.gl/master/example/datasets/ne_110m_admin_0_countries.geojson')
             .then(res => res.json())
             .then(countries => {
               world.polygonsData(countries.features)
                 .polygonCapColor(() => 'rgba(0,0,0,0)') 
                 .polygonSideColor(() => 'rgba(0,0,0,0)')
-                .polygonStrokeColor(() => 'rgba(255, 255, 255, 0.15)') // Very faint borders
+                .polygonStrokeColor(() => 'rgba(255, 255, 255, 0.15)') 
                 .polygonAltitude(0.005);
                 
-              // Country Names (Like Image 1)
               const countryLabels = [
-                { lat: 37.0, lng: -95.0, name: "UNITED STATES" },
-                { lat: 23.0, lng: -102.0, name: "MEXICO" },
+                { lat: 37.0, lng: -95.0, name: "USA" },
                 { lat: 35.0, lng: 105.0, name: "CHINA" },
                 { lat: 51.0, lng: 10.0, name: "GERMANY" },
                 { lat: 46.0, lng: 2.0, name: "FRANCE" },
@@ -392,7 +397,7 @@
               ];
               
               world.labelsData(countryLabels)
-                .labelSize(0.5).labelDotRadius(0).labelColor(() => 'rgba(255, 255, 255, 0.4)')
+                .labelSize(0.5).labelDotRadius(0).labelColor(() => 'rgba(255, 255, 255, 0.3)')
                 .labelText('name').labelAltitude(0.01).labelResolution(2);
             }).catch(err => console.error("Error loading borders:", err));
 
@@ -405,82 +410,94 @@
             { lat: 39.904, lng: 116.407, name: "Beijing" },
             { lat: 25.033, lng: 121.565, name: "Taipei" },
             { lat: 53.551, lng: 9.993, name: "Hamburg" },
-            { lat: 37.774, lng: -122.419, name: "San Francisco" }, // Extra US Company
-            { lat: 52.520, lng: 13.405, name: "Berlin" } // Berlin Company
+            { lat: 37.774, lng: -122.419, name: "San Francisco" }
           ];
 
+          // The New German Branch (Gold 'A')
+          const germanyBranch = { lat: 52.520, lng: 13.405, name: "BERLIN BRANCH" };
+
+          // Reduced Hospitals: One per specified country
           const hospitals = [
-            { lat: 25.285, lng: 51.531, name: "Doha" }, { lat: 25.291, lng: 51.367, name: "Al Rayyan" },
-            { lat: 26.228, lng: 50.586, name: "Manama" }, { lat: 26.130, lng: 50.555, name: "Riffa" },
-            { lat: 24.713, lng: 46.675, name: "Riyadh" }, { lat: 21.485, lng: 39.197, name: "Jeddah" },
-            { lat: 26.420, lng: 50.103, name: "Dammam" }, { lat: 21.422, lng: 39.826, name: "Mecca" },
-            { lat: 24.467, lng: 39.614, name: "Medina" }
+            { lat: 24.713, lng: 46.675 }, // Riyadh, Saudi Arabia
+            { lat: 25.285, lng: 51.531 }, // Doha, Qatar
+            { lat: 26.228, lng: 50.586 }, // Manama, Bahrain
+            { lat: 24.453, lng: 54.377 }, // Abu Dhabi, UAE
+            { lat: 17.015, lng: 54.092 }, // Salalah, Oman (Different from Hub)
+            { lat: 48.856, lng: 2.352 },  // Paris, France
+            { lat: 41.902, lng: 12.496 }, // Rome, Italy
+            { lat: 40.416, lng: -3.703 }, // Madrid, Spain
+            { lat: 40.712, lng: -74.006 } // New York, USA
           ];
 
-          // 1. Draw Arcs (Glowing Copper/Gold Lines)
+          // Arcs
           const arcsData = [];
           
-          // Suppliers -> Oman
+          // Suppliers -> Oman (White)
           suppliers.forEach(s => arcsData.push({ 
             startLat: s.lat, startLng: s.lng, 
             endLat: omanHub.lat, endLng: omanHub.lng, 
-            color: ['rgba(255, 170, 0, 0.8)', 'rgba(255, 170, 0, 0.1)'] // Copper
+            color: ['rgba(255, 255, 255, 0.6)', 'rgba(255, 255, 255, 0.05)'] 
           }));
           
-          // Oman -> Hospitals
+          // Oman -> Germany Branch (Gold)
+          arcsData.push({ 
+            startLat: omanHub.lat, startLng: omanHub.lng, 
+            endLat: germanyBranch.lat, endLng: germanyBranch.lng, 
+            color: ['rgba(255, 215, 0, 0.8)', 'rgba(255, 215, 0, 0.1)'] 
+          });
+          
+          // Oman -> Hospitals (Subtle white)
           hospitals.forEach(h => arcsData.push({ 
             startLat: omanHub.lat, startLng: omanHub.lng, 
             endLat: h.lat, endLng: h.lng, 
-            color: ['rgba(255, 255, 255, 0.4)', 'rgba(255, 255, 255, 0.05)'] // Subtle white
+            color: ['rgba(200, 200, 200, 0.3)', 'rgba(200, 200, 200, 0.01)'] 
           }));
 
           world.arcsData(arcsData)
             .arcColor('color')
-            .arcDashLength(0.6)
+            .arcDashLength(0.5)
             .arcDashGap(0.2)
-            .arcDashAnimateTime(2500)
-            .arcStroke(0.3); // Very thin and elegant
+            .arcDashAnimateTime(2000)
+            .arcStroke(0.3); // Very thin
 
-          // 2. Draw Custom HTML Markers for "C" (Companies) and "H" (Hospitals)
-          
+          // HTML Markers (Smaller, Custom Letters)
           const htmlElementsData = [
-            // The Hub
             { lat: omanHub.lat, lng: omanHub.lng, type: 'hub', text: 'A' },
-            // Companies
+            { lat: germanyBranch.lat, lng: germanyBranch.lng, type: 'gold', text: 'A' },
             ...suppliers.map(s => ({ ...s, type: 'company', text: 'C' })),
-            // Hospitals
             ...hospitals.map(h => ({ ...h, type: 'hospital', text: 'H' }))
           ];
 
           world.htmlElementsData(htmlElementsData)
             .htmlElement(d => {
               const el = document.createElement('div');
+              el.className = 'globe-marker';
               
               if (d.type === 'hub') {
-                el.className = 'globe-marker marker-hub';
-                el.innerHTML = `<span style="font-family: 'Cormorant Garamond';">${d.text}</span>`;
+                el.classList.add('marker-hub');
               } else if (d.type === 'company') {
-                el.className = 'globe-marker marker-c';
-                el.innerHTML = d.text;
+                el.classList.add('marker-c');
               } else if (d.type === 'hospital') {
-                el.className = 'globe-marker marker-h';
-                el.innerHTML = d.text;
+                el.classList.add('marker-h');
+              } else if (d.type === 'gold') {
+                el.classList.add('marker-gold');
               }
               
+              el.innerHTML = `<span>${d.text}</span>`;
               return el;
             })
             .htmlAltitude(d => d.type === 'hub' ? 0.025 : 0.015);
 
-          // 3. Add Rings around the Hub
+          // Rings around Hub
           world.ringsData([omanHub])
-            .ringColor(() => t => `rgba(255, 170, 0, ${1-t})`) // Copper ring
-            .ringMaxRadius(4)
+            .ringColor(() => t => `rgba(255, 255, 255, ${1-t})`)
+            .ringMaxRadius(3)
             .ringPropagationSpeed(2)
             .ringRepeatPeriod(1500);
 
-          // Controls
+          // Controls (Increased Rotation Speed)
           world.controls().autoRotate = true;
-          world.controls().autoRotateSpeed = 0.3;
+          world.controls().autoRotateSpeed = 0.8; // Faster rotation
           world.controls().enableZoom = true;
           world.controls().minDistance = 150;
 
