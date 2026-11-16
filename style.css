@@ -419,3 +419,85 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
   .executive-grid { grid-template-columns: 1fr; }
   .exec-card { padding: 30px 20px; }
 }
+
+/* =========================================
+   DEPARTMENTAL CONTACTS SECTION
+   ========================================= */
+.department-section {
+  background: #050607;
+  padding: 80px 24px;
+  border-top: 1px solid var(--border);
+}
+
+.department-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: 1180px;
+  margin: 40px auto 0;
+}
+
+.department-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 30px;
+  text-align: center;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.department-card:hover {
+  border-color: var(--silver-dark);
+  transform: translateY(-4px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+}
+
+.department-icon {
+  font-size: 24px;
+  color: var(--silver);
+  margin-bottom: 15px;
+  opacity: 0.7;
+}
+
+.department-card h4 {
+  color: #fff;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.department-card p {
+  color: var(--text-soft);
+  font-size: 12px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  min-height: 40px;
+}
+
+.department-link {
+  display: inline-block;
+  color: var(--silver);
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  word-break: break-all;
+  transition: color var(--transition);
+}
+
+.department-link:hover {
+  color: #fff;
+}
+
+@media (max-width: 1050px) {
+  .department-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 650px) {
+  .department-grid {
+    grid-template-columns: 1fr;
+  }
+}
