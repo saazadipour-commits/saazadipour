@@ -490,3 +490,93 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
 .marker-node .marker-label {
   display: none;
 }
+
+/* =========================================================
+   GLOBE MARKERS & LABELS (Append to end of style.css)
+   ========================================================= */
+
+.globe-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.marker-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 15px 3px rgba(255, 255, 255, 0.9);
+}
+
+/* Labels - Large, clear, and luxurious */
+.marker-label {
+  margin-top: 8px;
+  font-family: "Inter", sans-serif;
+  font-size: 10px; /* Increased size */
+  font-weight: 600;
+  color: #ffffff;
+  background: rgba(5, 6, 7, 0.9);
+  padding: 5px 12px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  white-space: nowrap;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.8);
+}
+
+/* Oman Hub - White */
+.marker-hub .marker-dot {
+  width: 14px;
+  height: 14px;
+  background: #ffffff;
+  box-shadow: 0 0 25px 5px rgba(255, 255, 255, 0.8);
+}
+.marker-hub .marker-label {
+  border-color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+  font-size: 12px;
+}
+
+/* Germany Hub - Gold */
+.marker-gold .marker-dot {
+  width: 14px;
+  height: 14px;
+  background: #FFD700;
+  box-shadow: 0 0 25px 5px rgba(255, 215, 0, 0.8);
+}
+.marker-gold .marker-label {
+  border-color: #FFD700;
+  color: #FFD700;
+  font-size: 12px;
+}
+
+/* Suppliers - Cyan/Blue */
+.marker-supplier .marker-dot {
+  width: 10px;
+  height: 10px;
+  background: #00BFFF;
+  box-shadow: 0 0 20px 4px rgba(0, 191, 255, 0.8);
+}
+.marker-supplier .marker-label {
+  border-color: #00BFFF;
+  color: #00BFFF;
+}
+
+/* Hospitals - Clearly Visible */
+.marker-hospital .marker-dot {
+  width: 6px;
+  height: 6px;
+  background: #ffffff;
+  box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.6);
+}
+.marker-hospital .marker-label {
+  font-size: 8px;
+  padding: 3px 8px;
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.7);
+  color: #cbd1d7;
+}
