@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Media & Scientific Publications | Azadipour</title>
-  <meta name="description" content="Explore Azadipour's exclusive video gallery and authoritative scientific publications from world-renowned professors in surgical robotics, including Prof. Russell Taylor and Prof. Vipul Patel.">
+  <title>Medical Technology & Hospital Solutions | Azadipour</title>
+  <meta name="description" content="Azadipour is your complete partner for hospital equipment supply. Discover our portfolio of general and specialized medical technologies, including advanced robotic systems for cardiac and neurosurgery.">
   <meta name="theme-color" content="#08090b">
-  <link rel="canonical" href="https://azadipourmedical.com/media.html">
+  <link rel="canonical" href="https://azadipourmedical.com/medical.html">
   <link rel="icon" type="image/png" href="assets/logo-transparent.png">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,46 +14,107 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 
-  <!-- Advanced SEO Schema for Knowledge Hub -->
+  <style>
+    /* Luxury Hero Background specific to Medical Page */
+    .medical-hero {
+      background: linear-gradient(rgba(5, 6, 7, 0.9), rgba(5, 6, 7, 0.95)), url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=2000&auto=format&fit=crop') center/cover !important;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Robotics Link Cards */
+    .robotics-link-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      margin-top: 40px;
+    }
+    @media (max-width: 900px) {
+      .robotics-link-grid { grid-template-columns: 1fr; }
+    }
+
+    .robotics-link-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 40px;
+      min-height: 350px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background-size: cover !important;
+      background-position: center !important;
+      text-decoration: none;
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .robotics-link-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(5, 6, 7, 0.95) 0%, rgba(5, 6, 7, 0.6) 50%, rgba(5, 6, 7, 0.2) 100%);
+      z-index: 1;
+      transition: opacity 0.5s ease;
+    }
+    .robotics-link-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--silver);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9);
+    }
+    .robotics-link-card:hover::before {
+      opacity: 0.9;
+    }
+    .robotics-link-content {
+      position: relative;
+      z-index: 2;
+    }
+    .robotics-link-content span {
+      display: inline-block;
+      color: var(--gold);
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+    .robotics-link-content h3 {
+      color: #fff;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 32px;
+      font-weight: 500;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+    .robotics-link-content p {
+      color: var(--text-soft);
+      font-size: 14px;
+      line-height: 1.7;
+      margin-bottom: 20px;
+      max-width: 90%;
+    }
+    .robotics-link-content .link-arrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #fff;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: gap 0.3s ease;
+    }
+    .robotics-link-card:hover .link-arrow {
+      gap: 15px;
+    }
+  </style>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "CollectionPage",
-        "@id": "https://azadipourmedical.com/media.html#webpage",
-        "url": "https://azadipourmedical.com/media.html",
-        "name": "Media & Scientific Publications",
-        "description": "Exclusive videos and authoritative scientific articles exploring the future of medical technology and smart hospitals.",
-        "publisher": { "@id": "https://azadipourmedical.com/#organization" }
-      },
-      {
-        "@type": "ItemList",
-        "itemListElement": [
-          {
-            "@type": "ScholarlyArticle",
-            "position": 1,
-            "name": "A Systematic Review of Robotic Surgery: From Supervised Paradigms to Fully Autonomous Approaches",
-            "author": { "@type": "Person", "name": "Prof. Russell H. Taylor" },
-            "url": "https://doi.org/10.1002/rcs.2358"
-          },
-          {
-            "@type": "ScholarlyArticle",
-            "position": 2,
-            "name": "Robotic-Assisted Radical Prostatectomy: A Comprehensive Analysis of Outcomes",
-            "author": { "@type": "Person", "name": "Prof. Vipul R. Patel" },
-            "url": "https://pubmed.ncbi.nlm.nih.gov/18423747/"
-          },
-          {
-            "@type": "Book",
-            "position": 3,
-            "name": "Principles and Practice of Robotic Surgery",
-            "author": { "@type": "Person", "name": "Prof. Tony Costello" },
-            "url": "https://shop.elsevier.com/books/principles-and-practice-of-robotic-surgery/costello/978-0-323-81089-5"
-          }
-        ]
-      }
-    ]
+    "@type": "WebPage",
+    "name": "Medical Technology & Hospital Solutions",
+    "description": "Comprehensive medical equipment supply and advanced surgical robotics portfolio by Azadipour.",
+    "url": "https://azadipourmedical.com/medical.html",
+    "publisher": { "@id": "https://azadipourmedical.com/#organization" }
   }
   </script>
 </head>
@@ -81,7 +142,7 @@
         <a href="about.html">About Us</a>
         <a href="index.html#global-network">Global Presence</a>
         <div class="nav-dropdown">
-          <a href="medical.html" class="nav-dropdown-toggle">Medical Technology ▾</a>
+          <a href="medical.html" class="nav-dropdown-toggle active">Medical Technology ▾</a>
           <div class="nav-dropdown-menu">
             <a href="robotic.html">Robotic Surgery</a>
             <a href="cardiac.html">Cardiovascular</a>
@@ -89,7 +150,7 @@
         </div>
         <a href="partners.html">Global Partnerships</a>
         <a href="projects.html">Projects</a>
-        <a href="media.html" class="active">Media</a>
+        <a href="media.html">Media</a>
         <a href="contact.html" class="nav-contact">Contact</a>
       </nav>
     </div>
@@ -97,112 +158,99 @@
 
   <main>
     <!-- HERO SECTION -->
-    <section class="inner-hero">
+    <section class="inner-hero medical-hero">
       <div class="inner-hero-content">
-        <div class="section-label" style="margin-bottom: 20px;">KNOWLEDGE HUB</div>
-        <h1>Insights. Media. <span>Scientific Publications.</span></h1>
-        <p>Exploring the intersection of advanced medical technology, surgical robotics, and the future of global healthcare infrastructure.</p>
+        <div class="section-label" style="margin-bottom: 20px; color: var(--gold);">MEDICAL TECHNOLOGY</div>
+        <h1>Complete Solutions. <span>For Every Hospital Need.</span></h1>
+        <p>Azadipour is your strategic partner for the supply of general and specialized medical equipment, continuously enhancing our portfolio to integrate the world's most advanced technologies into premier healthcare facilities.</p>
       </div>
       <div class="inner-hero-decoration"></div>
     </section>
 
-    <!-- VIDEO GALLERY SECTION -->
+    <!-- OVERVIEW SECTION -->
     <section class="section">
-      <div class="section-label" style="text-align: center;">01 — EXCLUSIVE VIDEO GALLERY</div>
-      <div class="section-heading" style="margin: 0 auto 40px auto; text-align: center;">
-        <h2>Visualizing <span>The Future.</span></h2>
-        <p>Watch the architectural vision and technological ecosystem behind our Smart Hospital initiatives.</p>
+      <div class="section-label">01 — COMPREHENSIVE SUPPLY PARTNER</div>
+      <div class="section-heading">
+        <h2>From General Equipment <span>To Specialized Technologies.</span></h2>
+        <p>We are actively expanding our product portfolio to become a complete supplier for hospitals. Our focus is on integrating highly advanced medical and surgical technologies into the region's healthcare infrastructure.</p>
+      </div>
+      <div style="max-width: 800px; margin-top: 30px; color: var(--text-soft); line-height: 1.9; font-size: 15px;">
+        <p style="margin-bottom: 20px;">Azadipour operates as a comprehensive supplier for hospitals, covering a wide range of general medical equipment and highly specialized devices. We are committed to improving our portfolio by continuously adding cutting-edge technologies to meet the evolving needs of modern healthcare facilities.</p>
+        <p>Currently, our portfolio includes several advanced surgical robotic technologies. We hold dedicated sales lines for select global robotic products and are in active negotiations to further expand our offerings, ensuring our partner hospitals have priority access to the latest innovations in minimally invasive surgery.</p>
+      </div>
+    </section>
+
+    <!-- ROBOTICS HIGHLIGHT SECTION -->
+    <section class="section" style="background: #090c0f; border-top: 1px solid var(--border);">
+      <div class="section-label">02 — ADVANCED SURGICAL ROBOTICS</div>
+      <div class="section-heading">
+        <h2>Next-Generation <span>Robotic Systems.</span></h2>
+        <p>Explore our specialized robotic surgery solutions designed to elevate precision, reduce recovery times, and transform surgical outcomes.</p>
       </div>
 
-      <!-- Single Luxury Video Player -->
-      <div class="video-luxury-container" style="max-width: 1000px; margin: 0 auto; position: relative; border-radius: 4px; overflow: hidden; border: 1px solid var(--border); background: #000; box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8);">
+      <div class="robotics-link-grid">
         
-        <!-- 
-          نکته مهم: اگر ویدیو پخش نشد (0:00)، حتماً بررسی کنید فایل در Git LFS نباشد.
-          مسیر فایل: assets/smart-hospital-video.mp4
-        -->
-        <video controls preload="metadata" poster="assets/smart-hospital.jpg" style="display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover;">
-          <source src="assets/smart-hospital-video.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-        
-        <div class="video-title" style="padding: 30px; background: linear-gradient(145deg, #101418, #050607); border-top: 1px solid var(--border); text-align: center;">
-          <h3 style="color: #fff; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 32px; margin-bottom: 10px;">The Smart Hospital Vision</h3>
-          <span style="color: var(--silver); font-size: 11px; letter-spacing: 3px; text-transform: uppercase;">Future Infrastructure</span>
+        <!-- Cardiac Robotics Card -->
+        <a href="robotic.html#cardiac" class="robotics-link-card" style="background-image: url('assets/cardiac-hero.jpg');">
+          <div class="robotics-link-content">
+            <span>Specialized Robotics</span>
+            <h3>Robotic Cardiac Surgery</h3>
+            <p>Advanced platforms for minimally invasive heart surgery, offering sub-millimeter precision for complex cardiac procedures.</p>
+            <div class="link-arrow">Explore Cardiac Robotics <span>↗</span></div>
+          </div>
+        </a>
+
+        <!-- Neurosurgery Robotics Card -->
+        <a href="robotic.html#neurosurgery" class="robotics-link-card" style="background-image: url('assets/robotic-hero.jpg');">
+          <div class="robotics-link-content">
+            <span>Specialized Robotics</span>
+            <h3>Robotic Neurosurgery</h3>
+            <p>State-of-the-art robotic navigation and robotic-assisted platforms for precise brain and spine interventions.</p>
+            <div class="link-arrow">Explore Neurosurgery Robotics <span>↗</span></div>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- PRODUCT PORTFOLIO CATEGORIES -->
+    <section class="section">
+      <div class="section-label">03 — PRODUCT PORTFOLIO</div>
+      <div class="section-heading">
+        <h2>Broad Capabilities. <span>Targeted Expertise.</span></h2>
+        <p>Our supply capabilities span across multiple hospital departments, ensuring a single, trusted source for diverse medical technology needs.</p>
+      </div>
+      
+      <div class="solutions-grid">
+        <div class="solution-item">
+          <span>01</span>
+          <h3>Operating Room</h3>
+          <p>Integrated surgical suites, advanced lighting, tables, and digital operating room infrastructure.</p>
+        </div>
+        <div class="solution-item">
+          <span>02</span>
+          <h3>Critical Care (ICU)</h3>
+          <p>Ventilators, patient monitoring systems, and life-support technologies for intensive care units.</p>
+        </div>
+        <div class="solution-item">
+          <span>03</span>
+          <h3>Cardiovascular</h3>
+          <p>Advanced technologies supporting cardiac surgery, perfusion, and catheterization laboratories.</p>
+        </div>
+        <div class="solution-item">
+          <span>04</span>
+          <h3>Neurosurgery</h3>
+          <p>Precision equipment, navigation systems, and robotic platforms for complex neurological procedures.</p>
         </div>
       </div>
     </section>
 
-    <!-- SCIENTIFIC ARTICLES SECTION -->
-    <section class="section about-focus" style="background: #050607; border-top: 1px solid var(--border);">
-      <div class="section-label">02 — SCIENTIFIC PUBLICATIONS & ARTICLES</div>
-      <div class="section-heading">
-        <h2>Expert Insights & <span>Industry Analysis.</span></h2>
-        <p>Authoritative perspectives on the technologies shaping modern medicine, curated from the world's leading surgical robotics pioneers.</p>
-      </div>
-
-      <div class="article-grid">
-        
-        <!-- Article 1: Prof. Russell H. Taylor -->
-        <article class="article-card">
-          <div class="article-img-wrap">
-            <img src="assets/robotic-hero.jpg" alt="Systematic Review of Robotic Surgery" loading="lazy">
-            <span class="article-tag">Robotic Autonomy</span>
-          </div>
-          <div class="article-content">
-            <div class="article-meta">
-              <span>By Prof. Russell H. Taylor</span>
-              <span>Johns Hopkins University</span>
-            </div>
-            <h3>A Systematic Review of Robotic Surgery: From Supervised Paradigms to Fully Autonomous Approaches</h3>
-            <p>An authoritative review by the pioneering Professor Taylor, exploring the evolution of surgical robotics and the pathway toward fully autonomous robotic interventions.</p>
-            <a href="https://doi.org/10.1002/rcs.2358" target="_blank" rel="noopener noreferrer" class="read-more">Read Original Publication <span>↗</span></a>
-          </div>
-        </article>
-
-        <!-- Article 2: Prof. Vipul R. Patel -->
-        <article class="article-card">
-          <div class="article-img-wrap">
-            <img src="assets/surgical-robotics.jpg" alt="Robotic Prostatectomy Outcomes" loading="lazy">
-            <span class="article-tag">Clinical Outcomes</span>
-          </div>
-          <div class="article-content">
-            <div class="article-meta">
-              <span>By Prof. Vipul R. Patel</span>
-              <span>AdventHealth Global Robotics Institute</span>
-            </div>
-            <h3>Robotic-Assisted Radical Prostatectomy: A Comprehensive Analysis of Outcomes</h3>
-            <p>Insights from one of the world's most experienced robotic surgeons (with over 19,000 procedures), detailing clinical outcomes and best practices in robotic urologic oncology.</p>
-            <a href="https://pubmed.ncbi.nlm.nih.gov/18423747/" target="_blank" rel="noopener noreferrer" class="read-more">Read Original Publication <span>↗</span></a>
-          </div>
-        </article>
-
-        <!-- Article 3: Prof. Tony Costello (Definitive Textbook) -->
-        <article class="article-card">
-          <div class="article-img-wrap">
-            <img src="assets/smart-hospital.jpg" alt="Principles and Practice of Robotic Surgery Book" loading="lazy">
-            <span class="article-tag">Definitive Textbook</span>
-          </div>
-          <div class="article-content">
-            <div class="article-meta">
-              <span>Edited by Prof. Tony Costello</span>
-              <span>Elsevier Publishing</span>
-            </div>
-            <h3>Principles and Practice of Robotic Surgery</h3>
-            <p>The definitive global textbook on robotic surgery, edited by master surgeon Tony Costello, featuring contributions from the world's leading robotic specialists.</p>
-            <a href="https://shop.elsevier.com/books/principles-and-practice-of-robotic-surgery/costello/978-0-323-81089-5" target="_blank" rel="noopener noreferrer" class="read-more">View Book Details <span>↗</span></a>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
     <!-- CTA SECTION -->
-    <section class="section contact-section">
-      <div class="section-label">STAY INFORMED</div>
-      <h2 class="section-heading">Subscribe to Our <span>Global Insights.</span></h2>
-      <p style="max-width: 600px; margin-bottom: 30px;">Receive exclusive updates on our smart hospital projects, new publications, and global partnership announcements.</p>
-      <a href="contact.html" class="btn-primary">Contact Our Media Team <span>↗</span></a>
+    <section class="section contact-section" style="border-top: 1px solid var(--border);">
+      <div class="section-label">PARTNER WITH US</div>
+      <h2 class="section-heading">Equip Your Facility <span>With the Best.</span></h2>
+      <p style="max-width: 600px; margin-bottom: 30px;">Contact our team to discuss how Azadipour can fulfill your hospital's complete medical technology requirements.</p>
+      <a href="contact.html" class="btn-primary">Contact Our Supply Team <span>↗</span></a>
     </section>
   </main>
 
@@ -211,7 +259,7 @@
       <div class="footer-brand"><img src="assets/logo-transparent.png" alt="Azadipour Logo"><h3>AZADIPOUR</h3><p>Global Medical Technology & Hospital Solutions</p></div>
       <div class="footer-column"><h4>COMPANY</h4><a href="about.html">About Us</a><a href="index.html#global-network">Global Presence</a><a href="partners.html">Partnerships</a><a href="projects.html">Projects</a></div>
       <div class="footer-column"><h4>TECHNOLOGY</h4><a href="robotic.html">Robotic Surgery</a><a href="cardiac.html">Cardiovascular</a><a href="medical.html">Medical Technology</a></div>
-      <div class="footer-column"><h4>CONTACT</h4><a href="mailto:info@azadipourmedical.com">Email</a><span>Oman</span></div>
+      <div class="footer-column"><h4>CONTACT</h4><a href="mailto:info@azadipourmedical.com">Email</a><span>International</span></div>
     </div>
     <div class="footer-bottom"><span>© <span id="currentYear">2026</span> AZADIPOUR. ALL RIGHTS RESERVED.</span><span>GLOBAL MEDICAL TECHNOLOGY · WORLDWIDE</span></div>
   </footer>
