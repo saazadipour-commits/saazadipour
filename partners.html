@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Global Partnerships | Azadipour</title>
-  <meta name="description" content="Azadipour is dedicated to strengthening effective collaborations with international companies, offering competitive terms and advanced surgical robotics solutions.">
+  <meta name="description" content="Azadipour strengthens strategic alliances with international medical technology leaders — including WeMed in the GCC and Brain Navi in Oman — to deliver advanced surgical robotics and hospital solutions.">
   <meta name="theme-color" content="#08090b">
   <link rel="canonical" href="https://azadipourmedical.com/partners.html">
   <link rel="icon" type="image/png" href="assets/logo-transparent.png">
@@ -22,7 +22,7 @@
         "@id": "https://azadipourmedical.com/partners.html#webpage",
         "url": "https://azadipourmedical.com/partners.html",
         "name": "Global Partnerships | Azadipour",
-        "description": "Azadipour is dedicated to strengthening effective collaborations with international companies.",
+        "description": "Azadipour strengthens strategic alliances with international medical technology leaders, including WeMed in the GCC and Brain Navi in Oman.",
         "isPartOf": { "@id": "https://azadipourmedical.com/#website" },
         "breadcrumb": { "@id": "https://azadipourmedical.com/partners.html#breadcrumb" }
       },
@@ -37,6 +37,209 @@
     ]
   }
   </script>
+
+  <style>
+    /* ---- Partnership-specific enhancements ---- */
+    .partner-showcase {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-top: 50px;
+    }
+
+    .partner-card {
+      position: relative;
+      padding: 48px 40px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 4px;
+      background: linear-gradient(160deg, rgba(255,255,255,0.035) 0%, rgba(255,255,255,0.005) 60%, transparent 100%);
+      overflow: hidden;
+      transition: border-color 0.5s ease, transform 0.5s ease;
+    }
+
+    .partner-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 60px;
+      height: 1px;
+      background: var(--accent, #c9a86a);
+      transition: width 0.6s ease;
+    }
+
+    .partner-card:hover {
+      border-color: rgba(201, 168, 106, 0.35);
+      transform: translateY(-4px);
+    }
+
+    .partner-card:hover::before {
+      width: 120px;
+    }
+
+    .partner-region {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #c9a86a;
+      margin-bottom: 22px;
+      padding: 6px 14px;
+      border: 1px solid rgba(201, 168, 106, 0.3);
+      border-radius: 2px;
+    }
+
+    .partner-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 34px;
+      font-weight: 500;
+      color: #fff;
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    .partner-card .partner-tagline {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 24px;
+    }
+
+    .partner-card p {
+      font-family: 'Inter', sans-serif;
+      font-size: 14.5px;
+      line-height: 1.85;
+      color: rgba(255,255,255,0.65);
+      margin: 0;
+    }
+
+    .partner-divider {
+      width: 40px;
+      height: 1px;
+      background: rgba(255,255,255,0.15);
+      margin: 24px 0;
+    }
+
+    /* Expo banner */
+    .expo-strip {
+      margin-top: 70px;
+      padding: 44px 48px;
+      border-radius: 4px;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(201,168,106,0.14) 0%, transparent 55%),
+        linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+      border: 1px solid rgba(201,168,106,0.18);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .expo-icon {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      border: 1px solid rgba(201,168,106,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      color: #c9a86a;
+    }
+
+    .expo-strip h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 27px;
+      font-weight: 500;
+      color: #fff;
+      margin: 0 0 10px;
+    }
+
+    .expo-strip p {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.6);
+      margin: 0;
+    }
+
+    .expo-cities {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .expo-cities span {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #c9a86a;
+      padding: 5px 12px;
+      border: 1px solid rgba(201,168,106,0.25);
+      border-radius: 2px;
+    }
+
+    /* Growth roadmap */
+    .growth-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 26px;
+      margin-top: 50px;
+    }
+
+    .growth-item {
+      padding: 34px 28px;
+      border-left: 1px solid rgba(201,168,106,0.25);
+      transition: border-color 0.4s ease;
+    }
+
+    .growth-item:hover {
+      border-left-color: #c9a86a;
+    }
+
+    .growth-step {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 42px;
+      font-weight: 400;
+      color: rgba(201,168,106,0.55);
+      line-height: 1;
+      margin-bottom: 18px;
+    }
+
+    .growth-item h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      color: #fff;
+      margin: 0 0 12px;
+    }
+
+    .growth-item p {
+      font-family: 'Inter', sans-serif;
+      font-size: 13.5px;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.55);
+      margin: 0;
+    }
+
+    @media (max-width: 900px) {
+      .partner-showcase { grid-template-columns: 1fr; }
+      .expo-strip { grid-template-columns: 1fr; text-align: left; padding: 34px 28px; }
+      .growth-list { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
+    }
+  </style>
 </head>
 <body>
 
@@ -76,38 +279,112 @@
   </header>
 
   <main>
+    <!-- HERO -->
     <section class="inner-hero">
       <div class="inner-hero-content">
         <div class="section-label" style="margin-bottom: 20px;">GLOBAL PARTNERSHIPS</div>
         <h1>Strategic Alliances. <span>Global Impact.</span></h1>
-        <p>Strengthening effective collaborations with international companies to deliver world-class medical technology and hospital solutions.</p>
+        <p>Strengthening effective collaborations with premier international companies to deliver world-class medical technology and hospital solutions across the GCC, Oman, and beyond.</p>
       </div>
       <div class="inner-hero-decoration"></div>
     </section>
 
+    <!-- 01 — VISION -->
     <section class="section">
       <div class="section-label">01 — OUR PARTNERSHIP VISION</div>
       <div class="about-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start;">
         <div><h2 class="section-heading" style="margin-bottom: 0;">Strengthening Effective <span>Collaborations.</span></h2></div>
         <div class="about-copy" style="color: var(--text-soft); line-height: 1.9;">
-          <p style="margin-bottom: 20px; font-size: 16px; color: #fff;">We are currently on the path to strengthening and creating highly effective collaborations with premier international companies.</p>
-          <p>By establishing these robust strategic alliances, Azadipour ensures that healthcare organizations gain access to the most advanced and reliable medical technologies available in the global market.</p>
+          <p style="margin-bottom: 20px; font-size: 16px; color: #fff;">We are actively strengthening and creating highly effective collaborations with premier international companies.</p>
+          <p>By establishing robust strategic alliances, Azadipour ensures that healthcare organizations gain access to the most advanced and reliable medical technologies available in the global market — while receiving dedicated regional support and locally tailored commercial terms.</p>
         </div>
       </div>
     </section>
 
+    <!-- 02 — CURRENT PARTNERS -->
     <section class="section about-vision">
-      <div class="section-label">02 — OUR CAPABILITIES</div>
+      <div class="section-label">02 — OUR STRATEGIC PARTNERS</div>
+      <div class="vision-content">
+        <h2 class="section-heading" style="margin-bottom: 20px;">Trusted Alliances. <span>Proven Impact.</span></h2>
+        <p style="max-width: 720px; font-size: 15px;">Our current portfolio of strategic partnerships reflects our commitment to delivering innovation, precision, and reliability to healthcare providers across the region — backed by world-class manufacturers and technology pioneers.</p>
+      </div>
+
+      <div class="partner-showcase">
+        <!-- WeMed -->
+        <article class="partner-card">
+          <span class="partner-region">GCC Region</span>
+          <h3>WeMed</h3>
+          <div class="partner-tagline">Advanced Medical Technology Partner</div>
+          <div class="partner-divider"></div>
+          <p>Through our strategic collaboration with <strong style="color:#fff;">WeMed</strong>, Azadipour delivers cutting-edge medical technology solutions across the Gulf Cooperation Council (GCC) region. This partnership strengthens our ability to support hospitals and healthcare institutions with innovative platforms, competitive terms, and dedicated regional expertise.</p>
+        </article>
+
+        <!-- Brain Navi -->
+        <article class="partner-card">
+          <span class="partner-region">Sultanate of Oman</span>
+          <h3>Brain Navi</h3>
+          <div class="partner-tagline">Surgical Robotics & Navigation Partner</div>
+          <div class="partner-divider"></div>
+          <p>In the Sultanate of Oman, we are proud to work alongside <strong style="color:#fff;">Brain Navi</strong> — a global innovator in surgical robotics and navigation. This collaboration enables us to introduce next-generation robotic precision and intelligent navigation systems to Omani hospitals, elevating surgical outcomes and clinical capability.</p>
+        </article>
+      </div>
+
+      <!-- Developing relationships -->
+      <div class="expo-strip">
+        <div class="expo-icon">∞</div>
+        <div>
+          <h3>Continuously Developing New Relationships</h3>
+          <p>Beyond our current partners, we are consistently expanding our network of international allies — cultivating new collaborations that broaden our product portfolio and deepen our capability to serve the diverse needs of hospitals across the region.</p>
+          <div class="expo-cities">
+            <span>Active Expansion</span>
+            <span>New Alliances</span>
+            <span>Portfolio Growth</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 — EXHIBITIONS & ROADMAP -->
+    <section class="section">
+      <div class="section-label">03 — GLOBAL EXHIBITIONS & ROADMAP</div>
+      <div class="section-heading">
+        <h2>Expanding Horizons. <span>Meeting the World.</span></h2>
+        <p>Our specialist team will participate in leading medical exhibitions across the region — including in <strong style="color:#fff;">Dubai</strong> and <strong style="color:#fff;">Muscat</strong> — to develop our product portfolio, engage with global innovators, and bring the most advanced solutions to our healthcare partners.</p>
+      </div>
+
+      <div class="growth-list">
+        <div class="growth-item">
+          <div class="growth-step">01</div>
+          <h4>Dubai Exhibitions</h4>
+          <p>Our expert team attends leading medical technology exhibitions in Dubai to source and evaluate new innovations for our growing portfolio.</p>
+        </div>
+        <div class="growth-item">
+          <div class="growth-step">02</div>
+          <h4>Muscat Exhibitions</h4>
+          <p>In Muscat, we engage with regional and international partners to expand our offerings and reinforce our commitment to Oman's healthcare sector.</p>
+        </div>
+        <div class="growth-item">
+          <div class="growth-step">03</div>
+          <h4>Portfolio Development</h4>
+          <p>Every exhibition is an opportunity to refine our product portfolio with our specialist team, ensuring we always deliver best-in-class medical technology.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 — CAPABILITIES -->
+    <section class="section about-vision">
+      <div class="section-label">04 — OUR CAPABILITIES</div>
       <div class="vision-content">
         <h2 class="section-heading" style="margin-bottom: 20px;">Meeting Diverse Needs. <span>Offering Competitive Terms.</span></h2>
         <p style="max-width: 700px; font-size: 15px;">We possess the unique capability to cover the diverse and complex needs of hospitals across various medical fields. Through our strategic positioning, we can offer highly competitive terms alongside major global companies, ensuring exceptional value for our healthcare partners.</p>
       </div>
     </section>
 
+    <!-- 05 — STRATEGIC FOCUS -->
     <section class="section">
-      <div class="section-label">03 — STRATEGIC FOCUS</div>
+      <div class="section-label">05 — STRATEGIC FOCUS</div>
       <div class="section-heading">
-        <h2>Surgical Robotics:<span>Building Strong Alliances.</span></h2>
+        <h2>Surgical Robotics: <span>Building Strong Alliances.</span></h2>
         <p>With a current, dedicated focus on surgical robotics, we have cultivated close and highly productive relationships with leading robotics companies worldwide.</p>
       </div>
       <div class="mission-grid">
@@ -118,6 +395,7 @@
       </div>
     </section>
 
+    <!-- CTA -->
     <section class="section contact-section">
       <div class="section-label">LET'S CONNECT</div>
       <h2 class="section-heading">Build the Future of <span>Healthcare Together.</span></h2>
