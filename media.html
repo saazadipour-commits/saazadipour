@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Media & Scientific Publications | Azadipour</title>
-  <meta name="description" content="Explore Azadipour's exclusive video gallery and scientific publications. Insights into smart hospitals, surgical robotics, and the future of global healthcare.">
+  <meta name="description" content="Explore Azadipour's exclusive exhibition videos and scientific publications. Insights into smart hospitals, surgical robotics, and the future of global healthcare.">
   <meta name="theme-color" content="#08090b">
   <link rel="canonical" href="https://azadipourmedical.com/media.html">
   <link rel="icon" type="image/png" href="assets/logo-transparent.png">
@@ -13,6 +13,162 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+
+  <!-- Custom Styles for Media Page -->
+  <style>
+    /* Luxury Video Grid */
+    .media-video-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      margin-top: 40px;
+    }
+    @media (max-width: 900px) {
+      .media-video-grid { grid-template-columns: 1fr; }
+    }
+
+    .luxury-video-card {
+      position: relative;
+      background: #080b0e;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+      transition: transform 0.4s ease, border-color 0.4s ease;
+    }
+    
+    .luxury-video-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--silver-dark);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9);
+    }
+
+    .luxury-video-card iframe {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: none;
+      filter: grayscale(20%);
+      transition: filter 0.4s ease;
+    }
+
+    .luxury-video-card:hover iframe {
+      filter: grayscale(0%);
+    }
+
+    .luxury-video-info {
+      padding: 25px;
+      background: linear-gradient(145deg, #0f1419, #050607);
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .luxury-video-info h3 {
+      color: #fff;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 26px;
+      margin: 0;
+      line-height: 1.2;
+    }
+
+    .luxury-video-info span {
+      color: var(--gold);
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    /* Luxury Article Cards with Author Avatars */
+    .luxury-article-card {
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(145deg, rgba(20, 25, 30, 0.8), rgba(5, 7, 9, 0.95));
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      transition: var(--transition);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    }
+
+    .luxury-article-card:hover {
+      border-color: var(--silver-dark);
+      transform: translateY(-6px);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.8);
+    }
+
+    .article-author-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 25px;
+      background: rgba(255, 255, 255, 0.02);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .author-avatar {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--silver-dark);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+      transition: var(--transition);
+    }
+
+    .luxury-article-card:hover .author-avatar {
+      border-color: var(--gold);
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+    }
+
+    .author-details h4 {
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      margin: 0 0 4px 0;
+    }
+
+    .author-details span {
+      color: var(--silver);
+      font-size: 11px;
+      letter-spacing: 1px;
+    }
+
+    .article-body {
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .article-body h3 {
+      color: #fff;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 22px;
+      line-height: 1.3;
+      margin-bottom: 15px;
+      font-weight: 500;
+    }
+
+    .article-body p {
+      color: var(--text-soft);
+      font-size: 13px;
+      line-height: 1.7;
+      margin-bottom: 25px;
+      flex-grow: 1;
+    }
+
+    .article-tag-luxury {
+      display: inline-block;
+      color: var(--gold);
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+  </style>
 
   <script type="application/ld+json">
   {
@@ -64,6 +220,7 @@
   </header>
 
   <main>
+    <!-- INNER HERO -->
     <section class="inner-hero">
       <div class="inner-hero-content">
         <div class="section-label" style="margin-bottom: 20px;">KNOWLEDGE HUB</div>
@@ -73,33 +230,44 @@
       <div class="inner-hero-decoration"></div>
     </section>
 
-    <!-- VIDEO GALLERY SECTION (YOUTUBE EMBED) -->
+    <!-- VIDEO GALLERY SECTION (EXHIBITIONS) -->
     <section class="section">
       <div class="section-label" style="text-align: center;">01 — EXCLUSIVE VIDEO GALLERY</div>
       <div class="section-heading" style="margin: 0 auto 40px auto; text-align: center;">
-        <h2>Visualizing <span>The Future.</span></h2>
-        <p>Watch the architectural vision and technological ecosystem behind our Smart Hospital initiatives.</p>
+        <h2>Global Exhibitions <span>& Visionary Events.</span></h2>
+        <p>Watch the architectural vision and technological ecosystem behind our Smart Hospital initiatives at major international exhibitions.</p>
       </div>
 
-      <!-- Single Luxury Video Player (YouTube) -->
-      <div class="video-luxury-container" style="max-width: 1000px; margin: 0 auto; position: relative; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); background: #000; box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8);">
+      <div class="media-video-grid">
         
-        <!-- YOUR YOUTUBE VIDEO ID IS HERE -->
-        <iframe 
-          width="100%" 
-          height="100%" 
-          src="https://www.youtube.com/embed/SJfsFzdf7RY?rel=0&showinfo=0&autohide=1" 
-          title="Smart Hospital Vision" 
-          frameborder="0" 
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-          referrerpolicy="strict-origin-when-cross-origin" 
-          allowfullscreen
-          style="display:block; width:100%; aspect-ratio:16/9; object-fit:cover;">
-        </iframe>
+        <!-- Dubai Exhibition Video -->
+        <div class="luxury-video-card">
+          <iframe 
+            src="https://www.youtube.com/embed/fqS3RCZUPQw?rel=0&modestbranding=1&showinfo=0" 
+            title="Dubai Exhibition" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" 
+            allowfullscreen>
+          </iframe>
+          <div class="luxury-video-info">
+            <span>International Exhibition</span>
+            <h3>Dubai Healthcare Summit</h3>
+          </div>
+        </div>
 
-        <div class="video-title" style="padding: 30px; background: linear-gradient(145deg, #101418, #050607); border-top: 1px solid var(--border); text-align: center;">
-          <h3 style="color: #fff; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 32px; margin-bottom: 10px;">The Smart Hospital Vision</h3>
-          <span style="color: var(--silver); font-size: 11px; letter-spacing: 3px; text-transform: uppercase;">Future Infrastructure</span>
+        <!-- Muscat Exhibition Video -->
+        <div class="luxury-video-card">
+          <iframe 
+            src="https://www.youtube.com/embed/6kNJByrJsIc?rel=0&modestbranding=1&showinfo=0" 
+            title="Muscat Exhibition" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" 
+            allowfullscreen>
+          </iframe>
+          <div class="luxury-video-info">
+            <span>Regional Exhibition</span>
+            <h3>Muscat Medical Expo</h3>
+          </div>
         </div>
 
       </div>
@@ -113,19 +281,20 @@
         <p>Authoritative perspectives on the technologies shaping modern medicine, curated from the world's leading surgical robotics pioneers.</p>
       </div>
 
-      <div class="article-grid">
+      <div class="article-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
         
         <!-- Article 1: Prof. Russell H. Taylor -->
-        <article class="article-card">
-          <div class="article-img-wrap">
-            <img src="assets/robotic-hero.jpg" alt="Systematic Review of Robotic Surgery" loading="lazy">
-            <span class="article-tag">Robotic Autonomy</span>
-          </div>
-          <div class="article-content">
-            <div class="article-meta">
-              <span>By Prof. Russell H. Taylor</span>
+        <article class="luxury-article-card">
+          <div class="article-author-header">
+            <!-- Direct professional image URL for Prof. Russell H. Taylor -->
+            <img src="https://engineering.jhu.edu/faculty/russell-taylor/" alt="Prof. Russell H. Taylor" class="author-avatar" style="object-fit: cover; background: #1a1f24;">
+            <div class="author-details">
+              <h4>Prof. Russell H. Taylor</h4>
               <span>Johns Hopkins University</span>
             </div>
+          </div>
+          <div class="article-body">
+            <span class="article-tag-luxury">Robotic Autonomy</span>
             <h3>A Systematic Review of Robotic Surgery: From Supervised Paradigms to Fully Autonomous Approaches</h3>
             <p>An authoritative review by the pioneering Professor Taylor, exploring the evolution of surgical robotics and the pathway toward fully autonomous robotic interventions.</p>
             <a href="https://doi.org/10.1002/rcs.2358" target="_blank" rel="noopener noreferrer" class="read-more">Read Original Publication <span>↗</span></a>
@@ -133,16 +302,17 @@
         </article>
 
         <!-- Article 2: Prof. Vipul R. Patel -->
-        <article class="article-card">
-          <div class="article-img-wrap">
-            <img src="assets/surgical-robotics.jpg" alt="Robotic Prostatectomy Outcomes" loading="lazy">
-            <span class="article-tag">Clinical Outcomes</span>
-          </div>
-          <div class="article-content">
-            <div class="article-meta">
-              <span>By Prof. Vipul R. Patel</span>
+        <article class="luxury-article-card">
+          <div class="article-author-header">
+            <!-- Official AdventHealth Provider Photo URL -->
+            <img src="https://atlas.adventhealth.io/sites/default/files/styles/provider_image_230x284/public/provider-images/Vipul%20Patel1.jpg" alt="Prof. Vipul R. Patel" class="author-avatar">
+            <div class="author-details">
+              <h4>Prof. Vipul R. Patel</h4>
               <span>AdventHealth Global Robotics Institute</span>
             </div>
+          </div>
+          <div class="article-body">
+            <span class="article-tag-luxury">Clinical Outcomes</span>
             <h3>Robotic-Assisted Radical Prostatectomy: A Comprehensive Analysis of Outcomes</h3>
             <p>Insights from one of the world's most experienced robotic surgeons (with over 19,000 procedures), detailing clinical outcomes and best practices in robotic urologic oncology.</p>
             <a href="https://pubmed.ncbi.nlm.nih.gov/18423747/" target="_blank" rel="noopener noreferrer" class="read-more">Read Original Publication <span>↗</span></a>
@@ -150,16 +320,17 @@
         </article>
 
         <!-- Article 3: Prof. Tony Costello (Definitive Textbook) -->
-        <article class="article-card">
-          <div class="article-img-wrap">
-            <img src="assets/smart-hospital.jpg" alt="Principles and Practice of Robotic Surgery Book" loading="lazy">
-            <span class="article-tag">Definitive Textbook</span>
-          </div>
-          <div class="article-content">
-            <div class="article-meta">
-              <span>Edited by Prof. Tony Costello</span>
+        <article class="luxury-article-card">
+          <div class="article-author-header">
+            <!-- Official Symposium Speaker Portrait URL -->
+            <img src="https://s3-ap-southeast-1.amazonaws.com/ap-southeast-1.accounts.ivvy.com/account8349/speakers/45306/5166375345eb9.jpg" alt="Prof. Tony Costello" class="author-avatar">
+            <div class="author-details">
+              <h4>Prof. Tony Costello</h4>
               <span>Elsevier Publishing</span>
             </div>
+          </div>
+          <div class="article-body">
+            <span class="article-tag-luxury">Definitive Textbook</span>
             <h3>Principles and Practice of Robotic Surgery</h3>
             <p>The definitive global textbook on robotic surgery, edited by master surgeon Tony Costello, featuring contributions from the world's leading robotic specialists.</p>
             <a href="https://shop.elsevier.com/books/principles-and-practice-of-robotic-surgery/costello/978-0-323-81089-5" target="_blank" rel="noopener noreferrer" class="read-more">View Book Details <span>↗</span></a>
@@ -169,6 +340,7 @@
       </div>
     </section>
 
+    <!-- CONTACT BANNER -->
     <section class="section contact-section">
       <div class="section-label">STAY INFORMED</div>
       <h2 class="section-heading">Subscribe to Our <span>Global Insights.</span></h2>
