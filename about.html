@@ -11,10 +11,247 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 
-  <!-- Schema for About Page -->
+  <!-- Custom Luxury Styles for About Page -->
+  <style>
+    /* Base Animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-up { animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
+    .delay-1 { animation-delay: 0.2s; }
+    .delay-2 { animation-delay: 0.4s; }
+
+    /* Luxury Hero */
+    .about-hero {
+      position: relative;
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      padding: 100px 24px;
+      background: linear-gradient(135deg, rgba(5,6,7,0.95) 0%, rgba(5,6,7,0.7) 100%), url('https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?q=80&w=2000&auto=format&fit=crop') center/cover;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Editorial Overview Grid */
+    .editorial-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      margin-top: 50px;
+    }
+    @media (max-width: 900px) {
+      .editorial-grid { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    .luxury-image-frame {
+      position: relative;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+    }
+    .luxury-image-frame img {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: grayscale(20%) contrast(1.1);
+      transition: filter 0.6s ease, transform 0.6s ease;
+    }
+    .luxury-image-frame:hover img {
+      filter: grayscale(0%) contrast(1);
+      transform: scale(1.03);
+    }
+    .luxury-image-frame::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(255,255,255,0.1);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .editorial-text h2 {
+      font-size: clamp(36px, 4vw, 48px);
+      line-height: 1.1;
+      margin-bottom: 25px;
+    }
+    .editorial-text p {
+      font-size: 15px;
+      line-height: 1.9;
+      color: var(--text-soft);
+      margin-bottom: 20px;
+    }
+    .highlight-box {
+      padding: 20px;
+      border-left: 2px solid var(--gold);
+      background: linear-gradient(90deg, rgba(255,215,0,0.05), transparent);
+      margin: 30px 0;
+      font-weight: 500;
+      color: #fff;
+    }
+
+    /* Vision Parallax Section */
+    .vision-parallax {
+      position: relative;
+      padding: 120px 24px;
+      background: linear-gradient(rgba(5,6,7,0.85), rgba(5,6,7,0.85)), url('https://images.unsplash.com/photo-1551076805-e1869033e561?q=80&w=2000&auto=format&fit=crop') center/cover fixed;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+    .vision-content-luxury {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .vision-quote-icon {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 100px;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: -30px;
+      opacity: 0.8;
+    }
+    .vision-content-luxury h2 {
+      font-size: clamp(32px, 4vw, 50px);
+      margin-bottom: 25px;
+    }
+    .vision-content-luxury p {
+      font-size: 18px;
+      line-height: 1.9;
+      color: var(--silver);
+    }
+
+    /* Luxury Mission Cards */
+    .mission-grid-luxury {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+    .mission-card-lux {
+      background: linear-gradient(145deg, rgba(20,25,30,0.6), rgba(5,7,9,0.9));
+      border: 1px solid var(--border);
+      padding: 40px 30px;
+      border-radius: 4px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s ease;
+    }
+    .mission-card-lux::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--silver), transparent);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .mission-card-lux:hover {
+      transform: translateY(-8px);
+      border-color: rgba(255,255,255,0.3);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+    }
+    .mission-card-lux:hover::before { opacity: 1; }
+    
+    .mission-num {
+      font-family: "Inter", sans-serif;
+      font-size: 12px;
+      color: var(--gold);
+      letter-spacing: 3px;
+      margin-bottom: 20px;
+      display: block;
+    }
+    .mission-card-lux h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 26px;
+      color: #fff;
+      margin-bottom: 15px;
+    }
+    .mission-card-lux p {
+      font-size: 14px;
+      color: var(--text-soft);
+      line-height: 1.8;
+    }
+
+    /* Ultra Luxury Credentials */
+    .credentials-luxury-wrapper {
+      margin-top: 70px;
+      padding: 50px;
+      background: radial-gradient(circle at top right, rgba(255,255,255,0.03), transparent), #080b0e;
+      border: 1px solid var(--border-strong);
+      border-radius: 8px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+      position: relative;
+    }
+    @media (max-width: 768px) {
+      .credentials-luxury-wrapper { padding: 30px; }
+    }
+    .credentials-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .credentials-header .seal {
+      display: inline-block;
+      padding: 8px 20px;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      border-radius: 50px;
+      margin-bottom: 20px;
+      background: rgba(255,215,0,0.05);
+    }
+    .credentials-header h3 {
+      font-size: 36px;
+      color: #fff;
+      margin-bottom: 15px;
+    }
+    .credentials-header p {
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 14px;
+      color: var(--silver-dark);
+    }
+    .credentials-grid-lux {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 768px) {
+      .credentials-grid-lux { grid-template-columns: 1fr; }
+    }
+    .cred-item-lux {
+      padding: 25px;
+      background: rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: border-color 0.3s ease;
+    }
+    .cred-item-lux:hover {
+      border-color: var(--silver);
+    }
+    .cred-item-lux .label {
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .cred-item-lux .value {
+      font-family: "Inter", sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: 1px;
+    }
+  </style>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -26,16 +263,7 @@
         "name": "About Azadipour | Premier Global Medical Technology Company",
         "description": "Discover Azadipour, an Oman-registered premier medical technology company connecting elite healthcare organizations with international technology providers.",
         "isPartOf": { "@id": "https://azadipourmedical.com/#website" },
-        "about": { "@id": "https://azadipourmedical.com/#organization" },
-        "breadcrumb": { "@id": "https://azadipourmedical.com/about.html#breadcrumb" }
-      },
-      {
-        "@type": "BreadcrumbList",
-        "@id": "https://azadipourmedical.com/about.html#breadcrumb",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://azadipourmedical.com/" },
-          { "@type": "ListItem", "position": 2, "name": "About Us", "item": "https://azadipourmedical.com/about.html" }
-        ]
+        "about": { "@id": "https://azadipourmedical.com/#organization" }
       }
     ]
   }
@@ -73,87 +301,161 @@
         </div>
         <a href="partners.html">Global Partnerships</a>
         <a href="projects.html">Projects</a>
+        <a href="media.html">Media</a>
         <a href="contact.html" class="nav-contact">Contact</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <section class="inner-hero">
-      <div class="inner-hero-content">
-        <div class="section-label" style="margin-bottom: 20px;">ABOUT AZADIPOUR</div>
-        <h1>Connecting Healthcare. <span>Creating Global Opportunities.</span></h1>
-        <p>An international perspective on medical technology, advanced surgical solutions, and strategic business development.</p>
+    <!-- LUXURY HERO -->
+    <section class="about-hero">
+      <div class="inner-hero-content animate-up">
+        <div class="section-label" style="margin-bottom: 20px; color: var(--gold);">ABOUT AZADIPOUR</div>
+        <h1 style="font-size: clamp(48px, 6vw, 72px); max-width: 900px; line-height: 1.1; margin-bottom: 25px;">
+          Connecting Healthcare. <br><span style="color: var(--silver);">Creating Global Opportunities.</span>
+        </h1>
+        <p style="font-size: 18px; max-width: 600px; line-height: 1.8; color: var(--text-soft);">
+          An international perspective on medical technology, advanced surgical solutions, and strategic business development.
+        </p>
       </div>
-      <div class="inner-hero-decoration"></div>
     </section>
 
-    <section class="section">
-      <div class="section-label">01 — CORPORATE OVERVIEW</div>
-      <div class="about-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start;">
-        <div><h2 class="section-heading" style="margin-bottom: 0;">A Global Perspective <span>In Medical Technology.</span></h2></div>
-        <div class="about-copy" style="color: var(--text-soft); line-height: 1.9;">
-          <p style="margin-bottom: 20px;">Azadipour is an Oman-registered premier healthcare and medical technology company focused on international business development and the advancement of advanced medical technologies.</p>
-          <p style="margin-bottom: 20px; color: #fff; font-weight: 500;">We currently hold <strong>dedicated sales lines</strong> for select global robotic products and are in active negotiations with several leading robotics companies to further expand our portfolio.</p>
+    <!-- EDITORIAL OVERVIEW -->
+    <section class="section" style="padding-top: 100px; padding-bottom: 100px;">
+      <div class="editorial-grid animate-up delay-1">
+        <!-- Text Side -->
+        <div class="editorial-text">
+          <div class="section-label">01 — CORPORATE OVERVIEW</div>
+          <h2>A Global Perspective <span style="color: var(--silver);">In Medical Technology.</span></h2>
+          <p>Azadipour is an Oman-registered premier healthcare and medical technology company focused on international business development and the advancement of advanced medical technologies.</p>
+          
+          <div class="highlight-box">
+            We currently hold dedicated sales lines for select global robotic products and are in active negotiations with several leading robotics companies to further expand our portfolio.
+          </div>
+
           <p>Through our strategic hub in Oman, we connect elite healthcare organizations and international manufacturers. We are continuously upgrading our relationships with premier international hospitals to integrate next-generation surgical technologies and comprehensive hospital solutions into the region.</p>
         </div>
+
+        <!-- Image Side -->
+        <div class="luxury-image-frame">
+          <!-- High-quality medical technology image -->
+          <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=1000&auto=format&fit=crop" alt="Advanced Medical Technology">
+        </div>
       </div>
 
-      <div class="corporate-credentials-card">
-        <div class="credential-header">
-          <span class="credential-seal">VERIFIED &amp; LICENSED</span>
+      <!-- ULTRA LUXURY CREDENTIALS -->
+      <div class="credentials-luxury-wrapper animate-up delay-2">
+        <div class="credentials-header">
+          <span class="seal">VERIFIED &amp; LICENSED</span>
           <h3>Corporate Credentials</h3>
-          <p>Azadipour is a premier entity in international trade with a dedicated focus on the medical sector. We hold the fundamental regulatory licenses for medical product entry and comprehensive commercial licenses, facilitating the transfer of advanced medical technologies across global markets.</p>
+          <p>Azadipour is a premier entity in international trade with a dedicated focus on the medical sector. We hold fundamental regulatory licenses for medical product entry and comprehensive commercial licenses.</p>
         </div>
-        <div class="credential-grid">
-          <div class="credential-item"><span class="cred-label">COMMERCIAL REGISTRATION (CR)</span><span class="cred-value">1678104</span></div>
-          <div class="credential-item"><span class="cred-label">OCCI MEMBERSHIP</span><span class="cred-value">5551647</span></div>
-          <div class="credential-item"><span class="cred-label">ACTIVITY CODE</span><span class="cred-value">461003 (Export &amp; Import)</span></div>
-          <div class="credential-item"><span class="cred-label">REGISTERED OFFICE</span><span class="cred-value">Muscat, Sultanate of Oman</span></div>
+        <div class="credentials-grid-lux">
+          <div class="cred-item-lux">
+            <span class="label">COMMERCIAL REGISTRATION (CR)</span>
+            <span class="value">1678104</span>
+          </div>
+          <div class="cred-item-lux">
+            <span class="label">OCCI MEMBERSHIP</span>
+            <span class="value">5551647</span>
+          </div>
+          <div class="cred-item-lux">
+            <span class="label">ACTIVITY CODE</span>
+            <span class="value">461003 (Export &amp; Import)</span>
+          </div>
+          <div class="cred-item-lux">
+            <span class="label">REGISTERED OFFICE</span>
+            <span class="value">Muscat, Sultanate of Oman</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section about-vision">
-      <div class="section-label">02 — OUR VISION</div>
-      <div class="vision-content">
-        <span class="vision-mark" style="font-family: 'Cormorant Garamond', serif; font-size: 80px; color: var(--silver-dark); line-height: 1; display: block; margin-bottom: -20px;">“</span>
-        <h2 class="section-heading" style="margin-bottom: 20px;">Connecting Global Innovation <span>With Healthcare Needs.</span></h2>
-        <p style="max-width: 700px;">Our vision is to contribute to a more connected healthcare ecosystem by providing <strong>dedicated access</strong> to advanced medical technologies and building meaningful, long-term international partnerships with world-class hospitals.</p>
+    <!-- VISION PARALLAX SECTION -->
+    <section class="vision-parallax">
+      <div class="vision-content-luxury animate-up">
+        <div class="section-label" style="color: var(--gold);">02 — OUR VISION</div>
+        <div class="vision-quote-icon">“</div>
+        <h2>Connecting Global Innovation <br><span style="color: var(--silver);">With Healthcare Needs.</span></h2>
+        <p>Our vision is to contribute to a more connected healthcare ecosystem by providing <strong>dedicated access</strong> to advanced medical technologies and building meaningful, long-term international partnerships with world-class hospitals.</p>
       </div>
     </section>
 
-    <section class="section">
+    <!-- MISSION SECTION -->
+    <section class="section" style="padding-top: 100px; padding-bottom: 100px;">
       <div class="section-label">03 — OUR MISSION</div>
-      <div class="section-heading">
-        <h2>Turning Healthcare Requirements<span>Into Strategic Opportunities.</span></h2>
+      <div class="section-heading animate-up">
+        <h2>Turning Requirements <br><span style="color: var(--silver);">Into Strategic Opportunities.</span></h2>
         <p>We focus on practical business development, dedicated distribution rights, and international cooperation across the medical technology sector.</p>
       </div>
-      <div class="mission-grid">
-        <article class="mission-card"><span class="presence-number">01</span><h3>Dedicated Distribution</h3><p>Holding dedicated sales lines and specific distribution rights for selected advanced global robotic medical products.</p></article>
-        <article class="mission-card"><span class="presence-number">02</span><h3>Global Negotiations</h3><p>Actively engaging with leading global robotics companies to secure next-generation surgical platforms.</p></article>
-        <article class="mission-card"><span class="presence-number">03</span><h3>Hospital Alliances</h3><p>Continuously upgrading and expanding our strategic relationships with premier international hospitals.</p></article>
-        <article class="mission-card"><span class="presence-number">04</span><h3>Advanced Technology</h3><p>Connecting clinical requirements with the most advanced medical technology and digital surgery solutions available worldwide.</p></article>
+      
+      <div class="mission-grid-luxury animate-up delay-1">
+        <article class="mission-card-lux">
+          <span class="mission-num">01</span>
+          <h3>Dedicated Distribution</h3>
+          <p>Holding dedicated sales lines and specific distribution rights for selected advanced global robotic medical products.</p>
+        </article>
+        <article class="mission-card-lux">
+          <span class="mission-num">02</span>
+          <h3>Global Negotiations</h3>
+          <p>Actively engaging with leading global robotics companies to secure next-generation surgical platforms.</p>
+        </article>
+        <article class="mission-card-lux">
+          <span class="mission-num">03</span>
+          <h3>Hospital Alliances</h3>
+          <p>Continuously upgrading and expanding our strategic relationships with premier international hospitals.</p>
+        </article>
+        <article class="mission-card-lux">
+          <span class="mission-num">04</span>
+          <h3>Advanced Technology</h3>
+          <p>Connecting clinical requirements with the most advanced medical technology and digital surgery solutions available worldwide.</p>
+        </article>
       </div>
     </section>
 
-    <section class="section contact-section">
-      <div class="section-label">LET'S CONNECT</div>
-      <h2 class="section-heading">Explore Opportunities <span>With Azadipour.</span></h2>
-      <p style="max-width: 600px; margin-bottom: 30px;">We welcome professional enquiries from healthcare organizations, robotics manufacturers, and international partners.</p>
+    <!-- CTA SECTION -->
+    <section class="section contact-section" style="background: #090c0f; border-top: 1px solid var(--border); text-align: center;">
+      <div class="section-label" style="justify-content: center;">LET'S CONNECT</div>
+      <h2 class="section-heading" style="margin: 0 auto 20px auto;">Explore Opportunities <br><span style="color: var(--silver);">With Azadipour.</span></h2>
+      <p style="max-width: 600px; margin: 0 auto 30px auto;">We welcome professional enquiries from healthcare organizations, robotics manufacturers, and international partners.</p>
       <a href="contact.html" class="btn-primary">Contact Our Company <span>↗</span></a>
     </section>
   </main>
 
+  <!-- FOOTER (Contact changed to International) -->
   <footer class="site-footer">
     <div class="footer-main">
-      <div class="footer-brand"><img src="assets/logo-transparent.png" alt="Azadipour Logo"><h3>AZADIPOUR</h3><p>Global Medical Technology & Hospital Solutions</p></div>
-      <div class="footer-column"><h4>COMPANY</h4><a href="about.html">About Us</a><a href="index.html#global-network">Global Presence</a><a href="partners.html">Partnerships</a><a href="projects.html">Projects</a></div>
-      <div class="footer-column"><h4>TECHNOLOGY</h4><a href="robotic.html">Robotic Surgery</a><a href="cardiac.html">Cardiovascular</a><a href="medical.html">Medical Technology</a></div>
-      <div class="footer-column"><h4>CONTACT</h4><a href="mailto:info@azadipourmedical.com">Email</a><span>Oman</span></div>
+      <div class="footer-brand">
+        <img src="assets/logo-transparent.png" alt="Azadipour Logo">
+        <h3>AZADIPOUR</h3>
+        <p>Global Medical Technology & Hospital Solutions</p>
+      </div>
+      <div class="footer-column">
+        <h4>COMPANY</h4>
+        <a href="about.html">About Us</a>
+        <a href="index.html#global-network">Global Presence</a>
+        <a href="partners.html">Partnerships</a>
+        <a href="projects.html">Projects</a>
+      </div>
+      <div class="footer-column">
+        <h4>TECHNOLOGY</h4>
+        <a href="robotic.html">Robotic Surgery</a>
+        <a href="cardiac.html">Cardiovascular</a>
+        <a href="medical.html">Medical Technology</a>
+      </div>
+      <div class="footer-column">
+        <h4>CONTACT</h4>
+        <a href="mailto:info@azadipourmedical.com">Email</a>
+        <span>International</span>
+      </div>
     </div>
-    <div class="footer-bottom"><span>© <span id="currentYear">2026</span> AZADIPOUR. ALL RIGHTS RESERVED.</span><span>GLOBAL MEDICAL TECHNOLOGY · WORLDWIDE</span></div>
+    <div class="footer-bottom">
+      <span>© <span id="currentYear">2026</span> AZADIPOUR. ALL RIGHTS RESERVED.</span>
+      <span>GLOBAL MEDICAL TECHNOLOGY · WORLDWIDE</span>
+    </div>
   </footer>
+
   <script src="script.js" defer></script>
 </body>
 </html>
