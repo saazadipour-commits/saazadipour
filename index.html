@@ -18,61 +18,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 
-  <!-- Custom Styles for the Globe Markers (Smaller & Refined) -->
-  <style>
-    .globe-marker {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 20px;  /* Smaller size */
-      height: 20px; /* Smaller size */
-      border-radius: 4px;
-      font-family: 'Inter', sans-serif;
-      font-weight: 700;
-      font-size: 9px; /* Smaller font */
-      backdrop-filter: blur(4px);
-      box-shadow: 0 0 10px rgba(0,0,0,0.8);
-      transition: transform 0.2s ease;
-      cursor: pointer;
-      pointer-events: none; 
-    }
-    
-    /* Companies (White) */
-    .marker-c {
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.7);
-      color: #ffffff;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-    }
-
-    /* Hospitals (Subtle White/Grey) */
-    .marker-h {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      color: #cccccc;
-    }
-
-    /* Main Hub (Oman) */
-    .marker-hub {
-      width: 30px;
-      height: 30px;
-      font-size: 12px;
-      background: rgba(255, 255, 255, 0.15);
-      border: 2px solid #ffffff;
-      color: #ffffff;
-      border-radius: 50%;
-      box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
-    }
-
-    /* Germany Branch (Gold) */
-    .marker-gold {
-      background: rgba(255, 215, 0, 0.1);
-      border: 1px solid rgba(255, 215, 0, 0.8);
-      color: #FFD700;
-      box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
-    }
-  </style>
-
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -81,7 +26,7 @@
         "@type": "Organization",
         "@id": "https://azadipourmedical.com/#organization",
         "name": "Azadipour Medical",
-        "alternateName": "آزادی پور",
+      
         "legalName": "Azadipour Medical Technology LLC",
         "url": "https://azadipourmedical.com/",
         "logo": "https://azadipourmedical.com/assets/logo-transparent.png",
@@ -206,20 +151,40 @@
     </section>
 
     <section class="section intro-section">
-      <div class="section-label">02 — CORPORATE OVERVIEW</div>
+      <div class="section-label">02 — GLOBAL BASES & OVERVIEW</div>
       <div class="section-heading">
-        <h2>Elevating Healthcare <span>Through Global Innovation.</span></h2>
-        <p>Azadipour is an Oman-registered healthcare and medical technology company. We are currently in active negotiations with several leading robotics companies and hold dedicated sales lines for selected global robotic products. Furthermore, we are continuously upgrading our strategic relationships with premier international hospitals to integrate advanced surgical solutions.</p>
+        <h2>A Truly Global <span>Corporate Footprint.</span></h2>
+        <p>Azadipour operates as a fully international entity, strategically positioned across four major global regions to facilitate seamless medical technology transfer and international partnership development.</p>
       </div>
+      
+      <!-- 4 Global Bases -->
       <div class="intro-details">
+        <!-- GCC Base -->
         <div class="intro-detail">
-          <span>01</span><h3>Robotic Negotiations</h3><p>Actively engaging with global leaders in surgical robotics to integrate next-generation platforms into our network.</p>
+          <span>GCC BASE</span>
+          <h3>Oman (Muscat)</h3>
+          <p>The registered headquarters and strategic operational hub. Fully licensed with fundamental regulatory approvals for medical product entry (CR: 1678104).</p>
         </div>
-        <div class="intro-detail">
-          <span>02</span><h3>Dedicated Sales Lines</h3><p>Holding dedicated sales lines and specific distribution rights for selected advanced global robotic medical products.</p>
+
+        <!-- Europe Base -->
+        <div class="intro-detail branch-active">
+          <span>EUROPE BASE (COMING SOON)</span>
+          <h3>Germany (Berlin)</h3>
+          <p>Our upcoming European branch, designed to bridge advanced German medical engineering with Middle Eastern and global healthcare markets.</p>
         </div>
+
+        <!-- Americas Base -->
         <div class="intro-detail">
-          <span>03</span><h3>Hospital Alliances</h3><p>Continuously upgrading and expanding our strategic relationships with premier international hospitals and healthcare institutions.</p>
+          <span>AMERICAS BASE</span>
+          <h3>United States</h3>
+          <p>Strategic sourcing and partnership hub focused on integrating cutting-edge American surgical robotics and advanced medical innovations.</p>
+        </div>
+
+        <!-- Asia Base -->
+        <div class="intro-detail">
+          <span>ASIA BASE</span>
+          <h3>China</h3>
+          <p>Our Asian operational base, facilitating high-tech manufacturing partnerships, supply chain excellence, and rapid technological integration.</p>
         </div>
       </div>
 
@@ -286,12 +251,61 @@
       <div class="section-label">04 — SELECTED TECHNOLOGY AREAS</div>
       <div class="section-heading"><h2>Technology in <span>Focus.</span></h2><p>A visual overview of selected medical technology and hospital solution areas.</p></div>
       <div class="visual-portfolio-grid">
-        <figure class="visual-portfolio-card"><img src="assets/robotic-hero.jpg" alt="Robotic surgery technology" loading="lazy"><figcaption><strong>Robotic Surgery</strong><span>Advanced surgical platforms</span></figcaption></figure>
-        <figure class="visual-portfolio-card"><img src="assets/surgical-robotics.jpg" alt="Surgical robotics equipment" loading="lazy"><figcaption><strong>Surgical Robotics</strong><span>Next-generation operating rooms</span></figcaption></figure>
-        <figure class="visual-portfolio-card"><img src="assets/cardiac-hero.jpg" alt="Cardiac and cardiovascular technology" loading="lazy"><figcaption><strong>Cardiovascular</strong><span>Cardiac care technologies</span></figcaption></figure>
-        <figure class="visual-portfolio-card"><img src="assets/hospital-technology.jpg" alt="Modern hospital technology" loading="lazy"><figcaption><strong>Hospital Technology</strong><span>Integrated hospital solutions</span></figcaption></figure>
-        <figure class="visual-portfolio-card"><img src="assets/hospital-project.jpg" alt="Hospital project environment" loading="lazy"><figcaption><strong>Hospital Projects</strong><span>Healthcare infrastructure</span></figcaption></figure>
-        <figure class="visual-portfolio-card"><img src="assets/germany-medical.jpg" alt="Medical technology in Germany" loading="lazy"><figcaption><strong>International Markets</strong><span>Global medical technology</span></figcaption></figure>
+        
+        <!-- Image 1 -->
+        <figure class="visual-portfolio-card">
+          <img src="assets/robotic-hero.jpg" alt="Robotic surgery technology" loading="lazy">
+          <figcaption>
+            <strong>Robotic Surgery</strong>
+            <span>Advanced surgical platforms</span>
+          </figcaption>
+        </figure>
+        
+        <!-- Image 2 (The one requested to be centered with hover effect) -->
+        <figure class="visual-portfolio-card">
+          <img src="assets/surgical-robotics.jpg" alt="Surgical robotics equipment" loading="lazy">
+          <figcaption>
+            <strong>Surgical Robotics</strong>
+            <span>Next-generation operating rooms</span>
+          </figcaption>
+        </figure>
+        
+        <!-- Image 3 -->
+        <figure class="visual-portfolio-card">
+          <img src="assets/cardiac-hero.jpg" alt="Cardiac and cardiovascular technology" loading="lazy">
+          <figcaption>
+            <strong>Cardiovascular</strong>
+            <span>Cardiac care technologies</span>
+          </figcaption>
+        </figure>
+        
+        <!-- Image 4 -->
+        <figure class="visual-portfolio-card">
+          <img src="assets/hospital-technology.jpg" alt="Modern hospital technology" loading="lazy">
+          <figcaption>
+            <strong>Hospital Technology</strong>
+            <span>Integrated hospital solutions</span>
+          </figcaption>
+        </figure>
+        
+        <!-- Image 5 -->
+        <figure class="visual-portfolio-card">
+          <img src="assets/hospital-project.jpg" alt="Hospital project environment" loading="lazy">
+          <figcaption>
+            <strong>Hospital Projects</strong>
+            <span>Healthcare infrastructure</span>
+          </figcaption>
+        </figure>
+        
+        <!-- Image 6 -->
+        <figure class="visual-portfolio-card">
+          <img src="assets/germany-medical.jpg" alt="Medical technology in Germany" loading="lazy">
+          <figcaption>
+            <strong>International Markets</strong>
+            <span>Global medical technology</span>
+          </figcaption>
+        </figure>
+
       </div>
     </section>
 
@@ -365,18 +379,15 @@
 
         try {
           const world = Globe()(globeContainer)
-            // HIGH QUALITY DARK TEXTURE
             .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-night.jpg')
             .backgroundImageUrl('https://unpkg.com/three-globe/example/img/night-sky.png')
             .backgroundColor('#000000')
-            .showAtmosphere(false) // REMOVED CLOUDS
+            .showAtmosphere(false)
             .width(globeContainer.clientWidth)
             .height(globeContainer.clientHeight);
 
-          // Zoom to show the global network clearly
           world.pointOfView({ lat: 30, lng: 40, altitude: 2.2 });
 
-          // Country Borders
           fetch('https://raw.githubusercontent.com/vasturiano/globe.gl/master/example/datasets/ne_110m_admin_0_countries.geojson')
             .then(res => res.json())
             .then(countries => {
@@ -401,7 +412,6 @@
                 .labelText('name').labelAltitude(0.01).labelResolution(2);
             }).catch(err => console.error("Error loading borders:", err));
 
-          // Data
           const omanHub = { lat: 23.588, lng: 58.383, name: "AZADIPOUR" };
           
           const suppliers = [
@@ -413,54 +423,21 @@
             { lat: 37.774, lng: -122.419, name: "San Francisco" }
           ];
 
-          // The New German Branch (Gold 'A')
           const germanyBranch = { lat: 52.520, lng: 13.405, name: "BERLIN BRANCH" };
 
-          // Reduced Hospitals: One per specified country
           const hospitals = [
-            { lat: 24.713, lng: 46.675 }, // Riyadh, Saudi Arabia
-            { lat: 25.285, lng: 51.531 }, // Doha, Qatar
-            { lat: 26.228, lng: 50.586 }, // Manama, Bahrain
-            { lat: 24.453, lng: 54.377 }, // Abu Dhabi, UAE
-            { lat: 17.015, lng: 54.092 }, // Salalah, Oman (Different from Hub)
-            { lat: 48.856, lng: 2.352 },  // Paris, France
-            { lat: 41.902, lng: 12.496 }, // Rome, Italy
-            { lat: 40.416, lng: -3.703 }, // Madrid, Spain
-            { lat: 40.712, lng: -74.006 } // New York, USA
+            { lat: 24.713, lng: 46.675 }, { lat: 25.285, lng: 51.531 }, { lat: 26.228, lng: 50.586 },
+            { lat: 24.453, lng: 54.377 }, { lat: 17.015, lng: 54.092 }, { lat: 48.856, lng: 2.352 },
+            { lat: 41.902, lng: 12.496 }, { lat: 40.416, lng: -3.703 }, { lat: 40.712, lng: -74.006 }
           ];
 
-          // Arcs
           const arcsData = [];
-          
-          // Suppliers -> Oman (White)
-          suppliers.forEach(s => arcsData.push({ 
-            startLat: s.lat, startLng: s.lng, 
-            endLat: omanHub.lat, endLng: omanHub.lng, 
-            color: ['rgba(255, 255, 255, 0.6)', 'rgba(255, 255, 255, 0.05)'] 
-          }));
-          
-          // Oman -> Germany Branch (Gold)
-          arcsData.push({ 
-            startLat: omanHub.lat, startLng: omanHub.lng, 
-            endLat: germanyBranch.lat, endLng: germanyBranch.lng, 
-            color: ['rgba(255, 215, 0, 0.8)', 'rgba(255, 215, 0, 0.1)'] 
-          });
-          
-          // Oman -> Hospitals (Subtle white)
-          hospitals.forEach(h => arcsData.push({ 
-            startLat: omanHub.lat, startLng: omanHub.lng, 
-            endLat: h.lat, endLng: h.lng, 
-            color: ['rgba(200, 200, 200, 0.3)', 'rgba(200, 200, 200, 0.01)'] 
-          }));
+          suppliers.forEach(s => arcsData.push({ startLat: s.lat, startLng: s.lng, endLat: omanHub.lat, endLng: omanHub.lng, color: ['rgba(255, 255, 255, 0.6)', 'rgba(255, 255, 255, 0.05)'] }));
+          arcsData.push({ startLat: omanHub.lat, startLng: omanHub.lng, endLat: germanyBranch.lat, endLng: germanyBranch.lng, color: ['rgba(255, 215, 0, 0.8)', 'rgba(255, 215, 0, 0.1)'] });
+          hospitals.forEach(h => arcsData.push({ startLat: omanHub.lat, startLng: omanHub.lng, endLat: h.lat, endLng: h.lng, color: ['rgba(200, 200, 200, 0.3)', 'rgba(200, 200, 200, 0.01)'] }));
 
-          world.arcsData(arcsData)
-            .arcColor('color')
-            .arcDashLength(0.5)
-            .arcDashGap(0.2)
-            .arcDashAnimateTime(2000)
-            .arcStroke(0.3); // Very thin
+          world.arcsData(arcsData).arcColor('color').arcDashLength(0.5).arcDashGap(0.2).arcDashAnimateTime(2000).arcStroke(0.3);
 
-          // HTML Markers (Smaller, Custom Letters)
           const htmlElementsData = [
             { lat: omanHub.lat, lng: omanHub.lng, type: 'hub', text: 'A' },
             { lat: germanyBranch.lat, lng: germanyBranch.lng, type: 'gold', text: 'A' },
@@ -472,32 +449,19 @@
             .htmlElement(d => {
               const el = document.createElement('div');
               el.className = 'globe-marker';
-              
-              if (d.type === 'hub') {
-                el.classList.add('marker-hub');
-              } else if (d.type === 'company') {
-                el.classList.add('marker-c');
-              } else if (d.type === 'hospital') {
-                el.classList.add('marker-h');
-              } else if (d.type === 'gold') {
-                el.classList.add('marker-gold');
-              }
-              
+              if (d.type === 'hub') el.classList.add('marker-hub');
+              else if (d.type === 'company') el.classList.add('marker-c');
+              else if (d.type === 'hospital') el.classList.add('marker-h');
+              else if (d.type === 'gold') el.classList.add('marker-gold');
               el.innerHTML = `<span>${d.text}</span>`;
               return el;
             })
             .htmlAltitude(d => d.type === 'hub' ? 0.025 : 0.015);
 
-          // Rings around Hub
-          world.ringsData([omanHub])
-            .ringColor(() => t => `rgba(255, 255, 255, ${1-t})`)
-            .ringMaxRadius(3)
-            .ringPropagationSpeed(2)
-            .ringRepeatPeriod(1500);
+          world.ringsData([omanHub]).ringColor(() => t => `rgba(255, 255, 255, ${1-t})`).ringMaxRadius(3).ringPropagationSpeed(2).ringRepeatPeriod(1500);
 
-          // Controls (Increased Rotation Speed)
           world.controls().autoRotate = true;
-          world.controls().autoRotateSpeed = 0.8; // Faster rotation
+          world.controls().autoRotateSpeed = 0.8;
           world.controls().enableZoom = true;
           world.controls().minDistance = 150;
 
