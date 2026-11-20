@@ -1,7 +1,3 @@
-/* =========================================================
-   AZADIPOUR - MAIN JAVASCRIPT & ULTIMATE GLOBE
-   ========================================================= */
-
 document.addEventListener("DOMContentLoaded", function () {
     "use strict";
 
@@ -10,18 +6,17 @@ document.addEventListener("DOMContentLoaded", function () {
     const menuToggle = document.getElementById("menuToggle");
     const mainNav = document.getElementById("mainNav");
     const intro = document.getElementById("intro");
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    /* INTRO SCREEN */
+    /* 01. INTRO SCREEN */
     if (intro) {
         const hideIntro = function () {
             intro.classList.add("hide");
-            setTimeout(() => { intro.style.display = "none"; }, reduceMotion ? 0 : 900);
+            setTimeout(() => { intro.style.display = "none"; }, 900);
         };
-        if (reduceMotion) hideIntro(); else setTimeout(hideIntro, 1500);
+        setTimeout(hideIntro, 1500);
     }
 
-    /* MOBILE NAVIGATION */
+    /* 02. MOBILE NAVIGATION */
     function closeMenu() {
         if (!menuToggle || !mainNav) return;
         mainNav.classList.remove("open", "active");
@@ -40,193 +35,117 @@ document.addEventListener("DOMContentLoaded", function () {
         });
         mainNav.querySelectorAll("a").forEach(link => link.addEventListener("click", closeMenu));
         document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeMenu(); });
-        document.addEventListener("click", (e) => {
-            if (!mainNav.contains(e.target) && !menuToggle.contains(e.target)) closeMenu();
-        });
     }
 
-    /* HEADER SCROLL & SMOOTH LINKS */
+    /* 03. HEADER SCROLL */
     function updateHeader() { if (header) header.classList.toggle("scrolled", window.scrollY > 35); }
     updateHeader();
     window.addEventListener("scroll", updateHeader, { passive: true });
 
-    document.querySelectorAll('a[href^="#"]').forEach(function (link) {
-        link.addEventListener("click", function (event) {
-            const targetId = link.getAttribute("href");
-            if (!targetId || targetId === "#") return;
-            const target = document.querySelector(targetId);
-            if (!target) return;
-            event.preventDefault();
-            const headerHeight = header ? header.offsetHeight : 0;
-            const targetPosition = target.getBoundingClientRect().top + window.scrollY - headerHeight;
-            window.scrollTo({ top: targetPosition, behavior: reduceMotion ? "auto" : "smooth" });
-        });
-    });
-
-    /* AUTOMATIC FOOTER YEAR */
+    /* 04. AUTOMATIC FOOTER YEAR */
     const currentYear = new Date().getFullYear();
     if (document.getElementById("currentYear")) document.getElementById("currentYear").textContent = currentYear;
 
     /* =========================================================
-       GLOBE INITIALIZATION (COMMAND CENTER STYLE)
+       05. 2.5D COMMAND CENTER MAP (STRICTLY B&W)
     ========================================================= */
-    window.addEventListener('load', () => {
-        const globeContainer = document.getElementById("globeViz");
-        const loading = document.getElementById("mapLoading");
-        if (!globeContainer) return;
+    const mapContainer = document.getElementById('luxuryMap');
+    if (mapContainer && typeof L !== 'undefined') {
+        
+        // Initialize map
+        const map = L.map('luxuryMap', {
+            zoomControl: false,
+            attributionControl: false,
+            scrollWheelZoom: false,
+            dragging: false // Disable dragging to keep it looking like a static dashboard
+        }).setView([25.0, 45.0], 3);
 
-        setTimeout(() => {
-            if (typeof Globe === 'undefined' || typeof THREE === 'undefined') {
-                if (loading) loading.style.display = "none";
-                return;
-            }
+        // Use a strictly Black & White tile layer (CartoDB Dark Matter)
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png', {
+            maxZoom: 19
+        }).addTo(map);
 
-            try {
-                const world = Globe()(globeContainer)
-                    .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
-                    .backgroundImageUrl(null)
-                    .backgroundColor('#050607')
-                    .showAtmosphere(false) // No clouds/atmosphere for precise map
-                    .width(globeContainer.clientWidth)
-                    .height(globeContainer.clientHeight);
+        // Coordinates
+        const omanHub = [23.588, 58.383];
+        const taiwan = [25.033, 121.565];
+        const chinaSupplier = [22.543, 114.057];
+        const germany = [52.520, 13.405];
+        const usa = [37.774, -122.419];
 
-                // Optimal view to see Americas, Europe, and Asia
-                world.pointOfView({ lat: 25, lng: 40, altitude: 2.4 });
+        const gccHospitals = [
+            [24.713, 46.675], [25.285, 51.531], [25.204, 55.270], 
+            [24.453, 54.377], [29.375, 47.977], [26.228, 50.586], 
+            [17.015, 54.092], [24.207, 55.744]
+        ];
+        const europeHospitals = [[48.856, 2.352], [51.507, -0.127], [41.902, 12.496]];
+        const americasHospitals = [[40.712, -74.006], [34.052, -118.243], [43.653, -79.383]];
+        const chinaHospitals = [[39.904, 116.407], [31.230, 121.473]];
 
-                // Clear, thick country borders
-                fetch('https://raw.githubusercontent.com/vasturiano/globe.gl/master/example/datasets/ne_110m_admin_0_countries.geojson')
-                    .then(res => res.json())
-                    .then(countries => {
-                        world.polygonsData(countries.features)
-                            .polygonCapColor(() => 'rgba(0,0,0,0)') 
-                            .polygonSideColor(() => 'rgba(0,0,0,0)')
-                            .polygonStrokeColor(() => 'rgba(255, 255, 255, 0.4)') // Strong borders
-                            .polygonAltitude(0.005);
-                    }).catch(err => console.error(err));
-
-                // --- NODES CONFIGURATION ---
-                const omanHub = { lat: 23.588, lng: 58.383, type: 'A', color: 'white' };
-                const germanyHub = { lat: 52.520, lng: 13.405, type: 'A', color: 'gold' };
+        // Custom Marker HTML (Strictly White & Black)
+        function createIcon(type) {
+            let size = type === 'A' ? 32 : (type === 'C' ? 24 : 18);
+            let fontSize = type === 'A' ? 14 : (type === 'C' ? 11 : 9);
+            let border = type === 'A' ? '2px solid #fff' : '1.5px solid #fff';
+            let bg = type === 'A' ? 'rgba(255,255,255,0.15)' : 'rgba(0,0,0,0.8)';
+            let shadow = type === 'A' ? '0 0 20px rgba(255,255,255,0.6)' : '0 0 10px rgba(0,0,0,0.8)';
+            
+            let html = `<div style="
+                display:flex; justify-content:center; align-items:center;
+                width:${size}px; height:${size}px; border-radius:50%;
+                background:${bg}; border:${border}; color:#fff; font-weight:bold;
+                font-family:'Inter', sans-serif; font-size:${fontSize}px;
+                box-shadow:${shadow}; backdrop-filter:blur(2px);">${type}</div>`;
                 
-                const suppliers = [
-                    { lat: 22.543, lng: 114.057, type: 'C', color: 'blue' }, // China
-                    { lat: 25.033, lng: 121.565, type: 'C', color: 'blue' }  // Taiwan
-                ];
+            return L.divIcon({
+                html: html,
+                className: '',
+                iconSize: [size, size],
+                iconAnchor: [size/2, size/2]
+            });
+        }
 
-                // 10 GCC Hospitals
-                const gccHospitals = [
-                    { lat: 24.713, lng: 46.675, type: 'H' }, // Riyadh
-                    { lat: 21.485, lng: 39.192, type: 'H' }, // Jeddah
-                    { lat: 26.420, lng: 50.088, type: 'H' }, // Dammam
-                    { lat: 25.204, lng: 55.270, type: 'H' }, // Dubai
-                    { lat: 24.453, lng: 54.377, type: 'H' }, // Abu Dhabi
-                    { lat: 25.285, lng: 51.531, type: 'H' }, // Doha
-                    { lat: 29.375, lng: 47.977, type: 'H' }, // Kuwait City
-                    { lat: 26.228, lng: 50.586, type: 'H' }, // Manama
-                    { lat: 17.015, lng: 54.092, type: 'H' }, // Salalah
-                    { lat: 24.207, lng: 55.744, type: 'H' }  // Al Ain
-                ];
+        // Add Markers
+        L.marker(omanHub, { icon: createIcon('A'), zIndexOffset: 1000 }).addTo(map);
+        L.marker(germany, { icon: createIcon('A') }).addTo(map);
+        L.marker(taiwan, { icon: createIcon('C') }).addTo(map);
+        L.marker(chinaSupplier, { icon: createIcon('C') }).addTo(map);
 
-                // Europe Hospitals
-                const europeHospitals = [
-                    { lat: 51.507, lng: -0.127, type: 'H' }, // London
-                    { lat: 48.856, lng: 2.352, type: 'H' },  // Paris
-                    { lat: 41.902, lng: 12.496, type: 'H' }, // Rome
-                    { lat: 40.416, lng: -3.703, type: 'H' }  // Madrid
-                ];
+        [...gccHospitals, ...europeHospitals, ...americasHospitals, ...chinaHospitals].forEach(pos => {
+            L.marker(pos, { icon: createIcon('H') }).addTo(map);
+        });
 
-                // Americas Hospitals
-                const americasHospitals = [
-                    { lat: 40.712, lng: -74.006, type: 'H' }, // NY
-                    { lat: 34.052, lng: -118.243, type: 'H' },// LA
-                    { lat: 43.653, lng: -79.383, type: 'H' }, // Toronto
-                    { lat: -23.550, lng: -46.633, type: 'H' } // Sao Paulo
-                ];
+        // Draw Luxury Curved Lines (Pure White)
+        const drawArc = (start, end, weight = 1, dash = '4, 6') => {
+            const midLat = (start[0] + end[0]) / 2 + (Math.abs(start[1] - end[1]) * 0.2);
+            const midLng = (start[1] + end[1]) / 2;
+            
+            // Using polyline with a calculated midpoint to fake a bezier curve
+            const points = [start, [midLat, midLng], end];
+            
+            L.polyline(points, {
+                color: '#ffffff',
+                weight: weight,
+                opacity: 0.9,
+                dashArray: dash,
+                className: 'animated-arc'
+            }).addTo(map);
+        };
 
-                // China Hospitals
-                const chinaHospitals = [
-                    { lat: 39.904, lng: 116.407, type: 'H' }, // Beijing
-                    { lat: 31.230, lng: 121.473, type: 'H' }, // Shanghai
-                    { lat: 23.129, lng: 113.264, type: 'H' }  // Guangzhou
-                ];
+        // Inbound (Thicker White)
+        drawArc(taiwan, omanHub, 2, '8, 8');
+        drawArc(chinaSupplier, omanHub, 2, '8, 8');
 
-                // --- ARCS (THICK & PRECISE) ---
-                const arcsData = [];
-                const arcStroke = 0.7; // Very thick lines
-                const whiteArc = ['rgba(255, 255, 255, 1)', 'rgba(255, 255, 255, 0.1)'];
-                const goldArc = ['rgba(255, 215, 0, 1)', 'rgba(255, 215, 0, 0.1)'];
-                const blueArc = ['rgba(0, 191, 255, 1)', 'rgba(0, 191, 255, 0.1)'];
+        // Outbound (Thin White)
+        gccHospitals.forEach(h => drawArc(omanHub, h, 1, '4, 6'));
+        europeHospitals.forEach(h => drawArc(germany, h, 1, '4, 6'));
+        americasHospitals.forEach(h => drawArc(usa, h, 1, '4, 6'));
+        chinaHospitals.forEach(h => drawArc(chinaSupplier, h, 1, '4, 6'));
 
-                // Inbound: Suppliers -> Oman
-                suppliers.forEach(s => arcsData.push({ startLat: s.lat, startLng: s.lng, endLat: omanHub.lat, endLng: omanHub.lng, color: whiteArc, stroke: arcStroke }));
-                
-                // Outbound: Oman -> GCC
-                gccHospitals.forEach(h => arcsData.push({ startLat: omanHub.lat, startLng: omanHub.lng, endLat: h.lat, endLng: h.lng, color: whiteArc, stroke: arcStroke }));
-                
-                // Outbound: Germany -> Europe (Gold)
-                europeHospitals.forEach(h => arcsData.push({ startLat: germanyHub.lat, startLng: germanyHub.lng, endLat: h.lat, endLng: h.lng, color: goldArc, stroke: arcStroke }));
-                
-                // Outbound: USA (assumed SF) -> Americas
-                americasHospitals.forEach(h => arcsData.push({ startLat: 37.774, startLng: -122.419, endLat: h.lat, endLng: h.lng, color: whiteArc, stroke: arcStroke }));
-                
-                // Outbound: China (Shenzhen) -> China
-                chinaHospitals.forEach(h => arcsData.push({ startLat: 22.543, startLng: 114.057, endLat: h.lat, endLng: h.lng, color: blueArc, stroke: arcStroke }));
+        // Pulsing Ring on Oman (White)
+        L.circle(omanHub, {
+            color: '#ffffff', fillColor: '#ffffff', fillOpacity: 0.1,
+            radius: 100000, weight: 1, className: 'pulse-ring'
+        }).addTo(map);
+    }
 
-                world.arcsData(arcsData)
-                    .arcColor('color')
-                    .arcStroke('stroke')
-                    .arcDashLength(0.4)
-                    .arcDashGap(0.1)
-                    .arcDashAnimateTime(2000);
-
-                // --- HTML MARKERS (A, C, H) ---
-                const allMarkers = [
-                    omanHub, germanyHub, 
-                    ...suppliers, 
-                    ...gccHospitals, 
-                    ...europeHospitals, 
-                    ...americasHospitals, 
-                    ...chinaHospitals
-                ];
-
-                world.htmlElementsData(allMarkers)
-                    .htmlElement(d => {
-                        const el = document.createElement('div');
-                        el.className = 'globe-marker-node';
-                        
-                        // Add specific color classes
-                        if (d.color === 'gold') el.classList.add('node-gold');
-                        else if (d.color === 'blue') el.classList.add('node-blue');
-                        else if (d.type === 'A') el.classList.add('node-hub');
-                        
-                        el.innerHTML = `<span>${d.type}</span>`;
-                        return el;
-                    })
-                    .htmlAltitude(d => d.type === 'A' ? 0.02 : 0.01);
-
-                // Pulsing Ring for Oman Hub
-                world.ringsData([omanHub])
-                    .ringColor(() => t => `rgba(255, 255, 255, ${1-t})`)
-                    .ringMaxRadius(4)
-                    .ringPropagationSpeed(2)
-                    .ringRepeatPeriod(1500);
-
-                // Controls
-                world.controls().autoRotate = true;
-                world.controls().autoRotateSpeed = 0.4;
-                world.controls().enableZoom = true;
-                world.controls().minDistance = 150;
-
-                if (loading) loading.style.display = "none";
-
-                window.addEventListener('resize', () => {
-                    world.width(globeContainer.clientWidth);
-                    world.height(globeContainer.clientHeight);
-                });
-            } catch (err) {
-                console.error(err);
-                if (loading) loading.style.display = "none";
-            }
-        }, 100);
-    });
 });
