@@ -47,71 +47,90 @@ document.addEventListener("DOMContentLoaded", function () {
     if (document.getElementById("currentYear")) document.getElementById("currentYear").textContent = currentYear;
 
     /* =========================================================
-       05. LEAFLET 2D COMMAND CENTER MAP (100% RELIABLE)
+       05. 3D GLOBE INITIALIZATION (WHITE & LUXURY)
     ========================================================= */
-    const mapContainer = document.getElementById('luxuryMap');
-    if (mapContainer && typeof L !== 'undefined') {
-        
-        const map = L.map('luxuryMap', {
-            zoomControl: false,
-            attributionControl: false,
-            scrollWheelZoom: false,
-            dragging: false
-        }).setView([25.0, 45.0], 3);
+    const globeContainer = document.getElementById("globeViz");
+    const loading = document.getElementById("mapLoading");
+    
+    if (globeContainer && typeof Globe !== 'undefined') {
+        setTimeout(() => {
+            try {
+                const world = Globe()(globeContainer)
+                    .backgroundColor('#050607')
+                    .showAtmosphere(false) // Keep it clean and dark
+                    .width(globeContainer.clientWidth)
+                    .height(globeContainer.clientHeight);
 
-        // USING OPENSTREETMAP (No API Key Required) with a CSS class for Dark Filtering
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            className: 'dark-osm-tiles'
-        }).addTo(map);
+                // Angle focused on Europe/Asia/Africa
+                world.pointOfView({ lat: 25, lng: 45, altitude: 2.2 });
 
-        // Coordinates
-        const omanHub = [23.588, 58.383];
-        const taiwan = [25.033, 121.565];
-        const chinaSupplier = [22.543, 114.057];
-        const germany = [52.520, 13.405];
-        const usa = [37.774, -122.419];
+                // Load Country Borders in White (No textures, high-tech look)
+                fetch('https://raw.githubusercontent.com/vasturiano/globe.gl/master/example/datasets/ne_110m_admin_0_countries.geojson')
+                    .then(res => res.json())
+                    .then(countries => {
+                        world.polygonsData(countries.features)
+                            .polygonCapColor(() => 'rgba(0,0,0,0)') 
+                            .polygonSideColor(() => 'rgba(0,0,0,0)')
+                            .polygonStrokeColor(() => 'rgba(255, 255, 255, 0.4)') // Clear white borders
+                            .polygonAltitude(0.005);
+                    }).catch(err => console.error(err));
 
-        const gccHospitals = [[24.713, 46.675], [25.285, 51.531], [25.204, 55.270], [24.453, 54.377], [29.375, 47.977], [26.228, 50.586], [17.015, 54.092], [24.207, 55.744]];
-        const europeHospitals = [[48.856, 2.352], [51.507, -0.127], [41.902, 12.496]];
-        const americasHospitals = [[40.712, -74.006], [34.052, -118.243], [43.653, -79.383]];
-        const chinaHospitals = [[39.904, 116.407], [31.230, 121.473]];
+                // Coordinates
+                const omanHub = { lat: 23.588, lng: 58.383, type: 'A' };
+                const taiwan = { lat: 25.033, lng: 121.565, type: 'C' };
+                const chinaSupplier = { lat: 22.543, lng: 114.057, type: 'C' };
+                const germany = { lat: 52.520, lng: 13.405, type: 'A' };
+                const usa = { lat: 37.774, lng: -122.419, type: 'C' };
 
-        function createIcon(type) {
-            let size = type === 'A' ? 28 : (type === 'C' ? 22 : 16);
-            let fontSize = type === 'A' ? 13 : (type === 'C' ? 10 : 8);
-            let html = `<div style="
-                display:flex; justify-content:center; align-items:center;
-                width:${size}px; height:${size}px; border-radius:50%;
-                background:rgba(5,6,7,0.9); border:1.5px solid #fff; color:#fff; font-weight:bold;
-                font-family:'Inter', sans-serif; font-size:${fontSize}px;
-                box-shadow:0 0 15px rgba(255,255,255,0.4);">${type}</div>`;
-            return L.divIcon({ html: html, className: '', iconSize: [size, size], iconAnchor: [size/2, size/2] });
-        }
+                const gccHospitals = [[24.713, 46.675], [25.285, 51.531], [25.204, 55.270], [24.453, 54.377], [29.375, 47.977], [26.228, 50.586], [17.015, 54.092], [24.207, 55.744]].map(p => ({ lat: p[0], lng: p[1], type: 'H' }));
+                const europeHospitals = [[48.856, 2.352], [51.507, -0.127], [41.902, 12.496]].map(p => ({ lat: p[0], lng: p[1], type: 'H' }));
+                const americasHospitals = [[40.712, -74.006], [34.052, -118.243], [43.653, -79.383]].map(p => ({ lat: p[0], lng: p[1], type: 'H' }));
+                const chinaHospitals = [[39.904, 116.407], [31.230, 121.473]].map(p => ({ lat: p[0], lng: p[1], type: 'H' }));
 
-        // Add Markers
-        L.marker(omanHub, { icon: createIcon('A'), zIndexOffset: 1000 }).addTo(map);
-        L.marker(germany, { icon: createIcon('A') }).addTo(map);
-        L.marker(taiwan, { icon: createIcon('C') }).addTo(map);
-        L.marker(chinaSupplier, { icon: createIcon('C') }).addTo(map);
-        [...gccHospitals, ...europeHospitals, ...americasHospitals, ...chinaHospitals].forEach(pos => {
-            L.marker(pos, { icon: createIcon('H') }).addTo(map);
-        });
+                // White Arcs
+                const arcsData = [];
+                const whiteArc = ['rgba(255, 255, 255, 1)', 'rgba(255, 255, 255, 0.1)'];
 
-        // Draw Arcs
-        const drawArc = (start, end, weight = 1.5, dash = '6, 8') => {
-            const midLat = (start[0] + end[0]) / 2 + (Math.abs(start[1] - end[1]) * 0.2);
-            const midLng = (start[1] + end[1]) / 2;
-            L.polyline([start, [midLat, midLng], end], {
-                color: '#ffffff', weight: weight, opacity: 0.9, dashArray: dash, className: 'animated-arc'
-            }).addTo(map);
-        };
+                arcsData.push({ startLat: taiwan.lat, startLng: taiwan.lng, endLat: omanHub.lat, endLng: omanHub.lng, color: whiteArc });
+                arcsData.push({ startLat: chinaSupplier.lat, startLng: chinaSupplier.lng, endLat: omanHub.lat, endLng: omanHub.lng, color: whiteArc });
+                gccHospitals.forEach(h => arcsData.push({ startLat: omanHub.lat, startLng: omanHub.lng, endLat: h.lat, endLng: h.lng, color: whiteArc }));
+                europeHospitals.forEach(h => arcsData.push({ startLat: germany.lat, startLng: germany.lng, endLat: h.lat, endLng: h.lng, color: whiteArc }));
+                americasHospitals.forEach(h => arcsData.push({ startLat: usa.lat, startLng: usa.lng, endLat: h.lat, endLng: h.lng, color: whiteArc }));
+                chinaHospitals.forEach(h => arcsData.push({ startLat: chinaSupplier.lat, startLng: chinaSupplier.lng, endLat: h.lat, endLng: h.lng, color: whiteArc }));
 
-        drawArc(taiwan, omanHub, 2, '8, 8');
-        drawArc(chinaSupplier, omanHub, 2, '8, 8');
-        gccHospitals.forEach(h => drawArc(omanHub, h, 1, '4, 6'));
-        europeHospitals.forEach(h => drawArc(germany, h, 1, '4, 6'));
-        americasHospitals.forEach(h => drawArc(usa, h, 1, '4, 6'));
-        chinaHospitals.forEach(h => drawArc(chinaSupplier, h, 1, '4, 6'));
+                world.arcsData(arcsData)
+                    .arcColor('color')
+                    .arcDashLength(0.5)
+                    .arcDashGap(0.2)
+                    .arcDashAnimateTime(2000)
+                    .arcStroke(0.5);
+
+                // Markers
+                const markersData = [omanHub, germany, taiwan, chinaSupplier, usa, ...gccHospitals, ...europeHospitals, ...americasHospitals, ...chinaHospitals];
+
+                world.htmlElementsData(markersData)
+                    .htmlElement(d => {
+                        const el = document.createElement('div');
+                        el.className = 'globe-marker';
+                        if (d.type === 'A') el.classList.add('marker-A');
+                        else if (d.type === 'C') el.classList.add('marker-C');
+                        else el.classList.add('marker-H');
+                        el.innerHTML = `<span>${d.type}</span>`;
+                        return el;
+                    })
+                    .htmlAltitude(d => d.type === 'A' ? 0.02 : 0.01);
+
+                world.controls().autoRotate = true;
+                world.controls().autoRotateSpeed = 0.5;
+                world.controls().enableZoom = false; // Keep UI clean
+
+                if (loading) loading.style.display = "none";
+                
+                window.addEventListener('resize', () => {
+                    world.width(globeContainer.clientWidth);
+                    world.height(globeContainer.clientHeight);
+                });
+            } catch(e) { console.error(e); }
+        }, 500);
     }
 });
