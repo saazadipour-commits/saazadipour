@@ -15,7 +15,30 @@
   <link rel="stylesheet" href="style.css">
 
   <style>
-    /* Inline CSS to force the luxury font and styling for the Smart Hospital section */
+    /* Luxury Image Background for Solution Cards */
+    .solution-item.image-bg {
+      background-size: cover !important;
+      background-position: center !important;
+      position: relative;
+      overflow: hidden;
+      min-height: 250px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+      transition: all 0.4s ease;
+    }
+    .solution-item.image-bg:hover {
+      transform: translateY(-5px);
+      border-color: rgba(255, 255, 255, 0.4) !important;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.8);
+    }
+    .solution-item.image-bg > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Smart Hospital Styling */
     .smart-hospital-card {
       max-width: 900px;
       margin: 0 auto;
@@ -38,7 +61,7 @@
       line-height: 1.2;
     }
     .smart-hospital-card h2 span {
-      color: #cbd1d7 !important; /* Silver color for the span */
+      color: #cbd1d7 !important; 
     }
     .smart-hospital-card p {
       font-family: "Inter", sans-serif !important;
@@ -73,7 +96,7 @@
     }
     .coming-soon-badge::before {
       content: "•";
-      color: #FFD700; /* Gold dot */
+      color: #FFD700; 
       font-size: 24px;
       line-height: 1;
     }
@@ -167,23 +190,24 @@
         <p>We specialize in developing comprehensive healthcare projects that bridge the gap between clinical necessity and advanced technological solutions.</p>
       </div>
       
+      <!-- Added Image Backgrounds from user's assets folder -->
       <div class="solutions-grid">
-        <div class="solution-item">
+        <div class="solution-item image-bg" style="background-image: linear-gradient(rgba(5,6,7,0.7), rgba(5,6,7,0.95)), url('assets/hospital-technology.jpg');">
           <span>01</span>
           <h3>Medical Equipment</h3>
           <p>Exploring and sourcing equipment solutions aligned with specific healthcare requirements and international standards.</p>
         </div>
-        <div class="solution-item">
+        <div class="solution-item image-bg" style="background-image: linear-gradient(rgba(5,6,7,0.7), rgba(5,6,7,0.95)), url('assets/surgical-robotics.jpg');">
           <span>02</span>
           <h3>Technology Integration</h3>
           <p>Identifying advanced technologies and ensuring seamless integration into modern clinical environments.</p>
         </div>
-        <div class="solution-item">
+        <div class="solution-item image-bg" style="background-image: linear-gradient(rgba(5,6,7,0.7), rgba(5,6,7,0.95)), url('assets/germany-medical.jpg');">
           <span>03</span>
           <h3>International Sourcing</h3>
           <p>Connecting healthcare needs with leading international manufacturers to secure the best technology available.</p>
         </div>
-        <div class="solution-item">
+        <div class="solution-item image-bg" style="background-image: linear-gradient(rgba(5,6,7,0.7), rgba(5,6,7,0.95)), url('assets/hospital-project.jpg');">
           <span>04</span>
           <h3>Business Development</h3>
           <p>Exploring international market opportunities and establishing long-term industry relationships.</p>
@@ -191,11 +215,12 @@
       </div>
     </section>
 
-    <!-- SMART HOSPITALS SECTION -->
+    <!-- SMART HOSPITALS SECTION (Untouched Cover Image) -->
     <section class="smart-hospital-section" style="padding: 100px 24px; background: radial-gradient(circle at 50% 50%, rgba(30, 35, 40, 0.8), #050607 70%);">
       <div class="section-label" style="text-align: center; margin-bottom: 40px;">02 — FUTURE VENTURES</div>
       
       <div class="smart-hospital-card">
+        <!-- Uses the original image you had in your code -->
         <img src="assets/smart-hospital.jpg" alt="Next-Generation Smart Hospital Architecture" class="smart-hospital-cover" loading="lazy">
         
         <h2>Next-Generation <span>Smart Hospitals.</span></h2>
@@ -217,12 +242,13 @@
     </section>
   </main>
 
+  <!-- FOOTER (Contact changed to International) -->
   <footer class="site-footer">
     <div class="footer-main">
       <div class="footer-brand"><img src="assets/logo-transparent.png" alt="Azadipour Logo"><h3>AZADIPOUR</h3><p>Global Medical Technology & Hospital Solutions</p></div>
       <div class="footer-column"><h4>COMPANY</h4><a href="about.html">About Us</a><a href="index.html#global-network">Global Presence</a><a href="partners.html">Partnerships</a><a href="projects.html">Projects</a></div>
       <div class="footer-column"><h4>TECHNOLOGY</h4><a href="robotic.html">Robotic Surgery</a><a href="cardiac.html">Cardiovascular</a><a href="medical.html">Medical Technology</a></div>
-      <div class="footer-column"><h4>CONTACT</h4><a href="mailto:info@azadipourmedical.com">Email</a><span>Oman</span></div>
+      <div class="footer-column"><h4>CONTACT</h4><a href="mailto:info@azadipourmedical.com">Email</a><span>International</span></div>
     </div>
     <div class="footer-bottom"><span>© <span id="currentYear">2026</span> AZADIPOUR. ALL RIGHTS RESERVED.</span><span>GLOBAL MEDICAL TECHNOLOGY · WORLDWIDE</span></div>
   </footer>
