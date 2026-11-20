@@ -419,3 +419,74 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
   .intro-details { grid-template-columns: 1fr; }
   .visual-portfolio-card figcaption strong { font-size: 26px; }
 }
+
+/* =========================================================
+   GLOBE MARKERS & LABELS (Append to end of style.css)
+   ========================================================= */
+
+.globe-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.marker-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.marker-label {
+  margin-top: 6px;
+  font-family: "Inter", sans-serif;
+  font-size: 8px;
+  color: #ffffff;
+  background: rgba(5, 6, 7, 0.85);
+  padding: 4px 10px;
+  border-radius: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  white-space: nowrap;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.8);
+}
+
+/* Oman Hub - White */
+.marker-hub .marker-dot {
+  width: 10px;
+  height: 10px;
+  background: #ffffff;
+  box-shadow: 0 0 20px 4px rgba(255, 255, 255, 0.6);
+}
+.marker-hub .marker-label {
+  border-color: rgba(255, 255, 255, 0.6);
+  font-weight: 600;
+}
+
+/* Germany Hub - Gold */
+.marker-gold .marker-dot {
+  width: 10px;
+  height: 10px;
+  background: #FFD700;
+  box-shadow: 0 0 20px 4px rgba(255, 215, 0, 0.6);
+}
+.marker-gold .marker-label {
+  border-color: rgba(255, 215, 0, 0.6);
+  color: #FFD700;
+  font-weight: 600;
+}
+
+/* Standard Nodes (Hospitals & Suppliers) */
+.marker-node .marker-dot {
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: none;
+}
+.marker-node .marker-label {
+  display: none;
+}
