@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (document.getElementById("currentYear")) document.getElementById("currentYear").textContent = currentYear;
 
     /* =========================================================
-       05. LEAFLET 2D COMMAND CENTER MAP (FLAT & RELIABLE)
+       05. LEAFLET 2D COMMAND CENTER MAP (100% RELIABLE)
     ========================================================= */
     const mapContainer = document.getElementById('luxuryMap');
     if (mapContainer && typeof L !== 'undefined') {
@@ -59,11 +59,13 @@ document.addEventListener("DOMContentLoaded", function () {
             dragging: false
         }).setView([25.0, 45.0], 3);
 
-        // Dark Matter tiles without labels for a clean look
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png', {
-            maxZoom: 19
+        // USING OPENSTREETMAP (No API Key Required) with a CSS class for Dark Filtering
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            className: 'dark-osm-tiles'
         }).addTo(map);
 
+        // Coordinates
         const omanHub = [23.588, 58.383];
         const taiwan = [25.033, 121.565];
         const chinaSupplier = [22.543, 114.057];
@@ -81,12 +83,13 @@ document.addEventListener("DOMContentLoaded", function () {
             let html = `<div style="
                 display:flex; justify-content:center; align-items:center;
                 width:${size}px; height:${size}px; border-radius:50%;
-                background:rgba(0,0,0,0.8); border:1.5px solid #fff; color:#fff; font-weight:bold;
+                background:rgba(5,6,7,0.9); border:1.5px solid #fff; color:#fff; font-weight:bold;
                 font-family:'Inter', sans-serif; font-size:${fontSize}px;
-                box-shadow:0 0 10px rgba(0,0,0,0.8);">${type}</div>`;
+                box-shadow:0 0 15px rgba(255,255,255,0.4);">${type}</div>`;
             return L.divIcon({ html: html, className: '', iconSize: [size, size], iconAnchor: [size/2, size/2] });
         }
 
+        // Add Markers
         L.marker(omanHub, { icon: createIcon('A'), zIndexOffset: 1000 }).addTo(map);
         L.marker(germany, { icon: createIcon('A') }).addTo(map);
         L.marker(taiwan, { icon: createIcon('C') }).addTo(map);
@@ -95,11 +98,12 @@ document.addEventListener("DOMContentLoaded", function () {
             L.marker(pos, { icon: createIcon('H') }).addTo(map);
         });
 
-        const drawArc = (start, end, weight = 1, dash = '4, 6') => {
+        // Draw Arcs
+        const drawArc = (start, end, weight = 1.5, dash = '6, 8') => {
             const midLat = (start[0] + end[0]) / 2 + (Math.abs(start[1] - end[1]) * 0.2);
             const midLng = (start[1] + end[1]) / 2;
             L.polyline([start, [midLat, midLng], end], {
-                color: '#ffffff', weight: weight, opacity: 0.8, dashArray: dash, className: 'animated-arc'
+                color: '#ffffff', weight: weight, opacity: 0.9, dashArray: dash, className: 'animated-arc'
             }).addTo(map);
         };
 
