@@ -277,3 +277,154 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
     .intro-details { grid-template-columns: 1fr; }
     .visual-portfolio-card figcaption strong { font-size: 26px; }
 }
+
+/* =========================================================
+   FIXES FOR CENTERED CARDS & 3D GLOBE
+   ========================================================= */
+
+/* 1. Global Bases Cards (Centered & Tech-Focused) */
+.intro-detail.image-card {
+    background-size: cover !important;
+    background-position: center !important;
+    border: 1px solid rgba(255,255,255,0.15);
+    transition: all 0.4s ease;
+    position: relative;
+    padding: 30px 20px; /* Adjusted padding */
+    border-radius: 6px;
+    overflow: hidden;
+    min-height: 250px; /* Reduced height for smaller look */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center text vertically */
+    align-items: center; /* Center text horizontally */
+    text-align: center; /* Center text alignment */
+}
+.intro-detail.image-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255,255,255,0.4);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.8);
+}
+.intro-detail.image-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(5,6,7,0.4) 0%, rgba(5,6,7,0.95) 100%);
+    z-index: 1;
+    transition: opacity 0.4s ease;
+}
+.intro-detail.image-card > * {
+    position: relative;
+    z-index: 2;
+}
+.intro-detail.image-card > span {
+    display: block;
+    margin-bottom: 12px;
+    color: var(--silver-dark);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+.intro-detail.image-card h3 {
+    margin-bottom: 12px;
+    font-size: 22px;
+    color: #fff;
+}
+.intro-detail.image-card p {
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--text-soft);
+    max-width: 90%;
+}
+
+/* 2. Visual Portfolio Cards (Centered Text & Smaller) */
+.visual-portfolio-card {
+    position: relative;
+    min-width: 0;
+    aspect-ratio: 4/3; /* Fixed aspect ratio for smaller, uniform cards */
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: #101316;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.visual-portfolio-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.85;
+    transition: transform .7s ease, opacity .7s ease;
+}
+.visual-portfolio-card:hover img {
+    transform: scale(1.08);
+    opacity: 1;
+}
+/* Centered Caption */
+.visual-portfolio-card figcaption {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center vertically */
+    align-items: center;     /* Center horizontally */
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.3)); 
+    transition: all 0.4s ease;
+}
+.visual-portfolio-card:hover figcaption {
+    background: linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0.5));
+}
+.visual-portfolio-card figcaption strong {
+    color: #fff;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    transform: translateY(0); /* Removed the move-up effect */
+}
+.visual-portfolio-card figcaption span {
+    color: #c8cdd2;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* 3. 3D Globe Markers */
+.globe-marker {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    color: #ffffff;
+    background: rgba(5, 6, 7, 0.85);
+    border: 1.5px solid #ffffff;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    backdrop-filter: blur(4px);
+}
+
+.globe-marker.marker-A {
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+}
+
+.globe-marker.marker-C {
+    width: 24px;
+    height: 24px;
+    font-size: 11px;
+}
+
+.globe-marker.marker-H {
+    width: 16px;
+    height: 16px;
+    font-size: 8px;
+    border-width: 1px;
+    background: rgba(5, 6, 7, 0.6);
+    box-shadow: none;
+}
