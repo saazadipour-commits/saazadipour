@@ -7,13 +7,21 @@ document.addEventListener("DOMContentLoaded", function () {
     const mainNav = document.getElementById("mainNav");
     const intro = document.getElementById("intro");
 
-    /* 01. INTRO SCREEN */
+    /* 01. INTRO SCREEN (Immediate Hide - No Delay) */
     if (intro) {
-        const hideIntro = function () {
+        // Hide intro as soon as the page finishes loading resources
+        window.addEventListener('load', function() {
             intro.classList.add("hide");
-            setTimeout(() => { intro.style.display = "none"; }, 900);
-        };
-        setTimeout(hideIntro, 1500);
+            setTimeout(() => { intro.style.display = "none"; }, 600); // Only wait for the CSS fade-out animation
+        });
+        
+        // Fallback: if load takes too long, hide it after 1 second max
+        setTimeout(() => {
+            if (!intro.classList.contains("hide")) {
+                intro.classList.add("hide");
+                setTimeout(() => { intro.style.display = "none"; }, 600);
+            }
+        }, 1000);
     }
 
     /* 02. MOBILE NAVIGATION */
@@ -47,16 +55,16 @@ document.addEventListener("DOMContentLoaded", function () {
     if (document.getElementById("currentYear")) document.getElementById("currentYear").textContent = currentYear;
 
     /* =========================================================
-       05. 3D GLOBE INITIALIZATION (DARK EARTH & STARS)
+       05. 3D GLOBE INITIALIZATION (Immediate Load)
     ========================================================= */
     const globeContainer = document.getElementById("globeViz");
     const loading = document.getElementById("mapLoading");
     
+    // Check if globe container exists and library is loaded
     if (globeContainer && typeof Globe !== 'undefined') {
-        setTimeout(() => {
+        window.addEventListener('load', () => {
             try {
                 const world = Globe()(globeContainer)
-                    // The exact Earth texture from the user's screenshot
                     .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-night.jpg')
                     .backgroundImageUrl('https://unpkg.com/three-globe/example/img/night-sky.png')
                     .backgroundColor('#000000')
@@ -64,10 +72,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     .width(globeContainer.clientWidth)
                     .height(globeContainer.clientHeight);
 
-                // Angled view towards Europe/Asia/Africa
+                // View Position
                 world.pointOfView({ lat: 25, lng: 45, altitude: 2.2 });
 
-                // Country Borders (White & Glowing)
+                // Country Borders
                 fetch('https://raw.githubusercontent.com/vasturiano/globe.gl/master/example/datasets/ne_110m_admin_0_countries.geojson')
                     .then(res => res.json())
                     .then(countries => {
@@ -90,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const americasHospitals = [[40.712, -74.006], [34.052, -118.243], [43.653, -79.383]].map(p => ({ lat: p[0], lng: p[1], type: 'H' }));
                 const chinaHospitals = [[39.904, 116.407], [31.230, 121.473]].map(p => ({ lat: p[0], lng: p[1], type: 'H' }));
 
-                // White Arcs
+                // Arcs
                 const arcsData = [];
                 const whiteArc = ['rgba(255, 255, 255, 1)', 'rgba(255, 255, 255, 0.1)'];
 
@@ -123,14 +131,15 @@ document.addEventListener("DOMContentLoaded", function () {
                     })
                     .htmlAltitude(d => d.type === 'A' ? 0.02 : 0.01);
 
-                // Rotate Globe
+                // Rotation
                 world.controls().autoRotate = true;
                 world.controls().autoRotateSpeed = 0.5;
-                world.controls().enableZoom = false; // Prevent manual zoom
+                world.controls().enableZoom = false; 
 
+                // Hide loading screen immediately after creation
                 if (loading) loading.style.display = "none";
                 
-                // Stop rotation if not in viewport (Performance)
+                // Performance: Pause when out of view
                 const observer = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
@@ -146,7 +155,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     world.width(globeContainer.clientWidth);
                     world.height(globeContainer.clientHeight);
                 });
-            } catch(e) { console.error(e); }
-        }, 300);
+            } catch(e) { 
+                console.error(e); 
+                if (loading) loading.style.display = "none";
+            }
+        });
     }
 });
