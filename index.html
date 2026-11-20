@@ -14,8 +14,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 
-  <!-- Leaflet Map CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <!-- 3D Globe Libraries -->
+  <script src="https://unpkg.com/three@0.150.1/build/three.min.js"></script>
+  <script src="https://unpkg.com/globe.gl@2.27.2/dist/globe.gl.min.js"></script>
 </head>
 <body>
 
@@ -74,7 +75,7 @@
       <div class="hero-scroll"><span></span> SCROLL TO EXPLORE</div>
     </section>
 
-    <!-- GLOBAL NETWORK MAP -->
+    <!-- GLOBAL NETWORK (3D GLOBE) -->
     <section class="global-network-section" id="global-network" aria-label="Azadipour global network">
       <div class="network-top">
         <div class="section-label">01 — GLOBAL PRESENCE</div>
@@ -90,8 +91,13 @@
           <span>STRATEGIC COMMAND CENTER</span>
         </div>
         
-        <!-- 2D Command Center Map -->
-        <div id="luxuryMap" style="width: 100%; height: 500px; background: #050607;"></div>
+        <div class="network-map-canvas-wrap">
+          <div id="globeViz" class="az-world-map"></div>
+          <div class="map-loading" id="mapLoading">
+            <span class="loading-indicator"></span>
+            <span>INITIALIZING GLOBAL NETWORK...</span>
+          </div>
+        </div>
         
         <div class="map-caption">
           <span style="text-align: center; width: 100%; letter-spacing: 2px; color: #cbd1d7;">GLOBAL SUPPLY CHAIN &amp; DISTRIBUTION ROUTING</span>
@@ -110,7 +116,7 @@
       </div>
     </section>
 
-    <!-- GLOBAL BASES (PRECISE IMAGES) -->
+    <!-- GLOBAL BASES -->
     <section class="section intro-section">
       <div class="section-label">02 — GLOBAL BASES & OVERVIEW</div>
       <div class="section-heading">
@@ -119,33 +125,28 @@
       </div>
       
       <div class="intro-details">
-        <!-- Oman Base -->
-        <div class="intro-detail image-card" style="background-image: url('https://images.unsplash.com/photo-1627956992439-5735223b7438?q=80&w=800&auto=format&fit=crop');">
+        <div class="intro-detail image-card" style="background-image: linear-gradient(rgba(5,6,7,0.8), rgba(5,6,7,0.95)), url('assets/germany-medical.jpg');">
           <span>GCC BASE</span>
           <h3>Oman (Muscat)</h3>
           <p>The registered headquarters and strategic operational hub. Fully licensed with fundamental regulatory approvals for medical product entry (CR: 1678104).</p>
         </div>
-        <!-- Germany Base -->
-        <div class="intro-detail image-card branch-active" style="background-image: url('https://images.unsplash.com/photo-1560969184-10fe8719e047?q=80&w=800&auto=format&fit=crop');">
+        <div class="intro-detail image-card branch-active" style="background-image: linear-gradient(rgba(5,6,7,0.8), rgba(5,6,7,0.95)), url('assets/hospital-project.jpg');">
           <span>EUROPE BASE (COMING SOON)</span>
           <h3>Germany (Berlin)</h3>
           <p>Our upcoming European branch, designed to bridge advanced German medical engineering with Middle Eastern and global healthcare markets.</p>
         </div>
-        <!-- USA Base -->
-        <div class="intro-detail image-card" style="background-image: url('https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?q=80&w=800&auto=format&fit=crop');">
+        <div class="intro-detail image-card" style="background-image: linear-gradient(rgba(5,6,7,0.8), rgba(5,6,7,0.95)), url('assets/hospital-technology.jpg');">
           <span>AMERICAS BASE</span>
           <h3>United States</h3>
           <p>Strategic sourcing and partnership hub focused on integrating cutting-edge American surgical robotics and advanced medical innovations.</p>
         </div>
-        <!-- China Base -->
-        <div class="intro-detail image-card" style="background-image: url('https://images.unsplash.com/photo-1548919973-5cef591cdbc9?q=80&w=800&auto=format&fit=crop');">
+        <div class="intro-detail image-card" style="background-image: linear-gradient(rgba(5,6,7,0.8), rgba(5,6,7,0.95)), url('assets/robotic-hero.jpg');">
           <span>ASIA BASE</span>
           <h3>China</h3>
           <p>Our Asian operational base, facilitating high-tech manufacturing partnerships, supply chain excellence, and rapid technological integration.</p>
         </div>
       </div>
 
-      <!-- SLIDER -->
       <div class="luxury-slider-wrapper">
         <button class="slider-nav-btn prev" onclick="document.getElementById('sliderTrack').scrollBy({left: -400, behavior: 'smooth'})">❮</button>
         <div class="luxury-slider-track" id="sliderTrack">
@@ -182,7 +183,7 @@
         <p>Exploring technologies that contribute to the evolution of modern healthcare and advanced clinical environments.</p>
       </div>
       <div class="technology-grid">
-        <a href="robotic.html" class="technology-card" style="background-image: url('https://images.unsplash.com/photo-1551076805-e1869033e561?q=80&w=800&auto=format&fit=crop');">
+        <a href="robotic.html" class="technology-card" style="background-image: linear-gradient(rgba(5,6,7,0.7), rgba(5,6,7,0.95)), url('assets/robotic-hero.jpg');">
           <div class="card-number">01 / ROBOTICS</div>
           <div class="technology-card-content">
             <h3>Robotic & Digital Surgery</h3>
@@ -190,7 +191,7 @@
             <span class="card-link">Explore Technology ↗</span>
           </div>
         </a>
-        <a href="cardiac.html" class="technology-card" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=800&auto=format&fit=crop');">
+        <a href="cardiac.html" class="technology-card" style="background-image: linear-gradient(rgba(5,6,7,0.7), rgba(5,6,7,0.95)), url('assets/cardiac-hero.jpg');">
           <div class="card-number">02 / CARDIOVASCULAR</div>
           <div class="technology-card-content">
             <h3>Cardiac & Cardiovascular</h3>
@@ -198,7 +199,7 @@
             <span class="card-link">Explore Technology ↗</span>
           </div>
         </a>
-        <a href="medical.html" class="technology-card" style="background-image: url('https://images.unsplash.com/photo-1530026405186-ed1f139313f8?q=80&w=800&auto=format&fit=crop');">
+        <a href="medical.html" class="technology-card" style="background-image: linear-gradient(rgba(5,6,7,0.7), rgba(5,6,7,0.95)), url('assets/surgical-robotics.jpg');">
           <div class="card-number">03 / NAVIGATION & AI</div>
           <div class="technology-card-content">
             <h3>Surgical Navigation & AI</h3>
@@ -206,7 +207,7 @@
             <span class="card-link">Explore Technology ↗</span>
           </div>
         </a>
-        <a href="medical.html" class="technology-card" style="background-image: url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=800&auto=format&fit=crop');">
+        <a href="medical.html" class="technology-card" style="background-image: linear-gradient(rgba(5,6,7,0.7), rgba(5,6,7,0.95)), url('assets/hospital-technology.jpg');">
           <div class="card-number">04 / HOSPITAL SYSTEMS</div>
           <div class="technology-card-content">
             <h3>Advanced Hospital Solutions</h3>
@@ -217,14 +218,14 @@
       </div>
     </section>
 
-    <!-- VISUAL PORTFOLIO (LIGHT & CLEAN) -->
+    <!-- VISUAL PORTFOLIO (User's Images & Fixed Sizes) -->
     <section class="section visual-portfolio-section">
       <div class="section-label">04 — SELECTED TECHNOLOGY AREAS</div>
       <div class="section-heading"><h2>Technology in <span>Focus.</span></h2><p>A visual overview of selected medical technology and hospital solution areas.</p></div>
+      
       <div class="visual-portfolio-grid">
-        
         <figure class="visual-portfolio-card">
-          <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?q=80&w=600&auto=format&fit=crop" alt="Robotic surgery technology" loading="lazy">
+          <img src="assets/robotic-hero.jpg" alt="Robotic surgery technology" loading="lazy">
           <figcaption>
             <strong>Robotic Surgery</strong>
             <span>Advanced surgical platforms</span>
@@ -232,7 +233,7 @@
         </figure>
         
         <figure class="visual-portfolio-card">
-          <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=600&auto=format&fit=crop" alt="Surgical robotics equipment" loading="lazy">
+          <img src="assets/surgical-robotics.jpg" alt="Surgical robotics equipment" loading="lazy">
           <figcaption>
             <strong>Surgical Robotics</strong>
             <span>Next-generation operating rooms</span>
@@ -240,7 +241,7 @@
         </figure>
         
         <figure class="visual-portfolio-card">
-          <img src="https://images.unsplash.com/photo-1530026405186-ed1f139313f8?q=80&w=600&auto=format&fit=crop" alt="Cardiac and cardiovascular technology" loading="lazy">
+          <img src="assets/cardiac-hero.jpg" alt="Cardiac and cardiovascular technology" loading="lazy">
           <figcaption>
             <strong>Cardiovascular</strong>
             <span>Cardiac care technologies</span>
@@ -248,7 +249,7 @@
         </figure>
         
         <figure class="visual-portfolio-card">
-          <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=600&auto=format&fit=crop" alt="Modern hospital technology" loading="lazy">
+          <img src="assets/hospital-technology.jpg" alt="Modern hospital technology" loading="lazy">
           <figcaption>
             <strong>Hospital Technology</strong>
             <span>Integrated hospital solutions</span>
@@ -256,7 +257,7 @@
         </figure>
         
         <figure class="visual-portfolio-card">
-          <img src="https://images.unsplash.com/photo-1587351021355-a479a299d2f9?q=80&w=600&auto=format&fit=crop" alt="Hospital project environment" loading="lazy">
+          <img src="assets/hospital-project.jpg" alt="Hospital project environment" loading="lazy">
           <figcaption>
             <strong>Hospital Projects</strong>
             <span>Healthcare infrastructure</span>
@@ -264,17 +265,16 @@
         </figure>
         
         <figure class="visual-portfolio-card">
-          <img src="https://images.unsplash.com/photo-1560969184-10fe8719e047?q=80&w=600&auto=format&fit=crop" alt="Medical technology in Germany" loading="lazy">
+          <img src="assets/germany-medical.jpg" alt="Medical technology in Germany" loading="lazy">
           <figcaption>
             <strong>International Markets</strong>
             <span>Global medical technology</span>
           </figcaption>
         </figure>
-
       </div>
     </section>
 
-    <!-- PARTNERSHIPS & SOLUTIONS -->
+    <!-- PARTNERSHIPS -->
     <section class="section partnership-section">
       <div class="section-label">05 — INTERNATIONAL PARTNERSHIPS</div>
       <div class="partnership-content">
@@ -287,6 +287,7 @@
       </div>
     </section>
 
+    <!-- SOLUTIONS -->
     <section class="section solutions-section">
       <div class="section-label">06 — BUSINESS APPROACH</div>
       <div class="section-heading"><h2>From Clinical Requirements <span>To Global Medical Supply.</span></h2></div>
@@ -310,6 +311,7 @@
     </section>
   </main>
 
+  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="footer-main">
       <div class="footer-brand">
@@ -342,7 +344,6 @@
     </div>
   </footer>
 
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="script.js" defer></script>
 </body>
 </html>
