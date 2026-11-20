@@ -580,3 +580,78 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
   background: rgba(0, 0, 0, 0.7);
   color: #cbd1d7;
 }
+
+/* =========================================================
+   LUXURY GLOBE MARKERS (A, C, H)
+   ========================================================= */
+
+.globe-marker-node {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(10, 14, 23, 0.8);
+  border: 1.5px solid #ffffff;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.2);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+}
+
+.globe-marker-node span {
+  color: #ffffff;
+  font-family: "Inter", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* Hub Marker (Oman) - Large White */
+.globe-marker-node.node-hub {
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.8), inset 0 0 15px rgba(255, 255, 255, 0.5);
+}
+.globe-marker-node.node-hub span {
+  font-size: 15px;
+}
+
+/* Supplier Marker (China/Taiwan) - Blue Glow */
+.globe-marker-node.node-blue {
+  border-color: #00BFFF;
+  box-shadow: 0 0 15px rgba(0, 191, 255, 0.6);
+}
+.globe-marker-node.node-blue span {
+  color: #00BFFF;
+}
+
+/* Germany Hub - Gold Glow */
+.globe-marker-node.node-gold {
+  width: 32px;
+  height: 32px;
+  border-color: #FFD700;
+  background: rgba(255, 215, 0, 0.1);
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.8), inset 0 0 15px rgba(255, 215, 0, 0.3);
+}
+.globe-marker-node.node-gold span {
+  color: #FFD700;
+  font-size: 15px;
+}
+
+/* Hospital Marker (H) - Subtle White */
+.globe-marker-node:not(.node-hub):not(.node-gold):not(.node-blue) {
+  width: 18px;
+  height: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: rgba(0, 0, 0, 0.6);
+  box-shadow: none;
+}
+.globe-marker-node:not(.node-hub):not(.node-gold):not(.node-blue) span {
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.8);
+}
