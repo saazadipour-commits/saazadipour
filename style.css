@@ -1,5 +1,5 @@
 /* =========================================================
-   AZADIPOUR - ULTIMATE LUXURY STYLESHEET (FINAL & CLEAN)
+   AZADIPOUR - ULTIMATE LUXURY STYLESHEET (OPTIMIZED)
    ========================================================= */
 
 :root {
@@ -36,7 +36,7 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
 
 /* 02 — GLOBAL LAYOUT */
 .container, .section { width: min(var(--container), calc(100% - 48px)); margin-inline: auto; }
-.section { padding-top: 100px; padding-bottom: 100px; }
+.section { padding-top: 100px; padding-bottom: 100px; content-visibility: auto; } /* content-visibility boosts rendering speed */
 .section-label { display: block; margin-bottom: 18px; color: var(--silver-dark); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; }
 .section-heading { max-width: 780px; margin-bottom: 35px; }
 .section-heading h2 { margin-bottom: 20px; font-size: clamp(36px, 5vw, 58px); }
@@ -97,7 +97,7 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
 .hero-scroll { position: absolute; z-index: 2; right: 25px; bottom: 75px; color: var(--silver); font-size: 9px; letter-spacing: 2px; }
 .hero-scroll span { display: inline-block; width: 28px; height: 1px; margin-right: 9px; vertical-align: middle; background: #fff; }
 
-/* 07 — MAP SECTION (COMMAND CENTER) */
+/* 07 — MAP SECTION */
 .global-network-section { position: relative; padding: 110px 24px; background: radial-gradient(ellipse at 50% 45%, rgba(45,53,61,.13), transparent 70%), #050607; }
 .network-top { margin-bottom: 38px; }
 .network-heading { display: grid; grid-template-columns: 1.2fr .8fr; gap: 45px; align-items: end; }
@@ -108,15 +108,11 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
 .network-map-topline, .map-caption { display: flex; justify-content: space-between; gap: 15px; padding: 17px 22px; color: #cbd1d7; font-size: 9px; letter-spacing: 1.8px; }
 .network-map-topline { border-bottom: 1px solid var(--border); background: linear-gradient(90deg,#090c0f,#11161b,#090c0f); }
 .map-caption { border-top: 1px solid var(--border); background: #080b0e; }
-.leaflet-container { background: #050607 !important; font-family: "Inter", sans-serif; }
-
-/* THE MAGIC FILTER: Converts standard map to luxury dark map */
-.dark-osm-tiles {
-    filter: invert(100%) hue-rotate(180deg) brightness(60%) contrast(150%) grayscale(100%);
-}
-
-@keyframes dash { to { stroke-dashoffset: -100; } }
-.animated-arc { animation: dash 3s linear infinite; filter: drop-shadow(0 0 6px rgba(255,255,255,0.9)); }
+.network-map-canvas-wrap { position: relative; width: 100%; height: 600px; overflow: hidden; background-color: #050607; }
+.az-world-map { display: block; width: 100%; height: 100%; }
+.map-loading { position: absolute; inset: 0; z-index: 5; display: flex; align-items: center; justify-content: center; gap: 13px; background: #000; color: var(--silver); font-size: 10px; letter-spacing: 2px; text-align: center; transition: opacity .5s ease; }
+.loading-indicator { width: 18px; height: 18px; border: 1px solid rgba(255,255,255,.2); border-top-color: #fff; border-radius: 50%; animation: map-spin 1s linear infinite; }
+@keyframes map-spin { to { transform: rotate(360deg); } }
 
 .network-legend { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 20px; padding: 30px 0; border-bottom: 1px solid var(--border); }
 .legend-item { display: flex; align-items: center; gap: 12px; min-width: 0; }
@@ -130,7 +126,7 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
 .network-footer p { max-width: 700px; color: #a5aab0; font-size: 12px; }
 .network-footer a { flex-shrink: 0; color: #fff; font-size: 10px; letter-spacing: 1px; }
 
-/* 08 — GLOBAL BASES (IMAGE CARDS) */
+/* 08 — GLOBAL BASES */
 .intro-section { padding-top: 110px; padding-bottom: 110px; }
 .intro-details { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 20px; margin-top: 40px; }
 .image-card { background-size: cover !important; background-position: center !important; border: 1px solid rgba(255,255,255,0.15); transition: all 0.4s ease; position: relative; padding: 30px; border-radius: 4px; overflow: hidden; min-height: 280px; display: flex; flex-direction: column; justify-content: flex-end; }
@@ -144,7 +140,7 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
 .image-card.branch-active { border-color: rgba(255, 215, 0, 0.4); }
 .image-card.branch-active > span { color: var(--gold); }
 
-/* 09 — LUXURY SLIDER (CREDENTIALS) */
+/* 09 — SLIDER */
 .luxury-slider-wrapper { position: relative; margin-top: 60px; max-width: 1100px; margin-inline: auto; }
 .luxury-slider-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; gap: 30px; padding-bottom: 20px; -ms-overflow-style: none; scrollbar-width: none; }
 .luxury-slider-track::-webkit-scrollbar { display: none; }
@@ -180,18 +176,18 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
 .card-number { color: var(--silver-dark); font-size: 10px; letter-spacing: 2px; position: relative; z-index: 2; }
 .card-link { color: #fff; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; }
 
-/* 11 — VISUAL PORTFOLIO (LIGHT & CLEAN) */
+/* 11 — VISUAL PORTFOLIO */
 .visual-portfolio-section { background: #090c0f; }
 .visual-portfolio-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 17px; margin-top: 38px; }
-.visual-portfolio-card { position: relative; min-width: 0; min-height: 300px; overflow: hidden; border: 1px solid var(--border); background: #101316; border-radius: 4px; cursor: pointer; }
-.visual-portfolio-card img { width: 100%; height: 100%; min-height: 300px; object-fit: cover; opacity: 1; transition: transform .7s ease; }
+.visual-portfolio-card { position: relative; min-width: 0; aspect-ratio: 4/3; overflow: hidden; border: 1px solid var(--border); background: #101316; border-radius: 4px; cursor: pointer; }
+.visual-portfolio-card img { width: 100%; height: 100%; object-fit: cover; opacity: 1; transition: transform .7s ease; }
 .visual-portfolio-card:hover img { transform: scale(1.08); }
 .visual-portfolio-card figcaption { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; text-align: center; padding: 30px; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); transition: all 0.4s ease; }
 .visual-portfolio-card:hover figcaption { background: linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0.2)); }
 .visual-portfolio-card figcaption strong { color: #fff; font-family: "Cormorant Garamond", Georgia, serif; font-size: 32px; font-weight: 500; margin-bottom: 8px; }
 .visual-portfolio-card figcaption span { color: #c8cdd2; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; }
 
-/* 12 — PARTNERSHIPS, SOLUTIONS & CONTACT */
+/* 12 — PARTNERSHIPS & CONTACT */
 .partnership-section { background: #050607; }
 .partnership-content { display: grid; grid-template-columns: 1.2fr .8fr; align-items: center; gap: 50px; }
 .partnership-content h2 { margin-bottom: 20px; font-size: clamp(38px,5vw,60px); }
@@ -222,7 +218,7 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
 .footer-column a:hover { color: #fff; }
 .footer-bottom { width: min(var(--container),100%); display: flex; justify-content: space-between; gap: 20px; margin: 45px auto 0; padding-top: 20px; border-top: 1px solid var(--border); color: var(--muted); font-size: 10px; }
 
-/* 14 — INNER PAGE STYLES (About, Media, etc.) */
+/* 14 — INNER PAGES */
 .inner-hero { position: relative; min-height: 430px; display: flex; align-items: center; padding: 85px 24px; overflow: hidden; background: linear-gradient(120deg,#050607,#171d22); }
 .inner-hero-content { position: relative; z-index: 2; width: min(var(--container),100%); margin: auto; }
 .inner-hero h1 { max-width: 850px; margin-bottom: 20px; font-size: clamp(45px,7vw,75px); }
@@ -232,36 +228,7 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
 .inner-hero-decoration::before, .inner-hero-decoration::after { position: absolute; inset: 25px; border: 1px solid rgba(255,255,255,.09); border-radius: 50%; content: ""; }
 .inner-hero-decoration::after { inset: 60px; }
 
-.about-vision { padding: 85px max(24px,calc((100% - var(--container))/2)); border-block: 1px solid var(--border); background: #101316; }
-.vision-content { max-width: 850px; }
-.vision-content h2 { margin-bottom: 18px; font-size: clamp(34px,4.5vw,52px); }
-.vision-content p { max-width: 700px; font-size: 15px; }
-.vision-mark { margin-top: 25px; color: var(--silver-dark); font-size: 10px; letter-spacing: 3px; }
-
-/* Media Page Video Container */
-.video-luxury-container { max-width: 1000px; margin: 50px auto 0; position: relative; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); background: #000; box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8); transition: var(--transition); }
-.video-luxury-container video, .video-luxury-container iframe { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
-.video-luxury-info { padding: 30px; background: linear-gradient(145deg, #101418, #050607); border-top: 1px solid var(--border); text-align: center; }
-.video-luxury-info h3 { color: #fff; font-family: "Cormorant Garamond", Georgia, serif; font-size: 32px; margin-bottom: 10px; }
-.video-luxury-info span { color: var(--silver); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; }
-
-/* Articles Grid */
-.article-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 50px; }
-.article-card { display: flex; flex-direction: column; background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; transition: var(--transition); }
-.article-card:hover { border-color: var(--silver-dark); transform: translateY(-8px); box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8); }
-.article-img-wrap { position: relative; width: 100%; aspect-ratio: 16 / 10; overflow: hidden; }
-.article-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
-.article-card:hover .article-img-wrap img { transform: scale(1.08); }
-.article-tag { position: absolute; top: 15px; left: 15px; background: rgba(5, 6, 7, 0.85); backdrop-filter: blur(5px); border: 1px solid rgba(255, 255, 255, 0.2); color: var(--silver); font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 12px; border-radius: 2px; }
-.article-content { padding: 25px; display: flex; flex-direction: column; flex-grow: 1; }
-.article-meta { color: var(--silver-dark); font-size: 10px; letter-spacing: 1px; margin-bottom: 12px; display: flex; justify-content: space-between; }
-.article-content h3 { color: #fff; font-family: "Cormorant Garamond", Georgia, serif; font-size: 24px; font-weight: 500; line-height: 1.3; margin-bottom: 15px; transition: color var(--transition); }
-.article-content p { color: var(--text-soft); font-size: 13px; line-height: 1.7; margin-bottom: 25px; flex-grow: 1; }
-.read-more { display: inline-flex; align-items: center; gap: 8px; color: #fff; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; margin-top: auto; }
-.read-more span { transition: transform var(--transition); }
-.article-card:hover .read-more span { transform: translateX(5px); }
-
-/* 15 — RESPONSIVE DESIGN */
+/* 15 — RESPONSIVE */
 @media (max-width: 1200px) { .slider-nav-btn { display: none; } }
 @media (min-width: 901px) { .credential-slide { flex: 0 0 calc(50% - 15px); } }
 @media (max-width: 1050px) {
@@ -309,73 +276,4 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
     .network-footer { flex-direction: column; align-items: flex-start; }
     .intro-details { grid-template-columns: 1fr; }
     .visual-portfolio-card figcaption strong { font-size: 26px; }
-}
-
-/* =========================================================
-   FIXES FOR VISUAL PORTFOLIO & 3D GLOBE MARKERS
-   ========================================================= */
-
-/* 1. Fixed Size for Visual Portfolio Images */
-.visual-portfolio-card {
-    aspect-ratio: 4 / 3; /* Forces all images to be the exact same rectangle */
-    width: 100%;
-    height: auto;
-    min-height: unset;
-}
-
-.visual-portfolio-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.8; /* Slight dim for luxury feel */
-    transition: all 0.5s ease;
-}
-
-.visual-portfolio-card:hover img {
-    opacity: 1;
-    transform: scale(1.05); /* Smooth zoom instead of heavy */
-}
-
-/* 2. 3D Globe Markers */
-.globe-marker {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    font-family: "Inter", sans-serif;
-    font-weight: 700;
-    color: #ffffff;
-    background: rgba(5, 6, 7, 0.85);
-    border: 1.5px solid #ffffff;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    backdrop-filter: blur(4px);
-    transition: all 0.3s ease;
-}
-
-/* A (Hub) */
-.globe-marker.marker-A {
-    width: 30px;
-    height: 30px;
-    font-size: 14px;
-    background: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
-}
-
-/* C (Supplier) */
-.globe-marker.marker-C {
-    width: 24px;
-    height: 24px;
-    font-size: 11px;
-}
-
-/* H (Hospital) */
-.globe-marker.marker-H {
-    width: 16px;
-    height: 16px;
-    font-size: 8px;
-    border-width: 1px;
-    background: rgba(5, 6, 7, 0.6);
-    box-shadow: none;
 }
