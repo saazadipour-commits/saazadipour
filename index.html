@@ -5,57 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Azadipour | Premier Global Medical Technology & Hospital Solutions</title>
   <meta name="description" content="Azadipour is an Oman-registered premier medical technology company orchestrating international partnerships, advanced robotic surgery, and comprehensive hospital solutions for top-tier healthcare institutions.">
-  <meta name="keywords" content="Azadipour, global medical technology, robotic surgery, surgical robotics, medical equipment, hospital solutions, Oman medical company, international healthcare, CR 1678104">
-  <meta name="author" content="Azadipour Medical">
-  <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#08090b">
   <link rel="canonical" href="https://azadipourmedical.com/">
   <link rel="icon" type="image/png" href="assets/logo-transparent.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="dns-prefetch" href="https://unpkg.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "@id": "https://azadipourmedical.com/#organization",
-        "name": "Azadipour Medical",
-        "legalName": "Azadipour Medical Technology LLC",
-        "url": "https://azadipourmedical.com/",
-        "logo": "https://azadipourmedical.com/assets/logo-transparent.png",
-        "description": "An Oman-registered premier medical technology company orchestrating international partnerships, advanced robotic surgery, and comprehensive hospital solutions.",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Muscat",
-          "addressCountry": "OM"
-        },
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "contactType": "corporate inquiries",
-          "email": "info@azadipourmedical.com",
-          "availableLanguage": ["en", "fa", "ar"]
-        },
-        "identifier": [
-          { "@type": "PropertyValue", "propertyID": "Commercial Registration (CR)", "value": "1678104" },
-          { "@type": "PropertyValue", "propertyID": "OCCI Membership", "value": "5551647" }
-        ]
-      },
-      {
-        "@type": "WebSite",
-        "@id": "https://azadipourmedical.com/#website",
-        "url": "https://azadipourmedical.com/",
-        "name": "Azadipour Medical",
-        "publisher": { "@id": "https://azadipourmedical.com/#organization" }
-      }
-    ]
-  }
-  </script>
+  <!-- Leaflet Map CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
 <body>
 
@@ -114,7 +74,7 @@
       <div class="hero-scroll"><span></span> SCROLL TO EXPLORE</div>
     </section>
 
-    <!-- GLOBAL NETWORK (GLOBE) SECTION -->
+    <!-- GLOBAL NETWORK (2.5D COMMAND CENTER) -->
     <section class="global-network-section" id="global-network" aria-label="Azadipour global network">
       <div class="network-top">
         <div class="section-label">01 — GLOBAL PRESENCE</div>
@@ -127,15 +87,12 @@
       <div class="network-map-frame">
         <div class="network-map-topline">
           <span>AZADIPOUR — INTERNATIONAL NETWORK</span>
-          <span>STRATEGIC SUPPLY &amp; DISTRIBUTION NETWORK</span>
+          <span>STRATEGIC COMMAND CENTER</span>
         </div>
         
-        <div class="network-map-canvas-wrap">
-          <div id="globeViz" class="az-world-map"></div>
-          <div class="map-loading" id="mapLoading">
-            <span class="loading-indicator"></span>
-            <span id="loadingText">INITIALIZING GLOBAL NETWORK...</span>
-          </div>
+        <!-- 2.5D Map Container -->
+        <div class="map-3d-wrapper">
+            <div id="luxuryMap"></div>
         </div>
         
         <div class="map-caption">
@@ -144,9 +101,9 @@
       </div>
       
       <div class="network-legend">
-        <div class="legend-item"><span class="legend-dot registered"></span><div><strong>Azadipour — Oman</strong><small>Strategic Command Hub</small></div></div>
-        <div class="legend-item"><span class="legend-dot target"></span><div><strong>International Suppliers</strong><small>Inbound Technology</small></div></div>
-        <div class="legend-item"><span class="legend-dot partner"></span><div><strong>Regional Hospitals</strong><small>Outbound Distribution</small></div></div>
+        <div class="legend-item"><span class="legend-dot registered"></span><div><strong>Azadipour — Oman</strong><small>Strategic Command Hub (A)</small></div></div>
+        <div class="legend-item"><span class="legend-dot target"></span><div><strong>International Suppliers</strong><small>Inbound Technology (C)</small></div></div>
+        <div class="legend-item"><span class="legend-dot partner"></span><div><strong>Regional Hospitals</strong><small>Outbound Distribution (H)</small></div></div>
       </div>
       
       <div class="network-footer">
@@ -155,7 +112,7 @@
       </div>
     </section>
 
-    <!-- GLOBAL BASES SECTION -->
+    <!-- GLOBAL BASES SECTION (WITH FLAGS) -->
     <section class="section intro-section">
       <div class="section-label">02 — GLOBAL BASES & OVERVIEW</div>
       <div class="section-heading">
@@ -164,22 +121,26 @@
       </div>
       
       <div class="intro-details">
-        <div class="intro-detail">
+        <!-- Oman Base (GCC Flag) -->
+        <div class="intro-detail flag-card" style="background-image: linear-gradient(rgba(5,6,7,0.85), rgba(5,6,7,0.95)), url('https://flagcdn.com/w1280/om.png');">
           <span>GCC BASE</span>
           <h3>Oman (Muscat)</h3>
           <p>The registered headquarters and strategic operational hub. Fully licensed with fundamental regulatory approvals for medical product entry (CR: 1678104).</p>
         </div>
-        <div class="intro-detail branch-active">
+        <!-- Germany Base (EU Flag) -->
+        <div class="intro-detail flag-card branch-active" style="background-image: linear-gradient(rgba(5,6,7,0.85), rgba(5,6,7,0.95)), url('https://flagcdn.com/w1280/eu.png');">
           <span>EUROPE BASE (COMING SOON)</span>
           <h3>Germany (Berlin)</h3>
           <p>Our upcoming European branch, designed to bridge advanced German medical engineering with Middle Eastern and global healthcare markets.</p>
         </div>
-        <div class="intro-detail">
+        <!-- USA Base (US Flag) -->
+        <div class="intro-detail flag-card" style="background-image: linear-gradient(rgba(5,6,7,0.85), rgba(5,6,7,0.95)), url('https://flagcdn.com/w1280/us.png');">
           <span>AMERICAS BASE</span>
           <h3>United States</h3>
           <p>Strategic sourcing and partnership hub focused on integrating cutting-edge American surgical robotics and advanced medical innovations.</p>
         </div>
-        <div class="intro-detail">
+        <!-- China Base (China Flag) -->
+        <div class="intro-detail flag-card" style="background-image: linear-gradient(rgba(5,6,7,0.85), rgba(5,6,7,0.95)), url('https://flagcdn.com/w1280/cn.png');">
           <span>ASIA BASE</span>
           <h3>China</h3>
           <p>Our Asian operational base, facilitating high-tech manufacturing partnerships, supply chain excellence, and rapid technological integration.</p>
@@ -215,7 +176,7 @@
       </div>
     </section>
 
-    <!-- TECHNOLOGY PORTFOLIO (THE MISSING SECTION WITH LINKS) -->
+    <!-- TECHNOLOGY PORTFOLIO (RESTORED WITH IMAGES) -->
     <section class="section technology-section">
       <div class="section-label">03 — TECHNOLOGY PORTFOLIO</div>
       <div class="section-heading">
@@ -223,7 +184,7 @@
         <p>Exploring technologies that contribute to the evolution of modern healthcare and advanced clinical environments.</p>
       </div>
       <div class="technology-grid">
-        <a href="robotic.html" class="technology-card">
+        <a href="robotic.html" class="technology-card" style="background-image: linear-gradient(rgba(5,6,7,0.7), rgba(5,6,7,0.95)), url('https://images.unsplash.com/photo-1551076805-e1869033e561?q=80&w=800&auto=format&fit=crop');">
           <div class="card-number">01 / ROBOTICS</div>
           <div class="technology-card-content">
             <h3>Robotic & Digital Surgery</h3>
@@ -231,7 +192,7 @@
             <span class="card-link">Explore Technology ↗</span>
           </div>
         </a>
-        <a href="cardiac.html" class="technology-card">
+        <a href="cardiac.html" class="technology-card" style="background-image: linear-gradient(rgba(5,6,7,0.7), rgba(5,6,7,0.95)), url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=800&auto=format&fit=crop');">
           <div class="card-number">02 / CARDIOVASCULAR</div>
           <div class="technology-card-content">
             <h3>Cardiac & Cardiovascular</h3>
@@ -239,7 +200,7 @@
             <span class="card-link">Explore Technology ↗</span>
           </div>
         </a>
-        <a href="medical.html" class="technology-card">
+        <a href="medical.html" class="technology-card" style="background-image: linear-gradient(rgba(5,6,7,0.7), rgba(5,6,7,0.95)), url('https://images.unsplash.com/photo-1530026405186-ed1f139313f8?q=80&w=800&auto=format&fit=crop');">
           <div class="card-number">03 / NAVIGATION & AI</div>
           <div class="technology-card-content">
             <h3>Surgical Navigation & AI</h3>
@@ -247,7 +208,7 @@
             <span class="card-link">Explore Technology ↗</span>
           </div>
         </a>
-        <a href="medical.html" class="technology-card">
+        <a href="medical.html" class="technology-card" style="background-image: linear-gradient(rgba(5,6,7,0.7), rgba(5,6,7,0.95)), url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=800&auto=format&fit=crop');">
           <div class="card-number">04 / HOSPITAL SYSTEMS</div>
           <div class="technology-card-content">
             <h3>Advanced Hospital Solutions</h3>
@@ -258,60 +219,54 @@
       </div>
     </section>
 
-    <!-- VISUAL PORTFOLIO (THE MISSING SECTION WITH IMAGES) -->
+    <!-- VISUAL PORTFOLIO (RESTORED) -->
     <section class="section visual-portfolio-section">
       <div class="section-label">04 — SELECTED TECHNOLOGY AREAS</div>
       <div class="section-heading"><h2>Technology in <span>Focus.</span></h2><p>A visual overview of selected medical technology and hospital solution areas.</p></div>
       <div class="visual-portfolio-grid">
         
-        <!-- Image 1 -->
         <figure class="visual-portfolio-card">
-          <img src="assets/robotic-hero.jpg" alt="Robotic surgery technology" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?q=80&w=600&auto=format&fit=crop" alt="Robotic surgery technology" loading="lazy">
           <figcaption>
             <strong>Robotic Surgery</strong>
             <span>Advanced surgical platforms</span>
           </figcaption>
         </figure>
         
-        <!-- Image 2 -->
         <figure class="visual-portfolio-card">
-          <img src="assets/surgical-robotics.jpg" alt="Surgical robotics equipment" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=600&auto=format&fit=crop" alt="Surgical robotics equipment" loading="lazy">
           <figcaption>
             <strong>Surgical Robotics</strong>
             <span>Next-generation operating rooms</span>
           </figcaption>
         </figure>
         
-        <!-- Image 3 -->
         <figure class="visual-portfolio-card">
-          <img src="assets/cardiac-hero.jpg" alt="Cardiac and cardiovascular technology" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1530026405186-ed1f139313f8?q=80&w=600&auto=format&fit=crop" alt="Cardiac and cardiovascular technology" loading="lazy">
           <figcaption>
             <strong>Cardiovascular</strong>
             <span>Cardiac care technologies</span>
           </figcaption>
         </figure>
         
-        <!-- Image 4 -->
         <figure class="visual-portfolio-card">
-          <img src="assets/hospital-technology.jpg" alt="Modern hospital technology" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=600&auto=format&fit=crop" alt="Modern hospital technology" loading="lazy">
           <figcaption>
             <strong>Hospital Technology</strong>
             <span>Integrated hospital solutions</span>
           </figcaption>
         </figure>
         
-        <!-- Image 5 -->
         <figure class="visual-portfolio-card">
-          <img src="assets/hospital-project.jpg" alt="Hospital project environment" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1587351021355-a479a299d2f9?q=80&w=600&auto=format&fit=crop" alt="Hospital project environment" loading="lazy">
           <figcaption>
             <strong>Hospital Projects</strong>
             <span>Healthcare infrastructure</span>
           </figcaption>
         </figure>
         
-        <!-- Image 6 -->
         <figure class="visual-portfolio-card">
-          <img src="assets/germany-medical.jpg" alt="Medical technology in Germany" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1560969184-10fe8719e047?q=80&w=600&auto=format&fit=crop" alt="Medical technology in Germany" loading="lazy">
           <figcaption>
             <strong>International Markets</strong>
             <span>Global medical technology</span>
@@ -368,7 +323,7 @@
     </section>
   </main>
 
-  <!-- FOOTER (Contact changed to International) -->
+  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="footer-main">
       <div class="footer-brand">
@@ -401,11 +356,8 @@
     </div>
   </footer>
 
-  <!-- GLOBE LIBRARIES -->
-  <script src="https://unpkg.com/three@0.150.1/build/three.min.js" defer></script>
-  <script src="https://unpkg.com/globe.gl@2.27.2/dist/globe.gl.min.js" defer></script>
-  
-  <!-- MAIN SCRIPT -->
+  <!-- Leaflet Map JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="script.js" defer></script>
 </body>
 </html>
