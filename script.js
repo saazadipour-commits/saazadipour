@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (document.getElementById("currentYear")) document.getElementById("currentYear").textContent = currentYear;
 
     /* =========================================================
-       05. 3D GLOBE INITIALIZATION (HIGH PERFORMANCE)
+       05. 3D GLOBE INITIALIZATION (DARK EARTH & STARS)
     ========================================================= */
     const globeContainer = document.getElementById("globeViz");
     const loading = document.getElementById("mapLoading");
@@ -56,29 +56,26 @@ document.addEventListener("DOMContentLoaded", function () {
         setTimeout(() => {
             try {
                 const world = Globe()(globeContainer)
-                    .backgroundColor('#050607')
+                    // The exact Earth texture from the user's screenshot
+                    .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-night.jpg')
+                    .backgroundImageUrl('https://unpkg.com/three-globe/example/img/night-sky.png')
+                    .backgroundColor('#000000')
                     .showAtmosphere(false)
-                    .globeImageUrl(null) // No heavy image texture
                     .width(globeContainer.clientWidth)
-                    .height(globeContainer.clientHeight)
-                    // Limit pixel ratio to 1 for massive performance boost on mobile/retina
-                    .rendererConfig({ antialias: false, alpha: true, pixelRatio: 1 });
+                    .height(globeContainer.clientHeight);
 
-                // Further back view and slight angle
-                world.pointOfView({ lat: 25, lng: 45, altitude: 3.2 });
+                // Angled view towards Europe/Asia/Africa
+                world.pointOfView({ lat: 25, lng: 45, altitude: 2.2 });
 
-                // Black Globe Material
-                world.globeMaterial(new THREE.MeshBasicMaterial({ color: '#050607' }));
-
-                // Country Borders
+                // Country Borders (White & Glowing)
                 fetch('https://raw.githubusercontent.com/vasturiano/globe.gl/master/example/datasets/ne_110m_admin_0_countries.geojson')
                     .then(res => res.json())
                     .then(countries => {
                         world.polygonsData(countries.features)
                             .polygonCapColor(() => 'rgba(0,0,0,0)') 
                             .polygonSideColor(() => 'rgba(0,0,0,0)')
-                            .polygonStrokeColor(() => 'rgba(255, 255, 255, 0.7)')
-                            .polygonAltitude(0.002);
+                            .polygonStrokeColor(() => 'rgba(255, 255, 255, 0.5)') 
+                            .polygonAltitude(0.005);
                     }).catch(err => console.error(err));
 
                 // Coordinates
@@ -93,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const americasHospitals = [[40.712, -74.006], [34.052, -118.243], [43.653, -79.383]].map(p => ({ lat: p[0], lng: p[1], type: 'H' }));
                 const chinaHospitals = [[39.904, 116.407], [31.230, 121.473]].map(p => ({ lat: p[0], lng: p[1], type: 'H' }));
 
-                // Arcs
+                // White Arcs
                 const arcsData = [];
                 const whiteArc = ['rgba(255, 255, 255, 1)', 'rgba(255, 255, 255, 0.1)'];
 
@@ -109,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     .arcDashLength(0.5)
                     .arcDashGap(0.2)
                     .arcDashAnimateTime(2000)
-                    .arcStroke(0.6);
+                    .arcStroke(0.5);
 
                 // Markers
                 const markersData = [omanHub, germany, taiwan, chinaSupplier, usa, ...gccHospitals, ...europeHospitals, ...americasHospitals, ...chinaHospitals];
@@ -124,29 +121,25 @@ document.addEventListener("DOMContentLoaded", function () {
                         el.innerHTML = `<span>${d.type}</span>`;
                         return el;
                     })
-                    .htmlAltitude(d => d.type === 'A' ? 0.015 : 0.01);
+                    .htmlAltitude(d => d.type === 'A' ? 0.02 : 0.01);
 
-                // Controls
+                // Rotate Globe
                 world.controls().autoRotate = true;
-                world.controls().autoRotateSpeed = 0.6;
-                world.controls().enableZoom = false;
-                world.controls().enablePan = false;
+                world.controls().autoRotateSpeed = 0.5;
+                world.controls().enableZoom = false; // Prevent manual zoom
 
                 if (loading) loading.style.display = "none";
                 
-                // ==========================================
-                // PERFORMANCE BOOST: Pause rendering when out of view
-                // ==========================================
+                // Stop rotation if not in viewport (Performance)
                 const observer = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
-                            world.controls().autoRotate = true; // Resume rotation
+                            world.controls().autoRotate = true;
                         } else {
-                            world.controls().autoRotate = false; // Stop rotation to save battery/CPU
+                            world.controls().autoRotate = false;
                         }
                     });
                 }, { threshold: 0.1 });
-                
                 observer.observe(globeContainer);
 
                 window.addEventListener('resize', () => {
