@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (document.getElementById("currentYear")) document.getElementById("currentYear").textContent = currentYear;
 
     /* =========================================================
-       05. 3D GLOBE INITIALIZATION (WHITE & LUXURY)
+       05. 3D GLOBE INITIALIZATION (HIGH PERFORMANCE)
     ========================================================= */
     const globeContainer = document.getElementById("globeViz");
     const loading = document.getElementById("mapLoading");
@@ -57,22 +57,28 @@ document.addEventListener("DOMContentLoaded", function () {
             try {
                 const world = Globe()(globeContainer)
                     .backgroundColor('#050607')
-                    .showAtmosphere(false) // Keep it clean and dark
+                    .showAtmosphere(false)
+                    .globeImageUrl(null) // No heavy image texture
                     .width(globeContainer.clientWidth)
-                    .height(globeContainer.clientHeight);
+                    .height(globeContainer.clientHeight)
+                    // Limit pixel ratio to 1 for massive performance boost on mobile/retina
+                    .rendererConfig({ antialias: false, alpha: true, pixelRatio: 1 });
 
-                // Angle focused on Europe/Asia/Africa
-                world.pointOfView({ lat: 25, lng: 45, altitude: 2.2 });
+                // Further back view and slight angle
+                world.pointOfView({ lat: 25, lng: 45, altitude: 3.2 });
 
-                // Load Country Borders in White (No textures, high-tech look)
+                // Black Globe Material
+                world.globeMaterial(new THREE.MeshBasicMaterial({ color: '#050607' }));
+
+                // Country Borders
                 fetch('https://raw.githubusercontent.com/vasturiano/globe.gl/master/example/datasets/ne_110m_admin_0_countries.geojson')
                     .then(res => res.json())
                     .then(countries => {
                         world.polygonsData(countries.features)
                             .polygonCapColor(() => 'rgba(0,0,0,0)') 
                             .polygonSideColor(() => 'rgba(0,0,0,0)')
-                            .polygonStrokeColor(() => 'rgba(255, 255, 255, 0.4)') // Clear white borders
-                            .polygonAltitude(0.005);
+                            .polygonStrokeColor(() => 'rgba(255, 255, 255, 0.7)')
+                            .polygonAltitude(0.002);
                     }).catch(err => console.error(err));
 
                 // Coordinates
@@ -87,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const americasHospitals = [[40.712, -74.006], [34.052, -118.243], [43.653, -79.383]].map(p => ({ lat: p[0], lng: p[1], type: 'H' }));
                 const chinaHospitals = [[39.904, 116.407], [31.230, 121.473]].map(p => ({ lat: p[0], lng: p[1], type: 'H' }));
 
-                // White Arcs
+                // Arcs
                 const arcsData = [];
                 const whiteArc = ['rgba(255, 255, 255, 1)', 'rgba(255, 255, 255, 0.1)'];
 
@@ -103,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     .arcDashLength(0.5)
                     .arcDashGap(0.2)
                     .arcDashAnimateTime(2000)
-                    .arcStroke(0.5);
+                    .arcStroke(0.6);
 
                 // Markers
                 const markersData = [omanHub, germany, taiwan, chinaSupplier, usa, ...gccHospitals, ...europeHospitals, ...americasHospitals, ...chinaHospitals];
@@ -118,19 +124,36 @@ document.addEventListener("DOMContentLoaded", function () {
                         el.innerHTML = `<span>${d.type}</span>`;
                         return el;
                     })
-                    .htmlAltitude(d => d.type === 'A' ? 0.02 : 0.01);
+                    .htmlAltitude(d => d.type === 'A' ? 0.015 : 0.01);
 
+                // Controls
                 world.controls().autoRotate = true;
-                world.controls().autoRotateSpeed = 0.5;
-                world.controls().enableZoom = false; // Keep UI clean
+                world.controls().autoRotateSpeed = 0.6;
+                world.controls().enableZoom = false;
+                world.controls().enablePan = false;
 
                 if (loading) loading.style.display = "none";
                 
+                // ==========================================
+                // PERFORMANCE BOOST: Pause rendering when out of view
+                // ==========================================
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            world.controls().autoRotate = true; // Resume rotation
+                        } else {
+                            world.controls().autoRotate = false; // Stop rotation to save battery/CPU
+                        }
+                    });
+                }, { threshold: 0.1 });
+                
+                observer.observe(globeContainer);
+
                 window.addEventListener('resize', () => {
                     world.width(globeContainer.clientWidth);
                     world.height(globeContainer.clientHeight);
                 });
             } catch(e) { console.error(e); }
-        }, 500);
+        }, 300);
     }
 });
