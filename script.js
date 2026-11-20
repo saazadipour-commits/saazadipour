@@ -7,15 +7,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const mainNav = document.getElementById("mainNav");
     const intro = document.getElementById("intro");
 
-    /* 01. INTRO SCREEN (Immediate Hide - No Delay) */
+    /* 01. INTRO SCREEN (Immediate Hide) */
     if (intro) {
-        // Hide intro as soon as the page finishes loading resources
         window.addEventListener('load', function() {
             intro.classList.add("hide");
-            setTimeout(() => { intro.style.display = "none"; }, 600); // Only wait for the CSS fade-out animation
+            setTimeout(() => { intro.style.display = "none"; }, 600);
         });
-        
-        // Fallback: if load takes too long, hide it after 1 second max
         setTimeout(() => {
             if (!intro.classList.contains("hide")) {
                 intro.classList.add("hide");
@@ -55,12 +52,19 @@ document.addEventListener("DOMContentLoaded", function () {
     if (document.getElementById("currentYear")) document.getElementById("currentYear").textContent = currentYear;
 
     /* =========================================================
-       05. 3D GLOBE INITIALIZATION (Immediate Load)
+       05. 3D GLOBE INITIALIZATION (WITH ROBUST ERROR HANDLING)
     ========================================================= */
     const globeContainer = document.getElementById("globeViz");
     const loading = document.getElementById("mapLoading");
     
-    // Check if globe container exists and library is loaded
+    // Safety Timeout: If globe takes more than 8 seconds, stop loading and show error
+    let globeTimeout = setTimeout(() => {
+        if (loading && loading.style.display !== "none") {
+            loading.innerHTML = '<span style="color:var(--muted); font-size:10px; letter-spacing:1px;">NETWORK VISUALIZATION UNAVAILABLE ON THIS DEVICE</span>';
+            setTimeout(() => { loading.style.display = "none"; }, 3000);
+        }
+    }, 8000);
+
     if (globeContainer && typeof Globe !== 'undefined') {
         window.addEventListener('load', () => {
             try {
@@ -75,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 // View Position
                 world.pointOfView({ lat: 25, lng: 45, altitude: 2.2 });
 
-                // Country Borders
+                // Country Borders (with separate try/catch so map still loads if fetch fails)
                 fetch('https://raw.githubusercontent.com/vasturiano/globe.gl/master/example/datasets/ne_110m_admin_0_countries.geojson')
                     .then(res => res.json())
                     .then(countries => {
@@ -84,7 +88,10 @@ document.addEventListener("DOMContentLoaded", function () {
                             .polygonSideColor(() => 'rgba(0,0,0,0)')
                             .polygonStrokeColor(() => 'rgba(255, 255, 255, 0.5)') 
                             .polygonAltitude(0.005);
-                    }).catch(err => console.error(err));
+                    }).catch(err => {
+                        console.warn("Could not load country borders:", err);
+                        // Map will still show without country outlines
+                    });
 
                 // Coordinates
                 const omanHub = { lat: 23.588, lng: 58.383, type: 'A' };
@@ -136,7 +143,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 world.controls().autoRotateSpeed = 0.5;
                 world.controls().enableZoom = false; 
 
-                // Hide loading screen immediately after creation
+                // Hide loading screen
+                clearTimeout(globeTimeout); // Cancel the error timeout
                 if (loading) loading.style.display = "none";
                 
                 // Performance: Pause when out of view
@@ -156,9 +164,16 @@ document.addEventListener("DOMContentLoaded", function () {
                     world.height(globeContainer.clientHeight);
                 });
             } catch(e) { 
-                console.error(e); 
-                if (loading) loading.style.display = "none";
+                console.error("Globe initialization failed:", e); 
+                clearTimeout(globeTimeout);
+                if (loading) {
+                    loading.innerHTML = '<span style="color:var(--muted); font-size:10px;">WEBGL NOT SUPPORTED</span>';
+                    setTimeout(() => { loading.style.display = "none"; }, 2000);
+                }
             }
         });
+    } else {
+        // If library is not loaded at all
+        if (loading) loading.style.display = "none";
     }
 });
