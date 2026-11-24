@@ -4,19 +4,59 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Azadipour | Premier Global Medical Technology & Hospital Solutions</title>
-  <meta name="description" content="Azadipour is a premier medical technology company orchestrating international partnerships, advanced robotic surgery, and comprehensive hospital solutions for top-tier healthcare institutions.">
+  <meta name="description" content="Azadipour is an Oman-registered premier medical technology company orchestrating international partnerships, advanced robotic surgery, and comprehensive hospital solutions for top-tier healthcare institutions.">
+  <meta name="keywords" content="Azadipour, global medical technology, robotic surgery, surgical robotics, medical equipment, hospital solutions, Oman medical company, international healthcare, CR 1678104">
+  <meta name="author" content="Azadipour Medical">
+  <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#08090b">
   <link rel="canonical" href="https://azadipourmedical.com/">
   <link rel="icon" type="image/png" href="assets/logo-transparent.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://unpkg.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 
-  <!-- 3D Globe Libraries -->
-  <script src="https://unpkg.com/three@0.150.1/build/three.min.js" defer></script>
-  <script src="https://unpkg.com/globe.gl@2.27.2/dist/globe.gl.min.js" defer></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://azadipourmedical.com/#organization",
+        "name": "Azadipour Medical",
+        "alternateName": "آزادی پور",
+        "legalName": "Azadipour Medical Technology LLC",
+        "url": "https://azadipourmedical.com/",
+        "logo": "https://azadipourmedical.com/assets/logo-transparent.png",
+        "description": "An Oman-registered premier medical technology company orchestrating international partnerships, advanced robotic surgery, and comprehensive hospital solutions.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Muscat",
+          "addressCountry": "OM"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "corporate inquiries",
+          "email": "info@azadipourmedical.com",
+          "availableLanguage": ["en", "fa", "ar"]
+        },
+        "identifier": [
+          { "@type": "PropertyValue", "propertyID": "Commercial Registration (CR)", "value": "1678104" },
+          { "@type": "PropertyValue", "propertyID": "OCCI Membership", "value": "5551647" }
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://azadipourmedical.com/#website",
+        "url": "https://azadipourmedical.com/",
+        "name": "Azadipour Medical",
+        "publisher": { "@id": "https://azadipourmedical.com/#organization" }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -57,7 +97,6 @@
   </header>
 
   <main>
-    <!-- HERO SECTION -->
     <section class="hero-section">
       <div class="hero-overlay"></div>
       <div class="hero-content">
@@ -75,7 +114,6 @@
       <div class="hero-scroll"><span></span> SCROLL TO EXPLORE</div>
     </section>
 
-    <!-- GLOBAL NETWORK (3D GLOBE) -->
     <section class="global-network-section" id="global-network" aria-label="Azadipour global network">
       <div class="network-top">
         <div class="section-label">01 — GLOBAL PRESENCE</div>
@@ -84,39 +122,34 @@
           <p>Azadipour architects international medical technology relationships, bridging elite healthcare opportunities with world-class global manufacturers.</p>
         </div>
       </div>
-      
       <div class="network-map-frame">
         <div class="network-map-topline">
           <span>AZADIPOUR — INTERNATIONAL NETWORK</span>
-          <span>STRATEGIC COMMAND CENTER</span>
+          <span>STRATEGIC SUPPLY &amp; DISTRIBUTION NETWORK</span>
         </div>
-        
         <div class="network-map-canvas-wrap">
           <div id="globeViz" class="az-world-map"></div>
           <div class="map-loading" id="mapLoading">
             <span class="loading-indicator"></span>
-            <span>INITIALIZING GLOBAL NETWORK...</span>
+            <span id="loadingText">INITIALIZING GLOBAL NETWORK...</span>
           </div>
         </div>
-        
         <div class="map-caption">
-          <span style="text-align: center; width: 100%; letter-spacing: 2px; color: #cbd1d7;">GLOBAL SUPPLY CHAIN &amp; DISTRIBUTION ROUTING</span>
+          <span>AZADIPOUR · OMAN (STRATEGIC HUB)</span>
+          <span>INBOUND SUPPLY &amp; OUTBOUND MARKETS</span>
         </div>
       </div>
-      
       <div class="network-legend">
-        <div class="legend-item"><span class="legend-dot registered"></span><div><strong>Azadipour</strong><small>Strategic Command Hub</small></div></div>
-        <div class="legend-item"><span class="legend-dot target"></span><div><strong>International Suppliers</strong><small>Inbound Technology</small></div></div>
-        <div class="legend-item"><span class="legend-dot partner"></span><div><strong>Regional Hospitals</strong><small>Outbound Distribution</small></div></div>
+        <div class="legend-item"><span class="legend-dot registered"></span><div><strong>Azadipour — Oman</strong><small>Strategic Command Hub</small></div></div>
+        <div class="legend-item"><span class="legend-dot target"></span><div><strong>International Suppliers</strong><small>Inbound Technology (C)</small></div></div>
+        <div class="legend-item"><span class="legend-dot partner"></span><div><strong>Regional Hospitals</strong><small>Outbound Distribution (H)</small></div></div>
       </div>
-      
       <div class="network-footer">
-        <p>The map presents a strategic geographic view of Azadipour's supply chain, illustrating critical connections from international suppliers to our strategic hub, and from our hub to regional healthcare organizations.</p>
+        <p>The map presents a strategic geographic view of Azadipour's supply chain, illustrating critical connections from international suppliers to our Oman-based hub, and from our hub to regional healthcare organizations.</p>
         <a href="partners.html">Explore Global Partnerships <span>↗</span></a>
       </div>
     </section>
 
-    <!-- GLOBAL BASES (Centered Text & Tech Backgrounds) -->
     <section class="section intro-section">
       <div class="section-label">02 — GLOBAL BASES & OVERVIEW</div>
       <div class="section-heading">
@@ -125,36 +158,33 @@
       </div>
       
       <div class="intro-details">
-        <!-- Oman Base (Tech / Muscat architecture) -->
-        <div class="intro-detail image-card" style="background-image: linear-gradient(rgba(5,6,7,0.7), rgba(5,6,7,0.95)), url('https://images.unsplash.com/photo-1627956992439-5735223b7438?q=80&w=800&auto=format&fit=crop');">
+        <div class="intro-detail">
           <span>GCC BASE</span>
           <h3>Oman (Muscat)</h3>
           <p>The registered headquarters and strategic operational hub. Fully licensed with fundamental regulatory approvals for medical product entry (CR: 1678104).</p>
         </div>
-        <!-- Germany Base (Tech / Lab) -->
-        <div class="intro-detail image-card branch-active" style="background-image: linear-gradient(rgba(5,6,7,0.7), rgba(5,6,7,0.95)), url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=800&auto=format&fit=crop');">
+        <div class="intro-detail branch-active">
           <span>EUROPE BASE (COMING SOON)</span>
           <h3>Germany (Berlin)</h3>
           <p>Our upcoming European branch, designed to bridge advanced German medical engineering with Middle Eastern and global healthcare markets.</p>
         </div>
-        <!-- USA Base (Tech / Silicon Valley) -->
-        <div class="intro-detail image-card" style="background-image: linear-gradient(rgba(5,6,7,0.7), rgba(5,6,7,0.95)), url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop');">
+        <div class="intro-detail">
           <span>AMERICAS BASE</span>
           <h3>United States</h3>
           <p>Strategic sourcing and partnership hub focused on integrating cutting-edge American surgical robotics and advanced medical innovations.</p>
         </div>
-        <!-- China Base (Tech / Futuristic) -->
-        <div class="intro-detail image-card" style="background-image: linear-gradient(rgba(5,6,7,0.7), rgba(5,6,7,0.95)), url('https://images.unsplash.com/photo-1548919973-5cef591cdbc9?q=80&w=800&auto=format&fit=crop');">
+        <div class="intro-detail">
           <span>ASIA BASE</span>
           <h3>China</h3>
           <p>Our Asian operational base, facilitating high-tech manufacturing partnerships, supply chain excellence, and rapid technological integration.</p>
         </div>
       </div>
 
-      <!-- LUXURY SLIDER -->
+      <!-- LUXURY SLIDER CREDENTIALS -->
       <div class="luxury-slider-wrapper">
         <button class="slider-nav-btn prev" onclick="document.getElementById('sliderTrack').scrollBy({left: -400, behavior: 'smooth'})">❮</button>
         <div class="luxury-slider-track" id="sliderTrack">
+          
           <div class="credential-slide">
             <div class="credential-header">
               <span class="credential-seal">VERIFIED &amp; LICENSED</span>
@@ -168,6 +198,7 @@
               <div class="credential-item"><span class="cred-label">REGISTERED OFFICE</span><span class="cred-value">Muscat, Oman</span></div>
             </div>
           </div>
+
           <div class="credential-slide gold-card">
             <div class="gold-icon">◈</div>
             <span class="credential-seal" style="display:inline-block; margin-bottom:20px;">NEW EXPANSION</span>
@@ -175,12 +206,13 @@
             <p>Berlin, Germany</p>
             <p style="margin-top: 20px; font-size: 12px; opacity: 0.6;">DETAILED INFORMATION COMING SOON</p>
           </div>
+
         </div>
         <button class="slider-nav-btn next" onclick="document.getElementById('sliderTrack').scrollBy({left: 400, behavior: 'smooth'})">❯</button>
       </div>
+
     </section>
 
-    <!-- TECHNOLOGY PORTFOLIO -->
     <section class="section technology-section">
       <div class="section-label">03 — TECHNOLOGY PORTFOLIO</div>
       <div class="section-heading">
@@ -188,47 +220,30 @@
         <p>Exploring technologies that contribute to the evolution of modern healthcare and advanced clinical environments.</p>
       </div>
       <div class="technology-grid">
-        <a href="robotic.html" class="technology-card" style="background-image: linear-gradient(rgba(5,6,7,0.7), rgba(5,6,7,0.95)), url('assets/robotic-hero.jpg');">
+        <a href="robotic.html" class="technology-card">
           <div class="card-number">01 / ROBOTICS</div>
-          <div class="technology-card-content">
-            <h3>Robotic & Digital Surgery</h3>
-            <p>Advanced robotic platforms, digital surgery and next-generation surgical technologies.</p>
-            <span class="card-link">Explore Technology ↗</span>
-          </div>
+          <div class="technology-card-content"><h3>Robotic & Digital Surgery</h3><p>Advanced robotic platforms, digital surgery and next-generation surgical technologies.</p><span class="card-link">Explore Technology ↗</span></div>
         </a>
-        <a href="cardiac.html" class="technology-card" style="background-image: linear-gradient(rgba(5,6,7,0.7), rgba(5,6,7,0.95)), url('assets/cardiac-hero.jpg');">
+        <a href="cardiac.html" class="technology-card">
           <div class="card-number">02 / CARDIOVASCULAR</div>
-          <div class="technology-card-content">
-            <h3>Cardiac & Cardiovascular</h3>
-            <p>Technologies supporting cardiac surgery, perfusion, catheterization laboratories and critical care.</p>
-            <span class="card-link">Explore Technology ↗</span>
-          </div>
+          <div class="technology-card-content"><h3>Cardiac & Cardiovascular</h3><p>Technologies supporting cardiac surgery, perfusion, catheterization laboratories and critical care.</p><span class="card-link">Explore Technology ↗</span></div>
         </a>
-        <a href="medical.html" class="technology-card" style="background-image: linear-gradient(rgba(5,6,7,0.7), rgba(5,6,7,0.95)), url('assets/surgical-robotics.jpg');">
+        <a href="medical.html" class="technology-card">
           <div class="card-number">03 / NAVIGATION & AI</div>
-          <div class="technology-card-content">
-            <h3>Surgical Navigation & AI</h3>
-            <p>Image-guided technologies, surgical navigation and emerging artificial intelligence applications.</p>
-            <span class="card-link">Explore Technology ↗</span>
-          </div>
+          <div class="technology-card-content"><h3>Surgical Navigation & AI</h3><p>Image-guided technologies, surgical navigation and emerging artificial intelligence applications.</p><span class="card-link">Explore Technology ↗</span></div>
         </a>
-        <a href="medical.html" class="technology-card" style="background-image: linear-gradient(rgba(5,6,7,0.7), rgba(5,6,7,0.95)), url('assets/hospital-technology.jpg');">
+        <a href="medical.html" class="technology-card">
           <div class="card-number">04 / HOSPITAL SYSTEMS</div>
-          <div class="technology-card-content">
-            <h3>Advanced Hospital Solutions</h3>
-            <p>Medical equipment, operating room technologies, intensive care and integrated hospital systems.</p>
-            <span class="card-link">Explore Technology ↗</span>
-          </div>
+          <div class="technology-card-content"><h3>Advanced Hospital Solutions</h3><p>Medical equipment, operating room technologies, intensive care and integrated hospital systems.</p><span class="card-link">Explore Technology ↗</span></div>
         </a>
       </div>
     </section>
 
-    <!-- VISUAL PORTFOLIO (SMALLER & CENTERED) -->
     <section class="section visual-portfolio-section">
       <div class="section-label">04 — SELECTED TECHNOLOGY AREAS</div>
       <div class="section-heading"><h2>Technology in <span>Focus.</span></h2><p>A visual overview of selected medical technology and hospital solution areas.</p></div>
-      
       <div class="visual-portfolio-grid">
+        
         <figure class="visual-portfolio-card">
           <img src="assets/robotic-hero.jpg" alt="Robotic surgery technology" loading="lazy">
           <figcaption>
@@ -276,10 +291,10 @@
             <span>Global medical technology</span>
           </figcaption>
         </figure>
+
       </div>
     </section>
 
-    <!-- PARTNERSHIPS -->
     <section class="section partnership-section">
       <div class="section-label">05 — INTERNATIONAL PARTNERSHIPS</div>
       <div class="partnership-content">
@@ -292,7 +307,6 @@
       </div>
     </section>
 
-    <!-- SOLUTIONS -->
     <section class="section solutions-section">
       <div class="section-label">06 — BUSINESS APPROACH</div>
       <div class="section-heading"><h2>From Clinical Requirements <span>To Global Medical Supply.</span></h2></div>
@@ -304,7 +318,15 @@
       </div>
     </section>
 
-    <!-- CONTACT -->
+    <section class="section projects-section">
+      <div class="section-label">07 — PROJECT DEVELOPMENT</div>
+      <div class="section-heading">
+        <h2>Transforming Healthcare Needs <span>Into Opportunities.</span></h2>
+        <p>Understanding healthcare requirements, identifying relevant technologies, and exploring potential opportunities with international partners.</p>
+      </div>
+      <a href="projects.html" class="text-link">Explore Project Development ↗</a>
+    </section>
+
     <section class="section contact-section">
       <div class="section-label">08 — CONNECT WITH AZADIPOUR</div>
       <div class="contact-content">
@@ -316,39 +338,132 @@
     </section>
   </main>
 
-  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="footer-main">
-      <div class="footer-brand">
-        <img src="assets/logo-transparent.png" alt="Azadipour Logo">
-        <h3>AZADIPOUR</h3>
-        <p>Global Medical Technology & Hospital Solutions</p>
-      </div>
-      <div class="footer-column">
-        <h4>COMPANY</h4>
-        <a href="about.html">About Us</a>
-        <a href="index.html#global-network">Global Presence</a>
-        <a href="partners.html">Partnerships</a>
-        <a href="projects.html">Projects</a>
-      </div>
-      <div class="footer-column">
-        <h4>TECHNOLOGY</h4>
-        <a href="robotic.html">Robotic Surgery</a>
-        <a href="cardiac.html">Cardiovascular</a>
-        <a href="medical.html">Medical Technology</a>
-      </div>
-      <div class="footer-column">
-        <h4>CONTACT</h4>
-        <a href="mailto:info@azadipourmedical.com">Email</a>
-        <span>International</span>
-      </div>
+      <div class="footer-brand"><img src="assets/logo-transparent.png" alt="Azadipour Logo"><h3>AZADIPOUR</h3><p>Global Medical Technology & Hospital Solutions</p></div>
+      <div class="footer-column"><h4>COMPANY</h4><a href="about.html">About Us</a><a href="index.html#global-network">Global Presence</a><a href="partners.html">Partnerships</a><a href="projects.html">Projects</a></div>
+      <div class="footer-column"><h4>TECHNOLOGY</h4><a href="robotic.html">Robotic Surgery</a><a href="cardiac.html">Cardiovascular</a><a href="medical.html">Medical Technology</a></div>
+      <div class="footer-column"><h4>CONTACT</h4><a href="mailto:info@azadipourmedical.com">Email</a><span>Oman</span></div>
     </div>
-    <div class="footer-bottom">
-      <span>© <span id="currentYear">2026</span> AZADIPOUR. ALL RIGHTS RESERVED.</span>
-      <span>GLOBAL MEDICAL TECHNOLOGY · WORLDWIDE</span>
-    </div>
+    <div class="footer-bottom"><span>© <span id="currentYear">2026</span> AZADIPOUR. ALL RIGHTS RESERVED.</span><span>GLOBAL MEDICAL TECHNOLOGY · WORLDWIDE</span></div>
   </footer>
 
+  <script src="https://unpkg.com/three@0.150.1/build/three.min.js" defer></script>
+  <script src="https://unpkg.com/globe.gl@2.27.2/dist/globe.gl.min.js" defer></script>
+  
+  <script>
+    window.addEventListener('load', () => {
+      const globeContainer = document.getElementById("globeViz");
+      const loading = document.getElementById("mapLoading");
+      if (!globeContainer) return;
+
+      setTimeout(() => {
+        if (typeof Globe === 'undefined' || typeof THREE === 'undefined') {
+          if (loading) loading.style.display = "none";
+          return;
+        }
+
+        try {
+          const world = Globe()(globeContainer)
+            .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-night.jpg')
+            .backgroundImageUrl('https://unpkg.com/three-globe/example/img/night-sky.png')
+            .backgroundColor('#000000')
+            .showAtmosphere(false)
+            .width(globeContainer.clientWidth)
+            .height(globeContainer.clientHeight);
+
+          world.pointOfView({ lat: 30, lng: 40, altitude: 2.2 });
+
+          fetch('https://raw.githubusercontent.com/vasturiano/globe.gl/master/example/datasets/ne_110m_admin_0_countries.geojson')
+            .then(res => res.json())
+            .then(countries => {
+              world.polygonsData(countries.features)
+                .polygonCapColor(() => 'rgba(0,0,0,0)') 
+                .polygonSideColor(() => 'rgba(0,0,0,0)')
+                .polygonStrokeColor(() => 'rgba(255, 255, 255, 0.15)') 
+                .polygonAltitude(0.005);
+                
+              const countryLabels = [
+                { lat: 37.0, lng: -95.0, name: "USA" },
+                { lat: 35.0, lng: 105.0, name: "CHINA" },
+                { lat: 51.0, lng: 10.0, name: "GERMANY" },
+                { lat: 46.0, lng: 2.0, name: "FRANCE" },
+                { lat: 40.0, lng: -4.0, name: "SPAIN" },
+                { lat: 42.0, lng: 12.0, name: "ITALY" },
+                { lat: 23.0, lng: 45.0, name: "SAUDI ARABIA" }
+              ];
+              
+              world.labelsData(countryLabels)
+                .labelSize(0.5).labelDotRadius(0).labelColor(() => 'rgba(255, 255, 255, 0.3)')
+                .labelText('name').labelAltitude(0.01).labelResolution(2);
+            }).catch(err => console.error("Error loading borders:", err));
+
+          const omanHub = { lat: 23.588, lng: 58.383, name: "AZADIPOUR" };
+          
+          const suppliers = [
+            { lat: 22.543, lng: 114.057, name: "Shenzhen" },
+            { lat: 31.230, lng: 121.473, name: "Shanghai" },
+            { lat: 39.904, lng: 116.407, name: "Beijing" },
+            { lat: 25.033, lng: 121.565, name: "Taipei" },
+            { lat: 53.551, lng: 9.993, name: "Hamburg" },
+            { lat: 37.774, lng: -122.419, name: "San Francisco" }
+          ];
+
+          const germanyBranch = { lat: 52.520, lng: 13.405, name: "BERLIN BRANCH" };
+
+          const hospitals = [
+            { lat: 24.713, lng: 46.675 }, { lat: 25.285, lng: 51.531 }, { lat: 26.228, lng: 50.586 },
+            { lat: 24.453, lng: 54.377 }, { lat: 17.015, lng: 54.092 }, { lat: 48.856, lng: 2.352 },
+            { lat: 41.902, lng: 12.496 }, { lat: 40.416, lng: -3.703 }, { lat: 40.712, lng: -74.006 }
+          ];
+
+          const arcsData = [];
+          suppliers.forEach(s => arcsData.push({ startLat: s.lat, startLng: s.lng, endLat: omanHub.lat, endLng: omanHub.lng, color: ['rgba(255, 255, 255, 0.6)', 'rgba(255, 255, 255, 0.05)'] }));
+          arcsData.push({ startLat: omanHub.lat, startLng: omanHub.lng, endLat: germanyBranch.lat, endLng: germanyBranch.lng, color: ['rgba(255, 215, 0, 0.8)', 'rgba(255, 215, 0, 0.1)'] });
+          hospitals.forEach(h => arcsData.push({ startLat: omanHub.lat, startLng: omanHub.lng, endLat: h.lat, endLng: h.lng, color: ['rgba(200, 200, 200, 0.3)', 'rgba(200, 200, 200, 0.01)'] }));
+
+          world.arcsData(arcsData).arcColor('color').arcDashLength(0.5).arcDashGap(0.2).arcDashAnimateTime(2000).arcStroke(0.3);
+
+          const htmlElementsData = [
+            { lat: omanHub.lat, lng: omanHub.lng, type: 'hub', text: 'A' },
+            { lat: germanyBranch.lat, lng: germanyBranch.lng, type: 'gold', text: 'A' },
+            ...suppliers.map(s => ({ ...s, type: 'company', text: 'C' })),
+            ...hospitals.map(h => ({ ...h, type: 'hospital', text: 'H' }))
+          ];
+
+          world.htmlElementsData(htmlElementsData)
+            .htmlElement(d => {
+              const el = document.createElement('div');
+              el.className = 'globe-marker';
+              if (d.type === 'hub') el.classList.add('marker-hub');
+              else if (d.type === 'company') el.classList.add('marker-c');
+              else if (d.type === 'hospital') el.classList.add('marker-h');
+              else if (d.type === 'gold') el.classList.add('marker-gold');
+              el.innerHTML = `<span>${d.text}</span>`;
+              return el;
+            })
+            .htmlAltitude(d => d.type === 'hub' ? 0.025 : 0.015);
+
+          world.ringsData([omanHub]).ringColor(() => t => `rgba(255, 255, 255, ${1-t})`).ringMaxRadius(3).ringPropagationSpeed(2).ringRepeatPeriod(1500);
+
+          world.controls().autoRotate = true;
+          world.controls().autoRotateSpeed = 0.8;
+          world.controls().enableZoom = true;
+          world.controls().minDistance = 150;
+
+          if (loading) loading.style.display = "none";
+
+          window.addEventListener('resize', () => {
+            world.width(globeContainer.clientWidth);
+            world.height(globeContainer.clientHeight);
+          });
+        } catch (err) {
+          console.error(err);
+          if (loading) loading.style.display = "none";
+        }
+      }, 100);
+    });
+  </script>
   <script src="script.js" defer></script>
 </body>
 </html>
