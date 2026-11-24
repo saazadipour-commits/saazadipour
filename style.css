@@ -42,7 +42,7 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
 .section-heading h2 span, .section-heading span { color: var(--silver); }
 .section-heading p { max-width: 680px; font-size: 15px; }
 
-/* 02 — INTRO ANIMATION */
+/* 02 — INTRO ANIMATION (FIXED Z-INDEX AND BACKGROUND) */
 .intro-screen { position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center; background: #050607; transition: opacity .8s ease, visibility .8s ease; }
 .intro-screen.hide { opacity: 0; visibility: hidden; pointer-events: none; }
 .intro-content { display: flex; flex-direction: column; align-items: center; gap: 14px; padding: 24px; text-align: center; }
@@ -83,18 +83,7 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
 .text-link:hover { opacity: .7; }
 
 /* 05 — HERO SECTION */
-.hero-section { 
-  position: relative; 
-  min-height: min(760px, 90vh); 
-  display: flex; 
-  align-items: center; 
-  padding: 100px 24px; 
-  overflow: hidden; 
-  background-image: url('assets/hero-bg.jpg');
-  background-size: cover;
-  background-position: center;
-  background-color: #050607;
-}
+.hero-section { position: relative; min-height: min(760px, 90vh); display: flex; align-items: center; padding: 100px 24px; overflow: hidden; background-image: url('assets/hero-bg.jpg'); background-size: cover; background-position: center; background-color: #050607; }
 .hero-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, rgba(5,6,7,.95), rgba(5,6,7,.7) 55%, rgba(5,6,7,.3)); pointer-events: none; }
 .hero-content { position: relative; z-index: 2; width: min(var(--container), 100%); margin: auto; }
 .hero-eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; color: var(--silver); font-size: 10px; letter-spacing: 2.5px; }
@@ -176,7 +165,6 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
 .visual-portfolio-card { position: relative; min-width: 0; min-height: 300px; overflow: hidden; border: 1px solid var(--border); background: #101316; border-radius: 4px; cursor: pointer; }
 .visual-portfolio-card img { width: 100%; height: 100%; min-height: 300px; object-fit: cover; opacity: 0.6; transition: transform .7s ease, opacity .7s ease; filter: grayscale(80%); }
 .visual-portfolio-card:hover img { transform: scale(1.08); opacity: 0.9; filter: grayscale(0%); }
-
 .visual-portfolio-card figcaption { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 30px; background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.2)); transition: all 0.4s ease; }
 .visual-portfolio-card:hover figcaption { background: rgba(0,0,0,0.7); }
 .visual-portfolio-card figcaption strong { color: #fff; font-family: "Cormorant Garamond", Georgia, serif; font-size: 32px; font-weight: 500; margin-bottom: 8px; transform: translateY(10px); transition: transform 0.4s ease; }
