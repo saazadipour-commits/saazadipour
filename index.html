@@ -60,6 +60,7 @@
 </head>
 <body>
 
+  <!-- INTRO SCREEN -->
   <div class="intro-screen" id="intro">
     <div class="intro-content">
       <img src="assets/logo-transparent.png" alt="Azadipour Logo">
@@ -68,6 +69,7 @@
     </div>
   </div>
 
+  <!-- HEADER -->
   <header class="site-header">
     <div class="header-inner">
       <a href="index.html" class="brand" aria-label="Azadipour Home">
@@ -97,6 +99,7 @@
   </header>
 
   <main>
+    <!-- HERO SECTION -->
     <section class="hero-section">
       <div class="hero-overlay"></div>
       <div class="hero-content">
@@ -114,6 +117,7 @@
       <div class="hero-scroll"><span></span> SCROLL TO EXPLORE</div>
     </section>
 
+    <!-- GLOBAL NETWORK (MAP) -->
     <section class="global-network-section" id="global-network" aria-label="Azadipour global network">
       <div class="network-top">
         <div class="section-label">01 — GLOBAL PRESENCE</div>
@@ -150,6 +154,7 @@
       </div>
     </section>
 
+    <!-- GLOBAL BASES -->
     <section class="section intro-section">
       <div class="section-label">02 — GLOBAL BASES & OVERVIEW</div>
       <div class="section-heading">
@@ -180,6 +185,7 @@
         </div>
       </div>
 
+      <!-- SLIDER CREDENTIALS -->
       <div class="luxury-slider-wrapper">
         <button class="slider-nav-btn prev" onclick="document.getElementById('sliderTrack').scrollBy({left: -400, behavior: 'smooth'})">❮</button>
         <div class="luxury-slider-track" id="sliderTrack">
@@ -212,6 +218,7 @@
 
     </section>
 
+    <!-- TECHNOLOGY PORTFOLIO -->
     <section class="section technology-section">
       <div class="section-label">03 — TECHNOLOGY PORTFOLIO</div>
       <div class="section-heading">
@@ -238,6 +245,7 @@
       </div>
     </section>
 
+    <!-- VISUAL PORTFOLIO -->
     <section class="section visual-portfolio-section">
       <div class="section-label">04 — SELECTED TECHNOLOGY AREAS</div>
       <div class="section-heading"><h2>Technology in <span>Focus.</span></h2><p>A visual overview of selected medical technology and hospital solution areas.</p></div>
@@ -294,6 +302,7 @@
       </div>
     </section>
 
+    <!-- PARTNERSHIPS -->
     <section class="section partnership-section">
       <div class="section-label">05 — INTERNATIONAL PARTNERSHIPS</div>
       <div class="partnership-content">
@@ -306,6 +315,7 @@
       </div>
     </section>
 
+    <!-- SOLUTIONS -->
     <section class="section solutions-section">
       <div class="section-label">06 — BUSINESS APPROACH</div>
       <div class="section-heading"><h2>From Clinical Requirements <span>To Global Medical Supply.</span></h2></div>
@@ -317,6 +327,7 @@
       </div>
     </section>
 
+    <!-- PROJECTS -->
     <section class="section projects-section">
       <div class="section-label">07 — PROJECT DEVELOPMENT</div>
       <div class="section-heading">
@@ -326,6 +337,7 @@
       <a href="projects.html" class="text-link">Explore Project Development ↗</a>
     </section>
 
+    <!-- CONTACT -->
     <section class="section contact-section">
       <div class="section-label">08 — CONNECT WITH AZADIPOUR</div>
       <div class="contact-content">
@@ -337,6 +349,7 @@
     </section>
   </main>
 
+  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="footer-main">
       <div class="footer-brand"><img src="assets/logo-transparent.png" alt="Azadipour Logo"><h3>AZADIPOUR</h3><p>Global Medical Technology & Hospital Solutions</p></div>
@@ -347,6 +360,7 @@
     <div class="footer-bottom"><span>© <span id="currentYear">2026</span> AZADIPOUR. ALL RIGHTS RESERVED.</span><span>GLOBAL MEDICAL TECHNOLOGY · WORLDWIDE</span></div>
   </footer>
 
+  <!-- SCRIPTS -->
   <script src="https://unpkg.com/three@0.150.1/build/three.min.js" defer></script>
   <script src="https://unpkg.com/globe.gl@2.27.2/dist/globe.gl.min.js" defer></script>
   
@@ -356,6 +370,12 @@
       const loading = document.getElementById("mapLoading");
       if (!globeContainer) return;
 
+      // Fix for Intro Screen Stuck
+      setTimeout(() => {
+        const intro = document.getElementById("intro");
+        if (intro) intro.classList.add("hide");
+      }, 2500);
+
       setTimeout(() => {
         if (typeof Globe === 'undefined' || typeof THREE === 'undefined') {
           if (loading) loading.style.display = "none";
@@ -364,92 +384,51 @@
 
         try {
           const world = Globe()(globeContainer)
-            .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-night.jpg')
+            .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-dark.jpg') 
             .backgroundImageUrl('https://unpkg.com/three-globe/example/img/night-sky.png')
             .backgroundColor('#000000')
-            .showAtmosphere(false) // Removing atmosphere improves performance
+            .showAtmosphere(true)
+            .atmosphereColor('#ffffff')
+            .atmosphereAltitude(0.05)
             .width(globeContainer.clientWidth)
             .height(globeContainer.clientHeight);
 
-          world.pointOfView({ lat: 30, lng: 40, altitude: 2.2 });
+          world.pointOfView({ lat: 30, lng: 40, altitude: 1.8 });
 
-          fetch('https://raw.githubusercontent.com/vasturiano/globe.gl/master/example/datasets/ne_110m_admin_0_countries.geojson')
-            .then(res => res.json())
-            .then(countries => {
-              world.polygonsData(countries.features)
-                .polygonCapColor(() => 'rgba(0,0,0,0)') 
-                .polygonSideColor(() => 'rgba(0,0,0,0)')
-                .polygonStrokeColor(() => 'rgba(255, 255, 255, 0.15)') // Very faint borders
-                .polygonAltitude(0.005);
-                
-              const countryLabels = [
-                { lat: 37.0, lng: -95.0, name: "USA" },
-                { lat: 35.0, lng: 105.0, name: "CHINA" },
-                { lat: 51.0, lng: 10.0, name: "GERMANY" },
-                { lat: 46.0, lng: 2.0, name: "FRANCE" },
-                { lat: 40.0, lng: -4.0, name: "SPAIN" },
-                { lat: 42.0, lng: 12.0, name: "ITALY" },
-                { lat: 23.0, lng: 45.0, name: "SAUDI ARABIA" }
-              ];
-              
-              world.labelsData(countryLabels)
-                .labelSize(0.5).labelDotRadius(0).labelColor(() => 'rgba(255, 255, 255, 0.3)')
-                .labelText('name').labelAltitude(0.01).labelResolution(1); // Lower resolution for faster rendering
-            }).catch(err => console.error("Error loading borders:", err));
-
-          const omanHub = { lat: 23.588, lng: 58.383, name: "AZADIPOUR" };
+          const omanHub = { lat: 23.588, lng: 58.383, name: "A" };
           
           const suppliers = [
-            { lat: 22.543, lng: 114.057, name: "C" }, // Shenzhen
-            { lat: 31.230, lng: 121.473, name: "C" }, // Shanghai
-            { lat: 39.904, lng: 116.407, name: "C" }, // Beijing
-            { lat: 25.033, lng: 121.565, name: "C" }, // Taipei
-            { lat: 53.551, lng: 9.993, name: "C" },   // Hamburg
-            { lat: 37.774, lng: -122.419, name: "C" } // San Francisco
+            { lat: 22.543, lng: 114.057, name: "C" }, { lat: 31.230, lng: 121.473, name: "C" },
+            { lat: 39.904, lng: 116.407, name: "C" }, { lat: 25.033, lng: 121.565, name: "C" },
+            { lat: 53.551, lng: 9.993, name: "C" }, { lat: 37.774, lng: -122.419, name: "C" }
           ];
 
           const germanyBranch = { lat: 52.520, lng: 13.405, name: "A" };
 
           const hospitals = [
-            { lat: 24.713, lng: 46.675, name: "H" }, // Riyadh
-            { lat: 25.285, lng: 51.531, name: "H" }, // Doha
-            { lat: 26.228, lng: 50.586, name: "H" }, // Manama
-            { lat: 24.453, lng: 54.377, name: "H" }, // Abu Dhabi
-            { lat: 17.015, lng: 54.092, name: "H" }, // Salalah
-            { lat: 48.856, lng: 2.352, name: "H" },  // Paris
-            { lat: 41.902, lng: 12.496, name: "H" }, // Rome
-            { lat: 40.416, lng: -3.703, name: "H" }, // Madrid
-            { lat: 40.712, lng: -74.006, name: "H" } // New York
+            { lat: 24.713, lng: 46.675, name: "H" }, { lat: 25.285, lng: 51.531, name: "H" },
+            { lat: 26.228, lng: 50.586, name: "H" }, { lat: 24.453, lng: 54.377, name: "H" },
+            { lat: 17.015, lng: 54.092, name: "H" }, { lat: 48.856, lng: 2.352, name: "H" },
+            { lat: 41.902, lng: 12.496, name: "H" }, { lat: 40.416, lng: -3.703, name: "H" },
+            { lat: 40.712, lng: -74.006, name: "H" }
           ];
 
           const arcsData = [];
-          
-          suppliers.forEach(s => arcsData.push({ startLat: s.lat, startLng: s.lng, endLat: omanHub.lat, endLng: omanHub.lng, color: ['rgba(255, 255, 255, 0.6)', 'rgba(255, 255, 255, 0.05)'] }));
-          arcsData.push({ startLat: omanHub.lat, startLng: omanHub.lng, endLat: germanyBranch.lat, endLng: germanyBranch.lng, color: ['rgba(255, 215, 0, 0.8)', 'rgba(255, 215, 0, 0.1)'] });
-          hospitals.forEach(h => arcsData.push({ startLat: omanHub.lat, startLng: omanHub.lng, endLat: h.lat, endLng: h.lng, color: ['rgba(200, 200, 200, 0.3)', 'rgba(200, 200, 200, 0.01)'] }));
+          suppliers.forEach(s => arcsData.push({ startLat: s.lat, startLng: s.lng, endLat: omanHub.lat, endLng: omanHub.lng, color: ['rgba(255, 255, 255, 0.8)', 'rgba(255, 255, 255, 0.1)'] }));
+          arcsData.push({ startLat: omanHub.lat, startLng: omanHub.lng, endLat: germanyBranch.lat, endLng: germanyBranch.lng, color: ['rgba(255, 215, 0, 0.9)', 'rgba(255, 215, 0, 0.1)'] });
+          hospitals.forEach(h => arcsData.push({ startLat: omanHub.lat, startLng: omanHub.lng, endLat: h.lat, endLng: h.lng, color: ['rgba(200, 200, 200, 0.4)', 'rgba(200, 200, 200, 0.01)'] }));
 
-          world.arcsData(arcsData)
-            .arcColor('color')
-            .arcDashLength(0.5)
-            .arcDashGap(0.2)
-            .arcDashAnimateTime(2000)
-            .arcStroke(1.2); // THICKER LINES as requested
+          world.arcsData(arcsData).arcColor('color').arcStroke(1.2).arcDashLength(1).arcDashGap(0).arcAltitudeAutoScale(0.3);
 
-          // USE NATIVE WEBGL POINTS AND LABELS FOR PERFORMANCE
           const pointsData = [
-            { lat: omanHub.lat, lng: omanHub.lng, color: '#ffffff', radius: 0.6, alt: 0.02 }, // Hub
-            { lat: germanyBranch.lat, lng: germanyBranch.lng, color: '#FFD700', radius: 0.5, alt: 0.02 }, // Gold Branch
-            ...suppliers.map(s => ({ lat: s.lat, lng: s.lng, color: '#87CEEB', radius: 0.3, alt: 0.01 })), // Companies
-            ...hospitals.map(h => ({ lat: h.lat, lng: h.lng, color: '#a0a0a0', radius: 0.2, alt: 0.01 })) // Hospitals
+            { lat: omanHub.lat, lng: omanHub.lng, color: '#ffffff', radius: 0.5, alt: 0.02 }, 
+            { lat: germanyBranch.lat, lng: germanyBranch.lng, color: '#FFD700', radius: 0.4, alt: 0.02 },
+            ...suppliers.map(s => ({ lat: s.lat, lng: s.lng, color: '#87CEEB', radius: 0.25, alt: 0.01 })),
+            ...hospitals.map(h => ({ lat: h.lat, lng: h.lng, color: '#a0a0a0', radius: 0.15, alt: 0.01 }))
           ];
 
-          world.pointsData(pointsData)
-            .pointColor('color')
-            .pointRadius('radius')
-            .pointAltitude('alt')
-            .pointsMerge(false); // Keep separate for individual colors
+          world.pointsData(pointsData).pointColor('color').pointRadius('radius').pointAltitude('alt').pointsMerge(false);
 
-          // Labels for A, C, H
           const labelsData = [
             { lat: omanHub.lat, lng: omanHub.lng, text: 'A', color: '#ffffff', size: 1.5 },
             { lat: germanyBranch.lat, lng: germanyBranch.lng, text: 'A', color: '#FFD700', size: 1.5 },
@@ -457,20 +436,13 @@
             ...hospitals.map(h => ({ lat: h.lat, lng: h.lng, text: 'H', color: '#ffffff', size: 0.8 }))
           ];
 
-          world.labelsData(labelsData)
-            .labelText('text')
-            .labelColor('color')
-            .labelSize('size')
-            .labelDotRadius(0)
-            .labelAltitude(0.03)
-            .labelResolution(1); // Lower resolution for speed
+          world.labelsData(labelsData).labelText('text').labelColor('color').labelSize('size').labelDotRadius(0).labelAltitude(0.03).labelResolution(1);
 
-          // NO RINGS Data -> Removed for performance
-
-          world.controls().autoRotate = true;
-          world.controls().autoRotateSpeed = 0.8;
+          world.controls().autoRotate = false; 
           world.controls().enableZoom = true;
           world.controls().minDistance = 150;
+          world.controls().maxDistance = 400;
+          world.controls().enablePan = false; 
 
           if (loading) loading.style.display = "none";
 
