@@ -1,483 +1,421 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Azadipour | Premier Global Medical Technology & Hospital Solutions</title>
-  <meta name="description" content="Azadipour is an Oman-registered premier medical technology company orchestrating international partnerships, advanced robotic surgery, and comprehensive hospital solutions for top-tier healthcare institutions.">
-  <meta name="keywords" content="Azadipour, global medical technology, robotic surgery, surgical robotics, medical equipment, hospital solutions, Oman medical company, international healthcare, CR 1678104">
-  <meta name="author" content="Azadipour Medical">
-  <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#08090b">
-  <link rel="canonical" href="https://azadipourmedical.com/">
-  <link rel="icon" type="image/png" href="assets/logo-transparent.png">
+/* =========================================================
+   AZADIPOUR - ULTIMATE LUXURY STYLESHEET
+   ========================================================= */
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="dns-prefetch" href="https://unpkg.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+:root {
+  --bg: #050607;
+  --bg-soft: #090c0f;
+  --bg-card: #101418;
+  --text: #f5f6f7;
+  --text-soft: #c4c9ce;
+  --muted: #89929b;
+  --silver: #cbd1d7;
+  --silver-dark: #858e98;
+  --border: rgba(225,230,235,.14);
+  --border-strong: rgba(225,230,235,.28);
+  --gold: #FFD700;
+  --container: 1180px;
+  --header-height: 82px;
+  --transition: .3s ease;
+}
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "@id": "https://azadipourmedical.com/#organization",
-        "name": "Azadipour Medical",
-        "alternateName": "آزادی پور",
-        "legalName": "Azadipour Medical Technology LLC",
-        "url": "https://azadipourmedical.com/",
-        "logo": "https://azadipourmedical.com/assets/logo-transparent.png",
-        "description": "An Oman-registered premier medical technology company orchestrating international partnerships, advanced robotic surgery, and comprehensive hospital solutions.",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Muscat",
-          "addressCountry": "OM"
-        },
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "contactType": "corporate inquiries",
-          "email": "info@azadipourmedical.com",
-          "availableLanguage": ["en", "fa", "ar"]
-        },
-        "identifier": [
-          { "@type": "PropertyValue", "propertyID": "Commercial Registration (CR)", "value": "1678104" },
-          { "@type": "PropertyValue", "propertyID": "OCCI Membership", "value": "5551647" }
-        ]
-      },
-      {
-        "@type": "WebSite",
-        "@id": "https://azadipourmedical.com/#website",
-        "url": "https://azadipourmedical.com/",
-        "name": "Azadipour Medical",
-        "publisher": { "@id": "https://azadipourmedical.com/#organization" }
-      }
-    ]
-  }
-  </script>
-</head>
-<body>
+::-webkit-scrollbar { width: 0px; background: transparent; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-  <div class="intro-screen" id="intro">
-    <div class="intro-content">
-      <img src="assets/logo-transparent.png" alt="Azadipour Logo">
-      <div class="intro-name">AZADIPOUR</div>
-      <p>GLOBAL MEDICAL TECHNOLOGY & HOSPITAL SOLUTIONS</p>
-    </div>
-  </div>
+html { scroll-behavior: smooth; scroll-padding-top: 100px; background: var(--bg); overflow-x: hidden; }
+body { min-width: 320px; overflow-x: hidden; background: var(--bg); color: var(--text); font-family: "Inter", Arial, sans-serif; font-size: 15px; line-height: 1.75; -webkit-font-smoothing: antialiased; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+p { color: var(--text-soft); }
+h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia, serif; font-weight: 500; line-height: 1.15; }
 
-  <header class="site-header">
-    <div class="header-inner">
-      <a href="index.html" class="brand" aria-label="Azadipour Home">
-        <img src="assets/logo-transparent.png" alt="Azadipour">
-        <span>AZADIPOUR</span>
-      </a>
-      <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mainNav">
-        <span></span><span></span><span></span>
-      </button>
-      <nav class="main-nav" id="mainNav">
-        <a href="index.html" class="active">Home</a>
-        <a href="about.html">About Us</a>
-        <a href="index.html#global-network">Global Presence</a>
-        <div class="nav-dropdown">
-          <a href="medical.html" class="nav-dropdown-toggle">Medical Technology ▾</a>
-          <div class="nav-dropdown-menu">
-            <a href="robotic.html">Robotic Surgery</a>
-            <a href="cardiac.html">Cardiovascular</a>
-          </div>
-        </div>
-        <a href="partners.html">Global Partnerships</a>
-        <a href="projects.html">Projects</a>
-        <a href="media.html">Media</a>
-        <a href="contact.html" class="nav-contact">Contact</a>
-      </nav>
-    </div>
-  </header>
+::selection { background: var(--silver); color: #050607; }
+:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
 
-  <main>
-    <section class="hero-section">
-      <div class="hero-overlay"></div>
-      <div class="hero-content">
-        <div class="hero-eyebrow"><span class="eyebrow-line"></span> PREMIER GLOBAL NETWORK</div>
-        <h1>Orchestrating Global Healthcare. <span>Through Unparalleled Innovation.</span></h1>
-        <p>Azadipour connects elite healthcare organizations and premier international manufacturers with next-generation surgical robotics, advanced medical equipment, and comprehensive hospital solutions.</p>
-        <div class="hero-actions">
-          <a href="#global-network" class="btn-primary">Explore Our Strategic Network <span>↗</span></a>
-          <a href="medical.html" class="btn-secondary">Discover Advanced Technologies</a>
-        </div>
-      </div>
-      <div class="hero-bottom">
-        <div>GLOBAL PERSPECTIVE</div><div>CLINICAL EXCELLENCE</div><div>STRATEGIC PARTNERSHIPS</div><div>INNOVATIVE SOLUTIONS</div>
-      </div>
-      <div class="hero-scroll"><span></span> SCROLL TO EXPLORE</div>
-    </section>
+/* 01 — GLOBAL LAYOUT */
+.container, .section { width: min(var(--container), calc(100% - 48px)); margin-inline: auto; }
+.section { padding-top: 100px; padding-bottom: 100px; }
+.section-label { display: block; margin-bottom: 18px; color: var(--silver-dark); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; }
+.section-heading { max-width: 780px; margin-bottom: 35px; }
+.section-heading h2 { margin-bottom: 20px; font-size: clamp(36px, 5vw, 58px); }
+.section-heading h2 span, .section-heading span { color: var(--silver); }
+.section-heading p { max-width: 680px; font-size: 15px; }
 
-    <section class="global-network-section" id="global-network" aria-label="Azadipour global network">
-      <div class="network-top">
-        <div class="section-label">01 — GLOBAL PRESENCE</div>
-        <div class="network-heading">
-          <div><h2>One World.<span>Connected Through Clinical Excellence.</span></h2></div>
-          <p>Azadipour architects international medical technology relationships, bridging elite healthcare opportunities with world-class global manufacturers.</p>
-        </div>
-      </div>
-      <div class="network-map-frame">
-        <div class="network-map-topline">
-          <span>AZADIPOUR — INTERNATIONAL NETWORK</span>
-          <span>STRATEGIC SUPPLY &amp; DISTRIBUTION NETWORK</span>
-        </div>
-        <div class="network-map-canvas-wrap">
-          <div id="globeViz" class="az-world-map"></div>
-          <div class="map-loading" id="mapLoading">
-            <span class="loading-indicator"></span>
-            <span id="loadingText">INITIALIZING GLOBAL NETWORK...</span>
-          </div>
-        </div>
-        <div class="map-caption">
-          <span>AZADIPOUR · OMAN (STRATEGIC HUB)</span>
-          <span>INBOUND SUPPLY &amp; OUTBOUND MARKETS</span>
-        </div>
-      </div>
-      <div class="network-legend">
-        <div class="legend-item"><span class="legend-dot registered"></span><div><strong>Azadipour — Oman</strong><small>Strategic Command Hub</small></div></div>
-        <div class="legend-item"><span class="legend-dot target"></span><div><strong>International Suppliers</strong><small>Inbound Technology (C)</small></div></div>
-        <div class="legend-item"><span class="legend-dot partner"></span><div><strong>Regional Hospitals</strong><small>Outbound Distribution (H)</small></div></div>
-      </div>
-      <div class="network-footer">
-        <p>The map presents a strategic geographic view of Azadipour's supply chain, illustrating critical connections from international suppliers to our Oman-based hub, and from our hub to regional healthcare organizations.</p>
-        <a href="partners.html">Explore Global Partnerships <span>↗</span></a>
-      </div>
-    </section>
+/* 02 — INTRO ANIMATION */
+.intro-screen { position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center; background: #050607; transition: opacity .8s ease, visibility .8s ease; }
+.intro-screen.hide { opacity: 0; visibility: hidden; pointer-events: none; }
+.intro-content { display: flex; flex-direction: column; align-items: center; gap: 14px; padding: 24px; text-align: center; }
+.intro-content img { width: 105px; height: 105px; object-fit: contain; }
+.intro-name { color: var(--silver); font-family: "Cormorant Garamond", Georgia, serif; font-size: 38px; letter-spacing: 7px; }
+.intro-content p { color: var(--silver-dark); font-size: 9px; letter-spacing: 3px; }
 
-    <section class="section intro-section">
-      <div class="section-label">02 — GLOBAL BASES & OVERVIEW</div>
-      <div class="section-heading">
-        <h2>A Truly Global <span>Corporate Footprint.</span></h2>
-        <p>Azadipour operates as a fully international entity, strategically positioned across four major global regions to facilitate seamless medical technology transfer and international partnership development.</p>
-      </div>
-      
-      <!-- 4 Global Bases -->
-      <div class="intro-details">
-        <!-- GCC Base -->
-        <div class="intro-detail">
-          <span>GCC BASE</span>
-          <h3>Oman (Muscat)</h3>
-          <p>The registered headquarters and strategic operational hub. Fully licensed with fundamental regulatory approvals for medical product entry (CR: 1678104).</p>
-        </div>
+/* 03 — HEADER & NAVIGATION */
+.site-header { position: relative; z-index: 1000; min-height: var(--header-height); display: flex; align-items: center; padding: 12px 24px; border-bottom: 1px solid var(--border); background: rgba(5,6,7,.97); backdrop-filter: blur(10px); }
+.header-inner { width: 100%; max-width: var(--container); display: flex; align-items: center; justify-content: space-between; gap: 25px; margin: auto; }
+.brand { display: inline-flex; align-items: center; gap: 12px; flex-shrink: 0; }
+.brand img { width: 47px; height: 47px; object-fit: contain; }
+.brand span { color: var(--silver); font-family: "Cormorant Garamond", Georgia, serif; font-size: 22px; letter-spacing: 3px; }
+.main-nav { display: flex; align-items: center; gap: clamp(12px, 1.7vw, 23px); }
+.main-nav a { position: relative; padding: 8px 0; color: var(--text-soft); font-size: 10px; letter-spacing: 1px; text-transform: uppercase; white-space: nowrap; transition: color var(--transition); }
+.main-nav a:hover, .main-nav a.active { color: #fff; }
+.main-nav a::after { position: absolute; bottom: 2px; left: 0; width: 0; height: 1px; background: #fff; content: ""; transition: width var(--transition); }
+.main-nav a:hover::after, .main-nav a.active::after { width: 100%; }
+.main-nav .nav-contact { padding: 10px 15px; border: 1px solid var(--border-strong); }
+.main-nav .nav-contact::after { display: none; }
+.menu-toggle { display: none; width: 43px; height: 43px; flex-direction: column; align-items: center; justify-content: center; gap: 6px; border: 1px solid var(--border); background: transparent; cursor: pointer; }
+.menu-toggle span { width: 19px; height: 1px; background: #fff; transition: var(--transition); }
 
-        <!-- Europe Base -->
-        <div class="intro-detail branch-active">
-          <span>EUROPE BASE (COMING SOON)</span>
-          <h3>Germany (Berlin)</h3>
-          <p>Our upcoming European branch, designed to bridge advanced German medical engineering with Middle Eastern and global healthcare markets.</p>
-        </div>
+.nav-dropdown { position: relative; display: inline-block; }
+.nav-dropdown-toggle { cursor: pointer; display: flex; align-items: center; gap: 5px; }
+.nav-dropdown-menu { position: absolute; top: 100%; left: 0; min-width: 220px; background: #0a0c0e; border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.8); display: none; flex-direction: column; z-index: 1000; padding: 10px 0; }
+.nav-dropdown:hover .nav-dropdown-menu { display: flex; }
+.nav-dropdown-menu a { padding: 12px 20px; font-size: 10px; letter-spacing: 1px; border-bottom: none !important; color: var(--text-soft); transition: var(--transition); }
+.nav-dropdown-menu a:hover { background: rgba(255,255,255,0.05); color: #fff; padding-left: 25px; }
 
-        <!-- Americas Base -->
-        <div class="intro-detail">
-          <span>AMERICAS BASE</span>
-          <h3>United States</h3>
-          <p>Strategic sourcing and partnership hub focused on integrating cutting-edge American surgical robotics and advanced medical innovations.</p>
-        </div>
+/* 04 — BUTTONS & LINKS */
+.btn, .btn-primary, .btn-secondary { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 47px; padding: 12px 23px; border: 1px solid var(--silver); font-size: 10px; letter-spacing: 1.3px; text-transform: uppercase; transition: var(--transition); }
+.btn-primary { background: #fff; color: #050607; border-color: #fff; }
+.btn-primary:hover { background: var(--silver); border-color: var(--silver); box-shadow: 0 0 20px rgba(255,255,255,0.2); }
+.btn-secondary { background: transparent; color: #fff; }
+.btn-secondary:hover { background: rgba(255,255,255,.1); }
+.text-link { display: inline-block; color: var(--silver); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; transition: opacity var(--transition); }
+.text-link:hover { opacity: .7; }
 
-        <!-- Asia Base -->
-        <div class="intro-detail">
-          <span>ASIA BASE</span>
-          <h3>China</h3>
-          <p>Our Asian operational base, facilitating high-tech manufacturing partnerships, supply chain excellence, and rapid technological integration.</p>
-        </div>
-      </div>
+/* 05 — HERO SECTION (WITH BACKGROUND IMAGE) */
+.hero-section { 
+  position: relative; 
+  min-height: min(760px, 90vh); 
+  display: flex; 
+  align-items: center; 
+  padding: 100px 24px; 
+  overflow: hidden; 
+  background-image: url('assets/hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-color: #050607; /* Fallback */
+}
+.hero-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, rgba(5,6,7,.95), rgba(5,6,7,.7) 55%, rgba(5,6,7,.3)); pointer-events: none; }
+.hero-content { position: relative; z-index: 2; width: min(var(--container), 100%); margin: auto; }
+.hero-eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; color: var(--silver); font-size: 10px; letter-spacing: 2.5px; }
+.eyebrow-line { width: 35px; height: 1px; background: #fff; }
+.hero-content h1 { max-width: 900px; margin-bottom: 25px; font-size: clamp(48px, 7vw, 86px); line-height: 1.05; }
+.hero-content h1 span { display: block; color: var(--silver); }
+.hero-content > p { max-width: 620px; margin-bottom: 32px; line-height: 1.9; font-size: 15px; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+.hero-bottom { position: absolute; z-index: 2; right: 24px; bottom: 26px; left: 24px; display: flex; justify-content: space-between; gap: 15px; max-width: var(--container); margin: auto; color: var(--muted); font-size: 9px; letter-spacing: 1.5px; }
+.hero-scroll { position: absolute; z-index: 2; right: 25px; bottom: 75px; color: var(--silver); font-size: 9px; letter-spacing: 2px; }
+.hero-scroll span { display: inline-block; width: 28px; height: 1px; margin-right: 9px; vertical-align: middle; background: #fff; }
 
-      <!-- LUXURY SLIDER CREDENTIALS -->
-      <div class="luxury-slider-wrapper">
-        <button class="slider-nav-btn prev" onclick="document.getElementById('sliderTrack').scrollBy({left: -400, behavior: 'smooth'})">❮</button>
-        <div class="luxury-slider-track" id="sliderTrack">
-          
-          <div class="credential-slide">
-            <div class="credential-header">
-              <span class="credential-seal">VERIFIED &amp; LICENSED</span>
-              <h3>Corporate Credentials</h3>
-              <p>Azadipour is a premier entity in international trade with a dedicated focus on the medical sector. We hold fundamental regulatory licenses for medical product entry and comprehensive commercial licenses.</p>
-            </div>
-            <div class="credential-grid">
-              <div class="credential-item"><span class="cred-label">COMMERCIAL REGISTRATION (CR)</span><span class="cred-value">1678104</span></div>
-              <div class="credential-item"><span class="cred-label">OCCI MEMBERSHIP</span><span class="cred-value">5551647</span></div>
-              <div class="credential-item"><span class="cred-label">ACTIVITY CODE</span><span class="cred-value">461003</span></div>
-              <div class="credential-item"><span class="cred-label">REGISTERED OFFICE</span><span class="cred-value">Muscat, Oman</span></div>
-            </div>
-          </div>
+/* 06 — GLOBAL NETWORK (MAP) SECTION */
+.global-network-section { position: relative; padding: 110px 24px; background: radial-gradient(ellipse at 50% 45%, rgba(45,53,61,.13), transparent 70%), #050607; }
+.network-top { margin-bottom: 38px; }
+.network-heading { display: grid; grid-template-columns: 1.2fr .8fr; gap: 45px; align-items: end; }
+.network-heading h2 { max-width: 750px; font-size: clamp(42px, 5.5vw, 68px); line-height: 1.08; }
+.network-heading h2 span { display: block; color: var(--silver); }
+.network-heading > p { max-width: 470px; color: #a0a7ae; font-size: 14px; line-height: 1.9; }
+.network-map-frame { position: relative; overflow: hidden; border: 1px solid rgba(225,230,235,.22); background: #050607; box-shadow: 0 35px 100px rgba(0,0,0,.6), inset 0 0 60px rgba(255,255,255,.025); border-radius: 4px; }
+.network-map-topline, .map-caption { display: flex; justify-content: space-between; gap: 15px; padding: 17px 22px; color: #cbd1d7; font-size: 9px; letter-spacing: 1.8px; }
+.network-map-topline { border-bottom: 1px solid var(--border); background: linear-gradient(90deg,#090c0f,#11161b,#090c0f); }
 
-          <div class="credential-slide gold-card">
-            <div class="gold-icon">◈</div>
-            <span class="credential-seal" style="display:inline-block; margin-bottom:20px;">NEW EXPANSION</span>
-            <h3>European Branch</h3>
-            <p>Berlin, Germany</p>
-            <p style="margin-top: 20px; font-size: 12px; opacity: 0.6;">DETAILED INFORMATION COMING SOON</p>
-          </div>
+.network-map-canvas-wrap { position: relative; width: 100%; height: 600px; overflow: hidden; background-color: #050607; background-image: url('https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg'); background-size: cover; background-position: center; }
+.az-world-map { display: block; width: 100%; height: 100%; }
+.map-loading { position: absolute; inset: 0; z-index: 5; display: flex; align-items: center; justify-content: center; gap: 13px; background: #000; color: var(--silver); font-size: 10px; letter-spacing: 2px; text-align: center; transition: opacity .5s ease; }
+.loading-indicator { width: 18px; height: 18px; border: 1px solid rgba(255,255,255,.2); border-top-color: #fff; border-radius: 50%; animation: map-spin 1s linear infinite; }
+@keyframes map-spin { to { transform: rotate(360deg); } }
+.map-caption { border-top: 1px solid var(--border); background: #080b0e; }
+.network-legend { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 20px; padding: 30px 0; border-bottom: 1px solid var(--border); }
+.legend-item { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.legend-dot { width: 10px; height: 10px; flex-shrink: 0; border-radius: 50%; }
+.legend-dot.registered { background: #fff; box-shadow: 0 0 15px rgba(255,255,255,.85); }
+.legend-dot.target { background: #87CEEB; box-shadow: 0 0 10px rgba(135,206,235,.5); }
+.legend-dot.partner { background: #444; box-shadow: 0 0 8px rgba(255,255,255,.15); }
+.legend-item strong { display: block; color: #f5f6f7; font-size: 11px; font-weight: 600; }
+.legend-item small { display: block; color: #929ba4; font-size: 10px; line-height: 1.5; }
+.network-footer { display: flex; align-items: center; justify-content: space-between; gap: 25px; padding-top: 27px; }
+.network-footer p { max-width: 700px; color: #a5aab0; font-size: 12px; }
+.network-footer a { flex-shrink: 0; color: #fff; font-size: 10px; letter-spacing: 1px; }
 
-        </div>
-        <button class="slider-nav-btn next" onclick="document.getElementById('sliderTrack').scrollBy({left: 400, behavior: 'smooth'})">❯</button>
-      </div>
+/* 07 — COMPANY INTRODUCTION & 4 GLOBAL BASES */
+.intro-section { padding-top: 110px; padding-bottom: 110px; }
+.intro-details { 
+  display: grid; 
+  grid-template-columns: repeat(4, minmax(0,1fr)); 
+  gap: 20px; 
+  margin-top: 40px; 
+}
+.intro-detail { padding: 30px; border: 1px solid var(--border); background: var(--bg-card); transition: var(--transition); border-radius: 4px; text-align: left; }
+.intro-detail:hover { border-color: var(--silver-dark); transform: translateY(-6px); box-shadow: 0 15px 40px rgba(0,0,0,0.6); }
+.intro-detail > span { display: block; margin-bottom: 15px; color: var(--silver-dark); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; }
+.intro-detail h3 { margin-bottom: 12px; font-size: 24px; }
+.intro-detail p { font-size: 13px; line-height: 1.7; }
+.intro-detail.branch-active { border-color: rgba(255, 215, 0, 0.4); background: linear-gradient(135deg, rgba(20, 25, 30, 0.9), rgba(255, 215, 0, 0.05)); }
+.intro-detail.branch-active > span { color: var(--gold); }
 
-    </section>
+/* LUXURY SLIDER CREDENTIALS */
+.luxury-slider-wrapper { position: relative; margin-top: 60px; max-width: 1100px; margin-inline: auto; }
+.luxury-slider-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; gap: 30px; padding-bottom: 20px; -ms-overflow-style: none; scrollbar-width: none; }
+.luxury-slider-track::-webkit-scrollbar { display: none; }
+.credential-slide { scroll-snap-align: center; flex: 0 0 100%; padding: 45px; background: linear-gradient(135deg, rgba(20, 25, 30, 0.95), rgba(5, 7, 9, 0.98)); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 8px; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6); position: relative; overflow: hidden; display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; align-items: center; }
+.credential-slide.gold-card { background: linear-gradient(135deg, #0d0e12, #000); border: 1px solid rgba(255, 215, 0, 0.3); box-shadow: 0 0 40px rgba(255, 215, 0, 0.05), inset 0 0 40px rgba(255, 215, 0, 0.05); grid-template-columns: 1fr; text-align: center; }
+.credential-slide::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent); }
+.credential-slide.gold-card::before { background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.8), transparent); }
+.credential-header h3 { font-size: 34px; margin-bottom: 15px; color: #fff; }
+.credential-header p { font-size: 13.5px; color: var(--text-soft); line-height: 1.8; text-align: justify; }
+.credential-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+.credential-item { display: flex; flex-direction: column; gap: 6px; padding: 15px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05); border-radius: 4px; }
+.cred-label { color: var(--silver-dark); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; }
+.cred-value { color: #ffffff; font-family: "Inter", sans-serif; font-size: 16px; font-weight: 500; letter-spacing: 1px; }
+.gold-icon { font-size: 50px; color: var(--gold); margin-bottom: 20px; filter: drop-shadow(0 0 15px rgba(255,215,0,0.4)); }
+.gold-card h3 { color: var(--gold); font-size: 36px; margin-bottom: 10px; }
+.gold-card p { color: #ccc; letter-spacing: 2px; text-transform: uppercase; font-size: 12px; }
+.gold-card .credential-seal { border-color: var(--gold); color: var(--gold); background: rgba(255,215,0,0.05); }
+.slider-nav-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 50px; height: 50px; background: rgba(10, 12, 15, 0.8); border: 1px solid var(--border-strong); border-radius: 50%; color: #fff; font-size: 20px; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; transition: var(--transition); backdrop-filter: blur(5px); }
+.slider-nav-btn:hover { background: #fff; color: #000; }
+.slider-nav-btn.prev { left: -25px; }
+.slider-nav-btn.next { right: -25px; }
+@media (max-width: 1200px) { .slider-nav-btn { display: none; } }
+@media (min-width: 901px) { .credential-slide { flex: 0 0 calc(50% - 15px); } }
+@media (max-width: 900px) { .credential-slide { grid-template-columns: 1fr; padding: 30px; text-align: center; } .credential-header { text-align: center; } .credential-grid { grid-template-columns: 1fr; } }
 
-    <section class="section technology-section">
-      <div class="section-label">03 — TECHNOLOGY PORTFOLIO</div>
-      <div class="section-heading">
-        <h2>Advanced Technology. <span>Meaningful Healthcare Solutions.</span></h2>
-        <p>Exploring technologies that contribute to the evolution of modern healthcare and advanced clinical environments.</p>
-      </div>
-      <div class="technology-grid">
-        <a href="robotic.html" class="technology-card">
-          <div class="card-number">01 / ROBOTICS</div>
-          <div class="technology-card-content"><h3>Robotic & Digital Surgery</h3><p>Advanced robotic platforms, digital surgery and next-generation surgical technologies.</p><span class="card-link">Explore Technology ↗</span></div>
-        </a>
-        <a href="cardiac.html" class="technology-card">
-          <div class="card-number">02 / CARDIOVASCULAR</div>
-          <div class="technology-card-content"><h3>Cardiac & Cardiovascular</h3><p>Technologies supporting cardiac surgery, perfusion, catheterization laboratories and critical care.</p><span class="card-link">Explore Technology ↗</span></div>
-        </a>
-        <a href="medical.html" class="technology-card">
-          <div class="card-number">03 / NAVIGATION & AI</div>
-          <div class="technology-card-content"><h3>Surgical Navigation & AI</h3><p>Image-guided technologies, surgical navigation and emerging artificial intelligence applications.</p><span class="card-link">Explore Technology ↗</span></div>
-        </a>
-        <a href="medical.html" class="technology-card">
-          <div class="card-number">04 / HOSPITAL SYSTEMS</div>
-          <div class="technology-card-content"><h3>Advanced Hospital Solutions</h3><p>Medical equipment, operating room technologies, intensive care and integrated hospital systems.</p><span class="card-link">Explore Technology ↗</span></div>
-        </a>
-      </div>
-    </section>
+/* 08 — VISUAL PORTFOLIO (Technology in Focus) */
+.visual-portfolio-section { background: #090c0f; }
+.visual-portfolio-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 17px; margin-top: 38px; }
+.visual-portfolio-card { position: relative; min-width: 0; min-height: 300px; overflow: hidden; border: 1px solid var(--border); background: #101316; border-radius: 4px; cursor: pointer; }
+.visual-portfolio-card img { width: 100%; height: 100%; min-height: 300px; object-fit: cover; opacity: 0.6; transition: transform .7s ease, opacity .7s ease; filter: grayscale(80%); }
+.visual-portfolio-card:hover img { transform: scale(1.08); opacity: 0.9; filter: grayscale(0%); }
 
-    <section class="section visual-portfolio-section">
-      <div class="section-label">04 — SELECTED TECHNOLOGY AREAS</div>
-      <div class="section-heading"><h2>Technology in <span>Focus.</span></h2><p>A visual overview of selected medical technology and hospital solution areas.</p></div>
-      <div class="visual-portfolio-grid">
-        
-        <!-- Image 1 -->
-        <figure class="visual-portfolio-card">
-          <img src="assets/robotic-hero.jpg" alt="Robotic surgery technology" loading="lazy">
-          <figcaption>
-            <strong>Robotic Surgery</strong>
-            <span>Advanced surgical platforms</span>
-          </figcaption>
-        </figure>
-        
-        <!-- Image 2 (The one requested to be centered with hover effect) -->
-        <figure class="visual-portfolio-card">
-          <img src="assets/surgical-robotics.jpg" alt="Surgical robotics equipment" loading="lazy">
-          <figcaption>
-            <strong>Surgical Robotics</strong>
-            <span>Next-generation operating rooms</span>
-          </figcaption>
-        </figure>
-        
-        <!-- Image 3 -->
-        <figure class="visual-portfolio-card">
-          <img src="assets/cardiac-hero.jpg" alt="Cardiac and cardiovascular technology" loading="lazy">
-          <figcaption>
-            <strong>Cardiovascular</strong>
-            <span>Cardiac care technologies</span>
-          </figcaption>
-        </figure>
-        
-        <!-- Image 4 -->
-        <figure class="visual-portfolio-card">
-          <img src="assets/hospital-technology.jpg" alt="Modern hospital technology" loading="lazy">
-          <figcaption>
-            <strong>Hospital Technology</strong>
-            <span>Integrated hospital solutions</span>
-          </figcaption>
-        </figure>
-        
-        <!-- Image 5 -->
-        <figure class="visual-portfolio-card">
-          <img src="assets/hospital-project.jpg" alt="Hospital project environment" loading="lazy">
-          <figcaption>
-            <strong>Hospital Projects</strong>
-            <span>Healthcare infrastructure</span>
-          </figcaption>
-        </figure>
-        
-        <!-- Image 6 -->
-        <figure class="visual-portfolio-card">
-          <img src="assets/germany-medical.jpg" alt="Medical technology in Germany" loading="lazy">
-          <figcaption>
-            <strong>International Markets</strong>
-            <span>Global medical technology</span>
-          </figcaption>
-        </figure>
+/* Centered Luxury Caption */
+.visual-portfolio-card figcaption { 
+  position: absolute; 
+  inset: 0; 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center; 
+  text-align: center;
+  padding: 30px; 
+  background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.2)); 
+  transition: all 0.4s ease;
+}
+.visual-portfolio-card:hover figcaption {
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(3px);
+}
+.visual-portfolio-card figcaption strong { 
+  color: #fff; 
+  font-family: "Cormorant Garamond", Georgia, serif; 
+  font-size: 32px; 
+  font-weight: 500; 
+  margin-bottom: 8px;
+  transform: translateY(10px);
+  transition: transform 0.4s ease;
+}
+.visual-portfolio-card:hover figcaption strong {
+  transform: translateY(0);
+  text-shadow: 0 0 20px rgba(255,255,255,0.5);
+}
+.visual-portfolio-card figcaption span { 
+  color: #c8cdd2; 
+  font-size: 11px; 
+  letter-spacing: 2px; 
+  text-transform: uppercase;
+  transform: translateY(10px);
+  transition: transform 0.4s ease;
+}
+.visual-portfolio-card:hover figcaption span {
+  transform: translateY(0);
+}
 
-      </div>
-    </section>
+/* 09 — PARTNERSHIPS & CONTACT */
+.partnership-section { background: #050607; }
+.partnership-content { display: grid; grid-template-columns: 1.2fr .8fr; align-items: center; gap: 50px; }
+.partnership-content h2 { margin-bottom: 20px; font-size: clamp(38px,5vw,60px); }
+.partnership-content h2 span { display: block; color: var(--silver); }
+.partnership-content p { max-width: 600px; margin-bottom: 25px; }
+.partnership-mark { min-height: 220px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; border: 1px solid var(--border); background: radial-gradient(circle,#20272d,#080a0c 70%); border-radius: 4px; box-shadow: inset 0 0 30px rgba(0,0,0,0.8); }
+.partnership-mark span { color: #fff; font-family: "Cormorant Garamond", Georgia, serif; font-size: 34px; letter-spacing: 6px; }
+.partnership-mark small { color: var(--silver-dark); font-size: 9px; letter-spacing: 2px; }
 
-    <section class="section partnership-section">
-      <div class="section-label">05 — INTERNATIONAL PARTNERSHIPS</div>
-      <div class="partnership-content">
-        <div>
-          <h2>Building Strategic <span>Global Alliances.</span></h2>
-          <p>We aim to establish meaningful relationships with medical technology manufacturers, healthcare organizations, and international industry partners.</p>
-          <a href="partners.html" class="text-link">Explore Partnership Opportunities ↗</a>
-        </div>
-        <div class="partnership-mark"><span>AZADIPOUR</span><small>GLOBAL MEDICAL TECHNOLOGY</small></div>
-      </div>
-    </section>
+.contact-section { padding: 100px 24px; }
+.contact-content { max-width: 780px; margin-inline: auto; }
+.contact-content h2 { margin-bottom: 20px; font-size: clamp(38px,5.5vw,62px); }
+.contact-content h2 span { display: block; color: var(--silver); }
+.contact-content > p { max-width: 620px; margin-bottom: 28px; }
+.contact-luxury-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 60px; align-items: start; margin-top: 40px; }
+.contact-info-panel { padding: 40px; background: linear-gradient(145deg, rgba(15, 20, 25, 0.8), rgba(5, 7, 9, 0.9)); border: 1px solid var(--border); border-radius: 4px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6); }
+.contact-info-panel h3 { color: #fff; font-family: "Cormorant Garamond", Georgia, serif; font-size: 32px; margin-bottom: 20px; }
+.contact-info-panel p { color: var(--text-soft); font-size: 13.5px; line-height: 1.8; margin-bottom: 30px; }
+.contact-info-item { margin-bottom: 25px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 15px; }
+.contact-info-item span { display: block; color: var(--silver-dark); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
+.contact-info-item strong { color: #fff; font-size: 15px; font-weight: 500; font-family: "Inter", sans-serif; }
+.luxury-form { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.form-group { display: flex; flex-direction: column; gap: 8px; }
+.form-group.full-width { grid-column: 1 / -1; }
+.form-group label { color: var(--silver-dark); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; }
+.luxury-input, .luxury-textarea { width: 100%; padding: 16px 20px; background: rgba(10, 12, 15, 0.8); border: 1px solid var(--border); color: #fff; font-family: "Inter", sans-serif; font-size: 14px; border-radius: 2px; transition: var(--transition); outline: none; }
+.luxury-input:focus, .luxury-textarea:focus { border-color: var(--silver); background: rgba(20, 25, 30, 0.9); box-shadow: 0 0 15px rgba(255, 255, 255, 0.05); }
+.luxury-textarea { resize: vertical; min-height: 150px; }
+.luxury-submit { grid-column: 1 / -1; justify-self: start; margin-top: 10px; cursor: pointer; border: none; }
+#form-status { grid-column: 1 / -1; margin-top: 15px; font-size: 13px; display: none; padding: 15px; border-radius: 2px; text-align: center; }
+#form-status.success { display: block; background: rgba(40, 167, 69, 0.1); border: 1px solid rgba(40, 167, 69, 0.3); color: #28a745; }
+#form-status.error { display: block; background: rgba(220, 53, 69, 0.1); border: 1px solid rgba(220, 53, 69, 0.3); color: #dc3545; }
 
-    <section class="section solutions-section">
-      <div class="section-label">06 — BUSINESS APPROACH</div>
-      <div class="section-heading"><h2>From Clinical Requirements <span>To Global Medical Supply.</span></h2></div>
-      <div class="solutions-grid">
-        <div class="solution-item"><span>01</span><h3>Medical Equipment</h3><p>Exploring equipment solutions aligned with healthcare requirements.</p></div>
-        <div class="solution-item"><span>02</span><h3>Technology Integration</h3><p>Identifying advanced technologies for modern clinical environments.</p></div>
-        <div class="solution-item"><span>03</span><h3>International Sourcing</h3><p>Connecting healthcare needs with international manufacturers.</p></div>
-        <div class="solution-item"><span>04</span><h3>Business Development</h3><p>Exploring international market opportunities and long-term industry relationships.</p></div>
-      </div>
-    </section>
+/* EXECUTIVE LEADERSHIP SECTION */
+.leadership-section { background: radial-gradient(ellipse at 50% 0%, rgba(20, 25, 30, 0.8), #050607 80%); border-top: 1px solid var(--border); padding: 100px 24px; }
+.executive-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-top: 50px; max-width: 1000px; margin-inline: auto; }
+.exec-card { position: relative; padding: 40px 30px; background: linear-gradient(145deg, rgba(15, 20, 25, 0.6), rgba(5, 7, 9, 0.9)); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 4px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7); backdrop-filter: blur(10px); transition: var(--transition); overflow: hidden; display: flex; flex-direction: column; }
+.exec-card::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent); transition: var(--transition); }
+.exec-card:hover { transform: translateY(-5px); border-color: rgba(255, 255, 255, 0.2); box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9); }
+.exec-card:hover::before { background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent); }
+.exec-role { display: inline-block; color: var(--silver); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 15px; font-weight: 600; }
+.exec-title { color: #fff; font-family: "Cormorant Garamond", Georgia, serif; font-size: 26px; margin-bottom: 20px; line-height: 1.2; }
+.exec-desc { color: var(--text-soft); font-size: 13px; line-height: 1.7; margin-bottom: 25px; flex-grow: 1; }
+.exec-email { display: flex; align-items: center; gap: 10px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.1); color: #fff; font-size: 13px; font-weight: 500; text-decoration: none; transition: var(--transition); margin-top: auto; word-break: break-all; }
+.exec-email:hover { color: var(--silver); letter-spacing: 0.5px; }
+.exec-email span { color: var(--silver-dark); font-size: 16px; }
+.confidentiality-note { margin-top: 60px; padding: 30px; text-align: center; border: 1px dashed rgba(255, 255, 255, 0.15); border-radius: 4px; background: rgba(255, 255, 255, 0.02); }
+.confidentiality-note p { color: var(--muted); font-size: 12px; line-height: 1.8; margin: 0; font-style: italic; }
 
-    <section class="section projects-section">
-      <div class="section-label">07 — PROJECT DEVELOPMENT</div>
-      <div class="section-heading">
-        <h2>Transforming Healthcare Needs <span>Into Opportunities.</span></h2>
-        <p>Understanding healthcare requirements, identifying relevant technologies, and exploring potential opportunities with international partners.</p>
-      </div>
-      <a href="projects.html" class="text-link">Explore Project Development ↗</a>
-    </section>
+/* ULTIMATE LUXURY DEPARTMENT CARDS */
+.department-section { background: #050607; padding: 100px 24px; border-top: 1px solid var(--border); }
+.department-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; max-width: 1280px; margin: 50px auto 0; }
+.department-card { position: relative; min-height: 350px; border-radius: 8px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.1); display: flex; flex-direction: column; justify-content: flex-end; transition: all 0.5s ease; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6); }
+.department-bg { position: absolute; inset: 0; background-size: cover; background-position: center; filter: grayscale(100%) brightness(0.35); transition: all 0.7s ease; z-index: 1; }
+.department-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(5, 6, 7, 0.95) 0%, rgba(5, 6, 7, 0.4) 50%, rgba(5, 6, 7, 0.8) 100%); z-index: 2; pointer-events: none; }
+.department-content { position: relative; z-index: 3; padding: 35px 25px; text-align: center; transform: translateY(15px); transition: transform 0.5s ease; }
+.department-card:hover { border-color: rgba(255, 255, 255, 0.4); box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9); transform: translateY(-8px); }
+.department-card:hover .department-bg { filter: grayscale(0%) brightness(0.55); transform: scale(1.08); }
+.department-card:hover .department-content { transform: translateY(0); }
+.department-card h4 { color: #ffffff; font-family: "Cormorant Garamond", Georgia, serif; font-size: 28px; font-weight: 600; margin-bottom: 12px; line-height: 1.2; text-shadow: 0 2px 10px rgba(0,0,0,0.8); }
+.department-card p { color: #c4c9ce; font-size: 13px; line-height: 1.7; margin-bottom: 25px; text-shadow: 0 1px 5px rgba(0,0,0,0.8); }
+.department-link { display: inline-block; color: #ffffff; font-size: 12px; letter-spacing: 1px; text-decoration: none; font-weight: 500; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; background: rgba(255,255,255,0.05); backdrop-filter: blur(5px); transition: all 0.3s ease; word-break: break-all; }
+.department-link:hover { background: #ffffff; color: #050607; border-color: #ffffff; }
 
-    <section class="section contact-section">
-      <div class="section-label">08 — CONNECT WITH AZADIPOUR</div>
-      <div class="contact-content">
-        <h2>Let's Build <span>Global Healthcare Connections.</span></h2>
-        <p>For international partnerships, medical technology opportunities, and business enquiries, connect with us.</p>
-        <a href="contact.html" class="btn-primary">Contact Azadipour <span>↗</span></a>
-        <a href="mailto:info@azadipourmedical.com" class="contact-email" style="display:block; margin-top:20px; color:var(--silver); font-size:14px;">info@azadipourmedical.com</a>
-      </div>
-    </section>
-  </main>
+/* INNER PAGES & CARDS (Missions, etc.) */
+.inner-hero { position: relative; min-height: 430px; display: flex; align-items: center; padding: 85px 24px; overflow: hidden; background: linear-gradient(120deg,#050607,#171d22); }
+.inner-hero-content { position: relative; z-index: 2; width: min(var(--container),100%); margin: auto; }
+.inner-hero h1 { max-width: 850px; margin-bottom: 20px; font-size: clamp(45px,7vw,75px); }
+.inner-hero h1 span { display: block; color: var(--silver); }
+.inner-hero p { max-width: 650px; font-size: 15px; }
+.inner-hero-decoration { position: absolute; top: 50%; right: 8%; width: 320px; height: 320px; transform: translateY(-50%); border: 1px solid rgba(255,255,255,.1); border-radius: 50%; }
+.inner-hero-decoration::before, .inner-hero-decoration::after { position: absolute; inset: 25px; border: 1px solid rgba(255,255,255,.09); border-radius: 50%; content: ""; }
+.inner-hero-decoration::after { inset: 60px; }
 
-  <footer class="site-footer">
-    <div class="footer-main">
-      <div class="footer-brand"><img src="assets/logo-transparent.png" alt="Azadipour Logo"><h3>AZADIPOUR</h3><p>Global Medical Technology & Hospital Solutions</p></div>
-      <div class="footer-column"><h4>COMPANY</h4><a href="about.html">About Us</a><a href="index.html#global-network">Global Presence</a><a href="partners.html">Partnerships</a><a href="projects.html">Projects</a></div>
-      <div class="footer-column"><h4>TECHNOLOGY</h4><a href="robotic.html">Robotic Surgery</a><a href="cardiac.html">Cardiovascular</a><a href="medical.html">Medical Technology</a></div>
-      <div class="footer-column"><h4>CONTACT</h4><a href="mailto:info@azadipourmedical.com">Email</a><span>Oman</span></div>
-    </div>
-    <div class="footer-bottom"><span>© <span id="currentYear">2026</span> AZADIPOUR. ALL RIGHTS RESERVED.</span><span>GLOBAL MEDICAL TECHNOLOGY · WORLDWIDE</span></div>
-  </footer>
+.mission-grid, .approach-grid, .presence-grid, .medical-area-grid, .technology-grid, .contact-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; margin-top: 35px; }
+.mission-card, .approach-grid > div, .presence-card, .medical-area-card, .contact-card { padding: 30px; border: 1px solid var(--border); background: var(--bg-card); transition: var(--transition); border-radius: 2px; }
+.mission-card:hover, .presence-card:hover, .medical-area-card:hover, .contact-card:hover { border-color: var(--silver-dark); transform: translateY(-4px); box-shadow: 0 15px 40px rgba(0,0,0,0.6); }
+.mission-card h3, .approach-grid h3, .presence-card h3, .medical-area-card h3, .contact-card h3 { margin-bottom: 12px; font-size: 27px; }
+.presence-card p, .medical-area-card p, .mission-card p { font-size: 13px; }
+.presence-number, .medical-area-number { color: var(--silver-dark); font-size: 11px; letter-spacing: 2px; margin-bottom: 15px; display: block; }
 
-  <script src="https://unpkg.com/three@0.150.1/build/three.min.js" defer></script>
-  <script src="https://unpkg.com/globe.gl@2.27.2/dist/globe.gl.min.js" defer></script>
+.about-vision { padding: 85px max(24px,calc((100% - var(--container))/2)); border-block: 1px solid var(--border); background: #101316; }
+.vision-content { max-width: 850px; }
+.vision-content h2 { margin-bottom: 18px; font-size: clamp(34px,4.5vw,52px); }
+.vision-content p { max-width: 700px; font-size: 15px; }
+.vision-mark { margin-top: 25px; color: var(--silver-dark); font-size: 10px; letter-spacing: 3px; }
+.about-focus, .identity-section, .approach-section { padding: 85px 24px; }
+.about-focus { background: var(--bg-soft); }
+.focus-list { max-width: var(--container); margin: 35px auto 0; }
+.focus-row { display: grid; grid-template-columns: 60px 1fr; gap: 20px; padding: 20px 0; border-bottom: 1px solid var(--border); }
+.focus-row h3 { margin-bottom: 6px; font-size: 25px; }
+
+.technology-section, .solutions-section { background: #090c0f; }
+.technology-card { position: relative; min-height: 270px; display: flex; flex-direction: column; justify-content: space-between; padding: 30px; overflow: hidden; border: 1px solid var(--border); background: linear-gradient(145deg,#151a1f,#090b0d); transition: var(--transition); border-radius: 2px; }
+.technology-card:hover { border-color: rgba(255,255,255,.45); transform: translateY(-4px); box-shadow: 0 15px 40px rgba(0,0,0,0.6); }
+.technology-card-content h3 { margin-bottom: 12px; font-size: 30px; }
+.technology-card-content p { max-width: 420px; margin-bottom: 22px; font-size: 13px; }
+.card-number { color: var(--silver-dark); font-size: 10px; letter-spacing: 2px; }
+.card-link { color: #fff; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; }
+.solutions-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 15px; margin-top: 35px; }
+.solution-item { padding: 25px; border-top: 1px solid var(--silver-dark); background: var(--bg-card); }
+.solution-item h3 { margin-bottom: 12px; font-size: 24px; }
+.solution-item p { font-size: 13px; }
+
+/* MEDIA PAGE STYLES */
+.video-luxury-container { max-width: 1000px; margin: 50px auto 0; position: relative; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); background: #000; box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8); transition: var(--transition); }
+.video-luxury-container video, .video-luxury-container iframe { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+.video-luxury-info { padding: 30px; background: linear-gradient(145deg, #101418, #050607); border-top: 1px solid var(--border); text-align: center; }
+.video-luxury-info h3 { color: #fff; font-family: "Cormorant Garamond", Georgia, serif; font-size: 32px; margin-bottom: 10px; }
+.video-luxury-info span { color: var(--silver); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; }
+.article-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 50px; }
+.article-card { display: flex; flex-direction: column; background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; transition: var(--transition); }
+.article-card:hover { border-color: var(--silver-dark); transform: translateY(-8px); box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8); }
+.article-img-wrap { position: relative; width: 100%; aspect-ratio: 16 / 10; overflow: hidden; }
+.article-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
+.article-card:hover .article-img-wrap img { transform: scale(1.08); }
+.article-tag { position: absolute; top: 15px; left: 15px; background: rgba(5, 6, 7, 0.85); backdrop-filter: blur(5px); border: 1px solid rgba(255, 255, 255, 0.2); color: var(--silver); font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 12px; border-radius: 2px; }
+.article-content { padding: 25px; display: flex; flex-direction: column; flex-grow: 1; }
+.article-meta { color: var(--silver-dark); font-size: 10px; letter-spacing: 1px; margin-bottom: 12px; display: flex; justify-content: space-between; }
+.article-content h3 { color: #fff; font-family: "Cormorant Garamond", Georgia, serif; font-size: 24px; font-weight: 500; line-height: 1.3; margin-bottom: 15px; transition: color var(--transition); }
+.article-content p { color: var(--text-soft); font-size: 13px; line-height: 1.7; margin-bottom: 25px; flex-grow: 1; }
+.read-more { display: inline-flex; align-items: center; gap: 8px; color: #fff; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; margin-top: auto; }
+.read-more span { transition: transform var(--transition); }
+.article-card:hover .read-more span { transform: translateX(5px); }
+
+/* FOOTER */
+.site-footer { padding: 65px 24px 22px; border-top: 1px solid var(--border); background: #050607; }
+.footer-main { width: min(var(--container),100%); display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 35px; margin: auto; }
+.footer-brand { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+.footer-brand img { width: 65px; height: 65px; object-fit: contain; }
+.footer-brand h3 { font-size: 24px; letter-spacing: 3px; }
+.footer-brand p { max-width: 300px; color: var(--muted); font-size: 12px; }
+.footer-column h4 { margin-bottom: 18px; font-family: "Inter",Arial,sans-serif; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; }
+.footer-column a, .footer-column span { display: block; margin-bottom: 10px; color: var(--muted); font-size: 11px; transition: color var(--transition); }
+.footer-column a:hover { color: #fff; }
+.footer-bottom { width: min(var(--container),100%); display: flex; justify-content: space-between; gap: 20px; margin: 45px auto 0; padding-top: 20px; border-top: 1px solid var(--border); color: var(--muted); font-size: 10px; }
+
+/* RESPONSIVE */
+@media (max-width: 1050px) {
+  .menu-toggle { display: flex; }
+  .main-nav { position: absolute; top: 100%; left: 0; right: 0; display: none; flex-direction: column; align-items: stretch; gap: 0; padding: 12px 24px 22px; border-bottom: 1px solid var(--border); background: #0a0c0e; }
+  .main-nav.open { display: flex; }
+  .main-nav a { padding: 14px 5px; border-bottom: 1px solid var(--border); }
+  .main-nav a::after { display: none; }
+  .nav-dropdown { width: 100%; }
+  .nav-dropdown-menu { position: static; display: flex; background: transparent; border: none; box-shadow: none; padding-left: 15px; }
+  .nav-dropdown-menu a { padding: 10px 15px; border-bottom: 1px solid var(--border) !important; }
   
-  <script>
-    window.addEventListener('load', () => {
-      const globeContainer = document.getElementById("globeViz");
-      const loading = document.getElementById("mapLoading");
-      if (!globeContainer) return;
+  .network-heading { grid-template-columns: 1fr; gap: 20px; }
+  .partnership-content { grid-template-columns: 1fr; gap: 30px; text-align: center; }
+  .partnership-mark { max-width: 400px; margin: 0 auto; width: 100%; }
+  .intro-details { grid-template-columns: repeat(2, 1fr); }
+  .mission-grid, .approach-grid, .presence-grid, .medical-area-grid, .technology-grid, .contact-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .solutions-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .visual-portfolio-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .article-grid { grid-template-columns: repeat(2, 1fr); }
+  .network-legend { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .footer-main { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .footer-brand { grid-column: 1 / -1; }
+  .contact-luxury-grid { grid-template-columns: 1fr; gap: 40px; }
+  .luxury-form { grid-template-columns: 1fr; }
+  .department-grid { grid-template-columns: repeat(2, 1fr); }
+}
 
-      setTimeout(() => {
-        if (typeof Globe === 'undefined' || typeof THREE === 'undefined') {
-          if (loading) loading.style.display = "none";
-          return;
-        }
-
-        try {
-          const world = Globe()(globeContainer)
-            .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-night.jpg')
-            .backgroundImageUrl('https://unpkg.com/three-globe/example/img/night-sky.png')
-            .backgroundColor('#000000')
-            .showAtmosphere(false)
-            .width(globeContainer.clientWidth)
-            .height(globeContainer.clientHeight);
-
-          world.pointOfView({ lat: 30, lng: 40, altitude: 2.2 });
-
-          fetch('https://raw.githubusercontent.com/vasturiano/globe.gl/master/example/datasets/ne_110m_admin_0_countries.geojson')
-            .then(res => res.json())
-            .then(countries => {
-              world.polygonsData(countries.features)
-                .polygonCapColor(() => 'rgba(0,0,0,0)') 
-                .polygonSideColor(() => 'rgba(0,0,0,0)')
-                .polygonStrokeColor(() => 'rgba(255, 255, 255, 0.15)') 
-                .polygonAltitude(0.005);
-                
-              const countryLabels = [
-                { lat: 37.0, lng: -95.0, name: "USA" },
-                { lat: 35.0, lng: 105.0, name: "CHINA" },
-                { lat: 51.0, lng: 10.0, name: "GERMANY" },
-                { lat: 46.0, lng: 2.0, name: "FRANCE" },
-                { lat: 40.0, lng: -4.0, name: "SPAIN" },
-                { lat: 42.0, lng: 12.0, name: "ITALY" },
-                { lat: 23.0, lng: 45.0, name: "SAUDI ARABIA" }
-              ];
-              
-              world.labelsData(countryLabels)
-                .labelSize(0.5).labelDotRadius(0).labelColor(() => 'rgba(255, 255, 255, 0.3)')
-                .labelText('name').labelAltitude(0.01).labelResolution(2);
-            }).catch(err => console.error("Error loading borders:", err));
-
-          const omanHub = { lat: 23.588, lng: 58.383, name: "AZADIPOUR" };
-          
-          const suppliers = [
-            { lat: 22.543, lng: 114.057, name: "Shenzhen" },
-            { lat: 31.230, lng: 121.473, name: "Shanghai" },
-            { lat: 39.904, lng: 116.407, name: "Beijing" },
-            { lat: 25.033, lng: 121.565, name: "Taipei" },
-            { lat: 53.551, lng: 9.993, name: "Hamburg" },
-            { lat: 37.774, lng: -122.419, name: "San Francisco" }
-          ];
-
-          const germanyBranch = { lat: 52.520, lng: 13.405, name: "BERLIN BRANCH" };
-
-          const hospitals = [
-            { lat: 24.713, lng: 46.675 }, { lat: 25.285, lng: 51.531 }, { lat: 26.228, lng: 50.586 },
-            { lat: 24.453, lng: 54.377 }, { lat: 17.015, lng: 54.092 }, { lat: 48.856, lng: 2.352 },
-            { lat: 41.902, lng: 12.496 }, { lat: 40.416, lng: -3.703 }, { lat: 40.712, lng: -74.006 }
-          ];
-
-          const arcsData = [];
-          suppliers.forEach(s => arcsData.push({ startLat: s.lat, startLng: s.lng, endLat: omanHub.lat, endLng: omanHub.lng, color: ['rgba(255, 255, 255, 0.6)', 'rgba(255, 255, 255, 0.05)'] }));
-          arcsData.push({ startLat: omanHub.lat, startLng: omanHub.lng, endLat: germanyBranch.lat, endLng: germanyBranch.lng, color: ['rgba(255, 215, 0, 0.8)', 'rgba(255, 215, 0, 0.1)'] });
-          hospitals.forEach(h => arcsData.push({ startLat: omanHub.lat, startLng: omanHub.lng, endLat: h.lat, endLng: h.lng, color: ['rgba(200, 200, 200, 0.3)', 'rgba(200, 200, 200, 0.01)'] }));
-
-          world.arcsData(arcsData).arcColor('color').arcDashLength(0.5).arcDashGap(0.2).arcDashAnimateTime(2000).arcStroke(0.3);
-
-          const htmlElementsData = [
-            { lat: omanHub.lat, lng: omanHub.lng, type: 'hub', text: 'A' },
-            { lat: germanyBranch.lat, lng: germanyBranch.lng, type: 'gold', text: 'A' },
-            ...suppliers.map(s => ({ ...s, type: 'company', text: 'C' })),
-            ...hospitals.map(h => ({ ...h, type: 'hospital', text: 'H' }))
-          ];
-
-          world.htmlElementsData(htmlElementsData)
-            .htmlElement(d => {
-              const el = document.createElement('div');
-              el.className = 'globe-marker';
-              if (d.type === 'hub') el.classList.add('marker-hub');
-              else if (d.type === 'company') el.classList.add('marker-c');
-              else if (d.type === 'hospital') el.classList.add('marker-h');
-              else if (d.type === 'gold') el.classList.add('marker-gold');
-              el.innerHTML = `<span>${d.text}</span>`;
-              return el;
-            })
-            .htmlAltitude(d => d.type === 'hub' ? 0.025 : 0.015);
-
-          world.ringsData([omanHub]).ringColor(() => t => `rgba(255, 255, 255, ${1-t})`).ringMaxRadius(3).ringPropagationSpeed(2).ringRepeatPeriod(1500);
-
-          world.controls().autoRotate = true;
-          world.controls().autoRotateSpeed = 0.8;
-          world.controls().enableZoom = true;
-          world.controls().minDistance = 150;
-
-          if (loading) loading.style.display = "none";
-
-          window.addEventListener('resize', () => {
-            world.width(globeContainer.clientWidth);
-            world.height(globeContainer.clientHeight);
-          });
-        } catch (err) {
-          console.error(err);
-          if (loading) loading.style.display = "none";
-        }
-      }, 100);
-    });
-  </script>
-  <script src="script.js" defer></script>
-</body>
-</html>
+@media (max-width: 650px) {
+  body { font-size: 14px; }
+  .container, .section { width: calc(100% - 36px); }
+  .site-header { min-height: 68px; padding: 9px 18px; }
+  .brand img { width: 38px; height: 38px; }
+  .brand span { font-size: 18px; letter-spacing: 2px; }
+  .main-nav { padding-inline: 18px; }
+  .hero-section { min-height: 650px; padding: 80px 20px 145px; }
+  .hero-content h1 { font-size: clamp(42px,12vw,60px); }
+  .hero-content > p { font-size: 14px; }
+  .hero-actions { max-width: 320px; flex-direction: column; align-items: stretch; }
+  
+  .mission-grid, .approach-grid, .presence-grid, .medical-area-grid, .technology-grid, .contact-grid { grid-template-columns: 1fr; }
+  .solutions-grid { grid-template-columns: 1fr; }
+  .visual-portfolio-grid { grid-template-columns: 1fr; }
+  .article-grid { grid-template-columns: 1fr; }
+  .network-map-canvas-wrap { height: 400px; }
+  .network-map-topline, .map-caption { flex-direction: column; gap: 5px; text-align: center; }
+  .network-footer { flex-direction: column; align-items: flex-start; }
+  .executive-grid { grid-template-columns: 1fr; }
+  .exec-card { padding: 30px 20px; }
+  .department-grid { grid-template-columns: 1fr; }
+  .department-card { min-height: 300px; }
+  .department-card h4 { font-size: 24px; }
+  .intro-details { grid-template-columns: 1fr; }
+  .visual-portfolio-card figcaption strong { font-size: 26px; }
+}
