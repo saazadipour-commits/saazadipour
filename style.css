@@ -260,6 +260,15 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
 #form-status.success { display: block; background: rgba(40, 167, 69, 0.1); border: 1px solid rgba(40, 167, 69, 0.3); color: #28a745; }
 #form-status.error { display: block; background: rgba(220, 53, 69, 0.1); border: 1px solid rgba(220, 53, 69, 0.3); color: #dc3545; }
 
+/* CONTACT FORM PANEL — visual consistency with info panel */
+.contact-form-panel {
+  padding: 40px;
+  background: linear-gradient(145deg, rgba(15, 20, 25, 0.8), rgba(5, 7, 9, 0.9));
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
 /* EXECUTIVE LEADERSHIP SECTION */
 .leadership-section { background: radial-gradient(ellipse at 50% 0%, rgba(20, 25, 30, 0.8), #050607 80%); border-top: 1px solid var(--border); padding: 100px 24px; }
 .executive-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-top: 50px; max-width: 1000px; margin-inline: auto; }
@@ -354,7 +363,6 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
 
 /* =========================================================
    MEDIA PAGE — VIDEO GALLERY (2 COLUMNS) & EXHIBITION NOTE
-   — NEW ADDITIONS (Do not modify other sections)
    ========================================================= */
 .video-gallery-grid {
   display: grid;
@@ -531,6 +539,8 @@ h1, h2, h3, h4 { color: var(--text); font-family: "Cormorant Garamond", Georgia,
   .exhibition-note { margin-top: 45px; padding: 32px 22px; }
   .exhibition-note h3 { font-size: 22px; }
   .exhibition-note p { font-size: 13px; line-height: 1.8; }
+  .contact-form-panel { padding: 26px 20px; }
+  .contact-info-panel { padding: 26px 20px; }
   .network-map-canvas-wrap { height: 400px; }
   .network-map-topline, .map-caption { flex-direction: column; gap: 5px; text-align: center; }
   .network-footer { flex-direction: column; align-items: flex-start; }
