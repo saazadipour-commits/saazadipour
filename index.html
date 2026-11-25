@@ -18,6 +18,126 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 
+  <!-- Custom Styles for the 4 Global Bases Cards -->
+  <style>
+    .global-bases-grid {
+      display: grid; 
+      grid-template-columns: repeat(4, minmax(0,1fr)); 
+      gap: 20px; 
+      margin-top: 40px; 
+    }
+
+    .base-card {
+      position: relative;
+      min-height: 380px;
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      transition: all 0.5s ease;
+      background-size: cover;
+      background-position: center;
+      cursor: pointer;
+    }
+
+    .base-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(5,6,7,0.95) 0%, rgba(5,6,7,0.7) 40%, rgba(5,6,7,0.2) 100%);
+      z-index: 1;
+      transition: background 0.5s ease;
+    }
+
+    .base-card-content {
+      position: relative;
+      z-index: 2;
+      padding: 30px;
+      transform: translateY(10px);
+      transition: transform 0.5s ease;
+    }
+
+    .base-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255, 255, 255, 0.4);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+    }
+
+    .base-card:hover::before {
+      background: linear-gradient(to top, rgba(5,6,7,0.95) 0%, rgba(5,6,7,0.5) 50%, rgba(5,6,7,0.1) 100%);
+    }
+
+    .base-card:hover .base-card-content {
+      transform: translateY(0);
+    }
+
+    .base-card span.base-label {
+      display: block;
+      margin-bottom: 15px;
+      color: var(--silver-dark);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .base-card h3 {
+      margin-bottom: 12px;
+      font-size: 24px;
+      color: #fff;
+      font-family: "Cormorant Garamond", Georgia, serif;
+    }
+
+    .base-card p {
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--text-soft);
+      margin-bottom: 20px;
+    }
+
+    /* Status Badges */
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    .status-badge.active {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid #fff;
+      color: #fff;
+    }
+
+    .status-badge.gold {
+      background: rgba(255, 215, 0, 0.05);
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.1);
+    }
+
+    .status-badge.soon {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: var(--muted);
+    }
+
+    /* Responsive */
+    @media (max-width: 1050px) {
+      .global-bases-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 650px) {
+      .global-bases-grid { grid-template-columns: 1fr; }
+      .base-card { min-height: 320px; }
+    }
+  </style>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -151,41 +271,55 @@
     </section>
 
     <section class="section intro-section">
-      <div class="section-label">02 — GLOBAL BASES & OVERVIEW</div>
+      <div class="section-label">02 — GLOBAL BASES &amp; OVERVIEW</div>
       <div class="section-heading">
         <h2>A Truly Global <span>Corporate Footprint.</span></h2>
         <p>Azadipour operates as a fully international entity, strategically positioned across four major global regions to facilitate seamless medical technology transfer and international partnership development.</p>
       </div>
       
-      <!-- 4 Global Bases -->
-      <div class="intro-details">
-        <!-- GCC Base -->
-        <div class="intro-detail">
-          <span>GCC BASE</span>
-          <h3>Oman (Muscat)</h3>
-          <p>The registered headquarters and strategic operational hub. Fully licensed with fundamental regulatory approvals for medical product entry (CR: 1678104).</p>
+      <!-- 4 Global Bases with Background Images -->
+      <div class="global-bases-grid">
+        
+        <!-- GCC Base (Oman) -->
+        <div class="base-card" style="background-image: url('https://images.unsplash.com/photo-1627915507180-61458151cfae?q=80&w=800&auto=format&fit=crop');">
+          <div class="base-card-content">
+            <span class="base-label">GCC HEADQUARTERS</span>
+            <h3>Oman (Muscat)</h3>
+            <p>The registered headquarters and strategic operational hub. Fully licensed with fundamental regulatory approvals for medical product entry (CR: 1678104).</p>
+            <div class="status-badge active">● Operational</div>
+          </div>
         </div>
 
-        <!-- Europe Base -->
-        <div class="intro-detail branch-active">
-          <span>EUROPE BASE (COMING SOON)</span>
-          <h3>Germany (Berlin)</h3>
-          <p>Our upcoming European branch, designed to bridge advanced German medical engineering with Middle Eastern and global healthcare markets.</p>
+        <!-- Europe Base (Germany) -->
+        <div class="base-card" style="background-image: url('https://images.unsplash.com/photo-1560969184-10fe8719e047?q=80&w=800&auto=format&fit=crop');">
+          <div class="base-card-content">
+            <span class="base-label">EUROPEAN MARKET DEVELOPMENT</span>
+            <h3>Germany (Berlin)</h3>
+            <p>Our upcoming European branch, designed to bridge advanced German medical engineering with Middle Eastern and global healthcare markets.</p>
+            <div class="status-badge gold">◈ Launching in 6 Months</div>
+          </div>
         </div>
 
-        <!-- Americas Base -->
-        <div class="intro-detail">
-          <span>AMERICAS BASE</span>
-          <h3>United States</h3>
-          <p>Strategic sourcing and partnership hub focused on integrating cutting-edge American surgical robotics and advanced medical innovations.</p>
+        <!-- Americas Base (USA) -->
+        <div class="base-card" style="background-image: url('https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?q=80&w=800&auto=format&fit=crop');">
+          <div class="base-card-content">
+            <span class="base-label">NORTH AMERICAN SOURCING</span>
+            <h3>United States</h3>
+            <p>Strategic sourcing and technology evaluation network focused on integrating cutting-edge American surgical robotics and medical innovations.</p>
+            <div class="status-badge soon">◷ Launching in 1 Year</div>
+          </div>
         </div>
 
-        <!-- Asia Base -->
-        <div class="intro-detail">
-          <span>ASIA BASE</span>
-          <h3>China</h3>
-          <p>Our Asian operational base, facilitating high-tech manufacturing partnerships, supply chain excellence, and rapid technological integration.</p>
+        <!-- Asia Base (China) -->
+        <div class="base-card" style="background-image: url('https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?q=80&w=800&auto=format&fit=crop');">
+          <div class="base-card-content">
+            <span class="base-label">ASIAN TECHNOLOGY NETWORK</span>
+            <h3>China</h3>
+            <p>Our Asian operational network, facilitating high-tech manufacturing partnerships, supply chain excellence, and rapid technological integration.</p>
+            <div class="status-badge soon">◷ Launching in 3 Months</div>
+          </div>
         </div>
+
       </div>
 
       <!-- LUXURY SLIDER CREDENTIALS -->
@@ -252,58 +386,34 @@
       <div class="section-heading"><h2>Technology in <span>Focus.</span></h2><p>A visual overview of selected medical technology and hospital solution areas.</p></div>
       <div class="visual-portfolio-grid">
         
-        <!-- Image 1 -->
         <figure class="visual-portfolio-card">
           <img src="assets/robotic-hero.jpg" alt="Robotic surgery technology" loading="lazy">
-          <figcaption>
-            <strong>Robotic Surgery</strong>
-            <span>Advanced surgical platforms</span>
-          </figcaption>
+          <figcaption><strong>Robotic Surgery</strong><span>Advanced surgical platforms</span></figcaption>
         </figure>
         
-        <!-- Image 2 -->
         <figure class="visual-portfolio-card">
           <img src="assets/surgical-robotics.jpg" alt="Surgical robotics equipment" loading="lazy">
-          <figcaption>
-            <strong>Surgical Robotics</strong>
-            <span>Next-generation operating rooms</span>
-          </figcaption>
+          <figcaption><strong>Surgical Robotics</strong><span>Next-generation operating rooms</span></figcaption>
         </figure>
         
-        <!-- Image 3 -->
         <figure class="visual-portfolio-card">
           <img src="assets/cardiac-hero.jpg" alt="Cardiac and cardiovascular technology" loading="lazy">
-          <figcaption>
-            <strong>Cardiovascular</strong>
-            <span>Cardiac care technologies</span>
-          </figcaption>
+          <figcaption><strong>Cardiovascular</strong><span>Cardiac care technologies</span></figcaption>
         </figure>
         
-        <!-- Image 4 -->
         <figure class="visual-portfolio-card">
           <img src="assets/hospital-technology.jpg" alt="Modern hospital technology" loading="lazy">
-          <figcaption>
-            <strong>Hospital Technology</strong>
-            <span>Integrated hospital solutions</span>
-          </figcaption>
+          <figcaption><strong>Hospital Technology</strong><span>Integrated hospital solutions</span></figcaption>
         </figure>
         
-        <!-- Image 5 -->
         <figure class="visual-portfolio-card">
           <img src="assets/hospital-project.jpg" alt="Hospital project environment" loading="lazy">
-          <figcaption>
-            <strong>Hospital Projects</strong>
-            <span>Healthcare infrastructure</span>
-          </figcaption>
+          <figcaption><strong>Hospital Projects</strong><span>Healthcare infrastructure</span></figcaption>
         </figure>
         
-        <!-- Image 6 -->
         <figure class="visual-portfolio-card">
           <img src="assets/germany-medical.jpg" alt="Medical technology in Germany" loading="lazy">
-          <figcaption>
-            <strong>International Markets</strong>
-            <span>Global medical technology</span>
-          </figcaption>
+          <figcaption><strong>International Markets</strong><span>Global medical technology</span></figcaption>
         </figure>
 
       </div>
