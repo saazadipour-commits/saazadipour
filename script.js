@@ -1,27 +1,38 @@
+/**
+ * Azadipour Medical - Core JavaScript
+ * Optimized for Performance & Speed
+ */
+
 document.addEventListener("DOMContentLoaded", function () {
     "use strict";
 
+    // 1. Cache DOM Elements
     const body = document.body;
     const header = document.querySelector(".site-header");
     const menuToggle = document.getElementById("menuToggle");
     const mainNav = document.getElementById("mainNav");
     const intro = document.getElementById("intro");
+    const currentYearEl = document.getElementById("currentYear");
 
-    /* 01. INTRO SCREEN (Immediate Hide) */
+    /* =========================================================
+       01. INTRO SCREEN (Failsafe & Fast Hide)
+    ========================================================= */
     if (intro) {
-        window.addEventListener('load', function() {
-            intro.classList.add("hide");
-            setTimeout(() => { intro.style.display = "none"; }, 600);
-        });
-        setTimeout(() => {
+        // Hide intro when everything is loaded, or after max 1 second
+        const hideIntro = () => {
             if (!intro.classList.contains("hide")) {
                 intro.classList.add("hide");
                 setTimeout(() => { intro.style.display = "none"; }, 600);
             }
-        }, 1000);
+        };
+
+        window.addEventListener('load', hideIntro);
+        setTimeout(hideIntro, 1000); // Failsafe
     }
 
-    /* 02. MOBILE NAVIGATION */
+    /* =========================================================
+       02. MOBILE NAVIGATION (Using Event Delegation for Performance)
+    ========================================================= */
     function closeMenu() {
         if (!menuToggle || !mainNav) return;
         mainNav.classList.remove("open", "active");
@@ -38,35 +49,63 @@ document.addEventListener("DOMContentLoaded", function () {
             menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
             body.classList.toggle("menu-open", isOpen);
         });
-        mainNav.querySelectorAll("a").forEach(link => link.addEventListener("click", closeMenu));
-        document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeMenu(); });
+
+        // Event Delegation: Only ONE listener for all links instead of many
+        mainNav.addEventListener("click", function(e) {
+            if (e.target.tagName === "A") {
+                closeMenu();
+            }
+        });
+
+        document.addEventListener("keydown", (e) => { 
+            if (e.key === "Escape") closeMenu(); 
+        });
     }
 
-    /* 03. HEADER SCROLL */
-    function updateHeader() { if (header) header.classList.toggle("scrolled", window.scrollY > 35); }
-    updateHeader();
-    window.addEventListener("scroll", updateHeader, { passive: true });
-
-    /* 04. AUTOMATIC FOOTER YEAR */
-    const currentYear = new Date().getFullYear();
-    if (document.getElementById("currentYear")) document.getElementById("currentYear").textContent = currentYear;
+    /* =========================================================
+       03. HEADER SCROLL (Throttled with requestAnimationFrame)
+       Prevents CPU throttling on mobile devices
+    ========================================================= */
+    if (header) {
+        let isScrolling = false;
+        
+        window.addEventListener("scroll", () => {
+            if (!isScrolling) {
+                window.requestAnimationFrame(() => {
+                    header.classList.toggle("scrolled", window.scrollY > 35);
+                    isScrolling = false;
+                });
+                isScrolling = true;
+            }
+        }, { passive: true });
+    }
 
     /* =========================================================
-       05. 3D GLOBE INITIALIZATION (WITH ROBUST ERROR HANDLING)
+       04. AUTOMATIC FOOTER YEAR
+    ========================================================= */
+    if (currentYearEl) {
+        currentYearEl.textContent = new Date().getFullYear();
+    }
+
+    /* =========================================================
+       05. 3D GLOBE INITIALIZATION (Decoupled from window.load)
+       This starts loading immediately after DOM is ready, 
+       independent of heavy images loading.
     ========================================================= */
     const globeContainer = document.getElementById("globeViz");
     const loading = document.getElementById("mapLoading");
     
-    // Safety Timeout: If globe takes more than 8 seconds, stop loading and show error
+    // Safety Timeout: If globe takes more than 8 seconds, show error
     let globeTimeout = setTimeout(() => {
         if (loading && loading.style.display !== "none") {
-            loading.innerHTML = '<span style="color:var(--muted); font-size:10px; letter-spacing:1px;">NETWORK VISUALIZATION UNAVAILABLE ON THIS DEVICE</span>';
+            loading.innerHTML = '<span style="color:var(--muted); font-size:10px; letter-spacing:1px;">NETWORK VISUALIZATION UNAVAILABLE</span>';
             setTimeout(() => { loading.style.display = "none"; }, 3000);
         }
     }, 8000);
 
     if (globeContainer && typeof Globe !== 'undefined') {
-        window.addEventListener('load', () => {
+        // We use requestAnimationFrame to ensure the main thread is free before building the 3D scene
+        requestAnimationFrame(() => {
             try {
                 const world = Globe()(globeContainer)
                     .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-night.jpg')
@@ -79,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 // View Position
                 world.pointOfView({ lat: 25, lng: 45, altitude: 2.2 });
 
-                // Country Borders (with separate try/catch so map still loads if fetch fails)
+                // Country Borders (Fetched asynchronously)
                 fetch('https://raw.githubusercontent.com/vasturiano/globe.gl/master/example/datasets/ne_110m_admin_0_countries.geojson')
                     .then(res => res.json())
                     .then(countries => {
@@ -90,10 +129,9 @@ document.addEventListener("DOMContentLoaded", function () {
                             .polygonAltitude(0.005);
                     }).catch(err => {
                         console.warn("Could not load country borders:", err);
-                        // Map will still show without country outlines
                     });
 
-                // Coordinates
+                // Coordinates & Data
                 const omanHub = { lat: 23.588, lng: 58.383, type: 'A' };
                 const taiwan = { lat: 25.033, lng: 121.565, type: 'C' };
                 const chinaSupplier = { lat: 22.543, lng: 114.057, type: 'C' };
@@ -143,11 +181,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 world.controls().autoRotateSpeed = 0.5;
                 world.controls().enableZoom = false; 
 
-                // Hide loading screen
-                clearTimeout(globeTimeout); // Cancel the error timeout
+                // Hide loading screen (Success)
+                clearTimeout(globeTimeout); 
                 if (loading) loading.style.display = "none";
                 
-                // Performance: Pause when out of view
+                // Performance: Pause 3D rendering when out of view
                 const observer = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
@@ -159,10 +197,16 @@ document.addEventListener("DOMContentLoaded", function () {
                 }, { threshold: 0.1 });
                 observer.observe(globeContainer);
 
+                // Handle Resize efficiently
+                let resizeTimeout;
                 window.addEventListener('resize', () => {
-                    world.width(globeContainer.clientWidth);
-                    world.height(globeContainer.clientHeight);
+                    clearTimeout(resizeTimeout);
+                    resizeTimeout = setTimeout(() => {
+                        world.width(globeContainer.clientWidth);
+                        world.height(globeContainer.clientHeight);
+                    }, 200);
                 });
+                
             } catch(e) { 
                 console.error("Globe initialization failed:", e); 
                 clearTimeout(globeTimeout);
