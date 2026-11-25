@@ -18,8 +18,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 
-  <!-- Custom Styles for the 4 Global Bases Cards -->
+  <!-- Custom Styles for Global Bases & Technology Cards -->
   <style>
+    /* 4 Global Bases Grid */
     .global-bases-grid {
       display: grid; 
       grid-template-columns: repeat(4, minmax(0,1fr)); 
@@ -51,6 +52,31 @@
     .status-badge.active { background: rgba(255, 255, 255, 0.1); border: 1px solid #fff; color: #fff; }
     .status-badge.gold { background: rgba(255, 215, 0, 0.05); border: 1px solid var(--gold); color: var(--gold); box-shadow: 0 0 15px rgba(255, 215, 0, 0.1); }
     .status-badge.soon { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.2); color: var(--muted); }
+
+    /* Technology Cards Image Overlays */
+    .technology-card {
+      position: relative;
+      overflow: hidden;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease;
+    }
+    .technology-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(145deg, rgba(5,6,7,0.85), rgba(5,6,7,0.6));
+      z-index: 1;
+      transition: background 0.5s ease;
+    }
+    .technology-card:hover::before {
+      background: linear-gradient(145deg, rgba(5,6,7,0.7), rgba(5,6,7,0.4));
+    }
+    .technology-card .card-number,
+    .technology-card .technology-card-content {
+      position: relative;
+      z-index: 2;
+    }
 
     @media (max-width: 1050px) { .global-bases-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 650px) { .global-bases-grid { grid-template-columns: 1fr; } .base-card { min-height: 320px; } }
@@ -225,7 +251,7 @@
           </div>
         </div>
         <!-- Asia Base (China) -->
-        <div class="base-card" style="background-image: url('https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?q=80&w=800&auto=format&fit=crop');">
+        <div class="base-card" style="background-image: url('https://images.unsplash.com/photo-1474181487882-5abf3f0ba6c2?q=80&w=800&auto=format&fit=crop');">
           <div class="base-card-content">
             <span class="base-label">ASIAN TECHNOLOGY NETWORK</span>
             <h3>China</h3>
@@ -271,19 +297,23 @@
         <p>Exploring technologies that contribute to the evolution of modern healthcare and advanced clinical environments.</p>
       </div>
       <div class="technology-grid">
-        <a href="robotic.html" class="technology-card">
+        <!-- Robotic & Digital Surgery -->
+        <a href="robotic.html" class="technology-card" style="background-image: url('https://images.unsplash.com/photo-1551076805-e1869033e561?q=80&w=1000&auto=format&fit=crop');">
           <div class="card-number">01 / ROBOTICS</div>
           <div class="technology-card-content"><h3>Robotic & Digital Surgery</h3><p>Advanced robotic platforms, digital surgery and next-generation surgical technologies.</p><span class="card-link">Explore Technology ↗</span></div>
         </a>
-        <a href="cardiac.html" class="technology-card">
+        <!-- Cardiac & Cardiovascular -->
+        <a href="cardiac.html" class="technology-card" style="background-image: url('https://images.unsplash.com/photo-1530026405186-ed1f13eb28b7?q=80&w=1000&auto=format&fit=crop');">
           <div class="card-number">02 / CARDIOVASCULAR</div>
           <div class="technology-card-content"><h3>Cardiac & Cardiovascular</h3><p>Technologies supporting cardiac surgery, perfusion, catheterization laboratories and critical care.</p><span class="card-link">Explore Technology ↗</span></div>
         </a>
-        <a href="medical.html" class="technology-card">
+        <!-- Surgical Navigation & AI -->
+        <a href="medical.html" class="technology-card" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=1000&auto=format&fit=crop');">
           <div class="card-number">03 / NAVIGATION & AI</div>
           <div class="technology-card-content"><h3>Surgical Navigation & AI</h3><p>Image-guided technologies, surgical navigation and emerging artificial intelligence applications.</p><span class="card-link">Explore Technology ↗</span></div>
         </a>
-        <a href="medical.html" class="technology-card">
+        <!-- Advanced Hospital Solutions -->
+        <a href="medical.html" class="technology-card" style="background-image: url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=1000&auto=format&fit=crop');">
           <div class="card-number">04 / HOSPITAL SYSTEMS</div>
           <div class="technology-card-content"><h3>Advanced Hospital Solutions</h3><p>Medical equipment, operating room technologies, intensive care and integrated hospital systems.</p><span class="card-link">Explore Technology ↗</span></div>
         </a>
@@ -311,11 +341,11 @@
           <figcaption><strong>Hospital Technology</strong><span>Integrated hospital solutions</span></figcaption>
         </figure>
         <figure class="visual-portfolio-card">
-          <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?q=80&w=1000&auto=format&fit=crop" alt="Hospital project environment" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=1000&auto=format&fit=crop" alt="Hospital project environment" loading="lazy">
           <figcaption><strong>Hospital Projects</strong><span>Healthcare infrastructure</span></figcaption>
         </figure>
         <figure class="visual-portfolio-card">
-          <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=1000&auto=format&fit=crop" alt="Medical technology in Germany" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1000&auto=format&fit=crop" alt="International medical technology markets" loading="lazy">
           <figcaption><strong>International Markets</strong><span>Global medical technology</span></figcaption>
         </figure>
       </div>
@@ -377,7 +407,7 @@
   <script src="https://unpkg.com/three@0.150.1/build/three.min.js" defer></script>
   <script src="https://unpkg.com/globe.gl@2.27.2/dist/globe.gl.min.js" defer></script>
   
-  <!-- HIGH PERFORMANCE & SMOOTH GLOBE SCRIPT -->
+  <!-- OPTIMIZED GLOBE SCRIPT FOR SMOOTH PERFORMANCE -->
   <script>
     window.addEventListener('load', () => {
       const globeContainer = document.getElementById("globeViz");
@@ -392,37 +422,39 @@
         }
 
         try {
-          const world = Globe()(globeContainer)
-            // Using earth-dark.jpg (better contrast, faster load, less noisy than earth-night)
+          // Device check to disable heavy animations on mobile
+          const isMobile = window.innerWidth < 768;
+
+          const world = Globe({ 
+            rendererConfig: { antialias: false, alpha: false } 
+          })(globeContainer)
             .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-dark.jpg')
-            .backgroundImageUrl('https://unpkg.com/three-globe/example/img/night-sky.png')
             .backgroundColor('#050607')
-            .showAtmosphere(false) // Turn off atmosphere for cleaner look and better performance
+            .showAtmosphere(false)
             .width(globeContainer.clientWidth)
             .height(globeContainer.clientHeight);
 
-          world.pointOfView({ lat: 30, lng: 40, altitude: 2.2 });
+          // Initial point of view
+          world.pointOfView({ lat: 25, lng: 45, altitude: 2.5 });
 
-          // Fetch borders (Async, does not block animation)
+          // Fetch country borders (lightweight)
           fetch('https://raw.githubusercontent.com/vasturiano/globe.gl/master/example/datasets/ne_110m_admin_0_countries.geojson')
             .then(res => res.json())
             .then(countries => {
               world.polygonsData(countries.features)
                 .polygonCapColor(() => 'rgba(0,0,0,0)') 
                 .polygonSideColor(() => 'rgba(0,0,0,0)')
-                .polygonStrokeColor(() => 'rgba(255, 255, 255, 0.2)') 
+                .polygonStrokeColor(() => 'rgba(255, 255, 255, 0.15)') 
                 .polygonAltitude(0.005);
             }).catch(err => console.warn("Borders failed to load"));
 
-          // Data
+          // Reduced data for optimal performance
           const omanHub = { lat: 23.588, lng: 58.383, type: 'A' };
           const germanyBranch = { lat: 52.520, lng: 13.405, type: 'A' };
           
           const suppliers = [
             { lat: 22.543, lng: 114.057, type: 'C' }, // Shenzhen
             { lat: 31.230, lng: 121.473, type: 'C' }, // Shanghai
-            { lat: 39.904, lng: 116.407, type: 'C' }, // Beijing
-            { lat: 25.033, lng: 121.565, type: 'C' }, // Taipei
             { lat: 53.551, lng: 9.993, type: 'C' },   // Hamburg
             { lat: 37.774, lng: -122.419, type: 'C' } // San Francisco
           ];
@@ -430,58 +462,58 @@
           const hospitals = [
             { lat: 24.713, lng: 46.675, type: 'H' }, // Riyadh
             { lat: 25.285, lng: 51.531, type: 'H' }, // Doha
-            { lat: 26.228, lng: 50.586, type: 'H' }, // Manama
             { lat: 24.453, lng: 54.377, type: 'H' }, // Abu Dhabi
-            { lat: 17.015, lng: 54.092, type: 'H' }, // Salalah
             { lat: 48.856, lng: 2.352, type: 'H' },  // Paris
-            { lat: 41.902, lng: 12.496, type: 'H' }, // Rome
-            { lat: 40.416, lng: -3.703, type: 'H' }, // Madrid
             { lat: 40.712, lng: -74.006, type: 'H' } // New York
           ];
 
-          // Arcs (Optimized for Smooth Flow)
+          // Arcs (Optimized)
           const arcsData = [];
-          const whiteArc = ['rgba(255, 255, 255, 0.8)', 'rgba(255, 255, 255, 0.05)'];
-          const goldArc = ['rgba(255, 215, 0, 0.9)', 'rgba(255, 215, 0, 0.1)'];
+          const whiteArc = ['rgba(255, 255, 255, 0.6)', 'rgba(255, 255, 255, 0.05)'];
+          const goldArc = ['rgba(255, 215, 0, 0.8)', 'rgba(255, 215, 0, 0.1)'];
 
           suppliers.forEach(s => arcsData.push({ startLat: s.lat, startLng: s.lng, endLat: omanHub.lat, endLng: omanHub.lng, color: whiteArc }));
           arcsData.push({ startLat: omanHub.lat, startLng: omanHub.lng, endLat: germanyBranch.lat, endLng: germanyBranch.lng, color: goldArc });
-          hospitals.forEach(h => arcsData.push({ startLat: omanHub.lat, startLng: omanHub.lng, endLat: h.lat, endLng: h.lng, color: ['rgba(200, 200, 200, 0.4)', 'rgba(200, 200, 200, 0.05)'] }));
+          hospitals.forEach(h => arcsData.push({ startLat: omanHub.lat, startLng: omanHub.lng, endLat: h.lat, endLng: h.lng, color: ['rgba(200, 200, 200, 0.3)', 'rgba(200, 200, 200, 0.05)'] }));
 
           world.arcsData(arcsData)
             .arcColor('color')
-            .arcDashLength(0.6)      // Longer dash makes it look like a continuous beam
-            .arcDashGap(0.1)         // Small gap
-            .arcDashAnimateTime(3500) // Slower animation time (3.5s) prevents the "stutter/restart" feeling
-            .arcStroke(0.3);
+            .arcDashLength(0.4)
+            .arcDashGap(0.2)
+            .arcDashAnimateTime(4000)
+            .arcStroke(0.2);
 
-          // Markers (Using labelsData instead of htmlElementsData for 100x better performance)
+          // Markers
           const markersData = [omanHub, germanyBranch, ...suppliers, ...hospitals];
 
           world.labelsData(markersData)
-            .labelSize(d => d.type === 'A' ? 1.5 : 0.8)
+            .labelSize(d => d.type === 'A' ? 1.2 : 0.6)
             .labelDotRadius(0)
             .labelColor(d => {
               if (d.type === 'A') return '#ffffff';
               if (d.type === 'C') return '#87CEEB';
               return '#aaaaaa';
             })
-            .labelText('type') // Renders the letter A, C, or H
-            .labelResolution(2); // Higher resolution for crisp text
+            .labelText('type')
+            .labelResolution(2);
 
           // Rotation Controls
-          world.controls().autoRotate = true;
-          world.controls().autoRotateSpeed = 0.5; // Smooth, slow rotation
+          world.controls().autoRotate = !isMobile;
+          world.controls().autoRotateSpeed = 0.4;
           world.controls().enableZoom = true;
           world.controls().minDistance = 150;
+          
+          if (isMobile) {
+            world.controls().enablePan = false;
+          }
 
           if (loading) loading.style.display = "none";
 
-          // Performance: Pause rotation when map is not visible on screen
+          // Pause rendering when map is out of view
           const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
               if (entry.isIntersecting) {
-                world.controls().autoRotate = true;
+                if (!isMobile) world.controls().autoRotate = true;
               } else {
                 world.controls().autoRotate = false;
               }
@@ -489,14 +521,14 @@
           }, { threshold: 0.1 });
           observer.observe(globeContainer);
 
-          // Handle Resize
+          // Debounced Resize handling
           let resizeTimer;
           window.addEventListener('resize', () => {
             clearTimeout(resizeTimer);
             resizeTimer = setTimeout(() => {
               world.width(globeContainer.clientWidth);
               world.height(globeContainer.clientHeight);
-            }, 200);
+            }, 250);
           });
 
         } catch (err) {
