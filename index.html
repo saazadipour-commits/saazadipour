@@ -18,8 +18,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 
-  <!-- Custom Styles for Global Bases Cards & Map Fixes -->
+  <!-- Custom Styles for Global Bases & Technology Cards -->
   <style>
+    /* 4 Global Bases Grid */
     .global-bases-grid {
       display: grid; 
       grid-template-columns: repeat(4, minmax(0,1fr)); 
@@ -51,9 +52,29 @@
     .status-badge.active { background: rgba(255, 255, 255, 0.1); border: 1px solid #fff; color: #fff; }
     .status-badge.gold { background: rgba(255, 215, 0, 0.05); border: 1px solid var(--gold); color: var(--gold); box-shadow: 0 0 15px rgba(255, 215, 0, 0.1); }
 
-    /* Map specific styling to make it less dark */
-    .network-map-canvas-wrap {
-      background: radial-gradient(circle at center, #1a2026 0%, #050607 100%) !important;
+    /* Technology Cards Image Overlays */
+    .technology-card {
+      position: relative;
+      overflow: hidden;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease;
+    }
+    .technology-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(145deg, rgba(5,6,7,0.85), rgba(5,6,7,0.6));
+      z-index: 1;
+      transition: background 0.5s ease;
+    }
+    .technology-card:hover::before {
+      background: linear-gradient(145deg, rgba(5,6,7,0.7), rgba(5,6,7,0.4));
+    }
+    .technology-card .card-number,
+    .technology-card .technology-card-content {
+      position: relative;
+      z-index: 2;
     }
 
     @media (max-width: 1050px) { .global-bases-grid { grid-template-columns: repeat(2, 1fr); } }
@@ -243,6 +264,8 @@
       <div class="luxury-slider-wrapper">
         <button class="slider-nav-btn prev" onclick="document.getElementById('sliderTrack').scrollBy({left: -400, behavior: 'smooth'})">❮</button>
         <div class="luxury-slider-track" id="sliderTrack">
+          
+          <!-- Slide 1: Credentials -->
           <div class="credential-slide">
             <div class="credential-header">
               <span class="credential-seal">VERIFIED &amp; LICENSED</span>
@@ -256,13 +279,34 @@
               <div class="credential-item"><span class="cred-label">REGISTERED OFFICE</span><span class="cred-value">Muscat, Oman</span></div>
             </div>
           </div>
+
+          <!-- Slide 2: Europe -->
           <div class="credential-slide gold-card">
             <div class="gold-icon">◈</div>
-            <span class="credential-seal" style="display:inline-block; margin-bottom:20px;">NEW EXPANSION</span>
+            <span class="credential-seal" style="display:inline-block; margin-bottom:20px;">EUROPEAN EXPANSION</span>
             <h3>European Branch</h3>
             <p>Berlin, Germany</p>
-            <p style="margin-top: 20px; font-size: 12px; opacity: 0.6;">DETAILED INFORMATION COMING SOON</p>
+            <p style="margin-top: 20px; font-size: 12px; opacity: 0.6;">LAUNCHING IN 6 MONTHS</p>
           </div>
+
+          <!-- Slide 3: Americas -->
+          <div class="credential-slide gold-card">
+            <div class="gold-icon">◈</div>
+            <span class="credential-seal" style="display:inline-block; margin-bottom:20px;">AMERICAS EXPANSION</span>
+            <h3>North American Branch</h3>
+            <p>New York, USA</p>
+            <p style="margin-top: 20px; font-size: 12px; opacity: 0.6;">LAUNCHING IN 1 YEAR</p>
+          </div>
+
+          <!-- Slide 4: Asia -->
+          <div class="credential-slide gold-card">
+            <div class="gold-icon">◈</div>
+            <span class="credential-seal" style="display:inline-block; margin-bottom:20px;">ASIAN EXPANSION</span>
+            <h3>Asian Branch</h3>
+            <p>Beijing, China</p>
+            <p style="margin-top: 20px; font-size: 12px; opacity: 0.6;">LAUNCHING IN 3 MONTHS</p>
+          </div>
+
         </div>
         <button class="slider-nav-btn next" onclick="document.getElementById('sliderTrack').scrollBy({left: 400, behavior: 'smooth'})">❯</button>
       </div>
@@ -279,7 +323,8 @@
           <div class="card-number">01 / ROBOTICS</div>
           <div class="technology-card-content"><h3>Robotic & Digital Surgery</h3><p>Advanced robotic platforms, digital surgery and next-generation surgical technologies.</p><span class="card-link">Explore Technology ↗</span></div>
         </a>
-        <a href="cardiac.html" class="technology-card" style="background-image: url('https://images.unsplash.com/photo-1530026405186-ed1f13eb28b7?q=80&w=1000&auto=format&fit=crop');">
+        <!-- Updated Cardiovascular Image -->
+        <a href="cardiac.html" class="technology-card" style="background-image: url('https://images.unsplash.com/photo-1530497610245-94d3c16cda28?q=80&w=1000&auto=format&fit=crop');">
           <div class="card-number">02 / CARDIOVASCULAR</div>
           <div class="technology-card-content"><h3>Cardiac & Cardiovascular</h3><p>Technologies supporting cardiac surgery, perfusion, catheterization laboratories and critical care.</p><span class="card-link">Explore Technology ↗</span></div>
         </a>
@@ -306,8 +351,9 @@
           <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=1000&auto=format&fit=crop" alt="Surgical robotics equipment" loading="lazy">
           <figcaption><strong>Surgical Robotics</strong><span>Next-generation operating rooms</span></figcaption>
         </figure>
+        <!-- Updated Cardiovascular Image -->
         <figure class="visual-portfolio-card">
-          <img src="https://images.unsplash.com/photo-1530026405186-ed1f13eb28b7?q=80&w=1000&auto=format&fit=crop" alt="Cardiac and cardiovascular technology" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1530497610245-94d3c16cda28?q=80&w=1000&auto=format&fit=crop" alt="Cardiac and cardiovascular technology" loading="lazy">
           <figcaption><strong>Cardiovascular</strong><span>Cardiac care technologies</span></figcaption>
         </figure>
         <figure class="visual-portfolio-card">
@@ -373,7 +419,7 @@
       <div class="footer-brand"><img src="assets/logo-transparent.png" alt="Azadipour Logo"><h3>AZADIPOUR</h3><p>Global Medical Technology & Hospital Solutions</p></div>
       <div class="footer-column"><h4>COMPANY</h4><a href="about.html">About Us</a><a href="index.html#global-network">Global Presence</a><a href="partners.html">Partnerships</a><a href="projects.html">Projects</a></div>
       <div class="footer-column"><h4>TECHNOLOGY</h4><a href="robotic.html">Robotic Surgery</a><a href="cardiac.html">Cardiovascular</a><a href="medical.html">Medical Technology</a></div>
-      <div class="footer-column"><h4>CONTACT</h4><a href="mailto:info@azadipourmedical.com">Email</a><span>Oman</span></div>
+      <div class="footer-column"><h4>CONTACT</h4><a href="mailto:info@azadipourmedical.com">Email</a><span>International</span></div>
     </div>
     <div class="footer-bottom"><span>© <span id="currentYear">2026</span> AZADIPOUR. ALL RIGHTS RESERVED.</span><span>GLOBAL MEDICAL TECHNOLOGY · WORLDWIDE</span></div>
   </footer>
@@ -400,7 +446,6 @@
           const world = Globe({ 
             rendererConfig: { antialias: false, alpha: false } 
           })(globeContainer)
-            // Using earth-night.jpg but with a radial gradient background to make the globe pop
             .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-night.jpg')
             .backgroundColor('#000000')
             .showAtmosphere(true)
@@ -418,7 +463,7 @@
               world.polygonsData(countries.features)
                 .polygonCapColor(() => 'rgba(0,0,0,0)') 
                 .polygonSideColor(() => 'rgba(0,0,0,0)')
-                .polygonStrokeColor(() => 'rgba(255, 255, 255, 0.3)') // Slightly brighter borders
+                .polygonStrokeColor(() => 'rgba(255, 255, 255, 0.3)')
                 .polygonAltitude(0.005);
             }).catch(err => console.warn("Borders failed to load"));
 
@@ -481,7 +526,7 @@
             .arcDashAnimateTime(3000) 
             .arcStroke(0.4);
 
-          // Markers (Using labelsData for performance)
+          // Markers
           const markersData = [...branches, ...suppliers, ...hospitals];
 
           world.labelsData(markersData)
