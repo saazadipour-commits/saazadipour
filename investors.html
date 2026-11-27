@@ -8,7 +8,7 @@
   <meta name="theme-color" content="#08090b">
   <link rel="canonical" href="https://azadipourmedical.com/investors.html">
   <link rel="icon" type="image/png" href="assets/logo-transparent.png">
-  
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -187,8 +187,8 @@
       const options = {
         series: [{
           name: 'Valuation (OMR)',
-          // Updated data to reflect the 600,000 OMR scale
-          data: [150000, 220000, 280000, 350000, 420000, 480000, 550000, 600000]
+          // Four-month valuation projection
+          data: [150000, 300000, 450000, 600000]
         }],
         chart: {
           type: 'area',
@@ -211,7 +211,7 @@
         dataLabels: { enabled: false },
         stroke: { curve: 'smooth', width: 2 },
         xaxis: {
-          categories: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6', 'Week 7', 'Current'],
+          categories: ['Month 1', 'Month 2', 'Month 3', 'Month 4'],
           axisBorder: { show: false },
           axisTicks: { show: false },
           labels: { style: { colors: '#89929b', fontSize: '11px' } }
